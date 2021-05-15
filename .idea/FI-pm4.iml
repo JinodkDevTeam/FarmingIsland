@@ -1,7 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/tests/phpstan/rules" isTestSource="true" packagePrefix="pocketmine\phpstan\rules\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/phpunit" isTestSource="true" packagePrefix="pocketmine\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="pocketmine\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/adhocore/json-comment" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fgrosse/phpasn1" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/mdanter/ecc" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/netresearch/jsonmapper" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/binaryutils" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/callback-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/classloader" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/color" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/errorhandler" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/log" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/log-pthreads" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/nbt" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/raklib" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/raklib-ipc" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/snooze" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/pocketmine/spl" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/respect/stringifier" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/respect/validation" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-mbstring" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/php" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/build/preprocessor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/resources/locale" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/resources/vanilla" vcs="Git" />
   </component>
 </project>

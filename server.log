@@ -1,0 +1,237 @@
+2021-05-15 [13:56:26.857] [Server thread/INFO]: Loading server configuration
+2021-05-15 [13:56:26.913] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [13:56:26.913] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [13:56:26.914] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [13:56:26.914] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [13:56:26.914] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [13:56:26.914] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [13:56:26.926] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [13:56:26.941] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [13:56:27.207] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [13:56:27.207] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [13:56:28.026] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [13:56:28.095] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [13:56:28.131] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [13:56:28.140] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [13:56:28.196] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [13:56:28.279] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [13:56:28.281] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [13:56:28.284] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [13:56:28.284] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [13:56:28.286] [Server thread/INFO]: Done (1.44s)! For help, type "help" or "?"
+2021-05-15 [13:56:30.826] [Server thread/INFO]: --- Showing help page 1 of 1 (/help <page>) ---
+2021-05-15 [13:56:30.826] [Server thread/INFO]: /ban: Prevents the specified player from using this server
+2021-05-15 [13:56:30.826] [Server thread/INFO]: /ban-ip: Prevents the specified IP address from using this server
+2021-05-15 [13:56:30.827] [Server thread/INFO]: /banlist: View all players banned from this server
+2021-05-15 [13:56:30.827] [Server thread/INFO]: /checkperm: Checks a permission value for the current sender, or a player
+2021-05-15 [13:56:30.827] [Server thread/INFO]: /clear: Clears items from player inventory
+2021-05-15 [13:56:30.827] [Server thread/INFO]: /defaultgamemode: Set the default gamemode
+2021-05-15 [13:56:30.827] [Server thread/INFO]: /deop: Takes the specified player's operator status
+2021-05-15 [13:56:30.828] [Server thread/INFO]: /difficulty: Sets the game difficulty
+2021-05-15 [13:56:30.828] [Server thread/INFO]: /dumpmemory: Dumps the memory
+2021-05-15 [13:56:30.828] [Server thread/INFO]: /effect: Adds/Removes effects on players
+2021-05-15 [13:56:30.828] [Server thread/INFO]: /enchant: Adds enchantments on items
+2021-05-15 [13:56:30.828] [Server thread/INFO]: /extractplugin: Extracts the source code from a Phar plugin
+2021-05-15 [13:56:30.829] [Server thread/INFO]: /gamemode: Changes the player to a specific game mode
+2021-05-15 [13:56:30.829] [Server thread/INFO]: /gc: Fires garbage collection tasks
+2021-05-15 [13:56:30.829] [Server thread/INFO]: /genplugin: Generates skeleton files for a plugin
+2021-05-15 [13:56:30.829] [Server thread/INFO]: /give: Gives the specified player a certain amount of items
+2021-05-15 [13:56:30.829] [Server thread/INFO]: /help: Shows the help menu
+2021-05-15 [13:56:30.830] [Server thread/INFO]: /kick: Removes the specified player from the server
+2021-05-15 [13:56:30.830] [Server thread/INFO]: /kill: Commit suicide or kill other players
+2021-05-15 [13:56:30.830] [Server thread/INFO]: /list: Lists all online players
+2021-05-15 [13:56:30.830] [Server thread/INFO]: /listperms: Lists all the permission nodes set on the executor, or a player
+2021-05-15 [13:56:30.831] [Server thread/INFO]: /makeplugin: Creates a Phar plugin from one in source code form
+2021-05-15 [13:56:30.831] [Server thread/INFO]: /me: Performs the specified action in chat
+2021-05-15 [13:56:30.833] [Server thread/INFO]: /op: Gives the specified player operator status
+2021-05-15 [13:56:30.836] [Server thread/INFO]: /pardon: Allows the specified player to use this server
+2021-05-15 [13:56:30.842] [Server thread/INFO]: /pardon-ip: Allows the specified IP address to use this server
+2021-05-15 [13:56:30.845] [Server thread/INFO]: /particle: Adds particles to a world
+2021-05-15 [13:56:30.846] [Server thread/INFO]: /plugins: Gets a list of plugins running on the server
+2021-05-15 [13:56:30.846] [Server thread/INFO]: /save-all: Saves the server to disk
+2021-05-15 [13:56:30.847] [Server thread/INFO]: /save-off: Disables server autosaving
+2021-05-15 [13:56:30.847] [Server thread/INFO]: /save-on: Enables server autosaving
+2021-05-15 [13:56:30.848] [Server thread/INFO]: /say: Broadcasts the given message as the sender
+2021-05-15 [13:56:30.849] [Server thread/INFO]: /seed: Shows the world seed
+2021-05-15 [13:56:30.851] [Server thread/INFO]: /setworldspawn: Sets a worlds's spawn point. If no coordinates are specified, the player's coordinates will be used.
+2021-05-15 [13:56:30.852] [Server thread/INFO]: /spawnpoint: Sets a player's spawn point
+2021-05-15 [13:56:30.854] [Server thread/INFO]: /status: Reads back the server's performance.
+2021-05-15 [13:56:30.855] [Server thread/INFO]: /stop: Stops the server
+2021-05-15 [13:56:30.857] [Server thread/INFO]: /tell: Sends a private message to the given player
+2021-05-15 [13:56:30.858] [Server thread/INFO]: /time: Changes the time on each world
+2021-05-15 [13:56:30.858] [Server thread/INFO]: /timings: Records timings to see performance of the server.
+2021-05-15 [13:56:30.859] [Server thread/INFO]: /title: Controls screen titles
+2021-05-15 [13:56:30.859] [Server thread/INFO]: /tp: Teleports the given player (or yourself) to another player or coordinates
+2021-05-15 [13:56:30.860] [Server thread/INFO]: /transferserver: Transfer yourself to another server
+2021-05-15 [13:56:30.861] [Server thread/INFO]: /version: Gets the version of this server including any plugins in use
+2021-05-15 [13:56:30.861] [Server thread/INFO]: /whitelist: Manages the list of players allowed to use this server
+2021-05-15 [13:56:41.255] [Server thread/NOTICE]: [Memory Dump] After the memory dump is done, the server might crash
+2021-05-15 [13:56:41.291] [Server thread/INFO]: [Memory Dump] Wrote 134 static properties
+2021-05-15 [13:56:41.292] [Server thread/INFO]: [Memory Dump] Wrote 4 global variables
+2021-05-15 [13:56:41.294] [Server thread/INFO]: [Memory Dump] Wrote 37 function static variables
+2021-05-15 [13:56:41.714] [Server thread/INFO]: [Memory Dump] Wrote 18668 objects
+2021-05-15 [13:56:41.727] [Server thread/INFO]: [Memory Dump] Finished!
+2021-05-15 [13:56:41.746] [AsyncWorker#0 thread/INFO]: [Memory Dump] Wrote 15 static properties
+2021-05-15 [13:56:41.748] [AsyncWorker#0 thread/INFO]: [Memory Dump] Wrote 3 global variables
+2021-05-15 [13:56:41.749] [AsyncWorker#0 thread/INFO]: [Memory Dump] Wrote 1 function static variables
+2021-05-15 [13:56:41.760] [AsyncWorker#0 thread/INFO]: [Memory Dump] Wrote 12 objects
+2021-05-15 [13:56:41.764] [AsyncWorker#0 thread/INFO]: [Memory Dump] Finished!
+2021-05-15 [13:57:16.445] [Server thread/INFO]: Usage: /genplugin <pluginName> <authorName>
+2021-05-15 [13:57:28.319] [Server thread/INFO]: Created skeleton plugin NgTest in D:\MinecraftTool\FI-pm4\plugins\NgTest\
+2021-05-15 [13:57:30.120] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [13:57:30.162] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [13:57:30.165] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [13:57:30.412] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:09:33.301] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:09:33.333] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:09:33.333] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:09:33.333] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:09:33.336] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:09:33.337] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:09:33.338] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:09:33.346] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:09:33.358] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:09:33.643] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:09:33.644] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:09:34.311] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:09:34.363] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:09:34.383] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:09:34.389] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:09:34.394] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:09:34.448] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:09:34.465] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [14:09:34.466] [Server thread/CRITICAL]: TypeError: "Argument 1 passed to pocketmine\plugin\PluginManager::registerEvents() must be an instance of pocketmine\event\Listener, instance of NgLamVN\NgTest\Main given, called in D:\MinecraftTool\FI-pm4\plugins\NgTest\src\NgLamVN\NgTest\Main.php on line 15" (EXCEPTION) in "pmsrc/src/plugin/PluginManager" at line 445
+2021-05-15 [14:09:34.466] [Server thread/CRITICAL]: #0 plugins/NgTest/src/NgLamVN/NgTest/Main(15): pocketmine\plugin\PluginManager->registerEvents(object NgLamVN\NgTest\Main, object NgLamVN\NgTest\Main)
+2021-05-15 [14:09:34.466] [Server thread/CRITICAL]: #1 pmsrc/src/plugin/PluginBase(138): NgLamVN\NgTest\Main->onEnable()
+2021-05-15 [14:09:34.467] [Server thread/CRITICAL]: #2 pmsrc/src/plugin/PluginManager(400): pocketmine\plugin\PluginBase->onEnableStateChange(boolean 1)
+2021-05-15 [14:09:34.467] [Server thread/CRITICAL]: #3 pmsrc/src/Server(1339): pocketmine\plugin\PluginManager->enablePlugin(object NgLamVN\NgTest\Main)
+2021-05-15 [14:09:34.473] [Server thread/CRITICAL]: #4 pmsrc/src/Server(1092): pocketmine\Server->enablePlugins(object pocketmine\plugin\PluginEnableOrder)
+2021-05-15 [14:09:34.474] [Server thread/CRITICAL]: #5 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader, object pocketmine\utils\MainLogger, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-05-15 [14:09:34.475] [Server thread/CRITICAL]: #6 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-05-15 [14:09:34.475] [Server thread/CRITICAL]: #7 pmsrc(11): require(string[68] phar://D:/MinecraftTool/FI-pm4/PocketMine-MP.phar/src/PocketMine.php)
+2021-05-15 [14:09:34.475] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-05-15 [14:09:34.482] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Sat_May_15-14.09.34-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-05-15 [14:09:34.492] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:09:34.493] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [14:09:34.495] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:10:01.574] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:10:01.599] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:10:01.599] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:10:01.600] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:10:01.600] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:10:01.600] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:10:01.600] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:10:01.610] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:10:01.618] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:10:01.918] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:10:01.918] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:10:02.547] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:10:02.607] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:10:02.629] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:10:02.632] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:10:02.635] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:10:02.698] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:10:02.714] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [14:10:02.798] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:10:02.800] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:10:02.802] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:10:02.809] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:10:02.810] [Server thread/INFO]: Done (1.242s)! For help, type "help" or "?"
+2021-05-15 [14:10:03.862] [Server thread/INFO]: Plugins (2): DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [14:10:09.130] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Session opened
+2021-05-15 [14:10:09.178] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Player: NgLamVN
+2021-05-15 [14:10:10.568] [Server thread/INFO]: NgLamVN[/192.168.1.1:64793] logged in with entity id 1 at (world, 261.4422, 76.3679, 249.6082)
+2021-05-15 [14:10:20.158] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-05-15 [14:10:20.274] [Server thread/INFO]: NgLamVN joined the game
+2021-05-15 [14:10:52.010] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:10:52.031] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:10:52.032] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [14:10:52.033] [Server thread/INFO]: NgLamVN left the game
+2021-05-15 [14:10:52.036] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-05-15 [14:10:52.037] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:10:52.385] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:13:50.829] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:13:50.850] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:13:50.852] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:13:50.853] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:13:50.853] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:13:50.854] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:13:50.854] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:13:50.859] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:13:50.866] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:13:51.083] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:13:51.083] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:13:51.547] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:13:51.599] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:13:51.621] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:13:51.624] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:13:51.625] [Server thread/ERROR]: Main class for plugin NgTest not found
+2021-05-15 [14:13:51.626] [Server thread/CRITICAL]: Could not load plugin 'NgTest'
+2021-05-15 [14:13:51.626] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:13:51.861] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:13:51.926] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:13:51.927] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:13:51.928] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:13:51.928] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:13:51.929] [Server thread/INFO]: Done (1.102s)! For help, type "help" or "?"
+2021-05-15 [14:14:04.198] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:14:04.215] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:14:04.217] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:14:04.343] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:14:08.728] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:14:08.750] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:14:08.750] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:14:08.750] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:14:08.751] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:14:08.751] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:14:08.751] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:14:08.760] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:14:08.766] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:14:08.974] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:14:08.975] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:14:09.543] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:14:09.594] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:14:09.617] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:14:09.625] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:14:09.627] [Server thread/ERROR]: Main class for plugin NgTest not found
+2021-05-15 [14:14:09.627] [Server thread/CRITICAL]: Could not load plugin 'NgTest'
+2021-05-15 [14:14:09.627] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:14:09.692] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:14:09.756] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:14:09.758] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:14:09.759] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:14:09.759] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:14:09.759] [Server thread/INFO]: Done (1.033s)! For help, type "help" or "?"
+2021-05-15 [14:14:15.313] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:14:15.323] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:14:15.325] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:14:15.431] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:14:37.329] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:14:37.369] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:14:37.375] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:14:37.375] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:14:37.376] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:14:37.376] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:14:37.376] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:14:37.383] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:14:37.398] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:14:37.618] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:14:37.618] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:14:38.077] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:14:38.119] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:14:38.138] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:14:38.143] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:14:38.145] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:14:38.191] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:14:38.199] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [14:14:38.252] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:14:38.253] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:14:38.257] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:14:38.257] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:14:38.258] [Server thread/INFO]: Done (0.932s)! For help, type "help" or "?"
+2021-05-15 [14:14:42.384] [Server thread/INFO]: Plugins (2): DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [14:14:44.169] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:14:44.170] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:14:44.172] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [14:14:44.174] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:14:44.246] [Server thread/INFO]: Stopping other threads

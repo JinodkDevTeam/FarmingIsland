@@ -1,0 +1,6 @@
+---
+name: NgTest
+version: 0.0.1
+main: NgLamVN\NgTest\Main
+api: 4.0.0
+...
