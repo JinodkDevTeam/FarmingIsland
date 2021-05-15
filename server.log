@@ -235,3 +235,82 @@
 2021-05-15 [14:14:44.172] [Server thread/INFO]: Disabling NgTest v0.0.1
 2021-05-15 [14:14:44.174] [Server thread/INFO]: Unloading world "world"
 2021-05-15 [14:14:44.246] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:27:06.529] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:27:06.552] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:27:06.552] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:27:06.552] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:27:06.552] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:27:06.553] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:27:06.553] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:27:06.564] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:27:06.579] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:27:06.879] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:27:06.879] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:27:07.617] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:27:07.678] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:27:07.698] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:27:07.703] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:27:07.714] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:27:07.717] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:27:07.717] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:27:07.767] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:27:07.783] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [14:27:07.915] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:27:07.918] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:27:07.919] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:27:07.922] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:27:07.926] [Server thread/INFO]: Done (1.399s)! For help, type "help" or "?"
+2021-05-15 [14:27:11.659] [Server thread/INFO]: Plugins (3): DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [14:27:23.215] [Server thread/INFO]: Invalid plugin name, check the name case.
+2021-05-15 [14:27:32.245] [Server thread/INFO]: [DevTools] Adding files...
+2021-05-15 [14:27:32.282] [Server thread/INFO]: [DevTools] Added 7 files
+2021-05-15 [14:27:32.282] [Server thread/INFO]: [DevTools] Checking for compressible files...
+2021-05-15 [14:27:32.287] [Server thread/INFO]: [DevTools] Done in 0.042s
+2021-05-15 [14:27:32.288] [Server thread/INFO]: Phar plugin DEVirion v1.2.5-ALPHA12 has been created on D:\MinecraftTool\FI-pm4\plugin_data\DevTools/DEVirion_v1.2.5-ALPHA12.phar
+2021-05-15 [14:27:38.724] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:27:38.742] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:27:38.744] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:27:38.744] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [14:27:38.745] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:27:38.836] [Server thread/INFO]: Stopping other threads
+2021-05-15 [14:41:33.074] [Server thread/INFO]: Loading server configuration
+2021-05-15 [14:41:33.105] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [14:41:33.106] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:41:33.106] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [14:41:33.106] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [14:41:33.106] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [14:41:33.106] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [14:41:33.118] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [14:41:33.125] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [14:41:33.351] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [14:41:33.352] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [14:41:33.884] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [14:41:33.955] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [14:41:33.975] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:41:33.984] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-05-15 [14:41:33.985] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-05-15 [14:41:33.987] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [14:41:33.990] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [14:41:33.992] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [14:41:33.992] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:41:34.041] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [14:41:34.052] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [14:41:34.117] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [14:41:34.118] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [14:41:34.119] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [14:41:34.120] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [14:41:34.120] [Server thread/INFO]: Done (1.048s)! For help, type "help" or "?"
+2021-05-15 [14:41:36.219] [Server thread/INFO]: Plugins (3): DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [14:41:49.726] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Session opened
+2021-05-15 [14:41:49.775] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Player: NgLamVN
+2021-05-15 [14:41:50.009] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-05-15 [14:41:51.069] [Server thread/INFO]: NgLamVN[/192.168.1.1:64793] logged in with entity id 1 at (world, 241.5196, 68, 239.5466)
+2021-05-15 [14:41:58.036] [Server thread/INFO]: NgLamVN joined the game
+2021-05-15 [14:43:52.133] [Server thread/INFO]: NgLamVN left the game
+2021-05-15 [14:43:52.139] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-05-15 [14:43:56.059] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [14:43:56.059] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [14:43:56.060] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [14:43:56.060] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [14:43:56.061] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [14:43:56.933] [Server thread/INFO]: Stopping other threads
