@@ -45,7 +45,7 @@
       "pocketmine/nbt": "dev-master",
       "pocketmine/raklib": "dev-master",
       "pocketmine/raklib-ipc": "dev-master",
-      "pocketmine/snooze": "^0.1.0",
+      "pocketmine/snooze": "^0.2.0",
       "pocketmine/spl": "dev-master",
       "ramsey/uuid": "^4.1",
       "respect/validation": "^2.0"
