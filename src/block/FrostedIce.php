@@ -28,12 +28,7 @@ use function mt_rand;
 
 class FrostedIce extends Ice{
 
-	/** @var int */
-	protected $age = 0;
-
-	public function __construct(BlockIdentifier $idInfo, string $name, ?BlockBreakInfo $breakInfo = null){
-		parent::__construct($idInfo, $name, $breakInfo ?? new BlockBreakInfo(2.5, BlockToolType::PICKAXE));
-	}
+	protected int $age = 0;
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
 		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, 3);

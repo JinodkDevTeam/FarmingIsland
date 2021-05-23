@@ -180,10 +180,10 @@ class World implements ChunkManager{
 	/** @var int */
 	private $maxY;
 
-	/** @var ChunkLoader[] */
-	private $loaders = [];
+	/** @var TickingChunkLoader[] */
+	private $tickingLoaders = [];
 	/** @var int[] */
-	private $loaderCounter = [];
+	private $tickingLoaderCounter = [];
 	/** @var ChunkLoader[][] */
 	private $chunkLoaders = [];
 
@@ -632,11 +632,13 @@ class World implements ChunkManager{
 
 		$this->chunkLoaders[$chunkHash][$loaderId] = $loader;
 
-		if(!isset($this->loaders[$loaderId])){
-			$this->loaderCounter[$loaderId] = 1;
-			$this->loaders[$loaderId] = $loader;
-		}else{
-			++$this->loaderCounter[$loaderId];
+		if($loader instanceof TickingChunkLoader){
+			if(!isset($this->tickingLoaders[$loaderId])){
+				$this->tickingLoaderCounter[$loaderId] = 1;
+				$this->tickingLoaders[$loaderId] = $loader;
+			}else{
+				++$this->tickingLoaderCounter[$loaderId];
+			}
 		}
 
 		$this->cancelUnloadChunkRequest($chunkX, $chunkZ);
@@ -660,9 +662,9 @@ class World implements ChunkManager{
 				}
 			}
 
-			if(--$this->loaderCounter[$loaderId] === 0){
-				unset($this->loaderCounter[$loaderId]);
-				unset($this->loaders[$loaderId]);
+			if(isset($this->tickingLoaderCounter[$loaderId]) && --$this->tickingLoaderCounter[$loaderId] === 0){
+				unset($this->tickingLoaderCounter[$loaderId]);
+				unset($this->tickingLoaders[$loaderId]);
 			}
 		}
 	}
@@ -784,7 +786,7 @@ class World implements ChunkManager{
 		}
 
 		//Do block updates
-		$this->timings->doTickPending->startTiming();
+		$this->timings->scheduledBlockUpdates->startTiming();
 
 		//Delayed updates
 		while($this->scheduledBlockUpdateQueue->count() > 0 and $this->scheduledBlockUpdateQueue->current()["priority"] <= $currentTick){
@@ -820,7 +822,7 @@ class World implements ChunkManager{
 			unset($this->neighbourBlockUpdateQueueIndex[$index]);
 		}
 
-		$this->timings->doTickPending->stopTiming();
+		$this->timings->scheduledBlockUpdates->stopTiming();
 
 		$this->timings->entityTick->startTiming();
 		//Update entities that need update
@@ -836,9 +838,9 @@ class World implements ChunkManager{
 		Timings::$tickEntity->stopTiming();
 		$this->timings->entityTick->stopTiming();
 
-		$this->timings->doTickTiles->startTiming();
+		$this->timings->randomChunkUpdates->startTiming();
 		$this->tickChunks();
-		$this->timings->doTickTiles->stopTiming();
+		$this->timings->randomChunkUpdates->stopTiming();
 
 		$this->executeQueuedLightUpdates();
 
@@ -970,22 +972,20 @@ class World implements ChunkManager{
 	}
 
 	private function tickChunks() : void{
-		if($this->chunksPerTick <= 0 or count($this->loaders) === 0){
+		if($this->chunksPerTick <= 0 or count($this->tickingLoaders) === 0){
 			return;
 		}
+
+		$this->timings->randomChunkUpdatesChunkSelection->startTiming();
 
 		/** @var bool[] $chunkTickList chunkhash => dummy */
 		$chunkTickList = [];
 
-		$chunksPerLoader = min(200, max(1, (int) ((($this->chunksPerTick - count($this->loaders)) / count($this->loaders)) + 0.5)));
+		$chunksPerLoader = min(200, max(1, (int) ((($this->chunksPerTick - count($this->tickingLoaders)) / count($this->tickingLoaders)) + 0.5)));
 		$randRange = 3 + $chunksPerLoader / 30;
 		$randRange = (int) ($randRange > $this->chunkTickRadius ? $this->chunkTickRadius : $randRange);
 
-		foreach($this->loaders as $loader){
-			if(!($loader instanceof TickingChunkLoader)){
-				//TODO: maybe we should just not track non-ticking chunk loaders here?
-				continue;
-			}
+		foreach($this->tickingLoaders as $loader){
 			$chunkX = (int) floor($loader->getX()) >> 4;
 			$chunkZ = (int) floor($loader->getZ()) >> 4;
 
@@ -993,88 +993,106 @@ class World implements ChunkManager{
 				$dx = mt_rand(-$randRange, $randRange);
 				$dz = mt_rand(-$randRange, $randRange);
 				$hash = World::chunkHash($dx + $chunkX, $dz + $chunkZ);
-				if(!isset($chunkTickList[$hash]) and isset($this->chunks[$hash])){
-					if(
-						!$this->chunks[$hash]->isPopulated() ||
-						$this->isChunkLocked($dx + $chunkX, $dz + $chunkZ)
-					){
-						continue;
-					}
-					//TODO: this might need to be checked after adjacent chunks are loaded in future
-					$lightPopulatedState = $this->chunks[$hash]->isLightPopulated();
-					if($lightPopulatedState !== true){
-						if($lightPopulatedState === false){
-							$this->chunks[$hash]->setLightPopulated(null);
-
-							$this->workerPool->submitTask(new LightPopulationTask(
-								$this->chunks[$hash],
-								function(array $blockLight, array $skyLight, array $heightMap) use ($dx, $chunkX, $dz, $chunkZ) : void{
-									/**
-									 * TODO: phpstan can't infer these types yet :(
-									 * @phpstan-var array<int, LightArray> $blockLight
-									 * @phpstan-var array<int, LightArray> $skyLight
-									 * @phpstan-var array<int, int>        $heightMap
-									 */
-									if($this->closed || ($chunk = $this->getChunk($dx + $chunkX, $dz + $chunkZ)) === null || $chunk->isLightPopulated() === true){
-										return;
-									}
-									//TODO: calculated light information might not be valid if the terrain changed during light calculation
-
-									$chunk->setHeightMapArray($heightMap);
-									foreach($blockLight as $y => $lightArray){
-										$chunk->getSubChunk($y)->setBlockLightArray($lightArray);
-									}
-									foreach($skyLight as $y => $lightArray){
-										$chunk->getSubChunk($y)->setBlockSkyLightArray($lightArray);
-									}
-									$chunk->setLightPopulated(true);
-								}
-							));
-						}
-						continue;
-					}
-					//check adjacent chunks are loaded
-					for($cx = -1; $cx <= 1; ++$cx){
-						for($cz = -1; $cz <= 1; ++$cz){
-							if(!isset($this->chunks[World::chunkHash($chunkX + $dx + $cx, $chunkZ + $dz + $cz)])){
-								continue 3;
-							}
-						}
-					}
+				if(!isset($chunkTickList[$hash]) and isset($this->chunks[$hash]) and $this->isChunkTickable($dx + $chunkX, $dz + $chunkZ)){
 					$chunkTickList[$hash] = true;
 				}
 			}
 		}
 
+		$this->timings->randomChunkUpdatesChunkSelection->stopTiming();
+
 		foreach($chunkTickList as $index => $_){
 			World::getXZ($index, $chunkX, $chunkZ);
 
-			$chunk = $this->chunks[$index];
-			foreach($chunk->getEntities() as $entity){
-				$entity->onRandomUpdate();
+			$this->tickChunk($chunkX, $chunkZ);
+		}
+	}
+
+	private function isChunkTickable(int $chunkX, int $chunkZ) : bool{
+		for($cx = -1; $cx <= 1; ++$cx){
+			for($cz = -1; $cz <= 1; ++$cz){
+				if($this->isChunkLocked($chunkX + $cx, $chunkZ + $cz)){
+					return false;
+				}
+				$adjacentChunk = $this->getChunk($chunkX + $cx, $chunkZ + $cz);
+				if($adjacentChunk === null || !$adjacentChunk->isPopulated()){
+					return false;
+				}
+				$lightPopulatedState = $adjacentChunk->isLightPopulated();
+				if($lightPopulatedState !== true){
+					if($lightPopulatedState === false){
+						$this->orderLightPopulation($chunkX + $cx, $chunkZ + $cz);
+					}
+					return false;
+				}
 			}
+		}
 
-			foreach($chunk->getSubChunks() as $Y => $subChunk){
-				if(!$subChunk->isEmptyFast()){
-					$k = 0;
-					for($i = 0; $i < $this->tickedBlocksPerSubchunkPerTick; ++$i){
-						if(($i % 5) === 0){
-							//60 bits will be used by 5 blocks (12 bits each)
-							$k = mt_rand(0, (1 << 60) - 1);
-						}
-						$x = $k & 0x0f;
-						$y = ($k >> 4) & 0x0f;
-						$z = ($k >> 8) & 0x0f;
-						$k >>= 12;
+		return true;
+	}
 
-						$state = $subChunk->getFullBlock($x, $y, $z);
+	private function orderLightPopulation(int $chunkX, int $chunkZ) : void{
+		$chunkHash = World::chunkHash($chunkX, $chunkZ);
+		$lightPopulatedState = $this->chunks[$chunkHash]->isLightPopulated();
+		if($lightPopulatedState === false){
+			$this->chunks[$chunkHash]->setLightPopulated(null);
 
-						if(isset($this->randomTickBlocks[$state])){
-							/** @var Block $block */
-							$block = BlockFactory::getInstance()->fromFullBlock($state);
-							$block->position($this, $chunkX * 16 + $x, ($Y << 4) + $y, $chunkZ * 16 + $z);
-							$block->onRandomTick();
-						}
+			$this->workerPool->submitTask(new LightPopulationTask(
+				$this->chunks[$chunkHash],
+				function(array $blockLight, array $skyLight, array $heightMap) use ($chunkX, $chunkZ) : void{
+					/**
+					 * TODO: phpstan can't infer these types yet :(
+					 * @phpstan-var array<int, LightArray> $blockLight
+					 * @phpstan-var array<int, LightArray> $skyLight
+					 * @phpstan-var array<int, int>        $heightMap
+					 */
+					if($this->closed || ($chunk = $this->getChunk($chunkX, $chunkZ)) === null || $chunk->isLightPopulated() === true){
+						return;
+					}
+					//TODO: calculated light information might not be valid if the terrain changed during light calculation
+
+					$chunk->setHeightMapArray($heightMap);
+					foreach($blockLight as $y => $lightArray){
+						$chunk->getSubChunk($y)->setBlockLightArray($lightArray);
+					}
+					foreach($skyLight as $y => $lightArray){
+						$chunk->getSubChunk($y)->setBlockSkyLightArray($lightArray);
+					}
+					$chunk->setLightPopulated(true);
+				}
+			));
+		}
+	}
+
+	private function tickChunk(int $chunkX, int $chunkZ) : void{
+		$chunk = $this->getChunk($chunkX, $chunkZ);
+		if($chunk === null){
+			throw new \InvalidArgumentException("Chunk is not loaded");
+		}
+		foreach($chunk->getEntities() as $entity){
+			$entity->onRandomUpdate();
+		}
+
+		foreach($chunk->getSubChunks() as $Y => $subChunk){
+			if(!$subChunk->isEmptyFast()){
+				$k = 0;
+				for($i = 0; $i < $this->tickedBlocksPerSubchunkPerTick; ++$i){
+					if(($i % 5) === 0){
+						//60 bits will be used by 5 blocks (12 bits each)
+						$k = mt_rand(0, (1 << 60) - 1);
+					}
+					$x = $k & 0x0f;
+					$y = ($k >> 4) & 0x0f;
+					$z = ($k >> 8) & 0x0f;
+					$k >>= 12;
+
+					$state = $subChunk->getFullBlock($x, $y, $z);
+
+					if(isset($this->randomTickBlocks[$state])){
+						/** @var Block $block */
+						$block = BlockFactory::getInstance()->fromFullBlock($state);
+						$block->position($this, $chunkX * 16 + $x, ($Y << 4) + $y, $chunkZ * 16 + $z);
+						$block->onRandomTick();
 					}
 				}
 			}
@@ -1963,13 +1981,6 @@ class World implements ChunkManager{
 	 */
 	public function getPlayers() : array{
 		return $this->players;
-	}
-
-	/**
-	 * @return ChunkLoader[]
-	 */
-	public function getLoaders() : array{
-		return $this->loaders;
 	}
 
 	/**

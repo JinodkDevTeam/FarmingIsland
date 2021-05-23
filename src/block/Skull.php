@@ -39,20 +39,16 @@ use function assert;
 use function floor;
 
 class Skull extends Flowable{
-	/** @var SkullType */
-	protected $skullType;
 
-	/** @var int */
-	protected $facing = Facing::NORTH;
+	protected SkullType $skullType;
 
+	protected int $facing = Facing::NORTH;
 	protected bool $noDrops = false;
+	protected int $rotation = 0; //TODO: split this into floor skull and wall skull handling
 
-	/** @var int */
-	protected $rotation = 0; //TODO: split this into floor skull and wall skull handling
-
-	public function __construct(BlockIdentifier $idInfo, string $name, ?BlockBreakInfo $breakInfo = null){
+	public function __construct(BlockIdentifier $idInfo, string $name, BlockBreakInfo $breakInfo){
 		$this->skullType = SkullType::SKELETON(); //TODO: this should be a parameter
-		parent::__construct($idInfo, $name, $breakInfo ?? new BlockBreakInfo(1.0));
+		parent::__construct($idInfo, $name, $breakInfo);
 	}
 
 	protected function writeStateToMeta() : int{

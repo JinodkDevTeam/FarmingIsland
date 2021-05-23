@@ -33,7 +33,7 @@ class Main extends PluginBase implements Listener
 
 	public function BreakForm (Player $player, Block $block)
 	{
-		$form = new CustomForm(function(Player $player, array $data)
+		$form = new CustomForm(function(Player $player,?array $data)
 		{
 		});
 

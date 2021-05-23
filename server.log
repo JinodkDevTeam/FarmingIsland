@@ -314,3 +314,148 @@
 2021-05-15 [14:43:56.060] [Server thread/INFO]: Disabling NgTest v0.0.1
 2021-05-15 [14:43:56.061] [Server thread/INFO]: Unloading world "world"
 2021-05-15 [14:43:56.933] [Server thread/INFO]: Stopping other threads
+2021-05-15 [15:01:17.970] [Server thread/INFO]: Loading server configuration
+2021-05-15 [15:01:18.003] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [15:01:18.003] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:01:18.003] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [15:01:18.003] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [15:01:18.004] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [15:01:18.004] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:01:18.014] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [15:01:18.021] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [15:01:18.249] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [15:01:18.249] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [15:01:18.797] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [15:01:18.887] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [15:01:18.921] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:01:18.930] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-05-15 [15:01:18.931] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-05-15 [15:01:18.931] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-05-15 [15:01:18.934] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [15:01:18.939] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [15:01:18.946] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [15:01:18.947] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:01:19.251] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [15:01:19.264] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [15:01:19.330] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [15:01:19.331] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [15:01:19.333] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [15:01:19.333] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [15:01:19.333] [Server thread/INFO]: Done (1.365s)! For help, type "help" or "?"
+2021-05-15 [15:01:28.165] [Server thread/INFO]: Plugins (3): DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [15:01:34.416] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Session opened
+2021-05-15 [15:01:34.463] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Player: NgLamVN
+2021-05-15 [15:01:35.601] [Server thread/INFO]: NgLamVN[/192.168.1.1:64793] logged in with entity id 1 at (world, 200.6099, 70, 206.1795)
+2021-05-15 [15:01:41.117] [Server thread/INFO]: NgLamVN joined the game
+2021-05-15 [15:01:45.664] [Server thread/CRITICAL]: TypeError: "Argument 2 passed to NgLamVN\NgTest\Main::NgLamVN\NgTest\{closure}() must be of the type array, null given, called in D:\MinecraftTool\FI-pm4\virions\FormAPI-4.0\src\jojoe77777\FormAPI\Form.php on line 46" (EXCEPTION) in "plugins/NgTest/src/NgLamVN/NgTest/Main" at line 36
+2021-05-15 [15:01:45.665] [Server thread/CRITICAL]: #0 D:/MinecraftTool/FI-pm4/virions/FormAPI-4.0/src/jojoe77777/FormAPI/Form(46): NgLamVN\NgTest\Main->NgLamVN\NgTest\{closure}(object pocketmine\player\Player, NULL )
+2021-05-15 [15:01:45.666] [Server thread/CRITICAL]: #1 pmsrc/src/player/Player(1883): jojoe77777\FormAPI\Form->handleResponse(object pocketmine\player\Player, NULL )
+2021-05-15 [15:01:45.666] [Server thread/CRITICAL]: #2 pmsrc/src/network/mcpe/handler/InGamePacketHandler(809): pocketmine\player\Player->onFormSubmit(integer 0, NULL )
+2021-05-15 [15:01:45.667] [Server thread/CRITICAL]: #3 pmsrc/src/network/mcpe/protocol/ModalFormResponsePacket(49): pocketmine\network\mcpe\handler\InGamePacketHandler->handleModalFormResponse(object pocketmine\network\mcpe\protocol\ModalFormResponsePacket)
+2021-05-15 [15:01:45.667] [Server thread/CRITICAL]: #4 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\ModalFormResponsePacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler)
+2021-05-15 [15:01:45.667] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\ModalFormResponsePacket, string[8] e..null.)
+2021-05-15 [15:01:45.668] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[11] .He`.+.....)
+2021-05-15 [15:01:45.668] [Server thread/CRITICAL]: #7 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(43): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[20] ..?.p........B.0*...)
+2021-05-15 [15:01:45.669] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface)
+2021-05-15 [15:01:45.670] [Server thread/CRITICAL]: #9 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-05-15 [15:01:45.670] [Server thread/CRITICAL]: #10 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-05-15 [15:01:45.671] [Server thread/CRITICAL]: #11 pmsrc/src/Server(1596): pocketmine\snooze\SleeperHandler->sleepUntil(double 1621065705.6685)
+2021-05-15 [15:01:45.671] [Server thread/CRITICAL]: #12 pmsrc/src/Server(1146): pocketmine\Server->tickProcessor()
+2021-05-15 [15:01:45.672] [Server thread/CRITICAL]: #13 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader, object pocketmine\utils\MainLogger, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-05-15 [15:01:45.673] [Server thread/CRITICAL]: #14 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-05-15 [15:01:45.673] [Server thread/CRITICAL]: #15 pmsrc(11): require(string[68] phar://D:/MinecraftTool/FI-pm4/PocketMine-MP.phar/src/PocketMine.php)
+2021-05-15 [15:01:45.674] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-05-15 [15:01:45.687] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Sat_May_15-15.01.45-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-05-15 [15:01:45.688] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [15:01:45.689] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:01:45.689] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [15:01:45.691] [Server thread/INFO]: NgLamVN left the game
+2021-05-15 [15:01:45.701] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-05-15 [15:01:45.702] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [15:02:24.425] [Server thread/INFO]: Loading server configuration
+2021-05-15 [15:02:24.449] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [15:02:24.450] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:02:24.450] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [15:02:24.450] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [15:02:24.450] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [15:02:24.450] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:02:24.457] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [15:02:24.468] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [15:02:24.685] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [15:02:24.685] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [15:02:25.177] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [15:02:25.239] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [15:02:25.261] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:02:25.269] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-05-15 [15:02:25.270] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-05-15 [15:02:25.271] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-05-15 [15:02:25.281] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [15:02:25.286] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [15:02:25.289] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [15:02:25.290] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:02:25.469] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [15:02:25.477] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [15:02:25.543] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [15:02:25.545] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [15:02:25.548] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [15:02:25.548] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [15:02:25.549] [Server thread/INFO]: Done (1.127s)! For help, type "help" or "?"
+2021-05-15 [15:02:36.049] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [15:02:36.072] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [15:02:36.073] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:02:36.073] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [15:02:36.074] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [15:02:36.150] [Server thread/INFO]: Stopping other threads
+2021-05-15 [15:02:41.890] [Server thread/INFO]: Loading server configuration
+2021-05-15 [15:02:41.912] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-15 [15:02:41.912] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:02:41.913] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-15 [15:02:41.914] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-15 [15:02:41.915] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-15 [15:02:41.915] [Server thread/WARNING]: ----------------------------------------
+2021-05-15 [15:02:41.921] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-15 [15:02:41.928] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-15 [15:02:42.139] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-15 [15:02:42.139] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-15 [15:02:42.555] [Server thread/INFO]: Loading resource packs...
+2021-05-15 [15:02:42.623] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:02:42.639] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-05-15 [15:02:42.640] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-05-15 [15:02:42.640] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-05-15 [15:02:42.644] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-15 [15:02:42.655] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:02:42.659] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-15 [15:02:42.662] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-15 [15:02:42.668] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-15 [15:02:42.708] [Server thread/INFO]: Preparing world "world"
+2021-05-15 [15:02:42.719] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-15 [15:02:42.793] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-15 [15:02:42.795] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-15 [15:02:42.800] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-15 [15:02:42.800] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-15 [15:02:42.801] [Server thread/INFO]: Done (0.912s)! For help, type "help" or "?"
+2021-05-15 [15:02:49.675] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Session opened
+2021-05-15 [15:02:49.731] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Player: NgLamVN
+2021-05-15 [15:02:50.555] [Server thread/INFO]: Plugins (3): DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, NgTest v0.0.1
+2021-05-15 [15:02:50.777] [Server thread/INFO]: NgLamVN[/192.168.1.1:64793] logged in with entity id 1 at (world, 190.9462, 71, 205.5518)
+2021-05-15 [15:02:57.399] [Server thread/INFO]: NgLamVN joined the game
+2021-05-15 [15:03:15.344] [Server thread/INFO]: [NgLamVN: Set own game mode to Creative Mode]
+2021-05-15 [15:03:19.542] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-05-15 [15:08:05.957] [Server thread/INFO]: [NgLamVN: Set own game mode to Survival Mode]
+2021-05-15 [15:08:12.876] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to 197.36, 224, 224.55]
+2021-05-15 [15:09:04.569] [Server thread/INFO]: [NgLamVN: Set own game mode to Creative Mode]
+2021-05-15 [15:10:42.057] [Server thread/INFO]: NgLamVN left the game
+2021-05-15 [15:10:42.068] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-05-15 [15:13:40.200] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Session opened
+2021-05-15 [15:13:40.263] [Server thread/INFO]: [NetworkSession: 192.168.1.1 64793] Player: NgLamVN
+2021-05-15 [15:13:41.121] [Server thread/INFO]: NgLamVN[/192.168.1.1:64793] logged in with entity id 2 at (world, 583.0504, 73.4129, 175.1488)
+2021-05-15 [15:13:46.781] [Server thread/INFO]: NgLamVN joined the game
+2021-05-15 [15:13:53.935] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-05-15 [15:25:25.133] [Server thread/INFO]: NgLamVN left the game
+2021-05-15 [15:25:25.139] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-05-15 [15:25:27.361] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-15 [15:25:27.378] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-15 [15:25:27.381] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-15 [15:25:27.381] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-15 [15:25:27.384] [Server thread/INFO]: Unloading world "world"
+2021-05-15 [15:25:35.164] [Server thread/INFO]: Stopping other threads

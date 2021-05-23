@@ -40,17 +40,17 @@ use function assert;
 use function count;
 
 abstract class BaseBanner extends Transparent{
-	/** @var DyeColor */
-	protected $baseColor;
+
+	protected DyeColor $baseColor;
 
 	/**
 	 * @var BannerPatternLayer[]
 	 * @phpstan-var list<BannerPatternLayer>
 	 */
-	protected $patterns = [];
+	protected array $patterns = [];
 
-	public function __construct(BlockIdentifier $idInfo, string $name, ?BlockBreakInfo $breakInfo = null){
-		parent::__construct($idInfo, $name, $breakInfo ?? new BlockBreakInfo(1.0, BlockToolType::AXE));
+	public function __construct(BlockIdentifier $idInfo, string $name, BlockBreakInfo $breakInfo){
+		parent::__construct($idInfo, $name, $breakInfo);
 		$this->baseColor = DyeColor::BLACK();
 	}
 

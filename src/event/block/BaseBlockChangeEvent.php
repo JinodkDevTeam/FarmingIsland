@@ -21,17 +21,26 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\block;
+namespace pocketmine\event\block;
 
-use pocketmine\item\Item;
+use pocketmine\block\Block;
+use pocketmine\event\Cancellable;
+use pocketmine\event\CancellableTrait;
 
-class GlassPane extends Thin{
+/**
+ * @internal
+ */
+abstract class BaseBlockChangeEvent extends BlockEvent implements Cancellable{
+	use CancellableTrait;
 
-	public function getDropsForCompatibleTool(Item $item) : array{
-		return [];
+	private Block $newState;
+
+	public function __construct(Block $block, Block $newState){
+		parent::__construct($block);
+		$this->newState = $newState;
 	}
 
-	public function isAffectedBySilkTouch() : bool{
-		return true;
+	public function getNewState() : Block{
+		return $this->newState;
 	}
 }
