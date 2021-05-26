@@ -2,3 +2,4 @@ vendor/*
 players/*
 worlds/*
 memory_dumps/*
+crashdumps/*
