@@ -6,10 +6,14 @@ namespace NgLamVN\NgTest;
 
 use jojoe77777\FormAPI\CustomForm;
 use pocketmine\block\Block;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
+use pocketmine\world\Position;
 
 class Main extends PluginBase implements Listener
 {
@@ -18,28 +22,19 @@ class Main extends PluginBase implements Listener
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 	}
 
-	/**
-	 * @param BlockBreakEvent $event
-	 * @priority HIGHEST
-	 * @ignoreCancelled true
-	 */
-	public function onBreak(BlockBreakEvent $event)
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool
 	{
-		$block = $event->getBlock();
-		$player = $event->getPlayer();
-
-		$this->BreakForm($player, $block);
-	}
-
-	public function BreakForm (Player $player, Block $block)
-	{
-		$form = new CustomForm(function(Player $player,?array $data)
+		if (strtolower($command->getName()) == "worldtp")
 		{
-		});
+			if (!isset($args[0])) return true;
+			$world = Server::getInstance()->getWorldManager()->getWorldByName($args[0]);
+			if (is_null($world)) return true;
+			if ($sender instanceof Player)
+			{
+				$sender->teleport($world->getSafeSpawn());
+			}
+		}
 
-		$form->setTitle("Block Break Info");
-		$form->addLabel("You have break block: " . $block->getName());
-
-		$player->sendForm($form);
+		return true;
 	}
 }
