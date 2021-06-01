@@ -1,4 +1,5 @@
 ---
 version: 2
-money: []
+money:
+  nglamvn: 1000
 ...
