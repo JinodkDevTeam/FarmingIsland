@@ -1879,3 +1879,343 @@
 2021-05-26 [19:17:13.957] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
 2021-05-26 [19:17:13.957] [Server thread/INFO]: Unloading world "world"
 2021-05-26 [19:17:14.198] [Server thread/INFO]: Unloading world "plots"
+2021-05-31 [19:08:53.036] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-05-31 [19:08:53.054] [Server thread/INFO]: Loading server configuration
+2021-05-31 [19:08:53.091] [Server thread/INFO]: Selected English (eng) as the base language
+2021-05-31 [19:08:53.092] [Server thread/WARNING]: ----------------------------------------
+2021-05-31 [19:08:53.096] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-05-31 [19:08:53.099] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-05-31 [19:08:53.099] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-05-31 [19:08:53.100] [Server thread/WARNING]: ----------------------------------------
+2021-05-31 [19:08:53.105] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-05-31 [19:08:53.121] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-05-31 [19:08:53.436] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-05-31 [19:08:53.436] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-05-31 [19:08:54.176] [Server thread/INFO]: Loading resource packs...
+2021-05-31 [19:08:54.271] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-05-31 [19:08:54.297] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-05-31 [19:08:54.300] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-05-31 [19:08:54.304] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-05-31 [19:08:54.305] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-05-31 [19:08:54.316] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-05-31 [19:08:54.334] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-05-31 [19:08:54.348] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-05-31 [19:08:54.352] [Server thread/INFO]: Loading MyPlot v1.8.0
+2021-05-31 [19:08:54.448] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-05-31 [19:08:54.451] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-05-31 [19:08:54.452] [Server thread/INFO]: Enabling MyPlot v1.8.0
+2021-05-31 [19:08:54.650] [Server thread/INFO]: Preparing world "world"
+2021-05-31 [19:08:54.667] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-05-31 [19:08:54.752] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-05-31 [19:08:54.755] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-05-31 [19:08:54.758] [Server thread/INFO]: Default game type: Survival Mode
+2021-05-31 [19:08:54.760] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-05-31 [19:08:54.761] [Server thread/INFO]: Done (1.71s)! For help, type "help" or "?"
+2021-05-31 [19:09:03.221] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-05-31 [19:09:24.342] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-05-31 [19:09:24.393] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-05-31 [19:09:24.402] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-05-31 [19:09:24.403] [Server thread/INFO]: Disabling MyPlot v1.8.0
+2021-05-31 [19:09:24.404] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-05-31 [19:09:24.405] [Server thread/INFO]: Unloading world "world"
+2021-05-31 [19:09:24.568] [Server thread/INFO]: Stopping other threads
+2021-06-01 [09:17:46.832] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-01 [09:17:46.863] [Server thread/INFO]: Loading server configuration
+2021-06-01 [09:17:46.908] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-01 [09:17:46.915] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [09:17:46.915] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-01 [09:17:46.916] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-01 [09:17:46.916] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-01 [09:17:46.916] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [09:17:46.930] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-01 [09:17:46.952] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-01 [09:17:47.304] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-01 [09:17:47.304] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-01 [09:17:48.635] [Server thread/INFO]: Loading resource packs...
+2021-06-01 [09:17:48.773] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-01 [09:17:48.818] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-01 [09:17:48.824] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-01 [09:17:48.830] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-01 [09:17:48.836] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-01 [09:17:48.836] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-01 [09:17:48.839] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-01 [09:17:48.852] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-01 [09:17:48.857] [Server thread/INFO]: Loading MyPlot v1.8.0
+2021-06-01 [09:17:48.998] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-01 [09:17:48.998] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [09:17:49.018] [Server thread/INFO]: Enabling MyPlot v1.8.0
+2021-06-01 [09:17:49.135] [Server thread/INFO]: Preparing world "world"
+2021-06-01 [09:17:49.152] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-01 [09:17:49.266] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-01 [09:17:49.270] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-01 [09:17:49.273] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-01 [09:17:49.273] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-01 [09:17:49.275] [Server thread/INFO]: Done (2.422s)! For help, type "help" or "?"
+2021-06-01 [09:17:54.086] [Server thread/INFO]: [NetworkSession: 192.168.1.1 61206] Session opened
+2021-06-01 [09:17:54.166] [Server thread/INFO]: [NetworkSession: 192.168.1.1 61206] Player: NgLamVN
+2021-06-01 [09:17:55.552] [Server thread/INFO]: NgLamVN[/192.168.1.1:61206] logged in with entity id 1 at (world, 686.4126, 68.4751, 214.6222)
+2021-06-01 [09:17:59.969] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-01 [09:18:02.932] [Server thread/INFO]: NgLamVN joined the game
+2021-06-01 [09:22:32.623] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-01 [09:23:57.588] [Server thread/INFO]: Preparing world "plot"
+2021-06-01 [09:23:57.595] [Server thread/NOTICE]: Spawn terrain for world "plot" is being generated in the background
+2021-06-01 [09:23:57.608] [AsyncWorker#1 thread/CRITICAL]: TypeError: "Argument 1 passed to MyPlot\PlotLevelSettings::parseBlock() must be of the type array, null given, called in D:\MinecraftTool\FI-pm4\plugins\MyPlot-4.0\src\MyPlot\MyPlotGenerator.php on line 45" (EXCEPTION) in "pmsrc/plugins/MyPlot-4.0/src/MyPlot/PlotLevelSettings" at line 86
+2021-06-01 [09:23:57.610] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/plugins/MyPlot-4.0/src/MyPlot/MyPlotGenerator(45): MyPlot\PlotLevelSettings::parseBlock(NULL , string[9] RoadBlock, object pocketmine\block\Planks)
+2021-06-01 [09:23:57.610] [AsyncWorker#1 thread/CRITICAL]: #1 pmsrc/src/world/generator/GeneratorRegisterTask(64): MyPlot\MyPlotGenerator->__construct(integer 676666021, string[326] {"RestrictEntityMovement":true,"RestrictPVP":false,"UpdatePlotLiquids":false,"Ed)
+2021-06-01 [09:23:57.612] [AsyncWorker#1 thread/CRITICAL]: #2 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\GeneratorRegisterTask->onRun()
+2021-06-01 [09:23:57.612] [AsyncWorker#1 thread/CRITICAL]: #3 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.615] [AsyncWorker#0 thread/CRITICAL]: TypeError: "Argument 1 passed to MyPlot\PlotLevelSettings::parseBlock() must be of the type array, null given, called in D:\MinecraftTool\FI-pm4\plugins\MyPlot-4.0\src\MyPlot\MyPlotGenerator.php on line 45" (EXCEPTION) in "pmsrc/plugins/MyPlot-4.0/src/MyPlot/PlotLevelSettings" at line 86
+2021-06-01 [09:23:57.620] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/plugins/MyPlot-4.0/src/MyPlot/MyPlotGenerator(45): MyPlot\PlotLevelSettings::parseBlock(NULL , string[9] RoadBlock, object pocketmine\block\Planks)
+2021-06-01 [09:23:57.627] [AsyncWorker#0 thread/CRITICAL]: #1 pmsrc/src/world/generator/GeneratorRegisterTask(64): MyPlot\MyPlotGenerator->__construct(integer 676666021, string[326] {"RestrictEntityMovement":true,"RestrictPVP":false,"UpdatePlotLiquids":false,"Ed)
+2021-06-01 [09:23:57.628] [AsyncWorker#0 thread/CRITICAL]: #2 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\GeneratorRegisterTask->onRun()
+2021-06-01 [09:23:57.629] [AsyncWorker#0 thread/CRITICAL]: #3 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.630] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.634] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.638] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.638] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.643] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.644] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.630] [Server thread/CRITICAL]: Could not execute asynchronous task GeneratorRegisterTask: Task crashed
+2021-06-01 [09:23:57.645] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.645] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.646] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.646] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.647] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.647] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.645] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.649] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.650] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.658] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.660] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.661] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.662] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.662] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.663] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.663] [Server thread/CRITICAL]: Could not execute asynchronous task GeneratorRegisterTask: Task crashed
+2021-06-01 [09:23:57.664] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.664] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.664] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.666] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.667] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.674] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.664] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.675] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.675] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.676] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.676] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.677] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.677] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.675] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.679] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.679] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.680] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.680] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.681] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.682] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.678] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.690] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.693] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.694] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.694] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.695] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.695] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.696] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.697] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.697] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.696] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.700] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.703] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.707] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.707] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.708] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.708] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.709] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.709] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.710] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.707] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.711] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.711] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.712] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.712] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.713] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.714] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.725] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.726] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.726] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.727] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.727] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.728] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.729] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.729] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.730] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.731] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.733] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.739] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.740] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.741] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.742] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.731] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.743] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.744] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.747] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.748] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.749] [AsyncWorker#1 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.757] [AsyncWorker#1 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.757] [AsyncWorker#1 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.758] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:23:57.759] [AsyncWorker#0 thread/CRITICAL]: pocketmine\utils\AssumptionFailedError: "Generator context should have been initialized before any PopulationTask execution" (EXCEPTION) in "pmsrc/src/world/generator/PopulationTask" at line 83
+2021-06-01 [09:23:57.759] [AsyncWorker#0 thread/CRITICAL]: #0 pmsrc/src/scheduler/AsyncTask(84): pocketmine\world\generator\PopulationTask->onRun()
+2021-06-01 [09:23:57.761] [AsyncWorker#0 thread/CRITICAL]: #1 (): pocketmine\scheduler\AsyncTask->run()
+2021-06-01 [09:23:57.759] [Server thread/CRITICAL]: Could not execute asynchronous task PopulationTask: Task crashed
+2021-06-01 [09:24:08.613] [Server thread/CRITICAL]: pocketmine\world\WorldException: "Cannot find a safe spawn point in non-generated terrain" (EXCEPTION) in "pmsrc/src/world/World" at line 2612
+2021-06-01 [09:24:08.614] [Server thread/CRITICAL]: #0 plugins/NgTest/src/NgLamVN/NgTest/Main(34): pocketmine\world\World->getSafeSpawn()
+2021-06-01 [09:24:08.615] [Server thread/CRITICAL]: #1 pmsrc/src/command/PluginCommand(54): NgLamVN\NgTest\Main->onCommand(object pocketmine\player\Player, object pocketmine\command\PluginCommand, string[7] worldtp, array[1])
+2021-06-01 [09:24:08.616] [Server thread/CRITICAL]: #2 pmsrc/src/command/SimpleCommandMap(246): pocketmine\command\PluginCommand->execute(object pocketmine\player\Player, string[7] worldtp, array[1])
+2021-06-01 [09:24:08.626] [Server thread/CRITICAL]: #3 pmsrc/src/Server(1363): pocketmine\command\SimpleCommandMap->dispatch(object pocketmine\player\Player, string[12] worldtp plot)
+2021-06-01 [09:24:08.628] [Server thread/CRITICAL]: #4 pmsrc/src/player/Player(1363): pocketmine\Server->dispatchCommand(object pocketmine\player\Player, string[12] worldtp plot)
+2021-06-01 [09:24:08.629] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/handler/InGamePacketHandler(723): pocketmine\player\Player->chat(string[13] /worldtp plot)
+2021-06-01 [09:24:08.630] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/protocol/CommandRequestPacket(54): pocketmine\network\mcpe\handler\InGamePacketHandler->handleCommandRequest(object pocketmine\network\mcpe\protocol\CommandRequestPacket)
+2021-06-01 [09:24:08.631] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\CommandRequestPacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler)
+2021-06-01 [09:24:08.631] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\CommandRequestPacket, string[34] M./worldtp plot.o@n...>...<T.X....)
+2021-06-01 [09:24:08.632] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[37] S..././.I))P(../a.w.cy-cw.U.&dVD.n...)
+2021-06-01 [09:24:08.634] [Server thread/CRITICAL]: #10 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[46] .A1....T.b....".....n..........}.~8.[[?*.c<1..)
+2021-06-01 [09:24:08.642] [Server thread/CRITICAL]: #11 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface)
+2021-06-01 [09:24:08.645] [Server thread/CRITICAL]: #12 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-01 [09:24:08.645] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-01 [09:24:08.646] [Server thread/CRITICAL]: #14 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622514248.6223)
+2021-06-01 [09:24:08.646] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-01 [09:24:08.647] [Server thread/CRITICAL]: #16 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader, object pocketmine\utils\MainLogger, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-01 [09:24:08.648] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-01 [09:24:08.649] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-01 [09:24:08.665] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Tue_Jun_1-09.24.08-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-01 [09:24:08.675] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-01 [09:24:08.677] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [09:24:08.678] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-01 [09:24:08.678] [Server thread/INFO]: Disabling MyPlot v1.8.0
+2021-06-01 [09:24:08.681] [Server thread/INFO]: NgLamVN left the game
+2021-06-01 [09:24:08.692] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-01 [09:24:08.692] [Server thread/INFO]: Unloading world "world"
+2021-06-01 [09:24:08.715] [Server thread/INFO]: Unloading world "plot"
+2021-06-01 [10:32:07.938] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-01 [10:32:07.947] [Server thread/INFO]: Loading server configuration
+2021-06-01 [10:32:07.978] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-01 [10:32:07.978] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [10:32:07.979] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-01 [10:32:07.979] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-01 [10:32:07.979] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-01 [10:32:07.979] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [10:32:07.988] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-01 [10:32:07.994] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-01 [10:32:08.206] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-01 [10:32:08.206] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-01 [10:32:08.707] [Server thread/INFO]: Loading resource packs...
+2021-06-01 [10:32:08.760] [Server thread/CRITICAL]: InvalidArgumentException: "Nested permission declarations are no longer supported. Declare each permission separately." (EXCEPTION) in "pmsrc/src/permission/PermissionParser" at line 92
+2021-06-01 [10:32:08.761] [Server thread/CRITICAL]: #0 pmsrc/src/plugin/PluginDescription(178): pocketmine\permission\PermissionParser::loadPermissions(array[1])
+2021-06-01 [10:32:08.761] [Server thread/CRITICAL]: #1 pmsrc/src/plugin/PluginDescription(97): pocketmine\plugin\PluginDescription->loadMap(array[6])
+2021-06-01 [10:32:08.762] [Server thread/CRITICAL]: #2 pmsrc/src/plugin/PharPluginLoader(63): pocketmine\plugin\PluginDescription->__construct(string[1489] ---.name: EconomyAPI.main: onebone\economyapi\EconomyAPI.api:.- 3.0.0.version: 5)
+2021-06-01 [10:32:08.762] [Server thread/CRITICAL]: #3 pmsrc/src/plugin/PluginManager(246): pocketmine\plugin\PharPluginLoader->getPluginDescription(string[47] D:\MinecraftTool\FI-pm4\plugins\EconomyAPI.phar)
+2021-06-01 [10:32:08.762] [Server thread/CRITICAL]: #4 pmsrc/src/Server(1027): pocketmine\plugin\PluginManager->loadPlugins(string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-01 [10:32:08.762] [Server thread/CRITICAL]: #5 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader, object pocketmine\utils\MainLogger, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-01 [10:32:08.762] [Server thread/CRITICAL]: #6 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-01 [10:32:08.765] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-01 [10:32:08.776] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Tue_Jun_1-10.32.08-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-01 [11:03:54.664] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-01 [11:03:54.676] [Server thread/INFO]: Loading server configuration
+2021-06-01 [11:03:54.698] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-01 [11:03:54.698] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [11:03:54.699] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-01 [11:03:54.699] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-01 [11:03:54.699] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-01 [11:03:54.699] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [11:03:54.705] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-01 [11:03:54.715] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-01 [11:03:54.912] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-01 [11:03:54.912] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-01 [11:03:55.394] [Server thread/INFO]: Loading resource packs...
+2021-06-01 [11:03:55.448] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:03:55.463] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-01 [11:03:55.464] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-01 [11:03:55.466] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-01 [11:03:55.466] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-01 [11:03:55.469] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-01 [11:03:55.493] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:03:55.501] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-01 [11:03:55.514] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-01 [11:03:55.519] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-01 [11:03:55.527] [Server thread/INFO]: Loading MyPlot v1.8.0
+2021-06-01 [11:03:55.582] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-01 [11:03:55.582] [Server thread/INFO]: Enabling MyPlot v1.8.0
+2021-06-01 [11:03:55.772] [Server thread/INFO]: Preparing world "world"
+2021-06-01 [11:03:55.783] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-01 [11:03:56.512] [Server thread/CRITICAL]: ErrorException: "json_decode() expects parameter 1 to be string, object given" (EXCEPTION) in "plugins/EconomyAPI/src/onebone/economyapi/EconomyAPI" at line 400
+2021-06-01 [11:03:56.512] [Server thread/CRITICAL]: #0 (): pocketmine\errorhandler\ErrorToExceptionHandler::handle(integer 2, string[60] json_decode() expects parameter 1 to be string, object given, string[80] D:\MinecraftTool\FI-pm4\plugins\EconomyAPI\src\onebone\economyapi\EconomyAPI.php, integer 400, array[0])
+2021-06-01 [11:03:56.513] [Server thread/CRITICAL]: #1 plugins/EconomyAPI/src/onebone/economyapi/EconomyAPI(400): json_decode(object pocketmine\utils\InternetRequestResult, boolean 1)
+2021-06-01 [11:03:56.514] [Server thread/CRITICAL]: #2 plugins/EconomyAPI/src/onebone/economyapi/EconomyAPI(373): onebone\economyapi\EconomyAPI->checkUpdate()
+2021-06-01 [11:03:56.516] [Server thread/CRITICAL]: #3 plugins/EconomyAPI/src/onebone/economyapi/EconomyAPI(315): onebone\economyapi\EconomyAPI->initialize()
+2021-06-01 [11:03:56.516] [Server thread/CRITICAL]: #4 pmsrc/src/plugin/PluginBase(138): onebone\economyapi\EconomyAPI->onEnable()
+2021-06-01 [11:03:56.517] [Server thread/CRITICAL]: #5 pmsrc/src/plugin/PluginManager(400): pocketmine\plugin\PluginBase->onEnableStateChange(boolean 1)
+2021-06-01 [11:03:56.518] [Server thread/CRITICAL]: #6 pmsrc/src/Server(1340): pocketmine\plugin\PluginManager->enablePlugin(object onebone\economyapi\EconomyAPI)
+2021-06-01 [11:03:56.519] [Server thread/CRITICAL]: #7 pmsrc/src/Server(1092): pocketmine\Server->enablePlugins(object pocketmine\plugin\PluginEnableOrder)
+2021-06-01 [11:03:56.519] [Server thread/CRITICAL]: #8 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader, object pocketmine\utils\MainLogger, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-01 [11:03:56.521] [Server thread/CRITICAL]: #9 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-01 [11:03:56.545] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-01 [11:03:56.552] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-01 [11:03:56.602] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-01 [11:03:56.608] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-01 [11:03:56.610] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-01 [11:03:56.610] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-01 [11:03:56.613] [Server thread/INFO]: Done (1.94s)! For help, type "help" or "?"
+2021-06-01 [11:06:02.290] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-01 [11:06:02.322] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:06:02.323] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-01 [11:06:02.324] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-01 [11:06:02.325] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-01 [11:06:02.326] [Server thread/INFO]: Disabling MyPlot v1.8.0
+2021-06-01 [11:06:02.326] [Server thread/INFO]: Unloading world "world"
+2021-06-01 [11:06:02.417] [Server thread/INFO]: Stopping other threads
+2021-06-01 [11:06:05.413] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-01 [11:06:05.427] [Server thread/INFO]: Loading server configuration
+2021-06-01 [11:06:05.454] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-01 [11:06:05.454] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [11:06:05.454] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-01 [11:06:05.454] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-01 [11:06:05.455] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-01 [11:06:05.455] [Server thread/WARNING]: ----------------------------------------
+2021-06-01 [11:06:05.460] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-01 [11:06:05.472] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-01 [11:06:05.690] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-01 [11:06:05.690] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-01 [11:06:06.443] [Server thread/INFO]: Loading resource packs...
+2021-06-01 [11:06:06.527] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:06:06.545] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-01 [11:06:06.550] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-01 [11:06:06.554] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-01 [11:06:06.555] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-01 [11:06:06.560] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-01 [11:06:06.574] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:06:06.586] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-01 [11:06:06.592] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-01 [11:06:06.603] [Server thread/INFO]: Loading MyPlot v1.8.0
+2021-06-01 [11:06:06.692] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-01 [11:06:06.700] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-01 [11:06:06.702] [Server thread/INFO]: Enabling MyPlot v1.8.0
+2021-06-01 [11:06:06.787] [Server thread/INFO]: Preparing world "world"
+2021-06-01 [11:06:06.803] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-01 [11:06:06.821] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-01 [11:06:06.827] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-01 [11:06:06.875] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-01 [11:06:06.876] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-01 [11:06:06.877] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-01 [11:06:06.877] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-01 [11:06:06.878] [Server thread/INFO]: Done (1.452s)! For help, type "help" or "?"
+2021-06-01 [11:06:07.990] [Server thread/INFO]: Plugins (5): DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, MyPlot v1.8.0, NgTest v0.0.1
+2021-06-01 [11:06:14.315] [Server thread/INFO]: [EconomyAPI] - Showing top money list (0 of 0) -
+2021-06-01 [11:06:16.306] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-01 [11:06:18.330] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-01 [11:06:18.347] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-01 [11:06:18.351] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-01 [11:06:18.357] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-01 [11:06:18.359] [Server thread/INFO]: Disabling MyPlot v1.8.0
+2021-06-01 [11:06:18.360] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-01 [11:06:18.367] [Server thread/INFO]: Unloading world "world"
+2021-06-01 [11:06:18.471] [Server thread/INFO]: Stopping other threads

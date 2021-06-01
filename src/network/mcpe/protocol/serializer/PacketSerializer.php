@@ -30,7 +30,7 @@ use pocketmine\nbt\LittleEndianNbtSerializer;
 use pocketmine\nbt\NbtDataException;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\TreeRoot;
-use pocketmine\network\mcpe\convert\ItemTypeDictionary;
+use pocketmine\network\mcpe\convert\GlobalItemTypeDictionary;
 use pocketmine\network\mcpe\protocol\PacketDecodeException;
 use pocketmine\network\mcpe\protocol\types\BoolGameRule;
 use pocketmine\network\mcpe\protocol\types\command\CommandOriginData;
@@ -61,6 +61,7 @@ use pocketmine\network\mcpe\protocol\types\StructureEditorData;
 use pocketmine\network\mcpe\protocol\types\StructureSettings;
 use pocketmine\utils\BinaryDataException;
 use pocketmine\utils\BinaryStream;
+use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use function count;
 use function strlen;
@@ -73,7 +74,7 @@ class PacketSerializer extends BinaryStream{
 
 	public function __construct(string $buffer = "", int $offset = 0){
 		parent::__construct($buffer, $offset);
-		$this->shieldItemRuntimeId = ItemTypeDictionary::getInstance()->fromStringId("minecraft:shield");
+		$this->shieldItemRuntimeId = GlobalItemTypeDictionary::getInstance()->getDictionary()->fromStringId("minecraft:shield");
 	}
 
 	/**
@@ -95,7 +96,7 @@ class PacketSerializer extends BinaryStream{
 		//This is two little-endian longs: bytes 7-0 followed by bytes 15-8
 		$p1 = strrev($this->get(8));
 		$p2 = strrev($this->get(8));
-		return \Ramsey\Uuid\Uuid::fromBytes($p1 . $p2);
+		return Uuid::fromBytes($p1 . $p2);
 	}
 
 	public function putUUID(UuidInterface $uuid) : void{
