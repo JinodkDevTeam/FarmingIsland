@@ -20,6 +20,7 @@ class Main extends PluginBase implements Listener
 	public function onEnable() : void
 	{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		$worlds = Server::getInstance()->getWorldManager()->getWorlds();
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool
@@ -28,10 +29,12 @@ class Main extends PluginBase implements Listener
 		{
 			if (!isset($args[0])) return true;
 			$world = Server::getInstance()->getWorldManager()->getWorldByName($args[0]);
+
+
 			if (is_null($world)) return true;
 			if ($sender instanceof Player)
 			{
-				$sender->teleport($world->getSafeSpawn());
+				$sender->teleport();
 			}
 		}
 
