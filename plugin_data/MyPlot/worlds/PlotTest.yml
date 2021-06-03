@@ -1,7 +1,7 @@
 ---
-RestrictEntityMovement: true
+RestrictEntityMovement: false
 RestrictPVP: false
-UpdatePlotLiquids: false
+UpdatePlotLiquids: true
 EditBorderBlocks: true
 ClaimPrice: 0
 ClearPrice: 0

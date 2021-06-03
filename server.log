@@ -3066,3 +3066,109 @@
 2021-06-02 [17:27:10.161] [Server thread/INFO]: Disabling MyPlot v1.11.1
 2021-06-02 [17:27:10.162] [Server thread/INFO]: Unloading world "PlotTest"
 2021-06-02 [17:27:14.883] [Server thread/INFO]: Stopping other threads
+2021-06-03 [14:27:43.406] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-03 [14:27:43.424] [Server thread/INFO]: Loading server configuration
+2021-06-03 [14:27:43.457] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-03 [14:27:43.457] [Server thread/WARNING]: ----------------------------------------
+2021-06-03 [14:27:43.458] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-03 [14:27:43.458] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-03 [14:27:43.458] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-03 [14:27:43.458] [Server thread/WARNING]: ----------------------------------------
+2021-06-03 [14:27:43.470] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-03 [14:27:43.487] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-03 [14:27:43.745] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-03 [14:27:43.745] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-03 [14:27:44.639] [Server thread/INFO]: Loading resource packs...
+2021-06-03 [14:27:44.744] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-03 [14:27:44.774] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-03 [14:27:44.778] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-03 [14:27:44.783] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-03 [14:27:44.788] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-03 [14:27:44.789] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-03 [14:27:44.791] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-03 [14:27:44.804] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-03 [14:27:44.809] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-03 [14:27:44.818] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-03 [14:27:44.822] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-03 [14:27:44.937] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-03 [14:27:44.937] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-03 [14:27:44.954] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-03 [14:27:45.103] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-03 [14:27:45.122] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-03 [14:27:45.122] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-03 [14:27:45.162] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-03 [14:27:45.190] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-03 [14:27:45.372] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-03 [14:27:45.376] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-03 [14:27:45.378] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-03 [14:27:45.378] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-03 [14:27:45.379] [Server thread/INFO]: Done (1.959s)! For help, type "help" or "?"
+2021-06-03 [14:27:52.184] [Server thread/INFO]: [NetworkSession: 192.168.1.1 50899] Session opened
+2021-06-03 [14:27:52.254] [Server thread/INFO]: [NetworkSession: 192.168.1.1 50899] Player: NgLamVN
+2021-06-03 [14:27:53.359] [Server thread/INFO]: NgLamVN[/192.168.1.1:50899] logged in with entity id 1 at (PlotTest, 29.4224, 73.11, 6.0282)
+2021-06-03 [14:27:58.990] [Server thread/INFO]: NgLamVN joined the game
+2021-06-03 [14:28:29.207] [Server thread/INFO]: [NetworkSession: 192.168.1.29 39633] Session opened
+2021-06-03 [14:28:29.270] [Server thread/INFO]: [NetworkSession: 192.168.1.29 39633] Player: BamProVN
+2021-06-03 [14:28:30.430] [Server thread/INFO]: BamProVN[/192.168.1.29:39633] logged in with entity id 2 at (PlotTest, 0, 65, 0)
+2021-06-03 [14:28:43.370] [Server thread/INFO]: BamProVN joined the game
+2021-06-03 [14:28:52.280] [Server thread/INFO]: [NgLamVN: Set own game mode to Creative Mode]
+2021-06-03 [14:28:57.428] [Server thread/INFO]: [NgLamVN: Set BamProVN's game mode to Creative Mode]
+2021-06-03 [14:36:42.808] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-03 [14:38:40.814] [Server thread/INFO]: NgLamVN left the game
+2021-06-03 [14:38:40.819] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-03 [14:38:44.910] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-03 [14:38:44.927] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-03 [14:38:44.931] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-03 [14:38:44.933] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-03 [14:38:44.934] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-03 [14:38:44.937] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-03 [14:38:44.938] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-03 [14:38:44.943] [Server thread/INFO]: BamProVN left the game
+2021-06-03 [14:38:44.969] [Server thread/INFO]: [NetworkSession: BamProVN] Session closed due to Server closed
+2021-06-03 [14:38:44.969] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-03 [14:38:50.831] [Server thread/INFO]: Stopping other threads
+2021-06-03 [14:46:09.866] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-03 [14:46:09.881] [Server thread/INFO]: Loading server configuration
+2021-06-03 [14:46:09.910] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-03 [14:46:09.910] [Server thread/WARNING]: ----------------------------------------
+2021-06-03 [14:46:09.911] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-03 [14:46:09.911] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-03 [14:46:09.911] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-03 [14:46:09.911] [Server thread/WARNING]: ----------------------------------------
+2021-06-03 [14:46:09.916] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-03 [14:46:09.929] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-03 [14:46:10.197] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-03 [14:46:10.198] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-03 [14:46:10.834] [Server thread/INFO]: Loading resource packs...
+2021-06-03 [14:46:10.910] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-03 [14:46:10.928] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-03 [14:46:10.930] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-03 [14:46:10.933] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-03 [14:46:10.933] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-03 [14:46:10.944] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-03 [14:46:10.962] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-03 [14:46:10.967] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-03 [14:46:10.980] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-03 [14:46:10.983] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-03 [14:46:10.992] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-03 [14:46:10.995] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-03 [14:46:10.999] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-03 [14:46:11.087] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-03 [14:46:11.089] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-03 [14:46:11.211] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-03 [14:46:11.223] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-03 [14:46:11.224] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-03 [14:46:11.229] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-03 [14:46:11.267] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-03 [14:46:11.292] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-03 [14:46:11.364] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-03 [14:46:11.365] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-03 [14:46:11.367] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-03 [14:46:11.368] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-03 [14:46:11.369] [Server thread/INFO]: Done (1.49s)! For help, type "help" or "?"
+2021-06-03 [14:46:12.715] [Server thread/INFO]: Plugins (7): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, MyPlot v1.11.1, NgTest v0.0.1, VanillaPM4 v1.0.0
+2021-06-03 [14:46:17.021] [Server thread/INFO]: [Server] LOL
+2021-06-03 [14:46:21.358] [Server thread/INFO]: [NetworkSession: 192.168.1.1 50899] Session opened
+2021-06-03 [14:46:21.457] [Server thread/INFO]: [NetworkSession: 192.168.1.1 50899] Player: NgLamVN
+2021-06-03 [14:46:23.148] [Server thread/INFO]: NgLamVN[/192.168.1.1:50899] logged in with entity id 167 at (PlotTest, 19.8069, 50.2725, 15.9591)
+2021-06-03 [14:46:31.313] [Server thread/INFO]: NgLamVN joined the game

@@ -72,7 +72,7 @@ DefaultWorld:
 
   # Restrict entities (e.g. tnt) from moving except falling
   # This will prevent things like tnt cannons from ruining other plots
-  RestrictEntityMovement: true
+  RestrictEntityMovement: false
 
   # Restrict battles between players in plot worlds
   # This setting overrides the settings of individual plots on world generation
@@ -80,7 +80,7 @@ DefaultWorld:
 
   # Update liquids (e.g. Water) from updating and moving
   # This will allow things like water to lag the server in plot worlds
-  UpdatePlotLiquids: false
+  UpdatePlotLiquids: true
 
   # Edit Border Blocks (Any block immediately adjacent to a plot space)
   # This will allow players to break and place their own border blocks

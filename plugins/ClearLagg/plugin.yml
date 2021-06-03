@@ -1,0 +1,14 @@
+name: ClearLagg
+description: Auto Clear Lagg in server
+main: NgLamVN\ClearLagg\ClearLagg
+version: 0.1
+api: 4.0.0
+author: NgLamVN
+
+commands:
+  clearlagg:
+    description: Instant Clear lagggg !!
+permissions:
+  clearlagg.cmd:
+    default: op
+    description: Allow player use /clearlagg command

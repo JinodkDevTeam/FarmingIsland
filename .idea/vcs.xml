@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/build/preprocessor" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/MyPlot-4.0" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/PurePerms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/VanillaPM4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/resources/locale" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/resources/vanilla" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/tests/plugins/DevTools" vcs="Git" />
