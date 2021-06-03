@@ -4,38 +4,38 @@ declare(strict_types=1);
 
 namespace NgLamVN\NgTest;
 
-use jojoe77777\FormAPI\CustomForm;
-use pocketmine\block\Block;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\Server;
-use pocketmine\world\Position;
 
 class Main extends PluginBase implements Listener
 {
 	public function onEnable() : void
 	{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		$worlds = Server::getInstance()->getWorldManager()->getWorlds();
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool
 	{
+		if (!$sender instanceof Player) return true;
 		if (strtolower($command->getName()) == "worldtp")
 		{
 			if (!isset($args[0])) return true;
-			$world = Server::getInstance()->getWorldManager()->getWorldByName($args[0]);
+			$worldName = $args[0];
+			$worldManager = $this->getServer()->getWorldManager();
 
-
-			if (is_null($world)) return true;
-			if ($sender instanceof Player)
+			if (!$worldManager->isWorldGenerated($worldName))
 			{
-				$sender->teleport();
+				$sender->sendMessage("World not exist");
 			}
+			if (!$worldManager->isWorldLoaded($worldName))
+			{
+				$worldManager->loadWorld($worldName);
+			}
+			$world = $worldManager->getWorldByName($worldName);
+			$sender->teleport($world->getSafeSpawn());
 		}
 
 		return true;
