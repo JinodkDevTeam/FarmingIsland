@@ -3,3 +3,4 @@ players/*
 worlds/*
 memory_dumps/*
 crashdumps/*
+server.log
