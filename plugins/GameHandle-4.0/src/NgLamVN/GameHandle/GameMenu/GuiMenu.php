@@ -8,7 +8,6 @@ use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use NgLamVN\GameHandle\Core;
 use NgLamVN\GameHandle\task\DelayTask;
-use pocketmine\item\Item;
 use pocketmine\world\Position;
 use pocketmine\player\Player;
 use pocketmine\Server;

@@ -10,7 +10,6 @@ use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
 use pocketmine\Server;
-use pocketmine\item\Item;
 
 class UiMenu
 {
@@ -21,7 +20,12 @@ class UiMenu
 
     public function getCore(): ?Core
     {
-        return Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+    	$core = Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+    	if ($core instanceof Core)
+		{
+			return $core;
+		}
+        return null;
     }
 
     public function MenuForm(Player $player)
@@ -46,7 +50,7 @@ class UiMenu
         }
         array_push($list, "gui");
 
-        $form = new SimpleForm(function (Player $player, $data) use ($list)
+        $form = new SimpleForm(function (Player $player, $data) use ($list): void
         {
             if (!isset($data))
             {
@@ -58,16 +62,16 @@ class UiMenu
                     Server::getInstance()->dispatchCommand($player, "coin");
                     break;
                 case "is-manager":
-                    return new IslandManager($player);
+                    new IslandManager($player);
                     break;
                 case "teleport":
-                    return new TeleportManager($player);
+                    new TeleportManager($player);
                     break;
                 case "rankcolor":
                     Server::getInstance()->dispatchCommand($player, "rankcolor");
                     break;
                 case "vip":
-                    return new VipManager($player);
+                    new VipManager($player);
                     break;
                 case "shop":
                     Server::getInstance()->dispatchCommand($player, "shop");
@@ -92,7 +96,7 @@ class UiMenu
                     break;
             }
         });
-        if ($player->getLevel()->getName() == "island")
+        if ($player->getWorld()->getDisplayName() == "island")
         {
             $form->addButton("§　§lIsland Manager\nQuản lý đảo");
             $form->addButton("§　§lIsland Info\nThông tin đảo");

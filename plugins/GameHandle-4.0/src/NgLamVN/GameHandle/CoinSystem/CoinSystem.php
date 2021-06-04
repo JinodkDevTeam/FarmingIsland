@@ -93,7 +93,6 @@ class CoinSystem
     /**
      * @param Player|string $player
      * @param float $amount
-     * @return float
      * @todo HMMMMM
      */
     public function setCoin($player, $amount)

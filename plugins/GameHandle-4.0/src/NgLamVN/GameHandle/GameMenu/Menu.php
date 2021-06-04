@@ -9,8 +9,7 @@ use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
@@ -37,10 +36,15 @@ class Menu
     {
     }
 
-    public function getCore(): ?Core
-    {
-        return Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
-    }
+	public function getCore(): ?Core
+	{
+		$core = Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+		if ($core instanceof Core)
+		{
+			return $core;
+		}
+		return null;
+	}
 
     public function registerMenuItem(Player $player)
     {
@@ -48,7 +52,7 @@ class Menu
         {
             return;
         }
-        $i = ItemFactory::getInstance()->get(ItemIds::PAPER);
+        $i = VanillaItems::PAPER();
         $nbt = $i->getNamedTag();
         $nbt->setByte("menu", 1);
         $nbt->setString("menu-mode", "ui");

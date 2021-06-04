@@ -9,7 +9,7 @@ use jojoe77777\FormAPI\SimpleForm;
 use MyPlot\MyPlot;
 use pocketmine\player\Player;
 use pocketmine\Server;
-use pocketmine\level\Position;
+use pocketmine\world\Position;
 
 class IslandManager
 {
@@ -51,7 +51,7 @@ class IslandManager
         $form->addButton("§lRemove Helper\nXóa Người giúp");
         $form->addButton("§lRename island\nĐổi tên đảo");
         $form->addButton("§lChange island biome\n Thay đổi hệ sinh thái đảo");
-        $plot = MyPlot::getInstance()->getPlotByPosition($player->asPosition());
+        $plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
         if ($plot->pvp == true)
         {
             $form->addButton("§lDisable PvP\nTắt PvP");
@@ -89,7 +89,7 @@ class IslandManager
 
     public function RemoveHelperForm(Player $player)
     {
-        $pos = new Position($player->getX(), $player->getY(), $player->getZ(), $player->getLevel());
+        $pos = new Position($player->getPosition()->getX(), $player->getPosition()->getZ(), $player->getPosition()->getZ(), $player->getWorld());
         $plot = MyPlot::getInstance()->getPlotByPosition($pos);
         if ($plot == null)
         {
@@ -122,8 +122,8 @@ class IslandManager
         {
             if(!isset($data[0])) return;
 
-            $plot = MyPlot::getInstance()->getPlotByPosition($player->asPosition());
-            if (($player->getName() == $plot->owner) or $player->isOp())
+            $plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
+            if (($player->getName() == $plot->owner) or Server::getInstance()->isOp($player->getName()))
             {
                 $plot->name = $data[0];
                 $player->sendMessage("§aIsland Renamed !");

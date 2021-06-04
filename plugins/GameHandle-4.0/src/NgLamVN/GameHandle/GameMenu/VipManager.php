@@ -20,9 +20,14 @@ class VipManager
         $this->execute($player);
     }
 
-    public function getCore(): Core
+    public function getCore(): ?Core
     {
-        return Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+    	$core = Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+    	if ($core instanceof Core)
+		{
+			return $core;
+		}
+        return null;
     }
 
     public function execute (Player $player)
@@ -64,7 +69,7 @@ class VipManager
             $player->sendMessage("§eYou already have this rank !");
             return;
         }
-        $form = new CustomForm(function (Player $player, $data)
+        $form = new CustomForm(function (Player $player): void
         {
             $this->BuyVipConfirmForm($player);
         });
@@ -91,8 +96,9 @@ class VipManager
         {
             if ($data == true)
             {
+            	$consoleCommandSender = new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage());
                 CoinSystem::getInstance()->reduceCoin($player, 2000);
-                Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), "setgroup " . $player->getName() . " Vip");
+                Server::getInstance()->dispatchCommand($consoleCommandSender, "setgroup " . $player->getName() . " Vip");
             }
         });
         $form->setTitle("§　§l§eConfirm");
