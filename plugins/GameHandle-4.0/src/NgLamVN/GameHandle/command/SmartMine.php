@@ -5,17 +5,16 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class SmartMine extends PluginCommand
+class SmartMine extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("smartmine", $plugin);
+        parent::__construct("smartmine");
         $this->plugin = $plugin;
         $this->setDescription("SmartMine Manager");
         $this->setPermission("gh.sudo");

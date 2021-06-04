@@ -6,38 +6,43 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
-use pocketmine\Server;
-use pocketmine\command\PluginCommand;
+use pocketmine\player\GameMode;
+use pocketmine\Server;;
 
-class Gm0 extends PluginCommand
+class Gm0 extends BaseCommand
 {
-    public function __construct(Core $plugin){
-        parent::__construct("gm0", $plugin);
+    public function __construct(Core $plugin)
+	{
+        parent::__construct("gm0");
         $this->plugin = $plugin;
         $this->setDescription("Game mode command");
         $this->setPermission("gh.gm0");
         $this->setAliases(["gms"]);
     }
-    public function execute(CommandSender $sender, string $commandLabel, array $args){
+    public function execute(CommandSender $sender, string $commandLabel, array $args)
+	{
         if (isset($args[0])){
-            if (!$sender->hasPermission("gh.gm0.other")){
+            if (!$sender->hasPermission("gh.gm0.other"))
+            {
                 $sender->sendMessage("You not have permission to set game mode other player");
                 return;
             }
-            $player = Server::getInstance()->getPlayer($args[0]);
-            if (!isset($player)){
+            $player = Server::getInstance()->getPlayerByPrefix($args[0]);
+            if (!isset($player))
+            {
                 $sender->sendMessage("Player not exist !");
                 return;
             }
-            $player->setGamemode(0);
+            $player->setGamemode(GameMode::SURVIVAL());
             $sender->sendMessage($player->getName() . " changed game mode to survival");
             return;
         }
-        if (!$sender->hasPermission("gh.gm0.use")){
+        if (!$sender->hasPermission("gh.gm0.use"))
+        {
             $sender->sendMessage("You not have permission to use this command");
             return;
         }
-        $sender->setGamemode(0);
+        $sender->setGamemode(GameMode::SURVIVAL());
         $sender->sendMessage("Your game mode have changed to survival !");
     }
 }

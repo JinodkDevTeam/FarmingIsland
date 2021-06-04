@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
+use NgLamVN\GameHandle\utils\StringNBTParser;
 use pocketmine\command\CommandSender;
 use pocketmine\item\Item;
-use pocketmine\nbt\BigEndianNBTStream;
 use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
-class IcGive extends PluginCommand
+class IcGive extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("icgive", $plugin);
+        parent::__construct("icgive");
         $this->plugin = $plugin;
         $this->setDescription("Give a item from Item code (using InvCraft save format)");
         $this->setPermission("gh.icgive");
@@ -37,14 +36,15 @@ class IcGive extends PluginCommand
                 $sender->sendMessage("You not have permission to use this command !");
                 return;
             }
-            $stream = new BigEndianNBTStream();
+            $stream = new StringNBTParser();
             $code = hex2bin($args[0]);
             if ($code == false)
             {
                 $sender->sendMessage("Failed to decode item code !");
                 return;
             }
-            $nbt = $stream->readCompressed($code);
+            $treeroot = $stream->readCompressed($code);
+            $nbt = $treeroot->getTag();
             if (!$nbt instanceof CompoundTag)
             {
                 $sender->sendMessage("Failed to decode item code to item NBT !");

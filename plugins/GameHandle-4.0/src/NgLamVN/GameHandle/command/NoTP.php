@@ -7,16 +7,15 @@ namespace NgLamVN\GameHandle\command;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
-use pocketmine\Server;
+use pocketmine\player\Player;
 
-class NoTP extends PluginCommand
+class NoTP extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("notp", $plugin);
+        parent::__construct("notp");
         $this->plugin = $plugin;
         $this->setDescription("NoTP Mode command");
         $this->setPermission("gh.notp");

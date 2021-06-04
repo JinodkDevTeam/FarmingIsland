@@ -6,9 +6,8 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginCommand;
 
-class FiVersion extends PluginCommand
+class FiVersion extends BaseCommand
 {
 
     public string $version;
@@ -17,7 +16,7 @@ class FiVersion extends PluginCommand
     {
         $this->version = $core->getDescription()->getVersion();
 
-        parent::__construct("fiversion", $core);
+        parent::__construct("fiversion");
         $this->setDescription("FarmingIsland Version");
         $this->setPermission("gh.fiver");
         $this->setAliases(["fiver", "fi-ver"]);

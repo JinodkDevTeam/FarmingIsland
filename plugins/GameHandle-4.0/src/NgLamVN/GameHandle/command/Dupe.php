@@ -6,16 +6,15 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginCommand;
-use pocketmine\Player;
+use pocketmine\player\Player;
 
-class Dupe extends PluginCommand
+class Dupe extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $core)
     {
-        parent::__construct("dupe", $core);
+        parent::__construct("dupe");
         $this->plugin = $core;
 
         $this->setDescription("Duplicate item in hand");

@@ -5,17 +5,16 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class ServerCheck extends PluginCommand
+class ServerCheck extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("servercheck", $plugin);
+        parent::__construct("servercheck");
         $this->plugin = $plugin;
         $this->setDescription("Check server");
         $this->setPermission("gh.servercheck");

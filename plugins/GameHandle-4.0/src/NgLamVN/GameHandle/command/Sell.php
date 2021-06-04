@@ -7,12 +7,10 @@ namespace NgLamVN\GameHandle\command;
 use NgLamVN\GameHandle\Core;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginCommand;
 use pocketmine\item\Item;
-use pocketmine\Server;
 use pocketmine\utils\Config;
 
-class Sell extends PluginCommand
+class Sell extends BaseCommand
 {
     public Core $plugin;
 
@@ -22,7 +20,7 @@ class Sell extends PluginCommand
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("sell", $plugin);
+        parent::__construct("sell");
         $this->plugin = $plugin;
         $this->setDescription("Sell items in your inventory");
         $this->setPermission("gh.sell.use");
@@ -53,7 +51,7 @@ class Sell extends PluginCommand
     public function toPrice (Item $item)
     {
         $id = $item->getId();
-        $meta = $item->getDamage();
+        $meta = $item->getMeta();
         $count = $item->getCount();
         if ($meta !== 0)
         {

@@ -3,18 +3,17 @@
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Fly extends PluginCommand
+class Fly extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("fly", $plugin);
+        parent::__construct("fly");
         $this->plugin = $plugin;
         $this->setDescription("Fly command");
         $this->setPermission("gh.fly");
@@ -33,7 +32,7 @@ class Fly extends PluginCommand
                 $sender->sendMessage("You not have permission to enable fly other player");
                 return;
             }
-            $player = Server::getInstance()->getPlayer($args[0]);
+            $player = Server::getInstance()->getPlayerByPrefix($args[0]);
             if (!isset($player))
             {
                 $sender->sendMessage("Player not exist !");

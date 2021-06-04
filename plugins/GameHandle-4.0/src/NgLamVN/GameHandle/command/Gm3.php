@@ -6,14 +6,14 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
+use pocketmine\player\GameMode;
 use pocketmine\Server;
-use pocketmine\command\PluginCommand;
 
-class Gm3 extends PluginCommand
+class Gm3 extends BaseCommand
 {
     public function __construct(Core $plugin)
     {
-        parent::__construct("gm3", $plugin);
+        parent::__construct("gm3");
         $this->plugin = $plugin;
         $this->setDescription("Game mode command");
         $this->setPermission("gh.gm3");
@@ -25,12 +25,12 @@ class Gm3 extends PluginCommand
                 $sender->sendMessage("You not have permission to set game mode other player");
                 return;
             }
-            $player = Server::getInstance()->getPlayer($args[0]);
+            $player = Server::getInstance()->getPlayerByPrefix($args[0]);
             if (!isset($player)){
                 $sender->sendMessage("Player not exist !");
                 return;
             }
-            $player->setGamemode(3);
+            $player->setGamemode(GameMode::SPECTATOR());
             $sender->sendMessage($player->getName() . " changed game mode to spectator");
             return;
         }
@@ -38,7 +38,7 @@ class Gm3 extends PluginCommand
             $sender->sendMessage("You not have permission to use this command");
             return;
         }
-        $sender->setGamemode(3);
+        $sender->setGamemode(GameMode::SPECTATOR());
         $sender->sendMessage("Your game mode have changed to spectator !");
     }
 }

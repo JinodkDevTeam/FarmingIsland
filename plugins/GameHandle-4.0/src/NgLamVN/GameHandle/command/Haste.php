@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\entity\Effect;
-use pocketmine\entity\EffectInstance;
+use pocketmine\entity\effect\EffectInstance;
+use pocketmine\entity\effect\VanillaEffects;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Haste extends PluginCommand
+class Haste extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("haste", $plugin);
+        parent::__construct("haste");
         $this->plugin = $plugin;
         $this->setDescription("Haste Effect");
         $this->setPermission("gh.haste.use");
@@ -25,6 +25,11 @@ class Haste extends PluginCommand
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
+		if (!$sender instanceof Player)
+		{
+			$sender->sendMessage("Please use this command in-game");
+			return;
+		}
         if (!isset($args[0]))
         {
             $sender->sendMessage("/haste <level (1-5)> <player>");
@@ -36,25 +41,25 @@ class Haste extends PluginCommand
             return;
         }
         $level = $args[0];
-        $effect = new EffectInstance(Effect::getEffect(Effect::HASTE), 9999999, $level, true);
+        $effect = new EffectInstance(VanillaEffects::HASTE(), 99999999, $level, true);
 
         if (isset($args[1])) {
             if (!$sender->hasPermission("gh.haste.other")) {
                 $sender->sendMessage("You not have permission to enable haste on other player");
                 return;
             }
-            $player = Server::getInstance()->getPlayer($args[1]);
+            $player = Server::getInstance()->getPlayerByPrefix($args[1]);
             if (!isset($player)) {
                 $sender->sendMessage("Player not exist !");
                 return;
             }
-            if ($player->hasEffect(Effect::HASTE))
+            if ($player->getEffects()->has(VanillaEffects::HASTE()))
             {
-                $player->removeEffect(Effect::HASTE);
+                $player->getEffects()->remove(VanillaEffects::HASTE());
                 $sender->sendMessage("Disable haste on " . $player->getName());
                 return;
             }
-            $player->addEffect($effect);
+            $player->getEffects()->add($effect);
             $sender->sendMessage("Enable haste on " . $player->getName());
             return;
         }
@@ -63,12 +68,12 @@ class Haste extends PluginCommand
             return;
         }
 
-        if ($sender->hasEffect(Effect::HASTE))
+        if ($sender->getEffects()->has(VanillaEffects::HASTE()))
         {
-            $sender->removeEffect(Effect::HASTE);
+            $sender->getEffects()->remove(VanillaEffects::HASTE());
             $sender->sendMessage("Haste Disabled !");
         }
-        $sender->addEffect($effect);
+        $sender->getEffects()->add($effect);
         $sender->sendMessage("Haste Enabled !");
     }
 }

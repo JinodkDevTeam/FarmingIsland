@@ -5,18 +5,16 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\level\Position;
 use pocketmine\Server;
 
-class TpAll extends PluginCommand
+class TpAll extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("tpall", $plugin);
+        parent::__construct("tpall");
         $this->plugin = $plugin;
         $this->setDescription("TpAll command");
         $this->setPermission("gh.tpall");
@@ -30,7 +28,7 @@ class TpAll extends PluginCommand
                 $sender->sendMessage("You not have permission to use this command");
                 return;
             }
-            $player = Server::getInstance()->getPlayer($args[0]);
+            $player = Server::getInstance()->getPlayerByPrefix($args[0]);
             if (!isset($player))
             {
                 $sender->sendMessage("Player not exist !");
@@ -38,7 +36,7 @@ class TpAll extends PluginCommand
             }
             foreach (Server::getInstance()->getOnlinePlayers() as $players)
             {
-                $players->teleport(new Position($player->getX(), $player->getY(), $player->getZ(), $player->getLevel()));
+                $players->teleport($player->getPosition());
             }
             $sender->sendMessage("All players have been teleported to ". $player->getName());
             return;
@@ -51,7 +49,7 @@ class TpAll extends PluginCommand
         $player = $sender;
         foreach (Server::getInstance()->getOnlinePlayers() as $players)
         {
-            $players->teleport(new Position($player->getX(), $player->getY(), $player->getZ(), $player->getLevel()));
+            $players->teleport($player);
         }
         $sender->sendMessage("All player have been teleported to you");
     }

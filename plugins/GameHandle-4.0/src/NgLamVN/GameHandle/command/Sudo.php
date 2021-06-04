@@ -6,17 +6,16 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\ConsoleCommandSender;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class Sudo extends PluginCommand
+class Sudo extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("sudo", $plugin);
+        parent::__construct("sudo");
         $this->plugin = $plugin;
         $this->setDescription("Run command as console");
         $this->setPermission("gh.sudo");
@@ -35,8 +34,7 @@ class Sudo extends PluginCommand
             {
                 if ($cmd == "") $cmd = $arg; else $cmd = $cmd . " " . $arg;
             }
-
-            Server::getInstance()->dispatchCommand(new ConsoleCommandSender(), $cmd);
+            Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), $cmd);
         }
         else
         {

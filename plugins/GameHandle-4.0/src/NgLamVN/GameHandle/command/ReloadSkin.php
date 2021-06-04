@@ -8,13 +8,13 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 
-class ReloadSkin extends PluginCommand
+class ReloadSkin extends BaseCommand
 {
     private Core $plugin;
 
     public function __construct(Core $plugin)
     {
-        parent::__construct("reloadskin", $plugin);
+        parent::__construct("reloadskin");
         $this->plugin = $plugin;
         $this->setDescription("Reload All Player Skin");
         $this->setPermission("gh.reloadskin");
