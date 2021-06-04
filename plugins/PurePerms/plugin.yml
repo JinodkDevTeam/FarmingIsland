@@ -10,22 +10,31 @@ author: "64FF00 & ProjectInfinity"
 website: https://github.com/PurePlugins/PurePerms
 permissions:
   pperms:
+    default: op
     description: "PurePerms by 64FF00! (Twitter: @64FF00)"
   pperms.command:
+    default: op
     description: "Allows you to use all PurePerms commands."
   pperms.command.addgroup:
+    default: op
     description: "Allows you to add a new group to the groups list."
   pperms.command.addparent:
+    default: op
     description: "Allows you to add a group to another group inheritance list."
   pperms.command.defgroup:
+    default: op
     description: "Allows you to set the default group manually."
   pperms.command.fperms:
+    default: op
     description: "Allows you to find permissions for a specific plugin."
   pperms.command.groups:
+    default: op
     description: "Allows you to see a list of all groups."
   pperms.command.listgperms:
+    default: op
     description: "Allows you to see a list of all permissions from a group."
   pperms.command.listuperms:
+    default: op
     description: "Allows you to see a list of all permissions from a user."
   pperms.command.ppinfo:
     default: true
@@ -34,24 +43,35 @@ permissions:
     default: op
     description: "Nothing"
   pperms.command.ppreload:
+    default: op
     description: "Allows you to reload all PurePerms configurations."
   pperms.command.rmgroup:
+    default: op
     description: "Allows you to remove a group from the groups list."
   pperms.command.rmparent:
+    default: op
     description: "Allows you to remove a group from another group inheritance list."
   pperms.command.setgperm:
+    default: op
     description: "Allows you to add a permission to the group."
   pperms.command.setgroup:
+    default: op
     description: "Allows you to set group for a user."
   pperms.command.setuperm:
+    default: op
     description: "Allows you to add a permission to a user."
   pperms.command.unsetgperm:
+    default: op
     description: "Allows you to remove a permission from the group."
   pperms.command.unsetuperm:
+    default: op
     description: "Allows you to remove a permission from the user."
   pperms.command.usrinfo:
+    default: op
     description: "Allows you to see info about a user."
   pperms.noeul:
+    default: op
     description: "Allows you to access all 'Noeul' related features."
   pperms.noeul.ppsudo:
+    default: op
     description: "Allows you to use the Noeul 'ppsudo' command."
