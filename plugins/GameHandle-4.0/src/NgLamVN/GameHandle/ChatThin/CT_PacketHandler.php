@@ -48,7 +48,7 @@ class CT_PacketHandler implements Listener
 			{
 				foreach($pk->commandData as $name => $commandData)
 				{
-					$commandData->commandDescription = $this->toThin($commandData->commandDescription);
+					$commandData->description = $this->toThin($commandData->description);
 				}
 			}
     }
