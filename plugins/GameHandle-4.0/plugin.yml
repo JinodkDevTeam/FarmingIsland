@@ -1,0 +1,96 @@
+name: FI-GameHandle
+main: NgLamVN\GameHandle\Core
+version: 0.1-v4
+api: 4.0.0
+description: "Make only for jinodk network"
+author: NgLamVN
+
+permissions:
+  gh.feed:
+    default: op
+  gh.feed.use:
+    default: op
+  gh.feed.other:
+    default: op
+  gh.heal:
+    default: op
+  gh.heal.use:
+    default: op
+  gh.heal.other:
+    default: op
+  gh.fly:
+    default: op
+  gh.fly.use:
+    default: op
+  gh.fly.other:
+    default: op
+  gh.gm1:
+    default: op
+  gh.gm1.use:
+    default: op
+  gh.gm1.other:
+    default: op
+  gh.gm0:
+    default: op
+  gh.gm0.use:
+    default: op
+  gh.gm0.other:
+    default: op
+  gh.gm2:
+    default: op
+  gh.gm2.use:
+    default: op
+  gh.gm2.other:
+    default: op
+  gh.gm3:
+    default: op
+  gh.gm3.use:
+    default: op
+  gh.gm3.other:
+    default: op
+  gh.coin:
+    default: false
+  gh.coin.use:
+    default: true
+  gh.coin.pay:
+    default: true
+  gh.coin.add:
+    default: op
+  gh.coin.set:
+    default: op
+  gh.coin.reduce:
+    default: op
+  gh.sell:
+    default: true
+  gh.sell.use:
+    default: true
+  gh.sell.all:
+    default: true
+  gh.tpall:
+    default: op
+  gh.ac:
+    default: true
+  gh.haste:
+    default: op
+  gh.haste.use:
+    default: op
+  gh.haste.other:
+    default: op
+  gh.sudo:
+    default: op
+  gh.dupe:
+    default: op
+  gh.tutorial:
+    default: true
+  gh.mute:
+    default: op
+  gh.unmute:
+    default: op
+  gh.freeze:
+    default: op
+  gh.unfreeze:
+    default: op
+  gh.notp:
+    default: true
+  gh.notp.bypass:
+    default: op
