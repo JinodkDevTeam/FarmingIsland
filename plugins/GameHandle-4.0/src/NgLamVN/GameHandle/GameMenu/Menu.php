@@ -9,6 +9,7 @@ use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -82,9 +83,26 @@ class Menu
             else{
                 new UiMenu($player);
             }
-
         }
     }
+
+    public function onUse(PlayerItemUseEvent $event)
+	{
+		$player = $event->getPlayer();
+
+		$slot = $player->getInventory()->getHeldItemIndex();
+
+		if ($slot == 8)
+		{
+			if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode")->getValue() == "gui")
+			{
+				new GuiMenu($player);
+			}
+			else{
+				new UiMenu($player);
+			}
+		}
+	}
 
     public function onDrop (PlayerDropItemEvent $event)
     {

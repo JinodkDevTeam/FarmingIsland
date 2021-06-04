@@ -3,9 +3,8 @@
 namespace NgLamVN\GameHandle\task;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\Player;
+use pocketmine\player\Player;
 use pocketmine\scheduler\Task;
-use Closure;
 
 class DelayTask extends Task
 {
@@ -32,7 +31,7 @@ class DelayTask extends Task
         return $this->closure;
     }
 
-    public function onRun(int $currentTick)
+    public function onRun(): void
     {
         // TODO: Implement onRun() method.
         if ($this->times = 0)
@@ -42,6 +41,6 @@ class DelayTask extends Task
         }
         $run = $this->closure;
         $run();
-        $this->getCore()->getScheduler()->cancelTask($this->getTaskId());
+        $this->getHandler()->cancel();
     }
 }

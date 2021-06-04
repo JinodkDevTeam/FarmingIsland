@@ -16,12 +16,12 @@ class AfkRewardTask extends Task
         return Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
     }
 
-    public function onRun(int $currentTick)
+    public function onRun(): void
     {
         $players = Server::getInstance()->getOnlinePlayers();
         foreach ($players as $player)
         {
-            if ($player->getLevel()->getName() == "afk")
+            if ($player->getWorld()->getDisplayName() == "afk")
             {
                 if (isset($this->getCore()->afktime[$player->getName()]))
                 {

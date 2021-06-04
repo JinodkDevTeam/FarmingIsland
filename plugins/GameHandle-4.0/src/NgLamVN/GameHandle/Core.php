@@ -23,8 +23,6 @@ class Core extends PluginBase
     /** @var int[] */
     public array $afktime = [];
 
-    public static Core $instance;
-
     public CoinSystem $coin;
 
     public PlayerStatManager $pstatmanager;

@@ -94,3 +94,10 @@ permissions:
     default: true
   gh.notp.bypass:
     default: op
+  gh.fiver:
+    default: true
+  gh.reloadskin:
+    default: op
+  gh.servercheck:
+    default: op
+    
