@@ -15,6 +15,6 @@ abstract class BaseCommand extends Command implements PluginOwned
 	}
 
 	public function getOwningPlugin() : Core{
-		Core::getInstance();
+		return Core::getInstance();
 	}
 }

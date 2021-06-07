@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
+use Exception;
 use pocketmine\player\Player;
 
 class PlayerStatManager
@@ -58,7 +59,7 @@ class PlayerStatManager
         {
             if (!$overwrite)
             {
-                throw new \Exception("Can't overwrite available PlayerStat");
+                throw new Exception("Can't overwrite available PlayerStat");
             }
         }
         $this->stats[$player->getName()] = new PlayerStat($player);

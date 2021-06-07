@@ -43,6 +43,7 @@ use pocketmine\utils\EnumTrait;
  * @method static RecordType DISK_STRAD()
  * @method static RecordType DISK_WAIT()
  * @method static RecordType DISK_WARD()
+ * @method static RecordType DISK_PIGSTEP()
  */
 final class RecordType{
 	use EnumTrait {
@@ -62,8 +63,8 @@ final class RecordType{
 			new RecordType("disk_strad", "C418 - strad", LevelSoundEventPacket::SOUND_RECORD_STRAD, "item.record_strad.desc"),
 			new RecordType("disk_ward", "C418 - ward", LevelSoundEventPacket::SOUND_RECORD_WARD, "item.record_ward.desc"),
 			new RecordType("disk_11", "C418 - 11", LevelSoundEventPacket::SOUND_RECORD_11, "item.record_11.desc"),
-			new RecordType("disk_wait", "C418 - wait", LevelSoundEventPacket::SOUND_RECORD_WAIT, "item.record_wait.desc")
-			//TODO: Lena Raine - Pigstep
+			new RecordType("disk_wait", "C418 - wait", LevelSoundEventPacket::SOUND_RECORD_WAIT, "item.record_wait.desc"),
+			new RecordType("disk_pigstep", "Lena Raine - Pigstep", LevelSoundEventPacket::SOUND_RECORD_PIGSTEP, "item.record_pigstep.desc")
 		);
 	}
 
