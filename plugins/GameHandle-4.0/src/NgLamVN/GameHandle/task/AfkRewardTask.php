@@ -13,7 +13,7 @@ class AfkRewardTask extends Task
 {
     public function getCore(): ?Core
     {
-        return Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle");
+        return Core::getInstance();
     }
 
     public function onRun(): void

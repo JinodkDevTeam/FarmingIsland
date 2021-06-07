@@ -6359,3 +6359,864 @@
 2021-06-05 [10:08:56.745] [Server thread/INFO]: Disabling MyPlot v1.11.1
 2021-06-05 [10:08:56.747] [Server thread/INFO]: Unloading world "PlotTest"
 2021-06-05 [10:08:56.795] [Server thread/INFO]: Stopping other threads
+2021-06-07 [10:41:39.737] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [10:41:39.753] [Server thread/INFO]: Loading server configuration
+2021-06-07 [10:41:39.786] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [10:41:39.786] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:41:39.786] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [10:41:39.787] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [10:41:39.787] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [10:41:39.787] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:41:39.793] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [10:41:39.808] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [10:41:40.090] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [10:41:40.091] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [10:41:40.970] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [10:41:41.072] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:41:41.095] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [10:41:41.100] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [10:41:41.106] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [10:41:41.107] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [10:41:41.110] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [10:41:41.128] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:41:41.145] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [10:41:41.171] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [10:41:41.175] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [10:41:41.185] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [10:41:41.192] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [10:41:41.204] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [10:41:41.236] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [10:41:41.244] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [10:41:41.244] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [10:41:41.245] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [10:41:41.257] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [10:41:41.262] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [10:41:41.396] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [10:41:41.399] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [10:41:41.539] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [10:41:41.558] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [10:41:41.616] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [10:41:41.658] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [10:41:41.679] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [10:41:41.681] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [10:41:41.828] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [10:41:41.894] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [10:41:41.914] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [10:41:41.920] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [10:41:41.923] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [10:41:42.025] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [10:41:42.028] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [10:41:42.034] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [10:41:42.035] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [10:41:42.036] [Server thread/INFO]: Done (2.291s)! For help, type "help" or "?"
+2021-06-07 [10:41:44.596] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-07 [10:41:49.910] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [10:41:50.028] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [10:41:51.908] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, 31.5639, 65, 53.5473)
+2021-06-07 [10:41:58.879] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:41:58.896] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [10:42:17.180] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [10:42:17.208] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [10:42:20.227] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [10:42:20.227] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:42:20.235] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [10:42:20.236] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [10:42:20.236] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [10:42:20.244] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [10:42:20.246] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [10:42:20.246] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [10:42:20.247] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [10:42:20.248] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [10:42:20.253] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [10:42:20.256] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [10:42:20.476] [Server thread/INFO]: Stopping other threads
+2021-06-07 [10:43:13.252] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [10:43:13.350] [Server thread/INFO]: Loading server configuration
+2021-06-07 [10:43:13.784] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [10:43:13.813] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:43:13.850] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [10:43:13.866] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [10:43:13.879] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [10:43:13.884] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:43:13.915] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [10:43:13.963] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [10:43:14.401] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [10:43:14.401] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [10:43:16.386] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [10:43:16.515] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [10:43:16.562] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:43:16.575] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [10:43:16.580] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [10:43:16.587] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [10:43:16.594] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [10:43:16.599] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [10:43:16.618] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [10:43:16.628] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [10:43:16.632] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [10:43:16.679] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [10:43:16.687] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [10:43:16.694] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [10:43:16.696] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [10:43:16.701] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [10:43:16.732] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [10:43:16.746] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [10:43:16.762] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [10:43:16.952] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [10:43:16.959] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:43:16.979] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [10:43:17.130] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [10:43:17.149] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [10:43:17.150] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [10:43:17.218] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [10:43:17.267] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [10:43:17.297] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [10:43:17.394] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [10:43:17.394] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [10:43:17.396] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [10:43:17.396] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [10:43:17.420] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [10:43:17.507] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [10:43:17.513] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [10:43:17.516] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [10:43:17.516] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [10:43:17.517] [Server thread/INFO]: Done (4.172s)! For help, type "help" or "?"
+2021-06-07 [10:43:37.928] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [10:43:37.967] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [10:43:38.404] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-07 [10:43:38.946] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, 35.2786, 65, 54.2218)
+2021-06-07 [10:43:46.351] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:43:46.362] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [10:45:32.873] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [10:45:32.957] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [10:45:34.240] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 4 at (PlotTest, -72.6443, 65, 107.4822)
+2021-06-07 [10:45:36.974] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:45:36.975] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [10:45:57.729] [Server thread/INFO]: [CMD][JINODK] use /tp NgLam
+2021-06-07 [10:45:57.740] [Server thread/INFO]: [JINODK: Teleported JINODK to NgLamVN]
+2021-06-07 [10:46:08.875] [Server thread/INFO]: OniiChan  NgLamVN ➩ Hmm
+2021-06-07 [10:46:11.407] [Server thread/INFO]: OniiChan  NgLamVN ➩ k uốn đc
+2021-06-07 [10:46:14.638] [Server thread/INFO]: OniiChan  NgLamVN ➩ *uống
+2021-06-07 [10:46:20.903] [Server thread/INFO]: JINODK ► vl cái prefix
+2021-06-07 [10:48:07.200] [Server thread/INFO]: OniiChan  NgLamVN ➩ HMm
+2021-06-07 [10:48:16.496] [Server thread/INFO]: OniiChan  NgLamVN ➩ Mị quên register item ...
+2021-06-07 [10:48:18.443] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [10:48:18.450] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [10:48:48.949] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:50.504] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:52.183] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:53.538] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:54.855] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:56.096] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:57.413] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:48:58.682] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:00.731] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:07.549] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:08.884] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:10.171] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:11.411] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:12.998] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:14.260] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:15.730] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:16.999] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:18.350] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:19.676] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:19.901] [Server thread/INFO]: [Server] Restarting ...
+2021-06-07 [10:49:20.967] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:23.039] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:49:23.973] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [10:49:23.989] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [10:49:23.991] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:49:23.991] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [10:49:23.995] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [10:49:23.996] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [10:49:23.998] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [10:49:23.999] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [10:49:24.000] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [10:49:24.002] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [10:49:24.005] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [10:49:24.007] [Server thread/INFO]: JINODK left the game
+2021-06-07 [10:49:24.024] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Server closed
+2021-06-07 [10:49:24.024] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [10:49:24.100] [Server thread/INFO]: Stopping other threads
+2021-06-07 [10:49:27.730] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [10:49:27.743] [Server thread/INFO]: Loading server configuration
+2021-06-07 [10:49:27.771] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [10:49:27.771] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:49:27.771] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [10:49:27.771] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [10:49:27.771] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [10:49:27.771] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:49:27.779] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [10:49:27.791] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [10:49:28.006] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [10:49:28.006] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [10:49:28.585] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [10:49:28.666] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [10:49:28.692] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:49:28.704] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [10:49:28.706] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [10:49:28.709] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [10:49:28.709] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [10:49:28.720] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [10:49:28.738] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [10:49:28.771] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [10:49:28.776] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [10:49:28.776] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [10:49:28.777] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [10:49:28.788] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [10:49:28.793] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [10:49:28.870] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [10:49:28.874] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [10:49:28.880] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [10:49:28.886] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [10:49:28.889] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [10:49:28.889] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:49:28.898] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [10:49:29.036] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [10:49:29.047] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [10:49:29.072] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [10:49:29.086] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [10:49:29.086] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [10:49:29.088] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [10:49:29.110] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [10:49:29.124] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [10:49:29.125] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [10:49:29.184] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [10:49:29.267] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [10:49:29.323] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [10:49:29.325] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [10:49:29.326] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [10:49:29.330] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [10:49:29.333] [Server thread/INFO]: Done (1.593s)! For help, type "help" or "?"
+2021-06-07 [10:49:34.602] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [10:49:34.650] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [10:49:36.216] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, 24.6466, 65, -25.5097)
+2021-06-07 [10:49:39.430] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-07 [10:49:42.972] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:49:42.983] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [10:50:13.805] [Server thread/INFO]: [CMD][NgLamVN] use /feed
+2021-06-07 [10:50:17.274] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-07 [10:50:17.275] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-07 [10:50:27.450] [Server thread/INFO]: [CMD][NgLamVN] use /effect ng poison 10 4
+2021-06-07 [10:50:27.467] [Server thread/INFO]: [NgLamVN: Given Poison * 4 to NgLamVN for 10 seconds]
+2021-06-07 [10:50:56.662] [Server thread/INFO]: [CMD][NgLamVN] use /effect ng haste 10000 5
+2021-06-07 [10:50:56.662] [Server thread/INFO]: [NgLamVN: Given Haste * 5 to NgLamVN for 10000 seconds]
+2021-06-07 [10:50:58.762] [Server thread/INFO]: [CMD][NgLamVN] use /effect ng poison 10 4
+2021-06-07 [10:50:58.762] [Server thread/INFO]: [NgLamVN: Given Poison * 4 to NgLamVN for 10 seconds]
+2021-06-07 [10:51:06.731] [Server thread/INFO]: [CMD][NgLamVN] use /effect ng poison 10000 4
+2021-06-07 [10:51:06.731] [Server thread/INFO]: [NgLamVN: Given Poison * 4 to NgLamVN for 10000 seconds]
+2021-06-07 [10:51:39.481] [Server thread/INFO]: [NetworkSession: 192.168.1.29 33782] Session opened
+2021-06-07 [10:51:39.563] [Server thread/INFO]: [NetworkSession: 192.168.1.29 33782] Player: BamProVN
+2021-06-07 [10:51:41.016] [Server thread/INFO]: BamProVN[/192.168.1.29:33782] logged in with entity id 4 at (PlotTest, 20.7072, 66.9997, 138.5011)
+2021-06-07 [10:51:50.642] [Server thread/INFO]: [CMD][NgLamVN] use /effect Ng clear
+2021-06-07 [10:51:53.602] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:51:53.602] [Server thread/INFO]: BamProVN joined the game
+2021-06-07 [10:52:12.165] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-07 [10:52:17.001] [Server thread/INFO]: [CMD][NgLamVN] use /give ng campfire 1
+2021-06-07 [10:52:17.014] [Server thread/INFO]: [NgLamVN: Given Campfire (-209:0) * 1 to NgLamVN]
+2021-06-07 [10:52:41.263] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [10:52:41.267] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [10:53:57.804] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [10:53:57.806] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [10:53:57.808] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:53:57.808] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [10:53:57.809] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [10:53:57.810] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [10:53:57.819] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [10:53:57.819] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [10:53:57.820] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [10:53:57.820] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [10:53:57.821] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [10:53:57.822] [Server thread/INFO]: BamProVN left the game
+2021-06-07 [10:53:57.838] [Server thread/INFO]: [NetworkSession: BamProVN] Session closed due to Server closed
+2021-06-07 [10:53:57.838] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [10:53:57.954] [Server thread/INFO]: Stopping other threads
+2021-06-07 [10:54:01.100] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [10:54:01.112] [Server thread/INFO]: Loading server configuration
+2021-06-07 [10:54:01.139] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [10:54:01.139] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:54:01.139] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [10:54:01.139] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [10:54:01.139] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [10:54:01.140] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:54:01.144] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [10:54:01.156] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [10:54:01.409] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [10:54:01.409] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [10:54:02.024] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [10:54:02.091] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [10:54:02.121] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:54:02.125] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [10:54:02.126] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [10:54:02.135] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [10:54:02.135] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [10:54:02.140] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [10:54:02.173] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [10:54:02.186] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [10:54:02.221] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [10:54:02.226] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [10:54:02.226] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [10:54:02.227] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [10:54:02.239] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [10:54:02.242] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [10:54:02.254] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [10:54:02.258] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [10:54:02.271] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [10:54:02.352] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [10:54:02.352] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:54:02.358] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [10:54:02.470] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [10:54:02.483] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [10:54:02.484] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [10:54:02.506] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [10:54:02.521] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [10:54:02.616] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [10:54:02.641] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [10:54:02.667] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [10:54:02.685] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [10:54:02.687] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [10:54:02.688] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [10:54:02.754] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [10:54:02.756] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [10:54:02.757] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [10:54:02.759] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [10:54:02.759] [Server thread/INFO]: Done (1.65s)! For help, type "help" or "?"
+2021-06-07 [10:54:06.794] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [10:54:06.834] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [10:54:07.780] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, -44.8368, 65.5, 67.7717)
+2021-06-07 [10:54:08.798] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-07 [10:54:10.017] [Server thread/INFO]: [NetworkSession: 192.168.1.29 33782] Session opened
+2021-06-07 [10:54:10.120] [Server thread/INFO]: [NetworkSession: 192.168.1.29 33782] Player: BamProVN
+2021-06-07 [10:54:14.217] [Server thread/INFO]: BamProVN[/192.168.1.29:33782] logged in with entity id 3 at (PlotTest, 17.5466, 69, 136.6138)
+2021-06-07 [10:54:14.822] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:54:14.835] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [10:54:26.698] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:54:26.702] [Server thread/INFO]: BamProVN joined the game
+2021-06-07 [10:54:40.341] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-07 [10:54:56.571] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [10:54:56.577] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [10:56:52.650] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [10:56:52.652] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [10:56:52.654] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:56:52.655] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [10:56:52.657] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [10:56:52.659] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [10:56:52.661] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [10:56:52.663] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [10:56:52.666] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [10:56:52.667] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [10:56:52.667] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [10:56:52.668] [Server thread/INFO]: BamProVN left the game
+2021-06-07 [10:56:52.671] [Server thread/INFO]: [NetworkSession: BamProVN] Session closed due to Server closed
+2021-06-07 [10:56:52.672] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [10:56:52.778] [Server thread/INFO]: Stopping other threads
+2021-06-07 [10:56:56.170] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [10:56:56.188] [Server thread/INFO]: Loading server configuration
+2021-06-07 [10:56:56.233] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [10:56:56.234] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:56:56.234] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [10:56:56.234] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [10:56:56.235] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [10:56:56.235] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [10:56:56.247] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [10:56:56.255] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [10:56:56.516] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [10:56:56.516] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [10:56:57.132] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [10:56:57.199] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [10:56:57.238] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:56:57.287] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [10:56:57.289] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [10:56:57.303] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [10:56:57.304] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [10:56:57.315] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [10:56:57.335] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [10:56:57.345] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [10:56:57.350] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [10:56:57.355] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [10:56:57.583] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [10:56:57.586] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [10:56:57.617] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [10:56:57.627] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [10:56:57.628] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [10:56:57.629] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [10:56:57.634] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [10:56:57.643] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [10:56:57.644] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [10:56:57.651] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [10:56:57.770] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [10:56:57.787] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [10:56:57.835] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [10:56:57.851] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [10:56:57.928] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [10:56:58.032] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [10:56:58.032] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [10:56:58.089] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [10:56:58.118] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [10:56:58.120] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [10:56:58.120] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [10:56:58.194] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [10:56:58.198] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [10:56:58.200] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [10:56:58.200] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [10:56:58.201] [Server thread/INFO]: Done (2.016s)! For help, type "help" or "?"
+2021-06-07 [10:57:42.505] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [10:57:42.547] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [10:57:43.596] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, -43.8633, 65, 73.5089)
+2021-06-07 [10:57:50.908] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:57:50.920] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [10:58:05.605] [Server thread/INFO]: [CMD][NgLamVN] use /give Ng honey_bottle 1
+2021-06-07 [10:58:08.370] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-07 [10:58:16.771] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-07 [10:58:34.737] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Session opened
+2021-06-07 [10:58:35.104] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Player: PikarioVN
+2021-06-07 [10:58:38.288] [Server thread/INFO]: PikarioVN[/125.235.133.41:35059] logged in with entity id 5 at (PlotTest, 32.4746, 80.84, 36.6694)
+2021-06-07 [10:59:01.869] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [10:59:01.946] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [10:59:01.991] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode c
+2021-06-07 [10:59:02.010] [Server thread/INFO]: [NgLamVN: Set own game mode to Creative Mode]
+2021-06-07 [10:59:02.742] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 7 at (PlotTest, 27.0833, 66.5615, -19.6392)
+2021-06-07 [10:59:04.494] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:59:04.513] [Server thread/INFO]: PikarioVN joined the game
+2021-06-07 [10:59:05.512] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [10:59:05.512] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [10:59:30.281] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:31.878] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:33.107] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:34.491] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:35.978] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:37.259] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:38.506] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:41.465] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:42.692] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:43.963] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:45.489] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:46.782] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [10:59:48.359] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:00:17.556] [Server thread/INFO]: JINODK ► lam
+2021-06-07 [11:00:20.480] [Server thread/INFO]: OniiChan  NgLamVN ➩ ?
+2021-06-07 [11:00:28.910] [Server thread/INFO]: JINODK ► thử mở cuốn này xem có bị drop frame k
+2021-06-07 [11:00:33.382] [Server thread/INFO]: [CMD][PikarioVN] use /p claim
+2021-06-07 [11:00:39.045] [Server thread/INFO]: OniiChan  PikarioVN ➩ :v
+2021-06-07 [11:00:47.644] [Server thread/INFO]: OniiChan  NgLamVN ➩ no ?
+2021-06-07 [11:00:57.445] [Server thread/INFO]: JINODK ► kiểu animation mở sách có hơi giật k
+2021-06-07 [11:01:06.903] [Server thread/INFO]: OniiChan  NgLamVN ➩ Ko
+2021-06-07 [11:01:11.186] [Server thread/INFO]: JINODK ► à ok
+2021-06-07 [11:01:13.700] [Server thread/INFO]: [CMD][PikarioVN] use /effect pi night_vision 99999 255
+2021-06-07 [11:01:13.700] [Server thread/INFO]: [PikarioVN: Given Night Vision * 255 to PikarioVN for 99999 seconds]
+2021-06-07 [11:01:20.170] [Server thread/INFO]: OniiChan  NgLamVN ➩ Everything is mượt mà
+2021-06-07 [11:01:26.135] [Server thread/INFO]: JINODK ► đang có vài shulkerbox toàn sách đó
+2021-06-07 [11:01:30.615] [Server thread/INFO]: OniiChan  NgLamVN ➩ *smooth
+2021-06-07 [11:01:33.639] [Server thread/INFO]: OniiChan  NgLamVN ➩ :v
+2021-06-07 [11:01:48.401] [Server thread/INFO]: JINODK ► ý  là game có hơi lag khi mở cái đó k á
+2021-06-07 [11:02:01.715] [Server thread/INFO]: OniiChan  NgLamVN ➩ Ko
+2021-06-07 [11:02:06.252] [Server thread/INFO]: OniiChan  NgLamVN ➩ Everything is smooth
+2021-06-07 [11:02:08.450] [Server thread/INFO]: JINODK ► bên dk bth 60 mà đoạn mở nó drop xuống 56
+2021-06-07 [11:02:43.438] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:02:43.447] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [11:03:53.304] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:03:56.996] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:00.611] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:01.841] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:04.700] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:04.712] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:06.490] [Server thread/INFO]: [Server] [CMD][JINODK] use /dupe
+2021-06-07 [11:04:06.641] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:07.881] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:09.291] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:10.961] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:12.591] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:13.924] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:15.132] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:16.275] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:17.482] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:18.925] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:22.074] [Server thread/INFO]: [Server] WHY U DOE to much ?
+2021-06-07 [11:04:25.912] [Server thread/INFO]: JINODK ► :)
+2021-06-07 [11:04:26.591] [Server thread/INFO]: [CMD][PikarioVN] use /dupe
+2021-06-07 [11:04:28.041] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:29.461] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:30.876] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:31.901] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:33.051] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:34.541] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:35.826] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:37.077] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:38.232] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:40.758] [Server thread/INFO]: [Server] Thats too much dupe at once
+2021-06-07 [11:04:43.811] [Server thread/INFO]: [CMD][PikarioVN] use /dupe
+2021-06-07 [11:04:50.402] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:51.696] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:53.003] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:54.267] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:55.482] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:04:56.735] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:04.711] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:05:08.533] [Server thread/INFO]: [CMD][JINODK] use /gm1
+2021-06-07 [11:05:11.336] [Server thread/INFO]: ---- Server status ----
+2021-06-07 [11:05:11.337] [Server thread/INFO]: Uptime: 8 minutes 15 seconds
+2021-06-07 [11:05:11.343] [Server thread/INFO]: Current TPS: 20 (1.61%)
+2021-06-07 [11:05:11.343] [Server thread/INFO]: Average TPS: 20 (7.23%)
+2021-06-07 [11:05:11.345] [Server thread/INFO]: Network upload: 3.97 kB/s
+2021-06-07 [11:05:11.346] [Server thread/INFO]: Network download: 1.03 kB/s
+2021-06-07 [11:05:11.346] [Server thread/INFO]: Thread count: 6
+2021-06-07 [11:05:11.347] [Server thread/INFO]: Main thread memory: 58.08 MB.
+2021-06-07 [11:05:11.347] [Server thread/INFO]: Total memory: 58.08 MB.
+2021-06-07 [11:05:11.348] [Server thread/INFO]: Total virtual memory: 72.00 MB.
+2021-06-07 [11:05:11.348] [Server thread/INFO]: Heap memory: 0.00 MB.
+2021-06-07 [11:05:11.349] [Server thread/INFO]: World "PlotTest": 318 chunks, 4 entities. Time 0.71ms
+2021-06-07 [11:05:20.126] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:05:37.795] [Server thread/INFO]: [CMD][JINODK] use /gm1
+2021-06-07 [11:05:47.501] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:48.851] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:52.564] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:53.793] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:55.001] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:56.171] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:57.396] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:05:58.673] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:01.482] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:02.698] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:03.951] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:05.132] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:06.415] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:07.491] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:09.136] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:10.367] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:11.931] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:13.322] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:14.663] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:18.123] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:19.485] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:20.818] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:22.074] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:23.206] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:24.368] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:25.651] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:26.873] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:28.256] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:29.484] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:06:44.341] [Server thread/INFO]: [CMD][JINODK] use /tp Pika
+2021-06-07 [11:06:44.346] [Server thread/INFO]: [JINODK: Teleported JINODK to PikarioVN]
+2021-06-07 [11:06:53.384] [Server thread/INFO]: [CMD][JINODK] use /tp Pika
+2021-06-07 [11:06:53.387] [Server thread/INFO]: [JINODK: Teleported JINODK to PikarioVN]
+2021-06-07 [11:06:58.673] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:00.156] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:01.434] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:02.736] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:04.011] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:05.290] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:06.541] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:07.872] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:09.022] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:10.201] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:25.411] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:26.723] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:07:28.959] [Server thread/ERROR]: [NetworkSession: JINODK] Bad packet (error ID d4f9e737633c): Compressed packet batch decode error: Failed to decompress data
+2021-06-07 [11:07:28.963] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:07:29.329] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Packet processing error (Error ID: d4f9e737633c)
+2021-06-07 [11:07:29.340] [RakLib thread/NOTICE]: Blocked 117.2.179.197 for 5 seconds
+2021-06-07 [11:07:44.841] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [11:07:44.942] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [11:07:46.180] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 93 at (PlotTest, -65.8242, 66.6757, 34.7885)
+2021-06-07 [11:07:49.012] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:07:49.013] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [11:07:59.281] [Server thread/ERROR]: [NetworkSession: JINODK] Bad packet (error ID 43f6187cc877): Compressed packet batch decode error: Failed to decompress data
+2021-06-07 [11:07:59.291] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:07:59.561] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Packet processing error (Error ID: 43f6187cc877)
+2021-06-07 [11:07:59.571] [RakLib thread/NOTICE]: Blocked 117.2.179.197 for 5 seconds
+2021-06-07 [11:08:01.325] [Server thread/INFO]: [CMD][PikarioVN] use /time set day 
+2021-06-07 [11:08:01.326] [Server thread/INFO]: [PikarioVN: Set the time to 1000]
+2021-06-07 [11:08:09.691] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [11:08:09.775] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [11:08:11.691] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 94 at (PlotTest, -65.8242, 65, 34.7885)
+2021-06-07 [11:08:14.562] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:08:14.563] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [11:08:34.601] [Server thread/INFO]: [CMD][JINODK] use /time set night
+2021-06-07 [11:08:34.602] [Server thread/INFO]: [JINODK: Set the time to 13000]
+2021-06-07 [11:08:42.329] [Server thread/INFO]: [CMD][PikarioVN] use /time set day 
+2021-06-07 [11:08:42.330] [Server thread/INFO]: [PikarioVN: Set the time to 1000]
+2021-06-07 [11:08:45.106] [Server thread/INFO]: [CMD][JINODK] use /time set day
+2021-06-07 [11:08:45.109] [Server thread/INFO]: [JINODK: Set the time to 1000]
+2021-06-07 [11:08:56.212] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:08:58.574] [Server thread/INFO]: JINODK fell from a high place
+2021-06-07 [11:09:21.229] [Server thread/INFO]: JINODK ► why
+2021-06-07 [11:09:30.513] [Server thread/INFO]: OniiChan  PikarioVN ➩ đốt block :)
+2021-06-07 [11:10:02.482] [Server thread/INFO]: JINODK ► đang thử gây lag mà
+2021-06-07 [11:10:05.314] [Server thread/INFO]: JINODK ► bruh
+2021-06-07 [11:10:17.881] [Server thread/INFO]: [CMD][JINODK] use /tp ~ ~100 ~
+2021-06-07 [11:10:17.903] [Server thread/INFO]: [JINODK: Teleported JINODK to -90.89, 165, 48.66]
+2021-06-07 [11:10:21.350] [Server thread/INFO]: JINODK fell from a high place
+2021-06-07 [11:10:48.154] [Server thread/INFO]: [NetworkSession: 125.212.173.75 52964] Session opened
+2021-06-07 [11:10:48.354] [Server thread/INFO]: [NetworkSession: 125.212.173.75 52964] Player: EggyUnicycle766
+2021-06-07 [11:10:49.509] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:52964] logged in with entity id 167 at (PlotTest, -33.8093, 67.2486, -12.9719)
+2021-06-07 [11:10:58.108] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:10:58.210] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-07 [11:11:08.169] [Server thread/INFO]: Trum_sv nói là =>  2
+2021-06-07 [11:11:08.683] [Server thread/INFO]: [CMD][JINODK] use /tp ~ ~100 ~
+2021-06-07 [11:11:08.686] [Server thread/INFO]: [JINODK: Teleported JINODK to -86.98, 165, 52.88]
+2021-06-07 [11:11:12.464] [Server thread/INFO]: JINODK fell from a high place
+2021-06-07 [11:11:15.737] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp EggyUnicycle766 JINODK 
+2021-06-07 [11:11:15.740] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to JINODK]
+2021-06-07 [11:12:10.498] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-07 [11:12:10.512] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to client disconnect
+2021-06-07 [11:12:23.942] [Server thread/INFO]: PikarioVN left the game
+2021-06-07 [11:12:23.946] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to timeout
+2021-06-07 [11:12:55.686] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:13:02.943] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Session opened
+2021-06-07 [11:13:03.901] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Player: PikarioVN
+2021-06-07 [11:13:07.454] [Server thread/INFO]: PikarioVN[/125.235.133.41:35059] logged in with entity id 204 at (PlotTest, -61.768, 72.5429, 13.5018)
+2021-06-07 [11:13:15.128] [Server thread/INFO]: [CMD][JINODK] use /gm1
+2021-06-07 [11:13:17.481] [Server thread/ERROR]: [NetworkSession: JINODK] Bad packet (error ID 757f2a8a4e93): Compressed packet batch decode error: Failed to decompress data
+2021-06-07 [11:13:17.485] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:13:17.815] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Packet processing error (Error ID: 757f2a8a4e93)
+2021-06-07 [11:13:17.828] [RakLib thread/NOTICE]: Blocked 117.2.179.197 for 5 seconds
+2021-06-07 [11:13:30.279] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [11:13:30.353] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [11:13:31.634] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 205 at (PlotTest, -91.7318, 68.9059, 46.0193)
+2021-06-07 [11:13:32.798] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:13:32.798] [Server thread/INFO]: PikarioVN joined the game
+2021-06-07 [11:13:34.417] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:13:34.420] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [11:13:54.354] [Server thread/ERROR]: [NetworkSession: JINODK] Bad packet (error ID 96cb2bb9036b): Compressed packet batch decode error: Failed to decompress data
+2021-06-07 [11:13:54.362] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:13:54.576] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Packet processing error (Error ID: 96cb2bb9036b)
+2021-06-07 [11:13:54.586] [RakLib thread/NOTICE]: Blocked 117.2.179.197 for 5 seconds
+2021-06-07 [11:14:07.735] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [11:14:07.829] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [11:14:09.104] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 206 at (PlotTest, -89.2332, 68.944, 44.904)
+2021-06-07 [11:14:11.852] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:14:11.853] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [11:14:20.633] [Server thread/INFO]: [CMD][JINODK] use /kill
+2021-06-07 [11:14:20.740] [Server thread/INFO]: JINODK died
+2021-06-07 [11:14:46.422] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:15:11.772] [Server thread/INFO]: [CMD][JINODK] use /gm1
+2021-06-07 [11:15:18.251] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:19.467] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:20.701] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:21.936] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:23.183] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:26.451] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:28.701] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:35.441] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:36.641] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:37.856] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:39.037] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:40.211] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:41.411] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:42.593] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:45.701] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:47.035] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:48.266] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:48.461] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [11:15:48.544] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [11:15:49.494] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 212 at (PlotTest, -61.905, 72.04, 90.7725)
+2021-06-07 [11:15:49.625] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:50.691] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:51.757] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:53.010] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:55.379] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:15:55.380] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [11:15:55.937] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:15:57.161] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:16:02.712] [Server thread/INFO]: OniiChan  NgLamVN ➩ DK ei
+2021-06-07 [11:16:05.070] [Server thread/INFO]: JINODK ► @NgLamVN
+2021-06-07 [11:16:11.542] [Server thread/INFO]: OniiChan  NgLamVN ➩ Dupe vừa thôi ...
+2021-06-07 [11:16:16.380] [Server thread/INFO]: JINODK ► lượm đống này đi :)
+2021-06-07 [11:16:23.461] [Server thread/INFO]: [CMD][JINODK] use /gm9
+2021-06-07 [11:16:26.191] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:16:31.691] [Server thread/INFO]: [CMD][JINODK] use /tp ~ ~100 ~
+2021-06-07 [11:16:31.693] [Server thread/INFO]: [JINODK: Teleported JINODK to -70.67, 165, 45.71]
+2021-06-07 [11:16:35.100] [Server thread/INFO]: JINODK fell from a high place
+2021-06-07 [11:16:45.333] [Server thread/INFO]: OniiChan  NgLamVN ➩ dauma
+2021-06-07 [11:16:47.843] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-07 [11:16:48.397] [Server thread/INFO]: JINODK ► :)
+2021-06-07 [11:16:49.347] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-07 [11:16:59.095] [Server thread/INFO]: JINODK ► thử drop đi :)
+2021-06-07 [11:17:16.436] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-07 [11:17:19.492] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-07 [11:17:21.764] [Server thread/ERROR]: [NetworkSession: NgLamVN] Bad packet (error ID 79d1e78b85d6): Compressed packet batch decode error: Failed to decompress data
+2021-06-07 [11:17:21.768] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:17:21.915] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Packet processing error (Error ID: 79d1e78b85d6)
+2021-06-07 [11:17:21.916] [RakLib thread/NOTICE]: Blocked 192.168.1.1 for 5 seconds
+2021-06-07 [11:17:38.416] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [11:17:38.510] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [11:17:39.782] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 231 at (PlotTest, -74.5429, 68.2153, 46.3013)
+2021-06-07 [11:17:44.652] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:17:44.653] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [11:17:48.958] [Server thread/INFO]: [Server] Bad packet :b
+2021-06-07 [11:17:54.837] [Server thread/INFO]: [CMD][NgLamVN] use /clear
+2021-06-07 [11:17:55.029] [Server thread/INFO]: [NgLamVN: Cleared the inventory of NgLamVN, removing 1148 items]
+2021-06-07 [11:18:07.351] [Server thread/INFO]: JINODK ► chúc bạn may mắn lần sau nếu k có /clear
+2021-06-07 [11:18:09.502] [Server thread/INFO]: JINODK ► :)
+2021-06-07 [11:18:30.273] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-07 [11:18:54.384] [Server thread/INFO]: [CMD][JINODK] use /gm1
+2021-06-07 [11:19:00.887] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:02.134] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:07.588] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:09.551] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-07 [11:19:09.553] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-07 [11:19:20.301] [Server thread/INFO]: [CMD][JINODK] use /gm0
+2021-06-07 [11:19:27.341] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:28.513] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:29.702] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:30.887] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:32.043] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:33.165] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:34.241] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:35.402] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:36.791] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:38.006] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:38.827] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:19:38.831] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [11:19:39.206] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:40.460] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:41.615] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:42.873] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:44.103] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:45.239] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:46.306] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:47.653] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:48.911] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:49.853] [Server thread/INFO]: [Server] Reloading server ...
+2021-06-07 [11:19:50.291] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:51.861] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:19:53.008] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [11:19:53.022] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:19:53.023] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:19:53.024] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:19:53.028] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:19:53.028] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:19:53.029] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:19:53.031] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:19:53.034] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:19:53.035] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:19:53.037] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:19:53.038] [Server thread/INFO]: PikarioVN left the game
+2021-06-07 [11:19:53.041] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Server closed
+2021-06-07 [11:19:53.043] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:19:53.174] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Server closed
+2021-06-07 [11:19:53.174] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:19:53.253] [Server thread/INFO]: Stopping other threads
+2021-06-07 [11:19:59.488] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:19:59.503] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:19:59.525] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:19:59.525] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:19:59.525] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:19:59.525] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:19:59.525] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:19:59.525] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:19:59.536] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:19:59.544] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:19:59.789] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:19:59.790] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:20:00.408] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:20:00.489] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:20:00.504] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:20:00.505] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:20:00.508] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:20:00.508] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:20:00.511] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:20:00.525] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:20:00.536] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:20:00.548] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:20:00.555] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:20:00.558] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:20:00.560] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:20:00.588] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:20:00.592] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:20:00.592] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:20:00.593] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:20:00.603] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:20:00.607] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:20:00.611] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:20:00.618] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:20:00.696] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:20:00.697] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:20:00.788] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:20:00.800] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:20:00.879] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:20:00.883] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:20:00.907] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:20:00.938] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:20:00.948] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:20:00.949] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:20:00.954] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:20:00.962] [Server thread/CRITICAL]: InvalidArgumentException: "Cannot use non-existing permission "rc.command"" (EXCEPTION) in "pmsrc/src/command/Command" at line 105
+2021-06-07 [11:20:00.963] [Server thread/CRITICAL]: #0 plugins/RankColor-4.0/src/NgLamVN/RankColor/RCcommand(27): pocketmine\command\Command->setPermission(string[10] rc.command)
+2021-06-07 [11:20:00.969] [Server thread/CRITICAL]: #1 plugins/RankColor-4.0/src/NgLamVN/RankColor/RankColor(45): NgLamVN\RankColor\RCcommand->__construct(object NgLamVN\RankColor\RankColor#22427)
+2021-06-07 [11:20:00.970] [Server thread/CRITICAL]: #2 pmsrc/src/plugin/PluginBase(138): NgLamVN\RankColor\RankColor->onEnable()
+2021-06-07 [11:20:00.971] [Server thread/CRITICAL]: #3 pmsrc/src/plugin/PluginManager(400): pocketmine\plugin\PluginBase->onEnableStateChange(true)
+2021-06-07 [11:20:00.972] [Server thread/CRITICAL]: #4 pmsrc/src/Server(1340): pocketmine\plugin\PluginManager->enablePlugin(object NgLamVN\RankColor\RankColor#22427)
+2021-06-07 [11:20:00.973] [Server thread/CRITICAL]: #5 pmsrc/src/Server(1092): pocketmine\Server->enablePlugins(object pocketmine\plugin\PluginEnableOrder#22245)
+2021-06-07 [11:20:00.974] [Server thread/CRITICAL]: #6 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-07 [11:20:00.976] [Server thread/CRITICAL]: #7 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-07 [11:20:00.979] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-07 [11:20:00.994] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Mon_Jun_7-11.20.00-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-07 [11:20:00.995] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:20:00.997] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:20:01.000] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:20:01.001] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:20:01.004] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:20:01.005] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:20:01.005] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:20:01.006] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:20:01.006] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:20:01.007] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:20:23.399] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:20:23.413] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:20:23.440] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:20:23.440] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:20:23.440] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:20:23.440] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:20:23.441] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:20:23.441] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:20:23.445] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:20:23.459] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:20:23.709] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:20:23.709] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:20:24.274] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:20:24.341] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:20:24.356] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:20:24.357] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:20:24.360] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:20:24.360] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:20:24.363] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:20:24.377] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:20:24.383] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:20:24.395] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:20:24.398] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:20:24.406] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:20:24.426] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:20:24.430] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:20:24.430] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:20:24.431] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:20:24.440] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:20:24.445] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:20:24.447] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:20:24.455] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:20:24.459] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:20:24.542] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:20:24.543] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:20:24.596] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:20:24.614] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:20:24.693] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:20:24.696] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:20:24.724] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:20:24.730] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [11:20:24.757] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [11:20:24.772] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:20:24.773] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:20:24.775] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:20:24.804] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:20:24.807] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [11:20:24.863] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [11:20:24.868] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [11:20:24.875] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [11:20:24.875] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [11:20:24.876] [Server thread/INFO]: Done (1.465s)! For help, type "help" or "?"
+2021-06-07 [11:20:36.711] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Session opened
+2021-06-07 [11:20:36.924] [Server thread/INFO]: [NetworkSession: 125.235.133.41 35059] Player: PikarioVN
+2021-06-07 [11:20:40.076] [Server thread/INFO]: PikarioVN[/125.235.133.41:35059] logged in with entity id 1 at (PlotTest, -64.2974, 71.7302, 17.2632)
+2021-06-07 [11:21:04.530] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:21:04.540] [Server thread/INFO]: PikarioVN joined the game
