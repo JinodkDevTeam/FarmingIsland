@@ -7414,3 +7414,382 @@
 2021-06-07 [11:27:27.306] [Server thread/INFO]: NgLamVN left the game
 2021-06-07 [11:27:27.314] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
 2021-06-07 [11:27:36.302] [Server thread/INFO]: [Server] OK
+2021-06-07 [11:29:19.921] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Session opened
+2021-06-07 [11:29:20.006] [Server thread/INFO]: [NetworkSession: 117.2.179.197 57124] Player: JINODK
+2021-06-07 [11:29:20.944] [Server thread/INFO]: JINODK[/117.2.179.197:57124] logged in with entity id 3 at (PlotTest, -73.9974, 65, 46.1158)
+2021-06-07 [11:29:24.048] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:29:24.096] [Server thread/INFO]: JINODK joined the game
+2021-06-07 [11:29:55.213] [Server thread/INFO]: [CMD][JINODK] use /give JINODK chest
+2021-06-07 [11:29:55.234] [Server thread/INFO]: [JINODK: Given Chest (54:0) * 64 to JINODK]
+2021-06-07 [11:30:56.501] [Server thread/INFO]: [CMD][JINODK] use /clear
+2021-06-07 [11:30:56.553] [Server thread/INFO]: [JINODK: Cleared the inventory of JINODK, removing 1022 items]
+2021-06-07 [11:31:04.516] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:08.381] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:09.534] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:10.912] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:12.051] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:13.151] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:36.836] [Server thread/INFO]: [CMD][JINODK] use /dupe
+2021-06-07 [11:31:47.067] [Server thread/INFO]: [CMD][JINODK] use /clear
+2021-06-07 [11:31:47.073] [Server thread/INFO]: [JINODK: Cleared the inventory of JINODK, removing 32 items]
+2021-06-07 [11:33:13.361] [Server thread/INFO]: JINODK left the game
+2021-06-07 [11:33:13.371] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to client disconnect
+2021-06-07 [11:33:22.750] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [11:33:22.773] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:33:22.775] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:33:22.775] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:33:22.777] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:33:22.778] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:33:22.778] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:33:22.779] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:33:22.779] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:33:22.785] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:33:22.788] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:33:22.793] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:33:22.795] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:33:23.392] [Server thread/INFO]: Stopping other threads
+2021-06-07 [11:33:48.164] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:33:48.183] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:33:48.215] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:33:48.215] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:33:48.215] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:33:48.215] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:33:48.216] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:33:48.216] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:33:48.228] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:33:48.240] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:33:48.441] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:33:48.442] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:33:48.966] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:33:49.060] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:33:49.091] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:33:49.096] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:33:49.097] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:33:49.100] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:33:49.101] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:33:49.107] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:33:49.121] [Server thread/ERROR]: Could not load plugin 'CustomShopUI': Incompatible API version (plugin requires one of: 3.0.0)
+2021-06-07 [11:33:49.126] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:33:49.130] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:33:49.133] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:33:49.143] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:33:49.147] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:33:49.150] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:33:49.232] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:33:49.239] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:33:49.264] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:33:49.276] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:33:49.276] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:33:49.277] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:33:49.282] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:33:49.283] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:33:49.292] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:33:49.377] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:33:49.391] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [11:33:49.414] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [11:33:49.429] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:33:49.473] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:33:49.475] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:33:49.545] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [11:33:49.545] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:33:49.551] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:33:49.607] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:33:49.617] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:33:49.619] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:33:49.679] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [11:33:49.681] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [11:33:49.683] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [11:33:49.684] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [11:33:49.691] [Server thread/INFO]: Done (1.511s)! For help, type "help" or "?"
+2021-06-07 [11:33:53.724] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:33:54.559] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [11:33:54.559] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:33:54.560] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:33:54.560] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:33:54.562] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:33:54.562] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:33:54.562] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:33:54.562] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:33:54.563] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:33:54.564] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:33:54.564] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:33:54.565] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:33:54.566] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:33:54.647] [Server thread/INFO]: Stopping other threads
+2021-06-07 [11:34:06.294] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:34:06.308] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:34:06.332] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:34:06.332] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:34:06.332] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:34:06.332] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:34:06.332] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:34:06.333] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:34:06.343] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:34:06.350] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:34:06.580] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:34:06.580] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:34:07.114] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:34:07.211] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:34:07.230] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:34:07.234] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:34:07.236] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:34:07.243] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:34:07.244] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:34:07.246] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:34:07.267] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:34:07.278] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:34:07.300] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:34:07.311] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:34:07.311] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:34:07.312] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:34:07.315] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:34:07.318] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:34:07.326] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:34:07.330] [Server thread/INFO]: Loading CustomShopUI v4.0.5
+2021-06-07 [11:34:07.336] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:34:07.346] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:34:07.444] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:34:07.448] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:34:07.449] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:34:07.458] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:34:07.515] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:34:07.529] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [11:34:07.549] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [11:34:07.562] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:34:07.597] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:34:07.612] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [11:34:07.612] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:34:07.696] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:34:07.698] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:34:07.701] [Server thread/INFO]: Enabling CustomShopUI v4.0.5
+2021-06-07 [11:34:07.707] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:34:07.744] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:34:07.744] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:34:07.810] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [11:34:07.813] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [11:34:07.814] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [11:34:07.815] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [11:34:07.816] [Server thread/INFO]: Done (1.515s)! For help, type "help" or "?"
+2021-06-07 [11:34:09.359] [Server thread/INFO]: Plugins (12): ClearLagg v0.1, CustomShopUI v4.0.5, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, FI-RankColor v0.1-ngl_alpha, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-07 [11:34:10.476] [Server thread/INFO]: Please use this in-game.
+2021-06-07 [11:34:14.817] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [11:34:14.856] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [11:34:15.476] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-07 [11:34:15.896] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, -58.8711, 65.5, 44.2282)
+2021-06-07 [11:34:22.748] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:34:22.760] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [11:34:37.703] [Server thread/INFO]: [CMD][NgLamVN] use /time set dya
+2021-06-07 [11:34:37.703] [Server thread/INFO]: [NgLamVN: Set the time to 0]
+2021-06-07 [11:34:46.694] [Server thread/INFO]: [CMD][NgLamVN] use /shop
+2021-06-07 [11:34:46.697] [Server thread/CRITICAL]: ErrorException: "Object of class pocketmine\player\GameMode could not be converted to int" (EXCEPTION) in "plugins/CustomShopUI-4.0/src/SaltyPixelDevz/CustomShopUIv2/Shop" at line 86
+2021-06-07 [11:34:46.698] [Server thread/CRITICAL]: #0 plugins/CustomShopUI-4.0/src/SaltyPixelDevz/CustomShopUIv2/Shop(86): pocketmine\errorhandler\ErrorToExceptionHandler::handle(integer 8, string[72] Object of class pocketmine\player\GameMode could not be converted to int, string[91] D:\MinecraftTool\FI-pm4\plugins\CustomShopUI-4.0\src\SaltyPixelDevz\CustomShopUI, integer 86, array[9])
+2021-06-07 [11:34:46.698] [Server thread/CRITICAL]: #1 pmsrc/src/command/PluginCommand(54): SaltyPixelDevz\CustomShopUIv2\Shop->onCommand(object pocketmine\player\Player#24668, object pocketmine\command\PluginCommand#22418, string[4] shop, array[0])
+2021-06-07 [11:34:46.701] [Server thread/CRITICAL]: #2 pmsrc/src/command/SimpleCommandMap(246): pocketmine\command\PluginCommand->execute(object pocketmine\player\Player#24668, string[4] shop, array[0])
+2021-06-07 [11:34:46.702] [Server thread/CRITICAL]: #3 pmsrc/src/Server(1363): pocketmine\command\SimpleCommandMap->dispatch(object pocketmine\player\Player#24668, string[4] shop)
+2021-06-07 [11:34:46.703] [Server thread/CRITICAL]: #4 pmsrc/src/player/Player(1363): pocketmine\Server->dispatchCommand(object pocketmine\player\Player#24668, string[4] shop)
+2021-06-07 [11:34:46.703] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/handler/InGamePacketHandler(723): pocketmine\player\Player->chat(string[5] /shop)
+2021-06-07 [11:34:46.704] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/protocol/CommandRequestPacket(54): pocketmine\network\mcpe\handler\InGamePacketHandler->handleCommandRequest(object pocketmine\network\mcpe\protocol\CommandRequestPacket#131866)
+2021-06-07 [11:34:46.708] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\CommandRequestPacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler#127997)
+2021-06-07 [11:34:46.714] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\CommandRequestPacket#131866, string[26] M./shop.FK.iS.5.....<X....)
+2021-06-07 [11:34:46.719] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[29] ..e./../`p.....c.'.vj.M..)...)
+2021-06-07 [11:34:46.719] [Server thread/CRITICAL]: #10 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[38] .Lx.51.N.g..7.I..J..W...h.Dy.lB*w...S.)
+2021-06-07 [11:34:46.720] [Server thread/CRITICAL]: #11 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23138)
+2021-06-07 [11:34:46.721] [Server thread/CRITICAL]: #12 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-07 [11:34:46.729] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-07 [11:34:46.731] [Server thread/CRITICAL]: #14 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1623040486.7388)
+2021-06-07 [11:34:46.736] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-07 [11:34:46.736] [Server thread/CRITICAL]: #16 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-07 [11:34:46.737] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-07 [11:34:46.741] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-07 [11:34:46.759] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Mon_Jun_7-11.34.46-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-07 [11:34:46.763] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:34:46.765] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:34:46.765] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:34:46.767] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:34:46.767] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:34:46.768] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:34:46.769] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:34:46.769] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:34:46.770] [Server thread/INFO]: Disabling CustomShopUI v4.0.5
+2021-06-07 [11:34:46.771] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:34:46.777] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:34:46.781] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:34:46.783] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:34:46.787] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-07 [11:34:46.788] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:35:37.723] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:35:37.735] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:35:37.753] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:35:37.753] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:35:37.753] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:35:37.753] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:35:37.753] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:35:37.753] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:35:37.759] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:35:37.767] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:35:37.964] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:35:37.964] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:35:38.345] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:35:38.390] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:35:38.404] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:35:38.410] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:35:38.411] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:35:38.414] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:35:38.415] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:35:38.417] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:35:38.433] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:35:38.438] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:35:38.440] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:35:38.445] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:35:38.448] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:35:38.503] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:35:38.520] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:35:38.526] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:35:38.526] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:35:38.527] [Server thread/INFO]: Loading CustomShopUI v4.0.5
+2021-06-07 [11:35:38.532] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:35:38.535] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:35:38.538] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:35:38.548] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:35:38.548] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:35:38.555] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:35:38.664] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:35:38.674] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [11:35:38.691] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [11:35:38.701] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:35:38.798] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:35:38.801] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:35:38.804] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:35:38.840] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:35:38.852] [Server thread/INFO]: Enabling CustomShopUI v4.0.5
+2021-06-07 [11:35:38.855] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [11:35:38.855] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:35:38.888] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:35:38.889] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:35:38.947] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [11:35:38.950] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [11:35:38.953] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [11:35:38.954] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [11:35:38.955] [Server thread/INFO]: Done (1.222s)! For help, type "help" or "?"
+2021-06-07 [11:35:49.757] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [11:35:49.807] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [11:35:51.204] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, -60.1972, 65, 41.94)
+2021-06-07 [11:35:58.920] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:35:58.928] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [11:36:01.615] [Server thread/INFO]: [CMD][NgLamVN] use /shop
+2021-06-07 [11:36:03.773] [Server thread/CRITICAL]: ErrorException: "Non-static method pocketmine\item\ItemFactory::get() should not be called statically" (EXCEPTION) in "plugins/CustomShopUI-4.0/src/SaltyPixelDevz/CustomShopUIv2/Shop" at line 224
+2021-06-07 [11:36:03.773] [Server thread/CRITICAL]: #0 plugins/CustomShopUI-4.0/src/SaltyPixelDevz/CustomShopUIv2/Shop(224): pocketmine\errorhandler\ErrorToExceptionHandler::handle(integer 8192, string[84] Non-static method pocketmine\item\ItemFactory::get() should not be called static, string[91] D:\MinecraftTool\FI-pm4\plugins\CustomShopUI-4.0\src\SaltyPixelDevz\CustomShopUI, integer 224, array[10])
+2021-06-07 [11:36:03.775] [Server thread/CRITICAL]: #1 plugins/CustomShopUI-4.0/src/SaltyPixelDevz/CustomShopUIv2/Shop(138): SaltyPixelDevz\CustomShopUIv2\Shop->Items(object pocketmine\player\Player#24627, integer 4, array[6], string[4] shop)
+2021-06-07 [11:36:03.776] [Server thread/CRITICAL]: #2 pmsrc/virions/FormAPI-4.0/src/jojoe77777/FormAPI/Form(46): SaltyPixelDevz\CustomShopUIv2\Shop->SaltyPixelDevz\CustomShopUIv2\{closure}(object pocketmine\player\Player#24627, integer 5)
+2021-06-07 [11:36:03.786] [Server thread/CRITICAL]: #3 pmsrc/src/player/Player(1886): jojoe77777\FormAPI\Form->handleResponse(object pocketmine\player\Player#24627, integer 5)
+2021-06-07 [11:36:03.786] [Server thread/CRITICAL]: #4 pmsrc/src/network/mcpe/handler/InGamePacketHandler(809): pocketmine\player\Player->onFormSubmit(integer 1, integer 5)
+2021-06-07 [11:36:03.787] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/protocol/ModalFormResponsePacket(49): pocketmine\network\mcpe\handler\InGamePacketHandler->handleModalFormResponse(object pocketmine\network\mcpe\protocol\ModalFormResponsePacket#131080)
+2021-06-07 [11:36:03.788] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\ModalFormResponsePacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler#128757)
+2021-06-07 [11:36:03.788] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\ModalFormResponsePacket#131080, string[5] e..5.)
+2021-06-07 [11:36:03.789] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[8] cMed2...)
+2021-06-07 [11:36:03.790] [Server thread/CRITICAL]: #9 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[17] ..v.....)....%..7)
+2021-06-07 [11:36:03.790] [Server thread/CRITICAL]: #10 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23138)
+2021-06-07 [11:36:03.791] [Server thread/CRITICAL]: #11 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-07 [11:36:03.803] [Server thread/CRITICAL]: #12 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-07 [11:36:03.804] [Server thread/CRITICAL]: #13 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1623040563.8083)
+2021-06-07 [11:36:03.804] [Server thread/CRITICAL]: #14 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-07 [11:36:03.805] [Server thread/CRITICAL]: #15 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-07 [11:36:03.806] [Server thread/CRITICAL]: #16 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-07 [11:36:03.807] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-07 [11:36:03.822] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Mon_Jun_7-11.36.03-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-07 [11:36:03.823] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:36:03.824] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:36:03.825] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:36:03.830] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:36:03.833] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:36:03.838] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:36:03.839] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:36:03.839] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:36:03.840] [Server thread/INFO]: Disabling CustomShopUI v4.0.5
+2021-06-07 [11:36:03.840] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:36:03.841] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:36:03.841] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:36:03.842] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:36:03.851] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-07 [11:36:03.853] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:38:14.295] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-07 [11:38:14.307] [Server thread/INFO]: Loading server configuration
+2021-06-07 [11:38:14.325] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-07 [11:38:14.325] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:38:14.325] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-07 [11:38:14.325] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-07 [11:38:14.325] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-07 [11:38:14.325] [Server thread/WARNING]: ----------------------------------------
+2021-06-07 [11:38:14.330] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-07 [11:38:14.343] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-07 [11:38:14.526] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-07 [11:38:14.526] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-07 [11:38:14.891] [Server thread/INFO]: Loading resource packs...
+2021-06-07 [11:38:14.948] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-07 [11:38:14.967] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:38:14.974] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-07 [11:38:14.975] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-07 [11:38:14.978] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-07 [11:38:14.978] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-07 [11:38:14.981] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-07 [11:38:14.995] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-07 [11:38:14.997] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-07 [11:38:15.000] [Server thread/INFO]: Loading FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:38:15.005] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-07 [11:38:15.010] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-07 [11:38:15.013] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-07 [11:38:15.032] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-07 [11:38:15.039] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-07 [11:38:15.039] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-07 [11:38:15.040] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-07 [11:38:15.044] [Server thread/INFO]: Loading CustomShopUI v4.0.5
+2021-06-07 [11:38:15.050] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-07 [11:38:15.124] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-07 [11:38:15.130] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-07 [11:38:15.131] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:38:15.139] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-07 [11:38:15.272] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-07 [11:38:15.285] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-07 [11:38:15.332] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-07 [11:38:15.336] [Server thread/INFO]: Enabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:38:15.343] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-07 [11:38:15.372] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-07 [11:38:15.389] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-07 [11:38:15.389] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-07 [11:38:15.433] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-07 [11:38:15.459] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-07 [11:38:15.552] [Server thread/INFO]: Enabling CustomShopUI v4.0.5
+2021-06-07 [11:38:15.558] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-07 [11:38:15.558] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-07 [11:38:15.622] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-07 [11:38:15.624] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-07 [11:38:15.625] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-07 [11:38:15.625] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-07 [11:38:15.628] [Server thread/INFO]: Done (1.323s)! For help, type "help" or "?"
+2021-06-07 [11:38:24.167] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Session opened
+2021-06-07 [11:38:24.207] [Server thread/INFO]: [NetworkSession: 192.168.1.1 53140] Player: NgLamVN
+2021-06-07 [11:38:25.225] [Server thread/INFO]: NgLamVN[/192.168.1.1:53140] logged in with entity id 1 at (PlotTest, -60.1972, 65, 41.94)
+2021-06-07 [11:38:30.722] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-07 [11:38:30.730] [Server thread/INFO]: NgLamVN joined the game
+2021-06-07 [11:38:36.025] [Server thread/INFO]: [CMD][NgLamVN] use /shop
+2021-06-07 [11:38:50.197] [Server thread/INFO]: [CMD][NgLamVN] use /mymoney
+2021-06-07 [11:38:56.102] [Server thread/INFO]: [CMD][NgLamVN] use /shop
+2021-06-07 [11:39:22.550] [Server thread/INFO]: [CMD][NgLamVN] use /plugins
+2021-06-07 [11:39:38.661] [Server thread/INFO]: NgLamVN left the game
+2021-06-07 [11:39:38.668] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-07 [11:39:42.256] [Server thread/INFO]: Plugins (12): ClearLagg v0.1, CustomShopUI v4.0.5, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, FI-RankColor v0.1-ngl_alpha, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-07 [11:39:47.681] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-07 [11:39:47.699] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-07 [11:39:47.700] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-07 [11:39:47.701] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-07 [11:39:47.703] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-07 [11:39:47.704] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-07 [11:39:47.705] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-07 [11:39:47.707] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-07 [11:39:47.708] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-07 [11:39:47.709] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-07 [11:39:47.713] [Server thread/INFO]: Disabling CustomShopUI v4.0.5
+2021-06-07 [11:39:47.714] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-07 [11:39:47.716] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-07 [11:39:47.716] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-07 [11:39:48.682] [Server thread/INFO]: Stopping other threads

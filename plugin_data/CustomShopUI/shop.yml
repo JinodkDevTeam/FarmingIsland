@@ -1,0 +1,94 @@
+## DO NOT TOUCH (This is for Updates only!)
+shop-version: 4
+# DO NOT TOUCH ^^^^^
+
+#Command Example!!!
+#======================================================================================================
+# Commands:
+#
+#
+#    - "cmd:Sharpness III:100:Console:enchant {player} protection 3:textures/items/stone_sword"
+#            NAME^^^ Price^^^ TYPE^^^            COMMAND^^^^^             PICTURE^^^^^^^
+#
+# Items:
+#
+#   - "268:0:1:250:0:Default:textures/items/wood_sword"
+#
+#   - "ID:META:NUMBER:PRICE(PER ITEM THEY BUY):SELL(PER ITEM THEY SELL):NAME(Defalut OR Custom with §):Picture"
+#
+######## IMPORTANT #########
+#
+#  Next Update Finishes Enchants (Can be Done with Commands!)
+#
+#  NEW!!! We have a Minecraft Texture Library on our Website!
+#         Go to: http://saltypixel.gs/textures after that add the item like this:
+#                   http://saltypixel.ga/textures/blocks/tnt_side.png (You can Send us .png files and we will add them!)
+#                          That would Look like this in use!
+#
+#   - "268:0:1:250:0:Default:http://saltypixel.ha/textures/blocks/tnt_side.png"
+#
+#
+# Developer: AlexPads Team: SaltyPixelDevz! (hub.saltypixel.ga 19132) Join!
+# NEW!!!!!!!!!! SubCategories!
+#======================================================================================================
+
+# MUST be all Lowercase! RECOMMENDED TO KEEP THIS YOUR DEFAULT SHOP!
+shop: # if you want the shop to have a custom name you must add the options in the Config.yml file if now it will default to ShopUI
+  0: #must start at 0 and go up by one with every new category you make.
+    Name: "Tools:textures/items/diamond_hoe" #Can use Custom Colors in the Names using the "§" Symbol
+    Sub:
+      0:
+        Name: "Hoe:textures/items/wood_hoe"
+        Items:
+          - "290:0:1:20:0:Default:textures/items/wood_hoe"
+          - "291:0:1:25:0:Default:textures/items/stone_hoe"
+          - "292:0:1:100:0:Default:textures/items/iron_hoe"
+          - "294:0:1:50:0:Default:textures/items/gold_hoe"
+          - "293:0:1:200:0:Default:textures/items/diamond_hoe"
+          - "747:0:1:1000:0:Default:textures/items/netherite_hoe"
+  1:
+    Name: "Blocks:textures/ui/worldsIcon"
+    Items:
+      - "3:0:1:1.25:0:Default:textures/blocks/dirt"
+      - "1:0:1:0.5:0:Default:textures/blocks/stone"
+      - "12:0:1:1:0:Default:textures/blocks/sand"
+      - "13:0:1:1:0:Default:textures/blocks/gravel"
+      - "155:0:1:50:0:Default:textures/blocks/quartz_block_side"
+      - "35:0:1:2:0:Default:textures/blocks/wool_colored_white"
+      - "121:0:1:10:0:Default:textures/blocks/end_stone"
+      - "89:0:1:1500:0:Default:textures/blocks/glowstone"
+      - "79:0:1:50:0:Default:textures/blocks/ice"
+  2:
+    Name: "Material:textures/ui/icon_recipe_item"
+    Items:
+      - "337:0:1:0.5:0:Default:textures/items/clay_ball"
+  3:
+    Name: "Dye:textures/ui/color_picker"
+    Items:
+      - "351:16:1:0.2:0:Default:textures/items/dye_powder_black_new"
+      - "351:18:1:0.2:0:Default:textures/items/dye_powder_blue_new"
+      - "351:17:1:0.2:0:Default:textures/items/dye_powder_brown_new"
+      - "351:2:1:0.2:0:Default:textures/items/dye_powder_green"
+      - "351:1:1:0.2:0:Default:textures/items/dye_powder_red"
+      - "351:19:1:0.2:0:Default:textures/items/dye_powder_white_new"
+      - "351:11:1:0.2:0:Default:textures/items/dye_powder_yellow"
+  4:
+    Name: "Skin for tree:textures/blocks/sapling_oak"
+    Items:
+      - "6:0:1:10:0:Default:textures/blocks/sapling_oak"
+      - "6:1:1:2000:0:Default:textures/blocks/sapling_spruce"
+      - "6:2:1:1000:0:Default:textures/blocks/sapling_birch"
+      - "6:3:1:2000:0:Default:textures/blocks/sapling_jungle"
+      - "6:4:1:2500:0:Default:textures/blocks/sapling_acacia"
+      - "6:5:1:5000:0:Default:textures/blocks/sapling_roofed_oak"
+  5:
+    Name: "For players who think they have enough money to buy:textures/ui/icon_minecoin_9x9"
+    Items:
+      - "218:0:1:2000000:0:Default:textures/blocks/shulker_top_white"
+      - "130:0:1:5000000:0:Default:textures/blocks/ender_chest_front"
+      - "138:0:1:2500000:0:Default:textures/blocks/beacon"
+      - "169:0:1:250000:0:Default:textures/blocks/sea_lantern"
+      - "213:0:1:100000:0:Default:textures/blocks/magma"
+      - "247:0:1:8000000:0:Default:textures/blocks/reactor_core_stage_0"
+      - "246:0:1:5000000:0:Default:textures/blocks/glowing_obsidian"
+
