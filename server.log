@@ -4446,3 +4446,1916 @@
 2021-06-04 [18:17:57.297] [Server thread/INFO]: Disabling PureChat v1.4.11
 2021-06-04 [18:17:57.297] [Server thread/INFO]: Unloading world "PlotTest"
 2021-06-04 [18:18:02.424] [Server thread/INFO]: Stopping other threads
+2021-06-04 [18:19:36.417] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [18:19:36.433] [Server thread/INFO]: Loading server configuration
+2021-06-04 [18:19:36.454] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [18:19:36.455] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [18:19:36.455] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [18:19:36.455] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [18:19:36.456] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [18:19:36.456] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [18:19:36.466] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [18:19:36.480] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [18:19:36.798] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [18:19:36.799] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [18:19:37.436] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [18:19:37.536] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:19:37.551] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [18:19:37.552] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [18:19:37.556] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [18:19:37.557] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [18:19:37.564] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [18:19:37.571] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:19:37.583] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [18:19:37.597] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [18:19:37.600] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [18:19:37.602] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [18:19:37.609] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [18:19:37.615] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [18:19:37.636] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [18:19:37.647] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [18:19:37.647] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [18:19:37.648] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [18:19:37.651] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [18:19:37.662] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [18:19:37.754] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [18:19:37.754] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [18:19:37.830] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [18:19:37.841] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [18:19:37.880] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [18:19:37.881] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [18:19:37.882] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [18:19:37.903] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [18:19:37.920] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [18:19:37.961] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [18:19:37.979] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [18:19:38.067] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [18:19:38.067] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [18:19:38.134] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [18:19:38.136] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [18:19:38.147] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [18:19:38.147] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [18:19:38.149] [Server thread/INFO]: Done (1.718s)! For help, type "help" or "?"
+2021-06-04 [18:19:44.362] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Session opened
+2021-06-04 [18:19:44.402] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Player: NgLamVN
+2021-06-04 [18:19:45.550] [Server thread/INFO]: NgLamVN[/192.168.1.1:52896] logged in with entity id 1 at (PlotTest, 26.5401, 63.729, 29.3897)
+2021-06-04 [18:19:51.614] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [18:19:51.626] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [18:19:59.794] [Server thread/INFO]: [NetworkSession: 125.212.173.75 2581] Session opened
+2021-06-04 [18:19:59.868] [Server thread/INFO]: [NetworkSession: 125.212.173.75 2581] Player: EggyUnicycle766
+2021-06-04 [18:20:00.801] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:2581] logged in with entity id 3 at (PlotTest, 15.3516, 65, 1.4621)
+2021-06-04 [18:20:05.222] [Server thread/INFO]: NgLamVN ► Bruh
+2021-06-04 [18:20:08.753] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [18:20:08.754] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [18:20:20.193] [Server thread/INFO]: [CMD][NgLamVN] use /fly
+2021-06-04 [18:20:23.864] [Server thread/INFO]: NgLamVN ► Yes
+2021-06-04 [18:20:27.347] [Server thread/INFO]: NgLamVN ► It work !!!!!
+2021-06-04 [18:20:31.872] [Server thread/INFO]: EggyUnicycle766 ► ơ
+2021-06-04 [18:20:34.514] [Server thread/INFO]: NgLamVN ► ToDo: fishing modules...
+2021-06-04 [18:20:35.632] [Server thread/INFO]: EggyUnicycle766 ► k đặt đx
+2021-06-04 [18:20:46.192] [Server thread/INFO]: NgLamVN ► OP bị reset r
+2021-06-04 [18:20:50.420] [Server thread/INFO]: EggyUnicycle766 ► :v
+2021-06-04 [18:20:59.934] [Server thread/INFO]: Usage: /op <player>
+2021-06-04 [18:21:06.424] [Server thread/INFO]: [CONSOLE: Opped EggyUnicycle766]
+2021-06-04 [18:21:11.469] [Server thread/INFO]: NgLamVN ► R đó
+2021-06-04 [18:21:19.077] [Server thread/INFO]: EggyUnicycle766 ► pm4 là đảo thế nào vậy lam
+2021-06-04 [18:21:33.137] [Server thread/CRITICAL]: Error: "Call to a member function getValue() on null" (EXCEPTION) in "plugins/GameHandle-4.0/src/NgLamVN/GameHandle/GameMenu/Menu" at line 79
+2021-06-04 [18:21:33.137] [Server thread/CRITICAL]: #0 plugins/GameHandle-4.0/src/NgLamVN/GameHandle/EventListener(91): NgLamVN\GameHandle\GameMenu\Menu->onTap(object pocketmine\event\player\PlayerInteractEvent#79102)
+2021-06-04 [18:21:33.139] [Server thread/CRITICAL]: #1 pmsrc/src/event/RegisteredListener(75): NgLamVN\GameHandle\EventListener->onTap(object pocketmine\event\player\PlayerInteractEvent#79102)
+2021-06-04 [18:21:33.142] [Server thread/CRITICAL]: #2 pmsrc/src/event/Event(62): pocketmine\event\RegisteredListener->callEvent(object pocketmine\event\player\PlayerInteractEvent#79102)
+2021-06-04 [18:21:33.142] [Server thread/CRITICAL]: #3 pmsrc/src/world/World(1767): pocketmine\event\Event->call()
+2021-06-04 [18:21:33.143] [Server thread/CRITICAL]: #4 pmsrc/src/player/Player(1626): pocketmine\world\World->useItemOn(object pocketmine\math\Vector3#102051, object pocketmine\item\Item#110438, integer 1, object pocketmine\math\Vector3#111497, object pocketmine\player\Player#24536, true)
+2021-06-04 [18:21:33.144] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/handler/InGamePacketHandler(370): pocketmine\player\Player->interactBlock(object pocketmine\math\Vector3#102051, integer 1, object pocketmine\math\Vector3#111497)
+2021-06-04 [18:21:33.144] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/handler/InGamePacketHandler(230): pocketmine\network\mcpe\handler\InGamePacketHandler->handleUseItemTransaction(object pocketmine\network\mcpe\protocol\types\inventory\UseItemTransactionData#79124)
+2021-06-04 [18:21:33.145] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/protocol/InventoryTransactionPacket(106): pocketmine\network\mcpe\handler\InGamePacketHandler->handleInventoryTransaction(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#79486)
+2021-06-04 [18:21:33.146] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\InventoryTransactionPacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler#81024)
+2021-06-04 [18:21:33.149] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#79486, string[54] .....*R........................Ar=.B..'...Y?...?.{!?.))
+2021-06-04 [18:21:33.154] [Server thread/CRITICAL]: #10 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[61] 3.c`b`...e.h`cd....8x.....v...................i......c&......)
+2021-06-04 [18:21:33.159] [Server thread/CRITICAL]: #11 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[70] ......q....L.9...{..^jY....)..t........Q....n...wW..E.....b..|...i....)
+2021-06-04 [18:21:33.160] [Server thread/CRITICAL]: #12 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23103)
+2021-06-04 [18:21:33.160] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-04 [18:21:33.161] [Server thread/CRITICAL]: #14 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-04 [18:21:33.162] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622805693.1496)
+2021-06-04 [18:21:33.163] [Server thread/CRITICAL]: #16 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-04 [18:21:33.164] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-04 [18:21:33.166] [Server thread/CRITICAL]: #18 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-04 [18:21:33.171] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-04 [18:21:33.188] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Fri_Jun_4-18.21.33-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-04 [18:21:33.189] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:21:33.190] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [18:21:33.192] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [18:21:33.193] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [18:21:33.193] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [18:21:33.194] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [18:21:33.198] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [18:21:33.202] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [18:21:33.202] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [18:21:33.203] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [18:21:33.204] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [18:21:33.209] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-04 [18:21:33.210] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [18:21:33.220] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-04 [18:21:33.221] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [18:23:29.488] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [18:23:29.499] [Server thread/INFO]: Loading server configuration
+2021-06-04 [18:23:29.518] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [18:23:29.518] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [18:23:29.518] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [18:23:29.518] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [18:23:29.518] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [18:23:29.518] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [18:23:29.526] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [18:23:29.533] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [18:23:29.734] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [18:23:29.734] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [18:23:30.167] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [18:23:30.216] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:23:30.228] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [18:23:30.230] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [18:23:30.233] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [18:23:30.233] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [18:23:30.237] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [18:23:30.246] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:23:30.252] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [18:23:30.266] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [18:23:30.269] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [18:23:30.274] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [18:23:30.277] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [18:23:30.280] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [18:23:30.298] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [18:23:30.303] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [18:23:30.303] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [18:23:30.306] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [18:23:30.376] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [18:23:30.380] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [18:23:30.385] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [18:23:30.385] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [18:23:30.475] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [18:23:30.484] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [18:23:30.502] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [18:23:30.512] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [18:23:30.544] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [18:23:30.544] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [18:23:30.545] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [18:23:30.573] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [18:23:30.592] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [18:23:30.735] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [18:23:30.736] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [18:23:30.826] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [18:23:30.828] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [18:23:30.830] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [18:23:30.832] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [18:23:30.833] [Server thread/INFO]: Done (1.336s)! For help, type "help" or "?"
+2021-06-04 [18:24:03.967] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Session opened
+2021-06-04 [18:24:04.023] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Player: NgLamVN
+2021-06-04 [18:24:05.228] [Server thread/INFO]: NgLamVN[/192.168.1.1:52896] logged in with entity id 1 at (PlotTest, 20.1293, 83, -10.4378)
+2021-06-04 [18:24:12.218] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [18:24:12.237] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [18:27:57.543] [Server thread/INFO]: [NetworkSession: 192.168.1.29 41985] Session opened
+2021-06-04 [18:27:57.600] [Server thread/INFO]: [NetworkSession: 192.168.1.29 41985] Player: BamProVN
+2021-06-04 [18:27:58.927] [Server thread/INFO]: BamProVN[/192.168.1.29:41985] logged in with entity id 3 at (PlotTest, 15.072, 18, 22.8022)
+2021-06-04 [18:28:07.795] [Server thread/INFO]: [CMD][NgLamVN] use /fi-ver
+2021-06-04 [18:28:12.611] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [18:28:12.613] [Server thread/INFO]: BamProVN joined the game
+2021-06-04 [18:28:12.818] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-04 [18:28:16.163] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-04 [18:28:37.550] [Server thread/INFO]: [CONSOLE: Opped BamProVN]
+2021-06-04 [18:29:52.311] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [18:29:52.316] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [18:29:58.606] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-04 [18:30:00.238] [Server thread/INFO]: Server version: 0.1-v4
+2021-06-04 [18:31:27.623] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Session opened
+2021-06-04 [18:31:27.626] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Player: NgLamVN
+2021-06-04 [18:31:27.677] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [18:31:27.690] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Session opened
+2021-06-04 [18:31:27.694] [Server thread/INFO]: [NetworkSession: 192.168.1.1 52896] Player: NgLamVN
+2021-06-04 [18:31:27.864] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [18:31:28.958] [Server thread/INFO]: NgLamVN[/192.168.1.1:52896] logged in with entity id 4 at (PlotTest, 14.5385, 41, 4.6172)
+2021-06-04 [18:31:35.727] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [18:31:35.728] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [18:33:51.750] [Server thread/INFO]: [CMD][BamProVN] use /time set sunrise 
+2021-06-04 [18:33:51.751] [Server thread/INFO]: [BamProVN: Set the time to 23000]
+2021-06-04 [18:33:57.791] [Server thread/INFO]: [CMD][BamProVN] use /tp NgLamVN 
+2021-06-04 [18:33:57.793] [Server thread/INFO]: [BamProVN: Teleported BamProVN to NgLamVN]
+2021-06-04 [18:34:08.415] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [18:34:08.421] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [18:34:25.213] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-04 [18:34:25.253] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [18:34:25.256] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [18:34:25.256] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [18:34:25.259] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [18:34:25.259] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [18:34:25.261] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [18:34:25.261] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [18:34:25.262] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [18:34:25.263] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [18:34:25.264] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [18:34:25.265] [Server thread/INFO]: BamProVN left the game
+2021-06-04 [18:34:25.274] [Server thread/INFO]: [NetworkSession: BamProVN] Session closed due to Server closed
+2021-06-04 [18:34:25.274] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [18:34:25.385] [Server thread/INFO]: Stopping other threads
+2021-06-04 [20:03:40.631] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [20:03:40.656] [Server thread/INFO]: Loading server configuration
+2021-06-04 [20:03:40.683] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [20:03:40.684] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:03:40.687] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [20:03:40.688] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [20:03:40.688] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [20:03:40.688] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:03:40.696] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [20:03:40.715] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [20:03:40.988] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [20:03:40.988] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [20:03:42.207] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [20:03:42.362] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [20:03:42.406] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:03:42.413] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [20:03:42.416] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [20:03:42.423] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [20:03:42.424] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [20:03:42.428] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [20:03:42.456] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [20:03:42.462] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [20:03:42.473] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [20:03:42.629] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [20:03:42.637] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [20:03:42.643] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [20:03:42.681] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [20:03:42.695] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [20:03:42.695] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [20:03:42.697] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [20:03:42.706] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [20:03:42.716] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [20:03:42.716] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:03:42.740] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [20:03:42.933] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [20:03:42.959] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [20:03:42.961] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [20:03:43.001] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [20:03:43.026] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [20:03:43.205] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [20:03:43.206] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [20:03:43.279] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [20:03:43.298] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [20:03:43.348] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [20:03:43.349] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [20:03:43.460] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [20:03:43.465] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [20:03:43.469] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [20:03:43.471] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [20:03:43.471] [Server thread/INFO]: Done (2.823s)! For help, type "help" or "?"
+2021-06-04 [20:03:48.674] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:03:50.929] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:04:21.779] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Session opened
+2021-06-04 [20:04:21.932] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Player: MaseW4602
+2021-06-04 [20:04:24.428] [Server thread/INFO]: MaseW4602[/113.172.0.140:40980] logged in with entity id 1 at (PlotTest, 65.9214, 73.422, 11.096)
+2021-06-04 [20:04:40.364] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:04:40.387] [Server thread/INFO]: MaseW4602 joined the game
+2021-06-04 [20:05:48.821] [Server thread/INFO]: [NetworkSession: 125.212.173.75 39409] Session opened
+2021-06-04 [20:05:48.870] [Server thread/INFO]: [NetworkSession: 125.212.173.75 39409] Player: EggyUnicycle766
+2021-06-04 [20:05:50.351] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:39409] logged in with entity id 6 at (PlotTest, 18.7462, 67.5521, 46.493)
+2021-06-04 [20:05:58.507] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:05:58.508] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [20:06:08.651] [Server thread/INFO]: MaseW4602 ► test sever nha
+2021-06-04 [20:07:03.334] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:07:04.042] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [20:07:04.121] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [20:07:06.208] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 9 at (PlotTest, 66.2436, 66, 19.1092)
+2021-06-04 [20:07:16.191] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:07:16.260] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [20:07:17.025] [Server thread/INFO]: EggyUnicycle766 ► méo có máy thả :))
+2021-06-04 [20:07:22.697] [Server thread/INFO]: [CMD][MaseW4602] use /p claim
+2021-06-04 [20:07:33.626] [Server thread/INFO]: NgLamVN ► kiếm 1 plot build đi mấy bạn :v
+2021-06-04 [20:08:27.815] [Server thread/INFO]: EggyUnicycle766 ► ơ
+2021-06-04 [20:08:45.629] [Server thread/INFO]: EggyUnicycle766 ► k nổ :))
+2021-06-04 [20:08:51.714] [Server thread/INFO]: NgLamVN ► yep
+2021-06-04 [20:08:54.463] [Server thread/INFO]: MaseW4602 ► có mà
+2021-06-04 [20:09:01.283] [Server thread/INFO]: NgLamVN ► redstone is not implemented in PM4
+2021-06-04 [20:09:20.197] [Server thread/INFO]: [NetworkSession: 27.67.190.94 25036] Session opened
+2021-06-04 [20:09:20.511] [Server thread/INFO]: [NetworkSession: 27.67.190.94 25036] Player: PikarioVN
+2021-06-04 [20:09:22.201] [Server thread/WARNING]: Can't keep up! Is the server overloaded?
+2021-06-04 [20:09:24.649] [Server thread/INFO]: PikarioVN[/27.67.190.94:25036] logged in with entity id 933 at (PlotTest, 0, 20, 0)
+2021-06-04 [20:09:25.344] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-04 [20:09:26.083] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:09:38.271] [Server thread/INFO]: NgLamVN ► Kiểu
+2021-06-04 [20:09:38.947] [Server thread/INFO]: NgLamVN ► F
+2021-06-04 [20:09:50.420] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:09:50.421] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [20:09:57.049] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:10:02.485] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode Pi 1
+2021-06-04 [20:10:06.187] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode Pi c
+2021-06-04 [20:10:08.850] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode c pi
+2021-06-04 [20:10:08.900] [Server thread/INFO]: [NgLamVN: Set PikarioVN's game mode to Creative Mode]
+2021-06-04 [20:10:09.319] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle ender
+2021-06-04 [20:10:11.971] [Server thread/INFO]: PikarioVN ► wsat the
+2021-06-04 [20:10:20.275] [Server thread/INFO]: [CMD][NgLamVN] use /tp Pi
+2021-06-04 [20:10:20.299] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to PikarioVN]
+2021-06-04 [20:10:26.699] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp EggyUnicycle766 PikarioVN 
+2021-06-04 [20:10:26.706] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to PikarioVN]
+2021-06-04 [20:10:37.016] [Server thread/INFO]: [CMD][EggyUnicycle766] use //wand
+2021-06-04 [20:10:38.985] [Server thread/INFO]: NgLamVN ► ủa mấy bạn vào đây phá à ?
+2021-06-04 [20:10:43.569] [Server thread/INFO]: EggyUnicycle766 ► no wand :))
+2021-06-04 [20:10:44.864] [Server thread/INFO]: [CMD][NgLamVN] use /p;
+2021-06-04 [20:10:46.883] [Server thread/INFO]: [CMD][NgLamVN] use /pl
+2021-06-04 [20:10:54.627] [Server thread/INFO]: NgLamVN ► làm j có wand ..
+2021-06-04 [20:10:57.922] [Server thread/INFO]: MaseW4602 ► ai phá z :))
+2021-06-04 [20:10:59.275] [Server thread/INFO]: PikarioVN ► thật sự build is ko z
+2021-06-04 [20:11:10.424] [Server thread/INFO]: PikarioVN ► sao trông tanh bành z
+2021-06-04 [20:11:17.886] [Server thread/INFO]: NgLamVN ► pl WorldEdit giờ cài vào là ăn LỖI
+2021-06-04 [20:11:26.129] [Server thread/INFO]: NgLamVN ► kiếm 1 plot r build đi
+2021-06-04 [20:11:35.855] [Server thread/INFO]: EggyUnicycle766 ► buid phải có h2o chứ
+2021-06-04 [20:11:45.586] [Server thread/INFO]: PikarioVN ► đag tìm is số đẹp
+2021-06-04 [20:11:48.594] [Server thread/INFO]: NgLamVN ► Pikario xem Creative Inventory của bên pm4 ik :v
+2021-06-04 [20:11:54.657] [Server thread/INFO]: NgLamVN ► số đẹp cái j
+2021-06-04 [20:12:00.843] [Server thread/INFO]: NgLamVN ► world này r cx sẽ reset thôi
+2021-06-04 [20:12:07.958] [Server thread/INFO]: NgLamVN ► kiếm nạo 1 cái ik
+2021-06-04 [20:12:09.442] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:12:33.916] [Server thread/INFO]: MaseW4602 ► ai xem Ma test máy bắn tnt ko :))
+2021-06-04 [20:12:38.994] [Server thread/INFO]: PikarioVN ► :v:v:vvv
+2021-06-04 [20:12:50.741] [Server thread/INFO]: EggyUnicycle766 ► có đâu mà bắn :))
+2021-06-04 [20:12:52.292] [Server thread/INFO]: [CMD][PikarioVN] use /is claim
+2021-06-04 [20:12:54.378] [Server thread/INFO]: EggyUnicycle766 ► me test r
+2021-06-04 [20:13:06.898] [Server thread/INFO]: MaseW4602 ► nổ đc mà
+2021-06-04 [20:13:08.537] [Server thread/INFO]: [CMD][PikarioVN] use /p claim
+2021-06-04 [20:13:27.023] [Server thread/INFO]: [CMD][NgLamVN] use /tp Pi
+2021-06-04 [20:13:27.041] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to PikarioVN]
+2021-06-04 [20:13:33.218] [Server thread/INFO]: PikarioVN ► phải xđinh tâm :)
+2021-06-04 [20:13:50.720] [Server thread/INFO]: [CONSOLE: Opped PikarioVN]
+2021-06-04 [20:13:55.507] [Server thread/INFO]: [CONSOLE: Opped MaseW4602]
+2021-06-04 [20:14:01.115] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [20:14:07.554] [Server thread/INFO]: [Server] Everyone got OP permission.
+2021-06-04 [20:14:12.420] [Server thread/INFO]: [CMD][MaseW4602] use /kick NgLam
+2021-06-04 [20:14:12.430] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Kicked by admin.
+2021-06-04 [20:14:12.434] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [20:14:12.438] [Server thread/INFO]: [MaseW4602: Kicked NgLamVN from the game]
+2021-06-04 [20:14:16.883] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [20:14:17.394] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:14:19.815] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:14:20.064] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [20:14:24.969] [Server thread/INFO]: [Server] Enjoy
+2021-06-04 [20:14:27.765] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [20:14:32.077] [Server thread/INFO]: [Server] If u try to kick everyone
+2021-06-04 [20:14:36.184] [Server thread/INFO]: [Server] u got banned
+2021-06-04 [20:14:39.193] [Server thread/INFO]: [Server] LOL
+2021-06-04 [20:14:40.664] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [20:14:48.407] [Server thread/INFO]: [Server] if u try to stop this server
+2021-06-04 [20:14:56.143] [Server thread/INFO]: [Server] so good bye,
+2021-06-04 [20:15:02.365] [Server thread/INFO]: MaseW4602 ► :(
+2021-06-04 [20:15:05.273] [Server thread/INFO]: PikarioVN ► :v:
+2021-06-04 [20:15:06.021] [Server thread/INFO]: [Server] Never see u again
+2021-06-04 [20:15:07.673] [Server thread/INFO]: PikarioVN ► :)))
+2021-06-04 [20:15:20.941] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:15:28.552] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [20:15:28.624] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [20:15:29.652] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 967 at (PlotTest, -68.1032, 78.3261, 95.621)
+2021-06-04 [20:15:31.348] [Server thread/INFO]: [CMD][MaseW4602] use /clear
+2021-06-04 [20:15:31.352] [Server thread/INFO]: [MaseW4602: Cleared the inventory of MaseW4602, removing 289 items]
+2021-06-04 [20:15:34.801] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:15:34.802] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [20:15:39.068] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:15:39.722] [Server thread/INFO]: [CMD][PikarioVN] use /effect @s night_vision 999999 999999
+2021-06-04 [20:15:43.614] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:15:52.304] [Server thread/INFO]: [CMD][MaseW4602] use /clear lag
+2021-06-04 [20:16:01.422] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:16:02.505] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn night_vision 99999 99999
+2021-06-04 [20:16:03.786] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:16:05.614] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:16:10.390] [Server thread/INFO]: [Server] you can test all item, block, command in this server
+2021-06-04 [20:16:17.682] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-04 [20:16:17.683] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-04 [20:16:33.589] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn night_vision 255 999999
+2021-06-04 [20:16:38.292] [Server thread/INFO]: [CMD][NgLamVN] use /status
+2021-06-04 [20:16:43.614] [Server thread/INFO]: [CMD][MaseW4602] use /p claim
+2021-06-04 [20:16:57.583] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn night_vision 9999999 255
+2021-06-04 [20:16:57.598] [Server thread/INFO]: [PikarioVN: Given Night Vision * 255 to PikarioVN for 9999999 seconds]
+2021-06-04 [20:18:04.595] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:18:34.389] [Server thread/CRITICAL]: Error: "Call to a member function getValue() on null" (EXCEPTION) in "plugins/GameHandle-4.0/src/NgLamVN/GameHandle/GameMenu/Menu" at line 79
+2021-06-04 [20:18:34.389] [Server thread/CRITICAL]: #0 plugins/GameHandle-4.0/src/NgLamVN/GameHandle/EventListener(91): NgLamVN\GameHandle\GameMenu\Menu->onTap(object pocketmine\event\player\PlayerInteractEvent#101998)
+2021-06-04 [20:18:34.391] [Server thread/CRITICAL]: #1 pmsrc/src/event/RegisteredListener(75): NgLamVN\GameHandle\EventListener->onTap(object pocketmine\event\player\PlayerInteractEvent#101998)
+2021-06-04 [20:18:34.396] [Server thread/CRITICAL]: #2 pmsrc/src/event/Event(62): pocketmine\event\RegisteredListener->callEvent(object pocketmine\event\player\PlayerInteractEvent#101998)
+2021-06-04 [20:18:34.400] [Server thread/CRITICAL]: #3 pmsrc/src/world/World(1767): pocketmine\event\Event->call()
+2021-06-04 [20:18:34.400] [Server thread/CRITICAL]: #4 pmsrc/src/player/Player(1626): pocketmine\world\World->useItemOn(object pocketmine\math\Vector3#109082, object pocketmine\item\ItemBlock#108238, integer 1, object pocketmine\math\Vector3#117936, object pocketmine\player\Player#24598, true)
+2021-06-04 [20:18:34.401] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/handler/InGamePacketHandler(370): pocketmine\player\Player->interactBlock(object pocketmine\math\Vector3#109082, integer 1, object pocketmine\math\Vector3#117936)
+2021-06-04 [20:18:34.402] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/handler/InGamePacketHandler(230): pocketmine\network\mcpe\handler\InGamePacketHandler->handleUseItemTransaction(object pocketmine\network\mcpe\protocol\types\inventory\UseItemTransactionData#110340)
+2021-06-04 [20:18:34.405] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/protocol/InventoryTransactionPacket(106): pocketmine\network\mcpe\handler\InGamePacketHandler->handleInventoryTransaction(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#95717)
+2021-06-04 [20:18:34.408] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\InventoryTransactionPacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler#102199)
+2021-06-04 [20:18:34.409] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#95717, string[55] .....k?.....@....@...........R.N....Bi..B.?.>...?...>..)
+2021-06-04 [20:18:34.411] [Server thread/CRITICAL]: #10 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[58] c.abd.bs9.&..l..F&........\.p......G.N.].N.........XV.-...)
+2021-06-04 [20:18:34.414] [Server thread/CRITICAL]: #11 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[67] ..Z.|z....FJ...}.^..g..X.ukXi=..........M.4.yxCIM..D.G...pM..C...,.)
+2021-06-04 [20:18:34.415] [Server thread/CRITICAL]: #12 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23103)
+2021-06-04 [20:18:34.416] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-04 [20:18:34.416] [Server thread/CRITICAL]: #14 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-04 [20:18:34.417] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622812714.4185)
+2021-06-04 [20:18:34.417] [Server thread/CRITICAL]: #16 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-04 [20:18:34.418] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-04 [20:18:34.419] [Server thread/CRITICAL]: #18 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-04 [20:18:34.419] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-04 [20:18:34.438] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Fri_Jun_4-20.18.34-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-04 [20:18:34.439] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [20:18:34.441] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:18:34.448] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [20:18:34.452] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [20:18:34.456] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [20:18:34.457] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [20:18:34.458] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [20:18:34.458] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [20:18:34.460] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [20:18:34.466] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [20:18:34.468] [Server thread/INFO]: MaseW4602 left the game
+2021-06-04 [20:18:34.475] [Server thread/INFO]: [NetworkSession: MaseW4602] Session closed due to Server closed
+2021-06-04 [20:18:34.475] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [20:18:34.488] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-04 [20:18:34.488] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [20:18:34.500] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Server closed
+2021-06-04 [20:18:34.500] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [20:18:34.504] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-04 [20:18:34.504] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [20:19:30.591] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [20:19:30.604] [Server thread/INFO]: Loading server configuration
+2021-06-04 [20:19:30.626] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [20:19:30.626] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:19:30.626] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [20:19:30.626] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [20:19:30.626] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [20:19:30.627] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:19:30.636] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [20:19:30.646] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [20:19:30.912] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [20:19:30.912] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [20:19:31.634] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [20:19:31.706] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [20:19:31.727] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:19:31.733] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [20:19:31.735] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [20:19:31.738] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [20:19:31.738] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [20:19:31.742] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [20:19:31.757] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [20:19:31.760] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [20:19:31.766] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [20:19:31.770] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [20:19:31.774] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [20:19:31.798] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [20:19:31.805] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [20:19:31.805] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [20:19:31.806] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [20:19:31.811] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [20:19:31.892] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [20:19:31.900] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [20:19:31.900] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:19:31.909] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [20:19:31.989] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [20:19:32.003] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [20:19:32.005] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [20:19:32.006] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [20:19:32.124] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [20:19:32.152] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [20:19:32.190] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [20:19:32.202] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [20:19:32.228] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [20:19:32.247] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [20:19:32.248] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [20:19:32.318] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [20:19:32.322] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [20:19:32.324] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [20:19:32.324] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [20:19:32.325] [Server thread/INFO]: Done (1.724s)! For help, type "help" or "?"
+2021-06-04 [20:19:33.707] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:19:47.632] [Server thread/INFO]: [NetworkSession: 125.212.173.75 39409] Session opened
+2021-06-04 [20:19:47.685] [Server thread/INFO]: [NetworkSession: 125.212.173.75 39409] Player: EggyUnicycle766
+2021-06-04 [20:19:48.774] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:39409] logged in with entity id 1 at (PlotTest, -14.5794, 63, 52.0267)
+2021-06-04 [20:19:55.537] [Server thread/INFO]: [NetworkSession: 27.67.190.94 25036] Session opened
+2021-06-04 [20:19:55.884] [Server thread/INFO]: [NetworkSession: 27.67.190.94 25036] Player: PikarioVN
+2021-06-04 [20:19:56.834] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:19:56.841] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [20:19:59.561] [Server thread/INFO]: PikarioVN[/27.67.190.94:25036] logged in with entity id 106 at (PlotTest, -76.8275, 66.329, 79.6152)
+2021-06-04 [20:20:08.664] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Session opened
+2021-06-04 [20:20:08.810] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Player: MaseW4602
+2021-06-04 [20:20:09.127] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:20:10.405] [Server thread/INFO]: MaseW4602[/113.172.0.140:40980] logged in with entity id 107 at (PlotTest, -51.7327, 65.3232, 64.7703)
+2021-06-04 [20:20:25.955] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:20:25.959] [Server thread/INFO]: MaseW4602 joined the game
+2021-06-04 [20:20:26.657] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:20:26.658] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [20:20:33.613] [Server thread/INFO]: MaseW4602 ► tưởng bị kick
+2021-06-04 [20:20:46.059] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:21:04.010] [Server thread/INFO]: PikarioVN ► đừng ai lm lỗi sv nữa pls
+2021-06-04 [20:21:12.352] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [20:21:12.409] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [20:21:13.512] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:21:13.684] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 190 at (PlotTest, -30.6673, 72.0068, 57.3658)
+2021-06-04 [20:21:16.976] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:21:19.261] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:21:19.262] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [20:21:27.432] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:21:28.133] [Server thread/INFO]: NgLamVN ► bruh
+2021-06-04 [20:21:44.433] [Server thread/INFO]: NgLamVN ► MẤY CHÚ VÀO ĐÂY ĐỂ BUILD HAY ĐỂ PHÁ Z ...
+2021-06-04 [20:21:50.183] [Server thread/INFO]: MaseW4602 ► build
+2021-06-04 [20:21:52.902] [Server thread/INFO]: EggyUnicycle766 ► đang build này
+2021-06-04 [20:21:55.605] [Server thread/INFO]: NgLamVN ► build ik :v
+2021-06-04 [20:22:08.006] [Server thread/INFO]: [Server] Loading AutoCompaction ....
+2021-06-04 [20:22:23.551] [Server thread/INFO]: MaseW4602 ► ơ
+2021-06-04 [20:22:25.952] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [20:22:29.133] [Server thread/INFO]: NgLamVN ► ?
+2021-06-04 [20:22:30.004] [Server thread/INFO]: NgLamVN ► j z
+2021-06-04 [20:22:50.716] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:22:54.534] [Server thread/INFO]: EggyUnicycle766 ► ơ
+2021-06-04 [20:23:04.322] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:23:19.238] [Server thread/INFO]: NgLamVN ►  /ver
+2021-06-04 [20:23:21.395] [Server thread/INFO]: [CMD][NgLamVN] use /ver
+2021-06-04 [20:23:38.908] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:23:47.585] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-04 [20:23:48.766] [Server thread/INFO]: EggyUnicycle766 ► sao k thành nc vô hạn nhỉ
+2021-06-04 [20:24:07.512] [Server thread/INFO]: MaseW4602 ► hay
+2021-06-04 [20:24:09.079] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:24:20.374] [Server thread/INFO]: [CMD][MaseW4602] use /p claim
+2021-06-04 [20:24:20.838] [Server thread/INFO]: [NetworkSession: 117.2.179.197 51714] Session opened
+2021-06-04 [20:24:20.929] [Server thread/INFO]: [NetworkSession: 117.2.179.197 51714] Player: JINODK
+2021-06-04 [20:24:21.709] [Server thread/INFO]: JINODK[/117.2.179.197:51714] logged in with entity id 299 at (PlotTest, 53.9693, 39, 46.1622)
+2021-06-04 [20:24:24.423] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:24:24.424] [Server thread/INFO]: JINODK joined the game
+2021-06-04 [20:24:31.489] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [20:25:15.891] [Server thread/INFO]: NgLamVN ► Warning PocketMine-MP 4.0.0 is under development ...
+2021-06-04 [20:25:31.063] [Server thread/INFO]: NgLamVN ► dk ei
+2021-06-04 [20:25:31.114] [Server thread/INFO]: JINODK ► ok tìm bug để close sv nào :))
+2021-06-04 [20:25:36.414] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:25:40.247] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [20:25:44.666] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:26:16.297] [Server thread/INFO]: [CMD][MaseW4602] use /p claim
+2021-06-04 [20:26:20.354] [Server thread/INFO]: [CMD][NgLamVN] use /sma
+2021-06-04 [20:26:23.524] [Server thread/INFO]: [CMD][NgLamVN] use /smartmine
+2021-06-04 [20:26:26.326] [Server thread/INFO]: [CMD][NgLamVN] use /smartmine on
+2021-06-04 [20:26:47.037] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-04 [20:26:47.039] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-04 [20:26:51.036] [Server thread/INFO]: [CMD][NgLamVN] use /time stop
+2021-06-04 [20:26:51.037] [Server thread/INFO]: [NgLamVN: Stopped the time]
+2021-06-04 [20:26:53.233] [Server thread/INFO]: EggyUnicycle766 ► muốn đảo to hay nhỏ lam
+2021-06-04 [20:26:57.307] [Server thread/INFO]: NgLamVN ► vừa
+2021-06-04 [20:27:12.123] [Server thread/INFO]: PikarioVN ► mak giới hạn bé z hà lam
+2021-06-04 [20:27:16.194] [Server thread/CRITICAL]: pocketmine\network\mcpe\protocol\PacketDecodeException: "Reached limit of 500 packets in a single batch" (EXCEPTION) in "pmsrc/src/network/mcpe/protocol/serializer/PacketBatch" at line 56
+2021-06-04 [20:27:16.197] [Server thread/CRITICAL]: #0 pmsrc/src/network/mcpe/NetworkSession(359): pocketmine\network\mcpe\protocol\serializer\PacketBatch->getPackets(object pocketmine\network\mcpe\protocol\PacketPool#22237, integer 500)
+2021-06-04 [20:27:16.200] [Server thread/CRITICAL]: #1 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[1775] ..Os......4..$(..*4.....(:#+...^..../.R...s......E.O.|sf.g..\.]....m.`....j.....)
+2021-06-04 [20:27:16.202] [Server thread/CRITICAL]: #2 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 4, string[1784] ....g}.I.*7`.......<[.....x... ,....~Eq}............-....h.3|...D<.......'......)
+2021-06-04 [20:27:16.203] [Server thread/CRITICAL]: #3 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23124)
+2021-06-04 [20:27:16.204] [Server thread/CRITICAL]: #4 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-04 [20:27:16.204] [Server thread/CRITICAL]: #5 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-04 [20:27:16.205] [Server thread/CRITICAL]: #6 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622813236.0397)
+2021-06-04 [20:27:16.205] [Server thread/CRITICAL]: #7 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-04 [20:27:16.206] [Server thread/CRITICAL]: #8 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-04 [20:27:16.206] [Server thread/CRITICAL]: #9 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-04 [20:27:16.208] [Server thread/ERROR]: [NetworkSession: JINODK] Bad packet (error ID 86c77970ec3b): Packet batch decode error: Reached limit of 500 packets in a single batch
+2021-06-04 [20:27:16.209] [Server thread/INFO]: JINODK left the game
+2021-06-04 [20:27:16.220] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Packet processing error (Error ID: 86c77970ec3b)
+2021-06-04 [20:27:16.235] [RakLib thread/NOTICE]: Blocked 117.2.179.197 for 5 seconds
+2021-06-04 [20:27:28.433] [Server thread/INFO]: [Server] ...
+2021-06-04 [20:27:36.283] [Server thread/INFO]: [NetworkSession: 117.2.179.197 51714] Session opened
+2021-06-04 [20:27:36.369] [Server thread/INFO]: [NetworkSession: 117.2.179.197 51714] Player: JINODK
+2021-06-04 [20:27:37.258] [Server thread/INFO]: JINODK[/117.2.179.197:51714] logged in with entity id 300 at (PlotTest, -73.3566, 65, 107.8461)
+2021-06-04 [20:27:39.907] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:27:39.908] [Server thread/INFO]: JINODK joined the game
+2021-06-04 [20:28:01.780] [Server thread/INFO]: JINODK ► hmm vẫn có lỗi chỉ đá mỗi dk kìa
+2021-06-04 [20:28:03.474] [Server thread/INFO]: Usage: /say <message ...>
+2021-06-04 [20:28:12.811] [Server thread/INFO]: NgLamVN ► lỗi packet ...
+2021-06-04 [20:28:26.217] [Server thread/INFO]: [CMD][JINODK] use /clear
+2021-06-04 [20:28:26.221] [Server thread/INFO]: [JINODK: Cleared the inventory of JINODK, removing 1978 items]
+2021-06-04 [20:28:28.492] [Server thread/CRITICAL]: Error: "Call to a member function getValue() on null" (EXCEPTION) in "plugins/GameHandle-4.0/src/NgLamVN/GameHandle/GameMenu/Menu" at line 79
+2021-06-04 [20:28:28.493] [Server thread/CRITICAL]: #0 plugins/GameHandle-4.0/src/NgLamVN/GameHandle/EventListener(91): NgLamVN\GameHandle\GameMenu\Menu->onTap(object pocketmine\event\player\PlayerInteractEvent#80114)
+2021-06-04 [20:28:28.494] [Server thread/CRITICAL]: #1 pmsrc/src/event/RegisteredListener(75): NgLamVN\GameHandle\EventListener->onTap(object pocketmine\event\player\PlayerInteractEvent#80114)
+2021-06-04 [20:28:28.495] [Server thread/CRITICAL]: #2 pmsrc/src/event/Event(62): pocketmine\event\RegisteredListener->callEvent(object pocketmine\event\player\PlayerInteractEvent#80114)
+2021-06-04 [20:28:28.499] [Server thread/CRITICAL]: #3 pmsrc/src/world/World(1767): pocketmine\event\Event->call()
+2021-06-04 [20:28:28.502] [Server thread/CRITICAL]: #4 pmsrc/src/player/Player(1626): pocketmine\world\World->useItemOn(object pocketmine\math\Vector3#116402, object pocketmine\item\ItemBlock#109087, integer 1, object pocketmine\math\Vector3#117248, object pocketmine\player\Player#113990, true)
+2021-06-04 [20:28:28.506] [Server thread/CRITICAL]: #5 pmsrc/src/network/mcpe/handler/InGamePacketHandler(370): pocketmine\player\Player->interactBlock(object pocketmine\math\Vector3#116402, integer 1, object pocketmine\math\Vector3#117248)
+2021-06-04 [20:28:28.507] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/handler/InGamePacketHandler(230): pocketmine\network\mcpe\handler\InGamePacketHandler->handleUseItemTransaction(object pocketmine\network\mcpe\protocol\types\inventory\UseItemTransactionData#123820)
+2021-06-04 [20:28:28.508] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/protocol/InventoryTransactionPacket(106): pocketmine\network\mcpe\handler\InGamePacketHandler->handleInventoryTransaction(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#102328)
+2021-06-04 [20:28:28.508] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\InventoryTransactionPacket->handle(object pocketmine\network\mcpe\handler\InGamePacketHandler#115951)
+2021-06-04 [20:28:28.509] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\InventoryTransactionPacket#102328, string[39] .......@.........r=.B.J.B.H.>...?.Q.>. )
+2021-06-04 [20:28:28.510] [Server thread/CRITICAL]: #10 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[43] S.c`b`...p..I.a.....l[.Nx.tb.`.c`h.g..b.F..)
+2021-06-04 [20:28:28.510] [Server thread/CRITICAL]: #11 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 4, string[52] .y..W.#..Z....k.Wi.H..C.u{./>...j...e-...$C.6.~.....)
+2021-06-04 [20:28:28.511] [Server thread/CRITICAL]: #12 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23124)
+2021-06-04 [20:28:28.512] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-04 [20:28:28.524] [Server thread/CRITICAL]: #14 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-04 [20:28:28.525] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622813308.4976)
+2021-06-04 [20:28:28.526] [Server thread/CRITICAL]: #16 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-04 [20:28:28.526] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-04 [20:28:28.527] [Server thread/CRITICAL]: #18 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-04 [20:28:28.528] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-04 [20:28:28.543] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Fri_Jun_4-20.28.28-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-04 [20:28:28.545] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [20:28:28.546] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:28:28.546] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [20:28:28.547] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [20:28:28.548] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [20:28:28.550] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [20:28:28.556] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [20:28:28.561] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [20:28:28.564] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [20:28:28.568] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [20:28:28.573] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [20:28:28.578] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-04 [20:28:28.578] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [20:28:28.588] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Server closed
+2021-06-04 [20:28:28.588] [Server thread/INFO]: MaseW4602 left the game
+2021-06-04 [20:28:28.593] [Server thread/INFO]: [NetworkSession: MaseW4602] Session closed due to Server closed
+2021-06-04 [20:28:28.594] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [20:28:28.597] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-04 [20:28:28.598] [Server thread/INFO]: JINODK left the game
+2021-06-04 [20:28:28.609] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Server closed
+2021-06-04 [20:28:28.609] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [20:29:58.214] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [20:29:58.266] [Server thread/INFO]: Loading server configuration
+2021-06-04 [20:29:58.384] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [20:29:58.384] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:29:58.385] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [20:29:58.385] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [20:29:58.385] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [20:29:58.386] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:29:58.399] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [20:29:58.449] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [20:29:59.249] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [20:29:59.249] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [20:30:00.432] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [20:30:00.745] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:30:00.782] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [20:30:00.784] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [20:30:00.800] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [20:30:00.802] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [20:30:00.816] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [20:30:00.835] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:30:00.847] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [20:30:00.879] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [20:30:00.916] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [20:30:00.930] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [20:30:00.949] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [20:30:00.982] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [20:30:01.115] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [20:30:01.151] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [20:30:01.164] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [20:30:01.178] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [20:30:01.536] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [20:30:01.563] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [20:30:01.636] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [20:30:01.670] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [20:30:02.750] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [20:30:02.789] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [20:30:02.796] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [20:30:02.927] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [20:30:03.181] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [20:30:03.250] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [20:30:03.298] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [20:30:03.445] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [20:30:03.564] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [20:30:03.632] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [20:30:03.702] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [20:30:04.096] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [20:30:04.101] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [20:30:04.111] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [20:30:04.112] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [20:30:04.114] [Server thread/INFO]: Done (5.881s)! For help, type "help" or "?"
+2021-06-04 [20:30:07.187] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Session opened
+2021-06-04 [20:30:07.347] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Player: MaseW4602
+2021-06-04 [20:30:09.820] [Server thread/INFO]: MaseW4602[/113.172.0.140:40980] logged in with entity id 1 at (PlotTest, -19.9085, 67.3694, 134.499)
+2021-06-04 [20:30:26.254] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:30:26.297] [Server thread/INFO]: MaseW4602 joined the game
+2021-06-04 [20:30:26.305] [Server thread/INFO]: [NetworkSession: 117.2.179.197 62407] Session opened
+2021-06-04 [20:30:26.433] [Server thread/INFO]: [NetworkSession: 117.2.179.197 62407] Player: JINODK
+2021-06-04 [20:30:27.932] [Server thread/INFO]: JINODK[/117.2.179.197:62407] logged in with entity id 3 at (PlotTest, -73.8822, 65, 108.6461)
+2021-06-04 [20:30:30.490] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:30:30.533] [Server thread/INFO]: JINODK joined the game
+2021-06-04 [20:30:30.537] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:31:35.474] [Server thread/INFO]: JINODK ► ok bug mạnh tiếp nào :)
+2021-06-04 [20:32:10.251] [Server thread/INFO]: [Server] restarting server ...
+2021-06-04 [20:32:11.685] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-04 [20:32:11.737] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:32:11.739] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [20:32:11.739] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [20:32:11.740] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [20:32:11.741] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [20:32:11.741] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [20:32:11.744] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [20:32:11.744] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [20:32:11.745] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [20:32:11.746] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [20:32:11.749] [Server thread/INFO]: MaseW4602 left the game
+2021-06-04 [20:32:11.756] [Server thread/INFO]: [NetworkSession: MaseW4602] Session closed due to Server closed
+2021-06-04 [20:32:11.757] [Server thread/INFO]: JINODK left the game
+2021-06-04 [20:32:11.761] [Server thread/INFO]: [NetworkSession: JINODK] Session closed due to Server closed
+2021-06-04 [20:32:11.761] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [20:32:11.971] [Server thread/INFO]: Stopping other threads
+2021-06-04 [20:32:16.660] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [20:32:16.674] [Server thread/INFO]: Loading server configuration
+2021-06-04 [20:32:16.702] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [20:32:16.702] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:32:16.702] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [20:32:16.703] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [20:32:16.703] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [20:32:16.703] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:32:16.708] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [20:32:16.719] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [20:32:16.928] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [20:32:16.928] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [20:32:17.825] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [20:32:17.896] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:32:17.913] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [20:32:17.921] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [20:32:17.925] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [20:32:17.925] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [20:32:17.929] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [20:32:17.943] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:32:17.956] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [20:32:17.969] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [20:32:17.972] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [20:32:17.976] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [20:32:17.985] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [20:32:18.009] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [20:32:18.021] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [20:32:18.021] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [20:32:18.022] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [20:32:18.026] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [20:32:18.038] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [20:32:18.044] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [20:32:18.153] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [20:32:18.154] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [20:32:18.255] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [20:32:18.268] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [20:32:18.342] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [20:32:18.343] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [20:32:18.344] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [20:32:18.374] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [20:32:18.390] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [20:32:18.410] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [20:32:18.410] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [20:32:18.412] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [20:32:18.441] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [20:32:18.510] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [20:32:18.512] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [20:32:18.517] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [20:32:18.517] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [20:32:18.518] [Server thread/INFO]: Done (1.846s)! For help, type "help" or "?"
+2021-06-04 [20:32:29.780] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Session opened
+2021-06-04 [20:32:29.830] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Player: MaseW4602
+2021-06-04 [20:32:31.408] [Server thread/INFO]: MaseW4602[/113.172.0.140:40980] logged in with entity id 1 at (PlotTest, -20.0152, 69.1393, 129.2042)
+2021-06-04 [20:32:45.658] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [20:32:47.254] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:32:47.259] [Server thread/INFO]: MaseW4602 joined the game
+2021-06-04 [20:32:54.086] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [20:32:54.152] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [20:32:55.254] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 3 at (PlotTest, -43.5683, 74.6173, 116.4536)
+2021-06-04 [20:33:01.555] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:33:01.556] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [20:33:29.515] [Server thread/INFO]: NgLamVN ► giống như 1 cái bè
+2021-06-04 [20:33:31.565] [Server thread/INFO]: NgLamVN ► = gỗ pls
+2021-06-04 [20:33:37.127] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [20:34:30.111] [Server thread/INFO]: [NetworkSession: 125.212.173.75 15813] Session opened
+2021-06-04 [20:34:30.193] [Server thread/INFO]: [NetworkSession: 125.212.173.75 15813] Player: EggyUnicycle766
+2021-06-04 [20:34:31.187] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:15813] logged in with entity id 4 at (PlotTest, -25.7178, 66, 95.0567)
+2021-06-04 [20:34:39.278] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:34:39.280] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [20:35:35.723] [Server thread/INFO]: [CMD][EggyUnicycle766] use /gamemode 0 ma
+2021-06-04 [20:35:35.738] [Server thread/INFO]: [EggyUnicycle766: Set MaseW4602's game mode to Survival Mode]
+2021-06-04 [20:35:45.168] [Server thread/INFO]: [NetworkSession: 27.67.190.94 64656] Session opened
+2021-06-04 [20:35:45.551] [Server thread/INFO]: [NetworkSession: 27.67.190.94 64656] Player: PikarioVN
+2021-06-04 [20:35:48.008] [Server thread/INFO]: MaseW4602 burned to death
+2021-06-04 [20:35:49.841] [Server thread/INFO]: PikarioVN[/27.67.190.94:64656] logged in with entity id 14 at (PlotTest, -74.9606, 65, 81.0278)
+2021-06-04 [20:35:52.038] [Server thread/CRITICAL]: ErrorException: "Undefined offset: 0" (EXCEPTION) in "plugins/GameHandle-4.0/src/NgLamVN/GameHandle/EventListener" at line 78
+2021-06-04 [20:35:52.038] [Server thread/CRITICAL]: #0 plugins/GameHandle-4.0/src/NgLamVN/GameHandle/EventListener(78): pocketmine\errorhandler\ErrorToExceptionHandler::handle(integer 8, string[19] Undefined offset: 0, string[87] D:\MinecraftTool\FI-pm4\plugins\GameHandle-4.0\src\NgLamVN\GameHandle\EventListe, integer 78, array[3])
+2021-06-04 [20:35:52.040] [Server thread/CRITICAL]: #1 pmsrc/src/event/RegisteredListener(75): NgLamVN\GameHandle\EventListener->onRespawn(object pocketmine\event\player\PlayerRespawnEvent#124092)
+2021-06-04 [20:35:52.043] [Server thread/CRITICAL]: #2 pmsrc/src/event/Event(62): pocketmine\event\RegisteredListener->callEvent(object pocketmine\event\player\PlayerRespawnEvent#124092)
+2021-06-04 [20:35:52.051] [Server thread/CRITICAL]: #3 pmsrc/src/player/Player(2144): pocketmine\event\Event->call()
+2021-06-04 [20:35:52.053] [Server thread/CRITICAL]: #4 pmsrc/src/utils/Promise(58): pocketmine\player\Player->pocketmine\player\{closure}(object pocketmine\world\format\Chunk#100933)
+2021-06-04 [20:35:52.055] [Server thread/CRITICAL]: #5 pmsrc/src/player/Player(2174): pocketmine\utils\Promise->onCompletion(object Closure#111340, object Closure#117667)
+2021-06-04 [20:35:52.055] [Server thread/CRITICAL]: #6 pmsrc/src/network/mcpe/handler/DeathPacketHandler(53): pocketmine\player\Player->respawn()
+2021-06-04 [20:35:52.056] [Server thread/CRITICAL]: #7 pmsrc/src/network/mcpe/protocol/PlayerActionPacket(90): pocketmine\network\mcpe\handler\DeathPacketHandler->handlePlayerAction(object pocketmine\network\mcpe\protocol\PlayerActionPacket#121480)
+2021-06-04 [20:35:52.057] [Server thread/CRITICAL]: #8 pmsrc/src/network/mcpe/NetworkSession(398): pocketmine\network\mcpe\protocol\PlayerActionPacket->handle(object pocketmine\network\mcpe\handler\DeathPacketHandler#111765)
+2021-06-04 [20:35:52.057] [Server thread/CRITICAL]: #9 pmsrc/src/network/mcpe/NetworkSession(361): pocketmine\network\mcpe\NetworkSession->handleDataPacket(object pocketmine\network\mcpe\protocol\PlayerActionPacket#121480, string[7] $......)
+2021-06-04 [20:35:52.058] [Server thread/CRITICAL]: #10 pmsrc/src/network/mcpe/raklib/RakLibInterface(186): pocketmine\network\mcpe\NetworkSession->handleEncoded(string[37] cWa.c```..f.5s...... .(.p..1..@......)
+2021-06-04 [20:35:52.059] [Server thread/CRITICAL]: #11 pmsrc/vendor/pocketmine/raklib-ipc/src/RakLibToUserThreadMessageReceiver(42): pocketmine\network\mcpe\raklib\RakLibInterface->onPacketReceive(integer 0, string[46] .6=.o.[...~...R..+.*....*i..d.un..k.7|t...!..D)
+2021-06-04 [20:35:52.059] [Server thread/CRITICAL]: #12 pmsrc/src/network/mcpe/raklib/RakLibInterface(121): raklib\server\ipc\RakLibToUserThreadMessageReceiver->handle(object pocketmine\network\mcpe\raklib\RakLibInterface#23141)
+2021-06-04 [20:35:52.061] [Server thread/CRITICAL]: #13 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(113): pocketmine\network\mcpe\raklib\RakLibInterface->pocketmine\network\mcpe\raklib\{closure}()
+2021-06-04 [20:35:52.062] [Server thread/CRITICAL]: #14 pmsrc/vendor/pocketmine/snooze/src/SleeperHandler(75): pocketmine\snooze\SleeperHandler->processNotifications()
+2021-06-04 [20:35:52.070] [Server thread/CRITICAL]: #15 pmsrc/src/Server(1597): pocketmine\snooze\SleeperHandler->sleepUntil(double 1622813752.079)
+2021-06-04 [20:35:52.070] [Server thread/CRITICAL]: #16 pmsrc/src/Server(1147): pocketmine\Server->tickProcessor()
+2021-06-04 [20:35:52.071] [Server thread/CRITICAL]: #17 pmsrc/src/PocketMine(276): pocketmine\Server->__construct(object BaseClassLoader#4, object pocketmine\utils\MainLogger#2, string[24] D:\MinecraftTool\FI-pm4\, string[32] D:\MinecraftTool\FI-pm4\plugins\)
+2021-06-04 [20:35:52.074] [Server thread/CRITICAL]: #18 pmsrc/src/PocketMine(299): pocketmine\server()
+2021-06-04 [20:35:52.077] [Server thread/EMERGENCY]: An unrecoverable error has occurred and the server has crashed. Creating a crash dump
+2021-06-04 [20:35:52.106] [Server thread/EMERGENCY]: Please upload the "D:\MinecraftTool\FI-pm4\crashdumps/Fri_Jun_4-20.35.52-WIB_2021.log" file to the Crash Archive and submit the link to the Bug Reporting page. Give as much info as you can.
+2021-06-04 [20:35:52.108] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:35:52.109] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [20:35:52.109] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [20:35:52.111] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [20:35:52.118] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [20:35:52.120] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [20:35:52.121] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [20:35:52.121] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [20:35:52.122] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [20:35:52.126] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [20:35:52.134] [Server thread/INFO]: MaseW4602 left the game
+2021-06-04 [20:35:52.142] [Server thread/INFO]: [NetworkSession: MaseW4602] Session closed due to Server closed
+2021-06-04 [20:35:52.143] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [20:35:52.154] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-04 [20:35:52.157] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [20:35:52.168] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-04 [20:35:52.172] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Server closed
+2021-06-04 [20:35:52.172] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [20:37:37.324] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-04 [20:37:37.341] [Server thread/INFO]: Loading server configuration
+2021-06-04 [20:37:37.369] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-04 [20:37:37.369] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:37:37.369] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-04 [20:37:37.370] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-04 [20:37:37.370] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-04 [20:37:37.370] [Server thread/WARNING]: ----------------------------------------
+2021-06-04 [20:37:37.376] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-04 [20:37:37.389] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-04 [20:37:37.605] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-04 [20:37:37.606] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-04 [20:37:38.037] [Server thread/INFO]: Loading resource packs...
+2021-06-04 [20:37:38.083] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-04 [20:37:38.097] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:37:38.102] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-04 [20:37:38.104] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-04 [20:37:38.107] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-04 [20:37:38.107] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-04 [20:37:38.110] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-04 [20:37:38.121] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-04 [20:37:38.126] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-04 [20:37:38.129] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-04 [20:37:38.133] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-04 [20:37:38.219] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-04 [20:37:38.222] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-04 [20:37:38.226] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-04 [20:37:38.244] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-04 [20:37:38.248] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-04 [20:37:38.248] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-04 [20:37:38.249] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-04 [20:37:38.255] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-04 [20:37:38.256] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [20:37:38.262] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-04 [20:37:38.375] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-04 [20:37:38.386] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-04 [20:37:38.407] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-04 [20:37:38.415] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-04 [20:37:38.416] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-04 [20:37:38.416] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-04 [20:37:38.453] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-04 [20:37:38.520] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-04 [20:37:38.555] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-04 [20:37:38.564] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-04 [20:37:38.564] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-04 [20:37:38.614] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-04 [20:37:38.616] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-04 [20:37:38.619] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-04 [20:37:38.620] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-04 [20:37:38.620] [Server thread/INFO]: Done (1.283s)! For help, type "help" or "?"
+2021-06-04 [20:37:43.198] [Server thread/INFO]: [Server] DAUMA
+2021-06-04 [20:37:54.800] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Session opened
+2021-06-04 [20:37:54.917] [Server thread/INFO]: [NetworkSession: 113.172.0.140 40980] Player: MaseW4602
+2021-06-04 [20:37:55.526] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Session opened
+2021-06-04 [20:37:56.176] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Player: PikarioVN
+2021-06-04 [20:37:57.322] [Server thread/INFO]: MaseW4602[/113.172.0.140:40980] logged in with entity id 3 at (PlotTest, -22.7, 67, 132.7109)
+2021-06-04 [20:38:07.798] [Server thread/INFO]: PikarioVN[/27.67.190.94:44941] logged in with entity id 5 at (PlotTest, -74.9606, 65, 81.0278)
+2021-06-04 [20:38:14.995] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:38:15.028] [Server thread/INFO]: MaseW4602 joined the game
+2021-06-04 [20:38:23.807] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [20:38:23.869] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [20:38:24.592] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Session opened
+2021-06-04 [20:38:24.664] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Player: EggyUnicycle766
+2021-06-04 [20:38:24.964] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 6 at (PlotTest, -27.5985, 72, 115.0926)
+2021-06-04 [20:38:25.906] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:6207] logged in with entity id 7 at (PlotTest, -24.9922, 67.4, 114.4359)
+2021-06-04 [20:38:33.131] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:38:33.132] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [20:38:33.983] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:38:33.984] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [20:38:36.358] [Server thread/INFO]: MaseW4602 ► ơ
+2021-06-04 [20:38:36.833] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:38:36.834] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [20:38:54.983] [Server thread/INFO]: [CMD][NgLamVN] use /deop
+2021-06-04 [20:38:57.647] [Server thread/INFO]: [CMD][MaseW4602] use /gamemode c
+2021-06-04 [20:38:57.655] [Server thread/INFO]: [MaseW4602: Set own game mode to Creative Mode]
+2021-06-04 [20:39:05.524] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 81
+2021-06-04 [20:39:05.531] [Server thread/INFO]: [EggyUnicycle766: Given Cactus (81:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:39:21.551] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 80
+2021-06-04 [20:39:21.552] [Server thread/INFO]: [EggyUnicycle766: Given Snow Block (80:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:39:34.970] [Server thread/INFO]: PikarioVN ► cổng nethed vẫn ko hđ :)
+2021-06-04 [20:39:39.019] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 90
+2021-06-04 [20:39:39.020] [Server thread/INFO]: [EggyUnicycle766: Given Nether Portal (90:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:40:01.472] [Server thread/INFO]: [CMD][NgLamVN] use /give Ng 477 1
+2021-06-04 [20:40:01.473] [Server thread/INFO]: [NgLamVN: Given Unknown (477:0) * 1 to NgLamVN]
+2021-06-04 [20:40:31.143] [Server thread/INFO]: EggyUnicycle766 ► ê lam
+2021-06-04 [20:40:34.178] [Server thread/INFO]: EggyUnicycle766 ► ra đây
+2021-06-04 [20:40:34.757] [Server thread/INFO]: NgLamVN ► ?
+2021-06-04 [20:40:43.623] [Server thread/INFO]: NgLamVN ► LOL
+2021-06-04 [20:40:47.874] [Server thread/INFO]: EggyUnicycle766 ► :)
+2021-06-04 [20:41:35.328] [Server thread/INFO]: NgLamVN ► look
+2021-06-04 [20:41:37.883] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-04 [20:41:37.890] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-04 [20:41:40.119] [Server thread/INFO]: [CMD][NgLamVN] use /time stop
+2021-06-04 [20:41:40.122] [Server thread/INFO]: [NgLamVN: Stopped the time]
+2021-06-04 [20:42:05.760] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-04 [20:42:17.847] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-04 [20:42:24.045] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-04 [20:42:30.896] [Server thread/INFO]: [CMD][NgLamVN] use /gmc
+2021-06-04 [20:42:35.934] [Server thread/INFO]: EggyUnicycle766 ► đang cài shader
+2021-06-04 [20:44:33.917] [Server thread/INFO]: EggyUnicycle766 ► ra chỗ khác hộ me
+2021-06-04 [20:47:37.477] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp NgLamVN EggyUnicycle766 
+2021-06-04 [20:47:37.485] [Server thread/INFO]: [EggyUnicycle766: Teleported NgLamVN to EggyUnicycle766]
+2021-06-04 [20:48:20.487] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [20:49:05.833] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 120
+2021-06-04 [20:49:05.835] [Server thread/INFO]: [EggyUnicycle766: Given End Portal Frame (120:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:49:13.843] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 121
+2021-06-04 [20:49:13.844] [Server thread/INFO]: [EggyUnicycle766: Given End Stone (121:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:49:20.490] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 122
+2021-06-04 [20:49:20.491] [Server thread/INFO]: [EggyUnicycle766: Given Dragon Egg (122:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:49:27.022] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 123
+2021-06-04 [20:49:27.023] [Server thread/INFO]: [EggyUnicycle766: Given Redstone Lamp (123:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:49:55.093] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 124
+2021-06-04 [20:49:55.093] [Server thread/INFO]: [EggyUnicycle766: Given Redstone Lamp (124:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:50:21.655] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 125
+2021-06-04 [20:50:21.656] [Server thread/INFO]: [EggyUnicycle766: Given Unknown (125:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:50:37.255] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 126
+2021-06-04 [20:50:37.257] [Server thread/INFO]: [EggyUnicycle766: Given Activator Rail (126:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:50:45.923] [Server thread/INFO]: [CMD][MaseW4602] use /clearlagg
+2021-06-04 [20:50:46.607] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:50:57.566] [Server thread/INFO]: NgLamVN ► Eggy
+2021-06-04 [20:51:03.084] [Server thread/INFO]: EggyUnicycle766 ► ơi
+2021-06-04 [20:51:12.256] [Server thread/INFO]: NgLamVN ► có 1 số ID nằm ở 1 số chổ
+2021-06-04 [20:51:22.784] [Server thread/INFO]: NgLamVN ► nó sẽ gây bay màu server
+2021-06-04 [20:51:28.588] [Server thread/INFO]: EggyUnicycle766 ► :v
+2021-06-04 [20:51:34.065] [Server thread/INFO]: NgLamVN ► ủa
+2021-06-04 [20:51:44.034] [Server thread/INFO]: NgLamVN ► mình bảo mấy bạn build kiểu bè mà ...
+2021-06-04 [20:51:55.583] [Server thread/INFO]: EggyUnicycle766 ► có à
+2021-06-04 [20:52:14.466] [Server thread/INFO]: NgLamVN ► thiệt
+2021-06-04 [20:52:31.134] [Server thread/INFO]: EggyUnicycle766 ► ch đọc
+2021-06-04 [20:52:33.503] [Server thread/INFO]: NgLamVN ► mấy đứa chơi RALF rồi là hiểu muốn build kiểu j luôn
+2021-06-04 [20:53:28.557] [Server thread/INFO]: NgLamVN ► giống cuộc thi build vl :v
+2021-06-04 [20:53:34.020] [Server thread/INFO]: EggyUnicycle766 ► block tàng hình id bao nhiêu
+2021-06-04 [20:53:41.844] [Server thread/INFO]: [CMD][NgLamVN] use /give Ng Barrier
+2021-06-04 [20:53:41.846] [Server thread/INFO]: [NgLamVN: Given Barrier (-161:0) * 64 to NgLamVN]
+2021-06-04 [20:53:56.486] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 161
+2021-06-04 [20:53:56.487] [Server thread/INFO]: [EggyUnicycle766: Given Acacia Leaves (161:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:54:01.043] [Server thread/INFO]: NgLamVN ► Pm4 có barrier nhá
+2021-06-04 [20:54:08.923] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -161
+2021-06-04 [20:54:08.924] [Server thread/INFO]: [EggyUnicycle766: Given Barrier (-161:0) * 64 to EggyUnicycle766]
+2021-06-04 [20:54:22.244] [Server thread/INFO]: EggyUnicycle766 ► à méo đc
+2021-06-04 [20:55:04.165] [Server thread/INFO]: EggyUnicycle766 ► nhìn xem ok ch lam
+2021-06-04 [20:55:16.219] [Server thread/INFO]: NgLamVN ► tạm đc
+2021-06-04 [20:55:19.965] [Server thread/INFO]: [CMD][PikarioVN] use /give pikariovn barrier 1
+2021-06-04 [20:55:19.966] [Server thread/INFO]: [PikarioVN: Given Barrier (-161:0) * 1 to PikarioVN]
+2021-06-04 [20:55:23.851] [Server thread/INFO]: EggyUnicycle766 ► :)
+2021-06-04 [20:55:49.078] [Server thread/INFO]: NgLamVN ► Mase
+2021-06-04 [20:55:50.883] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:55:55.897] [Server thread/INFO]: NgLamVN ► chú đang build cái j z ....
+2021-06-04 [20:55:56.348] [Server thread/INFO]: MaseW4602 ► ?
+2021-06-04 [20:56:03.831] [Server thread/INFO]: MaseW4602 ► đẹp ko
+2021-06-04 [20:56:07.146] [Server thread/INFO]: EggyUnicycle766 ► cây
+2021-06-04 [20:56:15.246] [Server thread/INFO]: NgLamVN ► BamProVN said: tởm
+2021-06-04 [20:56:22.955] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [20:56:24.181] [Server thread/INFO]: MaseW4602 ► mới zô có ngôi nhà
+2021-06-04 [20:56:26.484] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:56:37.185] [Server thread/INFO]: NgLamVN ► Pikario
+2021-06-04 [20:56:44.984] [Server thread/INFO]: NgLamVN ► BamProVN said: ọe
+2021-06-04 [20:56:51.336] [Server thread/INFO]: PikarioVN ► :))
+2021-06-04 [20:57:05.285] [Server thread/INFO]: MaseW4602 ► -.-
+2021-06-04 [20:57:15.173] [Server thread/INFO]: NgLamVN ► @EggyUnicycle766
+2021-06-04 [20:57:22.493] [Server thread/INFO]: EggyUnicycle766 ► .
+2021-06-04 [20:57:24.818] [Server thread/INFO]: [CMD][MaseW4602] use /p claim
+2021-06-04 [20:57:32.224] [Server thread/INFO]: NgLamVN ► BamProVN said: Tútttttttttttt
+2021-06-04 [20:57:45.085] [Server thread/INFO]: EggyUnicycle766 ► tút là gì
+2021-06-04 [20:58:04.494] [Server thread/INFO]: NgLamVN ► mấy thanh niên khác giải thích hộ cái
+2021-06-04 [20:58:15.874] [Server thread/INFO]: EggyUnicycle766 ► tốt ?
+2021-06-04 [20:58:33.625] [Server thread/INFO]: NgLamVN ► nó chổng mông lên
+2021-06-04 [20:58:41.793] [Server thread/INFO]: NgLamVN ► r địt tútttttttttttttttt
+2021-06-04 [20:58:48.269] [Server thread/INFO]: EggyUnicycle766 ► :v
+2021-06-04 [20:59:17.023] [Server thread/INFO]: [NetworkSession: 171.253.176.10 20597] Session opened
+2021-06-04 [20:59:17.382] [Server thread/INFO]: [NetworkSession: 171.253.176.10 20597] Player: Long07949
+2021-06-04 [20:59:18.415] [Server thread/INFO]: Long07949[/171.253.176.10:20597] logged in with entity id 38 at (PlotTest, 0, 20, 0)
+2021-06-04 [20:59:23.143] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [20:59:23.144] [Server thread/INFO]: Long07949 joined the game
+2021-06-04 [20:59:30.809] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [20:59:32.834] [Server thread/INFO]: NgLamVN ► xin chào tất cả quý vị và các bạn đã đến với cuộc thi build cái j ...
+2021-06-04 [21:00:10.835] [Server thread/INFO]: [CMD][NgLamVN] use /tp Long
+2021-06-04 [21:00:10.851] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to Long07949]
+2021-06-04 [21:00:24.422] [Server thread/INFO]: [CMD][NgLamVN] use /tp long Pi
+2021-06-04 [21:00:24.444] [Server thread/INFO]: [NgLamVN: Teleported Long07949 to PikarioVN]
+2021-06-04 [21:00:27.936] [Server thread/INFO]: [CMD][NgLamVN] use /tp Pi
+2021-06-04 [21:00:27.979] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to PikarioVN]
+2021-06-04 [21:00:34.595] [Server thread/INFO]: [CMD][NgLamVN] use /tp long ng
+2021-06-04 [21:00:34.622] [Server thread/INFO]: [NgLamVN: Teleported Long07949 to NgLamVN]
+2021-06-04 [21:00:46.701] [Server thread/INFO]: Long07949 ► chào
+2021-06-04 [21:00:51.889] [Server thread/INFO]: NgLamVN ► chào...
+2021-06-04 [21:00:58.805] [Server thread/INFO]: MaseW4602 ► hello
+2021-06-04 [21:01:06.315] [Server thread/INFO]: NgLamVN ► nếu bạn muốn chơi thì vui lòng vào server gốc
+2021-06-04 [21:01:13.624] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [21:01:14.297] [Server thread/INFO]: NgLamVN ► jinodk.ddns.net:19132
+2021-06-04 [21:01:20.653] [Server thread/INFO]: EggyUnicycle766 ► sao biết id thế
+2021-06-04 [21:01:25.205] [Server thread/INFO]: NgLamVN ► Server này dùng để quậy
+2021-06-04 [21:01:29.684] [Server thread/INFO]: MaseW4602 ► trên web ấy
+2021-06-04 [21:01:33.023] [Server thread/INFO]: MaseW4602 ► tui thấy r
+2021-06-04 [21:01:34.305] [Server thread/INFO]: NgLamVN ► mị public ip mà
+2021-06-04 [21:01:36.940] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [21:01:45.696] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode c Long
+2021-06-04 [21:01:45.736] [Server thread/INFO]: [NgLamVN: Set Long07949's game mode to Creative Mode]
+2021-06-04 [21:01:59.624] [Server thread/INFO]: Long07949 ► j dạ
+2021-06-04 [21:02:07.906] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [21:02:08.924] [Server thread/INFO]: NgLamVN ► nhắc lại
+2021-06-04 [21:02:09.709] [Server thread/INFO]: EggyUnicycle766 ► quả cây này được k lam
+2021-06-04 [21:02:15.044] [Server thread/INFO]: NgLamVN ► hmmm
+2021-06-04 [21:03:49.465] [Server thread/INFO]: NgLamVN ► BamProVN said:
+2021-06-04 [21:03:53.476] [Server thread/INFO]: MaseW4602 ► của Ma
+2021-06-04 [21:03:53.815] [Server thread/INFO]: NgLamVN ► như địt.
+2021-06-04 [21:04:22.633] [Server thread/INFO]: EggyUnicycle766 ► :))
+2021-06-04 [21:04:25.979] [Server thread/INFO]: NgLamVN ► để qua server gốc tý
+2021-06-04 [21:04:27.952] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [21:04:27.956] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [21:04:31.955] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:04:36.511] [Server thread/INFO]: [CMD][PikarioVN] use /kick eggyunicycle766
+2021-06-04 [21:04:36.515] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Kicked by admin.
+2021-06-04 [21:04:36.515] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [21:04:36.519] [Server thread/INFO]: [PikarioVN: Kicked EggyUnicycle766 from the game]
+2021-06-04 [21:04:39.349] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [21:04:39.581] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [21:04:40.733] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 39 at (PlotTest, -61.306, 74.7874, 112.1404)
+2021-06-04 [21:04:43.778] [Server thread/INFO]: PikarioVN ► :D
+2021-06-04 [21:04:45.637] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:04:45.640] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [21:04:49.437] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Session opened
+2021-06-04 [21:04:49.515] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Player: EggyUnicycle766
+2021-06-04 [21:04:50.889] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:6207] logged in with entity id 40 at (PlotTest, -98.4232, 70.7039, 95.5055)
+2021-06-04 [21:04:52.939] [Server thread/INFO]: NgLamVN ► 0/69...
+2021-06-04 [21:05:05.556] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:05:05.557] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [21:05:13.634] [Server thread/INFO]: PikarioVN ► ko có 3 đứa tui là z ó
+2021-06-04 [21:05:28.124] [Server thread/INFO]: PikarioVN ► nên tự giác thường quà ik
+2021-06-04 [21:05:29.808] [Server thread/INFO]: Long07949 ► j dị
+2021-06-04 [21:05:31.616] [Server thread/INFO]: MaseW4602 ► đảo ai đẹp là đc đem vào 1.17 hả
+2021-06-04 [21:05:44.643] [Server thread/INFO]: EggyUnicycle766 ► yep
+2021-06-04 [21:05:45.305] [Server thread/INFO]: PikarioVN ► ko phải me bắt hay j âu nhưng tự giác ik
+2021-06-04 [21:05:46.686] [Server thread/INFO]: Long07949 ► ủa
+2021-06-04 [21:05:53.324] [Server thread/INFO]: Long07949 ► ...
+2021-06-04 [21:05:56.208] [Server thread/INFO]: EggyUnicycle766 ► cho all mọi người
+2021-06-04 [21:06:03.759] [Server thread/INFO]: MaseW4602 ► ai làm z
+2021-06-04 [21:06:13.256] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [21:06:20.504] [Server thread/INFO]: Long07949 ► thêm nước chi
+2021-06-04 [21:06:21.974] [Server thread/INFO]: MaseW4602 ► thằng nào mất dại z
+2021-06-04 [21:07:01.740] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:07:31.151] [Server thread/INFO]: [CMD][MaseW4602] use /tp Ng Ma
+2021-06-04 [21:07:31.162] [Server thread/INFO]: [MaseW4602: Teleported NgLamVN to MaseW4602]
+2021-06-04 [21:07:55.041] [Server thread/INFO]: Long07949 ► ủa
+2021-06-04 [21:07:59.426] [Server thread/INFO]: Long07949 ► cho hỏi
+2021-06-04 [21:08:08.715] [Server thread/INFO]: PikarioVN ► hỏi cái beep
+2021-06-04 [21:08:40.312] [Server thread/INFO]: Long07949 ► sever này rồi cái hướng dẫn để làm j
+2021-06-04 [21:08:48.394] [Server thread/INFO]: [CMD][PikarioVN] use /kick eggyunicycle766
+2021-06-04 [21:08:48.394] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Kicked by admin.
+2021-06-04 [21:08:48.396] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [21:08:48.400] [Server thread/INFO]: [PikarioVN: Kicked EggyUnicycle766 from the game]
+2021-06-04 [21:08:48.634] [Server thread/INFO]: MaseW4602 ► nứng
+2021-06-04 [21:08:57.251] [Server thread/INFO]: Long07949 ► ....
+2021-06-04 [21:09:10.234] [Server thread/INFO]: MaseW4602 ► qua sever gốc sẽ bt nha bạn
+2021-06-04 [21:09:24.765] [Server thread/INFO]: Long07949 ► sever gốc id là j
+2021-06-04 [21:09:28.544] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Session opened
+2021-06-04 [21:09:28.625] [Server thread/INFO]: [NetworkSession: 125.212.173.75 6207] Player: EggyUnicycle766
+2021-06-04 [21:09:29.728] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:6207] logged in with entity id 162 at (PlotTest, -62.9401, 74.0502, 99.1818)
+2021-06-04 [21:09:36.016] [Server thread/INFO]: MaseW4602 ► Lam..
+2021-06-04 [21:09:38.184] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:09:38.184] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-04 [21:09:49.975] [Server thread/INFO]: NgLamVN ► j
+2021-06-04 [21:10:00.404] [Server thread/INFO]: MaseW4602 ► jinodk.ddns.net
+2021-06-04 [21:10:21.393] [Server thread/INFO]: Long07949 left the game
+2021-06-04 [21:10:21.403] [Server thread/INFO]: [NetworkSession: Long07949] Session closed due to client disconnect
+2021-06-04 [21:10:45.622] [Server thread/INFO]: PikarioVN ► hỏi xuyên sv là có thật
+2021-06-04 [21:11:12.844] [Server thread/INFO]: MaseW4602 ► dạo này sever vắng :((
+2021-06-04 [21:11:31.341] [Server thread/INFO]: PikarioVN ► chỉ đông khi có nhanpe hoi
+2021-06-04 [21:11:43.842] [Server thread/INFO]: MaseW4602 ► ổng nổi tiếng lắ hả
+2021-06-04 [21:11:48.801] [Server thread/INFO]: PikarioVN ► mem chân chính có me egg vs ma hoi
+2021-06-04 [21:11:53.820] [Server thread/INFO]: PikarioVN ► ò
+2021-06-04 [21:11:54.311] [Server thread/INFO]: MaseW4602 ► :)))
+2021-06-04 [21:12:09.413] [Server thread/INFO]: EggyUnicycle766 ►  :))
+2021-06-04 [21:12:16.179] [Server thread/INFO]: PikarioVN ► còn đâu toàn e nhỏ đi zô xin vô is nhan
+2021-06-04 [21:12:31.828] [Server thread/INFO]: MaseW4602 ►  :)))
+2021-06-04 [21:12:47.245] [Server thread/INFO]: EggyUnicycle766 ►  :))
+2021-06-04 [21:12:51.439] [Server thread/INFO]: PikarioVN ► :))))))
+2021-06-04 [21:13:10.030] [Server thread/INFO]: EggyUnicycle766 ►   hwhshshhsjebebshbsd
+2021-06-04 [21:13:20.416] [Server thread/INFO]: MaseW4602 ►       núi
+2021-06-04 [21:13:39.371] [Server thread/INFO]: NgLamVN ► mô tả trải nghiệm của bạn bên PM4
+2021-06-04 [21:13:49.745] [Server thread/INFO]: PikarioVN ► perfect
+2021-06-04 [21:13:50.970] [Server thread/INFO]: EggyUnicycle766 ► chả khác j
+2021-06-04 [21:14:08.076] [Server thread/INFO]: [CMD][NgLamVN] use /tp Pi
+2021-06-04 [21:14:08.392] [Server thread/INFO]: [NgLamVN: Teleported NgLamVN to PikarioVN]
+2021-06-04 [21:14:13.486] [Server thread/INFO]: PikarioVN ► ko dùng lời diễn tả đc :))
+2021-06-04 [21:14:28.984] [Server thread/INFO]: MaseW4602 ► làm có màu đó z Pika
+2021-06-04 [21:14:36.934] [Server thread/INFO]: PikarioVN ► :v
+2021-06-04 [21:14:43.635] [Server thread/INFO]: PikarioVN ► z cx ko bt lun á
+2021-06-04 [21:14:59.077] [Server thread/INFO]: MaseW4602 ► ns đi
+2021-06-04 [21:15:14.840] [Server thread/INFO]: [CMD][PikarioVN] use /setmoney 200000
+2021-06-04 [21:15:31.422] [Server thread/INFO]: MaseW4602 ► 2
+2021-06-04 [21:16:06.145] [Server thread/INFO]: EggyUnicycle766 ►   abc
+2021-06-04 [21:16:09.728] [Server thread/INFO]: [CMD][PikarioVN] use /setblock diamond_block pikariovn ~ 300 ~
+2021-06-04 [21:17:20.923] [Server thread/INFO]: [CMD][PikarioVN] use /give pikariovn command_block
+2021-06-04 [21:17:20.937] [Server thread/INFO]: [PikarioVN: Given Unknown (137:0) * 64 to PikarioVN]
+2021-06-04 [21:18:08.532] [Server thread/INFO]: [CMD][PikarioVN] use /p claim
+2021-06-04 [21:18:28.708] [Server thread/INFO]: MaseW4602 ► o
+2021-06-04 [21:18:43.467] [Server thread/INFO]: MaseW4602 ►  mzisnsksosj
+2021-06-04 [21:18:48.553] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [21:18:53.459] [Server thread/INFO]: MaseW4602 ► cái nào z Pika
+2021-06-04 [21:19:06.305] [Server thread/INFO]: [CMD][PikarioVN] use /say @a Hiiiiii
+2021-06-04 [21:19:06.307] [Server thread/INFO]: [PikarioVN] @a Hiiiiii
+2021-06-04 [21:19:12.225] [Server thread/INFO]: EggyUnicycle766 ►   quần què
+2021-06-04 [21:19:16.634] [Server thread/INFO]: PikarioVN ► :g
+2021-06-04 [21:19:18.863] [Server thread/INFO]: PikarioVN ► :v
+2021-06-04 [21:19:28.364] [Server thread/INFO]: [CMD][MaseW4602] use /say :))
+2021-06-04 [21:19:28.364] [Server thread/INFO]: [MaseW4602] :))
+2021-06-04 [21:19:37.967] [Server thread/INFO]: [CMD][EggyUnicycle766] use /w here alo
+2021-06-04 [21:19:45.365] [Server thread/INFO]: [CMD][EggyUnicycle766] use /w :))
+2021-06-04 [21:20:01.675] [Server thread/INFO]: [CMD][PikarioVN] use /say Hiii
+2021-06-04 [21:20:01.675] [Server thread/INFO]: [PikarioVN] Hiii
+2021-06-04 [21:20:08.390] [Server thread/INFO]: MaseW4602 ► s đc z Pika :(
+2021-06-04 [21:20:09.011] [Server thread/INFO]: [CMD][EggyUnicycle766] use /w @e ...
+2021-06-04 [21:20:20.357] [Server thread/INFO]: PikarioVN ► :v
+2021-06-04 [21:20:28.762] [Server thread/INFO]: PikarioVN ► ko bt dùng lệnh ak ma
+2021-06-04 [21:20:38.216] [Server thread/INFO]: MaseW4602 ► cái màu chữ ấy
+2021-06-04 [21:21:11.731] [Server thread/INFO]: MaseW4602 ► :))
+2021-06-04 [21:21:36.664] [Server thread/INFO]: [CMD][PikarioVN] use /kill eggyunicycle766
+2021-06-04 [21:21:36.671] [Server thread/INFO]: EggyUnicycle766 died
+2021-06-04 [21:21:36.676] [Server thread/INFO]: [PikarioVN: Killed EggyUnicycle766]
+2021-06-04 [21:21:45.603] [Server thread/INFO]: MaseW4602 ► :((
+2021-06-04 [21:22:09.918] [Server thread/INFO]: EggyUnicycle766 ► vl mất đồ
+2021-06-04 [21:22:28.540] [Server thread/INFO]: MaseW4602 ► 9882882
+2021-06-04 [21:22:28.836] [Server thread/INFO]: [CMD][PikarioVN] use /clear egg
+2021-06-04 [21:22:39.597] [Server thread/INFO]: [CMD][PikarioVN] use /clear ma
+2021-06-04 [21:22:39.602] [Server thread/INFO]: [PikarioVN: Cleared the inventory of MaseW4602, removing 324 items]
+2021-06-04 [21:22:56.824] [Server thread/INFO]: [CMD][EggyUnicycle766] use /clear pi
+2021-06-04 [21:22:56.826] [Server thread/INFO]: [EggyUnicycle766: Cleared the inventory of PikarioVN, removing 452 items]
+2021-06-04 [21:23:05.631] [Server thread/INFO]: [CMD][PikarioVN] use /clear @e[tnt]
+2021-06-04 [21:25:12.561] [Server thread/INFO]: EggyUnicycle766 ► bảo lam cho me rank builder là vừa :))
+2021-06-04 [21:25:22.578] [Server thread/INFO]: [CMD][PikarioVN] use /fill ~ ~ ~ ~ 300 ~
+2021-06-04 [21:25:33.263] [Server thread/INFO]: [CMD][EggyUnicycle766] use /groups
+2021-06-04 [21:25:50.016] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup EggyUnicycle Owner
+2021-06-04 [21:25:53.682] [Server thread/INFO]: EggyUnicycle766 ► .
+2021-06-04 [21:25:58.548] [Server thread/INFO]: EggyUnicycle766 ► hmmm
+2021-06-04 [21:26:03.413] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [21:26:03.419] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to timeout
+2021-06-04 [21:26:20.910] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Session opened
+2021-06-04 [21:26:21.300] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Player: PikarioVN
+2021-06-04 [21:26:24.275] [Server thread/INFO]: PikarioVN[/27.67.190.94:44941] logged in with entity id 1217 at (PlotTest, -61.0799, 66.581, 99.6209)
+2021-06-04 [21:26:51.651] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:26:51.651] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [21:26:52.809] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setformat Owner null Trum_sv 
+2021-06-04 [21:26:55.689] [Server thread/INFO]: Trum_sv
+2021-06-04 [21:26:57.992] [Server thread/INFO]: Trum_sv
+2021-06-04 [21:27:38.904] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setformat Owner null Trum_sv nói là =>  {mgs}
+2021-06-04 [21:27:41.744] [Server thread/INFO]: Trum_sv nói là =>  {mgs}
+2021-06-04 [21:28:19.165] [Server thread/INFO]: NgLamVN ► ?
+2021-06-04 [21:28:24.441] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-04 [21:29:23.411] [Server thread/INFO]: MaseW4602 ► nứng
+2021-06-04 [21:29:27.078] [Server thread/INFO]: [CMD][PikarioVN] use /tell Buid sao r
+2021-06-04 [21:29:35.043] [Server thread/INFO]: MaseW4602 left the game
+2021-06-04 [21:29:35.048] [Server thread/INFO]: [NetworkSession: MaseW4602] Session closed due to timeout
+2021-06-04 [21:32:13.040] [Server thread/INFO]: This server is running PocketMine-MP 4.0.0+dev for Minecraft: Bedrock Edition v1.16.220 (protocol version 431)
+2021-06-04 [21:32:25.926] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setformat Owner null Trum_sv nói là =>  {msg}
+2021-06-04 [21:32:28.645] [Server thread/INFO]: Trum_sv nói là =>  .
+2021-06-04 [21:32:31.175] [Server thread/INFO]: Trum_sv nói là =>  alo
+2021-06-04 [21:32:38.705] [Server thread/INFO]: Trum_sv nói là =>  :))
+2021-06-04 [21:32:40.765] [Server thread/INFO]: NgLamVN ► vl :)
+2021-06-04 [21:32:46.677] [Server thread/INFO]: PikarioVN ► :v
+2021-06-04 [21:32:48.164] [Server thread/INFO]: Trum_sv nói là =>  :)))
+2021-06-04 [21:32:49.582] [Server thread/INFO]: [CMD][NgLamVN] use /tp Pi ng
+2021-06-04 [21:32:49.586] [Server thread/INFO]: [NgLamVN: Teleported PikarioVN to NgLamVN]
+2021-06-04 [21:32:55.420] [Server thread/INFO]: [CMD][NgLamVN] use /tp Egg ng
+2021-06-04 [21:32:55.426] [Server thread/INFO]: [NgLamVN: Teleported EggyUnicycle766 to NgLamVN]
+2021-06-04 [21:33:05.039] [Server thread/INFO]: [CMD][PikarioVN] use /tell @a hahsuhshshsbdhzbxu
+2021-06-04 [21:33:18.131] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setnametag VIP1 null    Trum_sv  {display_name}
+2021-06-04 [21:33:28.942] [Server thread/INFO]: [CMD][PikarioVN] use /say ajsjhsbsuzbduejzhxuxhdhb
+2021-06-04 [21:33:28.943] [Server thread/INFO]: [PikarioVN] ajsjhsbsuzbduejzhxuxhdhb
+2021-06-04 [21:33:35.603] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setnametag Owner  null    Trum_sv  {display_name}
+2021-06-04 [21:33:39.745] [Server thread/INFO]: Trum_sv nói là =>  ....
+2021-06-04 [21:33:45.886] [Server thread/INFO]: PikarioVN ► me ko học hóa âu :)
+2021-06-04 [21:33:52.382] [Server thread/INFO]: Trum_sv nói là =>  :))
+2021-06-04 [21:34:08.586] [Server thread/INFO]: NgLamVN ► HÓAAAAAAAAAAAAAAAA
+2021-06-04 [21:34:16.552] [Server thread/INFO]: Trum_sv nói là =>  me ngu hóa :)))
+2021-06-04 [21:34:33.407] [Server thread/INFO]: [CMD][EggyUnicycle766] use /addgroup VIP1
+2021-06-04 [21:34:48.867] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setnametag VIP1 null    VIPX  {display_name}
+2021-06-04 [21:35:10.388] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setformat VIP1 null VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:35:31.375] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup VIP1 pi
+2021-06-04 [21:35:41.027] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup pi VIP1
+2021-06-04 [21:35:42.138] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [21:35:42.141] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to timeout
+2021-06-04 [21:35:46.655] [Server thread/INFO]: Trum_sv nói là =>  :v
+2021-06-04 [21:36:00.372] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup ma VIP1
+2021-06-04 [21:36:12.968] [Server thread/INFO]: Trum_sv nói là =>  sao out hết r
+2021-06-04 [21:36:24.254] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Session opened
+2021-06-04 [21:36:24.705] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Player: PikarioVN
+2021-06-04 [21:36:30.487] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup ng VIP1
+2021-06-04 [21:36:32.292] [Server thread/INFO]: PikarioVN[/27.67.190.94:44941] logged in with entity id 1219 at (PlotTest, -66.3446, 66.9473, 95.5272)
+2021-06-04 [21:36:41.613] [Server thread/INFO]: VIPX  NgLamVN ➩ cái mọe j thế này ...
+2021-06-04 [21:36:46.664] [Server thread/INFO]: Trum_sv nói là =>  :))
+2021-06-04 [21:36:57.635] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [21:36:57.639] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [21:37:01.315] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:37:01.316] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [21:37:25.314] [Server thread/INFO]: Trum_sv nói là =>  ê pika
+2021-06-04 [21:37:30.707] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup pi VIP1
+2021-06-04 [21:39:59.752] [Server thread/INFO]: Trum_sv nói là =>  chat đi pika
+2021-06-04 [21:40:12.985] [Server thread/INFO]: [CMD][PikarioVN] use /say nguy hiểm
+2021-06-04 [21:40:12.987] [Server thread/INFO]: [PikarioVN] nguy hiểm
+2021-06-04 [21:40:23.300] [Server thread/INFO]: [CMD][PikarioVN] use /say đấy ns r
+2021-06-04 [21:40:23.303] [Server thread/INFO]: [PikarioVN] đấy ns r
+2021-06-04 [21:40:24.445] [Server thread/INFO]: Trum_sv nói là =>  :v
+2021-06-04 [21:41:39.694] [Server thread/INFO]: [CMD][PikarioVN] use /setnametag pikariovn Cute
+2021-06-04 [21:42:17.627] [Server thread/INFO]: [CMD][PikarioVN] use /setnametag Cute pikariovn
+2021-06-04 [21:43:07.745] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Session opened
+2021-06-04 [21:43:07.811] [Server thread/INFO]: [NetworkSession: 192.168.1.1 63655] Player: NgLamVN
+2021-06-04 [21:43:08.828] [Server thread/INFO]: NgLamVN[/192.168.1.1:63655] logged in with entity id 1222 at (PlotTest, -98.5433, 83, 130.9934)
+2021-06-04 [21:43:15.236] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:43:15.237] [Server thread/INFO]: NgLamVN joined the game
+2021-06-04 [21:43:21.656] [Server thread/INFO]: VIPX  NgLamVN ➩ .
+2021-06-04 [21:43:24.300] [Server thread/INFO]: VIPX  PikarioVN ➩ có vẻ có giới hạn lệnh :)
+2021-06-04 [21:43:27.282] [Server thread/INFO]: VIPX  NgLamVN ➩ What the f was that
+2021-06-04 [21:43:39.502] [Server thread/INFO]: Trum_sv nói là =>  :))
+2021-06-04 [21:43:55.103] [Server thread/INFO]: [CMD][NgLamVN] use /setformat
+2021-06-04 [21:44:00.353] [Server thread/INFO]: [CMD][NgLamVN] use /setformat vip1 VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:44:05.944] [Server thread/INFO]: [CMD][NgLamVN] use /setformat Vip1 VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:44:08.735] [Server thread/INFO]: [CMD][NgLamVN] use /groups
+2021-06-04 [21:44:16.793] [Server thread/INFO]: [CMD][NgLamVN] use /setformat VIP1 VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:44:21.604] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setformat VIP1 null VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:44:23.074] [Server thread/INFO]: [CMD][NgLamVN] use /setformat VIP1 null VIPX  {display_name} ➩ {msg}
+2021-06-04 [21:44:36.018] [Server thread/INFO]: Trum_sv nói là =>  có vẻ hết chữ in đậm r
+2021-06-04 [21:44:36.359] [Server thread/INFO]: [CMD][NgLamVN] use /setformat VIP1 null OniiChan  {display_name} ➩ {msg}
+2021-06-04 [21:45:15.015] [Server thread/INFO]: OniiChan  NgLamVN ➩ ủa mấy chú đang làm gì vậy ?
+2021-06-04 [21:45:19.554] [Server thread/INFO]: OniiChan  NgLamVN ➩ wait a minute...
+2021-06-04 [21:45:24.490] [Server thread/INFO]: Trum_sv nói là =>  me build xong r
+2021-06-04 [21:45:29.260] [Server thread/INFO]: OniiChan  PikarioVN ➩ me đag xem build thêm j
+2021-06-04 [21:45:29.823] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup pi VIP1
+2021-06-04 [21:45:35.138] [Server thread/INFO]: [NetworkSession: 49.98.165.89 44625] Session opened
+2021-06-04 [21:45:35.399] [Server thread/INFO]: [NetworkSession: 49.98.165.89 44625] Player: TuyHongNhan99
+2021-06-04 [21:45:36.514] [Server thread/INFO]: TuyHongNhan99[/49.98.165.89:44625] logged in with entity id 1223 at (PlotTest, 0, 20, 0)
+2021-06-04 [21:45:37.056] [Server thread/INFO]: OniiChan  NgLamVN ➩ what the f was that ...
+2021-06-04 [21:45:39.939] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setgroup ng VIP1
+2021-06-04 [21:45:41.064] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:45:41.065] [Server thread/INFO]: TuyHongNhan99 joined the game
+2021-06-04 [21:45:44.065] [Server thread/INFO]: OniiChan  NgLamVN ➩ hey
+2021-06-04 [21:45:49.390] [Server thread/INFO]: OniiChan  NgLamVN ➩ what the f was that
+2021-06-04 [21:45:59.660] [Server thread/INFO]: Trum_sv nói là =>  wtf onichan
+2021-06-04 [21:46:01.449] [Server thread/INFO]: TuyHongNhan99 ► hello may cung
+2021-06-04 [21:46:03.665] [Server thread/INFO]: [CMD][NgLamVN] use /tp Tuy Ng
+2021-06-04 [21:46:03.671] [Server thread/INFO]: [NgLamVN: Teleported TuyHongNhan99 to NgLamVN]
+2021-06-04 [21:46:07.112] [Server thread/INFO]: Trum_sv nói là =>  gì đấy
+2021-06-04 [21:46:09.681] [Server thread/INFO]: [CMD][NgLamVN] use /gamemode c Tuy
+2021-06-04 [21:46:09.723] [Server thread/INFO]: [NgLamVN: Set TuyHongNhan99's game mode to Creative Mode]
+2021-06-04 [21:46:13.240] [Server thread/INFO]: OniiChan  NgLamVN ➩ heh
+2021-06-04 [21:46:18.210] [Server thread/INFO]: OniiChan  PikarioVN ➩ buildhay phá
+2021-06-04 [21:46:22.486] [Server thread/INFO]: OniiChan  PikarioVN ➩ ns lẹ
+2021-06-04 [21:46:22.546] [Server thread/INFO]: Trum_sv nói là =>  biết trùm sv đang ở đây k
+2021-06-04 [21:46:29.770] [Server thread/INFO]: TuyHongNhan99 ► ghe vay
+2021-06-04 [21:46:35.065] [Server thread/INFO]: OniiChan  NgLamVN ➩ Smoke
+2021-06-04 [21:46:42.331] [Server thread/INFO]: Trum_sv nói là =>  có sài được đâu lam
+2021-06-04 [21:46:46.096] [Server thread/INFO]: OniiChan  NgLamVN ➩ maybe
+2021-06-04 [21:47:05.258] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [21:47:10.435] [Server thread/INFO]: TuyHongNhan99 ► sang tao co dap dc block dau
+2021-06-04 [21:47:11.629] [Server thread/INFO]: TuyHongNhan99 ► op
+2021-06-04 [21:47:13.047] [Server thread/INFO]: TuyHongNhan99 ► :D
+2021-06-04 [21:47:16.885] [Server thread/INFO]: OniiChan  NgLamVN ➩ loading ,,,
+2021-06-04 [21:47:23.204] [Server thread/INFO]: TuyHongNhan99 ► :D
+2021-06-04 [21:47:24.621] [Server thread/INFO]: [CONSOLE: Opped TuyHongNhan99]
+2021-06-04 [21:47:27.430] [Server thread/INFO]: OniiChan  NgLamVN ➩ Done
+2021-06-04 [21:47:32.716] [Server thread/INFO]: TuyHongNhan99 ► ok
+2021-06-04 [21:47:36.136] [Server thread/INFO]: OniiChan  NgLamVN ➩ Đừng stop server là đc :v
+2021-06-04 [21:47:47.438] [Server thread/INFO]: TuyHongNhan99 ► ranh dau ma ghi
+2021-06-04 [21:47:53.385] [Server thread/INFO]: [CMD][TuyHongNhan99] use /pl
+2021-06-04 [21:47:53.814] [Server thread/INFO]: OniiChan  PikarioVN ➩ lửa trại đAu nhể
+2021-06-04 [21:48:01.506] [Server thread/INFO]: [CMD][NgLamVN] use /give Ng Campfire 1
+2021-06-04 [21:48:01.507] [Server thread/INFO]: [NgLamVN: Given Campfire (-209:0) * 1 to NgLamVN]
+2021-06-04 [21:48:11.355] [Server thread/INFO]: OniiChan  NgLamVN ➩ Give
+2021-06-04 [21:48:17.891] [Server thread/INFO]: OniiChan  PikarioVN ➩ :v
+2021-06-04 [21:48:25.225] [Server thread/INFO]: TuyHongNhan99 ► vallinapm4? :D
+2021-06-04 [21:48:33.535] [Server thread/INFO]: OniiChan  NgLamVN ➩ implement r nhưng chưa add vào Creative inv
+2021-06-04 [21:48:34.238] [Server thread/INFO]: TuyHongNhan99 ► ghe vay
+2021-06-04 [21:48:39.545] [Server thread/INFO]: Trum_sv nói là =>  :)
+2021-06-04 [21:48:54.336] [Server thread/INFO]: OniiChan  PikarioVN ➩ quăng me lửa trại
+2021-06-04 [21:48:55.919] [Server thread/INFO]: OniiChan  NgLamVN ➩ *Server này chạy trên PM3
+2021-06-04 [21:49:01.437] [Server thread/INFO]: OniiChan  PikarioVN ➩ ko nhớ id
+2021-06-04 [21:49:02.105] [Server thread/INFO]: OniiChan  NgLamVN ➩ nope
+2021-06-04 [21:49:05.222] [Server thread/INFO]: OniiChan  NgLamVN ➩ *Server này chạy trên PM4
+2021-06-04 [21:49:25.367] [Server thread/INFO]: [CMD][NgLamVN] use /pl
+2021-06-04 [21:49:30.176] [Server thread/INFO]: OniiChan  PikarioVN ➩ lửa trại :)
+2021-06-04 [21:49:35.988] [Server thread/INFO]: OniiChan  PikarioVN ➩ quăng me
+2021-06-04 [21:49:43.769] [Server thread/INFO]: [CMD][NgLamVN] use /give ng campfire 1
+2021-06-04 [21:49:43.773] [Server thread/INFO]: [NgLamVN: Given Campfire (-209:0) * 1 to NgLamVN]
+2021-06-04 [21:49:47.370] [Server thread/INFO]: [CMD][NgLamVN] use /give ng campfire 1
+2021-06-04 [21:49:47.373] [Server thread/INFO]: [NgLamVN: Given Campfire (-209:0) * 1 to NgLamVN]
+2021-06-04 [21:49:56.412] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -209
+2021-06-04 [21:49:56.413] [Server thread/INFO]: [EggyUnicycle766: Given Campfire (-209:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:50:04.290] [Server thread/INFO]: OniiChan  NgLamVN ➩ hmmm
+2021-06-04 [21:50:05.984] [Server thread/INFO]: OniiChan  NgLamVN ➩ wtf ...
+2021-06-04 [21:50:16.946] [Server thread/INFO]: Trum_sv nói là =>  k dập đc
+2021-06-04 [21:50:22.095] [Server thread/INFO]: OniiChan  NgLamVN ➩ đốt đảo belike
+2021-06-04 [21:50:29.659] [Server thread/INFO]: OniiChan  NgLamVN ➩ yep
+2021-06-04 [21:50:35.429] [Server thread/INFO]: OniiChan  NgLamVN ➩ chưa implement block state
+2021-06-04 [21:50:41.145] [Server thread/INFO]: OniiChan  NgLamVN ➩ mới chỉ cho "đặt" đc
+2021-06-04 [21:50:55.247] [Server thread/INFO]: Trum_sv nói là =>  ê lam
+2021-06-04 [21:50:58.365] [Server thread/INFO]: OniiChan  NgLamVN ➩ j
+2021-06-04 [21:50:59.884] [Server thread/INFO]: [CMD][NgLamVN] use /ver
+2021-06-04 [21:51:01.320] [Server thread/INFO]: Trum_sv nói là =>  mất tờ giấy r
+2021-06-04 [21:51:06.585] [Server thread/INFO]: OniiChan  NgLamVN ➩ z thôi bỏ
+2021-06-04 [21:51:15.747] [Server thread/INFO]: OniiChan  NgLamVN ➩ vì hiện giờ nó là vô dụng :v
+2021-06-04 [21:51:24.366] [Server thread/INFO]: Trum_sv nói là =>  ảo thật đấy
+2021-06-04 [21:51:30.418] [Server thread/INFO]: TuyHongNhan99 ► vkl bang tuan hoan hoa hoc
+2021-06-04 [21:51:35.296] [Server thread/INFO]: [CMD][PikarioVN] use /setmoney pikariovn 200000
+2021-06-04 [21:51:35.383] [Server thread/INFO]: TuyHongNhan99 ► để lmj
+2021-06-04 [21:51:45.966] [Server thread/INFO]: Trum_sv nói là =>  chụp đăng fb
+2021-06-04 [21:51:46.185] [Server thread/INFO]: OniiChan  NgLamVN ➩ nothing
+2021-06-04 [21:51:49.699] [Server thread/INFO]: [CMD][NgLamVN] use /tp Tuy ng
+2021-06-04 [21:51:49.710] [Server thread/INFO]: [NgLamVN: Teleported TuyHongNhan99 to NgLamVN]
+2021-06-04 [21:51:56.135] [Server thread/INFO]: OniiChan  NgLamVN ➩ like this.
+2021-06-04 [21:52:10.118] [Server thread/INFO]: TuyHongNhan99 ► thanh nien rảnh vl
+2021-06-04 [21:52:30.700] [Server thread/INFO]: OniiChan  NgLamVN ➩ giờ code thêm fishing module
+2021-06-04 [21:52:38.276] [Server thread/INFO]: OniiChan  NgLamVN ➩ với port mấy pl còn lại qua api 4
+2021-06-04 [21:52:41.075] [Server thread/INFO]: TuyHongNhan99 ► câu cá?
+2021-06-04 [21:52:42.076] [Server thread/INFO]: OniiChan  NgLamVN ➩ là xong ...
+2021-06-04 [21:52:44.536] [Server thread/INFO]: OniiChan  NgLamVN ➩ Yep
+2021-06-04 [21:53:09.324] [Server thread/INFO]: TuyHongNhan99 ► code len pm4 khó vkl
+2021-06-04 [21:53:26.730] [Server thread/INFO]: OniiChan  NgLamVN ➩ toàn bộ pl trong server này trừ DevTools với DE virion thì toàn phải code lại cả ...
+2021-06-04 [21:53:33.506] [Server thread/INFO]: Trum_sv nói là =>  méo xuống đf âu
+2021-06-04 [21:53:39.039] [Server thread/INFO]: OniiChan  NgLamVN ➩ MyPlot thì có ổng jason support nên chạy đc
+2021-06-04 [21:53:40.305] [Server thread/INFO]: TuyHongNhan99 ► đương nhiên
+2021-06-04 [21:53:49.128] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 110
+2021-06-04 [21:53:49.128] [Server thread/INFO]: [EggyUnicycle766: Given Mycelium (110:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:03.185] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 111
+2021-06-04 [21:54:03.190] [Server thread/INFO]: [EggyUnicycle766: Given Lily Pad (111:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:08.734] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 112
+2021-06-04 [21:54:08.738] [Server thread/INFO]: [EggyUnicycle766: Given Nether Bricks (112:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:14.144] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 113
+2021-06-04 [21:54:14.145] [Server thread/INFO]: [EggyUnicycle766: Given Nether Brick Fence (113:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:16.007] [Server thread/INFO]: OniiChan  NgLamVN ➩ end portal có chạy đâu mà đặt :v
+2021-06-04 [21:54:19.199] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 114
+2021-06-04 [21:54:19.200] [Server thread/INFO]: [EggyUnicycle766: Given Nether Brick Stairs (114:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:28.977] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 115
+2021-06-04 [21:54:28.977] [Server thread/INFO]: [EggyUnicycle766: Given Nether Wart (115:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:33.642] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 116
+2021-06-04 [21:54:33.643] [Server thread/INFO]: [EggyUnicycle766: Given Enchanting Table (116:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:38.643] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 117
+2021-06-04 [21:54:38.647] [Server thread/INFO]: [EggyUnicycle766: Given Brewing Stand (117:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:52.577] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 118
+2021-06-04 [21:54:52.577] [Server thread/INFO]: [EggyUnicycle766: Given Cauldron (118:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:54:55.584] [Server thread/INFO]: [CMD][PikarioVN] use /summon sheep
+2021-06-04 [21:55:00.944] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle 119
+2021-06-04 [21:55:00.945] [Server thread/INFO]: [EggyUnicycle766: Given Unknown (119:0) * 64 to EggyUnicycle766]
+2021-06-04 [21:55:04.417] [Server thread/INFO]: OniiChan  NgLamVN ➩ nếu PocketMine-MP phiên bản tiếp theo là 4.0.0
+2021-06-04 [21:55:08.405] [Server thread/INFO]: OniiChan  NgLamVN ➩ thì
+2021-06-04 [21:55:17.346] [Server thread/INFO]: OniiChan  NgLamVN ➩ all server in vn will dead
+2021-06-04 [21:55:38.840] [Server thread/INFO]: TuyHongNhan99 ► trac bọn sp bên pocketmine thể nào bọn nó trả code
+2021-06-04 [21:55:51.901] [Server thread/INFO]: Trum_sv nói là =>  sao k đặt đc
+2021-06-04 [21:55:54.700] [Server thread/INFO]: Trum_sv nói là =>  why
+2021-06-04 [21:56:04.418] [Server thread/INFO]: OniiChan  NgLamVN ➩ mấy bạn cứ hiểu là
+2021-06-04 [21:56:12.236] [Server thread/INFO]: OniiChan  NgLamVN ➩ đồ j k đặt đc là chưa implement.
+2021-06-04 [21:56:17.316] [Server thread/INFO]: [CMD][NgLamVN] use /clear
+2021-06-04 [21:56:17.328] [Server thread/INFO]: [NgLamVN: Cleared the inventory of NgLamVN, removing 451 items]
+2021-06-04 [21:56:19.776] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-04 [21:56:51.902] [Server thread/INFO]: OniiChan  NgLamVN ➩ đúng là mị quyết định port ClearLagg qua PM4 đầu tiên là quyết định đúng vl
+2021-06-04 [21:57:04.456] [Server thread/INFO]: OniiChan  NgLamVN ➩ Dauma
+2021-06-04 [21:57:09.192] [Server thread/INFO]: Trum_sv nói là =>  :)
+2021-06-04 [21:57:27.803] [Server thread/INFO]: Trum_sv nói là =>  give me command block
+2021-06-04 [21:57:34.591] [Server thread/INFO]: OniiChan  NgLamVN ➩ No
+2021-06-04 [21:57:37.325] [Server thread/INFO]: OniiChan  NgLamVN ➩ it doesnt work
+2021-06-04 [21:57:37.385] [Server thread/INFO]: [CMD][EggyUnicycle766] use /time set night 
+2021-06-04 [21:57:37.386] [Server thread/INFO]: [EggyUnicycle766: Set the time to 13000]
+2021-06-04 [21:57:37.624] [Server thread/INFO]: OniiChan  PikarioVN ➩ ko đặt đc âu
+2021-06-04 [21:57:42.369] [Server thread/INFO]: [CMD][NgLamVN] use /time set day
+2021-06-04 [21:57:42.370] [Server thread/INFO]: [NgLamVN: Set the time to 1000]
+2021-06-04 [21:58:03.061] [Server thread/INFO]: Trum_sv nói là =>  bọn này bị thiểu năng
+2021-06-04 [21:58:04.594] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy command_clock
+2021-06-04 [21:58:14.275] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy command_cblock
+2021-06-04 [21:58:20.617] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy command_block
+2021-06-04 [21:58:20.629] [Server thread/INFO]: [TuyHongNhan99: Given Unknown (137:0) * 64 to TuyHongNhan99]
+2021-06-04 [21:58:22.708] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect @a speed 9999 255
+2021-06-04 [21:58:32.096] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect @e speed 9999 255
+2021-06-04 [21:58:43.879] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect ng speed 9999 255
+2021-06-04 [21:58:43.879] [Server thread/INFO]: [EggyUnicycle766: Given Speed * 255 to NgLamVN for 9999 seconds]
+2021-06-04 [21:59:07.232] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect t speed 9999 255
+2021-06-04 [21:59:07.233] [Server thread/INFO]: [EggyUnicycle766: Given Speed * 255 to TuyHongNhan99 for 9999 seconds]
+2021-06-04 [21:59:21.570] [Server thread/INFO]: [CMD][TuyHongNhan99] use /effect clear
+2021-06-04 [21:59:25.244] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect e speed 9999 255
+2021-06-04 [21:59:25.245] [Server thread/INFO]: [EggyUnicycle766: Given Speed * 255 to EggyUnicycle766 for 9999 seconds]
+2021-06-04 [21:59:30.531] [Server thread/INFO]: [CMD][TuyHongNhan99] use /effect tu clear
+2021-06-04 [21:59:39.847] [Server thread/INFO]: OniiChan  NgLamVN ➩ F...
+2021-06-04 [21:59:43.302] [Server thread/INFO]: Trum_sv nói là =>  thi chạy k
+2021-06-04 [21:59:45.972] [Server thread/INFO]: TuyHongNhan99 ► ?
+2021-06-04 [21:59:50.237] [Server thread/INFO]: [CMD][NgLamVN] use /effect ng clear
+2021-06-04 [21:59:54.016] [Server thread/INFO]: TuyHongNhan99 ► ok
+2021-06-04 [21:59:59.459] [Server thread/INFO]: TuyHongNhan99 ► đợi
+2021-06-04 [22:00:16.266] [Server thread/INFO]: [CMD][TuyHongNhan99] use /effect tu speed 999 255
+2021-06-04 [22:00:16.267] [Server thread/INFO]: [TuyHongNhan99: Given Speed * 255 to TuyHongNhan99 for 999 seconds]
+2021-06-04 [22:00:21.385] [Server thread/INFO]: TuyHongNhan99 ► 3
+2021-06-04 [22:00:22.620] [Server thread/INFO]: TuyHongNhan99 ► 2
+2021-06-04 [22:00:23.985] [Server thread/INFO]: TuyHongNhan99 ► 1
+2021-06-04 [22:00:58.522] [Server thread/INFO]: TuyHongNhan99 ► chạy giật vkl
+2021-06-04 [22:00:59.714] [Server thread/INFO]: [CMD][NgLamVN] use /clear
+2021-06-04 [22:01:02.582] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-04 [22:01:03.251] [Server thread/INFO]: Trum_sv nói là =>  :))
+2021-06-04 [22:01:07.149] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect e speed 9999 255
+2021-06-04 [22:01:07.152] [Server thread/INFO]: [EggyUnicycle766: Given Speed * 255 to EggyUnicycle766 for 9999 seconds]
+2021-06-04 [22:01:07.658] [Server thread/INFO]: [CMD][NgLamVN] use /status
+2021-06-04 [22:01:08.744] [Server thread/INFO]: [CMD][TuyHongNhan99] use /effect tu clear
+2021-06-04 [22:01:23.527] [Server thread/INFO]: TuyHongNhan99 ► đang test pm4 ah
+2021-06-04 [22:01:39.976] [Server thread/INFO]: OniiChan  NgLamVN ➩ quậy
+2021-06-04 [22:01:55.060] [Server thread/INFO]: [CMD][TuyHongNhan99] use /pl
+2021-06-04 [22:02:14.174] [Server thread/INFO]: OniiChan  NgLamVN ➩ :v
+2021-06-04 [22:02:38.490] [Server thread/INFO]: [CMD][TuyHongNhan99] use /status
+2021-06-04 [22:02:47.007] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -209 999
+2021-06-04 [22:02:47.010] [Server thread/INFO]: [EggyUnicycle766: Given Campfire (-209:0) * 999 to EggyUnicycle766]
+2021-06-04 [22:02:49.290] [Server thread/INFO]: [CMD][TuyHongNhan99] use /status
+2021-06-04 [22:02:54.045] [Server thread/INFO]: OniiChan  NgLamVN ➩ How to get Item
+2021-06-04 [22:02:55.584] [Server thread/INFO]: OniiChan  NgLamVN ➩ PM3
+2021-06-04 [22:03:04.866] [Server thread/INFO]: OniiChan  NgLamVN ➩ Item::get(Item::AIR,0,1);
+2021-06-04 [22:03:08.369] [Server thread/INFO]: OniiChan  NgLamVN ➩ PM4
+2021-06-04 [22:03:19.066] [Server thread/INFO]: OniiChan  NgLamVN ➩ VanillaItems::AIR()
+2021-06-04 [22:03:20.392] [Server thread/INFO]: OniiChan  NgLamVN ➩ or
+2021-06-04 [22:03:30.729] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy cafeny
+2021-06-04 [22:03:45.648] [Server thread/INFO]: OniiChan  NgLamVN ➩ ItemFactory::getInstance()->get(ItemIds::AIR, 0, 1);
+2021-06-04 [22:03:58.717] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-04 [22:04:02.298] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy campfire
+2021-06-04 [22:04:02.303] [Server thread/INFO]: [TuyHongNhan99: Given Campfire (-209:0) * 64 to TuyHongNhan99]
+2021-06-04 [22:04:07.854] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -209 999
+2021-06-04 [22:04:07.856] [Server thread/INFO]: [EggyUnicycle766: Given Campfire (-209:0) * 999 to EggyUnicycle766]
+2021-06-04 [22:04:11.185] [Server thread/INFO]: OniiChan  NgLamVN ➩ mấy bạn muốn server sập thật à :)
+2021-06-04 [22:04:27.102] [Server thread/INFO]: [CMD][NgLamVN] use /clearlagg
+2021-06-04 [22:04:49.174] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:01.658] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:03.075] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:03.840] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:07.134] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -209 999
+2021-06-04 [22:05:07.140] [Server thread/INFO]: [EggyUnicycle766: Given Campfire (-209:0) * 999 to EggyUnicycle766]
+2021-06-04 [22:05:08.778] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.008] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.190] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.391] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.547] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.755] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:09.947] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:10.102] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:10.276] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:10.277] [Server thread/INFO]: [CMD][EggyUnicycle766] use /give EggyUnicycle -209 999
+2021-06-04 [22:05:10.288] [Server thread/INFO]: [EggyUnicycle766: Given Campfire (-209:0) * 999 to EggyUnicycle766]
+2021-06-04 [22:05:10.907] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:14.403] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:14.905] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:15.383] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:15.788] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:16.189] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:16.538] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:17.236] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:17.973] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:18.342] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:18.750] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:19.141] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:28.903] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:30.023] [Server thread/INFO]: TuyHongNhan99 ► give mấy cái đó cần gì ghi pức tạp thế
+2021-06-04 [22:05:35.056] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:36.639] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:36.908] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:37.154] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:37.341] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:37.562] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:37.754] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:37.994] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:38.176] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:38.361] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:38.574] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:38.740] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:38.757] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:39.042] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:39.558] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:39.944] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:40.039] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:40.290] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:40.495] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:40.710] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:40.739] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:40.910] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:41.095] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:41.143] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:41.376] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:41.644] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:41.839] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:41.940] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:42.090] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:42.340] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:42.345] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:42.623] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:42.828] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.112] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.322] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.542] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.589] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:43.790] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.962] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:43.991] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:44.243] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:44.403] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:44.419] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:44.639] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:44.780] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:44.825] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:45.062] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:45.229] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:45.261] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:45.474] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:45.673] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:45.839] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:46.087] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:46.262] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:46.438] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:46.474] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:46.638] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:46.859] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:47.063] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:47.142] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:47.307] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:47.487] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:47.506] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:47.723] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:47.861] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:47.908] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:48.076] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:48.205] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:48.341] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:48.544] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:48.703] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:48.919] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:49.105] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:49.323] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:49.340] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:49.542] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:49.729] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:49.929] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:50.123] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:50.244] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:50.526] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:50.750] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:50.923] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:51.123] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:51.253] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:51.345] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:51.528] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:51.748] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:51.923] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:52.157] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:52.343] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:52.572] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:52.776] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:53.039] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:53.289] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:53.673] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:53.677] [Server thread/INFO]: TuyHongNhan99 ► ấn con cặc
+2021-06-04 [22:05:54.612] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:05:56.643] [Server thread/INFO]: Trum_sv nói là =>  1 ấn à
+2021-06-04 [22:06:28.064] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect pi speed 255 9999
+2021-06-04 [22:06:36.911] [Server thread/INFO]: TuyHongNhan99 ► solo cung k
+2021-06-04 [22:06:39.474] [Server thread/INFO]: TuyHongNhan99 ► gms
+2021-06-04 [22:06:39.625] [Server thread/INFO]: [CMD][EggyUnicycle766] use /effect pi speed 9999 255
+2021-06-04 [22:06:39.626] [Server thread/INFO]: [EggyUnicycle766: Given Speed * 255 to PikarioVN for 9999 seconds]
+2021-06-04 [22:06:44.804] [Server thread/INFO]: [CMD][TuyHongNhan99] use /gamemode s
+2021-06-04 [22:06:44.815] [Server thread/INFO]: [TuyHongNhan99: Set own game mode to Survival Mode]
+2021-06-04 [22:06:47.906] [Server thread/INFO]: [NetworkSession: 171.229.71.81 62451] Session opened
+2021-06-04 [22:06:47.976] [Server thread/INFO]: [NetworkSession: 171.229.71.81 62451] Player: Ys TuAn
+2021-06-04 [22:06:49.276] [Server thread/INFO]: Ys TuAn[/171.229.71.81:62451] logged in with entity id 2063 at (PlotTest, 0, 20, 0)
+2021-06-04 [22:07:06.063] [Server thread/INFO]: [CMD][TuyHongNhan99] use /gamemode c
+2021-06-04 [22:07:06.078] [Server thread/INFO]: [TuyHongNhan99: Set own game mode to Creative Mode]
+2021-06-04 [22:07:11.674] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn heal 99999 255
+2021-06-04 [22:07:11.795] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp pika 99999999 20 99999999
+2021-06-04 [22:07:11.801] [Server thread/INFO]: [EggyUnicycle766: Teleported PikarioVN to 30000000, 20, 30000000]
+2021-06-04 [22:07:11.811] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Player destroyed
+2021-06-04 [22:07:11.811] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [22:07:13.935] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [22:07:13.935] [Server thread/INFO]: Ys TuAn joined the game
+2021-06-04 [22:07:21.954] [Server thread/INFO]: Trum_sv nói là =>  ơ vl
+2021-06-04 [22:07:29.529] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy barri
+2021-06-04 [22:07:30.888] [Server thread/INFO]: Usage: /op <player>
+2021-06-04 [22:07:33.365] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy barrie
+2021-06-04 [22:07:35.468] [Server thread/INFO]: [CONSOLE: Opped Ys TuAn]
+2021-06-04 [22:07:40.243] [Server thread/INFO]: [CMD][Ys TuAn] use /gamemode 1
+2021-06-04 [22:07:40.264] [Server thread/INFO]: [Ys TuAn: Set own game mode to Creative Mode]
+2021-06-04 [22:07:44.920] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tuy barry
+2021-06-04 [22:07:45.091] [Server thread/INFO]: [CMD][NgLamVN] use /tp Ys ng
+2021-06-04 [22:07:45.102] [Server thread/INFO]: [NgLamVN: Teleported Ys TuAn to NgLamVN]
+2021-06-04 [22:08:03.864] [Server thread/INFO]: [CMD][Ys TuAn] use /p claim
+2021-06-04 [22:08:05.185] [Server thread/INFO]: Trum_sv nói là =>   lỡ tp pika 99999999 20 99999999
+2021-06-04 [22:08:07.279] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Session opened
+2021-06-04 [22:08:07.685] [Server thread/INFO]: [NetworkSession: 27.67.190.94 44941] Player: PikarioVN
+2021-06-04 [22:08:07.977] [Server thread/INFO]: TuyHongNhan99 ► ah pl này biết
+2021-06-04 [22:08:08.483] [Server thread/INFO]: OniiChan  NgLamVN ➩ :v
+2021-06-04 [22:08:11.322] [Server thread/INFO]: PikarioVN[/27.67.190.94:44941] logged in with entity id 2067 at (PlotTest, 30000000, 20, 30000000)
+2021-06-04 [22:08:19.029] [Server thread/INFO]: OniiChan  NgLamVN ➩ pl j z
+2021-06-04 [22:08:36.469] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-04 [22:08:36.469] [Server thread/INFO]: PikarioVN joined the game
+2021-06-04 [22:08:37.297] [Server thread/INFO]: TuyHongNhan99 ► ah ko phai
+2021-06-04 [22:08:38.654] [Server thread/INFO]: Trum_sv nói là =>  rip pika
+2021-06-04 [22:08:40.013] [Server thread/INFO]: PikarioVN fell out of the world
+2021-06-04 [22:08:59.830] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp EggyUnicycle766 PikarioVN 
+2021-06-04 [22:08:59.835] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to PikarioVN]
+2021-06-04 [22:08:59.858] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp EggyUnicycle766 PikarioVN 
+2021-06-04 [22:08:59.864] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to PikarioVN]
+2021-06-04 [22:08:59.904] [Server thread/INFO]: OniiChan  NgLamVN ➩ tell me if i can make it
+2021-06-04 [22:08:59.940] [Server thread/INFO]: [CMD][NgLamVN] use /pl
+2021-06-04 [22:09:00.440] [Server thread/INFO]: EggyUnicycle766 fell out of the world
+2021-06-04 [22:09:17.893] [Server thread/INFO]: TuyHongNhan99 ► đáp cái block tàn hình đâyy
+2021-06-04 [22:09:20.851] [Server thread/INFO]: Ys TuAn ► làm xog đảo mới chưa ??
+2021-06-04 [22:09:22.953] [Server thread/INFO]: OniiChan  NgLamVN ➩ Bruh
+2021-06-04 [22:09:26.725] [Server thread/INFO]: TuyHongNhan99 ► bary gì nhỉ
+2021-06-04 [22:09:33.549] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn heal 99999 255
+2021-06-04 [22:09:34.423] [Server thread/INFO]: TuyHongNhan99 ► quên tên thôi
+2021-06-04 [22:09:35.715] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp e 99999999 100 99999999
+2021-06-04 [22:09:35.720] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to 30000000, 100, 30000000]
+2021-06-04 [22:09:37.642] [Server thread/INFO]: OniiChan  NgLamVN ➩ Barrier đc implement bên PM4 r
+2021-06-04 [22:09:50.804] [Server thread/INFO]: [CMD][Ys TuAn] use /setgroup
+2021-06-04 [22:09:51.826] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp e 99999999 100 99999999
+2021-06-04 [22:09:51.828] [Server thread/INFO]: [EggyUnicycle766: Teleported EggyUnicycle766 to 30000000, 100, 30000000]
+2021-06-04 [22:09:58.551] [Server thread/INFO]: [CMD][PikarioVN] use /effect heal_boost 99999 255
+2021-06-04 [22:09:59.981] [Server thread/INFO]: [CMD][TuyHongNhan99] use /give tu barrier
+2021-06-04 [22:09:59.985] [Server thread/INFO]: [TuyHongNhan99: Given Barrier (-161:0) * 64 to TuyHongNhan99]
+2021-06-04 [22:10:04.670] [Server thread/INFO]: [CMD][Ys TuAn] use /groups
+2021-06-04 [22:10:18.504] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp PikarioVN EggyUnicycle766 
+2021-06-04 [22:10:18.536] [Server thread/INFO]: [EggyUnicycle766: Teleported PikarioVN to EggyUnicycle766]
+2021-06-04 [22:10:19.910] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn heal_boost 99999 255
+2021-06-04 [22:10:27.321] [Server thread/INFO]: OniiChan  NgLamVN ➩ barrier id: -161
+2021-06-04 [22:10:29.685] [Server thread/INFO]: [CMD][PikarioVN] use /tp 0 0 0
+2021-06-04 [22:10:29.690] [Server thread/INFO]: [PikarioVN: Teleported PikarioVN to 0, 0, 0]
+2021-06-04 [22:10:38.415] [Server thread/INFO]: OniiChan  NgLamVN ➩ thứ mà pm3 nó hạn chế ấy
+2021-06-04 [22:10:42.297] [Server thread/INFO]: [CMD][EggyUnicycle766] use /tp NgLamVN eg
+2021-06-04 [22:10:42.299] [Server thread/INFO]: [EggyUnicycle766: Teleported NgLamVN to EggyUnicycle766]
+2021-06-04 [22:10:47.790] [Server thread/INFO]: NgLamVN fell out of the world
+2021-06-04 [22:10:47.804] [Server thread/INFO]: [CMD][Ys TuAn] use /msg Ng làm xog đảo mới chưa
+2021-06-04 [22:10:47.804] [Server thread/INFO]: [Ys TuAn: You whisper to NgLamVN: làm xog đảo mới chưa]
+2021-06-04 [22:10:51.501] [Server thread/INFO]: TuyHongNhan99 ► pm3 hiếm có id âm lắm
+2021-06-04 [22:11:00.240] [Server thread/INFO]: EggyUnicycle766 fell out of the world
+2021-06-04 [22:11:06.746] [Server thread/INFO]: OniiChan  NgLamVN ➩ pm3 nó k có id âm
+2021-06-04 [22:11:30.879] [Server thread/INFO]: [CMD][PikarioVN] use /effect pikariovn health_boost 99999 255
+2021-06-04 [22:11:30.879] [Server thread/INFO]: [PikarioVN: Given Health Boost * 255 to PikarioVN for 99999 seconds]
+2021-06-04 [22:11:33.565] [Server thread/INFO]: [CMD][EggyUnicycle766] use /setworldspawn 
+2021-06-04 [22:11:33.573] [Server thread/INFO]: [EggyUnicycle766: Set the world spawn point to (0, 66, -2)]
+2021-06-04 [22:11:34.627] [Server thread/INFO]: OniiChan  NgLamVN ➩ pm4 sinh ra để dùng id âm
+2021-06-04 [22:12:19.665] [Server thread/INFO]: OniiChan  NgLamVN ➩ thôi stop server
+2021-06-04 [22:12:19.684] [Server thread/INFO]: [CMD][Ys TuAn] use /clear Tuy
+2021-06-04 [22:12:19.686] [Server thread/INFO]: [Ys TuAn: Cleared the inventory of TuyHongNhan99, removing 132 items]
+2021-06-04 [22:12:20.264] [Server thread/INFO]: [CMD][EggyUnicycle766] use /enchant EggyUnicycle sharpness 5000
+2021-06-04 [22:12:21.180] [Server thread/INFO]: OniiChan  NgLamVN ➩ nghĩ ...
+2021-06-04 [22:12:25.664] [Server thread/INFO]: TuyHongNhan99 ► ok
+2021-06-04 [22:12:26.334] [Server thread/INFO]: [CMD][EggyUnicycle766] use /enchant EggyUnicycle sharpness 5
+2021-06-04 [22:12:26.335] [Server thread/INFO]: [EggyUnicycle766: Enchanting succeeded]
+2021-06-04 [22:12:43.383] [Server thread/INFO]: NgLamVN left the game
+2021-06-04 [22:12:43.389] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-04 [22:12:49.373] [Server thread/INFO]: [CMD][TuyHongNhan99] use /stop
+2021-06-04 [22:12:49.389] [Server thread/INFO]: [TuyHongNhan99: Stopping the server]
+2021-06-04 [22:12:49.399] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-04 [22:12:49.402] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-04 [22:12:49.404] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-04 [22:12:49.413] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-04 [22:12:49.419] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-04 [22:12:49.423] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-04 [22:12:49.424] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-04 [22:12:49.427] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-04 [22:12:49.427] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-04 [22:12:49.428] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-04 [22:12:49.431] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-04 [22:12:49.437] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-04 [22:12:49.437] [Server thread/INFO]: TuyHongNhan99 left the game
+2021-06-04 [22:12:49.446] [Server thread/INFO]: [NetworkSession: TuyHongNhan99] Session closed due to Server closed
+2021-06-04 [22:12:49.447] [Server thread/INFO]: Ys TuAn left the game
+2021-06-04 [22:12:49.454] [Server thread/INFO]: [NetworkSession: Ys TuAn] Session closed due to Server closed
+2021-06-04 [22:12:49.466] [Server thread/INFO]: PikarioVN left the game
+2021-06-04 [22:12:49.480] [Server thread/INFO]: [NetworkSession: PikarioVN] Session closed due to Server closed
+2021-06-04 [22:12:49.481] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-04 [22:12:59.522] [Server thread/INFO]: Stopping other threads
+2021-06-05 [09:34:17.946] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-05 [09:34:17.963] [Server thread/INFO]: Loading server configuration
+2021-06-05 [09:34:17.993] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-05 [09:34:17.993] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [09:34:17.994] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-05 [09:34:17.994] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-05 [09:34:17.994] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-05 [09:34:17.994] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [09:34:18.006] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-05 [09:34:18.024] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-05 [09:34:18.326] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-05 [09:34:18.326] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-05 [09:34:19.201] [Server thread/INFO]: Loading resource packs...
+2021-06-05 [09:34:19.336] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-05 [09:34:19.357] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-05 [09:34:19.359] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-05 [09:34:19.363] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-05 [09:34:19.364] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-05 [09:34:19.373] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-05 [09:34:19.388] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [09:34:19.402] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-05 [09:34:19.423] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-05 [09:34:19.426] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-05 [09:34:19.456] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-05 [09:34:19.463] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-05 [09:34:19.463] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-05 [09:34:19.464] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-05 [09:34:19.478] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-05 [09:34:19.490] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-05 [09:34:19.494] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-05 [09:34:19.499] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-05 [09:34:19.509] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-05 [09:34:19.646] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-05 [09:34:19.646] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-05 [09:34:19.822] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-05 [09:34:19.840] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-05 [09:34:19.908] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-05 [09:34:19.954] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-05 [09:34:19.973] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-05 [09:34:20.010] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-05 [09:34:20.039] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-05 [09:34:20.040] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-05 [09:34:20.044] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-05 [09:34:20.044] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-05 [09:34:20.047] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-05 [09:34:20.286] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-05 [09:34:20.291] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-05 [09:34:20.293] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-05 [09:34:20.293] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-05 [09:34:20.295] [Server thread/INFO]: Done (2.334s)! For help, type "help" or "?"
+2021-06-05 [09:34:21.176] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-05 [09:34:28.376] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Session opened
+2021-06-05 [09:34:28.459] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Player: NgLamVN
+2021-06-05 [09:34:29.994] [Server thread/INFO]: NgLamVN[/192.168.1.1:56677] logged in with entity id 1 at (PlotTest, 27.097, 70, 52.9767)
+2021-06-05 [09:34:36.063] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-05 [09:34:36.092] [Server thread/INFO]: NgLamVN joined the game
+2021-06-05 [09:36:30.731] [Server thread/INFO]: [NetworkSession: 192.168.1.29 50012] Session opened
+2021-06-05 [09:36:30.796] [Server thread/INFO]: [NetworkSession: 192.168.1.29 50012] Player: BamProVN
+2021-06-05 [09:36:32.261] [Server thread/INFO]: BamProVN[/192.168.1.29:50012] logged in with entity id 3 at (PlotTest, 118.1876, 65, 18.0684)
+2021-06-05 [09:36:45.969] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-05 [09:36:45.970] [Server thread/INFO]: BamProVN joined the game
+2021-06-05 [09:36:48.815] [Server thread/INFO]: NgLamVN left the game
+2021-06-05 [09:36:48.824] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-05 [09:44:19.949] [Server thread/INFO]: [CMD][BamProVN] use /tp BamProVN 
+2021-06-05 [09:44:19.951] [Server thread/INFO]: [BamProVN: Teleported BamProVN to BamProVN]
+2021-06-05 [09:44:25.824] [Server thread/INFO]: [CMD][BamProVN] use /time set day 
+2021-06-05 [09:44:25.825] [Server thread/INFO]: [BamProVN: Set the time to 1000]
+2021-06-05 [09:46:56.658] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Session opened
+2021-06-05 [09:46:56.721] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Player: NgLamVN
+2021-06-05 [09:46:57.946] [Server thread/INFO]: NgLamVN[/192.168.1.1:56677] logged in with entity id 6 at (PlotTest, 34.8924, 68.4863, 43.0953)
+2021-06-05 [09:47:04.810] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-05 [09:47:04.811] [Server thread/INFO]: NgLamVN joined the game
+2021-06-05 [09:47:20.784] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-05 [09:47:20.811] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [09:47:20.815] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-05 [09:47:20.816] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-05 [09:47:20.820] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-05 [09:47:20.821] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-05 [09:47:20.824] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-05 [09:47:20.824] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-05 [09:47:20.825] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-05 [09:47:20.825] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-05 [09:47:20.826] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-05 [09:47:20.830] [Server thread/INFO]: BamProVN left the game
+2021-06-05 [09:47:20.838] [Server thread/INFO]: [NetworkSession: BamProVN] Session closed due to Server closed
+2021-06-05 [09:47:20.838] [Server thread/INFO]: NgLamVN left the game
+2021-06-05 [09:47:20.844] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to Server closed
+2021-06-05 [09:47:20.844] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-05 [09:47:20.955] [Server thread/INFO]: Stopping other threads
+2021-06-05 [09:47:28.190] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-05 [09:47:28.201] [Server thread/INFO]: Loading server configuration
+2021-06-05 [09:47:28.225] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-05 [09:47:28.225] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [09:47:28.225] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-05 [09:47:28.226] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-05 [09:47:28.226] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-05 [09:47:28.226] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [09:47:28.230] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-05 [09:47:28.243] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-05 [09:47:28.441] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-05 [09:47:28.441] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-05 [09:47:29.312] [Server thread/INFO]: Loading resource packs...
+2021-06-05 [09:47:29.472] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-05 [09:47:29.482] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-05 [09:47:29.487] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-05 [09:47:29.491] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-05 [09:47:29.492] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-05 [09:47:29.495] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-05 [09:47:29.509] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [09:47:29.514] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-05 [09:47:29.529] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-05 [09:47:29.537] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-05 [09:47:29.580] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-05 [09:47:29.592] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-05 [09:47:29.592] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-05 [09:47:29.594] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-05 [09:47:29.630] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-05 [09:47:29.645] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-05 [09:47:29.662] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-05 [09:47:29.795] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-05 [09:47:29.800] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-05 [09:47:29.808] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-05 [09:47:29.809] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-05 [09:47:30.127] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-05 [09:47:30.148] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-05 [09:47:30.197] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-05 [09:47:30.214] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-05 [09:47:30.244] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-05 [09:47:30.259] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-05 [09:47:30.259] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-05 [09:47:30.325] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-05 [09:47:30.410] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-05 [09:47:30.412] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-05 [09:47:30.413] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-05 [09:47:30.491] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-05 [09:47:30.494] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-05 [09:47:30.496] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-05 [09:47:30.498] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-05 [09:47:30.499] [Server thread/INFO]: Done (2.301s)! For help, type "help" or "?"
+2021-06-05 [09:57:10.803] [Server thread/INFO]: [NetworkSession: 125.212.173.75 11037] Session opened
+2021-06-05 [09:57:10.864] [Server thread/INFO]: [NetworkSession: 125.212.173.75 11037] Player: EggyUnicycle766
+2021-06-05 [09:57:12.226] [Server thread/INFO]: EggyUnicycle766[/125.212.173.75:11037] logged in with entity id 1 at (PlotTest, 33.5008, 73.2938, 51.2954)
+2021-06-05 [09:57:20.314] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-05 [09:57:20.332] [Server thread/INFO]: EggyUnicycle766 joined the game
+2021-06-05 [09:58:04.973] [Server thread/INFO]: [CMD][EggyUnicycle766] use /p claim
+2021-06-05 [09:59:50.091] [Server thread/INFO]: [CMD][EggyUnicycle766] use /p claim
+2021-06-05 [10:01:24.493] [Server thread/INFO]: [Server] reloading server to apply changes...
+2021-06-05 [10:01:25.993] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-05 [10:01:26.027] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [10:01:26.029] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-05 [10:01:26.029] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-05 [10:01:26.033] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-05 [10:01:26.033] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-05 [10:01:26.034] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-05 [10:01:26.034] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-05 [10:01:26.035] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-05 [10:01:26.036] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-05 [10:01:26.036] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-05 [10:01:26.037] [Server thread/INFO]: EggyUnicycle766 left the game
+2021-06-05 [10:01:26.047] [Server thread/INFO]: [NetworkSession: EggyUnicycle766] Session closed due to Server closed
+2021-06-05 [10:01:26.047] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-05 [10:01:26.186] [Server thread/INFO]: Stopping other threads
+2021-06-05 [10:01:29.759] [Server thread/WARNING]: Non-packaged installation detected. This will degrade autoloading speed and make startup times longer.
+2021-06-05 [10:01:29.776] [Server thread/INFO]: Loading server configuration
+2021-06-05 [10:01:29.810] [Server thread/INFO]: Selected English (eng) as the base language
+2021-06-05 [10:01:29.810] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [10:01:29.811] [Server thread/WARNING]: You are running a PocketMine-MP DEVELOPMENT build.
+2021-06-05 [10:01:29.811] [Server thread/WARNING]: The API for this version may not be finalized. Plugins which run on this build may not work on other builds with the same API version.
+2021-06-05 [10:01:29.812] [Server thread/WARNING]: The build may have bugs, crash, corrupt your data, or break your plugins.
+2021-06-05 [10:01:29.812] [Server thread/WARNING]: ----------------------------------------
+2021-06-05 [10:01:29.819] [Server thread/INFO]: Starting Minecraft: Bedrock Edition server version v1.16.220
+2021-06-05 [10:01:29.836] [Server thread/INFO]: Online mode is enabled. The server will verify that players are authenticated to Xbox Live.
+2021-06-05 [10:01:30.116] [Server thread/INFO]: This server is running PocketMine-MP version 4.0.0+dev
+2021-06-05 [10:01:30.116] [Server thread/INFO]: PocketMine-MP is distributed under the LGPL License
+2021-06-05 [10:01:30.848] [Server thread/INFO]: Loading resource packs...
+2021-06-05 [10:01:30.945] [Server thread/INFO]: Loading DEVirion v1.2.5-ALPHA12
+2021-06-05 [10:01:30.959] [Server thread/INFO]: [DEVirion] Loading virion libFormAPI v1.4.0-alpha by jojoe77777 (antigen: jojoe77777\FormAPI)
+2021-06-05 [10:01:30.960] [Server thread/INFO]: [DEVirion] Loading virion InvMenu v4.2.0 by Muqsit (antigen: muqsit\invmenu)
+2021-06-05 [10:01:30.963] [Server thread/INFO]: [DEVirion] Loading virion SpoonDetector v0.0.1 by Falk (antigen: spoondetector)
+2021-06-05 [10:01:30.963] [Server thread/WARNING]: [DEVirion] Virions should be bundled into plugins, not redistributed separately! Do NOT use DEVirion on production servers!!
+2021-06-05 [10:01:30.967] [Server thread/INFO]: Loading DevTools v1.15.0+dev
+2021-06-05 [10:01:30.978] [Server thread/INFO]: Enabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [10:01:30.984] [Server thread/INFO]: Enabling DevTools v1.15.0+dev
+2021-06-05 [10:01:31.003] [Server thread/INFO]: Loading FI-GameHandle v0.1-v4
+2021-06-05 [10:01:31.013] [Server thread/INFO]: Loading VanillaPM4 v1.0.0
+2021-06-05 [10:01:31.018] [Server thread/INFO]: Loading PurePerms v1.4.2
+2021-06-05 [10:01:31.052] [Server thread/INFO]: [PurePerms] Setting default language to 'en'
+2021-06-05 [10:01:31.063] [Server thread/INFO]: [PurePerms] Multiworld support is currently disabled.
+2021-06-05 [10:01:31.063] [Server thread/INFO]: [PurePerms] Don't forget to set enable-multiworld-perms option in config.yml to true if you want to use per-world permissions!
+2021-06-05 [10:01:31.064] [Server thread/INFO]: Loading EconomyAPI v5.7.2
+2021-06-05 [10:01:31.071] [Server thread/INFO]: Loading PureChat v1.4.11
+2021-06-05 [10:01:31.083] [Server thread/INFO]: Loading NgTest v0.0.1
+2021-06-05 [10:01:31.087] [Server thread/INFO]: Loading ClearLagg v0.1
+2021-06-05 [10:01:31.097] [Server thread/INFO]: Loading MyPlot v1.11.1
+2021-06-05 [10:01:31.220] [Server thread/INFO]: [DevTools] Registered folder plugin loader
+2021-06-05 [10:01:31.220] [Server thread/INFO]: Enabling MyPlot v1.11.1
+2021-06-05 [10:01:31.517] [Server thread/INFO]: Preparing world "PlotTest"
+2021-06-05 [10:01:31.537] [Server thread/INFO]: Enabling FI-GameHandle v0.1-v4
+2021-06-05 [10:01:31.679] [Server thread/INFO]: Enabling VanillaPM4 v1.0.0
+2021-06-05 [10:01:31.717] [Server thread/INFO]: Enabling PurePerms v1.4.2
+2021-06-05 [10:01:31.771] [Server thread/NOTICE]: [PurePerms] Set data provider to YAMLv1.
+2021-06-05 [10:01:31.792] [Server thread/INFO]: Enabling EconomyAPI v5.7.2
+2021-06-05 [10:01:31.830] [Server thread/NOTICE]: [EconomyAPI] Database provider was set to: Yaml
+2021-06-05 [10:01:31.855] [Server thread/INFO]: Enabling PureChat v1.4.11
+2021-06-05 [10:01:31.859] [Server thread/NOTICE]: [PureChat] No valid factions plugin in default-factions-plugin node was found. Disabling factions plugin support.
+2021-06-05 [10:01:31.862] [Server thread/INFO]: Enabling NgTest v0.0.1
+2021-06-05 [10:01:31.863] [Server thread/INFO]: Enabling ClearLagg v0.1
+2021-06-05 [10:01:31.950] [Server thread/INFO]: Minecraft network interface running on 0.0.0.0:19132
+2021-06-05 [10:01:31.952] [Server thread/INFO]: [Query Handler] GS4 Query listener running on 0.0.0.0:19132
+2021-06-05 [10:01:31.955] [Server thread/INFO]: Default game type: Survival Mode
+2021-06-05 [10:01:31.959] [Server thread/INFO]: If you find this project useful, please consider donating to support development: https://patreon.com/pocketminemp
+2021-06-05 [10:01:31.962] [Server thread/INFO]: Done (2.193s)! For help, type "help" or "?"
+2021-06-05 [10:01:43.994] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Session opened
+2021-06-05 [10:01:44.048] [Server thread/INFO]: [NetworkSession: 192.168.1.1 56677] Player: NgLamVN
+2021-06-05 [10:01:45.818] [Server thread/INFO]: NgLamVN[/192.168.1.1:56677] logged in with entity id 1 at (PlotTest, 34.8924, 68.4863, 43.0953)
+2021-06-05 [10:01:53.015] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-05 [10:01:53.021] [Server thread/INFO]: NgLamVN joined the game
+2021-06-05 [10:02:05.796] [Server thread/INFO]: Plugins (10): ClearLagg v0.1, DEVirion v1.2.5-ALPHA12, DevTools v1.15.0+dev, EconomyAPI v5.7.2, FI-GameHandle v0.1-v4, MyPlot v1.11.1, NgTest v0.0.1, PureChat v1.4.11, PurePerms v1.4.2, VanillaPM4 v1.0.0
+2021-06-05 [10:02:18.071] [Server thread/INFO]: [CMD][NgLamVN] use /gms
+2021-06-05 [10:07:26.857] [Server thread/INFO]: NgLamVN left the game
+2021-06-05 [10:07:26.863] [Server thread/INFO]: [NetworkSession: NgLamVN] Session closed due to client disconnect
+2021-06-05 [10:07:44.801] [Server thread/INFO]: [Server] :v
+2021-06-05 [10:08:56.692] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-05 [10:08:56.716] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-05 [10:08:56.727] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-05 [10:08:56.727] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-05 [10:08:56.728] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-05 [10:08:56.729] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-05 [10:08:56.730] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-05 [10:08:56.736] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-05 [10:08:56.739] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-05 [10:08:56.745] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-05 [10:08:56.745] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-05 [10:08:56.747] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-05 [10:08:56.795] [Server thread/INFO]: Stopping other threads

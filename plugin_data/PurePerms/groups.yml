@@ -40,4 +40,10 @@ OP:
   permissions:
   - '*'
   worlds: []
+VIP1:
+  alias: ""
+  isDefault: false
+  inheritance: []
+  permissions: []
+  worlds: []
 ...

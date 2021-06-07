@@ -74,7 +74,10 @@ class EventListener implements Listener
     public function onRespawn (PlayerRespawnEvent $event)
     {
         $player = $event->getPlayer();
-
+        if (!isset(MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), "island")[0]))
+		{
+			return;
+		}
         $plot = MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), "island")[0];
 
         $plotLevel = MyPlot::getInstance()->getLevelSettings($plot->levelName);

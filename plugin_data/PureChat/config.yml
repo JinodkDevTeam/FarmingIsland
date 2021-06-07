@@ -12,8 +12,8 @@ groups:
     nametag: '{prefix}{suffix}{display_name}'
     worlds: []
   Owner:
-    chat: '{prefix}{suffix}{display_name} §f► {msg}'
-    nametag: '{prefix}{suffix}{display_name}'
+    chat: §aTrum_sv nói là => §c {msg}
+    nametag: §l §e Trum_sv §a {display_name}
     worlds: []
   OP:
     chat: '{prefix}{suffix}{display_name} §f► {msg}'
@@ -36,4 +36,7 @@ groups:
   Member:
     nametag: '{prefix}{suffix}{display_name}'
     chat: '{prefix}{suffix}{display_name} §f► {msg}'
+  VIP1:
+    nametag: §l §e VIP§cX §a {display_name}
+    chat: §l§eOnii§cChan §a {display_name} §8➩ §e{msg}
 ...

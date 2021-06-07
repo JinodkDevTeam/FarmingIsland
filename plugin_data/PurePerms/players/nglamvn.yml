@@ -1,6 +1,6 @@
 ---
 userName: NgLamVN
-group: Admin
+group: VIP1
 permissions:
 - pocketmine.command.teleport
 worlds: []

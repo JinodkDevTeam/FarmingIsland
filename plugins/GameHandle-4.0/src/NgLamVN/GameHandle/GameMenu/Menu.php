@@ -49,7 +49,7 @@ class Menu
 
     public function registerMenuItem(Player $player)
     {
-        if ($player->getInventory()->getHotbarSlotItem(8)->getNamedTag()->getTag("menu-mode") == null)
+        if ($player->getInventory()->getHotbarSlotItem(8)->getNamedTag()->getTag("menu-mode") !== null)
         {
             return;
         }
@@ -76,6 +76,10 @@ class Menu
 
         if ($slot == 8)
         {
+        	if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null)
+			{
+				return;
+			}
             if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode")->getValue() == "gui")
             {
                 new GuiMenu($player);
