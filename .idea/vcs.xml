@@ -4,6 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/php" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/build/preprocessor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/BuilderTools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/CustomAlerts" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/MyPlot-4.0" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/PureChat" vcs="Git" />
