@@ -10719,3 +10719,28 @@
 2021-06-08 [18:49:56.242] [Server thread/INFO]: [NetworkSession: 103.199.56.212 24804] Session opened
 2021-06-08 [18:49:56.543] [Server thread/INFO]: [NetworkSession: 103.199.56.212 24804] Player: GhastxNoob
 2021-06-08 [18:49:57.505] [Server thread/INFO]: GhastxNoob[/103.199.56.212:24804] logged in with entity id 1 at (PlotTest, 12.7583, 69.0342, 83.6958)
+2021-06-08 [18:50:02.124] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-08 [18:50:02.128] [Server thread/INFO]: [+] GhastxNoob
+2021-06-08 [18:50:23.853] [Server thread/INFO]: [CMD][GhastxNoob] use /debug
+2021-06-08 [18:50:53.420] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-08 [18:50:59.034] [Server thread/INFO]: Unknown command. Try /help for a list of commands
+2021-06-08 [18:51:24.179] [Server thread/INFO]: [-] GhastxNoob
+2021-06-08 [18:51:24.194] [Server thread/INFO]: [NetworkSession: GhastxNoob] Session closed due to client disconnect
+2021-06-08 [18:51:41.221] [Server thread/INFO]: [CONSOLE: Stopping the server]
+2021-06-08 [18:51:41.221] [Server thread/INFO]: Disabling DEVirion v1.2.5-ALPHA12
+2021-06-08 [18:51:41.224] [Server thread/INFO]: Disabling DevTools v1.15.0+dev
+2021-06-08 [18:51:41.225] [Server thread/INFO]: Disabling CustomAlerts v2.1
+2021-06-08 [18:51:41.225] [Server thread/INFO]: Disabling BuilderTools v1.2.0-beta3
+2021-06-08 [18:51:41.225] [Server thread/INFO]: Disabling ClearLagg v0.1
+2021-06-08 [18:51:41.226] [Server thread/INFO]: Disabling FI-GameHandle v0.1-v4
+2021-06-08 [18:51:41.226] [Server thread/INFO]: Disabling NgTest v0.0.1
+2021-06-08 [18:51:41.227] [Server thread/INFO]: Disabling EconomyAPI v5.7.2
+2021-06-08 [18:51:41.229] [Server thread/INFO]: Disabling VanillaPM4 v1.0.0
+2021-06-08 [18:51:41.229] [Server thread/INFO]: Disabling PurePerms v1.4.2
+2021-06-08 [18:51:41.230] [Server thread/INFO]: Disabling NameSpaceRemover v1.0.0
+2021-06-08 [18:51:41.230] [Server thread/INFO]: Disabling FI-RankColor v0.1-ngl_alpha
+2021-06-08 [18:51:41.231] [Server thread/INFO]: Disabling CustomShopUI v4.0.5
+2021-06-08 [18:51:41.231] [Server thread/INFO]: Disabling PureChat v1.4.11
+2021-06-08 [18:51:41.231] [Server thread/INFO]: Disabling MyPlot v1.11.1
+2021-06-08 [18:51:41.233] [Server thread/INFO]: Unloading world "PlotTest"
+2021-06-08 [18:51:41.720] [Server thread/INFO]: Stopping other threads
