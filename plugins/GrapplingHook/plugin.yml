@@ -1,0 +1,5 @@
+name: GrapplingHook
+version: 0.0.1
+main: GrapplingHook\Loader
+api: 4.0.0
+author: JinodkDevTeam

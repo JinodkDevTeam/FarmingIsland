@@ -1,0 +1,7 @@
+name: FI-FishingModule
+main: FishingModule\Loader
+api: 4.0.0
+author: JinodkDevTeam
+version: 0.0.1
+load: STARTUP
+description: Port Fishing Module form Altay.

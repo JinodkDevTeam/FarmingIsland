@@ -20,10 +20,11 @@ class IC_PacketHandler implements Listener
      */
     public function onRecieve(DataPacketReceiveEvent $event)
     {
-        if ($event->getPacket() instanceof ContainerClosePacket)
+    	$packet = $event->getPacket();
+        if ($packet instanceof ContainerClosePacket)
         {
             $this->cancel_send = false;
-            $event->getOrigin()->sendDataPacket($event->getPacket(), false);
+            $event->getOrigin()->sendDataPacket($packet, false);
             $this->cancel_send = true;
         }
     }

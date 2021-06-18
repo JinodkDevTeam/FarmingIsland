@@ -1,0 +1,42 @@
+pickaxelevel:
+  item:
+    id: "270:0:1"
+  item-name: "{OWNER_NAME}'s pickaxe|Level: {Level}"
+  item-lore: "Break block to upgrade me !"
+  item-popup: "{ITEM_NAME}|Level:{LEVEL}|XP:{CURRENT_XP}/{MAX_XP}"
+  start-level: 0
+  start-xp: 0
+  reset-xp: true # When you reach upgrade xp value, if it true, your xp will be 0, if it false, it will still keep your xp when upgraded.
+  max-level: 5
+  limit-user: true #If it true, the item can only use by given people (except OP)
+  unbreakable: true #If it true: make item unbreakable
+  dropable: false #If it true: make item can dropable.
+  xp-upgrade-type: break #There are 2 type: "break" and "combat", so make sure you config correctly
+  break-xp: #If you break other block, you won't get any xp.
+    1: 1 #Break stone = + 1 xp
+    16: 2 #Coal ore = + 2 xp
+  xp-setting: #For auto
+    auto-add-xp: 100 #Like level 1 need 100xp, level 2 need 200xp, ..., level n need n*100 xp, if you want to edit it manual, please remove this line
+    1: 100 #If isset auto-add-xp, this line will be ignored.
+    2: 200 #If isset auto-add-xp, this line will be ignored
+    3: 500 #If isset auto-add-xp, this line will be ignored
+    4: 700 #If isset auto-add-xp, this line will be ignored
+    5: 1000 #If isset auto-add-xp, this line will be ignored
+  reward:
+    auto-money: 1000 #When level-up, player will recieve new-level*auto-money money. Make sure u have EconomyAPI
+    auto-push-enchants: #Auto upgrade enchant.
+      - id: efficiency
+      - level: 1 # if this item already have efficiency 1 enchant, this will upgrade to efficiency II
+    1: #Level reward.
+      money: 1000 # If you have auto-money, this line will be ignored
+      addEnchants: # This line will ignore if isset auto-push-enchants.
+        - id: efficiency # if this item already have efficiency 1 enchant, this will upgrade to efficiency II
+          level: 1
+    5:
+      reset-enchant: true #When you pass this level, reset all enchant in your item. (if it true)
+      upgrade-item: "274:0:1" #Switch to this item when level-up, old item will be removed.
+#TODO: AxeLevel
+
+
+
+

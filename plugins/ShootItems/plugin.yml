@@ -1,0 +1,6 @@
+name: ShootItem
+main: ShootItem\ShootItem
+api: 4.0.0
+author: JinodkDevTeam
+description: "Just for fun lol"
+version: 0.0.1

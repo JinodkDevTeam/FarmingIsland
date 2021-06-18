@@ -14,6 +14,18 @@
                   <Item>
                     <option name="path" value="plugins/RankColor-4.0/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/ItemLevel/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/ShootItems/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/GrapplingHook/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-FishingModule/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
