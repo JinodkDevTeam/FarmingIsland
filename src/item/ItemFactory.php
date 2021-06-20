@@ -33,6 +33,7 @@ use pocketmine\block\utils\TreeType;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\DyeColorIdMap;
 use pocketmine\data\bedrock\EntityLegacyIds;
+use pocketmine\data\bedrock\PotionTypeIdMap;
 use pocketmine\entity\Entity;
 use pocketmine\entity\Location;
 use pocketmine\entity\Squid;
@@ -236,7 +237,6 @@ class ItemFactory{
 		$this->register(new Record(new ItemIdentifier(ItemIds::RECORD_WARD, 0), RecordType::DISK_WARD(), "Record Ward"));
 		$this->register(new Record(new ItemIdentifier(ItemIds::RECORD_11, 0), RecordType::DISK_11(), "Record 11"));
 		$this->register(new Record(new ItemIdentifier(ItemIds::RECORD_WAIT, 0), RecordType::DISK_WAIT(), "Record Wait"));
-		$this->register(new Record(new ItemIdentifier(ItemIds::RECORD_PIGSTEP, 0), RecordType::DISK_PIGSTEP(), "Record Pigstep"));
 		$this->register(new Redstone(new ItemIdentifier(ItemIds::REDSTONE, 0), "Redstone"));
 		$this->register(new RottenFlesh(new ItemIdentifier(ItemIds::ROTTEN_FLESH, 0), "Rotten Flesh"));
 		$this->register(new Shears(new ItemIdentifier(ItemIds::SHEARS, 0), "Shears"));
@@ -279,9 +279,10 @@ class ItemFactory{
 			))->setColor($color));
 		}
 
-		foreach(Potion::ALL as $type){
-			$this->register(new Potion(new ItemIdentifier(ItemIds::POTION, $type), "Potion", $type));
-			$this->register(new SplashPotion(new ItemIdentifier(ItemIds::SPLASH_POTION, $type), "Splash Potion", $type));
+		foreach(PotionType::getAll() as $type){
+			$typeId = PotionTypeIdMap::getInstance()->toId($type);
+			$this->register(new Potion(new ItemIdentifier(ItemIds::POTION, $typeId), "Potion", $type));
+			$this->register(new SplashPotion(new ItemIdentifier(ItemIds::SPLASH_POTION, $typeId), "Splash Potion", $type));
 		}
 
 		foreach(TreeType::getAll() as $type){
@@ -320,6 +321,7 @@ class ItemFactory{
 		//TODO: minecraft:name_tag
 		//TODO: minecraft:phantom_membrane
 		//TODO: minecraft:rapid_fertilizer
+		//TODO: minecraft:record_pigstep
 		//TODO: minecraft:saddle
 		//TODO: minecraft:shield
 		//TODO: minecraft:sparkler

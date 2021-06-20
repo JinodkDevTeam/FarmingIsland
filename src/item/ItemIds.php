@@ -733,6 +733,4 @@ final class ItemIds{
 
 	public const SHIELD = 513;
 
-	public const RECORD_PIGSTEP = 759;
-
 }

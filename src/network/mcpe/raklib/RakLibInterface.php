@@ -44,6 +44,7 @@ use raklib\server\ipc\UserToRakLibThreadMessageSender;
 use raklib\server\ServerEventListener;
 use raklib\utils\InternetAddress;
 use function addcslashes;
+use function base64_encode;
 use function bin2hex;
 use function implode;
 use function mt_rand;
@@ -102,7 +103,7 @@ class RakLibInterface implements ServerEventListener, AdvancedNetworkInterface{
 			$threadToMainBuffer,
 			new InternetAddress($this->server->getIp(), $this->server->getPort(), 4),
 			$this->rakServerId,
-			(int) $this->server->getConfigGroup()->getProperty("network.max-mtu-size", 1492),
+			$this->server->getConfigGroup()->getPropertyInt("network.max-mtu-size", 1492),
 			self::MCPE_RAKNET_PROTOCOL_VERSION,
 			$this->sleeper
 		);
@@ -176,6 +177,7 @@ class RakLibInterface implements ServerEventListener, AdvancedNetworkInterface{
 	public function onPacketReceive(int $sessionId, string $packet) : void{
 		if(isset($this->sessions[$sessionId])){
 			if($packet === "" or $packet[0] !== self::MCPE_RAKNET_PACKET_ID){
+				$this->sessions[$sessionId]->getLogger()->debug("Non-FE packet received: " . base64_encode($packet));
 				return;
 			}
 			//get this now for blocking in case the player was closed before the exception was raised

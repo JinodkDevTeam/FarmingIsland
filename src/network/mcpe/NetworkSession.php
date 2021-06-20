@@ -125,72 +125,50 @@ use function time;
 use function ucfirst;
 
 class NetworkSession{
-	/** @var \PrefixedLogger */
-	private $logger;
-	/** @var Server */
-	private $server;
-	/** @var Player|null */
-	private $player = null;
-	/** @var NetworkSessionManager */
-	private $manager;
-	/** @var string */
-	private $ip;
-	/** @var int */
-	private $port;
-	/** @var PlayerInfo */
-	private $info;
-	/** @var int|null */
-	private $ping = null;
+	private \PrefixedLogger $logger;
+	private Server $server;
+	private ?Player $player = null;
+	private NetworkSessionManager $manager;
+	private string $ip;
+	private int $port;
+	private ?PlayerInfo $info = null;
+	private ?int $ping = null;
 
-	/** @var PacketHandler|null */
-	private $handler = null;
+	private ?PacketHandler $handler = null;
 
-	/** @var bool */
-	private $connected = true;
-	/** @var bool */
-	private $disconnectGuard = false;
-	/** @var bool */
-	private $loggedIn = false;
-	/** @var bool */
-	private $authenticated = false;
-	/** @var int */
-	private $connectTime;
-	/** @var CompoundTag|null */
-	private $cachedOfflinePlayerData = null;
+	private bool $connected = true;
+	private bool $disconnectGuard = false;
+	private bool $loggedIn = false;
+	private bool $authenticated = false;
+	private int $connectTime;
+	private ?CompoundTag $cachedOfflinePlayerData = null;
 
-	/** @var EncryptionContext */
-	private $cipher;
+	private ?EncryptionContext $cipher = null;
 
 	/** @var Packet[] */
-	private $sendBuffer = [];
+	private array $sendBuffer = [];
 
 	/**
 	 * @var \SplQueue|CompressBatchPromise[]
 	 * @phpstan-var \SplQueue<CompressBatchPromise>
 	 */
-	private $compressedQueue;
-	/** @var Compressor */
-	private $compressor;
-	/** @var bool */
-	private $forceAsyncCompression = true;
+	private \SplQueue $compressedQueue;
+	private Compressor $compressor;
+	private bool $forceAsyncCompression = true;
 
-	/** @var PacketPool */
-	private $packetPool;
+	private PacketPool $packetPool;
 
-	/** @var InventoryManager|null */
-	private $invManager = null;
+	private ?InventoryManager $invManager = null;
 
-	/** @var PacketSender */
-	private $sender;
+	private PacketSender $sender;
 
-	/** @var PacketBroadcaster */
-	private $broadcaster;
+	private PacketBroadcaster $broadcaster;
 
 	/**
 	 * @var \Closure[]|ObjectSet
 	 * @phpstan-var ObjectSet<\Closure() : void>
 	 */
-	private $disposeHooks;
+	private ObjectSet $disposeHooks;
 
 	public function __construct(Server $server, NetworkSessionManager $manager, PacketPool $packetPool, PacketSender $sender, PacketBroadcaster $broadcaster, Compressor $compressor, string $ip, int $port){
 		$this->server = $server;
@@ -617,7 +595,7 @@ class NetworkSession{
 		}
 		$this->logger->debug("Xbox Live authenticated: " . ($this->authenticated ? "YES" : "NO"));
 
-		$checkXUID = (bool) $this->server->getConfigGroup()->getProperty("player.verify-xuid", true);
+		$checkXUID = $this->server->getConfigGroup()->getPropertyBool("player.verify-xuid", true);
 		$myXUID = $this->info instanceof XboxLivePlayerInfo ? $this->info->getXuid() : "";
 		$kickForXUIDMismatch = function(string $xuid) use ($checkXUID, $myXUID) : bool{
 			if($checkXUID && $myXUID !== $xuid){
@@ -670,7 +648,7 @@ class NetworkSession{
 				}
 				$this->sendDataPacket(ServerToClientHandshakePacket::create($handshakeJwt), true); //make sure this gets sent before encryption is enabled
 
-				$this->cipher = new EncryptionContext($encryptionKey);
+				$this->cipher = EncryptionContext::fakeGCM($encryptionKey);
 
 				$this->setHandler(new HandshakePacketHandler(function() : void{
 					$this->onServerLoginSuccess();
