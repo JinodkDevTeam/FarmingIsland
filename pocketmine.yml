@@ -177,6 +177,10 @@ aliases:
   #savestop: [save-all, stop]
 
 worlds:
+  world:
+    generator: vanilla_overworld
+  nether:
+    generator: vanilla_nether
   #These settings will override the generator set in server.properties and allows loading multiple levels
   #Example:
   #world:

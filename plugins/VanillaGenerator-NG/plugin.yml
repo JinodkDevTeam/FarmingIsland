@@ -1,0 +1,5 @@
+name: VanillaGenerator
+main: muqsit\vanillagenerator\Loader
+api: 4.0.0
+version: 0.0.4
+author: Muqsit

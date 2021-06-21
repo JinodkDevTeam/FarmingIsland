@@ -100,7 +100,7 @@ class ClearLagg extends PluginBase{
             	$this->clearLagg();
                 $this->seconds = $this->interval;
             }else if(in_array($this->seconds, $this->broadcastTimes) && $this->messages[self::LANG_TIME_LEFT] !== ""){
-                $this->broadcastMessage(str_replace("{SECONDS}", $this->seconds, $this->messages[self::LANG_TIME_LEFT]));
+                $this->broadcastMessage(str_replace("{SECONDS}", (string)$this->seconds, $this->messages[self::LANG_TIME_LEFT]));
             }
         }), 20);
     }
@@ -148,7 +148,7 @@ class ClearLagg extends PluginBase{
 			}
 		}
 		if($this->messages[self::LANG_ENTITIES_CLEARED] !== ""){
-			$this->broadcastMessage(str_replace("{COUNT}", $entitiesCleared, $this->messages[self::LANG_ENTITIES_CLEARED]));
+			$this->broadcastMessage(str_replace("{COUNT}", (string)$entitiesCleared, $this->messages[self::LANG_ENTITIES_CLEARED]));
 		}
 	}
 }
