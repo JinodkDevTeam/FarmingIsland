@@ -10,9 +10,9 @@ use _64FF00\PurePerms\PurePerms;
 
 class RankColor extends PluginBase
 {
-    public PureChat $pc;
+    public ?PureChat $pc;
 
-    public PurePerms $pp;
+    public ?PurePerms $pp;
 
     public function getPC(): ?PureChat
     {

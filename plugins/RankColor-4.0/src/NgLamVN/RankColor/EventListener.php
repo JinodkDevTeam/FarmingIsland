@@ -33,6 +33,7 @@ class EventListener implements Listener
     }
 
     /**
+	 * @param PPGroupChangedEvent $event
      * @priority HIGHEST
      * @ignoreCancelled true
      */

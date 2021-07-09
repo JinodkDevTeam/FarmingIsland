@@ -39,22 +39,23 @@ class RCcommand extends Command implements PluginOwned
         switch ($group)
         {
             case "Vip":
-                return new Vip($this->plugin, $sender);
+                new Vip($this->plugin, $sender);
                 break;
             case "VipPlus":
-                return new VipPlus($this->plugin, $sender);
+                new VipPlus($this->plugin, $sender);
                 break;
             case "Staff":
-                return new Staff($this->plugin, $sender);
+                new Staff($this->plugin, $sender);
                 break;
             case "Youtuber":
-                return new Youtuber($this->plugin, $sender);
+                new Youtuber($this->plugin, $sender);
                 break;
             case "Admin":
-                return new Admin($this->plugin, $sender);
+                new Admin($this->plugin, $sender);
                 break;
             case "Member":
-                return new Member($this->plugin, $sender);
+                new Member($this->plugin, $sender);
+                break;
             default:
                 $sender->sendMessage("Change Color is not available for your rank !");
                 break;

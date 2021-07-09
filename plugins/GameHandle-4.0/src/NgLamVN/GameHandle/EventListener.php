@@ -2,6 +2,7 @@
 
 namespace NgLamVN\GameHandle;
 
+use FishingModule\event\PlayerFishEvent;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
@@ -31,7 +32,7 @@ class EventListener implements Listener
     {
         $this->plugin = $plugin;
         $this->menu = new Menu();
-        /*$this->fish = new FishingManager();*/ //TODO: FishingModule.
+        $this->fish = new FishingManager();
     }
 
     public function getCore(): Core
@@ -94,10 +95,10 @@ class EventListener implements Listener
         $this->menu->onTap($event);
     }
 
-    /*public function onFish(PlayerFishEvent $event)
+    public function onFish(PlayerFishEvent $event)
     {
         $this->fish->onFish($event);
-    }*/ //TODO: Fishing Module in PM4
+    }
 
     public function onDrop (PlayerDropItemEvent $event)
     {
