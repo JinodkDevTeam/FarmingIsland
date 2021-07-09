@@ -5,3 +5,7 @@ memory_dumps/*
 crashdumps/*
 server.log
 server.log
+white-list.txt
+server.log
+banned-players.txt
+banned-ips.txt
