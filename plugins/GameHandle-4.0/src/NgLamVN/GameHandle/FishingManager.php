@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
+use FishingModule\event\PlayerFishEvent;
 use pocketmine\item\Item;
-use pocketmine\nbt\NBT;
-use pocketmine\nbt\tag\ListTag;
+use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
 
 class FishingManager
@@ -43,57 +45,57 @@ class FishingManager
 
     public function __construct()
     {
-        $item = Item::get(Item::IRON_NUGGET);
+        $item = VanillaItems::IRON_NUGGET();
         $item->setCustomName("§r§bLazy §fShard");
         $nbt = $item->getNamedTag();
         $nbt->setString("CustomItem", "LazyShard");
         $item->setNamedTag($nbt);
 
-        $item2 = Item::get(Item::BEETROOT_SEEDS);
+        $item2 = VanillaItems::BEETROOT_SEEDS();
         $item2->setCustomName("§r§aInferium §fSeed");
         $nbt = $item2->getNamedTag();
         $nbt->setString("CustomItem", "InferiumSeed");
-        $item2->setNamedTagEntry(new ListTag(Item::TAG_ENCH, [], NBT::TAG_Compound));
+        /*$item2->setNamedTagEntry(new ListTag(Item::TAG_ENCH, [], NBT::TAG_Compound));*/
 
         $this->items = [
-            Item::get(Item::COBBLESTONE, 0, 1),
-            Item::get(Item::DIRT, 0 , 1),
-            Item::get(Item::COAL, 0, 1),
-            Item::get(Item::IRON_INGOT, 0, 1),
-            Item::get(Item::FISH, 0, 1),
-            Item::get(Item::GOLD_INGOT, 0, 1),
-            Item::get(Item::LOG, 0, 1),
-            Item::get(Item::SAND, 0, 1),
-            Item::get(Item::CARROT, 0, 1),
-            Item::get(Item::BONE, 0, 1),
-            Item::get(Item::SALMON, 0, 1),
-            Item::get(Item::ROTTEN_FLESH, 0 ,1),
-            Item::get(Item::DIAMOND, 0, 1),
-            Item::get(Item::POTATO, 0, 1),
-            Item::get(Item::CACTUS, 0, 1),
-            Item::get(Item::SUGARCANE, 0, 1),
-            Item::get(Item::EMERALD, 0, 1),
+            ItemFactory::getInstance()->get(ItemIds::COBBLESTONE),
+			ItemFactory::getInstance()->get(ItemIds::DIRT),
+			ItemFactory::getInstance()->get(ItemIds::COAL),
+			ItemFactory::getInstance()->get(ItemIds::IRON_INGOT),
+			ItemFactory::getInstance()->get(ItemIds::FISH),
+			ItemFactory::getInstance()->get(ItemIds::GOLD_INGOT),
+			ItemFactory::getInstance()->get(ItemIds::LOG),
+			ItemFactory::getInstance()->get(ItemIds::SAND),
+			ItemFactory::getInstance()->get(ItemIds::CARROT),
+			ItemFactory::getInstance()->get(ItemIds::BONE),
+			ItemFactory::getInstance()->get(ItemIds::SALMON),
+			ItemFactory::getInstance()->get(ItemIds::ROTTEN_FLESH),
+			ItemFactory::getInstance()->get(ItemIds::DIAMOND),
+			ItemFactory::getInstance()->get(ItemIds::POTATO),
+			ItemFactory::getInstance()->get(ItemIds::CACTUS),
+			ItemFactory::getInstance()->get(ItemIds::SUGARCANE),
+			ItemFactory::getInstance()->get(ItemIds::EMERALD),
             $item,
             $item2
         ];
         $this->rlevel = [
-            Item::COBBLESTONE => 1,
-            Item::DIRT => 2,
-            Item::COAL => 3,
-            Item::IRON_INGOT => 3,
-            Item::FISH => 2,
-            Item::GOLD_INGOT => 4,
-            Item::LOG => 2,
-            Item::SAND => 2,
-            Item::CARROT => 2,
-            Item::BONE => 2,
-            Item::SALMON => 2,
-            Item::ROTTEN_FLESH => 2,
-            Item::DIAMOND => 6,
-            Item::POTATO => 2,
-            Item::CACTUS => 3,
-            Item::SUGARCANE => 2,
-            Item::EMERALD => 5
+            ItemIds::COBBLESTONE => 1,
+            ItemIds::DIRT => 2,
+            ItemIds::COAL => 3,
+            ItemIds::IRON_INGOT => 3,
+            ItemIds::FISH => 2,
+            ItemIds::GOLD_INGOT => 4,
+            ItemIds::LOG => 2,
+            ItemIds::SAND => 2,
+            ItemIds::CARROT => 2,
+            ItemIds::BONE => 2,
+            ItemIds::SALMON => 2,
+            ItemIds::ROTTEN_FLESH => 2,
+            ItemIds::DIAMOND => 6,
+            ItemIds::POTATO => 2,
+            ItemIds::CACTUS => 3,
+            ItemIds::SUGARCANE => 2,
+            ItemIds::EMERALD => 5
         ];
 
         $this->customItem_rlevel = [
@@ -162,7 +164,7 @@ class FishingManager
         while ($more == true)
         {
             $item = $this->items[array_rand($this->items)];
-            if ($item->getNamedTag()->hasTag("CustomItem"))
+            if ($item->getNamedTag()->getTag("CustomItem") !== null)
             {
                 $level = $this->customItem_rlevel[$item->getNamedTag()->getTag("CustomItem")->getValue()];
             }
