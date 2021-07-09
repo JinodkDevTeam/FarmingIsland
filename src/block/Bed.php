@@ -25,12 +25,13 @@ namespace pocketmine\block;
 
 use pocketmine\block\tile\Bed as TileBed;
 use pocketmine\block\utils\BlockDataSerializer;
+use pocketmine\block\utils\ColoredTrait;
 use pocketmine\block\utils\DyeColor;
 use pocketmine\block\utils\HorizontalFacingTrait;
 use pocketmine\data\bedrock\DyeColorIdMap;
-use pocketmine\item\Bed as ItemBed;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
+use pocketmine\lang\KnownTranslationKeys;
 use pocketmine\lang\TranslationContainer;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
@@ -41,15 +42,15 @@ use pocketmine\world\BlockTransaction;
 use pocketmine\world\World;
 
 class Bed extends Transparent{
+	use ColoredTrait;
 	use HorizontalFacingTrait;
 
 	protected bool $occupied = false;
 	protected bool $head = false;
-	protected DyeColor $color;
 
 	public function __construct(BlockIdentifier $idInfo, string $name, BlockBreakInfo $breakInfo){
-		parent::__construct($idInfo, $name, $breakInfo);
 		$this->color = DyeColor::RED();
+		parent::__construct($idInfo, $name, $breakInfo);
 	}
 
 	protected function writeStateToMeta() : int{
@@ -135,7 +136,7 @@ class Bed extends Transparent{
 
 				return true;
 			}elseif($playerPos->distanceSquared($this->pos) > 4 and $playerPos->distanceSquared($other->pos) > 4){
-				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%tile.bed.tooFar"));
+				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%" . KnownTranslationKeys::TILE_BED_TOOFAR));
 				return true;
 			}
 
@@ -144,7 +145,7 @@ class Bed extends Transparent{
 			$isNight = ($time >= World::TIME_NIGHT and $time < World::TIME_SUNRISE);
 
 			if(!$isNight){
-				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%tile.bed.noSleep"));
+				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%" . KnownTranslationKeys::TILE_BED_NOSLEEP));
 
 				return true;
 			}
@@ -152,7 +153,7 @@ class Bed extends Transparent{
 			$b = ($this->isHeadPart() ? $this : $other);
 
 			if($b->isOccupied()){
-				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%tile.bed.occupied"));
+				$player->sendMessage(new TranslationContainer(TextFormat::GRAY . "%" . KnownTranslationKeys::TILE_BED_OCCUPIED));
 
 				return true;
 			}
@@ -172,9 +173,6 @@ class Bed extends Transparent{
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		if($item instanceof ItemBed){ //TODO: the item should do this
-			$this->color = $item->getColor();
-		}
 		$down = $this->getSide(Facing::DOWN);
 		if(!$down->isTransparent()){
 			$this->facing = $player !== null ? $player->getHorizontalFacing() : Facing::NORTH;

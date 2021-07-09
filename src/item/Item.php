@@ -567,6 +567,13 @@ class Item implements \JsonSerializable{
 	}
 
 	/**
+	 * Returns whether this item could stack with the given item (ignoring stack size and count).
+	 */
+	final public function canStackWith(Item $other) : bool{
+		return $this->equals($other, true, true);
+	}
+
+	/**
 	 * Returns whether the specified item stack has the same ID, damage, NBT and count as this item stack.
 	 */
 	final public function equalsExact(Item $other) : bool{
@@ -671,12 +678,13 @@ class Item implements \JsonSerializable{
 		if($idTag instanceof ShortTag){
 			$item = ItemFactory::getInstance()->get($idTag->getValue(), $meta, $count);
 		}elseif($idTag instanceof StringTag){ //PC item save format
-			//TODO: this isn't a very good mapping source, we need a dedicated mapping for PC
-			$id = LegacyStringToItemParser::getInstance()->parseId($idTag->getValue());
-			if($id === null){
+			try{
+				$item = LegacyStringToItemParser::getInstance()->parse($idTag->getValue() . ":$meta");
+			}catch(\InvalidArgumentException $e){
+				//TODO: improve error handling
 				return ItemFactory::air();
 			}
-			$item = ItemFactory::getInstance()->get($id, $meta, $count);
+			$item->setCount($count);
 		}else{
 			throw new \InvalidArgumentException("Item CompoundTag ID must be an instance of StringTag or ShortTag, " . get_class($idTag) . " given");
 		}
