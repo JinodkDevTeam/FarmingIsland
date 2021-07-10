@@ -45,7 +45,6 @@ class Sqlite3Provider
 
 		$this->database->executeGeneric(self::INIT_TABLE);
 
-
 	}
 
 	public function save()
@@ -56,24 +55,34 @@ class Sqlite3Provider
 	public function getPlayerData(Player $player, callable $callable) : void
 	{
 		$name = $player->getName();
-		$data = [];
 		$this->database->executeSelect(self::LOAD_PLAYER, ["player" => $name], $callable);
 	}
 
-	public function registerPlayerData (Player $player)
+	public function loadPlayerData (Player $player, array $data = []): void
 	{
 		$name = $player;
 
+		if ($data == [])
+		{
+			$data["MiningLevel"] = 1;
+			$data["MiningExp"] = 0;
+			$data["FishingLevel"] = 1;
+			$data["FishingExp"] = 0;
+			$data["FarmingLevel"] = 1;
+			$data["FarmingExp"] = 0;
+			$data["ForagingLevel"] = 1;
+			$data["ForagingExp"] = 0;
+ 		}
 		$this->database->executeChange(self::REGISTER, [
 			"player" => $name,
-			"mininglevel" => 1,
-			"miningexp" => 0,
-			"fishinglevel" => 1,
-			"fishingexp" => 0,
-			"farminglevel" => 1,
-			"farmingexp" => 0,
-			"foraginglevel" => 1,
-			"foragingexp" => 0
+			"mininglevel" => $data["MiningLevel"],
+			"miningexp" => $data["MiningExp"],
+			"fishinglevel" => $data["FishingLevel"],
+			"fishingexp" => $data["FishingExp"],
+			"farminglevel" => $data["FarmingLevel"],
+			"farmingexp" => $data["FarmingExp"],
+			"foraginglevel" => $data["ForagingLevel"],
+			"foragingexp" => $data["ForagingExp"]
 		]);
 	}
 
@@ -82,6 +91,43 @@ class Sqlite3Provider
 		$this->database->executeChange(self::UNREGISTER, [
 			"player" => $player->getName()
 		]);
+	}
+
+	public function updateLevel(Player $player, int $skill_code, int $level): void
+	{
+		$query = "skill.update.".$this->IDParser($skill_code).".level";
+
+		$this->database->executeChange($query, [
+			"player" => $player->getName(),
+			"level" => $level
+		]);
+	}
+
+	public function updateExp(Player $player, int $skill_code, int $exp): void
+	{
+		$query = "skill.update.".$this->IDParser($skill_code).".exp";
+
+		$this->database->executeChange($query, [
+			"player" => $player->getName(),
+			"exp" => $exp
+		]);
+	}
+
+	public function IDParser(int $code): string
+	{
+		switch($code)
+		{
+			case SkillLevel::MINING:
+				return "mine";
+			case SkillLevel::FISHING:
+				return "fishing";
+			case SkillLevel::FARMING:
+				return "farming";
+			case SkillLevel::FORAGING:
+				return "foraging";
+			default:
+				return "";
+		}
 	}
 
 

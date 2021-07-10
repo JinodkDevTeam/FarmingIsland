@@ -116,4 +116,16 @@ UPDATE Skill SET ForagingExp=:level WHERE Player=:player;
 -- #            }
 -- #        }
 -- #    }
+-- #    { get
+-- #        { mining
+-- #            { level
+-- #                :player string
+SELECT MiningLevel FROM Skill WHERE Player=:player
+-- #            }
+-- #            { exp
+-- #                :player string
+SELECT MiningExp FROM Skill WHERE Player=:player
+-- #            }
+-- #        }
+-- #    }
 -- #}
