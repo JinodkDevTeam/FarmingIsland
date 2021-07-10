@@ -127,5 +127,35 @@ SELECT MiningLevel FROM Skill WHERE Player=:player
 SELECT MiningExp FROM Skill WHERE Player=:player
 -- #            }
 -- #        }
+-- #        { fishing
+-- #            { level
+-- #                :player string
+SELECT FishingLevel FROM Skill WHERE Player=:player
+-- #            }
+-- #            { exp
+-- #                :player string
+SELECT FishingExp FROM Skill WHERE Player=:player
+-- #            }
+-- #        }
+-- #        { farming
+-- #            { level
+-- #                :player string
+SELECT FarmingLevel FROM Skill WHERE Player=:player
+-- #            }
+-- #            { exp
+-- #                :player string
+SELECT FarmingExp FROM Skill WHERE Player=:player
+-- #            }
+-- #        }
+-- #        { foraging
+-- #            { level
+-- #                :player string
+SELECT ForagingLevel FROM Skill WHERE Player=:player
+-- #            }
+-- #            { exp
+-- #                :player string
+SELECT ForagingExp FROM Skill WHERE Player=:player
+-- #            }
+-- #        }
 -- #    }
 -- #}

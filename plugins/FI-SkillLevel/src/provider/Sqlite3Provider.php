@@ -13,14 +13,6 @@ class Sqlite3Provider
 	public const LOAD_PLAYER = "skill.loadplayer";
 	public const REGISTER = "skill.register";
 	public const UNREGISTER = "skill.unregister";
-	/*public const UPDATE_MINING_LEVEL = "skill.update.mining.level";
-	public const UPDATE_MINING_EXP = "skill.update.mining.exp";
-	public const UPDATE_FISHING_LEVEL = "skill.update.fishing.level";
-	public const UPDATE_FISHING_EXP = "skill.update.fishing.exp";
-	public const UPDATE_FARMING_LEVEL = "skill.update.farming.level";
-	public const UPDATE_FARMING_EXP = "skill.update.farming.exp";
-	public const UPDATE_FORAGING_LEVEL = "skill.update.foraging.level";
-	public const UPDATE_FORAGING_EXP = "skill.update.foraging.exp";*/
 
 	private DataConnector $database;
 
@@ -43,6 +35,8 @@ class Sqlite3Provider
 			"sqlite" => "sqlite.sql"
 		]);
 
+		$this->getSkillLevel()->getLogger()->info("DataBase Created ! (Sqlite3)");
+
 		$this->database->executeGeneric(self::INIT_TABLE);
 
 	}
@@ -52,10 +46,16 @@ class Sqlite3Provider
 		if(isset($this->database)) $this->database->close();
 	}
 
-	public function getPlayerData(Player $player, callable $callable) : void
+	public function getPlayerData(Player $player) : array
 	{
 		$name = $player->getName();
-		$this->database->executeSelect(self::LOAD_PLAYER, ["player" => $name], $callable);
+		$data = [];
+		$this->database->executeSelect(self::LOAD_PLAYER, ["player" => $name], function(array $rows) use (&$data)
+		{
+			$data = $rows[0];
+		});
+
+		return $data;
 	}
 
 	public function loadPlayerData (Player $player, array $data = []): void
@@ -113,6 +113,36 @@ class Sqlite3Provider
 		]);
 	}
 
+	public function getLevel(Player $player, int $skill_code): int
+	{
+		$query = "skill.get.".$this->IDParser($skill_code).".level";
+		$data = 0;
+
+		$this->database->executeChange($query, [
+			"player" => $player->getName(),
+		], function(array $rows) use (&$data, $skill_code)
+		{
+			$data = (int)$rows[0][$this->IDLevelParser($skill_code)];
+		});
+
+		return $data;
+	}
+
+	public function getExp(Player $player, int $skill_code): int
+	{
+		$query = "skill.get.".$this->IDParser($skill_code).".exp";
+		$data = 0;
+
+		$this->database->executeChange($query, [
+			"player" => $player->getName(),
+		], function(array $rows) use (&$data, $skill_code)
+		{
+			$data = (int)$rows[0][$this->IDExpParser($skill_code)];
+		});
+
+		return $data;
+	}
+
 	public function IDParser(int $code): string
 	{
 		switch($code)
@@ -125,6 +155,40 @@ class Sqlite3Provider
 				return "farming";
 			case SkillLevel::FORAGING:
 				return "foraging";
+			default:
+				return "";
+		}
+	}
+
+	public function IDExpParser(int $code = 0): string
+	{
+		switch($code)
+		{
+			case SkillLevel::MINING:
+				return "MineExp";
+			case SkillLevel::FISHING:
+				return "FishingExp";
+			case SkillLevel::FARMING:
+				return "FarmingExp";
+			case SkillLevel::FORAGING:
+				return "ForagingExp";
+			default:
+				return "";
+		}
+	}
+
+	public function IDLevelParser(int $code = 0): string
+	{
+		switch($code)
+		{
+			case SkillLevel::MINING:
+				return "MineLevel";
+			case SkillLevel::FISHING:
+				return "FishingLevel";
+			case SkillLevel::FARMING:
+				return "FarmingLevel";
+			case SkillLevel::FORAGING:
+				return "ForagingLevel";
 			default:
 				return "";
 		}
