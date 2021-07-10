@@ -26,9 +26,9 @@ class SkillLevel extends PluginBase
 
 	public function onEnable() : void
 	{
+		$this->saveDefaultConfig();
 		$this->provider = new Sqlite3Provider($this);
-
-		$this->getProvider()->register();
+		/*$this->getProvider()->register();*/
 	}
 
 	public function onDisable() : void

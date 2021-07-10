@@ -21,7 +21,6 @@ class Sqlite3Provider
 	public function __construct(SkillLevel $skillLevel)
 	{
 		$this->skillLevel = $skillLevel;
-		$this->register();
 	}
 
 	public function getSkillLevel(): SkillLevel
@@ -31,10 +30,10 @@ class Sqlite3Provider
 
 	public function register(): void
 	{
+		$this->getSkillLevel()->getLogger()->info("Creating DataBase... (Sqlite3)");
 		$this->database = libasynql::create($this->getSkillLevel(), $this->getSkillLevel()->getConfig()->get("database"), [
 			"sqlite" => "sqlite.sql"
 		]);
-
 		$this->getSkillLevel()->getLogger()->info("DataBase Created ! (Sqlite3)");
 
 		$this->database->executeGeneric(self::INIT_TABLE);
