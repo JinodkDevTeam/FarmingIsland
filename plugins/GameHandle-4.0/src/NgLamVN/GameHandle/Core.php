@@ -10,6 +10,7 @@ use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\CoinSystem\CoinSystem;
 use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
+use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
 use pocketmine\entity\Skin;
 use pocketmine\player\Player;
@@ -29,6 +30,8 @@ class Core extends PluginBase
     /** @var Skin[] */
     public array $skin = [];
 
+    public SellHandler $sell;
+
     public function onEnable(): void
     {
 
@@ -45,6 +48,7 @@ class Core extends PluginBase
         new InitTask($this);
         $this->coin = new CoinSystem($this);
         $this->pstatmanager = new PlayerStatManager();
+        $this->sell = new SellHandler($this);
 
     }
     public function onDisable(): void
@@ -58,9 +62,14 @@ class Core extends PluginBase
         $player->sendMessage("Lest Play !");
     }
 
-    public function getPP(): PurePerms
+    public function getPP(): ?PurePerms
     {
-        return $this->getServer()->getPluginManager()->getPlugin("PurePerms");
+    	$plugin = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
+    	if ($plugin instanceof PurePerms)
+		{
+			return $plugin;
+		}
+        return null;
     }
 
     public function getPlayerGroupName(Player $player)
@@ -78,4 +87,9 @@ class Core extends PluginBase
     {
         return $this->pstatmanager;
     }
+
+    public function getSellHandler(): SellHandler
+	{
+		return $this->sell;
+	}
 }
