@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle;
+namespace NgLamVN\GameHandle\PlayerStat;
 
 use pocketmine\world\Position;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use NgLamVN\GameHandle\Core;
 
 /**
  * Class PlayerStat

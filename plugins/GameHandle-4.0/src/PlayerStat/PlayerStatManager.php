@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle;
+namespace NgLamVN\GameHandle\PlayerStat;
 
 use Exception;
 use pocketmine\player\Player;

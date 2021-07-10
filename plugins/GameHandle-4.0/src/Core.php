@@ -17,6 +17,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
+use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 
 class Core extends PluginBase
 {
@@ -74,8 +75,7 @@ class Core extends PluginBase
 
     public function getPlayerGroupName(Player $player)
     {
-        $group = $this->getPP()->getUserDataMgr()->getGroup($player)->getName();
-        return $group;
+		return $this->getPP()->getUserDataMgr()->getGroup($player)->getName();
     }
 
     public function getCoinSystem(): CoinSystem

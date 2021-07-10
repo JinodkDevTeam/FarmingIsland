@@ -26,6 +26,9 @@
                   <Item>
                     <option name="path" value="plugins/FI-FishingModule/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/GameHandle-4.0/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
