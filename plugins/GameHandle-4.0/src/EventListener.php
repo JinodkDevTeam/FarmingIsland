@@ -110,7 +110,7 @@ class EventListener implements Listener
         $this->menu->onTrans($event);
     }
 
-    public function onCommand (PlayerCommandPreprocessEvent $event)
+    public function onCommand (PlayerCommandPreprocessEvent $event): void
     {
         $player = $event->getPlayer();
         $msg = $event->getMessage();

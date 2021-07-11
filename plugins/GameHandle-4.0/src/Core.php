@@ -25,12 +25,13 @@ class Core extends PluginBase
     /** @var int[] */
     public array $afktime = [];
 
-    public CoinSystem $coin;
-
-    public PlayerStatManager $pstatmanager;
+    /** @var CoinSystem $coin */
+    private CoinSystem $coin;
+    /** @var PlayerStatManager $pstatmanager */
+    private PlayerStatManager $pstatmanager;
     /** @var Skin[] */
     public array $skin = [];
-
+    /** @var SellHandler $sell */
     public SellHandler $sell;
 
     public function onEnable(): void

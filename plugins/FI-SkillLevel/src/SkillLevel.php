@@ -2,7 +2,6 @@
 
 namespace SkillLevel;
 
-use NgLamVN\SkillLevel\PlayerSkillLevel;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use SkillLevel\provider\Sqlite3Provider;
@@ -13,9 +12,6 @@ class SkillLevel extends PluginBase
 	public const FISHING = 2;
 	public const FARMING = 3;
 	public const FORAGING = 4;
-
-	/** @var PlayerSkillLevel */
-	private $playerData = [];
 
 	private Sqlite3Provider $provider;
 
@@ -36,17 +32,14 @@ class SkillLevel extends PluginBase
 		$this->getProvider()->save();
 	}
 
-	public function getPlayerSkillData(Player $player): ?PlayerSkillLevel
+	public function getPlayerSkillLevel(Player $player, int $skill_id): int
 	{
-		if (isset($this->playerData[$player->getName()]))
-		{
-			return $this->playerData[$player->getName()];
-		}
-		return null;
+		return $this->getProvider()->getLevel($player, $skill_id);
 	}
 
-	public function setPlayerSkillData(Player $player, PlayerSkillLevel $data)
+	public function getPlayerSkillExp(Player $player, int $skill_id): int
 	{
-		$this->playerData[$player->getName()] = $data;
+		return $this->getProvider()->getExp($player, $skill_id);
 	}
+
 }
