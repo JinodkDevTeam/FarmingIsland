@@ -33,7 +33,7 @@ class SellHandler
 		return $this->core;
 	}
 
-	public function getSellDataFolder()
+	public function getSellDataFolder(): string
 	{
 		$folder = $this->getCore()->getDataFolder() . "Sell/";
 		if (!file_exists($folder))
@@ -62,7 +62,7 @@ class SellHandler
 
 		if ($meta !== 0)
 		{
-			$pos = (string)$id . "/" . (string)$meta;
+			$pos = $id . "/" . $meta;
 		}
 		else
 		{
@@ -103,7 +103,7 @@ class SellHandler
 		}
 		$price += $price * ($buff/100);
 
-		$player->sendMessage("Sold " . (string)$item->getCount() . " items for " . (string)$price . " xu (+" . (string)$buff ." percent");
+		$player->sendMessage("Sold " . $item->getCount() . " items for " . $price . " xu (+" . $buff ." percent)");
 		EconomyAPI::getInstance()->addMoney($player, $price);
 		$player->getInventory()->remove($item);
 	}
@@ -136,7 +136,7 @@ class SellHandler
 			$inv->remove($item);
 		}
 
-		$player->sendMessage("Sold " . (string)$totalcount . " items for " . (string)$total . " xu (+" . (string)$buff ." percent");
+		$player->sendMessage("Sold " . $totalcount . " items for " . $total . " xu (+" . $buff ." percent)");
 		EconomyAPI::getInstance()->addMoney($player, $total);
 	}
 }

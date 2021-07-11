@@ -181,6 +181,9 @@ worlds:
     generator: vanilla_overworld
   nether:
     generator: vanilla_nether
+  Game:
+    generator: FLAT
+    preset: 2;bedrock,1xstone,3xdirt,grass;1
   #These settings will override the generator set in server.properties and allows loading multiple levels
   #Example:
   #world:
