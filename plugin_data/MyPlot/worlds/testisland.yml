@@ -2,6 +2,8 @@
 RestrictEntityMovement: false
 RestrictPVP: false
 UpdatePlotLiquids: true
+AllowOutsidePlotSpread: false
+AllowFireTicking: false
 EditBorderBlocks: true
 ClaimPrice: 0
 ClearPrice: 0

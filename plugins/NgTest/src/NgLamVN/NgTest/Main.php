@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\world\Position;
 
 class Main extends PluginBase implements Listener
 {
@@ -35,7 +36,14 @@ class Main extends PluginBase implements Listener
 				$worldManager->loadWorld($worldName);
 			}
 			$world = $worldManager->getWorldByName($worldName);
-			$sender->teleport($world->getSafeSpawn());
+			$pos = $world->getSpawnLocation();
+
+			if ($world->getOrLoadChunkAtPosition($pos) == null)
+			{
+				$world->orderChunkPopulation($pos->getFloorX() >> 4, $pos->getFloorZ() >> 4, null);
+			}
+
+			$sender->teleport($pos);
 		}
 
 		return true;
