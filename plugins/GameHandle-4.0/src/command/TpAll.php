@@ -6,6 +6,7 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
 class TpAll extends BaseCommand
@@ -46,10 +47,15 @@ class TpAll extends BaseCommand
             $sender->sendMessage("You not have permission to use this command");
             return;
         }
+        if (!$sender instanceof Player)
+		{
+			$sender->sendMessage("/tpall <player>");
+			return;
+		}
         $player = $sender;
         foreach (Server::getInstance()->getOnlinePlayers() as $players)
         {
-            $players->teleport($player);
+            $players->teleport($player->getPosition());
         }
         $sender->sendMessage("All player have been teleported to you");
     }
