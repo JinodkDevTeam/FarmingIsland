@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\PlayerStat;
 
+use NgLamVN\GameHandle\Sell\SellUndoAction;
 use pocketmine\world\Position;
 use pocketmine\player\Player;
 use pocketmine\Server;
@@ -35,9 +36,11 @@ class PlayerStat
     private bool $is_notp = false;
     /** @var Position|null */
     private ?Position $death_pos = null;
+    /** @var SellUndoAction|null */
+    private ?SellUndoAction $sellUndoAction = null;
 
-    public function toArray()
-    {
+    public function toArray() : array
+	{
         return [
             $this->getPlayer(),
             $this->isFly(),
@@ -163,6 +166,11 @@ class PlayerStat
         return $this->death_pos;
     }
 
+    public function getSellUndoAction(): ?SellUndoAction
+	{
+		return $this->sellUndoAction;
+	}
+
     /**
      * @param $time
      * @param $starttime
@@ -197,8 +205,8 @@ class PlayerStat
         }
         else
         {
-            $this->setMuteTime(0);
-            $this->setMuteStartTime(0);
+            $this->setMuteTime();
+            $this->setMuteStartTime();
         }
         $this->save();
     }
@@ -235,8 +243,8 @@ class PlayerStat
         }
         else
         {
-            $this->setFreezeTime(0);
-            $this->setFreezeStartTime(0);
+            $this->setFreezeTime();
+            $this->setFreezeStartTime();
         }
         $this->save();
     }
@@ -267,11 +275,17 @@ class PlayerStat
     /**
      * @param Position|null $pos
      */
-    public function setDeathPos(?Position $pos)
+    public function setDeathPos(?Position $pos): void
     {
         $this->death_pos = $pos;
         $this->save();
     }
+
+    public function setSellUndoAction(SellUndoAction $action): void
+	{
+		$this->sellUndoAction = $action;
+		$this->save();
+	}
 
     public function save()
     {

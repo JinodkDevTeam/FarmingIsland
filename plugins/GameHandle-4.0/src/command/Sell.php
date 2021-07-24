@@ -48,6 +48,8 @@ class Sell extends BaseCommand
             case "all":
             	$this->getCore()->getSellHandler()->sellAll($sender);
                 break;
+			case "undo":
+				$this->getCore()->getSellHandler()->undo($sender);
         }
     }
 }

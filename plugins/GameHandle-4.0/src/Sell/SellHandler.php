@@ -86,6 +86,8 @@ class SellHandler
 
 	public function sellHand(Player $player): void
 	{
+		/** @var Item[] $sellitems */
+		$sellitems = [];
 		$item = $player->getInventory()->getItemInHand();
 		$price = $this->toPrice($item);
 		if ($price < 0)
@@ -103,6 +105,8 @@ class SellHandler
 		}
 		$price += $price * ($buff/100);
 
+		array_push($sellitems, $item);
+		$this->addSellUndoAction($player, $price, $sellitems);
 		$player->sendMessage("Sold " . $item->getCount() . " items for " . $price . " xu (+" . $buff ." percent)");
 		EconomyAPI::getInstance()->addMoney($player, $price);
 		$player->getInventory()->remove($item);
@@ -110,6 +114,8 @@ class SellHandler
 
 	public function sellAll(Player $player)
 	{
+		/** @var Item[] $sellitems */
+		$sellitems = [];
 		$inv = $player->getInventory();
 		$total = 0;
 		$totalcount = 0;
@@ -130,13 +136,60 @@ class SellHandler
 			{
 				continue;
 			}
+			array_push($sellitems, $item);
 			$price += $price * ($buff/100);
 			$total += $price;
 			$totalcount += $item->getCount();
 			$inv->remove($item);
 		}
-
+		$this->addSellUndoAction($player, $total, $sellitems);
 		$player->sendMessage("Sold " . $totalcount . " items for " . $total . " xu (+" . $buff ." percent)");
 		EconomyAPI::getInstance()->addMoney($player, $total);
+	}
+
+	public function addSellUndoAction(Player $player, int $sellprice = 0, array $sellitems = []): void
+	{
+		$action = new SellUndoAction($player, $sellprice, $sellitems);
+		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setSellUndoAction($action);
+	}
+
+	public function undo(Player $player): void
+	{
+		$action = $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->getSellUndoAction();
+		if ($action == null)
+		{
+			$player->sendMessage("You don't have any sell action to undo !");
+			return;
+		}
+		$ecoapi = EconomyAPI::getInstance();
+		if ($ecoapi->myMoney($player) < $action->getUndoPrice())
+		{
+			$player->sendMessage("You don't have enough money to undo your sell action !");
+			return;
+		}
+		$inv = $player->getInventory();
+		if ($this->getEmptySlotsCount($player) < count($action->getItems()))
+		{
+			$player->sendMessage("Not enough space to add item back, please have enough space to add items back and /sell undo again !");
+			return;
+		}
+		foreach($action->getItems() as $item)
+		{
+			$inv->addItem($item);
+		}
+		$player->sendMessage("Undo sell action successful !");
+		$ecoapi->reduceMoney($player, $action->getUndoPrice());
+		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setSellUndoAction(null);
+	}
+
+	public function getEmptySlotsCount(Player $player): int
+	{
+		$count = 0;
+		$inv = $player->getInventory();
+		for ($i = 0; $i < 36; $i++)
+		{
+			if ($inv->isSlotEmpty($i)) $count++;
+		}
+		return $count;
 	}
 }
