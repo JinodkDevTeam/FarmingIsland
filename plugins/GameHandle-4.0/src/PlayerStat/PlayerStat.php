@@ -281,7 +281,7 @@ class PlayerStat
         $this->save();
     }
 
-    public function setSellUndoAction(SellUndoAction $action): void
+    public function setSellUndoAction(?SellUndoAction $action): void
 	{
 		$this->sellUndoAction = $action;
 		$this->save();

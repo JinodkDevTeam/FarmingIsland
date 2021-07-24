@@ -12,10 +12,10 @@ interface BiomeIds
 	public const OCEAN = VanillaBiomeIds::OCEAN;
 	public const PLAINS = VanillaBiomeIds::PLAINS;
 	public const DESERT = VanillaBiomeIds::DESERT;
-	public const EXTREME_HILLS = VanillaBiomeIds::MOUNTAINS;
+	public const EXTREME_HILLS = VanillaBiomeIds::EXTREME_HILLS;
 	public const FOREST = VanillaBiomeIds::FOREST;
 	public const TAIGA = VanillaBiomeIds::TAIGA;
-	public const SWAMPLAND = VanillaBiomeIds::SWAMP;
+	public const SWAMPLAND = VanillaBiomeIds::SWAMPLAND;
 	public const RIVER = VanillaBiomeIds::RIVER;
 	public const HELL = VanillaBiomeIds::HELL;
 	public const SKY = 9;
@@ -29,7 +29,7 @@ interface BiomeIds
 	public const DESERT_HILLS = 17;
 	public const FOREST_HILLS = 18;
 	public const TAIGA_HILLS = 19;
-	public const SMALL_MOUNTAINS = VanillaBiomeIds::SMALL_MOUNTAINS, SMALLER_EXTREME_HILLS = VanillaBiomeIds::SMALL_MOUNTAINS; // EXTREME_HILLS_EDGE
+	public const SMALL_MOUNTAINS = VanillaBiomeIds::EXTREME_HILLS_EDGE, SMALLER_EXTREME_HILLS = VanillaBiomeIds::EXTREME_HILLS_EDGE; // EXTREME_HILLS_EDGE
 	public const JUNGLE = 21;
 	public const JUNGLE_HILLS = 22;
 	public const JUNGLE_EDGE = 23;
