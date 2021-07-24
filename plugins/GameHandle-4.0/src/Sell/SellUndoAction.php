@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NgLamVN\GameHandle\Sell;
 
 use pocketmine\item\Item;
@@ -39,7 +41,7 @@ class SellUndoAction
 	/**
 	 * @return int
 	 */
-	public function getUndoPrice(): int
+	public function getUndoPrice(): float
 	{
 		return $this->undoprice;
 	}

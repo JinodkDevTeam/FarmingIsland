@@ -37,7 +37,7 @@ class Sell extends BaseCommand
 		}
         if (!isset($args[0]))
         {
-            $sender->sendMessage("/sell <hand|all>");
+            $sender->sendMessage("/sell <hand|all|undo>");
             return;
         }
         switch ($args[0])

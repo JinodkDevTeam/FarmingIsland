@@ -147,7 +147,7 @@ class SellHandler
 		EconomyAPI::getInstance()->addMoney($player, $total);
 	}
 
-	public function addSellUndoAction(Player $player, int $sellprice = 0, array $sellitems = []): void
+	public function addSellUndoAction(Player $player, float $sellprice = 0, array $sellitems = []): void
 	{
 		$action = new SellUndoAction($player, $sellprice, $sellitems);
 		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setSellUndoAction($action);
