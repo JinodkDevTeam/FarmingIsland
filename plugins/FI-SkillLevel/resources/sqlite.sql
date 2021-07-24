@@ -76,7 +76,7 @@ UPDATE Skill SET MiningLevel=:level WHERE Player=:player;
 -- #            { exp
 -- #                :player string
 -- #                :exp int
-UPDATE Skill SET MiningExp=:level WHERE Player=:player;
+UPDATE Skill SET MiningExp=:exp WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { fishing
@@ -88,7 +88,7 @@ UPDATE Skill SET FishingLevel=:level WHERE Player=:player;
 -- #            { exp
 -- #                :player string
 -- #                :exp int
-UPDATE Skill SET FishingExp=:level WHERE Player=:player;
+UPDATE Skill SET FishingExp=:exp WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { farming
@@ -100,7 +100,7 @@ UPDATE Skill SET FarmingLevel=:level WHERE Player=:player;
 -- #            { exp
 -- #                :player string
 -- #                :exp int
-UPDATE Skill SET FarmingExp=:level WHERE Player=:player;
+UPDATE Skill SET FarmingExp=:exp WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { foraging
@@ -112,7 +112,7 @@ UPDATE Skill SET ForagingLevel=:level WHERE Player=:player;
 -- #            { exp
 -- #                :player string
 -- #                :exp int
-UPDATE Skill SET ForagingExp=:level WHERE Player=:player;
+UPDATE Skill SET ForagingExp=:exp WHERE Player=:player;
 -- #            }
 -- #        }
 -- #    }
@@ -120,41 +120,41 @@ UPDATE Skill SET ForagingExp=:level WHERE Player=:player;
 -- #        { mining
 -- #            { level
 -- #                :player string
-SELECT MiningLevel FROM Skill WHERE Player=:player
+SELECT MiningLevel FROM Skill WHERE Player=:player;
 -- #            }
 -- #            { exp
 -- #                :player string
-SELECT MiningExp FROM Skill WHERE Player=:player
+SELECT MiningExp FROM Skill WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { fishing
 -- #            { level
 -- #                :player string
-SELECT FishingLevel FROM Skill WHERE Player=:player
+SELECT FishingLevel FROM Skill WHERE Player=:player;
 -- #            }
 -- #            { exp
 -- #                :player string
-SELECT FishingExp FROM Skill WHERE Player=:player
+SELECT FishingExp FROM Skill WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { farming
 -- #            { level
 -- #                :player string
-SELECT FarmingLevel FROM Skill WHERE Player=:player
+SELECT FarmingLevel FROM Skill WHERE Player=:player;
 -- #            }
 -- #            { exp
 -- #                :player string
-SELECT FarmingExp FROM Skill WHERE Player=:player
+SELECT FarmingExp FROM Skill WHERE Player=:player;
 -- #            }
 -- #        }
 -- #        { foraging
 -- #            { level
 -- #                :player string
-SELECT ForagingLevel FROM Skill WHERE Player=:player
+SELECT ForagingLevel FROM Skill WHERE Player=:player;
 -- #            }
 -- #            { exp
 -- #                :player string
-SELECT ForagingExp FROM Skill WHERE Player=:player
+SELECT ForagingExp FROM Skill WHERE Player=:player;
 -- #            }
 -- #        }
 -- #    }

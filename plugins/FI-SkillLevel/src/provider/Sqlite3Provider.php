@@ -6,6 +6,7 @@ use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use SkillLevel\SkillLevel;
+use Exception;
 
 class Sqlite3Provider
 {
@@ -51,7 +52,15 @@ class Sqlite3Provider
 		$data = [];
 		$this->database->executeSelect(self::LOAD_PLAYER, ["player" => $name], function(array $rows) use (&$data)
 		{
-			$data = $rows[0];
+			var_dump($rows);
+			if (isset($rows[0]))
+			{
+				$data = $rows[0];
+			}
+			else
+			{
+				$data = [];
+			}
 		});
 
 		return $data;
@@ -72,17 +81,24 @@ class Sqlite3Provider
 			$data["ForagingLevel"] = 1;
 			$data["ForagingExp"] = 0;
  		}
-		$this->database->executeChange(self::REGISTER, [
-			"player" => $name,
-			"mininglevel" => $data["MiningLevel"],
-			"miningexp" => $data["MiningExp"],
-			"fishinglevel" => $data["FishingLevel"],
-			"fishingexp" => $data["FishingExp"],
-			"farminglevel" => $data["FarmingLevel"],
-			"farmingexp" => $data["FarmingExp"],
-			"foraginglevel" => $data["ForagingLevel"],
-			"foragingexp" => $data["ForagingExp"]
-		]);
+		try
+		{
+			$this->database->executeChange(self::REGISTER, [
+				"player" => $name,
+				"mininglevel" => $data["MiningLevel"],
+				"miningexp" => $data["MiningExp"],
+				"fishinglevel" => $data["FishingLevel"],
+				"fishingexp" => $data["FishingExp"],
+				"farminglevel" => $data["FarmingLevel"],
+				"farmingexp" => $data["FarmingExp"],
+				"foraginglevel" => $data["ForagingLevel"],
+				"foragingexp" => $data["ForagingExp"]
+			]);
+		}
+		catch(Exception $exception)
+		{
+			$this->getSkillLevel()->getLogger()->error("Failed to register player data: " . $player->getName());
+		}
 	}
 
 	public function unregisterPlayerData (Player $player)

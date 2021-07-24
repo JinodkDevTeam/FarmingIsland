@@ -2,6 +2,7 @@
 
 namespace SkillLevel;
 
+use Exception;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use SkillLevel\provider\Sqlite3Provider;
@@ -24,7 +25,17 @@ class SkillLevel extends PluginBase
 	{
 		$this->saveDefaultConfig();
 		$this->provider = new Sqlite3Provider($this);
-		/*$this->getProvider()->register();*/
+		try
+		{
+			$this->getProvider()->register();
+		}
+		catch(Exception $exception)
+		{
+			$this->getLogger()->info("Failed to load database, disable this plugin ...");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+		}
+
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
 
 	public function onDisable() : void
