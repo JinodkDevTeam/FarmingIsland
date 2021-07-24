@@ -39,7 +39,7 @@ class SellUndoAction
 	}
 
 	/**
-	 * @return int
+	 * @return float
 	 */
 	public function getUndoPrice(): float
 	{
