@@ -101,4 +101,5 @@ permissions:
     default: op
   gh.servercheck:
     default: op
-    
+  gh.icgive:
+    default: op
