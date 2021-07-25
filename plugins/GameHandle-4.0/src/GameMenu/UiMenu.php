@@ -47,7 +47,6 @@ class UiMenu
         {
             array_push($list, "rankcolor");
         }
-        array_push($list, "gui");
 
         $form = new SimpleForm(function (Player $player, $data) use ($list): void
         {
@@ -78,9 +77,6 @@ class UiMenu
                 case "vip-shop":
                     Server::getInstance()->dispatchCommand($player, "cuahang");
                     break;
-                case "gui":
-                    $this->GuiMode($player);
-                    break;
                 case "is-info":
                     $this->IslandInfoForm($player);
                     break;
@@ -109,22 +105,8 @@ class UiMenu
         {
             $form->addButton("§　§lRankColor");
         }
-        $form->addButton("§lGUI Mode\nChuyển sang chế độ GUI");
         $form->setTitle("§　Island Menu");
         $player->sendForm($form);
-    }
-
-    public function GuiMode(Player $player)
-    {
-    	//GUI Mode is no longer supported in PM4
-        /*$i = Item::get(Item::PAPER);
-        $nbt = $i->getNamedTag();
-        $nbt->setByte("menu", 1);
-        $nbt->setString("menu-mode", "gui");
-        $i->setNamedTag($nbt);
-        $i->setCustomName("Island Menu");
-        $i->setLore(["Hold and tap to open menu !"]);
-        $player->getInventory()->setItem(8, $i);*/
     }
 
     public function IslandInfoForm(Player $player)

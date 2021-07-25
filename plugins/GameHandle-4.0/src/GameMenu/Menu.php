@@ -76,17 +76,14 @@ class Menu
 
         if ($slot == 8)
         {
-        	if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null)
+			if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null)
 			{
 				return;
 			}
-            if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode")->getValue() == "gui")
-            {
-                new GuiMenu($player);
-            }
-            else{
-                new UiMenu($player);
-            }
+			else
+			{
+				new UiMenu($player);
+			}
         }
     }
 
@@ -98,11 +95,12 @@ class Menu
 
 		if ($slot == 8)
 		{
-			if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode")->getValue() == "gui")
+			if ($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null)
 			{
-				new GuiMenu($player);
+				return;
 			}
-			else{
+			else
+			{
 				new UiMenu($player);
 			}
 		}
@@ -136,8 +134,8 @@ class Menu
             }
         }
     }
-    public function sendUpdatesForm (Player $player)
+    public function sendUpdatesForm (Player $player): void
     {
-        return new UpdateInfo($player);
+        new UpdateInfo($player);
     }
 }
