@@ -21,6 +21,7 @@ use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use Exception;
 
 class EventListener implements Listener
 {
@@ -40,10 +41,12 @@ class EventListener implements Listener
         return $this->plugin;
     }
 
-    /**
-     * @param PlayerJoinEvent $event
-     * @priority HIGHEST
-     */
+	/**
+	 * @param PlayerJoinEvent $event
+	 *
+	 * @priority HIGHEST
+	 * @throws Exception
+	 */
     public function onJoin(PlayerJoinEvent $event)
     {
         $player = $event->getPlayer();
@@ -90,7 +93,7 @@ class EventListener implements Listener
         $event->setRespawnPosition($pos);
     }
 
-    public function onTap(PlayerInteractEvent $event)
+    public function onInteract(PlayerInteractEvent $event)
     {
         $this->menu->onTap($event);
     }
@@ -100,7 +103,12 @@ class EventListener implements Listener
         $this->fish->onFish($event);
     }
 
-    public function onDrop (PlayerDropItemEvent $event)
+	/**
+	 * @param PlayerDropItemEvent $event
+	 * @priority NORMAL
+	 * @handleCancelled FALSE
+	 */
+	public function onItemDrop (PlayerDropItemEvent $event)
     {
         $this->menu->onDrop($event);
     }
@@ -110,7 +118,7 @@ class EventListener implements Listener
         $this->menu->onTrans($event);
     }
 
-    public function onCommand (PlayerCommandPreprocessEvent $event): void
+    public function onUseCommand (PlayerCommandPreprocessEvent $event): void
     {
         $player = $event->getPlayer();
         $msg = $event->getMessage();

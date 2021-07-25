@@ -40,7 +40,6 @@ class UiMenu
         array_push($list, "shop");
         array_push($list, "vip-shop");
         array_push($list, "sell-all");
-        array_push($list, "coin");
         array_push($list, "vip");
         array_push($list, "tutorial");
         array_push($list, "invcraft");
@@ -58,9 +57,6 @@ class UiMenu
             }
             switch ($list[$data])
             {
-                case "coin":
-                    Server::getInstance()->dispatchCommand($player, "coin");
-                    break;
                 case "is-manager":
                     new IslandManager($player);
                     break;
@@ -106,7 +102,6 @@ class UiMenu
         $form->addButton("§　§lShop");
         $form->addButton("§　§lVipItem Shop");
         $form->addButton("§lSell All Inventory\nBán toàn bộ vật phẩm");
-        $form->addButton("§　§lCoin");
         $form->addButton("§　§lVIP");
         $form->addButton("§lTutorial\nXem cách chơi");
         $form->addButton("§lInvCraft\nBàn chế tạo siêu to khổng lồ");

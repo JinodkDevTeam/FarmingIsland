@@ -7,7 +7,6 @@ namespace NgLamVN\GameHandle;
 use _64FF00\PurePerms\PurePerms;
 use muqsit\invmenu\InvMenuHandler;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
-use NgLamVN\GameHandle\CoinSystem\CoinSystem;
 use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
 use NgLamVN\GameHandle\Sell\SellHandler;
@@ -24,9 +23,6 @@ class Core extends PluginBase
 	use SingletonTrait;
     /** @var int[] */
     public array $afktime = [];
-
-    /** @var CoinSystem $coin */
-    private CoinSystem $coin;
     /** @var PlayerStatManager $pstatmanager */
     private PlayerStatManager $pstatmanager;
     /** @var Skin[] */
@@ -48,7 +44,6 @@ class Core extends PluginBase
         $plmanager->registerEvents(new CT_PacketHandler(), $this);
         new InitCommand($this);
         new InitTask($this);
-        $this->coin = new CoinSystem($this);
         $this->pstatmanager = new PlayerStatManager();
         $this->sell = new SellHandler($this);
 
@@ -77,11 +72,6 @@ class Core extends PluginBase
     public function getPlayerGroupName(Player $player)
     {
 		return $this->getPP()->getUserDataMgr()->getGroup($player)->getName();
-    }
-
-    public function getCoinSystem(): CoinSystem
-    {
-        return $this->coin;
     }
 
     public function getPlayerStatManager(): PlayerStatManager
