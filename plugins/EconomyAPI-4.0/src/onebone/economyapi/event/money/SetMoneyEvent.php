@@ -2,7 +2,7 @@
 
 /*
  * EconomyS, the massive economy plugin with many features for PocketMine-MP
- * Copyright (C) 2013-2017  onebone <jyc00410@gmail.com>
+ * Copyright (C) 2013-2021  onebone <me@onebone.me>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,25 +20,34 @@
 
 namespace onebone\economyapi\event\money;
 
-use onebone\economyapi\event\EconomyAPIEvent;
-
+use onebone\economyapi\currency\Currency;
 use onebone\economyapi\EconomyAPI;
+use onebone\economyapi\event\EconomyAPIEvent;
+use onebone\economyapi\event\Issuer;
+use pocketmine\event\Cancellable;
+use pocketmine\event\CancellableTrait;
 
-class SetMoneyEvent extends EconomyAPIEvent{
-	private $username, $money;
-	public static $handlerList;
-	
-	public function __construct(EconomyAPI $plugin, $username, $money, $issuer){
+class SetMoneyEvent extends EconomyAPIEvent implements Cancellable {
+	use CancellableTrait;
+
+	private $username, $currency, $money;
+
+	public function __construct(EconomyAPI $plugin, $username, Currency $currency, float $money, ?Issuer $issuer) {
 		parent::__construct($plugin, $issuer);
 		$this->username = $username;
+		$this->currency = $currency;
 		$this->money = $money;
 	}
-	
-	public function getUsername(){
+
+	public function getUsername() {
 		return $this->username;
 	}
-	
-	public function getMoney(){
+
+	public function getCurrency(): Currency {
+		return $this->currency;
+	}
+
+	public function getMoney() {
 		return $this->money;
 	}
 }

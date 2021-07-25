@@ -1,20 +1,28 @@
-# monetary-unit: Set what monetary unit you want to use
-monetary-unit: "$"
+# default-currency: Sets default currency
+# This configuration could be overridden by external plugin
+default-currency: coin
 # add-op-at-rank: Set whether to show OPs at top money rank
-add-op-at-rank: false
-# default-money: Set default money when player joined the server first
-default-money: 1000
-# max-money: Set max money that player can have
-max-money: 9999999999
-# Whether to allow player to pay when taret player is offline
+add-op-at-rank: true
+# Whether to allow player to pay when target player is offline
 allow-pay-offline: true
 
 # default-lang: Set default language
-default-lang: def
+default-lang: en
 # auto-save-interval: Set interval of auto-save
 auto-save-interval: 10
 
-# provider: Set provider of database (Available: yaml, mysql)
+# Whether to send command usages of EconomyAPI to client
+send-command-usages: true
+
+# List of enabled currencies
+currencies:
+  coin:
+    # Default money given to player who joined the server first time
+    default: 0
+  gem:
+    default: 0
+
+# provider: Set user-provider type of database (Available: yaml, mysql)
 provider: yaml
 
 # check-update: Set whether to check update from server

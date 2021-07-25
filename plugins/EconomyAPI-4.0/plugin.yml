@@ -1,17 +1,11 @@
----
 name: EconomyAPI
 main: onebone\economyapi\EconomyAPI
+version: "3.0.0-SNAPSHOT"
+author: onebone
 api:
 - 4.0.0
-version: 5.7.2
-author: onebone
+
 permissions:
-  economyapi.*:
-    default: op
-    description: Allows to control all of functions in EconomyAPI
-  economyapi.command.*:
-    default: op
-    description: Allows to use all of commands in EconomyAPI
   economyapi.command.setmoney:
     default: op
     description: Allows to set player's money
@@ -39,4 +33,6 @@ permissions:
   economyapi.command.takemoney:
     description: Allows player to take money from others
     default: op
-...
+  economyapi.command.economy:
+    description: Command for player to control own configuration
+    default: true

@@ -2,7 +2,7 @@
 
 /*
  * EconomyS, the massive economy plugin with many features for PocketMine-MP
- * Copyright (C) 2013-2017  onebone <jyc00410@gmail.com>
+ * Copyright (C) 2013-2021  onebone <me@onebone.me>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,48 +20,52 @@
 
 namespace onebone\economyapi\command;
 
+use onebone\economyapi\EconomyAPI;
+use onebone\economyapi\currency\CurrencyReplacer;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\plugin\Plugin;
+use pocketmine\plugin\PluginOwned;
 
-use onebone\economyapi\EconomyAPI;
-use onebone\economyapi\task\SortTask;
-
-class TopMoneyCommand extends Command{
+class TopMoneyCommand extends Command implements PluginOwned {
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin){
+	public function __construct(EconomyAPI $plugin) {
+		$this->plugin = $plugin;
+
 		$desc = $plugin->getCommandMessage("topmoney");
 		parent::__construct("topmoney", $desc["description"], $desc["usage"]);
 
 		$this->setPermission("economyapi.command.topmoney");
-
-		$this->plugin = $plugin;
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params): bool{
-		if(!$this->plugin->isEnabled()) return false;
+	public function execute(CommandSender $sender, string $label, array $params): bool {
 		if(!$this->testPermission($sender)) return false;
 
-		$page = (int)array_shift($params);
+		$page = max(1, (int) array_shift($params));
 
-		$server = $this->plugin->getServer();
+		$plugin = $this->plugin;
 
-		$banned = [];
-		foreach($server->getNameBans()->getEntries() as $entry){
-			if($this->plugin->accountExists($entry->getName())){
-				$banned[] = $entry->getName();
+		$currency = $plugin->getPlayerPreferredCurrency($sender, false);
+
+		$plugin->getSortByRange($currency, ($page - 1) * 5, 5)->then(function($value) use ($plugin, $currency, $sender, $page) {
+			$sender->sendMessage($plugin->getMessage('topmoney-tag', $sender, [$page, '&enull&f'])); // TODO: show max page
+
+			$i = 0;
+			foreach($value as $player => $money) {
+				$i++;
+				$sender->sendMessage($plugin->getMessage('topmoney-format', $sender, [
+					($page - 1) * 5 + $i, $player, new CurrencyReplacer($currency, $money)
+				]));
 			}
-		}
-		$ops = [];
-		foreach($server->getOps()->getAll() as $op){
-			if($this->plugin->accountExists($op)){
-				$ops[] = $op;
-			}
-		}
-
-		$task = new SortTask($sender->getName(), $this->plugin->getAllMoney(), $this->plugin->getConfig()->get("add-op-at-rank"), $page, $ops, $banned);
-		$server->getAsyncPool()->submitTask($task);
+		})->catch(function() use ($sender) {
+			$sender->sendMessage('Failed to fetch money leaderboard :(');
+		});
 		return true;
+	}
+
+	public function getOwningPlugin(): Plugin {
+		return $this->plugin;
 	}
 }
