@@ -5,18 +5,14 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
 class NoTP extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("notp");
-        $this->plugin = $plugin;
+        parent::__construct($core, "notp");
         $this->setDescription("NoTP Mode command");
         $this->setPermission("gh.notp");
     }
@@ -28,14 +24,14 @@ class NoTP extends BaseCommand
             $sender->sendMessage("Use ingame only !");
             return;
         }
-        if ($this->plugin->getPlayerStatManager()->getPlayerStat($sender)->isNoTP())
+        if ($this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->isNoTP())
         {
-            $this->plugin->getPlayerStatManager()->getPlayerStat($sender)->setNoTP(false);
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->setNoTP(false);
             $sender->sendMessage("NoTP disabled !");
         }
         else
         {
-            $this->plugin->getPlayerStatManager()->getPlayerStat($sender)->setNoTP();
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->setNoTP();
             $sender->sendMessage("NoTP enabled !");
         }
     }

@@ -7,7 +7,6 @@ namespace NgLamVN\GameHandle\GameMenu;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
-use NgLamVN\GameHandle\CoinSystem\CoinSystem;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\ConsoleCommandSender;
 use pocketmine\player\Player;
@@ -87,9 +86,9 @@ class VipManager
 
     public function BuyVipConfirmForm(Player $player)
     {
-        if (CoinSystem::getInstance()->getCoin($player) < 2000)
+        if (5 < 1)
         {
-            $player->sendMessage("§cYou not have enought coin to buy this rank !");
+            $player->sendMessage("§cCoin system is droped support in pm4, new coin system is comming soon !");
             return;
         }
         $form = new ModalForm(function (Player $player, $data)
@@ -97,7 +96,6 @@ class VipManager
             if ($data == true)
             {
             	$consoleCommandSender = new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage());
-                CoinSystem::getInstance()->reduceCoin($player, 2000);
                 Server::getInstance()->dispatchCommand($consoleCommandSender, "setgroup " . $player->getName() . " Vip");
             }
         });

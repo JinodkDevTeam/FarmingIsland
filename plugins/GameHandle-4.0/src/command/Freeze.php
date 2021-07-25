@@ -10,12 +10,9 @@ use pocketmine\Server;
 
 class Freeze extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("freeze");
-        $this->plugin = $plugin;
+        parent::__construct($core, "freeze");
         $this->setDescription("Freeze command");
         $this->setPermission("gh.freeze");
     }
@@ -47,9 +44,9 @@ class Freeze extends BaseCommand
                     return;
                 }
             }
-            $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
-            $sender->sendMessage("Frozen " .$player->getName(). " for " .(string) $time. " seconds !");
-            $player->sendMessage("You have been frozen for " .(string) $time. " seconds");
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
+            $sender->sendMessage("Frozen " .$player->getName(). " for " . $time . " seconds !");
+            $player->sendMessage("You have been frozen for " . $time . " seconds");
             return;
         }
         $sender->sendMessage("/freeze <player> <time>");

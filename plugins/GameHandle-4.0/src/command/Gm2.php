@@ -7,14 +7,14 @@ namespace NgLamVN\GameHandle\command;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\GameMode;
+use pocketmine\player\Player;
 use pocketmine\Server;
 
 class Gm2 extends BaseCommand
 {
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("gm2");
-        $this->plugin = $plugin;
+        parent::__construct($core, "gm2");
         $this->setDescription("Game mode command");
         $this->setPermission("gh.gm2");
         $this->setAliases(["gma"]);
@@ -43,6 +43,11 @@ class Gm2 extends BaseCommand
             $sender->sendMessage("You not have permission to use this command");
             return;
         }
+		if (!$sender instanceof Player)
+		{
+			$sender->sendMessage("Please add player arg !");
+			return;
+		}
         $sender->setGamemode(GameMode::ADVENTURE());
         $sender->sendMessage("Your game mode have changed to adventure !");
     }

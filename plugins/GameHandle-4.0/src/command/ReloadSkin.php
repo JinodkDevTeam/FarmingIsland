@@ -5,17 +5,13 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
-use pocketmine\command\PluginCommand;
 use pocketmine\command\CommandSender;
 
 class ReloadSkin extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("reloadskin");
-        $this->plugin = $plugin;
+        parent::__construct($core, "reloadskin");
         $this->setDescription("Reload All Player Skin");
         $this->setPermission("gh.reloadskin");
     }
@@ -27,9 +23,9 @@ class ReloadSkin extends BaseCommand
             return;
         }
 
-        foreach ($this->plugin->getServer()->getOnlinePlayers() as $player)
+        foreach ($this->getCore()->getServer()->getOnlinePlayers() as $player)
         {
-            $player->setSkin($this->plugin->skin[$player->getName()]);
+            $player->setSkin($this->getCore()->skin[$player->getName()]);
         }
         $sender->sendMessage("All Player Skin reloaded !");
     }

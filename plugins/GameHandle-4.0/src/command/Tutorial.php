@@ -11,12 +11,9 @@ use pocketmine\player\Player;
 
 class Tutorial extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("tutorial");
-        $this->plugin = $plugin;
+        parent::__construct($core, "tutorial");
         $this->setDescription("View tutorial");
         $this->setPermission("gh.tutorial");
     }
@@ -28,6 +25,5 @@ class Tutorial extends BaseCommand
 			return;
 		}
         new UpdateInfo($sender, "tutorial");
-        return;
     }
 }

@@ -33,6 +33,6 @@ class InitCommand
         $cmd->register("freeze", new Freeze($plugin));
         $cmd->register("unfreeze", new UnFreeze($plugin));
         $cmd->register("notp", new NoTP($plugin));
-        /*$cmd->register("icgive", new IcGive($plugin));*/ //TODO: Slove NBT problem
+        $cmd->register("icgive", new IcGive($plugin)); //TODO: Slove NBT problem
     }
 }

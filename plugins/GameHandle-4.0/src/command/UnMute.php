@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use Exception;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
 class UnMute extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("unmute");
-        $this->plugin = $plugin;
+        parent::__construct($core, "unmute");
         $this->setDescription("UnMute command");
         $this->setPermission("gh.unmute");
     }
@@ -34,9 +32,16 @@ class UnMute extends BaseCommand
                 $sender->sendMessage("Player not exist !");
                 return;
             }
-
-            $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setMute(false);
-            $sender->sendMessage("Unmuted " .$player->getName(). " !");
+			try
+			{
+				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setMute(false);
+			}
+            catch(Exception $e)
+			{
+				$sender->sendMessage("PlayerStat Data Error !");
+				return;
+			}
+			$sender->sendMessage("Unmuted " .$player->getName(). " !");
             $player->sendMessage("You have been unmuted !");
             return;
         }

@@ -9,12 +9,9 @@ use pocketmine\Server;
 
 class Fly extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("fly");
-        $this->plugin = $plugin;
+        parent::__construct($core, "fly");
         $this->setDescription("Fly command");
         $this->setPermission("gh.fly");
     }
@@ -38,18 +35,18 @@ class Fly extends BaseCommand
                 $sender->sendMessage("Player not exist !");
                 return;
             }
-            if (!$this->plugin->getPlayerStatManager()->getPlayerStat($player)->isFly())
+            if (!$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->isFly())
             {
                 $player->setAllowFlight(true);
                 $player->setFlying(true);
-                $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setFly(true);
+                $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFly(true);
                 $sender->sendMessage($player->getName() . "  Enabled Fly");
             }
             else
             {
                 $player->setAllowFlight(false);
                 $player->setFlying(false);
-                $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setFly(false);
+                $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFly(false);
                 $sender->sendMessage($player->getName() . " Disabled Fly");
             }
             return;
@@ -59,18 +56,18 @@ class Fly extends BaseCommand
             $sender->sendMessage("You not have permission to use this command");
             return;
         }
-        if (!$this->plugin->getPlayerStatManager()->getPlayerStat($sender)->isFly())
+        if (!$this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->isFly())
         {
             $sender->setAllowFlight(true);
             $sender->setFlying(true);
-            $this->plugin->getPlayerStatManager()->getPlayerStat($sender)->setFly(true);
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->setFly(true);
             $sender->sendMessage("Enabled Fly");
         }
         else
         {
             $sender->setAllowFlight(false);
             $sender->setFlying(false);
-            $this->plugin->getPlayerStatManager()->getPlayerStat($sender)->setFly(false);
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($sender)->setFly(false);
             $sender->sendMessage("Disabled Fly");
         }
     }

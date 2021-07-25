@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\PlayerStat;
 
 use Exception;
+use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
 
 class PlayerStatManager
@@ -20,16 +21,30 @@ class PlayerStatManager
         //TODO: Construct
     }
 
-    /**
-     * @param Player $player
-     * @return PlayerStat
-     */
-    public function getPlayerStat(Player $player): PlayerStat
+    public function getCore(): Core
+	{
+		return Core::getInstance();
+	}
+
+	/**
+	 * @param Player $player
+	 *
+	 * @return null|PlayerStat
+	 */
+    public function getPlayerStat(Player $player): ?PlayerStat
     {
         if (!isset($this->stats[$player->getName()]))
         {
-            $this->registerPlayerStat($player);
-        }
+			try
+			{
+				$this->registerPlayerStat($player);
+			}
+			catch(Exception $e)
+			{
+				$this->getCore()->getLogger()->error("Failed to register PlayerStat data: " . $player->getName());
+				return null;
+			}
+		}
         return $this->stats[$player->getName()];
     }
 
@@ -53,7 +68,10 @@ class PlayerStatManager
         }
     }
 
-    public function registerPlayerStat(Player $player, $overwrite = false)
+	/**
+	 * @throws Exception
+	 */
+	public function registerPlayerStat(Player $player, $overwrite = false)
     {
         if (isset($this->stats[$player->getName()]))
         {

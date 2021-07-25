@@ -11,12 +11,9 @@ use pocketmine\Server;
 
 class TpAll extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("tpall");
-        $this->plugin = $plugin;
+        parent::__construct($core, "tpall");
         $this->setDescription("TpAll command");
         $this->setPermission("gh.tpall");
     }

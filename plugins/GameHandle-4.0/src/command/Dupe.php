@@ -10,13 +10,9 @@ use pocketmine\player\Player;
 
 class Dupe extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $core)
+	public function __construct(Core $core)
     {
-        parent::__construct("dupe");
-        $this->plugin = $core;
-
+        parent::__construct($core, "dupe");
         $this->setDescription("Duplicate item in hand");
         $this->setPermission("gh.dupe");
     }

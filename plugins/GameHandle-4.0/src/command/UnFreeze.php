@@ -4,18 +4,16 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use Exception;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
 class UnFreeze extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("unfreeze");
-        $this->plugin = $plugin;
+        parent::__construct($core, "unfreeze");
         $this->setDescription("UnFreeze command");
         $this->setPermission("gh.unfreeze");
     }
@@ -35,8 +33,16 @@ class UnFreeze extends BaseCommand
                 return;
             }
 
-            $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setFreeze(false);
-            $sender->sendMessage("Unfreeze " .$player->getName(). " !");
+			try
+			{
+				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(false);
+			}
+            catch(Exception $e)
+			{
+				$sender->sendMessage("PlayerStat Data Error !");
+				return;
+			}
+			$sender->sendMessage("Unfreeze " .$player->getName(). " !");
             $player->sendMessage("You have been unfreeze !");
             return;
         }

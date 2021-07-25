@@ -20,6 +20,10 @@ use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 
 class Core extends PluginBase
 {
+	public const VERSION = "0.1-indev";
+	public const BUILD_NUMBER = "1";
+	public const INDEV = true;
+
 	use SingletonTrait;
     /** @var int[] */
     public array $afktime = [];

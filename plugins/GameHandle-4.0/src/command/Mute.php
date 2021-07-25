@@ -10,12 +10,9 @@ use pocketmine\Server;
 
 class Mute extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("mute");
-        $this->plugin = $plugin;
+        parent::__construct($core, "mute");
         $this->setDescription("Mute command");
         $this->setPermission("gh.mute");
     }
@@ -49,9 +46,9 @@ class Mute extends BaseCommand
                     return;
                 }
             }
-            $this->plugin->getPlayerStatManager()->getPlayerStat($player)->setMute(true, $time);
-            $sender->sendMessage("Muted " .$player->getName(). " for " .(string) $time. " seconds !");
-            $player->sendMessage("You have been muted for " .(string) $time. " seconds");
+            $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setMute(true, $time);
+            $sender->sendMessage("Muted " .$player->getName(). " for " . $time . " seconds !");
+            $player->sendMessage("You have been muted for " . $time . " seconds");
             return;
         }
         $sender->sendMessage("/mute <player> <time>");

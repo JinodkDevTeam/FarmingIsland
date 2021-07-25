@@ -10,12 +10,9 @@ use pocketmine\Server;
 
 class SmartMine extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("smartmine");
-        $this->plugin = $plugin;
+        parent::__construct($core, "smartmine");
         $this->setDescription("SmartMine Manager");
         $this->setPermission("gh.sudo");
     }
@@ -44,15 +41,12 @@ class SmartMine extends BaseCommand
             {
                 $sm->is_edit = true;
                 $sender->sendMessage("[SmartMine] Edit mode is enabled");
-                return;
-            }
+			}
             else
                 {
                     $sender->sendMessage("/smartmine <on|off>");
-                    return;
-                }
-
-        }
+				}
+		}
         else
         {
             $sender->sendMessage("/smartmine <on|off>");

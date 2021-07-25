@@ -11,12 +11,9 @@ use pocketmine\Server;
 
 class Sudo extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("sudo");
-        $this->plugin = $plugin;
+        parent::__construct($core, "sudo");
         $this->setDescription("Run command as console");
         $this->setPermission("gh.sudo");
     }

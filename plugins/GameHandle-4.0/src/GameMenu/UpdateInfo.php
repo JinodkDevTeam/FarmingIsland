@@ -5,16 +5,13 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\GameMenu;
 
 use jojoe77777\FormAPI\SimpleForm;
+use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
-use pocketmine\Server;
 
 class UpdateInfo
 {
-    public string $version;
-
     public function __construct(Player $player, string $mode = "")
     {
-        $this->version = Server::getInstance()->getPluginManager()->getPlugin("FI-GameHandle")->getDescription()->getVersion();
         if ($mode == "") $this->execute($player);
         else $this->TutorialForm($player);
     }
@@ -44,7 +41,7 @@ class UpdateInfo
             "Official wiki: bit.ly/fi-wiki",
             "Vote for server: bit.ly/fi-vote",
             "Official Facebook group: bit.ly/jinodkgroupfb",
-            "Server Version: " . $this->version
+            "Server Version: " . Core::VERSION . " build " . Core::BUILD_NUMBER
         ];
         $form->setTitle("§　BREAKING NEWS");
         $form->setContent($this->ArrayToString($text));

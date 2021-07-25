@@ -11,12 +11,9 @@ use pocketmine\Server;
 
 class Heal extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("heal");
-        $this->plugin = $plugin;
+        parent::__construct($core, "heal");
         $this->setDescription("Heal command");
         $this->setPermission("gh.heal");
     }

@@ -13,12 +13,9 @@ use pocketmine\player\Player;
 
 class IcGive extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("icgive");
-        $this->plugin = $plugin;
+        parent::__construct($core, "icgive");
         $this->setDescription("Give a item from Item code (using InvCraft save format)");
         $this->setPermission("gh.icgive");
     }

@@ -4,6 +4,7 @@ namespace NgLamVN\GameHandle\utils;
 
 use pocketmine\nbt\BigEndianNbtSerializer;
 use pocketmine\nbt\TreeRoot;
+use UnexpectedValueException;
 
 class StringNBTParser
 {
@@ -29,7 +30,7 @@ class StringNBTParser
 		$decompressed = zlib_decode($data);
 		if($decompressed === false)
 		{
-			throw new \UnexpectedValueException("Failed to decompress data");
+			throw new UnexpectedValueException("Failed to decompress data");
 		}
 		return $stream->read($decompressed);
 	}

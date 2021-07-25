@@ -43,9 +43,6 @@ class TeleportManager
                 case 5:
                     Server::getInstance()->dispatchCommand($console, "mw tp mine ".$player->getName());
                     break;
-                default:
-                    return;
-                    break;
             }
         });
         $form->setTitle("Teleport");
@@ -83,8 +80,6 @@ class TeleportManager
                 case 2:
                     Server::getInstance()->dispatchCommand($player, "is warp 0;0");
                     break;
-                default:
-                    return;
             }
         });
         $form->addButton("§　§eEXIT");

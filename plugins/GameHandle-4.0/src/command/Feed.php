@@ -11,12 +11,9 @@ use pocketmine\Server;
 
 class Feed extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("feed");
-        $this->plugin = $plugin;
+        parent::__construct($core, "feed");
         $this->setDescription("Fees command");
         $this->setPermission("gh.feed");
     }

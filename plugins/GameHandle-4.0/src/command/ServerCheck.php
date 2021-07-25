@@ -10,12 +10,9 @@ use pocketmine\Server;
 
 class ServerCheck extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("servercheck");
-        $this->plugin = $plugin;
+        parent::__construct($core, "servercheck");
         $this->setDescription("Check server");
         $this->setPermission("gh.servercheck");
     }
@@ -61,9 +58,9 @@ class ServerCheck extends BaseCommand
         {
             $sender->sendMessage("Missed openssl extension !");
         }
-        if (!extension_loaded("pocketmine_chunkutils"))
+        if (!extension_loaded("chunkutils2"))
         {
-            $sender->sendMessage("Missed pocketmine_chunkutils extension !");
+            $sender->sendMessage("Missed chunkutils2 extension !");
         }
         if (!extension_loaded("pthreads"))
         {

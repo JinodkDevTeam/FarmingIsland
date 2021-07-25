@@ -2,18 +2,19 @@
 
 namespace NgLamVN\GameHandle\task;
 
+use Closure;
 use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
 use pocketmine\scheduler\Task;
 
 class DelayTask extends Task
 {
-    public $core;
-    public $closure;
-    public $times;
-    public $player;
+    public Core $core;
+    public Closure $closure;
+    public int $times;
+    public Player $player;
 
-    public function __construct(int $delaytick, $closure, Core $core, Player $player)
+    public function __construct(int $delaytick, Closure $closure, Core $core, Player $player)
     {
         $core->getScheduler()->scheduleRepeatingTask($this, $delaytick);
         $this->core = $core;
@@ -26,7 +27,7 @@ class DelayTask extends Task
     {
         return $this->core;
     }
-    public function getClosure()
+    public function getClosure(): Closure
     {
         return $this->closure;
     }

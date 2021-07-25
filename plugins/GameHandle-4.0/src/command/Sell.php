@@ -10,19 +10,11 @@ use pocketmine\player\Player;
 
 class Sell extends BaseCommand
 {
-    public Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("sell");
-        $this->plugin = $plugin;
+        parent::__construct($core, "sell");
         $this->setDescription("Sell items in your inventory");
         $this->setPermission("gh.sell.use");
-    }
-
-    public function getCore(): Core
-    {
-        return $this->plugin;
     }
 
     public function execute(CommandSender $sender, string $commandLabel, array $args)

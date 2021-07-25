@@ -9,20 +9,15 @@ use pocketmine\command\CommandSender;
 
 class FiVersion extends BaseCommand
 {
-
-    public string $version;
-
     public function __construct(Core $core)
     {
-        $this->version = $core->getDescription()->getVersion();
-
-        parent::__construct("fiversion");
+        parent::__construct($core, "fiversion");
         $this->setDescription("FarmingIsland Version");
         $this->setPermission("gh.fiver");
         $this->setAliases(["fiver", "fi-ver"]);
     }
     public function execute(CommandSender $sender, string $commandLabel, array $args)
     {
-        $sender->sendMessage("Server version: " . $this->version);
+        $sender->sendMessage("Server version: " . Core::VERSION . " build " . Core::BUILD_NUMBER);
     }
 }

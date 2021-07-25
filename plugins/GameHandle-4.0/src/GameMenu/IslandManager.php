@@ -39,9 +39,6 @@ class IslandManager
                 case 5:
                     Server::getInstance()->dispatchCommand($player, "is pvp");
                     break;
-                default:
-                    return;
-                    break;
             }
         });
         $form->setTitle("Island Manager");

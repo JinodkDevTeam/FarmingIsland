@@ -13,12 +13,9 @@ use pocketmine\Server;
 
 class Haste extends BaseCommand
 {
-    private Core $plugin;
-
-    public function __construct(Core $plugin)
+    public function __construct(Core $core)
     {
-        parent::__construct("haste");
-        $this->plugin = $plugin;
+        parent::__construct($core, "haste");
         $this->setDescription("Haste Effect");
         $this->setPermission("gh.haste.use");
     }
