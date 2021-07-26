@@ -27,7 +27,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          - composer_update.cmd
-          - start_php8.cmd
+          composer_update.cmd
+          start_php8.cmd
         shell: cmd
 
