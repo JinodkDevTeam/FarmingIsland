@@ -17,6 +17,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
+use Exception;
 
 class Core extends PluginBase
 {
@@ -36,21 +37,28 @@ class Core extends PluginBase
 
     public function onEnable(): void
     {
+    	try
+		{
+			if(!InvMenuHandler::isRegistered())
+			{
+				InvMenuHandler::register($this);
+			}
 
-        if(!InvMenuHandler::isRegistered())
-        {
-            InvMenuHandler::register($this);
-        }
-
-        $plmanager = $this->getServer()->getPluginManager();
-        $plmanager->registerEvents(new EventListener($this), $this);
-        $plmanager->registerEvents(new IC_PacketHandler(), $this);
-        $plmanager->registerEvents(new CT_PacketHandler(), $this);
-        new InitCommand($this);
-        new InitTask($this);
-        $this->pstatmanager = new PlayerStatManager();
-        $this->sell = new SellHandler($this);
-
+			$plmanager = $this->getServer()->getPluginManager();
+			$plmanager->registerEvents(new EventListener($this), $this);
+			$plmanager->registerEvents(new IC_PacketHandler(), $this);
+			$plmanager->registerEvents(new CT_PacketHandler(), $this);
+			new InitCommand($this);
+			new InitTask($this);
+			$this->pstatmanager = new PlayerStatManager();
+			$this->sell = new SellHandler($this);
+		}
+        catch(Exception $e)
+		{
+			$this->getLogger()->logException($e);
+			$this->getLogger()->error("An error caused by GameHandle, force disable this plugin...");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+		}
     }
     public function onDisable(): void
     {
