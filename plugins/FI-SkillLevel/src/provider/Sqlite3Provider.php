@@ -2,11 +2,13 @@
 
 namespace SkillLevel\provider;
 
+use Generator;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use SkillLevel\SkillLevel;
 use Exception;
+use SOFe\AwaitGenerator\Await;
 
 class Sqlite3Provider
 {
@@ -38,7 +40,6 @@ class Sqlite3Provider
 		$this->getSkillLevel()->getLogger()->info("DataBase Created ! (Sqlite3)");
 
 		$this->database->executeGeneric(self::INIT_TABLE);
-
 	}
 
 	public function save()
@@ -46,29 +47,9 @@ class Sqlite3Provider
 		if(isset($this->database)) $this->database->close();
 	}
 
-	public function getPlayerData(Player $player) : array
+	public function addPlayerData (Player $player, array $data = []): void
 	{
 		$name = $player->getName();
-		$data = [];
-		$this->database->executeSelect(self::LOAD_PLAYER, ["player" => $name], function(array $rows) use (&$data)
-		{
-			var_dump($rows);
-			if (isset($rows[0]))
-			{
-				$data = $rows[0];
-			}
-			else
-			{
-				$data = [];
-			}
-		});
-
-		return $data;
-	}
-
-	public function loadPlayerData (Player $player, array $data = []): void
-	{
-		$name = $player;
 
 		if ($data == [])
 		{
@@ -97,7 +78,8 @@ class Sqlite3Provider
 		}
 		catch(Exception $exception)
 		{
-			$this->getSkillLevel()->getLogger()->error("Failed to register player data: " . $player->getName());
+			$this->getSkillLevel()->getLogger()->logException($exception);
+			$this->getSkillLevel()->getLogger()->error("Failed to add player data: " . $player->getName());
 		}
 	}
 
@@ -128,42 +110,12 @@ class Sqlite3Provider
 		]);
 	}
 
-	public function getLevel(Player $player, int $skill_code): int
-	{
-		$query = "skill.get.".$this->IDParser($skill_code).".level";
-		$data = 0;
-
-		$this->database->executeChange($query, [
-			"player" => $player->getName(),
-		], function(array $rows) use (&$data, $skill_code)
-		{
-			$data = (int)$rows[0][$this->IDLevelParser($skill_code)];
-		});
-
-		return $data;
-	}
-
-	public function getExp(Player $player, int $skill_code): int
-	{
-		$query = "skill.get.".$this->IDParser($skill_code).".exp";
-		$data = 0;
-
-		$this->database->executeChange($query, [
-			"player" => $player->getName(),
-		], function(array $rows) use (&$data, $skill_code)
-		{
-			$data = (int)$rows[0][$this->IDExpParser($skill_code)];
-		});
-
-		return $data;
-	}
-
 	public function IDParser(int $code): string
 	{
 		switch($code)
 		{
 			case SkillLevel::MINING:
-				return "mine";
+				return "mining";
 			case SkillLevel::FISHING:
 				return "fishing";
 			case SkillLevel::FARMING:
@@ -180,7 +132,7 @@ class Sqlite3Provider
 		switch($code)
 		{
 			case SkillLevel::MINING:
-				return "MineExp";
+				return "MiningExp";
 			case SkillLevel::FISHING:
 				return "FishingExp";
 			case SkillLevel::FARMING:
@@ -197,7 +149,7 @@ class Sqlite3Provider
 		switch($code)
 		{
 			case SkillLevel::MINING:
-				return "MineLevel";
+				return "MiningLevel";
 			case SkillLevel::FISHING:
 				return "FishingLevel";
 			case SkillLevel::FARMING:
@@ -207,6 +159,13 @@ class Sqlite3Provider
 			default:
 				return "";
 		}
+	}
+
+	public function asyncSelect(string $query, array $args = []): Generator
+	{
+		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
+
+		return yield Await::ONCE;
 	}
 
 

@@ -6,6 +6,8 @@ use Exception;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use SkillLevel\provider\Sqlite3Provider;
+use SOFe\AwaitGenerator\Await;
+use Throwable;
 
 class SkillLevel extends PluginBase
 {
@@ -14,6 +16,7 @@ class SkillLevel extends PluginBase
 	public const FARMING = 3;
 	public const FORAGING = 4;
 
+	private PlayerSkillLevelManager $manager;
 	private Sqlite3Provider $provider;
 
 	public function getProvider(): Sqlite3Provider
@@ -36,6 +39,7 @@ class SkillLevel extends PluginBase
 		}
 
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
+		$this->manager = new PlayerSkillLevelManager();
 	}
 
 	public function onDisable() : void
@@ -43,14 +47,35 @@ class SkillLevel extends PluginBase
 		$this->getProvider()->save();
 	}
 
-	public function getPlayerSkillLevel(Player $player, int $skill_id): int
+	public function getPlayerSkillLevelManager(): PlayerSkillLevelManager
 	{
-		return $this->getProvider()->getLevel($player, $skill_id);
+		return $this->manager;
 	}
 
-	public function getPlayerSkillExp(Player $player, int $skill_id): int
+	public function loadPlayer(Player $player): void
 	{
-		return $this->getProvider()->getExp($player, $skill_id);
+		Await::f2c(function() use ($player)
+		{
+			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER,  ["player" => $player->getName()]);
+			if (empty($data))
+			{
+				$this->getProvider()->addPlayerData($player);
+			}
+			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER,  ["player" => $player->getName()]);
+			$this->getPlayerSkillLevelManager()->registerPlayer($player, $data[0]);
+		}, function() {}, function(Throwable $err) {
+			$this->getLogger()->logException($err);
+		});
 	}
 
+	public function unloadPlayer(Player $player): void
+	{
+		$data = $this->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
+		for ($i = 1; $i <= 4; $i++)
+		{
+			$this->getProvider()->updateExp($player, $i, $data->getSkillExp($i));
+			$this->getProvider()->updateLevel($player, $i, $data->getSkillLevel($i));
+		}
+		$this->getPlayerSkillLevelManager()->unregisterPlayer($player);
+	}
 }

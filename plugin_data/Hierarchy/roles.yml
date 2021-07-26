@@ -55,6 +55,10 @@
   - myplot.admin.middle
   - myplot.claimplots.2
   - shop.shop
+- ID: 3
+  Name: TestRole
+  isDefault: false
+  Permissions: []
 - ID: 2
   Name: Operator
   isDefault: false
