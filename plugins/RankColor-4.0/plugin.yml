@@ -3,6 +3,7 @@ main: NgLamVN\RankColor\RankColor
 version: 0.1-ngl_alpha
 author: NgLamVN
 api: 4.0.0
+depend: PureChat
 
 permissions:
   rc.command:
