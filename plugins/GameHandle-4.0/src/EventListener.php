@@ -250,7 +250,7 @@ class EventListener implements Listener
 	 * @priority NORMAL
 	 * @handleCancelled FALSE
 	 */
-	public function onUpdateExp(PlayerUpdateExpEvent $event)
+	public function onUpdateXp(PlayerUpdateExpEvent $event)
 	{
 		$event->cancel();
 	}

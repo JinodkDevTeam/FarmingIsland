@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
-use _64FF00\PurePerms\PurePerms;
 use muqsit\invmenu\InvMenuHandler;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
@@ -12,9 +11,7 @@ use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
 use pocketmine\entity\Skin;
-use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\Server;
 use pocketmine\utils\SingletonTrait;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 use Exception;
@@ -62,29 +59,15 @@ class Core extends PluginBase
     }
     public function onDisable(): void
     {
+    	//NOOPPPEEEE
     }
 
-    public function CreateIsland (Player $player)
+    /*public function CreateIsland (Player $player)
     {
         Server::getInstance()->dispatchCommand($player, "is auto");
         Server::getInstance()->dispatchCommand($player, "is claim");
         $player->sendMessage("Lest Play !");
-    }
-
-    public function getPP(): ?PurePerms
-    {
-    	$plugin = $this->getServer()->getPluginManager()->getPlugin("PurePerms");
-    	if ($plugin instanceof PurePerms)
-		{
-			return $plugin;
-		}
-        return null;
-    }
-
-    public function getPlayerGroupName(Player $player)
-    {
-		return $this->getPP()->getUserDataMgr()->getGroup($player)->getName();
-    }
+    }*/
 
     public function getPlayerStatManager(): PlayerStatManager
     {

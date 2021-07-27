@@ -1,9 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace SkillLevel;
 
-use JetBrains\PhpStorm\NoReturn;
-use JetBrains\PhpStorm\Pure;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\event\PlayerUpdateExpEvent;
@@ -22,7 +21,6 @@ class PlayerSkillLevel{
 		return $this->data;
 	}
 
-	#[NoReturn]
 	public function setData(array $data) : void{
 		$this->data = $data;
 		$this->update();
@@ -32,17 +30,14 @@ class PlayerSkillLevel{
 		return $this->player;
 	}
 
-	#[Pure]
 	public function getSkillLevel(int $skill_code) : int{
 		return $this->data[$this->IDLevelParser($skill_code)];
 	}
 
-	#[Pure]
 	public function getSkillExp(int $skill_code) : int{
 		return $this->data[$this->IDExpParser($skill_code)];
 	}
 
-	#[NoReturn]
 	public function setSkillLevel(int $skill_code, int $level) : void{
 		$this->data[$this->IDLevelParser($skill_code)] = $level;
 		$this->update();
@@ -82,7 +77,6 @@ class PlayerSkillLevel{
 		};
 	}
 
-	#[NoReturn]
 	public function update()
 	{
 		$plugin = Server::getInstance()->getPluginManager()->getPlugin("FI-SKillLevel");
