@@ -38,7 +38,7 @@ class FishingManager
     public array $rlevel = [];
     /** @var int[] */
     public array $multiply = [];
-    /** @var int[] */
+    /** @var array[] */
     public array $more_items = [];
     /** @var int[] */
     public array $customItem_rlevel = [];
@@ -172,7 +172,7 @@ class FishingManager
             {
                 $level = $this->rlevel[$item->getId()];
             }
-            $item->setCount($this->multiply[$level - 1][array_rand($this->multiply[$level - 1])]);
+            $item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
             if ($item->getCount() > 0)
             {
                 array_push($items, $item);

@@ -39,7 +39,7 @@ class PlayerStatManager
 			{
 				$this->registerPlayerStat($player);
 			}
-			catch(Exception $e)
+			catch(Exception)
 			{
 				$this->getCore()->getLogger()->error("Failed to register PlayerStat data: " . $player->getName());
 				return null;
@@ -50,6 +50,7 @@ class PlayerStatManager
 
     /**
      * @return PlayerStat[]
+	 * @description Get All PlayerStat
      */
     public function getAllPlayerStat(): array
     {

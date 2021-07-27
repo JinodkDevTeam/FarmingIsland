@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
+use CortexPE\Hierarchy\Hierarchy;
 use muqsit\invmenu\InvMenuHandler;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
@@ -11,6 +12,7 @@ use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
 use pocketmine\entity\Skin;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
@@ -59,7 +61,6 @@ class Core extends PluginBase
     }
     public function onDisable(): void
     {
-    	//NOOPPPEEEE
     }
 
     /*public function CreateIsland (Player $player)
@@ -68,6 +69,21 @@ class Core extends PluginBase
         Server::getInstance()->dispatchCommand($player, "is claim");
         $player->sendMessage("Lest Play !");
     }*/
+
+    public function getHiearchy(): ?Hierarchy
+    {
+    	$plugin = $this->getServer()->getPluginManager()->getPlugin("Hierachy");
+    	if ($plugin instanceof Hierarchy)
+		{
+			return $plugin;
+		}
+        return null;
+    }
+
+    public function getPlayerGroupName(Player $player): string
+    {
+		return $this->getHiearchy()->getMemberFactory()->getMember($player)->getTopRole()->getName();
+    }
 
     public function getPlayerStatManager(): PlayerStatManager
     {

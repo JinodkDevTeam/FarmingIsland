@@ -4,6 +4,7 @@
     <option name="languageLevel" value="ES6" />
   </component>
   <component name="PhpEntryPointsManager">
+    <suppressed_annotations>@description</suppressed_annotations>
     <suppressed_annotations>@handleCancelled</suppressed_annotations>
   </component>
 </project>

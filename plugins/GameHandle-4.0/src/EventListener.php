@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
@@ -31,12 +32,14 @@ class EventListener implements Listener
     public Core $plugin;
     public Menu $menu;
     public FishingManager $fish;
+    public SkillLevelHandle $slevel;
 
     public function __construct(Core $plugin)
     {
         $this->plugin = $plugin;
         $this->menu = new Menu();
         $this->fish = new FishingManager();
+        $this->slevel = new SkillLevelHandle($plugin);
     }
 
     public function getCore(): Core
@@ -225,24 +228,7 @@ class EventListener implements Listener
 	 */
 	public function onBlockBreak(BlockBreakEvent $event)
 	{
-		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
-		if (!$sl instanceof SkillLevel)
-		{
-			return;
-		}
-
-		$player = $event->getPlayer();
-		$data = $sl->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
-
-		$data->addSkillExp(SkillLevel::MINING, 1);
-
-		if ($data->getSkillExp(SkillLevel::MINING) >= 100)
-		{
-			$data->setSkillExp(SkillLevel::MINING, 0);
-			$data->setSkillLevel(SkillLevel::MINING, $data->getSkillLevel(SkillLevel::MINING) + 1);
-		}
-
-		$player->sendPopup("Mining " . $data->getSkillLevel(SkillLevel::MINING) . ": " . $data->getSkillExp(SkillLevel::MINING) . "/100 (+1)");
+		$this->slevel->onBreak($event);
 	}
 
 	/**
@@ -250,7 +236,7 @@ class EventListener implements Listener
 	 * @priority NORMAL
 	 * @handleCancelled FALSE
 	 */
-	public function onUpdateXp(PlayerUpdateExpEvent $event)
+	public function onUpdateExp(PlayerUpdateExpEvent $event)
 	{
 		$event->cancel();
 	}
