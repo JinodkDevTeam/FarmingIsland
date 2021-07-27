@@ -4,6 +4,7 @@ namespace SkillLevel;
 
 use pocketmine\player\Player;
 use pocketmine\Server;
+use SkillLevel\event\PlayerUpdateExpEvent;
 
 class PlayerSkillLevel{
 	private Player $player;
@@ -40,6 +41,11 @@ class PlayerSkillLevel{
 	}
 
 	public function setSkillExp(int $skill_code, int $exp) : void{
+		$ev = new PlayerUpdateExpEvent($this->getPlayer(), $skill_code);
+		$ev->call();
+		if ($ev->isCancelled()) {
+			return;
+		}
 		$this->data[$this->IDExpParser($skill_code)] = $exp;
 		$this->update();
 	}

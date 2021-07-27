@@ -4,6 +4,7 @@ namespace NgLamVN\GameHandle;
 
 use FishingModule\event\PlayerFishEvent;
 use pocketmine\command\ConsoleCommandSender;
+use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
@@ -22,6 +23,8 @@ use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use Exception;
+use SkillLevel\event\PlayerUpdateExpEvent;
+use SkillLevel\SkillLevel;
 
 class EventListener implements Listener
 {
@@ -214,4 +217,41 @@ class EventListener implements Listener
             $event->cancel();
         }
     }
+
+	/**
+	 * @param BlockBreakEvent $event
+	 * @priority HIGHEST
+	 * @handleCancelled FALSE
+	 */
+	public function onBlockBreak(BlockBreakEvent $event)
+	{
+		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
+		if (!$sl instanceof SkillLevel)
+		{
+			return;
+		}
+
+		$player = $event->getPlayer();
+		$data = $sl->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
+
+		$data->addSkillExp(SkillLevel::MINING, 1);
+
+		if ($data->getSkillExp(SkillLevel::MINING) >= 100)
+		{
+			$data->setSkillExp(SkillLevel::MINING, 0);
+			$data->setSkillLevel(SkillLevel::MINING, $data->getSkillLevel(SkillLevel::MINING) + 1);
+		}
+
+		$player->sendPopup("Mining " . $data->getSkillLevel(SkillLevel::MINING) . ": " . $data->getSkillExp(SkillLevel::MINING) . "/100 (+1)");
+	}
+
+	/**
+	 * @param PlayerUpdateExpEvent $event
+	 * @priority NORMAL
+	 * @handleCancelled FALSE
+	 */
+	public function onUpdateExp(PlayerUpdateExpEvent $event)
+	{
+		$event->cancel();
+	}
 }
