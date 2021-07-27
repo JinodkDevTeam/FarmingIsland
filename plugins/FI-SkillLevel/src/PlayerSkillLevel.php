@@ -2,12 +2,16 @@
 
 namespace SkillLevel;
 
+use JetBrains\PhpStorm\NoReturn;
+use JetBrains\PhpStorm\Pure;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\event\PlayerUpdateExpEvent;
 
 class PlayerSkillLevel{
 	private Player $player;
+	/** @var int[] */
+	private array $data;
 
 	public function __construct(Player $player, array $data){
 		$this->player = $player;
@@ -18,6 +22,7 @@ class PlayerSkillLevel{
 		return $this->data;
 	}
 
+	#[NoReturn]
 	public function setData(array $data) : void{
 		$this->data = $data;
 		$this->update();
@@ -27,14 +32,17 @@ class PlayerSkillLevel{
 		return $this->player;
 	}
 
+	#[Pure]
 	public function getSkillLevel(int $skill_code) : int{
 		return $this->data[$this->IDLevelParser($skill_code)];
 	}
 
+	#[Pure]
 	public function getSkillExp(int $skill_code) : int{
 		return $this->data[$this->IDExpParser($skill_code)];
 	}
 
+	#[NoReturn]
 	public function setSkillLevel(int $skill_code, int $level) : void{
 		$this->data[$this->IDLevelParser($skill_code)] = $level;
 		$this->update();
@@ -55,35 +63,26 @@ class PlayerSkillLevel{
 	}
 
 	public function IDLevelParser(int $code = 0) : string{
-		switch($code){
-			case SkillLevel::MINING:
-				return "MiningLevel";
-			case SkillLevel::FISHING:
-				return "FishingLevel";
-			case SkillLevel::FARMING:
-				return "FarmingLevel";
-			case SkillLevel::FORAGING:
-				return "ForagingLevel";
-			default:
-				return "";
-		}
+		return match ($code) {
+			SkillLevel::MINING => "MiningLevel",
+			SkillLevel::FISHING => "FishingLevel",
+			SkillLevel::FARMING => "FarmingLevel",
+			SkillLevel::FORAGING => "ForagingLevel",
+			default => "",
+		};
 	}
 
 	public function IDExpParser(int $code = 0) : string{
-		switch($code){
-			case SkillLevel::MINING:
-				return "MiningExp";
-			case SkillLevel::FISHING:
-				return "FishingExp";
-			case SkillLevel::FARMING:
-				return "FarmingExp";
-			case SkillLevel::FORAGING:
-				return "ForagingExp";
-			default:
-				return "";
-		}
+		return match ($code) {
+			SkillLevel::MINING => "MiningExp",
+			SkillLevel::FISHING => "FishingExp",
+			SkillLevel::FARMING => "FarmingExp",
+			SkillLevel::FORAGING => "ForagingExp",
+			default => "",
+		};
 	}
 
+	#[NoReturn]
 	public function update()
 	{
 		$plugin = Server::getInstance()->getPluginManager()->getPlugin("FI-SKillLevel");

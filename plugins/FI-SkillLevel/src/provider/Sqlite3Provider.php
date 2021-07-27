@@ -112,53 +112,13 @@ class Sqlite3Provider
 
 	public function IDParser(int $code): string
 	{
-		switch($code)
-		{
-			case SkillLevel::MINING:
-				return "mining";
-			case SkillLevel::FISHING:
-				return "fishing";
-			case SkillLevel::FARMING:
-				return "farming";
-			case SkillLevel::FORAGING:
-				return "foraging";
-			default:
-				return "";
-		}
-	}
-
-	public function IDExpParser(int $code = 0): string
-	{
-		switch($code)
-		{
-			case SkillLevel::MINING:
-				return "MiningExp";
-			case SkillLevel::FISHING:
-				return "FishingExp";
-			case SkillLevel::FARMING:
-				return "FarmingExp";
-			case SkillLevel::FORAGING:
-				return "ForagingExp";
-			default:
-				return "";
-		}
-	}
-
-	public function IDLevelParser(int $code = 0): string
-	{
-		switch($code)
-		{
-			case SkillLevel::MINING:
-				return "MiningLevel";
-			case SkillLevel::FISHING:
-				return "FishingLevel";
-			case SkillLevel::FARMING:
-				return "FarmingLevel";
-			case SkillLevel::FORAGING:
-				return "ForagingLevel";
-			default:
-				return "";
-		}
+		return match ($code) {
+			SkillLevel::MINING => "mining",
+			SkillLevel::FISHING => "fishing",
+			SkillLevel::FARMING => "farming",
+			SkillLevel::FORAGING => "foraging",
+			default => "",
+		};
 	}
 
 	public function asyncSelect(string $query, array $args = []): Generator
@@ -167,6 +127,4 @@ class Sqlite3Provider
 
 		return yield Await::ONCE;
 	}
-
-
 }

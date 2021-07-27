@@ -32,7 +32,7 @@ class SkillLevel extends PluginBase
 		{
 			$this->getProvider()->register();
 		}
-		catch(Exception $exception)
+		catch(Exception)
 		{
 			$this->getLogger()->info("Failed to load database, disable this plugin ...");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
