@@ -72,7 +72,7 @@ class Core extends PluginBase
 
     public function getHiearchy(): ?Hierarchy
     {
-    	$plugin = $this->getServer()->getPluginManager()->getPlugin("Hierachy");
+    	$plugin = $this->getServer()->getPluginManager()->getPlugin("Hierarchy");
     	if ($plugin instanceof Hierarchy)
 		{
 			return $plugin;
