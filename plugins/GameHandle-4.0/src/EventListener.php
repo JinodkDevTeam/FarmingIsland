@@ -230,14 +230,4 @@ class EventListener implements Listener
 	{
 		$this->slevel->onBreak($event);
 	}
-
-	/**
-	 * @param PlayerUpdateExpEvent $event
-	 * @priority NORMAL
-	 * @handleCancelled FALSE
-	 */
-	public function onUpdateExp(PlayerUpdateExpEvent $event)
-	{
-		$event->cancel();
-	}
 }

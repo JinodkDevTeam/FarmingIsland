@@ -122,9 +122,12 @@ class PlayerSkillLevel{
 
 		while ($this->getSkillExp($skill_code) >= $this->getMaxExp($this->getSkillLevel($skill_code)))
 		{
-			//LEVEL UP !
-			$this->setSkillExp($skill_code, $this->getSkillExp($skill_code) - $this->getMaxExp($this->getSkillLevel($skill_code)));
-			$this->setSkillLevel($skill_code, $this->getSkillLevel($skill_code) + 1);
+			if ($this->getSkillLevel($skill_code) < $this->getMaxLevel())
+			{
+				//LEVEL UP !
+				$this->setSkillExp($skill_code, $this->getSkillExp($skill_code) - $this->getMaxExp($this->getSkillLevel($skill_code)));
+				$this->setSkillLevel($skill_code, $this->getSkillLevel($skill_code) + 1);
+			}
 		}
 	}
 
