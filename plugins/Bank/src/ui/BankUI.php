@@ -17,7 +17,12 @@ class BankUI extends BaseUI
 			$data = yield $this->getBank()->getProvider()->get($player);
 			if (empty($data))
 			{
-				$player->sendMessage("Can't get data form database. Please report this error to admin !");
+				$this->getBank()->getProvider()->register($player);
+			}
+			$data = yield $this->getBank()->getProvider()->get($player);
+			if (empty($data))
+			{
+				$player->sendMessage("Error: Can't get data from database, please report this error to admin !");
 				return;
 			}
 			$balance = $data[0]["Money"];
@@ -28,7 +33,8 @@ class BankUI extends BaseUI
 			});
 
 			$form->setTitle("Personal Bank Account");
-			$form->setContent("Current balance: " . $balance . PHP_EOL . "Your purse: " . $purse);
+			$form->setContent("Current balance: " . $balance . "\n" . "Your purse: " . $purse);
+			$form->addButton("EXIT");
 			$form->addButton("Deposit coins");
 			$form->addButton("Withdraw coins");
 
