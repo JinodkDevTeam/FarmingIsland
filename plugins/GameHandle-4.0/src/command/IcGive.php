@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use Exception;
 use NgLamVN\GameHandle\Core;
 use NgLamVN\GameHandle\utils\StringNBTParser;
 use pocketmine\command\CommandSender;
@@ -33,28 +34,35 @@ class IcGive extends BaseCommand
                 $sender->sendMessage("You not have permission to use this command !");
                 return;
             }
-            $stream = new StringNBTParser();
-            $code = hex2bin($args[0]);
-            if ($code == false)
-            {
-                $sender->sendMessage("Failed to decode item code !");
-                return;
-            }
-            $treeroot = $stream->readCompressed($code);
-            $nbt = $treeroot->getTag();
-            if (!$nbt instanceof CompoundTag)
-            {
-                $sender->sendMessage("Failed to decode item code to item NBT !");
-                return;
-            }
-            $item = Item::nbtDeserialize($nbt);
-            if (!$sender->getInventory()->canAddItem($item))
-            {
-                $sender->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
-                return;
-            }
-            $sender->getInventory()->addItem($item);
-            $sender->sendMessage("Item Added !");
+			try
+			{
+				$stream = new StringNBTParser();
+				$code = hex2bin($args[0]);
+				if ($code == false)
+				{
+					$sender->sendMessage("Failed to decode item code !");
+					return;
+				}
+				$treeroot = $stream->readCompressed($code);
+				$nbt = $treeroot->getTag();
+				if (!$nbt instanceof CompoundTag)
+				{
+					$sender->sendMessage("Failed to decode item code to item NBT !");
+					return;
+				}
+				$item = Item::nbtDeserialize($nbt);
+				if (!$sender->getInventory()->canAddItem($item))
+				{
+					$sender->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
+					return;
+				}
+				$sender->getInventory()->addItem($item);
+				$sender->sendMessage("Item Added !");
+			}
+            catch(Exception)
+			{
+				$sender->sendMessage("Error while decode give items");
+			}
         }
         else
         {

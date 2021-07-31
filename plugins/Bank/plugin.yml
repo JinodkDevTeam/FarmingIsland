@@ -1,0 +1,11 @@
+name: Bank
+src-namespace-prefix: Bank
+main: Bank\Bank
+api: 4.0.0
+author: JinodkDevTeam
+version: 0.1
+depend: EconomyAPI
+
+permissions:
+  bank.command:
+    default: true
