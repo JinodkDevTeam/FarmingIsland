@@ -24,8 +24,6 @@ use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use Exception;
-use SkillLevel\event\PlayerUpdateExpEvent;
-use SkillLevel\SkillLevel;
 
 class EventListener implements Listener
 {

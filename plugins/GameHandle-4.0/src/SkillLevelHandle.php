@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
-use pocketmine\block\Block;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\player\Player;

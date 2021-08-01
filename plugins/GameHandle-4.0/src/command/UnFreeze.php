@@ -37,7 +37,7 @@ class UnFreeze extends BaseCommand
 			{
 				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(false);
 			}
-            catch(Exception $e)
+            catch(Exception)
 			{
 				$sender->sendMessage("PlayerStat Data Error !");
 				return;

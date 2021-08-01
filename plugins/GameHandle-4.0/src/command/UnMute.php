@@ -36,7 +36,7 @@ class UnMute extends BaseCommand
 			{
 				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setMute(false);
 			}
-            catch(Exception $e)
+            catch(Exception)
 			{
 				$sender->sendMessage("PlayerStat Data Error !");
 				return;
