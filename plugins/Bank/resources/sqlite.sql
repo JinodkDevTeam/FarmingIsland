@@ -17,7 +17,7 @@ VALUES (:player, :value);
 SELECT Money FROM Bank WHERE Player = :player;
 -- #    }
 -- #    { getall
-SELECT Money FROM Bank;
+SELECT Player,Money FROM Bank;
 -- #    }
 -- #    { remove
 -- #        :player string

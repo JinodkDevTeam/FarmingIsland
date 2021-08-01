@@ -37,7 +37,6 @@ class BankCommand extends Command implements PluginOwned
 			$sender->sendMessage("Please use this command ingame !");
 			return;
 		}
-		$sender->sendMessage("Please wait ...");
 		new BankUI($sender, $this->getBank());
 	}
 }

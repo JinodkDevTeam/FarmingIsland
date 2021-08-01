@@ -27,9 +27,14 @@ class BankUI extends BaseUI
 			}
 			$balance = $data[0]["Money"];
 			$purse = EconomyAPI::getInstance()->myMoney($player);
-			$form = new SimpleForm(function(Player $player, ?int $data)
+			$form = new SimpleForm(function(Player $player, ?int $data) use ($balance)
 			{
-				//TODO: Implement Handle System.
+				if (($data == null) or ($data == 0)) return;
+
+				match ($data) {
+					1 => new DepositUI($player, $this->getBank(), $balance),
+					2 => new WithdrawUI($player, $this->getBank(), $balance)
+				};
 			});
 
 			$form->setTitle("Personal Bank Account");
