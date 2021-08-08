@@ -46,10 +46,12 @@ placeholder:
 # Chat formatting
 chatFormat:
   # RoleID: "<{{hrk.displayName}}> {{msg}}"
-  1: "<{{hrk.displayName}}> {{msg}}"
+  1: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
+  2: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
 
 # NameTag formatting
 nameTagFormat:
   # RoleID: "{{hrk.displayName}}"
-  1: "{{hrk.displayName}}"
+  1: "{{prefix.rank}} {{hrk.displayName}}"
+  2: "{{prefix.rank}} {{hrk.displayName}}"
 ...

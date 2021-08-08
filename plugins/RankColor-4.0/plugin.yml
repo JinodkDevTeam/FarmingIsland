@@ -1,7 +1,7 @@
 name: FI-RankColor
 main: NgLamVN\RankColor\RankColor
 version: 0.1-ngl_alpha
-author: NgLamVN
+author: JinodkDevTeam|NgLamVN
 api: 4.0.0
 depend: PureChat
 

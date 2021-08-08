@@ -1,0 +1,12 @@
+name: BazaarShop
+main: Bazaar/Bazaar
+version: 0.1
+author: JinodkDevTeam|NgLamVN
+api: 4.0.0
+src-namespace-prefix: Bazaar
+description: BazaarShop system for FarmingIslandv2 [JINODK Network]
+virion:
+  - libasynql
+  - await-generator
+  - FormAPI
+  - InvMenu

@@ -1,0 +1,7 @@
+name: FI-CustomStuff
+main: CustomStuff\CustomStuff
+src-namespace-prefix: CustomStuff
+version: 0.1
+author: JinodkDevTeam|NgLamVN
+description: Handle Custom Stuff for FarmingIslandServer
+api: 4.0.0

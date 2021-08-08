@@ -15,5 +15,19 @@
       <jdbc-url>jdbc:sqlite:D:\MinecraftTool\FI-pm4\plugin_data\FI-SkillLevel\playerdata.sqlite</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="members" uuid="dc39d4cf-e961-4b4a-8b75-124dd505d380">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\MinecraftTool\FI-pm4\plugin_data\Hierarchy\members.sqlite</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="bank" uuid="ed2190f1-3b38-440d-9ba4-5d3a317f0ed2">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:D:\MinecraftTool\FI-pm4\plugin_data\Bank\bank.db</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

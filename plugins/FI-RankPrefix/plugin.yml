@@ -1,0 +1,14 @@
+name: FI-RankPrefix
+main: RankPrefix\Loader
+api: 4.0.0
+src-namespace-prefix: RankPrefix
+author: JinodkDevTeam|NgLamVN
+version: 0.1
+
+commands:
+  prefix:
+    permission: "prefix.command"
+
+permissions:
+  prefix.command:
+    default: op

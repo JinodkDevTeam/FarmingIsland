@@ -4,7 +4,7 @@ main: NgLamVN\GameHandle\Core
 version: 0.1-indev
 api: 4.0.0
 description: "Make only for jinodk network"
-author: NgLamVN
+author: JinodkDevTeam|NgLamVN
 
 permissions:
   gh.feed:
@@ -48,18 +48,6 @@ permissions:
   gh.gm3.use:
     default: op
   gh.gm3.other:
-    default: op
-  gh.coin:
-    default: false
-  gh.coin.use:
-    default: true
-  gh.coin.pay:
-    default: true
-  gh.coin.add:
-    default: op
-  gh.coin.set:
-    default: op
-  gh.coin.reduce:
     default: op
   gh.sell:
     default: true
