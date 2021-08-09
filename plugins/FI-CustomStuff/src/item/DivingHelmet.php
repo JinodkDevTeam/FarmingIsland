@@ -6,9 +6,7 @@ namespace CustomStuff\item;
 use CustomStuff\CustomStuff;
 use pocketmine\entity\effect\EffectInstance;
 use pocketmine\entity\effect\VanillaEffects;
-use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\Listener;
-use pocketmine\inventory\ArmorInventory;
 use pocketmine\player\Player;
 
 class DivingHelmet implements Listener
@@ -20,19 +18,14 @@ class DivingHelmet implements Listener
         $this->core = $core;
     }
 
-    /**
-     * @param InventoryTransactionEvent $event
-     * @priority HIGHEST
-     * @handleCancelled FALSE
-     */
-    /*public function onArmorChange (InventoryTransactionEvent $event)
+
+    /*public function onArmorChange (InventoryTransactionEvent $event) //TODO: Check armor update.
     {
-        $entity = $event->getTransaction()->getSource();
+        $entity = $event->getEntity();
         if (!$entity instanceof Player)
         {
             return;
         }
-        $inv = $event->getTransaction()->getInventories();
         if ($event->getSlot() !== ArmorInventory::SLOT_HEAD)
         {
             return;
