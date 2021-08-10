@@ -9,6 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use RankPrefix\utils\UnicodeParser;
 
 class Loader extends PluginBase implements Listener
 {
@@ -21,15 +22,15 @@ class Loader extends PluginBase implements Listener
 
 	public function getPrefix(Player $player): string
 	{
-		if (!isset($this->prefix[$player->getName()])) return ""; //U+E100
+		if (!isset($this->prefix[$player->getName()])) return UnicodeParser::fromCode("E100");
 		switch($this->prefix[$player->getName()])
 		{
 			case "vip":
-				return ""; //U+E101
+				return UnicodeParser::fromCode("E101");
 			case "admin":
-				return ""; //U+E102
+				return UnicodeParser::fromCode("E102");
 			case "staff":
-				return ""; //U+E103
+				return UnicodeParser::fromCode("E103");
 			case "member":
 				return ""; //U+E104
 			case "youtuber":
@@ -66,7 +67,7 @@ class Loader extends PluginBase implements Listener
 				return ""; //U+E118
 			case "player":
 			default:
-				return ""; //U+E100
+				return UnicodeParser::fromCode("E100");
 		}
 	}
 
