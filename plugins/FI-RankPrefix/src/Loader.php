@@ -50,6 +50,20 @@ class Loader extends PluginBase implements Listener
 				return ""; //U+E112
 			case "jinodk":
 				return ""; //U+E113
+			case "uwu":
+				return ""; //U+E114
+			case "wibu":
+			case "weeb":
+			case "weeeb":
+				return ""; //U+E115
+			case "simp":
+				return ""; //U+E116
+			case "lgbt":
+			case "lgbtq+":
+				return ""; //U+E117
+			case "campiole":
+			case "camp":
+				return ""; //U+E118
 			case "player":
 			default:
 				return ""; //U+E100
