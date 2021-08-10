@@ -1,0 +1,16 @@
+name: FI-Farms
+main: NgLamVN\Farms\Farms
+src-namespace-prefix: Farms\Farms
+version: 0.1
+author: JinodkDevTeam|NgLamVN
+api: 4.0.0
+
+permissions:
+  Farms:
+    default: true
+  Farms.VIP:
+    default: op
+  Farms.OP:
+    default: op
+  Farms.Member:
+    default: op
