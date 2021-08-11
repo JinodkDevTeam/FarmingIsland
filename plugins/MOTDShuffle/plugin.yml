@@ -1,0 +1,8 @@
+name: MOTDShuffle
+main: MOTDShuffle\Main
+src-namespace-prefix: MOTDShuffle
+load: STARTUP
+version: 0.1
+api: 4.0.0
+author: JinodkDevTeam|NgLamVN
+description: MOTD Upon MCPE Client Call.
