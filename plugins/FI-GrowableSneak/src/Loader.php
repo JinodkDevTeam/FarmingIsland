@@ -72,7 +72,7 @@ class Loader extends PluginBase implements Listener
             for ($j = $y - $radius; $j <= $y + $radius;$j++)
                 for ($k = $z - $radius; $k <= $z + $radius;$k++)
                 {
-                    $block = $world->getBlockAt($i, $j, $k);
+                    $block = $world->getBlockAt((int)$i,(int)$j,(int)$k);
                     $this->growTree($block);
                 }
     }
