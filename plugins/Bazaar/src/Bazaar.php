@@ -8,14 +8,32 @@ declare(strict_types=1);
  * Idea from Hypixel Skyblock
  *
  * This plugin is made only for JINODK Network.
+ * Code style: Some of PocketMine-MP code style :V
  */
 
 namespace Bazaar;
 
+use Bazaar\command\BazaarCommand;
+use Bazaar\provider\SqliteProvider;
 use pocketmine\plugin\PluginBase;
 
 class Bazaar extends PluginBase{
-	public function onEnable() : void{
 
+	public const PROVIDER = "sqlite"; //I set it as default because i dont have any other provider;
+
+	private SqliteProvider $provider;
+
+	public function onEnable() : void{
+		$this->provider = new SqliteProvider($this);
+		$this->provider->init();
+		$this->getServer()->getCommandMap()->register("bazaar", new BazaarCommand($this));
+	}
+
+	public function onDisable() : void{
+		$this->getProvider()->close();
+	}
+
+	public function getProvider(): SqliteProvider{
+		return $this->provider;
 	}
 }
