@@ -34,24 +34,38 @@ final class CustomItemIds{
 	public const ENCHANTED_NETHERRACK = 2024;
 
 	public const ENCHANTED_ENDSTONE = 2025;
+	public const ENCHANTED_OBSIDIAN = 2026;
 
 	//Farming Stuff
-	public const ENCHANTED_SEED = 2026;
-	public const ENCHANTED_WHEAT = 2027;
-	public const ENCHANTED_HAY_BALE = 2028;
-	public const ENCHANTED_CARROT = 2029;
-	public const ENCHANTED_GOLDEN_CARROT = 2030;
-	public const ENCHANTED_POTATO = 2031;
-	public const ENCHANTED_SUGAR = 2032;
-	public const ENCHANTED_SUGAR_CANE = 2033;
-	public const ENCHANTED_APPLE = 2034;
-	public const ENCHANTED_PUMKIN = 2035;
-	public const ENCHANTED_MELON = 2036;
-	public const ENCHANTED_MELON_BLOCK = 2037;
-	public const ENCHANTED_GLISTERIN_MELON = 2038;
-	public const ENCHANTED_CACTUS = 2039;
-	public const ENCHANTED_NETHERWART = 2040;
-	public const ENCHANTED_NETHERWART_BLOCK = 2041;
+	public const ENCHANTED_SEED = 2027;
+	public const ENCHANTED_WHEAT = 2028;
+	public const ENCHANTED_HAY_BALE = 2029;
+	public const ENCHANTED_CARROT = 2030;
+	public const ENCHANTED_GOLDEN_CARROT = 2031;
+	public const ENCHANTED_POTATO = 2032;
+	public const ENCHANTED_SUGAR = 2033;
+	public const ENCHANTED_SUGAR_CANE = 2034;
+	public const ENCHANTED_APPLE = 2035;
+	public const ENCHANTED_PUMKIN = 2036;
+	public const ENCHANTED_MELON = 2037;
+	public const ENCHANTED_MELON_BLOCK = 2038;
+	public const ENCHANTED_GLISTERIN_MELON = 2039;
+	public const ENCHANTED_CACTUS = 2040;
+	public const ENCHANTED_NETHERWART = 2041;
+	public const ENCHANTED_NETHERWART_BLOCK = 2042;
+
+	//Foraging Stuff
+	public const ENCHANTED_OAK_LOG = 2043;
+	public const ENCHANTED_SPRUCE_LOG = 2044;
+	public const ENCHANTED_JUNGLE_LOG = 2045;
+	public const ENCHANTED_ACIA_LOG = 2046;
+	public const ENCHANTED_DARKOAK_LOG = 2047;
+
+	//Forge Stuff
+	public const REFINED_IRON = 2050;
+	public const REFINED_GOLD = 2051;
+	public const REFINED_EMERALD = 2052;
+	public const REFINED_DIAMOND = 2053;
 
 	//Another stuff
 	public const NOICE_PAPER = 2069;
