@@ -3,4 +3,5 @@ declare(strict_types=1);
 
 namespace Bazaar\order;
 
-class BuyOrder extends BaseOrder{ }
+class BuyOrder extends BaseOrder{
+}
