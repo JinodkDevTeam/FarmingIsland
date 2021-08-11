@@ -1,6 +1,6 @@
 name: FI-Farms
-main: NgLamVN\Farms\Farms
-src-namespace-prefix: Farms\Farms
+main: Farms\Farms
+src-namespace-prefix: Farms
 version: 0.1
 author: JinodkDevTeam|NgLamVN
 api: 4.0.0

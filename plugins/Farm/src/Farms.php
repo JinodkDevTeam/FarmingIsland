@@ -23,8 +23,8 @@ class Farms extends PluginBase implements Listener
     /** @var array  */
     public array $farmData, $speedData;
     /** @var array $crops */
-    public array $crops =[
-        ["item" => ItemIds::SEEDS, "block" => BlockLegacyIds::WHEAT_BLOCK ],
+    public array $crops = [
+        [ "item" => ItemIds::SEEDS, "block" => BlockLegacyIds::WHEAT_BLOCK ],
         [ "item" => ItemIds::CARROT,"block" => BlockLegacyIds::CARROT_BLOCK ],
         [ "item" => ItemIds::POTATO,"block" => BlockLegacyIds::POTATO_BLOCK ],
         [ "item" => ItemIds::BEETROOT,"block" => BlockLegacyIds::BEETROOT_BLOCK ],
@@ -35,7 +35,9 @@ class Farms extends PluginBase implements Listener
         [ "item" => ItemIds::DYE,"block" => 127 ],
         [ "item" => ItemIds::CACTUS,"block" => BlockLegacyIds::CACTUS ]
     ];
-    public function onEnable(): void {
+
+    public function onEnable(): void
+	{
         @mkdir($this->getDataFolder());
 
         $this->farmConfig = new Config($this->getDataFolder()."farmlist.yml", Config::YAML);
@@ -49,16 +51,18 @@ class Farms extends PluginBase implements Listener
         ]);
         $this->speedData = $this->speedConfig->getAll();
 
-        $this->getScheduler()->scheduleRepeatingTask( new FarmsTask($this), 20);
+        $this->getScheduler()->scheduleRepeatingTask(new FarmsTask($this), 20);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
-    public function onDisable(): void {
+    public function onDisable(): void
+	{
         $this->farmConfig->setAll($this->farmData );
         $this->farmConfig->save();
 
         $this->speedConfig->save();
     }
-    public function onBlock(PlayerInteractEvent $event) {
+    public function onBlock(PlayerInteractEvent $event)
+	{
         if (! $event->getPlayer()->hasPermission("Farms")and ! $event->getPlayer()->hasPermission("Farms.VIP" )) return;
         $block = $event->getBlock()->getSide(1 );
 
