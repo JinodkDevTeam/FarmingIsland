@@ -163,7 +163,7 @@ class Farms extends PluginBase implements Listener
         $hh = substr($date, 11, 2 );
         $ii = substr($date, 14, 2 );
         $ss = substr($date, 17, 2 );
-        return mktime($hh, $ii, $ss, $mm, $dd, $yy );
+        return mktime((int)$hh, (int)$ii, (int)$ss, (int)$mm, (int)$dd, (int)$yy );
     }
 
     /**
