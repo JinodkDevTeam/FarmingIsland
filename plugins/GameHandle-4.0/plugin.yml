@@ -91,3 +91,5 @@ permissions:
     default: op
   gh.icgive:
     default: op
+  gh.cgive:
+    default: op

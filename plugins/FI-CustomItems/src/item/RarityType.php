@@ -16,7 +16,7 @@ class RarityType{
 	public const ULTIMATE = 8;
 
 	public static function toString(int $code): string{
-		return match ($code) {
+		return match ($code){
 			self::COMMON => "§l§fCommon",
 			self::UNCOMMON => "§l§aUncommon",
 			self::RARE => "§l§eRare",

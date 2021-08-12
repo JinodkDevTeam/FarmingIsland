@@ -32,15 +32,18 @@ class CustomItemFactory{
 		return false;
 	}
 
-	public function get(int $id): CustomItem{
-		return $this->list[$id];
+	public function get(int $id): ?CustomItem{
+		if (isset($this->list[$id])){
+			return $this->list[$id];
+		}
+		return null;
 	}
 
 	public function __construct(){
-
+		//Register custom items
 		$this->register(new EnchantedCobblestone(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COBBLESTONE), "Enchanted Cobblestone", RarityType::COMMON));
 		$this->register(new EnchantedCoal(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL), "Enchanted Coal", RarityType::COMMON));
-		$this->register(new EnchantedCoal(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL_BLOCK), "Enchanted Coal Block", RarityType::UNCOMMON));
+		$this->register(new EnchantedCoalBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL_BLOCK), "Enchanted Coal Block", RarityType::UNCOMMON));
 		$this->register(new EnchantedIronIngot(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_INGOT), "Enchanted Iron Ingot", RarityType::COMMON));
 		$this->register(new EnchantedIronBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_BLOCK), "Enchanted Iron Block", RarityType::UNCOMMON));
 		$this->register(new EnchantedGoldIngot(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_INGOT), "Enchanted Gold Ingot", RarityType::COMMON));

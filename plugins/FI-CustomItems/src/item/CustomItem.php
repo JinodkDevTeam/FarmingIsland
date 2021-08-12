@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use pocketmine\block\Block;
+use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\entity\Entity;
+use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemUseResult;
@@ -45,6 +47,11 @@ class CustomItem{
 
 	public function getRarity() : int{
 		return $this->rarity;
+	}
+
+	public function setEnchantGlint(Item $item): Item{
+		$item->addEnchantment(new EnchantmentInstance(EnchantmentIdMap::getInstance()->fromId(100), 1));
+		return $item;
 	}
 
 	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
