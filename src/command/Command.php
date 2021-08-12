@@ -28,6 +28,7 @@ namespace pocketmine\command;
 
 use pocketmine\command\utils\CommandException;
 use pocketmine\console\ConsoleCommandSender;
+use pocketmine\lang\KnownTranslationFactory;
 use pocketmine\lang\KnownTranslationKeys;
 use pocketmine\lang\TranslationContainer;
 use pocketmine\permission\PermissionManager;
@@ -230,10 +231,7 @@ abstract class Command{
 		$this->usageMessage = $usage;
 	}
 
-	/**
-	 * @param TranslationContainer|string $message
-	 */
-	public static function broadcastCommandMessage(CommandSender $source, $message, bool $sendToSource = true) : void{
+	public static function broadcastCommandMessage(CommandSender $source, TranslationContainer|string $message, bool $sendToSource = true) : void{
 		$users = $source->getServer()->getBroadcastChannelSubscribers(Server::BROADCAST_CHANNEL_ADMINISTRATIVE);
 		if($message instanceof TranslationContainer){
 			$formatted = "[" . $source->getName() . ": " . ($source->getLanguage()->get($message->getText()) !== $message->getText() ? "%" : "") . $message->getText() . "]";
@@ -241,7 +239,7 @@ abstract class Command{
 			$result = new TranslationContainer($formatted, $message->getParameters());
 			$colored = new TranslationContainer(TextFormat::GRAY . TextFormat::ITALIC . $formatted, $message->getParameters());
 		}else{
-			$result = new TranslationContainer(KnownTranslationKeys::CHAT_TYPE_ADMIN, [$source->getName(), $message]);
+			$result = KnownTranslationFactory::chat_type_admin($source->getName(), $message);
 			$colored = new TranslationContainer(TextFormat::GRAY . TextFormat::ITALIC . "%" . KnownTranslationKeys::CHAT_TYPE_ADMIN, [$source->getName(), $message]);
 		}
 
