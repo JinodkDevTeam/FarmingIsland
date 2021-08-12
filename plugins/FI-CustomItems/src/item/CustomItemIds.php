@@ -35,37 +35,49 @@ final class CustomItemIds{
 
 	public const ENCHANTED_ENDSTONE = 2025;
 	public const ENCHANTED_OBSIDIAN = 2026;
+	//UNUSED = 2027
+	//UNUSED = 2028
+	//UNUSED = 2029
 
 	//Farming Stuff
-	public const ENCHANTED_SEED = 2027;
-	public const ENCHANTED_WHEAT = 2028;
-	public const ENCHANTED_HAY_BALE = 2029;
-	public const ENCHANTED_CARROT = 2030;
-	public const ENCHANTED_GOLDEN_CARROT = 2031;
-	public const ENCHANTED_POTATO = 2032;
-	public const ENCHANTED_SUGAR = 2033;
-	public const ENCHANTED_SUGAR_CANE = 2034;
-	public const ENCHANTED_APPLE = 2035;
-	public const ENCHANTED_PUMKIN = 2036;
-	public const ENCHANTED_MELON = 2037;
-	public const ENCHANTED_MELON_BLOCK = 2038;
-	public const ENCHANTED_GLISTERIN_MELON = 2039;
-	public const ENCHANTED_CACTUS = 2040;
-	public const ENCHANTED_NETHERWART = 2041;
-	public const ENCHANTED_NETHERWART_BLOCK = 2042;
+	public const ENCHANTED_SEED = 2030;
+	public const ENCHANTED_WHEAT = 2031;
+	public const ENCHANTED_HAY_BALE = 2032;
+	public const ENCHANTED_CARROT = 2033;
+	public const ENCHANTED_GOLDEN_CARROT = 2034;
+	public const ENCHANTED_POTATO = 2035;
+	public const ENCHANTED_SUGAR = 2036;
+	public const ENCHANTED_SUGAR_CANE = 2037;
+	public const ENCHANTED_APPLE = 2038;
+	public const ENCHANTED_PUMKIN = 2039;
+	public const ENCHANTED_MELON = 2040;
+	public const ENCHANTED_MELON_BLOCK = 2041;
+	public const ENCHANTED_GLISTERIN_MELON = 2042;
+	public const ENCHANTED_CACTUS = 2043;
+	public const ENCHANTED_NETHERWART = 2044;
+	public const ENCHANTED_NETHERWART_BLOCK = 2045;
+	//UNUSED = 2046
+	//UNUSED = 2047
+	//UNUSED = 2048
+	//UNUSED = 2049
 
 	//Foraging Stuff
-	public const ENCHANTED_OAK_LOG = 2043;
-	public const ENCHANTED_SPRUCE_LOG = 2044;
-	public const ENCHANTED_JUNGLE_LOG = 2045;
-	public const ENCHANTED_ACIA_LOG = 2046;
-	public const ENCHANTED_DARKOAK_LOG = 2047;
+	public const ENCHANTED_OAK_WOOD = 2050;
+	public const ENCHANTED_BRICH_WOOD = 2051;
+	public const ENCHANTED_SPRUCE_WOOD = 2052;
+	public const ENCHANTED_JUNGLE_WOOD = 2053;
+	public const ENCHANTED_ACIA_WOOD = 2054;
+	public const ENCHANTED_DARK_OAK_WOOD = 2055;
+	//UNUSED = 2056
+	//UNUSED = 2057
+	//UNUSED = 2058
+	//UNUSED = 2059
 
 	//Forge Stuff
-	public const REFINED_IRON = 2050;
-	public const REFINED_GOLD = 2051;
-	public const REFINED_EMERALD = 2052;
-	public const REFINED_DIAMOND = 2053;
+	public const REFINED_IRON = 2060;
+	public const REFINED_GOLD = 2061;
+	public const REFINED_EMERALD = 2062;
+	public const REFINED_DIAMOND = 2063;
 
 	//Another stuff
 	public const NOICE_PAPER = 2069;

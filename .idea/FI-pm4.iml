@@ -7,12 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="pocketmine\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/Bank/src" isTestSource="false" packagePrefix="Bank" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/Bazaar/src" isTestSource="false" packagePrefix="Bazaar" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/ExplosiveSnowball/src" isTestSource="false" packagePrefix="ExplosiveSnowball" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-CustomStuff/src" isTestSource="false" packagePrefix="Farms" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/Farm/src" isTestSource="false" packagePrefix="Farms" />
-      <sourceFolder url="file://$MODULE_DIR$/plugins/GameHandle-4.0/src" isTestSource="false" packagePrefix="NgLamVN\GameHandle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/adhocore/json-comment" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
