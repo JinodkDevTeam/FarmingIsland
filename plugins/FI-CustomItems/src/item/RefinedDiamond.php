@@ -6,13 +6,13 @@ namespace CustomItems\item;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class EnchantedLapis extends CustomItem{
+class RefinedDiamond extends CustomItem{
 
 	public function toItem() : Item{
-		$item = VanillaItems::LAPIS_LAZULI();
+		$item = VanillaItems::LIGHT_BLUE_DYE();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setInt("CustomItemIDst", $this->getId());
 		$item->setCustomName($this->getName());
 		$item->setLore([
 			RarityType::toString($this->getRarity())
