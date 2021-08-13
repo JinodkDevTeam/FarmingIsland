@@ -3,9 +3,14 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
+use pocketmine\item\ItemUseResult;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 
 class NoicePaper extends CustomItem{
 
@@ -17,8 +22,14 @@ class NoicePaper extends CustomItem{
 		$item->setCustomName($this->getName());
 		$item->setLore([
 			"NOICE !",
+			"Turn every clicked block into Diamond Block",
 			RarityType::toString($this->getRarity())
 		]);
 		return $item;
+	}
+
+	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
+		$blockClicked->getPos()->getWorld()->setBlock($blockClicked->getPos()->asVector3(), VanillaBlocks::DIAMOND());
+		return parent::onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector);
 	}
 }

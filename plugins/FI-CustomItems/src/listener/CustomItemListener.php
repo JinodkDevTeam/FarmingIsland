@@ -31,7 +31,7 @@ class CustomItemListener implements Listener{
 	public function onInteract(PlayerInteractEvent $event){
 		$item = $event->getItem();
 		if ($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID"));
+			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if ($citem == null) return;
 
 			$player = $event->getPlayer();
@@ -51,7 +51,7 @@ class CustomItemListener implements Listener{
 	public function onItemUse(PlayerItemUseEvent $event){
 		$item = $event->getItem();
 		if ($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID"));
+			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if ($citem == null) return;
 
 			$player = $event->getPlayer();
@@ -68,7 +68,7 @@ class CustomItemListener implements Listener{
 	public function onBreak(BlockBreakEvent $event){
 		$item = $event->getItem();
 		if ($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID"));
+			$citem = CustomItemFactory::getInstance()->get((int)$item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if ($citem == null) return;
 
 			$block = $event->getBlock();
