@@ -50,6 +50,20 @@ class CustomItemFactory{
 		$this->register(new EnchantedGoldBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_BLOCK), "Enchanted Gold Block", RarityType::UNCOMMON));
 		$this->register(new EnchantedLapis(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS), "Enchanted Lapis Lazuli", RarityType::COMMON));
 		$this->register(new EnchantedLapisBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS_BLOCK), "Enchanted Lapis Block", RarityType::UNCOMMON));
+		$this->register(new EnchantedRedstone(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE), "Enchanted Redstone Dust", RarityType::COMMON));
+		$this->register(new EnchantedRedstoneBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE_BLOCK), "Enchanted Redstone Block", RarityType::UNCOMMON));
+		$this->register(new EnchantedEmerald(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD), "Enchanted Emerald", RarityType::COMMON));
+		$this->register(new EnchantedEmeraldBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD_BLOCK), "Enchanted Emerald Block", RarityType::UNCOMMON));
+		$this->register(new EnchantedDiamond(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND), "Enchanted Diamond", RarityType::COMMON));
+		$this->register(new EnchantedDiamondBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND_BLOCK), "Enchanted Diamond Block", RarityType::UNCOMMON));
+
+		$this->register(new EnchantedFlint(new CustomItemIdentifier(CustomItemIds::ENCHANTED_FLINT), "Enchanted Flint", RarityType::COMMON));
+		$this->register(new EnchantedSand(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SAND), "Enchanted Sand", RarityType::COMMON));
+		$this->register(new EnchantedClay(new CustomItemIdentifier(CustomItemIds::ENCHANTED_CLAY), "Enchanted Clay", RarityType::COMMON));
+		$this->register(new EnchantedSnow(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SNOW), "Enchanted Snow", RarityType::COMMON));
+		$this->register(new EnchantedIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_ICE), "Enchanted Ice", RarityType::COMMON));
+		$this->register(new EnchantedPackedIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_PACKED_ICE), "Enchanted Packed Ice", RarityType::UNCOMMON));
+		$this->register(new EnchantedBlueIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_BLUE_ICE), "Enchanted Blue Ice", RarityType::RARE));
 
 		$this->register(new RefinedDiamond(new CustomItemIdentifier(CustomItemIds::REFINED_DIAMOND), "Refined Diamond", RarityType::RARE));
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));
