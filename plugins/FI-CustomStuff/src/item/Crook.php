@@ -137,10 +137,9 @@ class Crook implements Listener
     public function CrookMine (Block $blockbreak, Item $item, Player $player)
     {
         $pending = [];
-        $done = false;
         $pos = $blockbreak;
 
-        while (!$done)
+        while (true)
         {
             if ($this->breaked[$player->getName()] > 100)
             {
@@ -155,7 +154,7 @@ class Crook implements Listener
 
             if ($pos !== $blockbreak)
             {
-                $pos->getLevel()->useBreakOn($pos , $item, $player, true);
+                $pos->getPos()->getWorld()->useBreakOn($pos , $item, $player, true);
                 $this->breaked[$player->getName()]++;
             }
 

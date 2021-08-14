@@ -81,5 +81,9 @@ final class CustomItemIds{
 
 	//Another stuff
 	public const NOICE_PAPER = 2069;
+	//UNUSED = 2070 -> 2099
+
+	//Custom Stuff
+	public const CROOK = 2100;
 
 }

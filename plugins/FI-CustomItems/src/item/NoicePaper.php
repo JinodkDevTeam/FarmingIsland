@@ -19,7 +19,7 @@ class NoicePaper extends CustomItem{
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
-		$item->setCustomName($this->getName());
+		$item->setCustomName(RarityType::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"NOICE !",
 			"Turn every clicked block into Diamond Block",

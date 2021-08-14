@@ -29,4 +29,18 @@ class RarityType{
 			default => "",
 		};
 	}
+
+	public static function toColor(int $code): string{
+		return match ($code){
+			self::COMMON => "§r§f",
+			self::UNCOMMON => "§r§a",
+			self::RARE => "§r§e",
+			self::EPIC => "§r§5",
+			self::LEGENDARY => "§r§6",
+			self::MYTHIC => "§r§b",
+			self::SPECIAL, self::VERY_SPECIAL => "§r§c",
+			self::ULTIMATE => "§r§d",
+			default => "",
+		};
+	}
 }
