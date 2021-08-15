@@ -4,7 +4,7 @@
     <inspection_tool class="AnnotationMissingUseInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-        <language minSize="56" name="PHP" />
+        <language minSize="88" name="PHP" />
       </Languages>
     </inspection_tool>
     <inspection_tool class="GrazieInspection" enabled="false" level="TYPO" enabled_by_default="false" />
@@ -27,11 +27,6 @@
     <inspection_tool class="PhpUndefinedFieldInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpUndefinedFunctionInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpUndefinedNamespaceInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PhpUnusedAliasInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PhpUnusedLocalVariableInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PhpUnusedParameterInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PhpUnusedPrivateFieldInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="PhpUnusedPrivateMethodInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PhpVoidFunctionResultUsedInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpWrongForeachArgumentTypeInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">

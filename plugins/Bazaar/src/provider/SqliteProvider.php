@@ -25,6 +25,8 @@ class SqliteProvider implements Provider{
 	public const SELECT_SELL_PLAYER = "bazaar.select.sell.player";
 	public const SELECT_SELL_ITEMID_UNSORT = "bazaar.select.sell.itemid.unsort";
 	public const SELECT_SELL_ITEMID_SORT_PRICE = "bazaar.select.sell.itemid.sort.price";
+	public const UPDATE_BUY_FILLED = "bazaar.update.buy.filled";
+	public const UPDATE_SELL_FILLED = "bazaar.update.sell.filled";
 
 
 	/** @var Bazaar */

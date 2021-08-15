@@ -128,4 +128,20 @@ SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM SellOrder WHERE Item
 -- #            }
 -- #        }
 -- #    }
+-- #    { update
+-- #        { buy
+-- #            { filled
+-- #                :id int
+-- #                :filled int
+UPDATE BuyOrder SET Filled = :filled WHERE Id = :id;
+-- #            }
+-- #        }
+-- #        { sell
+-- #            { filled
+-- #                :id int
+-- #                :filled int
+UPDATE SellOrder SET Filled = :filled WHERE Id = :id;
+-- #            }
+-- #        }
+-- #    }
 -- #}
