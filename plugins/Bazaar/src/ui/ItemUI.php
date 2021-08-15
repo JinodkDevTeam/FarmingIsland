@@ -37,7 +37,8 @@ class ItemUI extends BaseUI{
 			}
 
 			$form = new SimpleForm(function(Player $player, ?int $data){
-				//TODO: Implement Buy And Sell
+				if (!isset($data)) return;
+				//TODO: implement buy and sell
 			});
 			$form->setTitle("ItemUI");
 			$form->addButton("Instance buy" . "\n" . "Price: " . $i_buy_price);

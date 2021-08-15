@@ -69,4 +69,8 @@ class SqliteProvider implements Provider{
 
 		return yield Await::ONCE;
 	}
+
+	public function executeChange(string $query, array $args): void{
+		$this->database->executeChange($query, $args);
+	}
 }
