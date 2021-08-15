@@ -1,5 +1,5 @@
 name: BazaarShop
-main: Bazaar/Bazaar
+main: Bazaar\Bazaar
 version: 0.1
 author: JinodkDevTeam|NgLamVN
 api: 4.0.0
