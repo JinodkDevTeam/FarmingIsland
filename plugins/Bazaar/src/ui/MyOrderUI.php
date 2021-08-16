@@ -19,7 +19,12 @@ class MyOrderUI extends BaseUI{
 			$sell_data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_PLAYER, ["player" => $player->getName()]);
 
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($buy_data, $sell_data){
-				//TODO: Order Manager.
+				if (!isset($data)) return;
+				if ($data > count($buy_data)){
+					new SellOrderManagerUI($player, (int)$sell_data[$data - count($buy_data)]["Id"]);
+					return;
+				}
+				new BuyOrderManagerUI($player, $buy_data[$data]["Id"]);
 			});
 			$form->setTitle("My Orders");
 			foreach($buy_data as $data){
