@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use pocketmine\item\ItemIds;
 use pocketmine\utils\SingletonTrait;
 use RuntimeException;
 
@@ -11,6 +12,8 @@ class CustomItemFactory{
 
 	/** @var CustomItem[] */
 	private array $list = [];
+	/** @var MetaLessItem[] */
+	private array $mlist = [];
 
 	/**
 	 * @param CustomItem $item
@@ -25,6 +28,17 @@ class CustomItemFactory{
 		$this->list[$id] = clone $item;
 	}
 
+	public function registerMetaLess(MetaLessItem $item, bool $overwrite = false): void{
+		$id = $item->getMetaLessIdentifier()->getId();
+		$meta = $item->getMetaLessIdentifier()->getMeta();
+		if (isset($this->mlist[$id . ":" . $meta]) && (!$overwrite)){
+			throw new RuntimeException("Trying to overwrite an already registered item !");
+		}
+		$this->list[$id . ":" . $meta] = clone $item;
+
+		$this->register($item);
+	}
+
 	public function isRegistered(int $id): bool{
 		if (isset($this->list[$id])){
 			return true;
@@ -35,6 +49,13 @@ class CustomItemFactory{
 	public function get(int $id): ?CustomItem{
 		if (isset($this->list[$id])){
 			return $this->list[$id];
+		}
+		return null;
+	}
+
+	public function getMetaLessItem(int $id, int $meta): ?MetaLessItem{
+		if (isset($this->mlist[$id . ":" . $meta])){
+			return $this->mlist[$id . ":" . $meta];
 		}
 		return null;
 	}
@@ -67,5 +88,7 @@ class CustomItemFactory{
 
 		$this->register(new RefinedDiamond(new CustomItemIdentifier(CustomItemIds::REFINED_DIAMOND), "Refined Diamond", RarityType::RARE));
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));
+
+		$this->registerMetaLess(new MetaLessItem(new CustomItemIdentifier(CustomItemIds::LAPIS_LAZULI), new MetaLessIdentifier(ItemIds::DYE, 4)));
 	}
 }
