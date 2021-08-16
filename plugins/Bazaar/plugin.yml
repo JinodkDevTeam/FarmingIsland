@@ -9,4 +9,6 @@ virion:
   - libasynql
   - await-generator
   - FormAPI
-  - InvMenu
+depend:
+  - FI-CustomItems
+  - EconomyAPI
