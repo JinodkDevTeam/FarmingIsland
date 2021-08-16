@@ -96,8 +96,7 @@ class SellOrderUI extends BaseUI{
 		]);
 		$item = ItemUtils::toItem($this->itemid);
 		$item->setCount($amount);
-
-		$player->getInventory()->removeItem($item);
+		ItemUtils::removeItem($player->getInventory(), $item);
 		$player->sendMessage("Sell order created !");
 	}
 }

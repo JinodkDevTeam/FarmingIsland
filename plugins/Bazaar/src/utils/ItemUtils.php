@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Bazaar\utils;
 
 use CustomItems\item\CustomItemFactory;
+use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\player\Player;
@@ -64,5 +65,45 @@ class ItemUtils{
 			}
 		}
 		return $count;
+	}
+
+	/**
+	 * @param Inventory $inventory
+	 * @param Item      ...$slots
+	 *
+	 * @return Item[]
+	 *
+	 * @description Copy-pasta of PM removeItem() with more strict item NamedTag check...
+	 */
+	public static function removeItem(Inventory $inventory, Item ...$slots) : array{
+		/** @var Item[] $itemSlots */
+		/** @var Item[] $slots */
+		$itemSlots = [];
+		foreach($slots as $slot){
+			if(!$slot->isNull()){
+				$itemSlots[] = clone $slot;
+			}
+		}
+		for($i = 0, $size = $inventory->getSize(); $i < $size; ++$i){
+			$item = $inventory->getItem($i);
+			if($item->isNull()){
+				continue;
+			}
+			foreach($itemSlots as $index => $slot){
+				if($slot->equals($item, !$slot->hasAnyDamageValue(), true)){
+					$amount = min($item->getCount(), $slot->getCount());
+					$slot->setCount($slot->getCount() - $amount);
+					$item->setCount($item->getCount() - $amount);
+					$inventory->setItem($i, $item);
+					if($slot->getCount() <= 0){
+						unset($itemSlots[$index]);
+					}
+				}
+			}
+			if(count($itemSlots) === 0){
+				break;
+			}
+		}
+		return $itemSlots;
 	}
 }
