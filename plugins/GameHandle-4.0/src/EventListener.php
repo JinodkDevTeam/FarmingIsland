@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle;
 
 use FishingModule\event\PlayerFishEvent;
-use pocketmine\command\ConsoleCommandSender;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\entity\EntityTeleportEvent;

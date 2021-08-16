@@ -22,18 +22,18 @@ class ItemUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if (empty($data)){
-				$i_buy_price = 0;
+				$top_buy_price = 0;
 			} else {
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
-				$i_buy_price = $order->getPrice();
+				$top_buy_price = $order->getPrice();
 			}
 
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if (empty($data)){
-				$i_sell_price = 0;
+				$top_sell_price = 0;
 			} else {
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
-				$i_sell_price = $order->getPrice();
+				$top_sell_price = $order->getPrice();
 			}
 
 			$form = new SimpleForm(function(Player $player, ?int $data){
@@ -53,8 +53,8 @@ class ItemUI extends BaseUI{
 				}
 			});
 			$form->setTitle("ItemUI");
-			$form->addButton("Instance buy" . "\n" . "Price: " . $i_buy_price);
-			$form->addButton("Instance sell" . "\n" . "Price: " . $i_sell_price);
+			$form->addButton("Instance buy" . "\n" . "Price: " . $top_sell_price);
+			$form->addButton("Instance sell" . "\n" . "Price: " . $top_buy_price);
 			$form->addButton("Create buy order");
 			$form->addButton("Create sell order");
 

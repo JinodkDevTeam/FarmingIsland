@@ -23,6 +23,9 @@
       <option name="level" value="8" />
       <option name="config" value="$PROJECT_DIR$/phpstan.neon.dist" />
     </inspection_tool>
+    <inspection_tool class="PhpStatementHasEmptyBodyInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myCommentsCountAsContent" value="true" />
+    </inspection_tool>
     <inspection_tool class="PhpUndefinedConstantInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpUndefinedFieldInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PhpUndefinedFunctionInspection" enabled="true" level="ERROR" enabled_by_default="true" />

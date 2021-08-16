@@ -17,8 +17,14 @@ class ShopUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			$form = new SimpleForm(function(Player $player, ?int $data){
 				if (!isset($data)) return;
-				new ItemUI($player, AvailableItemsIds::Ids[$data]);
+				if ($data == 0){
+					new MyOrderUI($player);
+					return;
+				}
+				new ItemUI($player, AvailableItemsIds::Ids[$data - 1]);
 			});
+
+			$form->addButton("My orders");
 			foreach(AvailableItemsIds::Ids as $id){
 				$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $id]);
 				if (empty($data)){
@@ -27,7 +33,6 @@ class ShopUI extends BaseUI{
 					$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 					$buy = $order->getPrice();
 				}
-
 				$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $id]);
 				if (empty($data)){
 					$sell = 0;
@@ -36,7 +41,7 @@ class ShopUI extends BaseUI{
 					$sell = $order->getPrice();
 				}
 
-				$form->addButton(ItemUtils::toName($id) . "\n" . "Buy: " . $buy . " Sell: " . $sell);
+				$form->addButton(ItemUtils::toName($id) . "\n" . "Buy: " . $sell . " Sell: " . $buy);
 			}
 			$form->setTitle("BazaarUI");
 			$player->sendForm($form);
