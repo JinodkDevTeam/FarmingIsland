@@ -56,7 +56,7 @@ class EventListener implements Listener
         $player = $event->getPlayer();
         if ($player->getWorld()->getDisplayName() !== "island")
         {
-            Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "mw tp island ". $player->getName());
+            /*Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "mw tp island ". $player->getName());*/
         }
 
         $this->menu->registerMenuItem($player);

@@ -5,7 +5,10 @@ namespace Bazaar\ui;
 
 use Bazaar\order\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
+use Bazaar\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
+use jojoe77777\FormAPI\ModalForm;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
 
@@ -30,9 +33,9 @@ class BuyOrderUI extends BaseUI{
 			}
 			$form = new CustomForm(function(Player $player, ?array $data){
 				if (!isset($data)) return;
-				if ((!isset($data[1])) or (!isset($data[2]))) return;
-				$amount = $data[1];
-				$price = $data[2];
+				if ((!isset($data[2])) or (!isset($data[3]))) return;
+				$amount = $data[2];
+				$price = $data[3];
 				if (!(is_numeric($amount) and is_numeric($price))){
 					$player->sendMessage("Amount or Price must be numeric !");
 					return;
@@ -49,10 +52,15 @@ class BuyOrderUI extends BaseUI{
 					$player->sendMessage("Price must be > 0 !");
 					return;
 				}
-				$this->createBuyOrder($player, (int)$amount, (float)$price);
+				if ($amount > 71680){
+					$player->sendMessage("Amount must be <= 71680 items");
+					return;
+				}
+				$this->confirm($player, (int)$amount, (float)$price);
 			});
 
 			$form->setTitle("Create buy order");
+			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
 			$form->addLabel("Current top buy order: " . $top_buy);
 			$form->addInput("Amount:", "Max: 71680");
 			$form->addInput("Price per item:", (string) ($top_buy + 0.1));
@@ -61,7 +69,25 @@ class BuyOrderUI extends BaseUI{
 		});
 	}
 
-	public function createBuyOrder(Player $player, int $amount, float $price){
+	public function confirm(Player $player, int $amount, float $price): void{
+		$form = new ModalForm(function(Player $player, $data) use ($amount, $price){
+			if (!isset($data)) return;
+			if ($data == false) return;
+			$this->createBuyOrder($player, $amount, $price);
+		});
+		$form->setTitle("Confirm");
+		$form->setContent("Create buy order for: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nPrice per item: " . $price . "\nYou pay: " . $price*$amount . " coin");
+		$form->setButton1("YES");
+		$form->setButton2("NO");
+
+		$player->sendForm($form);
+	}
+
+	public function createBuyOrder(Player $player, int $amount, float $price): void{
+		if (($amount* $price) > EconomyAPI::getInstance()->myMoney($player)){
+			$player->sendMessage("You dont have enough money to create buy order !");
+			return;
+		}
 		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_BUY, [
 			"player" => $player->getName(),
 			"price" => $price,
@@ -70,6 +96,7 @@ class BuyOrderUI extends BaseUI{
 			"itemID" => $this->itemid,
 			"time" => time()
 		]);
+		EconomyAPI::getInstance()->reduceMoney($player, $amount * $price);
 
 		$player->sendMessage("Buy order created !");
 	}
