@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
+use Bazaar\event\PlayerCreateOrderEvent;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\ItemUtils;
@@ -88,7 +89,7 @@ class BuyOrderUI extends BaseUI{
 			$player->sendMessage("You dont have enough money to create buy order !");
 			return;
 		}
-		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_BUY, [
+		$args = [
 			"player" => $player->getName(),
 			"price" => $price,
 			"amount" => $amount,
@@ -96,7 +97,12 @@ class BuyOrderUI extends BaseUI{
 			"itemID" => $this->itemid,
 			"time" => time(),
 			"isfilled" => false
-		]);
+		];
+		$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::SELL);
+		$ev = new PlayerCreateOrderEvent($player, $order);
+		$ev->call();
+		if ($ev->isCancelled()) return;
+		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_BUY, $args);
 		EconomyAPI::getInstance()->reduceMoney($player, $amount * $price);
 
 		$player->sendMessage("Buy order created !");

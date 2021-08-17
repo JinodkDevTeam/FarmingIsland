@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
+use Bazaar\event\PlayerCreateOrderEvent;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\ItemUtils;
@@ -86,7 +87,7 @@ class SellOrderUI extends BaseUI{
 	}
 
 	public function createSellOrder(Player $player, int $amount, float $price){
-		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_SELL, [
+		$args = [
 			"player" => $player->getName(),
 			"price" => $price,
 			"amount" => $amount,
@@ -94,7 +95,12 @@ class SellOrderUI extends BaseUI{
 			"itemID" => $this->itemid,
 			"time" => time(),
 			"isfilled" => false
-		]);
+		];
+		$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::SELL);
+		$ev = new PlayerCreateOrderEvent($player, $order);
+		$ev->call();
+		if ($ev->isCancelled()) return;
+		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_SELL, $args);
 		$item = ItemUtils::toItem($this->itemid);
 		$item->setCount($amount);
 		ItemUtils::removeItem($player->getInventory(), $item);
