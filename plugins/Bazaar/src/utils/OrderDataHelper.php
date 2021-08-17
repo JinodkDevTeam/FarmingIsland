@@ -1,7 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Bazaar\order;
+namespace Bazaar\utils;
+
+use Bazaar\order\BuyOrder;
+use Bazaar\order\SellOrder;
 
 class OrderDataHelper{
 

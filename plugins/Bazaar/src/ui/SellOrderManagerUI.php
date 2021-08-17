@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\Bazaar;
-use Bazaar\order\OrderDataHelper;
+use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
