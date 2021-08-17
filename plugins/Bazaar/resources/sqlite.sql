@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS BuyOrder (
     Amount INTEGER NOT NULL DEFAULT 0,
     Filled INTEGER NOT NULL DEFAULT 0,
     ItemID INTEGER NOT NULL DEFAULT 0,
-    Time INTEGER NOT NULL DEFAULT 0
+    Time INTEGER NOT NULL DEFAULT 0,
+    IsFilled BOOLEAN NOT NULL DEFAULT false
 );
 -- #        }
 -- #        { sell
@@ -20,7 +21,8 @@ CREATE TABLE IF NOT EXISTS SellOrder (
     Amount INTEGER NOT NULL DEFAULT 0,
     Filled INTEGER NOT NULL DEFAULT 0,
     ItemID INTEGER NOT NULL DEFAULT 0,
-    Time INTEGER NOT NULL DEFAULT 0
+    Time INTEGER NOT NULL DEFAULT 0,
+    IsFilled BOOLEAN NOT NULL DEFAULT false
 );
 -- #        }
 -- #    }
@@ -32,20 +34,23 @@ CREATE TABLE IF NOT EXISTS SellOrder (
 -- #            :filled int
 -- #            :itemID int
 -- #            :time int
+-- #            :isfilled bool
 INSERT OR REPLACE INTO BuyOrder (
     Player,
     Price,
     Amount,
     Filled,
     ItemID,
-    Time
+    Time,
+    IsFilled
 ) VALUES (
     :player,
     :price,
     :amount,
     :filled,
     :itemID,
-    :time
+    :time,
+    :isfilled
 );
 -- #        }
 -- #        { sell
@@ -55,20 +60,23 @@ INSERT OR REPLACE INTO BuyOrder (
 -- #            :filled int
 -- #            :itemID int
 -- #            :time int
+-- #            :isfilled bool
 INSERT OR REPLACE INTO SellOrder (
     Player,
     Price,
     Amount,
     Filled,
     ItemID,
-    Time
+    Time,
+    IsFilled
 ) VALUES (
     :player,
     :price,
     :amount,
     :filled,
     :itemID,
-    :time
+    :time,
+    :isfilled
          );
 -- #        }
 -- #    }
@@ -86,21 +94,21 @@ DELETE FROM SellOrder WHERE Id = :id;
 -- #        { buy
 -- #            { id
 -- #                :id int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM BuyOrder WHERE Id = :id;
+SELECT * FROM BuyOrder WHERE Id = :id;
 -- #            }
 -- #            { player
 -- #                :player string
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM BuyOrder WHERE Player = :player;
+SELECT * FROM BuyOrder WHERE Player = :player;
 -- #            }
 -- #            { itemid
 -- #                { unsort
 -- #                    :itemid int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM BuyOrder WHERE ItemID = :itemid;
+SELECT * FROM BuyOrder WHERE ItemID = :itemid;
 -- #                }
 -- #                { sort
 -- #                    { price
 -- #                        :itemid int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM BuyOrder WHERE ItemID = :itemid ORDER BY Price DESC;
+SELECT * FROM BuyOrder WHERE (ItemID = :itemid) AND (IsFilled = false) ORDER BY Price DESC;
 -- #                    }
 -- #                }
 -- #            }
@@ -108,21 +116,21 @@ SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM BuyOrder WHERE ItemI
 -- #        { sell
 -- #            { id
 -- #                :id int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM SellOrder WHERE Id = :id;
+SELECT * FROM SellOrder WHERE Id = :id;
 -- #            }
 -- #            { player
 -- #                :player string
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM SellOrder WHERE Player = :player;
+SELECT * FROM SellOrder WHERE Player = :player;
 -- #            }
 -- #            { itemid
 -- #                { unsort
 -- #                    :itemid int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM SellOrder WHERE ItemID = :itemid;
+SELECT * FROM SellOrder WHERE ItemID = :itemid;
 -- #                }
 -- #                { sort
 -- #                    { price
 -- #                        :itemid int
-SELECT Id, Player, Price, Amount, Filled, ItemID, Time FROM SellOrder WHERE ItemID = :itemid ORDER BY Price;
+SELECT * FROM SellOrder WHERE (ItemID = :itemid) AND (IsFilled = false) ORDER BY Price;
 -- #                    }
 -- #                }
 -- #            }

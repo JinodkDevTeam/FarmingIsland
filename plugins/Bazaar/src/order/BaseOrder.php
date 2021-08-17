@@ -12,8 +12,9 @@ abstract class BaseOrder{
 	protected int $filled;
 	protected float $price;
 	protected int $time;
+	protected bool $isfilled;
 
-	public function __construct(int $id, string $player, int $itemID, int $amount, int $filled, float $price, int $time){
+	public function __construct(int $id, string $player, int $itemID = 0, int $amount = 0, int $filled = 0, float $price = 0, int $time = 0, bool $isfilled = false){
 		$this->id = $id;
 		$this->player = $player;
 		$this->itemID = $itemID;
@@ -21,13 +22,21 @@ abstract class BaseOrder{
 		$this->filled = $filled;
 		$this->price = $price;
 		$this->time = $time;
+		$this->isfilled = $isfilled;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isFilled(): bool{
+		return $this->isfilled;
 	}
 
 	public function getAmount(): int{
 		return $this->amount;
 	}
 
-	public function getFilled() : int{
+	public function getFilled(): int{
 		return $this->filled;
 	}
 
@@ -43,35 +52,39 @@ abstract class BaseOrder{
 		return $this->player;
 	}
 
-	public function getPrice() : float{
+	public function getPrice(): float{
 		return $this->price;
 	}
 
-	public function getTime() : int{
+	public function getTime(): int{
 		return $this->time;
 	}
 
-	public function setAmount(int $amount) : void{
+	public function setAmount(int $amount): void{
 		$this->amount = $amount;
 	}
 
-	public function setFilled(int $filled) : void{
+	public function setFilled(int $filled): void{
 		$this->filled = $filled;
 	}
 
-	public function setPrice(float $price) : void{
+	public function setPrice(float $price): void{
 		$this->price = $price;
 	}
 
-	public function setTime(int $time) : void{
+	public function setTime(int $time): void{
 		$this->time = $time;
 	}
 
-	public function setId(int $id) : void{
+	public function setId(int $id): void{
 		$this->id = $id;
 	}
 
-	public function setItemID(int $itemID) : void{
+	public function setItemID(int $itemID): void{
 		$this->itemID = $itemID;
+	}
+
+	public function setFilledStatus(bool $status): void{
+		$this->isfilled = $status;
 	}
 }

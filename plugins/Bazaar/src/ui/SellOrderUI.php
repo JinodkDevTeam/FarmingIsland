@@ -92,7 +92,8 @@ class SellOrderUI extends BaseUI{
 			"amount" => $amount,
 			"filled" => 0,
 			"itemID" => $this->itemid,
-			"time" => time()
+			"time" => time(),
+			"isfilled" => false
 		]);
 		$item = ItemUtils::toItem($this->itemid);
 		$item->setCount($amount);

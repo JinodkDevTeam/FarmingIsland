@@ -94,7 +94,8 @@ class BuyOrderUI extends BaseUI{
 			"amount" => $amount,
 			"filled" => 0,
 			"itemID" => $this->itemid,
-			"time" => time()
+			"time" => time(),
+			"isfilled" => false
 		]);
 		EconomyAPI::getInstance()->reduceMoney($player, $amount * $price);
 
