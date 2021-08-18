@@ -54,6 +54,7 @@ class SellOrderManagerUI{
 					$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
 					return;
 				}
+				$player->getInventory()->addItem($item);
 				EconomyAPI::getInstance()->addMoney($player, $order->getFilled() * $order->getPrice());
 				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REMOVE_SELL, ["id" => $order->getId()]);
 

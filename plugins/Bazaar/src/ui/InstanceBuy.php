@@ -99,6 +99,12 @@ class InstanceBuy extends BaseUI{
 					"filled" => $order->getFilled() + $count
 				]);
 				$total += $count * $order->getPrice();
+				if ($count == $item_left){
+					$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
+						"id" => $order->getId(),
+						"isfilled" => true
+					]);
+				}
 				break;
 			} else {
 				$count -= $item_left;
