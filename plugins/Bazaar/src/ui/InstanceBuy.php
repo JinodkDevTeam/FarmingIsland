@@ -107,7 +107,10 @@ class InstanceBuy extends BaseUI{
 					"id" => $order->getId(),
 					"filled" => $order->getFilled() + $item_left
 				]);
-				//TODO: Update ISFILLED = TRUE
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
+					"id" => $order->getId(),
+					"isfilled" => true
+				]);
 			}
 		}
 		$item = ItemUtils::toItem($this->itemid);

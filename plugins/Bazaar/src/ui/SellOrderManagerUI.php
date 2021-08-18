@@ -68,6 +68,8 @@ class SellOrderManagerUI{
 			" - " . $order->getAmount() - $order->getFilled() . " " . ItemUtils::toName($order->getItemID())
 		];
 		$form->setContent(implode("\n", $content));
+		$form->setButton1("YES");
+		$form->setButton2("NO");
 
 		$player->sendForm($form);
 	}

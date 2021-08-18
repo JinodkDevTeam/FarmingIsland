@@ -143,12 +143,22 @@ SELECT * FROM SellOrder WHERE (ItemID = :itemid) AND (IsFilled = false) ORDER BY
 -- #                :filled int
 UPDATE BuyOrder SET Filled = :filled WHERE Id = :id;
 -- #            }
+-- #            { isfilled
+-- #                :id int
+-- #                :isfilled bool
+UPDATE BuyOrder SET IsFilled = :isfilled WHERE Id = :id;
+-- #            }
 -- #        }
 -- #        { sell
 -- #            { filled
 -- #                :id int
 -- #                :filled int
 UPDATE SellOrder SET Filled = :filled WHERE Id = :id;
+-- #            }
+-- #            { isfilled
+-- #                :id int
+-- #                :isfilled bool
+UPDATE SellOrder SET IsFilled = :isfilled WHERE Id = :id;
 -- #            }
 -- #        }
 -- #    }
