@@ -25,8 +25,9 @@ class SellOrderManagerUI{
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ID, ["id" => $order_id]);
 			if (empty($data)) return;
 			$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
-			$form = new SimpleForm(function(Player $player, ?int $data){
-				//TODO: Implement Manager.
+			$form = new SimpleForm(function(Player $player, ?int $data) use ($order){
+				if (!isset($data)) return;
+				if ($data == 0) $this->cancel($player, $order);
 			});
 			$form->setTitle("Sell Order Manager");
 			$msg = [
