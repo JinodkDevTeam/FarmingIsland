@@ -20,7 +20,7 @@ class MyOrderUI extends BaseUI{
 
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($buy_data, $sell_data){
 				if (!isset($data)) return;
-				if ($data > count($buy_data)){
+				if ($data > (count($buy_data) - 1)){
 					new SellOrderManagerUI($player, (int)$sell_data[$data - count($buy_data)]["Id"]);
 					return;
 				}

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
+use Bazaar\utils\ItemUtils;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use jojoe77777\FormAPI\SimpleForm;
@@ -40,10 +41,10 @@ class ItemUI extends BaseUI{
 				if (!isset($data)) return;
 				switch($data){
 					case 0:
-						//TODO: Instance buy
+						new InstanceBuy($player, $this->itemid);
 						break;
 					case 1:
-						//TODO: Instance sell
+						new InstanceSell($player, $this->itemid);
 						break;
 					case 2:
 						new BuyOrderUI($player, $this->itemid);
@@ -53,6 +54,7 @@ class ItemUI extends BaseUI{
 				}
 			});
 			$form->setTitle("ItemUI");
+			$form->setContent("Item: " . ItemUtils::toName($this->itemid));
 			$form->addButton("Instance buy" . "\n" . "Price: " . $top_sell_price);
 			$form->addButton("Instance sell" . "\n" . "Price: " . $top_buy_price);
 			$form->addButton("Create buy order");

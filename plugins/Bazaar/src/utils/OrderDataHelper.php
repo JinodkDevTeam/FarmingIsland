@@ -53,7 +53,7 @@ class OrderDataHelper{
 	public static function fromSqlQueryData(array $data, int $mode): SellOrder|BuyOrder{
 		if ($mode == self::BUY){
 			return new BuyOrder(
-				(int)$data["id"],
+				-1,
 				(string)$data["player"],
 				(int)$data["itemID"],
 				(int)$data["amount"],
@@ -64,7 +64,7 @@ class OrderDataHelper{
 			);
 		}
 		return new SellOrder(
-			(int)$data["id"],
+			-1,
 			(string)$data["player"],
 			(int)$data["itemID"],
 			(int)$data["amount"],
