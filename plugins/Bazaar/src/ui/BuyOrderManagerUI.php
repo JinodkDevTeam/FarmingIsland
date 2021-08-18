@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\Bazaar;
+use Bazaar\order\BuyOrder;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\ItemUtils;
+use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SOFe\AwaitGenerator\Await;
@@ -22,8 +25,9 @@ class BuyOrderManagerUI{
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ID, ["id" => $order_id]);
 			if (empty($data)) return;
 			$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
-			$form = new SimpleForm(function(Player $player, ?int $data){
-				//TODO: Implement Manager.
+			$form = new SimpleForm(function(Player $player, ?int $data) use ($order){
+				if (!isset($data)) return;
+				if ($data == 0) $this->cancel($player, $order);
 			});
 			$form->setTitle("Buy Order Manager");
 			$msg = [
@@ -35,9 +39,38 @@ class BuyOrderManagerUI{
 				"Filled: " . $order->getFilled(),
 			];
 			$form->setContent(implode("\n", $msg));
-			$form->addButton("Claim items and remove order !");
+			$form->addButton("Cancel order !");
 			$player->sendForm($form);
 		});
+	}
+
+	public function cancel(Player $player, BuyOrder $order): void{
+		$form = new ModalForm(function(Player $player, $data) use ($order){
+			if (!isset($data)) return;
+			if ($data == true){
+				$item = ItemUtils::toItem($order->getItemID());
+				$item->setCount($order->getFilled());
+				if (!$player->getInventory()->canAddItem($item)){
+					$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
+					return;
+				}
+				EconomyAPI::getInstance()->addMoney($player, ($order->getPrice() * $order->getAmount()) - ($order->getPrice() * $order->getFilled()));
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REMOVE_BUY, ["id" => $order->getId()]);
+
+				$player->sendMessage("Order cancelled !");
+			}
+		});
+
+		$form->setTitle("Confirm !");
+		$content = [
+			"Cancel this order ???",
+			"You will gain:",
+			" - " . ($order->getPrice() * $order->getAmount()) - ($order->getPrice() * $order->getFilled()) . " coins",
+			" - " . $order->getFilled() . " " . ItemUtils::toName($order->getItemID())
+		];
+		$form->setContent(implode("\n", $content));
+
+		$player->sendForm($form);
 	}
 
 	public function getBazaar(): ?Bazaar{
@@ -47,4 +80,6 @@ class BuyOrderManagerUI{
 		}
 		return null;
 	}
+
+
 }

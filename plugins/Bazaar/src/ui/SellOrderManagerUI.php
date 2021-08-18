@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\Bazaar;
+use Bazaar\order\SellOrder;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\ItemUtils;
+use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SOFe\AwaitGenerator\Await;
@@ -38,6 +41,35 @@ class SellOrderManagerUI{
 			$form->addButton("Claim money and remove order !");
 			$player->sendForm($form);
 		});
+	}
+
+	public function cancel(Player $player, SellOrder $order): void{
+		$form = new ModalForm(function(Player $player, $data) use ($order){
+			if (!isset($data)) return;
+			if ($data == true){
+				$item = ItemUtils::toItem($order->getItemID());
+				$item->setCount($order->getAmount() - $order->getFilled());
+				if (!$player->getInventory()->canAddItem($item)){
+					$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
+					return;
+				}
+				EconomyAPI::getInstance()->addMoney($player, $order->getFilled() * $order->getPrice());
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REMOVE_SELL, ["id" => $order->getId()]);
+
+				$player->sendMessage("Order cancelled !");
+			}
+		});
+
+		$form->setTitle("Confirm !");
+		$content = [
+			"Cancel this order ???",
+			"You will gain:",
+			" - " . $order->getFilled() * $order->getPrice() . " coins",
+			" - " . $order->getAmount() - $order->getFilled() . " " . ItemUtils::toName($order->getItemID())
+		];
+		$form->setContent(implode("\n", $content));
+
+		$player->sendForm($form);
 	}
 
 	public function getBazaar(): ?Bazaar{
