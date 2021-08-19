@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
 use RuntimeException;
 
@@ -61,30 +63,32 @@ class CustomItemFactory{
 	}
 
 	public function __construct(){
+		$i = ItemFactory::getInstance();
 		//Register custom items
-		$this->register(new EnchantedCobblestone(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COBBLESTONE), "Enchanted Cobblestone", RarityType::COMMON));
-		$this->register(new EnchantedCoal(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL), "Enchanted Coal", RarityType::COMMON));
-		$this->register(new EnchantedCoalBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL_BLOCK), "Enchanted Coal Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedIronIngot(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_INGOT), "Enchanted Iron Ingot", RarityType::COMMON));
-		$this->register(new EnchantedIronBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_BLOCK), "Enchanted Iron Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedGoldIngot(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_INGOT), "Enchanted Gold Ingot", RarityType::COMMON));
-		$this->register(new EnchantedGoldBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_BLOCK), "Enchanted Gold Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedLapis(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS), "Enchanted Lapis Lazuli", RarityType::COMMON));
-		$this->register(new EnchantedLapisBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS_BLOCK), "Enchanted Lapis Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedRedstone(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE), "Enchanted Redstone Dust", RarityType::COMMON));
-		$this->register(new EnchantedRedstoneBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE_BLOCK), "Enchanted Redstone Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedEmerald(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD), "Enchanted Emerald", RarityType::COMMON));
-		$this->register(new EnchantedEmeraldBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD_BLOCK), "Enchanted Emerald Block", RarityType::UNCOMMON));
-		$this->register(new EnchantedDiamond(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND), "Enchanted Diamond", RarityType::COMMON));
-		$this->register(new EnchantedDiamondBlock(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND_BLOCK), "Enchanted Diamond Block", RarityType::UNCOMMON));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COBBLESTONE), "Enchanted Cobblestone", RarityType::COMMON, $i->get(ItemIds::COBBLESTONE)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL), "Enchanted Coal", RarityType::COMMON, VanillaItems::COAL()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL_BLOCK), "Enchanted Coal Block", RarityType::UNCOMMON, $i->get(ItemIds::COAL_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_INGOT), "Enchanted Iron Ingot", RarityType::COMMON, VanillaItems::IRON_INGOT()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_IRON_BLOCK), "Enchanted Iron Block", RarityType::UNCOMMON, $i->get(ItemIds::IRON_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_INGOT), "Enchanted Gold Ingot", RarityType::COMMON, VanillaItems::GOLD_INGOT()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GOLD_BLOCK), "Enchanted Gold Block", RarityType::UNCOMMON, $i->get(ItemIds::GOLD_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS), "Enchanted Lapis Lazuli", RarityType::COMMON, VanillaItems::LAPIS_LAZULI()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_LAPIS_BLOCK), "Enchanted Lapis Block", RarityType::UNCOMMON, $i->get(ItemIds::LAPIS_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE), "Enchanted Redstone Dust", RarityType::COMMON, VanillaItems::REDSTONE_DUST()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_REDSTONE_BLOCK), "Enchanted Redstone Block", RarityType::UNCOMMON, $i->get(ItemIds::REDSTONE_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD), "Enchanted Emerald", RarityType::COMMON, VanillaItems::EMERALD()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_EMERALD_BLOCK), "Enchanted Emerald Block", RarityType::UNCOMMON, $i->get(ItemIds::EMERALD_BLOCK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND), "Enchanted Diamond", RarityType::COMMON, VanillaItems::DIAMOND()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_DIAMOND_BLOCK), "Enchanted Diamond Block", RarityType::UNCOMMON, $i->get(ItemIds::DIAMOND_BLOCK)));
 
-		$this->register(new EnchantedFlint(new CustomItemIdentifier(CustomItemIds::ENCHANTED_FLINT), "Enchanted Flint", RarityType::COMMON));
-		$this->register(new EnchantedSand(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SAND), "Enchanted Sand", RarityType::COMMON));
-		$this->register(new EnchantedClay(new CustomItemIdentifier(CustomItemIds::ENCHANTED_CLAY), "Enchanted Clay", RarityType::COMMON));
-		$this->register(new EnchantedSnow(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SNOW), "Enchanted Snow", RarityType::COMMON));
-		$this->register(new EnchantedIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_ICE), "Enchanted Ice", RarityType::COMMON));
-		$this->register(new EnchantedPackedIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_PACKED_ICE), "Enchanted Packed Ice", RarityType::UNCOMMON));
-		$this->register(new EnchantedBlueIce(new CustomItemIdentifier(CustomItemIds::ENCHANTED_BLUE_ICE), "Enchanted Blue Ice", RarityType::RARE));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_FLINT), "Enchanted Flint", RarityType::COMMON, VanillaItems::FLINT()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SAND), "Enchanted Sand", RarityType::COMMON, $i->get(ItemIds::SAND)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_CLAY), "Enchanted Clay", RarityType::COMMON, VanillaItems::CLAY()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SNOW), "Enchanted Snow", RarityType::COMMON, $i->get(ItemIds::SNOW)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_ICE), "Enchanted Ice", RarityType::COMMON, $i->get(ItemIds::ICE)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_PACKED_ICE), "Enchanted Packed Ice", RarityType::UNCOMMON, $i->get(ItemIds::PACKED_ICE)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_BLUE_ICE), "Enchanted Blue Ice", RarityType::RARE, $i->get(ItemIds::BLUE_ICE)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GLOWSTONE_DUST), "Enchanted Glowstone Dust", RarityType::COMMON, VanillaItems::GLOWSTONE_DUST()));
 
 		$this->register(new RefinedDiamond(new CustomItemIdentifier(CustomItemIds::REFINED_DIAMOND), "Refined Diamond", RarityType::RARE));
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));

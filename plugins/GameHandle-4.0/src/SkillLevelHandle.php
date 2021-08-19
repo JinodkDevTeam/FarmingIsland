@@ -45,8 +45,6 @@ class SkillLevelHandle
 			BlockLegacyIds::POTATO_BLOCK => 1,
 			BlockLegacyIds::BEETROOT_BLOCK => 1,
 			BlockLegacyIds::NETHER_WART_PLANT => 1,
-			BlockLegacyIds::MELON_BLOCK => 2,
-			BlockLegacyIds::PUMPKIN => 2
 		];
 		//FOR INTERACT CROPS
 		$this->farming2 = [
@@ -57,6 +55,8 @@ class SkillLevelHandle
 			BlockLegacyIds::CACTUS => 1,
 			BlockLegacyIds::SUGARCANE_BLOCK => 1,
 			BlockLegacyIds::BAMBOO => 1,
+			BlockLegacyIds::MELON_BLOCK => 2,
+			BlockLegacyIds::PUMPKIN => 2
 		];
 
 		$this->foraging = [
