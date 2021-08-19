@@ -96,9 +96,15 @@ class EventListener implements Listener
         $event->setRespawnPosition($pos);
     }
 
+	/**
+	 * @param PlayerInteractEvent $event
+	 * @priority MONITOR
+	 * @handleCancelled FALSE
+	 */
     public function onInteract(PlayerInteractEvent $event)
     {
         $this->menu->onTap($event);
+        $this->slevel->onInteract($event);
     }
 
     public function onFish(PlayerFishEvent $event)

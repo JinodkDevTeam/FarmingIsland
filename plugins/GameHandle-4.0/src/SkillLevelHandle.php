@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle;
 
 use pocketmine\block\BlockLegacyIds;
+use pocketmine\block\Crops;
 use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\SkillLevel;
@@ -14,6 +16,7 @@ class SkillLevelHandle
 	private array $mining;
 	private array $farming;
 	private array $farming2;
+	private array $farming3;
 	private array $foraging;
 
 
@@ -41,11 +44,19 @@ class SkillLevelHandle
 			BlockLegacyIds::CARROT_BLOCK => 1,
 			BlockLegacyIds::POTATO_BLOCK => 1,
 			BlockLegacyIds::BEETROOT_BLOCK => 1,
-			BlockLegacyIds::CACTUS => 2,
+			BlockLegacyIds::NETHER_WART_PLANT => 1,
+			BlockLegacyIds::MELON_BLOCK => 2,
+			BlockLegacyIds::PUMPKIN => 2
 		];
 		//FOR INTERACT CROPS
 		$this->farming2 = [
-			BlockLegacyIds::SWEET_BERRY_BUSH => 1
+			BlockLegacyIds::SWEET_BERRY_BUSH => 2
+		];
+		//FOR SPECIAL BREAK CROPS
+		$this->farming3 = [
+			BlockLegacyIds::CACTUS => 1,
+			BlockLegacyIds::SUGARCANE_BLOCK => 1,
+			BlockLegacyIds::BAMBOO => 1,
 		];
 
 		$this->foraging = [
@@ -74,20 +85,54 @@ class SkillLevelHandle
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 
+		//MINING
 		if (in_array($block->getId(), array_keys($this->mining)))
 		{
 			$amount = $this->mining[$block->getId()];
 			$this->addXp($player, SkillLevel::MINING, $amount);
 		}
+		//FORAGING
 		if (in_array($block->getId(), array_keys($this->foraging)))
 		{
 			$amount = $this->foraging[$block->getId()];
 			$this->addXp($player, SkillLevel::FORAGING, $amount);
 		}
+		//FARMING TYPE 1
+		if (in_array($block->getId(), array_keys($this->farming)))
+		{
+			if ($block->getMeta() == 8) //FULL GROW
+			{
+				$amount = $this->farming[$block->getId()];
+				$this->addXp($player, SkillLevel::FARMING, $amount);
+			}
+		}
+		//FARMING TYPE 2
+		if (in_array($block->getId(), array_keys($this->farming3)))
+		{
+			$amount = $this->farming3[$block->getId()];
+			$this->addXp($player, SkillLevel::FARMING, $amount);
+		}
 	}
-	//TODO: Farming
+
+	public function onInteract(PlayerInteractEvent $event)
+	{
+		$player = $event->getPlayer();
+		$block = $event->getBlock();
+		$action = $event->getAction();
+		if ($action == PlayerInteractEvent::LEFT_CLICK_BLOCK) return;
+		//FARMING TYPE 2
+		if (in_array($block->getId(), array_keys($this->farming2)))
+		{
+			if ($block instanceof Crops){
+				if ($block->getAge() >= 2)
+				{
+					$amount = $this->farming2[$block->getId()];
+					$this->addXp($player, SkillLevel::FARMING, $amount);
+				}
+			}
+		}
+	}
 	//TODO: Fishing
-	//TODO: Farming2
 
 	public function addXp(Player $player, int $skill_code, int $amount)
 	{
