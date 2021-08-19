@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use pocketmine\item\Item;
-use pocketmine\item\VanillaItems;
 
 class EnchantedItem extends CustomItem{
 
