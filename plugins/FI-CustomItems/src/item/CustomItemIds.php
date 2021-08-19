@@ -63,7 +63,7 @@ final class CustomItemIds{
 
 	//Foraging Stuff
 	public const ENCHANTED_OAK_WOOD = 2050;
-	public const ENCHANTED_BRICH_WOOD = 2051;
+	public const ENCHANTED_BIRCH_WOOD = 2051;
 	public const ENCHANTED_SPRUCE_WOOD = 2052;
 	public const ENCHANTED_JUNGLE_WOOD = 2053;
 	public const ENCHANTED_ACIA_WOOD = 2054;
