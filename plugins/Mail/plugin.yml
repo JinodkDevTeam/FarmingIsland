@@ -8,5 +8,6 @@ virion:
   - libasynql
   - await-generator
   - FI-Utils
+  - InvMenu
 depend:
   - FI-CustomItems

@@ -11,7 +11,7 @@ use SOFe\AwaitGenerator\Await;
 class SqliteProvider{
 
 	private DataConnector $db;
-	private Mail $mail;
+	private Loader $loader;
 
 	public const INIT = "mail.init";
 	public const REGISTER = "mail.register";
@@ -23,16 +23,16 @@ class SqliteProvider{
 	public const UPDATE_ISREAD = "mail.update.isread";
 	public const UPDATE_ISCLAIMED = "mail.update.isclaimed";
 
-	public function __construct(Mail $mail){
-		$this->mail = $mail;
+	public function __construct(Loader $loader){
+		$this->loader = $loader;
 	}
 
-	private function getMail(): Mail{
-		return $this->mail;
+	private function getLoader(): Loader{
+		return $this->loader;
 	}
 
 	public function init(): void{
-		$this->db = libasynql::create($this->getMail(), $this->getMail()->getConfig()->get("database"), [
+		$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
 			"sqlite" => "sqlite.sql"
 		]);
 
@@ -84,6 +84,15 @@ class SqliteProvider{
 		]);
 	}
 
-
+	public function register(Mail $mail): void{
+		$this->db->executeChange(self::REGISTER, [
+			"from" => $mail->getFrom(),
+			"to" => $mail->getTo(),
+			"title" => $mail->getTitle(),
+			"msg" => $mail->getMsg(),
+			"items" => $mail->getItems(),
+			"time" => time()
+		]);
+	}
 
 }
