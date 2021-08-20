@@ -1,0 +1,12 @@
+name: Mail
+main: Mail\Mail
+src-namespace-prefix: Mail
+api: 4.0.0
+version: 0.1
+author: JinodkDevTeam|NgLamVN
+virion:
+  - libasynql
+  - await-generator
+  - FI-Utils
+depend:
+  - FI-CustomItems

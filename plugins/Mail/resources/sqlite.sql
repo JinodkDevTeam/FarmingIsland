@@ -1,0 +1,72 @@
+-- #! sqlite
+-- #{ mail
+-- #    { init
+CREATE TABLE IF NOT EXISTS Mail(
+    Id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    FromName VARCHAR NOT NULL,
+    ToName VARCHAR NOT NULL,
+    Title TEXT NOT NULL,
+    Msg TEXT,
+    Items BLOB,
+    Time INTEGER,
+    IsRead BOOLEAN NOT NULL DEFAULT FALSE,
+    IsClaimed BOOLEAN NOT NULL DEFAULT FALSE
+);
+-- #    }
+-- #    { register
+-- #        :from string
+-- #        :to string
+-- #        :title string
+-- #        :msg string
+-- #        :items string
+-- #        :time int
+INSERT OR REPLACE INTO Mail (
+    FromName,
+    ToName,
+    Title,
+    Msg,
+    Items,
+    Time
+) VALUES (
+    :from,
+    :to,
+    :title,
+    :msg,
+    :items,
+    :time
+);
+-- #    }
+-- #    { remove
+-- #        :id int
+DELETE FROM Mail WHERE Id = :id;
+-- #    }
+-- #    { select
+-- #        { all
+SELECT * FROM Mail;
+-- #        }
+-- #        { from
+-- #            :name string
+SELECT * FROM Mail WHERE FromName = :name;
+-- #        }
+-- #        { to
+-- #            :name string
+SELECT * FROM Mail WHERE ToName = :name;
+-- #        }
+-- #        { id
+-- #            :id int
+SELECT * FROM Mail WHERE Id = :id;
+-- #        }
+-- #    }
+-- #    { update
+-- #        { isread
+-- #            :id int
+-- #            :isread bool
+UPDATE Mail SET IsRead = :isread WHERE Id = :id;
+-- #        }
+-- #        { isclaimed
+-- #            :id int
+-- #            :isclaimed bool
+UPDATE Mail SET IsRead = :isclaimed WHERE Id = :id;
+-- #        }
+-- #    }
+-- #}
