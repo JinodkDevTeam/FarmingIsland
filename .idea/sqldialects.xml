@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/plugins/Bank/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Bazaar/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FI-SkillLevel/resources/sqlite.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/plugins/Mail/resources/sqlite.sql" dialect="SQLite" />
   </component>
 </project>

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
 use jojoe77777\FormAPI\SimpleForm;
@@ -53,7 +53,7 @@ class ItemUI extends BaseUI{
 						new SellOrderUI($player, $this->itemid);
 				}
 			});
-			$form->setTitle("ItemUI");
+			$form->setTitle(ItemUtils::toName($this->itemid));
 			$form->setContent("Item: " . ItemUtils::toName($this->itemid));
 			$form->addButton("Instance buy" . "\n" . "Price: " . $top_sell_price);
 			$form->addButton("Instance sell" . "\n" . "Price: " . $top_buy_price);

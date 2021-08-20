@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Bazaar\utils;
+namespace JinodkDevTeam\utils;
 
 use CustomItems\item\CustomItemFactory;
 use pocketmine\inventory\Inventory;
@@ -105,5 +105,13 @@ class ItemUtils{
 			}
 		}
 		return $itemSlots;
+	}
+
+	public static function toString(Item $item): string{
+		return utf8_encode(serialize($item));
+	}
+
+	public static function fromString(string $string): Item{
+		return unserialize(utf8_decode($string));
 	}
 }

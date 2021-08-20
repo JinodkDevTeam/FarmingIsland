@@ -6,7 +6,7 @@ namespace Bazaar\ui;
 use Bazaar\data\AvailableItemsIds;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
@@ -43,7 +43,7 @@ class ShopUI extends BaseUI{
 
 				$form->addButton(ItemUtils::toName($id) . "\n" . "Buy: " . $sell . " Sell: " . $buy);
 			}
-			$form->setTitle("BazaarUI");
+			$form->setTitle("Bazaar Shop");
 			$player->sendForm($form);
 		});
 	}

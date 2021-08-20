@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\provider\SqliteProvider;
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use Bazaar\utils\OrderDataHelper;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;

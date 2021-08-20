@@ -7,7 +7,7 @@ use Bazaar\Bazaar;
 use Bazaar\order\SellOrder;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;

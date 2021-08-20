@@ -6,7 +6,7 @@ namespace Bazaar\ui;
 use Bazaar\event\PlayerCreateOrderEvent;
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
 use pocketmine\player\Player;

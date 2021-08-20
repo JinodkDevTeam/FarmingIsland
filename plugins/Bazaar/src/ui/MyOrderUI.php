@@ -5,7 +5,7 @@ namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
-use Bazaar\utils\ItemUtils;
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
