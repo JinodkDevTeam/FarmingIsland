@@ -4,13 +4,12 @@ declare(strict_types=1);
 namespace SkillLevel;
 
 use pocketmine\player\Player;
-use pocketmine\Server;
 use SkillLevel\event\PlayerUpdateExpEvent;
 
 class PlayerSkillLevel{
-	private Player $player;
+	protected Player $player;
 	/** @var int[] */
-	private array $data;
+	protected array $data;
 
 	public const MAX_EXP = [
 		0,
@@ -87,7 +86,6 @@ class PlayerSkillLevel{
 
 	public function setData(array $data) : void{
 		$this->data = $data;
-		$this->update();
 	}
 
 	public function getPlayer() : Player{
@@ -104,7 +102,6 @@ class PlayerSkillLevel{
 
 	public function setSkillLevel(int $skill_code, int $level) : void{
 		$this->data[$this->IDLevelParser($skill_code)] = $level;
-		$this->update();
 	}
 
 	public function setSkillExp(int $skill_code, int $exp) : void{
@@ -114,7 +111,6 @@ class PlayerSkillLevel{
 			return;
 		}
 		$this->data[$this->IDExpParser($skill_code)] = $exp;
-		$this->update();
 	}
 
 	public function addSkillExp(int $skill_code, int $exp) : void{
@@ -159,15 +155,6 @@ class PlayerSkillLevel{
 			SkillLevel::FORAGING => "ForagingExp",
 			default => "",
 		};
-	}
-
-	public function update()
-	{
-		$plugin = Server::getInstance()->getPluginManager()->getPlugin("FI-SKillLevel");
-		if ($plugin instanceof SkillLevel)
-		{
-			$plugin->getPlayerSkillLevelManager()->registerPlayer($this->getPlayer(), $this->getData());
-		}
 	}
 
 }
