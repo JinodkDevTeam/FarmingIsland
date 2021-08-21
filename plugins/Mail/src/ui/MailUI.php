@@ -15,6 +15,12 @@ class MailUI extends BaseUI{
 				case 0:
 					new CreateMailUI($this->getLoader(), $player);
 					break;
+				case 1:
+					new SendedMailsUI($this->getLoader(), $player);
+					break;
+				case 2:
+					new MyMailsUI($this->getLoader(), $player);
+					break;
 			}
 		});
 		$form->setTitle("Mail");

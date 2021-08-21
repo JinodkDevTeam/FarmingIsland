@@ -15,7 +15,7 @@ class Mail{
 	protected bool $isread = false;
 	protected bool $isclaimed = false;
 
-	public function fromArray(array $data): Mail{
+	public static function fromArray(array $data): Mail{
 		return new Mail(
 			$data["Id"],
 			$data["FromName"],
@@ -90,7 +90,7 @@ class Mail{
 		return $this->isread;
 	}
 
-	public function setReach(bool $value): void{
+	public function setRead(bool $value): void{
 		$this->isread = $value;
 	}
 

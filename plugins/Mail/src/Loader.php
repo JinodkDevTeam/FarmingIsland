@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Mail;
 
+use Mail\command\MailCommand;
 use muqsit\invmenu\InvMenuHandler;
 use pocketmine\plugin\PluginBase;
 
@@ -17,6 +18,8 @@ class Loader extends PluginBase{
 		if(!InvMenuHandler::isRegistered()){
 			InvMenuHandler::register($this);
 		}
+
+		$this->getServer()->getCommandMap()->register("mail", new MailCommand($this));
 	}
 
 	public function onDisable() : void{

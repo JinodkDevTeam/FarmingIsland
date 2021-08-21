@@ -43,16 +43,15 @@ class CreateMailUI extends BaseUI{
 	public function AttachItems(Player $player, string $to, string $title, string $message): void{
 		$menu = InvMenu::create(InvMenuTypeIds::TYPE_CHEST);
 		$menu->setName("Attach Items");
-		$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory) use ($menu, $to, $title, $message){
+		$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory) use ($to, $title, $message){
 			$items = [];
-			foreach($menu->getInventory()->getContents() as $item){
+			foreach($inventory->getContents() as $item){
 				array_push($items, $item);
 			}
 			$data = utf8_encode(serialize($items));
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 		});
-
 		$menu->send($player);
 	}
 
