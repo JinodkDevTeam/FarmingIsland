@@ -4,10 +4,11 @@ declare(strict_types=1);
 namespace ShootItem;
 
 use pocketmine\entity\object\ItemEntity;
-use pocketmine\event\inventory\InventoryPickupItemEvent;
+use pocketmine\event\entity\EntityItemPickupEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\ItemIds;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 
@@ -51,24 +52,22 @@ class ShootItem extends PluginBase implements Listener
 	}
 
 	/**
-	 * @param InventoryPickupItemEvent $event
+	 * @param EntityItemPickupEvent $event
 	 * @priority LOWEST
 	 * @handleCancelled false
 	 */
-	public function onPickup(InventoryPickupItemEvent $event)
+	public function onPickup(EntityItemPickupEvent $event)
 	{
-		$viewers = $event->getViewers();
-		foreach($viewers as $viewer)
-		{
-			if(!isset($this->pickup[$viewer->getName()])) continue;
-			if(!$this->pickup[$viewer->getName()]){
-				$event->cancel();
-			}
+		$viewer = $event->getEntity();
+		if (!$viewer instanceof Player) return;
+		if(!isset($this->pickup[$viewer->getName()])) return;
+		if(!$this->pickup[$viewer->getName()]){
+			$event->cancel();
 		}
 	}
 
-	/*public function onEnable() : void
+	public function onEnable() : void
 	{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	}*/
+	}
 }
