@@ -21,7 +21,7 @@ use Exception;
 class Core extends PluginBase
 {
 	public const VERSION = "0.1-indev";
-	public const BUILD_NUMBER = "2";
+	public const BUILD_NUMBER = "3";
 	public const INDEV = true;
 
 	use SingletonTrait;
