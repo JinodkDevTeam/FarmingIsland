@@ -16,15 +16,16 @@ class MailCommand extends Command implements PluginOwned{
 	protected Loader $loader;
 
 	public function __construct(Loader $loader){
-		$this->loader =$loader;
+		$this->loader = $loader;
 		parent::__construct("mail", "Mail system", null, []);
+		$this->setPermission("mail.command");
 	}
 
 	public function getLoader(): Loader{
 		return $this->loader;
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function execute(CommandSender $sender, string $commandLabel, array $args): void{
 		if ($sender instanceof Player){
 			new MailUI($this->getLoader(), $sender);
 			return;

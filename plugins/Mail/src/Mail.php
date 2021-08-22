@@ -17,15 +17,15 @@ class Mail{
 
 	public static function fromArray(array $data): Mail{
 		return new Mail(
-			$data["Id"],
-			$data["FromName"],
-			$data["ToName"],
-			$data["Title"],
-			$data["Msg"],
-			$data["Items"],
-			$data["Time"],
-			$data["IsRead"],
-			$data["IsClaimed"]
+			(int)$data["Id"],
+			(string)$data["FromName"],
+			(string)$data["ToName"],
+			(string)$data["Title"],
+			(string)$data["Msg"],
+			(string)$data["Items"],
+			(int)$data["Time"],
+			(bool)$data["IsRead"],
+			(bool)$data["IsClaimed"]
 		);
 	}
 

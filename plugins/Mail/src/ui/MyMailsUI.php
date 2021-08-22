@@ -14,7 +14,7 @@ class MyMailsUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			$mails_data = yield $this->getLoader()->getProvider()->selectTo($player->getName());
 			if (empty($mails_data)){
-				$player->sendMessage("You dont have any sended mails");
+				$player->sendMessage("You dont have any mails");
 				return;
 			}
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mails_data){
@@ -30,6 +30,7 @@ class MyMailsUI extends BaseUI{
 					$form->addButton($mail->getTitle() . "\n[New]From: " . $mail->getFrom());
 				}
 			}
+			$form->setTitle("My mails");
 
 			$player->sendForm($form);
 		});

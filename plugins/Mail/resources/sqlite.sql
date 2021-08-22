@@ -66,7 +66,7 @@ UPDATE Mail SET IsRead = :isread WHERE Id = :id;
 -- #        { isclaimed
 -- #            :id int
 -- #            :isclaimed bool
-UPDATE Mail SET IsRead = :isclaimed WHERE Id = :id;
+UPDATE Mail SET IsClaimed = :isclaimed WHERE Id = :id;
 -- #        }
 -- #    }
 -- #}

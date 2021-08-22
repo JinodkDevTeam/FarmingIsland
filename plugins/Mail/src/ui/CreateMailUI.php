@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Mail\ui;
 
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
 use Mail\Mail;
 use muqsit\invmenu\InvMenu;
@@ -48,7 +49,7 @@ class CreateMailUI extends BaseUI{
 			foreach($inventory->getContents() as $item){
 				array_push($items, $item);
 			}
-			$data = utf8_encode(serialize($items));
+			$data = ItemUtils::MailItemsEncode($items);
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 		});

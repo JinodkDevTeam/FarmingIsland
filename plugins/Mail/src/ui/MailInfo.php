@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Mail\ui;
 
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use Mail\Loader;
 use Mail\Mail;
-use pocketmine\item\Item;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
 
@@ -29,19 +29,20 @@ class MailInfo extends BaseUI{
 			$select = yield $this->getLoader()->getProvider()->selectId($this->mail_id);
 			if (empty($select)) return;
 			$mail = Mail::fromArray($select[0]);
-			$this->getLoader()->getProvider()->updateIsRead($mail->getId(), true);
-			/** @var Item[] $items */
-			$items = unserialize(utf8_decode($mail->getItems()));
+			if ($this->mode == self::TO){
+				$this->getLoader()->getProvider()->updateIsRead($mail->getId(), true);
+			}
+			$items = ItemUtils::MailItemsDecode($mail->getItems());
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
 				if (!isset($data)) return;
-				if ($data == 1) $this->claimItems($player, $mail);
+				if ($data == 0) $this->claimItems($player, $mail);
 			});
 			$form->setTitle("Mail Info");
 			$content = [
-				"Mail ID" . $mail->getId(),
+				"Mail ID: " . $mail->getId(),
 				"From: " . $mail->getFrom(),
 				"To: " . $mail->getTo(),
-				"Title: ." . $mail->getTitle(),
+				"Title: " . $mail->getTitle(),
 				"Message:",
 				$mail->getMsg(),
 				"Attachment:"
@@ -64,13 +65,13 @@ class MailInfo extends BaseUI{
 	public function claimItems(Player $player, Mail $mail): void{
 		if ($this->mode == self::FROM){
 			$player->sendMessage("You can't claim items from this mail because you have sended it to another player !");
+			return;
 		}
 		if ($mail->isClaimed()){
 			$player->sendMessage("You already claim items from this mail !");
 			return;
 		}
-		/** @var Item[] $items */
-		$items = unserialize(utf8_decode($mail->getItems()));
+		$items = ItemUtils::MailItemsDecode($mail->getItems());
 		$empty = $player->getInventory()->getSize() - count($player->getInventory()->getContents());
 		if ($empty > count($items)){
 			foreach($items as $item){

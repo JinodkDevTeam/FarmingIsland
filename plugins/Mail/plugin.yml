@@ -1,5 +1,5 @@
 name: Mail
-main: Mail\Mail
+main: Mail\Loader
 src-namespace-prefix: Mail
 api: 4.0.0
 version: 0.1
@@ -11,3 +11,7 @@ virion:
   - InvMenu
 depend:
   - FI-CustomItems
+
+permissions:
+  mail.command:
+    default: true

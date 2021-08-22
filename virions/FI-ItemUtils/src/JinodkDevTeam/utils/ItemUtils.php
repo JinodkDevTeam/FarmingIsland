@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace JinodkDevTeam\utils;
 
 use CustomItems\item\CustomItemFactory;
+use Exception;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -108,10 +109,68 @@ class ItemUtils{
 	}
 
 	public static function toString(Item $item): string{
-		return utf8_encode(serialize($item));
+		$nbt = $item->nbtSerialize();
+		return utf8_encode(serialize($nbt));
 	}
 
-	public static function fromString(string $string): Item{
-		return unserialize(utf8_decode($string));
+	public static function fromString(string $string): ?Item{
+		try{
+			return Item::nbtDeserialize(unserialize(utf8_decode($string)));
+		}catch(Exception){
+			return null;
+		}
+	}
+
+	/**
+	 * @param Item[] $items
+	 *
+	 * @return string[]
+	 */
+	public static function ItemArraytoStringArray(array $items): array{
+		$data = [];
+		foreach($items as $item){
+			array_push($data, self::toString($item));
+		}
+		return $data;
+	}
+
+	/**
+	 * @param string[] $data
+	 *
+	 * @return Item[]
+	 */
+	public static function StringArrayToItemArray(array $data): array{
+		$items = [];
+		foreach($data as $d){
+			array_push($items, self::fromString($d));
+		}
+		return $items;
+	}
+
+	/**
+	 * @param Item[] $items
+	 *
+	 * @return string
+	 */
+	public static function MailItemsEncode(array $items): string{
+		$data = [];
+		foreach($items as $item){
+			array_push($data, $item->nbtSerialize());
+		}
+		return utf8_encode(serialize($data));
+	}
+
+	/**
+	 * @param string $data
+	 *
+	 * @return Item[]
+	 */
+	public static function MailItemsDecode(string $data): array{
+		$array = unserialize(utf8_decode($data));
+		$items = [];
+		foreach($array as $nbt){
+			array_push($items, Item::nbtDeserialize($nbt));
+		}
+		return $items;
 	}
 }
