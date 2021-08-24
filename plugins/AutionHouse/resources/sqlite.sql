@@ -44,4 +44,52 @@ INSERT OR REPLACE INTO Aution(Player, Item, Price, Time) VALUES (:player, :item,
 INSERT OR REPLACE INTO Bid(Player, Price, Id) VALUES (:player, :price, :id);
 -- #        }
 -- #    }
+-- #    { update
+-- #        { aution
+-- #            { expired
+-- #                :id int
+-- #                :expired bool
+UPDATE Aution SET Expired = :expired WHERE Id = :id;
+-- #            }
+-- #        }
+-- #        { bid
+-- #            { price
+-- #                :player string
+-- #                :id int
+-- #                :price float
+UPDATE Bid SET Price = :price WHERE (Player = :player) AND (Id = :id);
+-- #            }
+-- #        }
+-- #    }
+-- #    { select
+-- #        { aution
+-- #            { id
+-- #                :id int
+SELECT * FROM Aution WHERE Id = :id;
+-- #            }
+-- #            { player
+-- #                :player string
+SELECT * FROM Aution WHERE Player = :player;
+-- #            }
+-- #            { all
+SELECT * FROM Aution;
+-- #            }
+-- #            { all.no-expired
+SELECT * FROM Aution WHERE Expired = FALSE;
+-- #            }
+-- #            { all.expired
+SELECT * FROM Aution WHERE Expired = TRUE;
+-- #            }
+-- #        }
+-- #        { bid
+-- #            { id
+-- #                :id int
+SELECT * FROM Bid WHERE Id = :id ORDER BY Price;
+-- #            }
+-- #            { player
+-- #                :player string
+SELECT * FROM Bid WHERE Player = :player;
+-- #            }
+-- #        }
+-- #    }
 -- #}
