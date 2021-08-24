@@ -19,25 +19,25 @@ class PlayerStat
     /** @var Player */
     protected Player $player;
     /** @var bool */
-    private bool $isFly = false;
+    protected bool $isFly = false;
     /** @var bool */
-    private bool $isMuted = false;
+    protected bool $isMuted = false;
     /** @var int */
-    private int $mute_time = 0;
+    protected int $mute_time = 0;
     /** @var int */
-    private int $mute_start_time = 0;
+    protected int $mute_start_time = 0;
     /** @var bool */
-    private bool $isFreeze = false;
+    protected bool $isFreeze = false;
     /** @var int */
-    private int $freeze_time = 0;
+    protected int $freeze_time = 0;
     /** @var int */
-    private int $freeze_start_time = 0;
+    protected int $freeze_start_time = 0;
     /** @var bool */
-    private bool $is_notp = false;
+    protected bool $is_notp = false;
     /** @var Position|null */
-    private ?Position $death_pos = null;
+    protected ?Position $death_pos = null;
     /** @var SellUndoAction|null */
-    private ?SellUndoAction $sellUndoAction = null;
+    protected ?SellUndoAction $sellUndoAction = null;
 
     public function toArray() : array
 	{
@@ -188,7 +188,6 @@ class PlayerStat
     public function setFly(bool $status = true)
     {
         $this->isFly = $status;
-        $this->save();
     }
 
     /**
@@ -208,7 +207,6 @@ class PlayerStat
             $this->setMuteTime();
             $this->setMuteStartTime();
         }
-        $this->save();
     }
 
     /**
@@ -217,7 +215,6 @@ class PlayerStat
     public function setMuteTime(int $time = 0)
     {
         $this->mute_time = $time;
-        $this->save();
     }
 
     /**
@@ -226,7 +223,6 @@ class PlayerStat
     public function setMuteStartTime(int $time = 0)
     {
         $this->mute_start_time = $time;
-        $this->save();
     }
 
     /**
@@ -246,7 +242,6 @@ class PlayerStat
             $this->setFreezeTime();
             $this->setFreezeStartTime();
         }
-        $this->save();
     }
 
     /**
@@ -255,7 +250,6 @@ class PlayerStat
     public function setFreezeTime(int $time = 0)
     {
         $this->freeze_time = $time;
-        $this->save();
     }
 
     /**
@@ -264,7 +258,6 @@ class PlayerStat
     public function setFreezeStartTime(int $time = 0)
     {
         $this->freeze_start_time = $time;
-        $this->save();
     }
 
     public function setNoTP(bool $status = true)
@@ -278,17 +271,10 @@ class PlayerStat
     public function setDeathPos(?Position $pos): void
     {
         $this->death_pos = $pos;
-        $this->save();
     }
 
     public function setSellUndoAction(?SellUndoAction $action): void
 	{
 		$this->sellUndoAction = $action;
-		$this->save();
 	}
-
-    public function save()
-    {
-        $this->getCore()->getPlayerStatManager()->stats[$this->getPlayer()->getName()] = $this;
-    }
 }
