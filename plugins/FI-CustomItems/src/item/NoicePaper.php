@@ -29,7 +29,7 @@ class NoicePaper extends CustomItem{
 	}
 
 	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
-		$blockClicked->getPos()->getWorld()->setBlock($blockClicked->getPos()->asVector3(), VanillaBlocks::DIAMOND());
+		$blockClicked->getPosition()->getWorld()->setBlock($blockClicked->getPosition()->asVector3(), VanillaBlocks::DIAMOND());
 		return parent::onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector);
 	}
 }

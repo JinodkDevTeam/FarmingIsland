@@ -16,7 +16,7 @@ class FireBlock extends Fire{
     }
 
     public function onRandomTick(): void{
-        if(!GameRuleManager::getInstance()->getValue(GameRule::DO_FIRE_TICK, $this->getPos()->getWorld())){
+        if(!GameRuleManager::getInstance()->getValue(GameRule::DO_FIRE_TICK, $this->getPosition()->getWorld())){
             return;
         }
         parent::onRandomTick();

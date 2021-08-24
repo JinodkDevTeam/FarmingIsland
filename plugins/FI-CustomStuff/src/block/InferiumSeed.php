@@ -47,7 +47,7 @@ class InferiumSeed implements Listener
         {
             if ($event->getBlock()->getMeta() == 7)
             {
-                $event->getBlock()->getPos()->getWorld()->setBlock($event->getBlock()->getPos()->asVector3(), VanillaBlocks::BEETROOTS(), true);
+                $event->getBlock()->getPosition()->getWorld()->setBlock($event->getBlock()->getPosition()->asVector3(), VanillaBlocks::BEETROOTS(), true);
 
                 $item = VanillaItems::BEETROOT();
                 $item->setCustomName("§r§aInferium §fEssence");
@@ -55,7 +55,7 @@ class InferiumSeed implements Listener
                 $nbt->setString("CustomItem", "InferiumEssence");
                 /*$item->setNamedTagEntry(new ListTag(Item::TAG_ENCH, [], NBT::TAG_Compound));*/
 
-                $event->getBlock()->getPos()->getWorld()->dropItem($event->getBlock()->getPos()->asVector3(), $item);
+                $event->getBlock()->getPosition()->getWorld()->dropItem($event->getBlock()->getPosition()->asVector3(), $item);
                 $event->cancel();
             }
         }

@@ -123,7 +123,7 @@ class MobSpawnerTile extends Spawnable{
 
     public function canEntityGenerate(): bool{
         foreach(Server::getInstance()->getOnlinePlayers() as $player){
-            if($player->getPosition()->distance($this->getPos()) < 16){
+            if($player->getPosition()->distance($this->getPosition()) < 16){
                 return true;
             }
         }

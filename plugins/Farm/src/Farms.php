@@ -71,7 +71,7 @@ class Farms extends PluginBase implements Listener
             $tree = $event->getBlock()->getSide($event->getFace());
             // Jungle wood
             if ($tree->getId() == BlockLegacyIds::WOOD and $tree->getMeta() == 3) {
-                $event->getBlock()->getPos()->getWorld()->setBlock($event->getBlock()->getSide($event->getFace())->getPos(), VanillaBlocks::COCOA_POD(), true);
+                $event->getBlock()->getPosition()->getWorld()->setBlock($event->getBlock()->getSide($event->getFace())->getPosition(), VanillaBlocks::COCOA_POD(), true);
                 return;
             }
         }
@@ -80,11 +80,11 @@ class Farms extends PluginBase implements Listener
         if ($event->getBlock()->getId() == BlockLegacyIds::FARMLAND or $event->getBlock()->getId() == BlockLegacyIds::SAND) {
             foreach($this->crops as $crop){
                 if ($event->getItem()->getId() == $crop["item"]) {
-                    $key = $block->getPos()->x.".".$block->getPos()->y.".".$block->getPos()->z;
+                    $key = $block->getPosition()->x.".".$block->getPosition()->y.".".$block->getPosition()->z;
 
                     $this->farmData[$key]['id'] = $crop["block"];
                     $this->farmData[$key]['damage'] = 0;
-                    $this->farmData[$key]['level'] = $block->getPos()->getWorld()->getFolderName();
+                    $this->farmData[$key]['level'] = $block->getPosition()->getWorld()->getFolderName();
                     $this->farmData[$key]['time'] = $this->makeTimestamp(date("Y-m-d H:i:s"));
                     if ($event->getPlayer()->hasPermission("Farms.OP"))
                     {
@@ -109,16 +109,16 @@ class Farms extends PluginBase implements Listener
         }
     }
     public function onBlockBreak(BlockBreakEvent $event) {
-        $key = $event->getBlock()->getPos()->x.".".$event->getBlock()->getPos()->y.".".$event->getBlock()->getPos()->z;
+        $key = $event->getBlock()->getPosition()->x.".".$event->getBlock()->getPosition()->y.".".$event->getBlock()->getPosition()->z;
         if(isset($this->farmData[$key]))
         {
             unset($this->farmData[$key]);
         }
         if ($event->getBlock() instanceof Farmland)
         {
-            $x = $event->getBlock()->getPos()->x;
-            $y = $event->getBlock()->getPos()->y + 1;
-            $z = $event->getBlock()->getPos()->z;
+            $x = $event->getBlock()->getPosition()->x;
+            $y = $event->getBlock()->getPosition()->y + 1;
+            $z = $event->getBlock()->getPosition()->z;
             $key = $x.".".$y .".".$z;
             if(isset($this->farmData[$key]))
             {

@@ -51,13 +51,13 @@ class Loader extends PluginBase implements Listener
         if (mt_rand(1,20) === 5)
         {
             $random = new Random(mt_rand(1,20));
-            Tree::growTree($block->getPos()->getWorld(), $block->getPos()->getX(), $block->getPos()->getY(), $block->getPos()->getZ(), $random, TreeType::fromMagicNumber($block->getMeta()));
+            Tree::growTree($block->getPosition()->getWorld(), $block->getPosition()->getX(), $block->getPosition()->getY(), $block->getPosition()->getZ(), $random, TreeType::fromMagicNumber($block->getMeta()));
         }
         else
         {
-            $pos = $block->getPos()->asVector3();
+            $pos = $block->getPosition()->asVector3();
             $pos->y++;
-            $block->getPos()->getWorld()->addParticle($pos, new HappyVillagerParticle());
+            $block->getPosition()->getWorld()->addParticle($pos, new HappyVillagerParticle());
         }
     }
 

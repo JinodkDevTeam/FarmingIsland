@@ -103,15 +103,15 @@ class Crook implements Listener
     public function getAllSide (Block $block, array $pending): array
     {
         $blocks = [];
-        for ($x = $block->getPos()->getX() - 1; $x <= $block->getPos()->getX() + 1; $x++)
-            for ($y = $block->getPos()->getY() - 1; $y <= $block->getPos()->getY() + 1; $y++)
-                for ($z = $block->getPos()->getZ() - 1; $z <= $block->getPos()->getZ() + 1; $z++)
+        for ($x = $block->getPosition()->getX() - 1; $x <= $block->getPosition()->getX() + 1; $x++)
+            for ($y = $block->getPosition()->getY() - 1; $y <= $block->getPosition()->getY() + 1; $y++)
+                for ($z = $block->getPosition()->getZ() - 1; $z <= $block->getPosition()->getZ() + 1; $z++)
                 {
-                    if ($x == $block->getPos()->getX() and $y == $block->getPos()->getY() and $z == $block->getPos()->getZ())
+                    if ($x == $block->getPosition()->getX() and $y == $block->getPosition()->getY() and $z == $block->getPosition()->getZ())
                     {
                         continue;
                     }
-                    $side = $block->getPos()->getWorld()->getBlockAt($x, $y, $z);
+                    $side = $block->getPosition()->getWorld()->getBlockAt($x, $y, $z);
                     if ($side instanceof Leaves)
                     {
                         if (!$this->isChecked($side, $pending))
@@ -154,7 +154,7 @@ class Crook implements Listener
 
             if ($pos !== $blockbreak)
             {
-                $pos->getPos()->getWorld()->useBreakOn($pos , $item, $player, true);
+                $pos->getPosition()->getWorld()->useBreakOn($pos , $item, $player, true);
                 $this->breaked[$player->getName()]++;
             }
 
