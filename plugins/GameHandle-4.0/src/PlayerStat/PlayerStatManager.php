@@ -54,9 +54,8 @@ class PlayerStatManager
      */
     public function getAllPlayerStat(): array
     {
-        if (isset($this->stats)) return $this->stats;
-        else return [];
-    }
+		return $this->stats ?? [];
+	}
 
     /**
      * @param Player $player
