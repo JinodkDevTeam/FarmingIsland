@@ -184,8 +184,8 @@ class BlockManager{
     }
 
     public static function onChange(Spawnable $tile): void{
-        foreach($tile->getPos()->getWorld()->createBlockUpdatePackets([$tile->getPos()]) as $pk){
-            $tile->getPos()->getWorld()->broadcastPacketToViewers($tile->getPos(), $pk);
+        foreach($tile->getPosition()->getWorld()->createBlockUpdatePackets([$tile->getPosition()]) as $pk){
+            $tile->getPosition()->getWorld()->broadcastPacketToViewers($tile->getPosition(), $pk);
         }
     }
 }

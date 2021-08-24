@@ -31,7 +31,7 @@ class JukeboxBlock extends Opaque{
     }
 
     public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null): bool{
-        $tile = $player->getWorld()->getTile($this->getPos());
+        $tile = $player->getWorld()->getTile($this->getPosition());
 
         if($player !== null && $tile instanceof JukeboxTile){
             if($item instanceof MusicDiscItem && $tile->getRecordItem() === null){

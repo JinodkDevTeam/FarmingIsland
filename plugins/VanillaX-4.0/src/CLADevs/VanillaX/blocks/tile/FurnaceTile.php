@@ -35,7 +35,7 @@ class FurnaceTile extends Furnace{
                 $newItem = $this->inventory->getItem($slot);
 
                 if($slot === 2 && $oldItem->getId() !== ItemIds::AIR && $newItem->getId() === ItemIds::AIR){
-                    $this->dropXpHolder($this->getPos());
+                    $this->dropXpHolder($this->getPosition());
                 }
             },
             null

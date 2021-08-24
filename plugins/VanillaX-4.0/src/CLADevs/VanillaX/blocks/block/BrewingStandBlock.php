@@ -70,7 +70,7 @@ class BrewingStandBlock extends BrewingStand{
                 }
                 $inventory->decreaseIngredient();
                 $tile->setFuelAmount($tile->getFuelAmount() - 1, true);
-                $tile->getPos()->getWorld()->broadcastPacketToViewers($tile->getPos(), LevelSoundEventPacket::create(LevelSoundEventPacket::SOUND_POTION_BREWED, $tile->getPos()));
+                $tile->getPosition()->getWorld()->broadcastPacketToViewers($tile->getPosition(), LevelSoundEventPacket::create(LevelSoundEventPacket::SOUND_POTION_BREWED, $tile->getPosition()));
 
                 if($tile->getFuelAmount() <= 0 && !$inventory->getFuel()->isNull()){
                     $inventory->decreaseFuel();

@@ -27,7 +27,7 @@ class HopperBlock extends Transparent{
 
     public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null): bool{
         if($player !== null){
-            $tile = $this->getPos()->getWorld()->getTile($this->getPos());
+            $tile = $this->getPosition()->getWorld()->getTile($this->getPosition());
 
             if($tile instanceof HopperTile){
                 $player->setCurrentWindow($tile->getInventory());

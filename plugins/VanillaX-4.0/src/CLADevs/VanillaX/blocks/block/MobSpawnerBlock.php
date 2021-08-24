@@ -29,7 +29,7 @@ class MobSpawnerBlock extends MonsterSpawner{
 
     public function getSilkTouchDrops(Item $item): array{
         $drop = [];
-        $tile = $this->getPos()->getWorld()->getTile($this->getPos());
+        $tile = $this->getPosition()->getWorld()->getTile($this->getPosition());
 
         if($tile instanceof MobSpawnerTile){
             $drop[] = ItemFactory::getInstance()->get(BlockLegacyIds::MOB_SPAWNER, ($tile->isValidEntity() ? $tile->getEntityId() : 0));
@@ -39,7 +39,7 @@ class MobSpawnerBlock extends MonsterSpawner{
 
     public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null): bool{
         if($item->getId() === ItemIds::SPAWN_EGG){
-            $tile = $this->getPos()->getWorld()->getTile($this->getPos());
+            $tile = $this->getPosition()->getWorld()->getTile($this->getPosition());
 
             if($tile instanceof MobSpawnerTile && $tile->getEntityId() !== ($newId = $item->getMeta())){
                 $tile->setEntityId($newId);
@@ -68,7 +68,7 @@ class MobSpawnerBlock extends MonsterSpawner{
                 for($i = 0; $i < $tile->getSpawnCount(); $i++){
                     $x = ((mt_rand(-10, 10) / 10) * $tile->getSpawnRange()) + 0.5;
                     $z = ((mt_rand(-10, 10) / 10) * $tile->getSpawnRange()) + 0.5;
-                    $pos = $tile->getPos();
+                    $pos = $tile->getPosition();
                     $pos = new Location($pos->x + $x, $pos->y + mt_rand(1, 3), $pos->z + $z, 0, 0, $pos->world);
                     /** @var VanillaEntity $entity */
                     $entity = new $namespace($pos);
