@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace AuctionHouse\auction;
 
+use AuctionHouse\category\Category;
+use AuctionHouse\category\CategoryManager;
 use JinodkDevTeam\utils\ItemUtils;
 use pocketmine\item\Item;
 
@@ -42,6 +44,10 @@ class Auction{
 
 	public function getCategoryID(): string{
 		return $this->category;
+	}
+
+	public function getCategory(): Category{
+		return CategoryManager::getInstance()->getCategory($this->getCategoryID());
 	}
 
 	public function getPlayer(): string{

@@ -32,11 +32,23 @@ class CategoryManager{
 		$this->list[$categoryID] = $category;
 	}
 
+	/**
+	 * @param string $id
+	 *
+	 * @return Category|null
+	 */
 	public function getCategory(string $id): ?Category{
 		if (isset($this->list[$id])){
 			return $this->list[$id];
 		}
 		return null;
+	}
+
+	/**
+	 * @return Category[]
+	 */
+	public function getAllCategory(): array{
+		return $this->list;
 	}
 
 	public function __construct(){
