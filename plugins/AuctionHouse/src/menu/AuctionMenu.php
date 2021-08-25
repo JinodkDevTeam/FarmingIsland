@@ -8,7 +8,7 @@ use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
 
-class AuctionMenu extends BaseReadOnlyMenu{
+class AuctionMenu extends BaseAuctionInfoMenu{
 
 	protected function renderItems(): void{
 		// TODO: Implement renderItems() method.
