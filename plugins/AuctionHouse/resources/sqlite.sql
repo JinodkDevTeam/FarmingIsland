@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS Auction(
     Price FLOAT NOT NULL DEFAULT 0,
     Time INTEGER NOT NULL DEFAULT 0,
     AuctionTime INTEGER NOT NULL DEFAULT 0,
-    Expired BOOLEAN NOT NULL DEFAULT FALSE
+    Expired BOOLEAN NOT NULL DEFAULT FALSE,
+    Ended BOOLEAN NOT NULL DEFAULT FALSE
 );
 -- #        }
 -- #        { bid
@@ -54,6 +55,11 @@ INSERT OR REPLACE INTO Bid(Player, Price, Id) VALUES (:player, :price, :id);
 -- #                :id int
 -- #                :expired bool
 UPDATE Auction SET Expired = :expired WHERE Id = :id;
+-- #            }
+-- #            { ended
+-- #                :id int
+-- #                :ended bool
+UPDATE Auction SET Ended = :ended WHERE Id = :id;
 -- #            }
 -- #        }
 -- #        { bid

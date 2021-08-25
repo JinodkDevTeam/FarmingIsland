@@ -20,6 +20,7 @@ class SqliteProvider{
 	protected const REGISTER_AUCTION = "auction.register.auction";
 	protected const REGISTER_BID = "auction.register.bid";
 	protected const UPDATE_AUCTION_EXPIRED = "auction.update.auction.expired";
+	protected const UPDATE_AUCTION_ENDED = "auction.update.auction.ended";
 	protected const UPDATE_AUCTION_BID_PRICE = "auction.update.bid.price";
 	protected const SELECT_AUCTION_ID = "auction.select.auction.id";
 	protected const SELECT_AUCTION_PLAYER = "auction.select.auction.player";
@@ -96,6 +97,13 @@ class SqliteProvider{
 		$this->executeChange(self::UPDATE_AUCTION_EXPIRED, [
 			"id" => $aution->getId(),
 			"expired" => $aution->isExpired()
+		]);
+	}
+
+	public function updateAuctionEnded(Auction $auction): void{
+		$this->executeChange(self::UPDATE_AUCTION_ENDED, [
+			"id" => $auction->getId(),
+			"ended" => $auction->isEnded()
 		]);
 	}
 

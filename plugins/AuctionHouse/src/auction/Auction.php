@@ -18,8 +18,9 @@ class Auction{
 	protected int $time = 0;
 	protected int $auctiontime = 0;
 	protected bool $expired = false;
+	protected bool $ended = false;
 
-	public function __construct(int $id = 0, string $player = "", string $item = "", string $category = "", float $price = 0, int $time = 0, int $auctiontime = 0, bool $expired = false){
+	public function __construct(int $id = 0, string $player = "", string $item = "", string $category = "", float $price = 0, int $time = 0, int $auctiontime = 0, bool $expired = false, bool $ended = false){
 		$this->id = $id;
 		$this->player = $player;
 		$this->item = $item;
@@ -28,6 +29,7 @@ class Auction{
 		$this->time = $time;
 		$this->auctiontime = $auctiontime;
 		$this->expired = $expired;
+		$this->ended = $ended;
 	}
 
 	public function getId(): int{
@@ -70,6 +72,10 @@ class Auction{
 		return $this->expired;
 	}
 
+	public function isEnded(): bool{
+		return $this->ended;
+	}
+
 	public static function fromData(array $data): Auction{
 		return new Auction(
 			(int)$data["Id"],
@@ -79,7 +85,8 @@ class Auction{
 			(float)$data["Price"],
 			(int)$data["Time"],
 			(int)$data["AuctionTime"],
-			(bool)$data["Expired"]
+			(bool)$data["Expired"],
+			(bool)$data["Ended"]
 		);
 	}
 
