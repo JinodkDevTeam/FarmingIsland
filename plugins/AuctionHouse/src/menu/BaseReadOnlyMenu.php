@@ -17,9 +17,14 @@ abstract class BaseReadOnlyMenu{
 	public function __contruct(Loader $loader, Player $player, string $type){
 		$this->loader = $loader;
 		$this->menu = InvMenu::create($type);
+		$this->menu->setName($this->getMenuName());
 		$this->setListeners();
 		$this->renderItems();
 		$this->menu->send($player);
+	}
+
+	protected function getMenuName(): string{
+		return "";
 	}
 
 	protected final function getMenu(): InvMenu{
