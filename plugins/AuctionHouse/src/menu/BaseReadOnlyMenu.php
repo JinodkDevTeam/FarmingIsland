@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse\menu;
+namespace AuctionHouse\menu;
 
-use AutionHouse\Loader;
+use AuctionHouse\Loader;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use pocketmine\inventory\Inventory;

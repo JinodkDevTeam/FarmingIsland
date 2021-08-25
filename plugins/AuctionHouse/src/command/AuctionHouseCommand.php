@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse\command;
+namespace AuctionHouse\command;
 
-use AutionHouse\Loader;
+use AuctionHouse\Loader;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
-class AutionHouseCommand extends Command implements PluginOwned{
+class AuctionHouseCommand extends Command implements PluginOwned{
 	protected Loader $loader;
 
 	public function __construct(Loader $loader){

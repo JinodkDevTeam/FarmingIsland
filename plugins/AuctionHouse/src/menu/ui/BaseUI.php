@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse\menu\ui;
+namespace AuctionHouse\menu\ui;
 
-use AutionHouse\Loader;
+use AuctionHouse\Loader;
 use pocketmine\player\Player;
 
 abstract class BaseUI{

@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse;
+namespace AuctionHouse;
 
-use AutionHouse\command\AutionHouseCommand;
-use AutionHouse\provider\SqliteProvider;
+use AuctionHouse\command\AuctionHouseCommand;
+use AuctionHouse\provider\SqliteProvider;
 use muqsit\invmenu\InvMenuHandler;
 use pocketmine\plugin\PluginBase;
 
@@ -20,7 +20,7 @@ class Loader extends PluginBase{
 			InvMenuHandler::register($this);
 		}
 
-		$this->getServer()->getCommandMap()->register("ah", new AutionHouseCommand($this));
+		$this->getServer()->getCommandMap()->register("ah", new AuctionHouseCommand($this));
 	}
 
 	public function onDisable(): void{

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse\aution;
+namespace AuctionHouse\auction;
 
 class Bid{
 
@@ -19,7 +19,7 @@ class Bid{
 		return $this->player;
 	}
 
-	public function getAutionId(): int{
+	public function getAuctionId(): int{
 		return $this->id;
 	}
 

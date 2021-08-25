@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace AutionHouse\aution;
+namespace AuctionHouse\auction;
 
-class Aution{
+class Auction{
 
 	protected int $id = 0;
 	protected string $player = "";
@@ -45,8 +45,8 @@ class Aution{
 		return $this->expired;
 	}
 
-	public static function fromData(array $data): Aution{
-		return new Aution(
+	public static function fromData(array $data): Auction{
+		return new Auction(
 			(int)$data["Id"],
 			(string)$data["Player"],
 			(string)$data["Item"],
@@ -59,7 +59,7 @@ class Aution{
 	/**
 	 * @param array $array
 	 *
-	 * @return Aution[]
+	 * @return Auction[]
 	 */
 	public static function fromArray(array $array): array{
 		$autions = [];

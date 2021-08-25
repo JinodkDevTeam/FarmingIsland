@@ -1,6 +1,6 @@
-name: FI-AutionHouse
-src-namespace-prefix: AutionHouse
-main: AutionHouse\Loader
+name: FI-AuctionHouse
+src-namespace-prefix: AuctionHouse
+main: AuctionHouse\Loader
 api: 4.0.0
 version: 0.1
 author: JinodkDevTeam|NgLamVN
