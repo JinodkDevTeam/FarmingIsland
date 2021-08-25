@@ -3,21 +3,28 @@ declare(strict_types=1);
 
 namespace AuctionHouse\auction;
 
+use JinodkDevTeam\utils\ItemUtils;
+use pocketmine\item\Item;
+
 class Auction{
 
 	protected int $id = 0;
 	protected string $player = "";
 	protected string $item = "";
+	protected string $category = "";
 	protected float $price = 0;
 	protected int $time = 0;
+	protected int $auctiontime = 0;
 	protected bool $expired = false;
 
-	public function __construct(int $id = 0, string $player = "", string $item = "", float $price = 0, int $time = 0, bool $expired = false){
+	public function __construct(int $id = 0, string $player = "", string $item = "", string $category = "", float $price = 0, int $time = 0, int $auctiontime = 0, bool $expired = false){
 		$this->id = $id;
 		$this->player = $player;
 		$this->item = $item;
+		$this->category = $category;
 		$this->price = $price;
 		$this->time = $time;
+		$this->auctiontime = $auctiontime;
 		$this->expired = $expired;
 	}
 
@@ -25,8 +32,16 @@ class Auction{
 		return $this->id;
 	}
 
-	public function getItem(): string{
+	public function getItemCode(): string{
 		return $this->item;
+	}
+
+	public function getItem(): Item{
+		return ItemUtils::fromString($this->getItemCode());
+	}
+
+	public function getCategoryID(): string{
+		return $this->category;
 	}
 
 	public function getPlayer(): string{
@@ -41,6 +56,10 @@ class Auction{
 		return $this->time;
 	}
 
+	public function getAuctionTime(): int{
+		return $this->auctiontime;
+	}
+
 	public function isExpired(): bool{
 		return $this->expired;
 	}
@@ -50,8 +69,10 @@ class Auction{
 			(int)$data["Id"],
 			(string)$data["Player"],
 			(string)$data["Item"],
+			(string)$data["Category"],
 			(float)$data["Price"],
 			(int)$data["Time"],
+			(int)$data["AuctionTime"],
 			(bool)$data["Expired"]
 		);
 	}

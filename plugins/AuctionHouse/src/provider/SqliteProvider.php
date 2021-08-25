@@ -76,9 +76,11 @@ class SqliteProvider{
 	public function registerAuction(Auction $aution): void{
 		$this->executeChange(self::REGISTER_AUCTION, [
 			"player" => $aution->getPlayer(),
-			"item" => $aution->getItem(),
+			"item" => $aution->getItemCode(),
+			"category" => $aution->getCategoryID(),
 			"price" => $aution->getPrice(),
-			"time" => $aution->getTime()
+			"time" => $aution->getTime(),
+			"auctiontime" => $aution->getAuctionTime()
 		]);
 	}
 
@@ -109,16 +111,16 @@ class SqliteProvider{
 		return $this->asyncSelect(self::SELECT_AUCTION_ID, ["id" => $id]);
 	}
 
-	public function selectAuctionAll(): Generator{
-		return $this->asyncSelect(self::SELECT_AUCTION_ALL, []);
+	public function selectAuctionAll(string $category): Generator{
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL, ["category" => $category]);
 	}
 
-	public function selectAuctionAllNoExpired(): Generator{
-		return $this->asyncSelect(self::SELECT_AUCTION_ALL_NO_EXPIRED, []);
+	public function selectAuctionAllNoExpired(string $category): Generator{
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL_NO_EXPIRED, ["category" => $category]);
 	}
 
-	public function selectAuctionAllExpired(): Generator{
-		return $this->asyncSelect(self::SELECT_AUCTION_ALL_EXPIRED, []);
+	public function selectAuctionAllExpired(string $category): Generator{
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL_EXPIRED, ["category" => $category]);
 	}
 
 	public function selectAuctionPlayer(string $player): Generator{
