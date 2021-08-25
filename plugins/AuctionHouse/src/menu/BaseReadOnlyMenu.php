@@ -6,6 +6,7 @@ namespace AuctionHouse\menu;
 use AuctionHouse\Loader;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
 
@@ -14,9 +15,9 @@ abstract class BaseReadOnlyMenu{
 	protected InvMenu $menu;
 	protected Loader $loader;
 
-	public function __contruct(Loader $loader, Player $player, string $type){
+	public function __construct(Loader $loader, Player $player){
 		$this->loader = $loader;
-		$this->menu = InvMenu::create($type);
+		$this->menu = InvMenu::create($this->getMenuType());
 		$this->menu->setName($this->getMenuName());
 		$this->setListeners();
 		$this->renderItems();
@@ -25,6 +26,10 @@ abstract class BaseReadOnlyMenu{
 
 	protected function getMenuName(): string{
 		return "";
+	}
+
+	protected function getMenuType(): string{
+		return InvMenuTypeIds::TYPE_CHEST;
 	}
 
 	protected final function getMenu(): InvMenu{

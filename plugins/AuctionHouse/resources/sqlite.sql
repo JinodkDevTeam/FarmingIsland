@@ -1,8 +1,8 @@
 -- #! sqlite
--- #{ aution
+-- #{ auction
 -- #    { init
--- #        { aution
-CREATE TABLE IF NOT EXISTS Aution(
+-- #        { auction
+CREATE TABLE IF NOT EXISTS Auction(
     Id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
     Player VARCHAR(40) NOT NULL,
     Item BLOB NOT NULL,
@@ -20,9 +20,9 @@ CREATE TABLE IF NOT EXISTS Bid(
 -- #        }
 -- #    }
 -- #    { remove
--- #        { aution
+-- #        { auction
 -- #            :id int
-DELETE FROM Aution WHERE Id = :id;
+DELETE FROM Auction WHERE Id = :id;
 -- #        }
 -- #        { bid
 -- #            :id int
@@ -30,12 +30,12 @@ DELETE FROM Bid WHERE Id = :id;
 -- #        }
 -- #    }
 -- #    { register
--- #        { aution
+-- #        { auction
 -- #            :player string
 -- #            :item string
 -- #            :price floats
 -- #            :time int
-INSERT OR REPLACE INTO Aution(Player, Item, Price, Time) VALUES (:player, :item, :price, :time);
+INSERT OR REPLACE INTO Auction(Player, Item, Price, Time) VALUES (:player, :item, :price, :time);
 -- #        }
 -- #        { bid
 -- #            :player string
@@ -45,11 +45,11 @@ INSERT OR REPLACE INTO Bid(Player, Price, Id) VALUES (:player, :price, :id);
 -- #        }
 -- #    }
 -- #    { update
--- #        { aution
+-- #        { auction
 -- #            { expired
 -- #                :id int
 -- #                :expired bool
-UPDATE Aution SET Expired = :expired WHERE Id = :id;
+UPDATE Auction SET Expired = :expired WHERE Id = :id;
 -- #            }
 -- #        }
 -- #        { bid
@@ -62,23 +62,23 @@ UPDATE Bid SET Price = :price WHERE (Player = :player) AND (Id = :id);
 -- #        }
 -- #    }
 -- #    { select
--- #        { aution
+-- #        { auction
 -- #            { id
 -- #                :id int
-SELECT * FROM Aution WHERE Id = :id;
+SELECT * FROM Auction WHERE Id = :id;
 -- #            }
 -- #            { player
 -- #                :player string
-SELECT * FROM Aution WHERE Player = :player;
+SELECT * FROM Auction WHERE Player = :player;
 -- #            }
 -- #            { all
-SELECT * FROM Aution;
+SELECT * FROM Auction;
 -- #            }
 -- #            { all.no-expired
-SELECT * FROM Aution WHERE Expired = FALSE;
+SELECT * FROM Auction WHERE Expired = FALSE;
 -- #            }
 -- #            { all.expired
-SELECT * FROM Aution WHERE Expired = TRUE;
+SELECT * FROM Auction WHERE Expired = TRUE;
 -- #            }
 -- #        }
 -- #        { bid
