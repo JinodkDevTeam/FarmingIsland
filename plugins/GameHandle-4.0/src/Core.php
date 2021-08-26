@@ -54,7 +54,7 @@ class Core extends PluginBase
 		}
         catch(Exception $e)
 		{
-			$this->getLogger()->logException($e);
+			$this->getLogger()->error($e->getMessage());
 			$this->getLogger()->error("An error caused by GameHandle, force disable this plugin...");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 		}
