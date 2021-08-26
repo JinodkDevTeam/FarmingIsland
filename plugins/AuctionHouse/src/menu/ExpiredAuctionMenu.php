@@ -26,7 +26,11 @@ class ExpiredAuctionMenu extends BaseAuctionInfoMenu{
 		return "Auction Info";
 	}
 
-	protected function getMenuType() : string{
+	protected function getMenuType(): string{
 		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
+	}
+
+	protected function await(): void{
+		// TODO: Implement await() method.
 	}
 }

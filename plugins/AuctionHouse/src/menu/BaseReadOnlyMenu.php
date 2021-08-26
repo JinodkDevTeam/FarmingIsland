@@ -17,17 +17,19 @@ abstract class BaseReadOnlyMenu{
 	protected InvMenu $menu;
 	protected Loader $loader;
 	protected array $data;
+	protected Player $player;
 
 	public function __construct(Loader $loader, Player $player){
 		$this->loader = $loader;
-		Await::f2c(function() use ($player){
-			$this->menu = InvMenu::create($this->getMenuType());
-			$this->menu->setName($this->getMenuName());
-			$this->setListeners();
-			$this->data = yield $this->getAsyncData();
-			$this->renderItems();
-			$this->menu->send($player);
-		});
+		$this->player = $player;
+		$this->menu = InvMenu::create($this->getMenuType());
+		$this->menu->setName($this->getMenuName());
+		$this->setListeners();
+		$this->await();
+	}
+
+	protected function send(){
+		$this->menu->send($this->player);
 	}
 
 	protected function getLoader(): Loader{
@@ -59,7 +61,11 @@ abstract class BaseReadOnlyMenu{
 		});
 	}
 
-	protected abstract function getAsyncData(): Generator;
+	protected final function resetInventory(): void{
+		$this->getMenu()->getInventory()->clearAll();
+	}
+
+	protected abstract function await(): void;
 
 	protected abstract function renderItems(): void;
 

@@ -116,30 +116,30 @@ class SqliteProvider{
 	}
 
 	public function selectAuctionID(int $id): Generator{
-		return yield $this->asyncSelect(self::SELECT_AUCTION_ID, ["id" => $id]);
+		return $this->asyncSelect(self::SELECT_AUCTION_ID, ["id" => $id]);
 	}
 
 	public function selectAuctionAll(string $category): Generator{
-		return yield $this->asyncSelect(self::SELECT_AUCTION_ALL, ["category" => $category]);
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL, ["category" => $category]);
 	}
 
 	public function selectAuctionAllNoExpired(string $category): Generator{
-		return yield $this->asyncSelect(self::SELECT_AUCTION_ALL_NO_EXPIRED, ["category" => $category]);
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL_NO_EXPIRED, ["category" => $category]);
 	}
 
 	public function selectAuctionAllExpired(string $category): Generator{
-		return yield $this->asyncSelect(self::SELECT_AUCTION_ALL_EXPIRED, ["category" => $category]);
+		return $this->asyncSelect(self::SELECT_AUCTION_ALL_EXPIRED, ["category" => $category]);
 	}
 
 	public function selectAuctionPlayer(string $player): Generator{
-		return yield $this->asyncSelect(self::SELECT_AUCTION_PLAYER, ["player" => $player]);
+		return $this->asyncSelect(self::SELECT_AUCTION_PLAYER, ["player" => $player]);
 	}
 
 	public function selectBidId(int $id): Generator{
-		return yield $this->asyncSelect(self::SELECT_BID_ID, ["id" => $id]);
+		return $this->asyncSelect(self::SELECT_BID_ID, ["id" => $id]);
 	}
 
 	public function selectBidPlayer(string $player): Generator{
-		return yield $this->asyncSelect(self::SELECT_BID_PLAYER, ["player" => $player]);
+		return $this->asyncSelect(self::SELECT_BID_PLAYER, ["player" => $player]);
 	}
 }

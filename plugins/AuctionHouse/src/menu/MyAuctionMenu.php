@@ -9,15 +9,19 @@ use pocketmine\player\Player;
 
 class MyAuctionMenu extends BaseReadOnlyMenu{
 
-	protected function renderItems() : void{
+	protected function renderItems(): void{
 		// TODO: Implement renderItems() method.
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction) : void{
+	protected function onTransaction(InvMenuTransaction $transaction): void{
 		// TODO: Implement onTransaction() method.
 	}
 
-	protected function onClose(Player $player, Inventory $inventory) : void{
+	protected function onClose(Player $player, Inventory $inventory): void{
 		// TODO: Implement onClose() method.
+	}
+
+	protected function await(): void{
+		// TODO: Implement await() method.
 	}
 }

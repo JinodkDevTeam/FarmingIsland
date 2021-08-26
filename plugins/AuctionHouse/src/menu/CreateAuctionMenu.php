@@ -30,4 +30,8 @@ class CreateAuctionMenu extends BaseReadOnlyMenu{
 	protected function getMenuType() : string{
 		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
 	}
+
+	protected function await(): void{
+		// TODO: Implement await() method.
+	}
 }
