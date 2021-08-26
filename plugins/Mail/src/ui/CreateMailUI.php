@@ -10,6 +10,7 @@ use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
+use pocketmine\Server;
 
 class CreateMailUI extends BaseUI{
 
@@ -52,6 +53,8 @@ class CreateMailUI extends BaseUI{
 			$data = ItemUtils::MailItemsEncode($items);
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
+			$notice = Server::getInstance()->getPlayerExact($to);
+			$notice?->sendMessage("You have new mail form " . $player->getName());
 		});
 		$menu->send($player);
 	}
