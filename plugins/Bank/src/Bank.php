@@ -18,7 +18,7 @@ class Bank extends PluginBase
 		$this->getProvider()->init();
 
 		$this->getServer()->getCommandMap()->register("bank", new BankCommand($this, "bank"));
-		$this->getScheduler()->scheduleRepeatingTask(new AutoInterestTask($this), 24*3600*20); //24Hours
+		$this->getScheduler()->scheduleDelayedRepeatingTask(new AutoInterestTask($this), 24*3600*20, 24*3600*20); //24Hours
 	}
 
 	public function onDisable() : void
