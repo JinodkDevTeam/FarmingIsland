@@ -21,7 +21,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 	/** @var Auction[] */
 	protected array $auctions;
 	protected string $category = "";
-	protected int $page;
+	protected int $page = 0;
 
 	protected function renderItems(): void{
 		$inv = $this->getMenu()->getInventory();
@@ -55,6 +55,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 				36 => "Tool",
 				45 => "",
 			};
+			$this->page = 0;
 			$this->resetInventory();
 			$this->renderItems();
 		}
