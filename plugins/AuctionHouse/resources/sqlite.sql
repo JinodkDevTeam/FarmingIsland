@@ -39,7 +39,7 @@ DELETE FROM Bid WHERE Id = :id;
 -- #            :category string
 -- #            :price floats
 -- #            :time int
--- #            :auctiontime
+-- #            :auctiontime int
 INSERT OR REPLACE INTO Auction(Player, Item, Category, Price, Time, AuctionTime) VALUES (:player, :item, :category, :price, :time, :auctiontime);
 -- #        }
 -- #        { bid

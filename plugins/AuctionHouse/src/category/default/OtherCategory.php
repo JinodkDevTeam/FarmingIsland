@@ -10,7 +10,7 @@ use pocketmine\item\VanillaItems;
 class OtherCategory implements Category{
 
 	public function getId() : string{
-		return "Other";
+		return "";
 	}
 
 	public function getDisplayName() : string{

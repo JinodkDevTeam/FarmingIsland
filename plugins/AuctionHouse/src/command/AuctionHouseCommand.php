@@ -16,7 +16,7 @@ class AuctionHouseCommand extends Command implements PluginOwned{
 
 	public function __construct(Loader $loader){
 		$this->loader = $loader;
-		parent::__construct("ah", "Open Aution House", null, ["autionhouse", "aution"]);
+		parent::__construct("ah", "Open Auction House", null, ["auctionhouse", "auction"]);
 	}
 
 	protected function getLoader(): Loader{

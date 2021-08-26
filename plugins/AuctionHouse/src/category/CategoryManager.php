@@ -33,11 +33,12 @@ class CategoryManager{
 	}
 
 	/**
-	 * @param string $id
+	 * @param null|string $id
 	 *
 	 * @return Category|null
 	 */
-	public function getCategory(string $id): ?Category{
+	public function getCategory(?string $id = null): ?Category{
+		if (isset($id)) return new OtherCategory();
 		if (isset($this->list[$id])){
 			return $this->list[$id];
 		}
