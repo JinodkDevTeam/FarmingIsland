@@ -31,7 +31,7 @@ class SellOrderUI extends BaseUI{
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
 				$top_sell = $order->getPrice();
 			}
-			$max = ItemUtils::getItemCount($player, ItemUtils::toItem($this->itemid));
+			$max = ItemUtils::getItemCount($player->getInventory(), ItemUtils::toItem($this->itemid));
 
 			$form = new CustomForm(function(Player $player, ?array $data) use ($max){
 				if (!isset($data)) return;
