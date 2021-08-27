@@ -30,7 +30,7 @@ class AddRecipeMenu extends BaseMenu
         parent::__construct($player, $loader, $mode);
     }
 
-    public function menu(Player $player)
+    public function menu(Player $player): void
     {
         $this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
         $this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.add"));
@@ -67,7 +67,7 @@ class AddRecipeMenu extends BaseMenu
         return $transaction->continue();
     }
 
-    public function save()
+    public function save(): void
     {
         $recipe_data = $this->makeRecipeData();
         $result = $this->menu->getInventory()->getItem($this->getResultSlot());
@@ -78,6 +78,17 @@ class AddRecipeMenu extends BaseMenu
             return;
         }
         $recipe = Recipe::makeRecipe($this->recipe_name, $recipe_data, $result, $this->getMode());
+        foreach($this->getLoader()->getRecipes() as $other)
+        {
+        	if ($other->equal($recipe))
+        	{
+        		if ($other->getMode() == $recipe->getMode())
+				{
+					$this->getPlayer()->sendMessage($this->getLoader()->getProvider()->getMessage("msg.sametyperecipe"));
+					break;
+				}
+			}
+		}
         $this->getLoader()->setRecipe($recipe);
     }
 
