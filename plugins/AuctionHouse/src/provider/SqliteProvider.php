@@ -55,7 +55,7 @@ class SqliteProvider{
 
 	protected function asyncSelect(string $query, array $args) : Generator{
 		$this->db->executeSelect($query, $args, yield, yield Await::REJECT);
-		return Await::ONCE;
+		return yield Await::ONCE;
 	}
 
 	protected function executeChange(string $query, array $args): void{
