@@ -28,7 +28,7 @@ class SqliteProvider{
 	protected const SELECT_AUCTION_ALL_NO_EXPIRED = "auction.select.auction.all.no-expired";
 	protected const SELECT_AUCTION_ALL_EXPIRED = "auction.select.auction.all.expired";
 	protected const SELECT_BID_ID = "auction.select.bid.id";
-	protected const SELECT_BID_PLAYER = "autcion.select.bid.player";
+	protected const SELECT_BID_PLAYER = "auction.select.bid.player";
 
 	protected DataConnector $db;
 	protected Loader $loader;
