@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace AuctionHouse\menu\ui;
 
 use AuctionHouse\menu\AuctionBrowserMenu;
+use AuctionHouse\menu\MyAuctionMenu;
+use AuctionHouse\menu\MyBidsMenu;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 
@@ -17,10 +19,10 @@ class OpenUI extends BaseUI{
 					new AuctionBrowserMenu($this->getLoader(), $player);
 					break;
 				case 1:
-					//TODO: Manage Bids
+					new MyBidsMenu($this->getLoader(), $player);
 					break;
 				case 2:
-					//TODO: My Auctions
+					new MyAuctionMenu($this->getLoader(), $player);
 					break;
 			}
 		});

@@ -16,7 +16,6 @@ abstract class BaseReadOnlyMenu{
 
 	protected InvMenu $menu;
 	protected Loader $loader;
-	protected array $data;
 	protected Player $player;
 
 	public function __construct(Loader $loader, Player $player){
@@ -36,12 +35,12 @@ abstract class BaseReadOnlyMenu{
 		return $this->loader;
 	}
 
-	protected function getMenuName(): string{
-		return "";
+	protected function getPlayer(): Player{
+		return $this->player;
 	}
 
-	protected function getData(): array{
-		return $this->data;
+	protected function getMenuName(): string{
+		return "";
 	}
 
 	protected function getMenuType(): string{

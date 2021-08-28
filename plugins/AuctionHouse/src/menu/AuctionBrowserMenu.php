@@ -17,7 +17,6 @@ use SOFe\AwaitGenerator\Await;
 
 class AuctionBrowserMenu extends BaseReadOnlyMenu{
 
-	protected array $data;
 	/** @var Auction[] */
 	protected array $auctions;
 	protected string $category = "";
@@ -74,7 +73,11 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 	}
 
 	protected function await(): void{
-		$this->renderItems();
-		$this->send();
+		Await::f2c(function(){
+			$data = (array) yield $this->getLoader()->getProvider()->selectAuctionAllNoExpired($this->category);
+			$this->auctions = Auction::fromArray($data);
+			$this->renderItems();
+			$this->send();
+		});
 	}
 }
