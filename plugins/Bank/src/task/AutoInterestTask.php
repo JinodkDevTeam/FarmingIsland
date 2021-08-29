@@ -11,8 +11,6 @@ class AutoInterestTask extends Task
 {
 	private Bank $bank;
 
-	public const INTEREST = 2; //PERCENT;
-
 	public function __construct(Bank $bank)
 	{
 		$this->bank = $bank;
@@ -23,15 +21,16 @@ class AutoInterestTask extends Task
 		return $this->bank;
 	}
 
-	public function onRun() : void
+	public function onRun(): void
 	{
-		Await::f2c(function()
+		$interest = (int)$this->getBank()->getConfig()->get("setting")["interest"];
+		Await::f2c(function() use ($interest)
 		{
 			$rows = yield $this->getBank()->getProvider()->getAll();
 			foreach($rows as $row)
 			{
 				$balance = (float)$row["Money"];
-				$balance = $balance + round($balance*(self::INTEREST/100), 2, PHP_ROUND_HALF_DOWN);
+				$balance = $balance + round($balance*($interest/100), 2, PHP_ROUND_HALF_DOWN);
 				$this->getBank()->getProvider()->update($row["Player"], $balance);
 			}
 		});

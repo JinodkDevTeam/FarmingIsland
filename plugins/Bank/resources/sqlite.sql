@@ -17,7 +17,7 @@ VALUES (:player, :value);
 SELECT Money FROM Bank WHERE Player = :player;
 -- #    }
 -- #    { getall
-SELECT Player,Money FROM Bank;
+SELECT * FROM Bank;
 -- #    }
 -- #    { remove
 -- #        :player string
@@ -27,5 +27,8 @@ DELETE FROM Bank WHERE Player = :player;
 -- #        :player string
 -- #        :value float
 UPDATE Bank SET Money = :value WHERE Player = :player;
+-- #    }
+-- #    { top
+SELECT * FROM Bank ORDER BY Money;
 -- #    }
 -- #}
