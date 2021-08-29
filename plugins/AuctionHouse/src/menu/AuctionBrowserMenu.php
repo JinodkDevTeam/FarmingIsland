@@ -17,10 +17,15 @@ use SOFe\AwaitGenerator\Await;
 
 class AuctionBrowserMenu extends BaseReadOnlyMenu{
 
+	protected const ALL = 0;
+	protected const NONE_EXPIRED_MODE = 1;
+	protected const EXPIRED_MODE = 2;
+
 	/** @var Auction[] */
 	protected array $auctions;
 	protected string $category = "";
 	protected int $page = 0;
+	protected int $showmode = 0;
 
 	protected function renderItems(): void{
 		$inv = $this->getMenu()->getInventory();
@@ -29,7 +34,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		foreach(CategoryManager::getInstance()->getAllCategory() as $category){
 			$item = $category->getMenuItem();
 			if ($category->getId() == $this->category){
-				$item->setLore(["Selected"]);
+				$item->setLore(["§r§e>§fSelected§e<§r"]);
 				$item->addEnchantment(new EnchantmentInstance(EnchantmentIdMap::getInstance()->fromId(100)));
 			}
 			$inv->setItem($slot, $item);
@@ -39,6 +44,18 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		for($i = 47; $i <= 51; $i++){
 			$inv->setItem($i, $pane);
 		}
+		$lore = ["  §r§fAll", "  §r§fAuction only", "  §r§fBin only"];
+		switch($this->showmode){
+			case self::ALL:
+				$lore[0] = "§r§e> §fAll";
+				break;
+			case self::NONE_EXPIRED_MODE:
+				$lore[1] = "§r§e> §fAuction Only";
+				break;
+			case self::EXPIRED_MODE:
+				$lore[2] = "§r§e> §fBin Only";
+		}
+		$inv->setItem(51, ItemFactory::getInstance()->get(381)->setLore($lore)->setCustomName("Show")); //EYE OF ENDER
 		$inv->setItem(52, VanillaItems::ARROW()->setCustomName("Go Back"));
 		$inv->setItem(53, VanillaItems::ARROW()->setCustomName("Next Page"));
 	}
@@ -58,6 +75,14 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			$this->resetInventory();
 			$this->renderItems();
 		}
+		if ($slot === 51){
+			$this->showmode++;
+			if ($this->showmode > 2){
+				$this->showmode = 0;
+			}
+			$this->resetInventory();
+			$this->renderItems();
+		}
 	}
 
 	protected function onClose(Player $player, Inventory $inventory): void{
@@ -72,12 +97,12 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
 	}
 
-	protected function await(): void{
-		Await::f2c(function(){
+	protected function await(bool $sendgui = true): void{
+		Await::f2c(function() use ($sendgui){
 			$data = (array) yield $this->getLoader()->getProvider()->selectAuctionAllNoExpired($this->category);
 			$this->auctions = Auction::fromArray($data);
 			$this->renderItems();
-			$this->send();
+			if ($sendgui) $this->send();
 		});
 	}
 }
