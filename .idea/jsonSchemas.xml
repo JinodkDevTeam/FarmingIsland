@@ -35,6 +35,9 @@
                   <Item>
                     <option name="path" value="plugins/ShootItems/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/Bank/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
