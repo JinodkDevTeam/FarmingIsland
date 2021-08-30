@@ -55,9 +55,32 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			case self::EXPIRED_MODE:
 				$lore[2] = "§r§e> §fBin Only";
 		}
-		$inv->setItem(51, ItemFactory::getInstance()->get(381)->setLore($lore)->setCustomName("Show")); //EYE OF ENDER
-		$inv->setItem(52, VanillaItems::ARROW()->setCustomName("Go Back"));
-		$inv->setItem(53, VanillaItems::ARROW()->setCustomName("Next Page"));
+		$inv->setItem(51, ItemFactory::getInstance()->get(381)->setLore($lore)->setCustomName("§r§l§bShow")); //EYE OF ENDER
+		$inv->setItem(52, VanillaItems::ARROW()->setCustomName("§r§fGo Back"));
+		$inv->setItem(53, VanillaItems::ARROW()->setCustomName("§r§fNext Page"));
+
+		for($i = 0; $i < 35; $i++){
+			if (!isset($this->auctions[$i + $this->page * 35])) break;
+			$auction = $this->auctions[$i + $this->page * 35];
+			$item = $auction->getItem();
+			$lore = $item->getLore();
+			$add_lore = [
+				"Seller: " . $auction->getPlayer(),
+				"Price: " . $auction->getPrice(),
+			];
+			$timeleft = $auction->getTime() + $auction->getAuctionTime() - time();
+			if ($timeleft > 0){
+				array_push($add_lore, "Time Left: " . $timeleft . " seconds");
+			} else {
+				array_push($add_lore, "Expired !");
+			}
+			$lore = array_merge($lore, $add_lore);
+			$item->setLore($lore);
+			$nbt = $item->getNamedTag();
+			$nbt->setInt("AuctionPos" , $i + $this->page * 35);
+			$item->setNamedTag($nbt);
+			$inv->addItem($item);
+		}
 	}
 
 	protected function onTransaction(InvMenuTransaction $transaction): void{
@@ -73,15 +96,31 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			};
 			$this->page = 0;
 			$this->resetInventory();
-			$this->renderItems();
+			$this->await(false);
 		}
-		if ($slot === 51){
-			$this->showmode++;
-			if ($this->showmode > 2){
-				$this->showmode = 0;
-			}
-			$this->resetInventory();
-			$this->renderItems();
+		switch($slot){
+			case 51:
+				$this->showmode++;
+				if ($this->showmode > 2){
+					$this->showmode = 0;
+				}
+				$this->resetInventory();
+				$this->await(false);
+				return;
+			case 52:
+				if ($this->page > 1) $this->page--;
+				$this->resetInventory();
+				$this->await(false);
+				return;
+			case 53:
+				$this->page++;
+				$this->resetInventory();
+				$this->await(false);
+		}
+		if ($transaction->getItemClicked()->getNamedTag()->getTag("AuctionPos") !== null){
+			$value = (int)$transaction->getItemClicked()->getNamedTag()->getTag("AuctionPos")->getValue();
+			new AuctionMenu($this->getLoader(), $this->getPlayer(), $this->auctions[$value]);
+			$this->getMenu()->onClose($this->getPlayer());
 		}
 	}
 
@@ -99,7 +138,11 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 
 	protected function await(bool $sendgui = true): void{
 		Await::f2c(function() use ($sendgui){
-			$data = (array) yield $this->getLoader()->getProvider()->selectAuctionAllNoExpired($this->category);
+			$data = match ($this->showmode) {
+				self::ALL => (array) yield $this->getLoader()->getProvider()->selectAuctionAll($this->category),
+				self::NONE_EXPIRED_MODE => (array) yield $this->getLoader()->getProvider()->selectAuctionAllNoExpired($this->category),
+				self::EXPIRED_MODE => (array) yield $this->getLoader()->getProvider()->selectAuctionAllExpired($this->category),
+			};
 			$this->auctions = Auction::fromArray($data);
 			$this->renderItems();
 			if ($sendgui) $this->send();
