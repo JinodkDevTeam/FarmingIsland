@@ -7,6 +7,7 @@ use AuctionHouse\category\Category;
 use AuctionHouse\category\CategoryManager;
 use JinodkDevTeam\utils\ItemUtils;
 use pocketmine\item\Item;
+use pocketmine\player\Player;
 
 class Auction{
 
@@ -68,12 +69,35 @@ class Auction{
 		return $this->auctiontime;
 	}
 
+	/**
+	 * @return bool
+	 * @description Return true if this auction is expired.
+	 */
 	public function isExpired(): bool{
+		if (($this->getTime() + $this->getAuctionTime() - time()) > 0){
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * @return bool
+	 * @description Return true If This Auction is Expired in Data (not 100% correct)
+	 */
+	public function isExpiredInData(): bool{
 		return $this->expired;
 	}
 
 	public function isEnded(): bool{
 		return $this->ended;
+	}
+
+	public function isSeller(Player|string $player): bool{
+		if ($player instanceof Player) $player = $player->getName();
+		if ($this->getPlayer() === $player){
+			return true;
+		}
+		return false;
 	}
 
 	public static function fromData(array $data): Auction{

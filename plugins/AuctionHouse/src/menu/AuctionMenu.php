@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace AuctionHouse\menu;
 
+use AuctionHouse\auction\Auction;
+use AuctionHouse\auction\Bid;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
@@ -10,6 +12,7 @@ use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
+use SOFe\AwaitGenerator\Await;
 
 class AuctionMenu extends BaseAuctionInfoMenu{
 
@@ -48,7 +51,18 @@ class AuctionMenu extends BaseAuctionInfoMenu{
 		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
 	}
 
-	protected function await(): void{
-		// TODO: Implement await() method.
+	protected function await($sendmenu = true): void{
+		Await::f2c(function() use ($sendmenu){
+			//RE-FLETCH AUCTION
+			$data = yield $this->getLoader()->getProvider()->selectAuctionID($this->getAuction()->getId());
+			if (empty($data)){
+				$this->getPlayer()->sendMessage("Something went wrong in this auction, please reopen Auction Browser !");
+				return;
+			}
+			$this->auction = Auction::fromData($data[0]);
+
+			$this->renderItems();
+			if ($sendmenu) $this->send();
+		});
 	}
 }

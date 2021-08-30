@@ -136,8 +136,8 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
 	}
 
-	protected function await(bool $sendgui = true): void{
-		Await::f2c(function() use ($sendgui){
+	protected function await(bool $sendmenu = true): void{
+		Await::f2c(function() use ($sendmenu){
 			$data = match ($this->showmode) {
 				self::ALL => (array) yield $this->getLoader()->getProvider()->selectAuctionAll($this->category),
 				self::NONE_EXPIRED_MODE => (array) yield $this->getLoader()->getProvider()->selectAuctionAllNoExpired($this->category),
@@ -145,7 +145,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			};
 			$this->auctions = Auction::fromArray($data);
 			$this->renderItems();
-			if ($sendgui) $this->send();
+			if ($sendmenu) $this->send();
 		});
 	}
 }
