@@ -20,6 +20,7 @@ class SqliteProvider
 	public const REMOVE = "bank.remove";
 	public const UPDATE = "bank.update";
 	public const GET_ALL = "bank.getall";
+	public const TOP = "bank.top";
 
 	private DataConnector $database;
 	private Bank $bank;
