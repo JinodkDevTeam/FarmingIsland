@@ -40,7 +40,6 @@ class MyAuctionMenu extends BaseReadOnlyMenu{
 	}
 
 	protected function await(): void{
-		var_dump($this->getPlayer()->getCurrentWindow());
 		Await::f2c(function(){
 			$data = (array) yield $this->getLoader()->getProvider()->selectAuctionPlayer($this->getPlayer()->getName());
 			$this->auctions = Auction::fromArray($data);

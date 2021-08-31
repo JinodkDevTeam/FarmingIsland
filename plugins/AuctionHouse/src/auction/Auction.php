@@ -7,6 +7,7 @@ use AuctionHouse\category\Category;
 use AuctionHouse\category\CategoryManager;
 use JinodkDevTeam\utils\ItemUtils;
 use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
 class Auction{
@@ -65,8 +66,20 @@ class Auction{
 		return $this->time;
 	}
 
+	/**
+	 * @return int
+	 * @description Return Auction Time (Hours)
+	 */
 	public function getAuctionTime(): int{
 		return $this->auctiontime;
+	}
+
+	/**
+	 * @return int
+	 * @description Return time left for a auction (seconds)
+	 */
+	public function getTimeLeft(): int{
+		return $this->getTime() + $this->getAuctionTime()*3600 - time();
 	}
 
 	/**
@@ -74,7 +87,7 @@ class Auction{
 	 * @description Return true if this auction is expired.
 	 */
 	public function isExpired(): bool{
-		if (($this->getTime() + $this->getAuctionTime() - time()) > 0){
+		if ($this->getTimeLeft() > 0){
 			return true;
 		}
 		return false;
@@ -125,5 +138,19 @@ class Auction{
 			array_push($autions, self::fromData($data));
 		}
 		return $autions;
+	}
+
+	public static function getTestAuction(): Auction{
+		return new Auction(
+			0,
+			"Steve",
+			ItemUtils::toString(VanillaItems::PAPER()->setCustomName("Just a test auction")),
+			"",
+			1000,
+			time(),
+			2,
+			false,
+			false
+		);
 	}
 }

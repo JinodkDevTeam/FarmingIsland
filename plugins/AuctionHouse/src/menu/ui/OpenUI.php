@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace AuctionHouse\menu\ui;
 
+use AuctionHouse\auction\Auction;
 use AuctionHouse\menu\AuctionBrowserMenu;
 use AuctionHouse\menu\MyAuctionMenu;
 use AuctionHouse\menu\MyBidsMenu;
@@ -24,12 +25,15 @@ class OpenUI extends BaseUI{
 				case 2:
 					new MyAuctionMenu($this->getLoader(), $player);
 					break;
+				case 3:
+					new AuctionConfigureUI($this->getLoader(), $player, Auction::getTestAuction());
 			}
 		});
 		$form->setTitle("Auction House");
 		$form->addButton("Auction browser");
 		$form->addButton("Manage Bids");
 		$form->addButton("My Auctions");
+		$form->addButton("Test AuctionConfigure");
 
 		$player->sendForm($form);
 	}

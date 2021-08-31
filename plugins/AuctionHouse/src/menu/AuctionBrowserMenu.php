@@ -69,9 +69,8 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 				"Seller: " . $auction->getPlayer(),
 				"Price: " . $auction->getPrice(),
 			];
-			$timeleft = $auction->getTime() + $auction->getAuctionTime() - time();
-			if ($timeleft > 0){
-				array_push($add_lore, "Time Left: " . $timeleft . " seconds");
+			if ($auction->isExpired() > 0){
+				array_push($add_lore, "Time Left: " . $auction->getTimeLeft() . " seconds");
 			} else {
 				array_push($add_lore, "Expired !");
 			}
