@@ -41,7 +41,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			$inv->setItem($slot + 1, $pane);
 			$slot += 9; //TODO: Hacks
 		}
-		for($i = 47; $i <= 51; $i++){
+		for($i = 47; $i <= 49; $i++){
 			$inv->setItem($i, $pane);
 		}
 		$lore = ["  §r§fAll", "  §r§fAuction only", "  §r§fBin only"];
@@ -58,6 +58,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		$inv->setItem(51, ItemFactory::getInstance()->get(381)->setLore($lore)->setCustomName("§r§l§bShow")); //EYE OF ENDER
 		$inv->setItem(52, VanillaItems::ARROW()->setCustomName("§r§fGo Back"));
 		$inv->setItem(53, VanillaItems::ARROW()->setCustomName("§r§fNext Page"));
+		$inv->setItem(50, VanillaItems::FEATHER()->setCustomName("§r§aRefresh"));
 
 		for($i = 0; $i < 35; $i++){
 			if (!isset($this->auctions[$i + $this->page * 35])) break;
@@ -99,6 +100,10 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 			$this->await(false);
 		}
 		switch($slot){
+			case 50:
+				$this->resetInventory();
+				$this->await(false);
+				return;
 			case 51:
 				$this->showmode++;
 				if ($this->showmode > 2){

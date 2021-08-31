@@ -20,7 +20,7 @@ class SqliteProvider{
 	protected const REGISTER_AUCTION = "auction.register.auction";
 	protected const REGISTER_BID = "auction.register.bid";
 	protected const UPDATE_AUCTION_EXPIRED = "auction.update.auction.expired";
-	protected const UPDATE_AUCTION_ENDED = "auction.update.auction.ended";
+	protected const UPDATE_AUCTION_HAVEBID = "auction.update.auction.havebid";
 	protected const UPDATE_AUCTION_BID_PRICE = "auction.update.bid.price";
 	protected const SELECT_AUCTION_ID = "auction.select.auction.id";
 	protected const SELECT_AUCTION_PLAYER = "auction.select.auction.player";
@@ -29,6 +29,7 @@ class SqliteProvider{
 	protected const SELECT_AUCTION_ALL_EXPIRED = "auction.select.auction.all.expired";
 	protected const SELECT_BID_ID = "auction.select.bid.id";
 	protected const SELECT_BID_PLAYER = "auction.select.bid.player";
+	protected const SELECT_BID_PANDI = "auction.select.bid.pandi";
 
 	protected DataConnector $db;
 	protected Loader $loader;
@@ -100,10 +101,10 @@ class SqliteProvider{
 		]);
 	}
 
-	public function updateAuctionEnded(Auction $auction): void{
-		$this->executeChange(self::UPDATE_AUCTION_ENDED, [
+	public function updateAuctionHaveBid(Auction $auction): void{
+		$this->executeChange(self::UPDATE_AUCTION_HAVEBID, [
 			"id" => $auction->getId(),
-			"ended" => $auction->isEnded()
+			"havebid" => $auction->isHaveBid()
 		]);
 	}
 
@@ -141,5 +142,12 @@ class SqliteProvider{
 
 	public function selectBidPlayer(string $player): Generator{
 		return $this->asyncSelect(self::SELECT_BID_PLAYER, ["player" => $player]);
+	}
+
+	public function selectBidPandI(string $player, int $id): Generator{
+		return $this->asyncSelect(self::SELECT_BID_PANDI, [
+			"player" => $player,
+			"id" => $id
+		]);
 	}
 }

@@ -19,9 +19,9 @@ class Auction{
 	protected int $time = 0;
 	protected int $auctiontime = 0;
 	protected bool $expired = false;
-	protected bool $ended = false;
+	protected bool $havebid = false;
 
-	public function __construct(int $id = 0, string $player = "", string $item = "", string $category = "", float $price = 0, int $time = 0, int $auctiontime = 0, bool $expired = false, bool $ended = false){
+	public function __construct(int $id = 0, string $player = "", string $item = "", string $category = "", float $price = 0, int $time = 0, int $auctiontime = 0, bool $expired = false, bool $havebid = false){
 		$this->id = $id;
 		$this->player = $player;
 		$this->item = $item;
@@ -30,7 +30,7 @@ class Auction{
 		$this->time = $time;
 		$this->auctiontime = $auctiontime;
 		$this->expired = $expired;
-		$this->ended = $ended;
+		$this->havebid = $havebid;
 	}
 
 	public function getId(): int{
@@ -88,8 +88,8 @@ class Auction{
 		return $this->expired;
 	}
 
-	public function isEnded(): bool{
-		return $this->ended;
+	public function isHaveBid(): bool{
+		return $this->havebid;
 	}
 
 	public function isSeller(Player|string $player): bool{
@@ -110,7 +110,7 @@ class Auction{
 			(int)$data["Time"],
 			(int)$data["AuctionTime"],
 			(bool)$data["Expired"],
-			(bool)$data["Ended"]
+			(bool)$data["HaveBid"]
 		);
 	}
 

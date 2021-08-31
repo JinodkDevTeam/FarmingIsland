@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS Auction(
     Time INTEGER NOT NULL DEFAULT 0,
     AuctionTime INTEGER NOT NULL DEFAULT 0,
     Expired BOOLEAN NOT NULL DEFAULT FALSE,
-    Ended BOOLEAN NOT NULL DEFAULT FALSE
+    HaveBid BOOLEAN NOT NULL DEFAULT FALSE
 );
 -- #        }
 -- #        { bid
@@ -56,10 +56,10 @@ INSERT OR REPLACE INTO Bid(Player, Price, Id) VALUES (:player, :price, :id);
 -- #                :expired bool
 UPDATE Auction SET Expired = :expired WHERE Id = :id;
 -- #            }
--- #            { ended
+-- #            { havebid
 -- #                :id int
--- #                :ended bool
-UPDATE Auction SET Ended = :ended WHERE Id = :id;
+-- #                :havebid bool
+UPDATE Auction SET HaveBid = :havebid WHERE Id = :id;
 -- #            }
 -- #        }
 -- #        { bid
@@ -91,7 +91,7 @@ SELECT * FROM Auction WHERE Expired = FALSE AND Category = :category;
 -- #            }
 -- #            { all.expired
 -- #                :category string
-SELECT * FROM Auction WHERE Expired = TRUE AND Category = :category;
+SELECT * FROM Auction WHERE (Expired = TRUE) AND (Category = :category) AND (HaveBid = FALSE);
 -- #            }
 -- #        }
 -- #        { bid
@@ -102,6 +102,11 @@ SELECT * FROM Bid WHERE Id = :id ORDER BY Price;
 -- #            { player
 -- #                :player string
 SELECT * FROM Bid WHERE Player = :player;
+-- #            }
+-- #            { pandi
+-- #                :player string
+-- #                :id int
+SELECT * FROM Bid WHERE Player = :player AND Id = :id;
 -- #            }
 -- #        }
 -- #    }
