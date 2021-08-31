@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace AuctionHouse\menu;
 
 use AuctionHouse\auction\Auction;
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\VanillaItems;
@@ -24,15 +24,13 @@ class MyAuctionMenu extends BaseReadOnlyMenu{
 		$inv->setItem(26, VanillaItems::PAPER()->setCustomName("Create Auction"));
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction): void{
+	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
 		$slot = $transaction->getAction()->getSlot();
 		if (isset($this->auctions[$slot])){
-			$this->getMenu()->onClose($this->getPlayer());
 			new AuctionMenu($this->getLoader(), $this->getPlayer(), $this->auctions[$slot]);
 			return;
 		}
 		if ($slot == 26){
-			$this->getMenu()->onClose($this->getPlayer());
 			new CreateAuctionMenu($this->getLoader(), $this->getPlayer());
 		}
 	}
@@ -42,6 +40,7 @@ class MyAuctionMenu extends BaseReadOnlyMenu{
 	}
 
 	protected function await(): void{
+		var_dump($this->getPlayer()->getCurrentWindow());
 		Await::f2c(function(){
 			$data = (array) yield $this->getLoader()->getProvider()->selectAuctionPlayer($this->getPlayer()->getName());
 			$this->auctions = Auction::fromArray($data);

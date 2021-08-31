@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AuctionHouse\menu;
 
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
@@ -14,7 +14,7 @@ class ExpiredAuctionMenu extends BaseAuctionInfoMenu{
 		// TODO: Implement renderItems() method.
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction): void{
+	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
 		// TODO: Implement onTransaction() method.
 	}
 

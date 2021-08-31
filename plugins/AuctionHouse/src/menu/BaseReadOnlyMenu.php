@@ -4,13 +4,11 @@ declare(strict_types=1);
 namespace AuctionHouse\menu;
 
 use AuctionHouse\Loader;
-use Generator;
 use muqsit\invmenu\InvMenu;
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
-use SOFe\AwaitGenerator\Await;
 
 abstract class BaseReadOnlyMenu{
 
@@ -52,7 +50,7 @@ abstract class BaseReadOnlyMenu{
 	}
 
 	protected final function setListeners() {
-		$this->getMenu()->setListener(InvMenu::readonly(function(InvMenuTransaction $transaction) {
+		$this->getMenu()->setListener(InvMenu::readonly(function(DeterministicInvMenuTransaction $transaction) {
 			$this->onTransaction($transaction);
 		}));
 		$this->getMenu()->setInventoryCloseListener(function(Player $player, Inventory $inventory){
@@ -68,7 +66,7 @@ abstract class BaseReadOnlyMenu{
 
 	protected abstract function renderItems(): void;
 
-	protected abstract function onTransaction(InvMenuTransaction $transaction): void;
+	protected abstract function onTransaction(DeterministicInvMenuTransaction $transaction): void;
 
 	protected abstract function onClose(Player $player, Inventory $inventory): void;
 

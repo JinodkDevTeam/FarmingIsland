@@ -5,7 +5,7 @@ namespace AuctionHouse\menu;
 
 use AuctionHouse\auction\Auction;
 use AuctionHouse\auction\Bid;
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
@@ -25,10 +25,9 @@ class MyBidsMenu extends BaseReadOnlyMenu{
 		}
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction): void{
+	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
 		$slot = $transaction->getAction()->getSlot();
 		if (isset($this->auctions[$slot])){
-			$this->getMenu()->onClose($this->getPlayer());
 			new AuctionMenu($this->getLoader(), $this->getPlayer(), $this->auctions[$slot]);
 		}
 	}

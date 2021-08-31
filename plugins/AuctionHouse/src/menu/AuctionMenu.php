@@ -5,7 +5,7 @@ namespace AuctionHouse\menu;
 
 use AuctionHouse\auction\Auction;
 use AuctionHouse\auction\Bid;
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
@@ -56,7 +56,7 @@ class AuctionMenu extends BaseAuctionInfoMenu{
 		}
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction): void{
+	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
 		// TODO: Implement onTransaction() method.
 	}
 

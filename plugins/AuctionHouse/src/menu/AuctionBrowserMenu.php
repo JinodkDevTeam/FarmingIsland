@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace AuctionHouse\menu;
 use AuctionHouse\auction\Auction;
 use AuctionHouse\category\CategoryManager;
-use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\inventory\Inventory;
@@ -84,7 +84,7 @@ class AuctionBrowserMenu extends BaseReadOnlyMenu{
 		}
 	}
 
-	protected function onTransaction(InvMenuTransaction $transaction): void{
+	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
 		$slot = $transaction->getAction()->getSlot();
 		if (in_array($slot, [0, 9, 18, 27, 36, 45])){
 			$this->category = match($slot){
