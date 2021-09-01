@@ -8,7 +8,8 @@ use AuctionHouse\auction\Auction;
 use AuctionHouse\Loader;
 use AuctionHouse\menu\ui\AuctionConfigureUI;
 use JinodkDevTeam\utils\ItemUtils;
-use muqsit\invmenu\transaction\DeterministicInvMenuTransaction;
+use muqsit\invmenu\transaction\InvMenuTransaction;
+use muqsit\invmenu\transaction\InvMenuTransactionResult;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\ItemFactory;
@@ -16,7 +17,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
-class CreateAuctionMenu extends BaseReadOnlyMenu{
+class CreateAuctionMenu extends BaseMenu{
 
 	protected ?Auction $auction = null;
 
@@ -62,19 +63,11 @@ class CreateAuctionMenu extends BaseReadOnlyMenu{
 		$inv->setItem(33, $createItem);
 	}
 
-	protected function onTransaction(DeterministicInvMenuTransaction $transaction): void{
+	protected function onTransaction(InvMenuTransaction $transaction): InvMenuTransactionResult{
 		$slot = $transaction->getAction()->getSlot();
-		if ($slot > 53){
-			//Set Auction Item
-			$this->getMenu()->getInventory()->setItem(13, $transaction->getItemClicked());
-		}
 		switch($slot){
 			case 13:
-				if ($this->getMenu()->getInventory()->getItem(13)->getId() !== ItemIds::AIR){
-					$this->getPlayer()->getInventory()->addItem($this->getMenu()->getInventory()->getItem(13));
-					$this->getMenu()->getInventory()->setItem(13, ItemFactory::air());
-				}
-				break;
+				return $transaction->continue();
 			case 29:
 				$this->getMenu()->onClose($this->getPlayer());
 				new AuctionConfigureUI($this->getLoader(), $this->getPlayer(), new Auction(
@@ -92,8 +85,8 @@ class CreateAuctionMenu extends BaseReadOnlyMenu{
 			case 33:
 				$this->getMenu()->onClose($this->getPlayer());
 				$this->createAuction();
-				break;
 		}
+		return $transaction->discard();
 	}
 
 	protected function onClose(Player $player, Inventory $inventory): void{
