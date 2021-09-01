@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace AuctionHouse\menu;
 
 use AuctionHouse\Loader;
+use Closure;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\transaction\InvMenuTransactionResult;
@@ -51,9 +52,7 @@ abstract class BaseMenu{
 	}
 
 	protected function setListeners(){
-		$this->getMenu()->setListener(function(InvMenuTransaction $transaction){
-			$this->onTransaction($transaction);
-		});
+		$this->getMenu()->setListener(Closure::fromCallable([$this, "onTransaction"]));
 		$this->getMenu()->setInventoryCloseListener(function(Player $player, Inventory $inventory){
 			$this->onClose($player, $inventory);
 		});

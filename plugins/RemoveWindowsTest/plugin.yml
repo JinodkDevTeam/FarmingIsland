@@ -1,0 +1,9 @@
+name: RemoveWindowTest
+api: 4.0.0
+main: RemoveWindowTest\Main
+src-namespace-prefix: RemoveWindowTest
+version: 0.0.1
+
+commands:
+  remove:
+    description: Nothing.

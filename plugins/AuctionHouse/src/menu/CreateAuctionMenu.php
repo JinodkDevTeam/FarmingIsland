@@ -85,6 +85,7 @@ class CreateAuctionMenu extends BaseMenu{
 			case 33:
 				$this->getMenu()->onClose($this->getPlayer());
 				$this->createAuction();
+				break;
 		}
 		return $transaction->discard();
 	}

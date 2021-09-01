@@ -53,6 +53,6 @@ class MyAuctionMenu extends BaseReadOnlyMenu{
 	}
 
 	protected function getMenuType() : string{
-		return InvMenuTypeIds::TYPE_CHEST;
+		return InvMenuTypeIds::TYPE_DOUBLE_CHEST;
 	}
 }
