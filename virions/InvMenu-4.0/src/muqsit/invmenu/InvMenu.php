@@ -110,7 +110,7 @@ class InvMenu implements InvMenuTypeIds{
 		$network = $session->getNetwork();
 		$network->dropPending();
 
-		$player->removeCurrentWindow();
+		$player->getCurrentWindow()?->onClose($player);
 
 		$network->waitUntil($network->getGraphicWaitDuration(), function(bool $success) use($player, $session, $name, $callback) : void{
 			if($success){
