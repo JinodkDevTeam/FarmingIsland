@@ -21,23 +21,17 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\network\mcpe\protocol;
+namespace pocketmine\utils;
 
-use PHPUnit\Framework\TestCase;
-use pocketmine\network\mcpe\protocol\serializer\PacketSerializer;
+trait NotSerializable{
 
-class DataPacketTest extends TestCase{
+	/** @return mixed[] */
+	final public function __serialize() : array{
+		throw new \LogicException("Serialization of " . static::class . " objects is not allowed");
+	}
 
-	public function testHeaderFidelity() : void{
-		$pk = new TestPacket();
-		$pk->senderSubId = 3;
-		$pk->recipientSubId = 2;
-		$serializer = new PacketSerializer();
-		$pk->encode($serializer);
-
-		$pk2 = new TestPacket();
-		$pk2->decode(new PacketSerializer($serializer->getBuffer()));
-		self::assertSame($pk2->senderSubId, 3);
-		self::assertSame($pk2->recipientSubId, 2);
+	/** @param mixed[] $data */
+	final public function __unserialize(array $data) : void{
+		throw new \LogicException("Unserialization of " . static::class . " objects is not allowed");
 	}
 }

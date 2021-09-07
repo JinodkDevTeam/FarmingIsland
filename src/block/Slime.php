@@ -21,8 +21,24 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\world\format\io;
+namespace pocketmine\block;
 
-abstract class AbstractWorldProvider implements WorldProvider{
+use pocketmine\entity\Entity;
+use pocketmine\entity\Living;
 
+final class Slime extends Transparent{
+
+	public function getFrictionFactor() : float{
+		return 0.8; //???
+	}
+
+	public function onEntityLand(Entity $entity) : ?float{
+		if($entity instanceof Living && $entity->isSneaking()){
+			return null;
+		}
+		$entity->resetFallDistance();
+		return -$entity->getMotion()->y;
+	}
+
+	//TODO: slime blocks should slow entities walking on them to about 0.4x original speed
 }

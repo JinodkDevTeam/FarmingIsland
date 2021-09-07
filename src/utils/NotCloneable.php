@@ -21,22 +21,11 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\network\mcpe\protocol;
+namespace pocketmine\utils;
 
-use pocketmine\network\mcpe\protocol\serializer\PacketSerializer;
+trait NotCloneable{
 
-class TestPacket extends DataPacket{
-	public const NETWORK_ID = 1023;
-
-	protected function decodePayload(PacketSerializer $in) : void{
-
-	}
-
-	protected function encodePayload(PacketSerializer $out) : void{
-
-	}
-
-	public function handle(PacketHandlerInterface $handler) : bool{
-		return false;
+	final public function __clone(){
+		throw new \LogicException("Cloning " . static::class . " objects is not allowed");
 	}
 }

@@ -21,8 +21,28 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\world\format\io;
+namespace pocketmine\event\entity;
 
-interface InterfaceWorldProvider extends WorldProvider{
+use pocketmine\block\Block;
+use pocketmine\entity\Living;
+use pocketmine\event\Cancellable;
+use pocketmine\event\CancellableTrait;
 
+/**
+ * @phpstan-extends EntityEvent<Living>
+ */
+class EntityTrampleFarmlandEvent extends EntityEvent implements Cancellable{
+	use CancellableTrait;
+
+	/** @var Block */
+	private $block;
+
+	public function __construct(Living $entity, Block $block){
+		$this->entity = $entity;
+		$this->block = $block;
+	}
+
+	public function getBlock() : Block{
+		return $this->block;
+	}
 }
