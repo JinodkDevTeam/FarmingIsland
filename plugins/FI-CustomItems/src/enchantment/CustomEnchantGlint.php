@@ -9,6 +9,6 @@ use pocketmine\item\enchantment\Rarity;
 
 class CustomEnchantGlint extends Enchantment{
 	public function __construct(){
-		parent::__construct(100, "%enchantment.customitems.glint", Rarity::MYTHIC, ItemFlags::NONE, ItemFlags::ALL, 1);
+		parent::__construct("enchantment.customitems.glint", Rarity::MYTHIC, ItemFlags::NONE, ItemFlags::ALL, 1);
 	}
 }
