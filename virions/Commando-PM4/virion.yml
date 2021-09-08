@@ -1,5 +1,8 @@
 name: Commando
 antigen: CortexPE\Commando
-api: 4.0.0
+api:
+  - 4.0.0
+  - 4.0.0-BETA1
+  - 4.0.0-BETA2
 version: 3.0.0
 author: CortexPE
