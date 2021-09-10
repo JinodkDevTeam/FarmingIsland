@@ -1357,8 +1357,7 @@ class Server{
 
 			if(isset($this->console)){
 				$this->getLogger()->debug("Closing console");
-				$this->console->shutdown();
-				$this->console->notify();
+				$this->console->quit();
 			}
 
 			if(isset($this->network)){
