@@ -33,14 +33,14 @@ class Loader extends PluginBase {
 		$this->fishingHook[$player->getName()] = $fishingHook;
 	}
 
-	/*public function onLoad() : void {
+	public function onLoad() : void {
 
 		ItemFactory::getInstance()->register(new FishingRod(new ItemIdentifier(ItemIds::FISHING_ROD, 0), "Fishing Rod"), true);
 		$closure = function(World $world, CompoundTag $nbt): FishingHook {
 			return new FishingHook(EntityDataHelper::parseLocation($nbt, $world), null, $nbt);
 		};
-		EntityFactory::getInstance()->register(FishingHook::class, $closure, ["Item", "minecraft:item"], EntityLegacyIds::FISHING_HOOK);
-	}*/
+		EntityFactory::getInstance()->register(FishingHook::class, $closure, ["FishingHook", "minecraft:fishinghook"], EntityLegacyIds::FISHING_HOOK);
+	}
 
 	public function onEnable() : void{
 		self::$instance = $this;
