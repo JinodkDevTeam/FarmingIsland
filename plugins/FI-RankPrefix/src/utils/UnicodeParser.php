@@ -9,7 +9,7 @@ class UnicodeParser
 	public static function fromCode(string $code): string
 	{
 		$unicodeChar = "\u" . $code;
-		return json_decode('"' . $unicodeChar . '"');
+		return (string)json_decode('"' . $unicodeChar . '"');
 	}
 
 	public static function fromCharactor(string $charactor): string
