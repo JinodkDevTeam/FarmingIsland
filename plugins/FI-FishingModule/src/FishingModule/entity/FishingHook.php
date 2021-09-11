@@ -31,10 +31,8 @@ use pocketmine\world\particle\WaterParticle;
 use pocketmine\world\World;
 
 class FishingHook extends Projectile{
-	/** @var float */
-	protected $gravity = 0.1;
-	/** @var float */
-	protected $drag = 0.05;
+	protected float $gravity = 0.1;
+	protected float $drag = 0.05;
 	protected ?Entity $caughtEntity;
 	protected int $ticksCatchable = 0;
 	protected int $ticksCaughtDelay = 0;

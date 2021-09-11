@@ -83,7 +83,7 @@ class PlayerFishEvent extends PluginEvent implements Cancellable{
 	}
 
 	/**
-	 * @return Item[]
+	 * @return Item[]|null
 	 */
 	public function getItemsResult() : ?array{
 		return $this->itemsResult;
