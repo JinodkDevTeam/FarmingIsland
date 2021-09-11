@@ -79,7 +79,6 @@ class Loader extends PluginBase implements Listener{
 		if($ev->isCancelled()){
 			return;
 		}
-
 		$transaction->apply();
 	}
 }
