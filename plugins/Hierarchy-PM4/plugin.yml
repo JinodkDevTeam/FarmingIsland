@@ -6,7 +6,7 @@ load: POSTWORLD
 author: CortexPE
 description: "Role-based permission management system"
 website: "https://CortexPE.xyz"
-extensions: ["sqlite3"]
+extensions: [ "sqlite3" ]
 permissions:
   hierarchy:
     default: "false"

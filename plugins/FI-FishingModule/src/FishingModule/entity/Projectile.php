@@ -5,8 +5,7 @@ namespace FishingModule\entity;
 use pocketmine\entity\Entity;
 use pocketmine\entity\projectile\Projectile as ProjectilePM;
 
-abstract class Projectile extends ProjectilePM
-{
+abstract class Projectile extends ProjectilePM{
 	public function getRidingEntity() : ?Entity{
 		return null;
 	}

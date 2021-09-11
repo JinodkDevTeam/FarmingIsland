@@ -38,7 +38,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
 use function is_numeric;
 
-class HRKChat extends PluginBase {
+class HRKChat extends PluginBase{
 	/** @var string */
 	protected $prefix = "{{";
 	/** @var string */
@@ -46,7 +46,7 @@ class HRKChat extends PluginBase {
 	/** @var string */
 	protected $placeholderRegex;
 
-	public function onEnable(): void {
+	public function onEnable() : void{
 		$this->saveResource("config.yml");
 
 		$config = $this->getConfig()->getAll();
@@ -82,27 +82,27 @@ class HRKChat extends PluginBase {
 		$plMgr->registerEvents(new EventListener($this, $config), $this);
 	}
 
-	private function resolveRoleIDs(RoleManager $rMgr, array &$config, string $key):void {
+	private function resolveRoleIDs(RoleManager $rMgr, array &$config, string $key) : void{
 		foreach($config[$key] as $ref => $fmt){
 			if(!is_numeric($ref)){
 				$role = $rMgr->getRoleByName($ref);
 				if($role instanceof Role){
 					$config[$key][($id = $role->getId())] = $fmt;
 					unset($config[$key][$ref]);
-				} else {
+				}else{
 					$this->getLogger()->error("Cannot resolve {$key} role '{$ref}' to a valid ID. Please double check your configuration.");
 				}
 			}
 		}
 	}
 
-	public function resolvePlaceholders(string $msg, BaseMember $member): string {
-		if(preg_match_all($this->placeholderRegex, $msg, $matches)) {
-			foreach($matches[1] as $k => $match) {
+	public function resolvePlaceholders(string $msg, BaseMember $member) : string{
+		if(preg_match_all($this->placeholderRegex, $msg, $matches)){
+			foreach($matches[1] as $k => $match){
 				$ev = new PlaceholderResolveEvent($member, $match);
 				$ev->call();
 				$val = $ev->getValue();
-				if($val === null) {
+				if($val === null){
 					$val = TextFormat::OBFUSCATED . "NULL" . TextFormat::RESET;
 					$this->getLogger()->error("Unresolved placeholder '{$match}'");
 				}
@@ -116,14 +116,14 @@ class HRKChat extends PluginBase {
 	/**
 	 * @return string
 	 */
-	public function getPrefix(): string {
+	public function getPrefix() : string{
 		return $this->prefix;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getSuffix(): string {
+	public function getSuffix() : string{
 		return $this->suffix;
 	}
 }

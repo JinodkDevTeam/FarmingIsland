@@ -1,14 +1,15 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\provider;
 
 use pocketmine\player\IPlayer;
 use pocketmine\player\Player;
 
-interface EconomyProvider {
+interface EconomyProvider{
 	/**
 	 * @param Player $player
-	 * @param float $amount
+	 * @param float  $amount
 	 *
 	 * @return bool
 	 */

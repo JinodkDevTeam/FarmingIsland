@@ -33,7 +33,7 @@ namespace CortexPE\HRKChat\event;
 use CortexPE\Hierarchy\member\BaseMember;
 use pocketmine\event\Event;
 
-class PlaceholderResolveEvent extends Event {
+class PlaceholderResolveEvent extends Event{
 	/** @var BaseMember */
 	protected $member;
 	/** @var string */
@@ -41,7 +41,7 @@ class PlaceholderResolveEvent extends Event {
 	/** @var string */
 	protected $value = null;
 
-	public function __construct(BaseMember $member, string $placeholderName) {
+	public function __construct(BaseMember $member, string $placeholderName){
 		$this->member = $member;
 		$this->placeholderName = $placeholderName;
 	}
@@ -49,28 +49,28 @@ class PlaceholderResolveEvent extends Event {
 	/**
 	 * @return BaseMember
 	 */
-	public function getMember(): BaseMember {
+	public function getMember() : BaseMember{
 		return $this->member;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getPlaceholderName(): string {
+	public function getPlaceholderName() : string{
 		return $this->placeholderName;
 	}
 
 	/**
 	 * @return string|null
 	 */
-	public function getValue(): ?string {
+	public function getValue() : ?string{
 		return $this->value;
 	}
 
 	/**
 	 * @param string $value
 	 */
-	public function setValue(string $value): void {
+	public function setValue(string $value) : void{
 		$this->value = $value;
 	}
 }

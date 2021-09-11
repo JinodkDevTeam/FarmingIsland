@@ -5,32 +5,23 @@ declare(strict_types=1);
 namespace FishingModule;
 
 use FishingModule\entity\FishingHook;
-use FishingModule\item\FishingRod;
-use pocketmine\data\bedrock\EntityLegacyIds;
-use pocketmine\entity\EntityDataHelper;
-use pocketmine\entity\EntityFactory;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIdentifier;
-use pocketmine\item\ItemIds;
-use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\world\World;
 
-class Loader extends PluginBase {
+class Loader extends PluginBase{
+	protected static $instance;
 	/** @var FishingHook[] */
 	public array $fishingHook = [];
-	protected static $instance;
 
-	public function getFishingHook(Player $player): ?FishingHook {
-		if (isset($this->fishingHook[$player->getName()])) {
+	public static function getInstance() : Loader{
+		return self::$instance;
+	}
+
+	public function getFishingHook(Player $player) : ?FishingHook{
+		if(isset($this->fishingHook[$player->getName()])){
 			return $this->fishingHook[$player->getName()];
 		}
 		return null;
-	}
-
-	public function setFishingHook(Player $player, ?FishingHook $fishingHook): void {
-		$this->fishingHook[$player->getName()] = $fishingHook;
 	}
 
 	/*public function onLoad() : void {
@@ -42,12 +33,12 @@ class Loader extends PluginBase {
 		EntityFactory::getInstance()->register(FishingHook::class, $closure, ["Item", "minecraft:item"], EntityLegacyIds::FISHING_HOOK);
 	}*/
 
-	public function onEnable() : void{
-		self::$instance = $this;
+	public function setFishingHook(Player $player, ?FishingHook $fishingHook) : void{
+		$this->fishingHook[$player->getName()] = $fishingHook;
 	}
 
-	public static function getInstance(): Loader {
-		return self::$instance;
+	public function onEnable() : void{
+		self::$instance = $this;
 	}
 
 }

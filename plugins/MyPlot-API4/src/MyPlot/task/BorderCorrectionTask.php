@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\task;
 
+use Exception;
 use MyPlot\MyPlot;
 use MyPlot\Plot;
 use pocketmine\block\Block;
@@ -49,7 +51,7 @@ class BorderCorrectionTask extends Task{
 	/** @var int */
 	protected $maxBlocksPerTick;
 
-	public function __construct(MyPlot $plugin, Plot $start, Plot $end, bool $fillCorner = false, int $cornerDirection = -1, int $maxBlocksPerTick = 256) {
+	public function __construct(MyPlot $plugin, Plot $start, Plot $end, bool $fillCorner = false, int $cornerDirection = -1, int $maxBlocksPerTick = 256){
 		$this->plugin = $plugin;
 		$this->start = $start;
 		$this->end = $end;
@@ -69,28 +71,28 @@ class BorderCorrectionTask extends Task{
 		$this->groundBlock = $plotLevel->plotFillBlock;
 		$this->bottomBlock = $plotLevel->bottomBlock;
 
-		if(($start->Z - $end->Z) === 1) { // North Z-
+		if(($start->Z - $end->Z) === 1){ // North Z-
 			$this->plotBeginPos = $this->plotBeginPos->subtract(0, 0, $roadWidth);
 			$this->xMax = (int) ($this->plotBeginPos->x + $plotSize);
 			$this->zMax = (int) ($this->plotBeginPos->z + $roadWidth);
 			$this->direction = Facing::NORTH;
-		}elseif(($start->X - $end->X) === -1) { // East X+
+		}elseif(($start->X - $end->X) === -1){ // East X+
 			$this->plotBeginPos = $this->plotBeginPos->add($plotSize, 0, 0);
 			$this->xMax = (int) ($this->plotBeginPos->x + $roadWidth);
 			$this->zMax = (int) ($this->plotBeginPos->z + $plotSize);
 			$this->direction = Facing::EAST;
-		}elseif(($start->Z - $end->Z) === -1) { // South Z+
+		}elseif(($start->Z - $end->Z) === -1){ // South Z+
 			$this->plotBeginPos = $this->plotBeginPos->add(0, 0, $plotSize);
 			$this->xMax = (int) ($this->plotBeginPos->x + $plotSize);
 			$this->zMax = (int) ($this->plotBeginPos->z + $roadWidth);
 			$this->direction = Facing::SOUTH;
-		}elseif(($start->X - $end->X) === 1) { // West X-
+		}elseif(($start->X - $end->X) === 1){ // West X-
 			$this->plotBeginPos = $this->plotBeginPos->subtract($roadWidth, 0, 0);
 			$this->xMax = (int) ($this->plotBeginPos->x + $roadWidth);
 			$this->zMax = (int) ($this->plotBeginPos->z + $plotSize);
 			$this->direction = Facing::WEST;
 		}else{
-			throw new \Exception('Merge Plots are not adjacent');
+			throw new Exception('Merge Plots are not adjacent');
 		}
 
 		$this->pos = new Vector3($this->plotBeginPos->x, 0, $this->plotBeginPos->z);
@@ -98,11 +100,11 @@ class BorderCorrectionTask extends Task{
 		$plugin->getLogger()->debug("Border Correction Task started between plots {$start->X};{$start->Z} and {$end->X};{$end->Z}");
 	}
 
-	public function onRun() : void {
+	public function onRun() : void{
 		$blocks = 0;
-		if($this->direction === Facing::NORTH or $this->direction === Facing::SOUTH) {
-			while($this->pos->z < $this->zMax) {
-				while($this->pos->y < $this->level->getMaxY()) {
+		if($this->direction === Facing::NORTH or $this->direction === Facing::SOUTH){
+			while($this->pos->z < $this->zMax){
+				while($this->pos->y < $this->level->getMaxY()){
 					if($this->pos->y > $this->height + 1)
 						$block = BlockFactory::getInstance()->get(BlockLegacyIds::AIR, 0);
 					elseif($this->pos->y === $this->height + 1){
@@ -120,7 +122,7 @@ class BorderCorrectionTask extends Task{
 					$this->pos->y++;
 
 					$blocks += 2;
-					if($blocks >= $this->maxBlocksPerTick) {
+					if($blocks >= $this->maxBlocksPerTick){
 						$this->setHandler(null);
 						$this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
 						return;
@@ -130,8 +132,8 @@ class BorderCorrectionTask extends Task{
 				$this->pos->z++;
 			}
 		}else{
-			while($this->pos->x < $this->xMax) {
-				while($this->pos->y < $this->level->getMaxY()) {
+			while($this->pos->x < $this->xMax){
+				while($this->pos->y < $this->level->getMaxY()){
 					if($this->pos->y > $this->height + 1)
 						$block = BlockFactory::getInstance()->get(BlockLegacyIds::AIR, 0);
 					elseif($this->pos->y === $this->height + 1)
@@ -146,7 +148,7 @@ class BorderCorrectionTask extends Task{
 					$this->level->setBlock(new Vector3($this->pos->x, $this->pos->y, $this->zMax), $block, false);
 					$this->pos->y++;
 					$blocks += 2;
-					if($blocks >= $this->maxBlocksPerTick) {
+					if($blocks >= $this->maxBlocksPerTick){
 						$this->setHandler(null);
 						$this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
 						return;

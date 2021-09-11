@@ -10,27 +10,27 @@
 
 namespace CustomAlerts\Events;
 
+use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\world\World;
-use pocketmine\player\Player;
 
-class CustomAlertsWorldChangeEvent extends CustomAlertsEvent {
-	
+class CustomAlertsWorldChangeEvent extends CustomAlertsEvent{
+
 	public static $handlerList = null;
-	
+
 	/** @var Player $player */
 	private $player;
-	
+
 	/** @var World $origin */
 	private $origin;
-	
+
 	/** @var World $target */
 	private $target;
-	
+
 	/**
 	 * @param Player $player
-	 * @param World $origin
-	 * @param World $target
+	 * @param World  $origin
+	 * @param World  $target
 	 */
 	public function __construct(Plugin $plugin, Player $player, World $origin, World $target){
 		parent::__construct($plugin);
@@ -38,31 +38,31 @@ class CustomAlertsWorldChangeEvent extends CustomAlertsEvent {
 		$this->origin = $origin;
 		$this->target = $target;
 	}
-	
+
 	/**
 	 * Get world change event player
 	 *
 	 * @return Player
 	 */
-	public function getPlayer() : Player {
+	public function getPlayer() : Player{
 		return $this->player;
 	}
-	
+
 	/**
 	 * Get origin level
 	 *
 	 * @return World
 	 */
-	public function getOrigin() : World {
+	public function getOrigin() : World{
 		return $this->origin;
 	}
-	
+
 	/**
 	 * Get target level
 	 *
 	 * @return World
 	 */
-	public function getTarget() : World {
+	public function getTarget() : World{
 		return $this->target;
 	}
 }

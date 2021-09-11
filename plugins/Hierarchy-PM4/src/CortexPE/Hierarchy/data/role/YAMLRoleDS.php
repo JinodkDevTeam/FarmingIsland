@@ -32,7 +32,7 @@ namespace CortexPE\Hierarchy\data\role;
 
 use CortexPE\Hierarchy\data\traits\YAMLProcessing;
 
-class YAMLRoleDS extends IndexedRoleDS {
+class YAMLRoleDS extends IndexedRoleDS{
 	use YAMLProcessing;
 
 	/** @var string */

@@ -38,7 +38,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\player\Player;
 
-class EventListener implements Listener {
+class EventListener implements Listener{
 	/** @var HRKChat */
 	private $plugin;
 	/** @var Hierarchy */
@@ -50,7 +50,7 @@ class EventListener implements Listener {
 	/** @var string[] */
 	private $nameTagFormats;
 
-	public function __construct(HRKChat $plugin, array $config) {
+	public function __construct(HRKChat $plugin, array $config){
 		$this->plugin = $plugin;
 		$this->hrk = $plugin->getServer()->getPluginManager()->getPlugin("Hierarchy");
 		$this->chatFormats = $config["chatFormat"];
@@ -63,10 +63,10 @@ class EventListener implements Listener {
 	 * @priority        LOW
 	 * @ignoreCancelled true
 	 */
-	public function onRoleChange(MemberRoleUpdateEvent $ev): void {
+	public function onRoleChange(MemberRoleUpdateEvent $ev) : void{
 		$m = $ev->getMember();
 		$p = $m->getPlayer();
-		if($p instanceof Player) {
+		if($p instanceof Player){
 			$p->setNameTag(
 				$this->plugin->resolvePlaceholders(
 					$this->resolveFormat($m, $this->nameTagFormats), $m
@@ -75,13 +75,33 @@ class EventListener implements Listener {
 		}
 	}
 
+	private function resolveFormat(BaseMember $member, array $formatList) : string{
+		if($this->defaultRoleID === null){
+			$this->defaultRoleID = $this->hrk->getRoleManager()->getDefaultRole()->getId();
+		}
+		$roles = $member->getRoles();
+		$topRolePosition = PHP_INT_MIN;
+		$roleID = $this->defaultRoleID;
+		foreach($roles as $role){
+			if(
+				isset($formatList[$role->getId()]) &&
+				$role->getPosition() > $topRolePosition
+			){
+				$topRolePosition = $role->getPosition();
+				$roleID = $role->getId();
+			}
+		}
+
+		return $formatList[$roleID];
+	}
+
 	/**
 	 * @param PlayerChatEvent $ev
 	 *
 	 * @priority        LOW
 	 * @ignoreCancelled true
 	 */
-	public function onChat(PlayerChatEvent $ev) {
+	public function onChat(PlayerChatEvent $ev){
 		$m = $this->hrk->getMemberFactory()->getMember(($p = $ev->getPlayer()));
 
 		$ev->setFormat(str_replace(
@@ -93,33 +113,13 @@ class EventListener implements Listener {
 		));
 	}
 
-	private function resolveFormat(BaseMember $member, array $formatList): string {
-		if($this->defaultRoleID === null) {
-			$this->defaultRoleID = $this->hrk->getRoleManager()->getDefaultRole()->getId();
-		}
-		$roles = $member->getRoles();
-		$topRolePosition = PHP_INT_MIN;
-		$roleID = $this->defaultRoleID;
-		foreach($roles as $role) {
-			if(
-				isset($formatList[$role->getId()]) &&
-				$role->getPosition() > $topRolePosition
-			) {
-				$topRolePosition = $role->getPosition();
-				$roleID = $role->getId();
-			}
-		}
-
-		return $formatList[$roleID];
-	}
-
 	/**
 	 * @param PlaceholderResolveEvent $ev
 	 *
 	 * @priority LOWEST
 	 */
-	public function onPlaceholderResolve(PlaceholderResolveEvent $ev): void {
-		if($ev->getPlaceholderName() === "hrk.displayName") {
+	public function onPlaceholderResolve(PlaceholderResolveEvent $ev) : void{
+		if($ev->getPlaceholderName() === "hrk.displayName"){
 			$ev->setValue($ev->getMember()->getPlayer()->getDisplayName());
 		}
 	}

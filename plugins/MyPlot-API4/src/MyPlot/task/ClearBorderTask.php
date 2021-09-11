@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\task;
 
 use MyPlot\MyPlot;
@@ -8,13 +9,14 @@ use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\math\Vector3;
 use pocketmine\scheduler\Task;
+use pocketmine\world\World;
 
-class ClearBorderTask extends Task {
+class ClearBorderTask extends Task{
 	/** @var MyPlot $plugin */
 	protected $plugin;
 	/** @var Plot $plot */
 	protected $plot;
-	/** @var \pocketmine\world\World|null $level */
+	/** @var World|null $level */
 	protected $level;
 	/** @var int $height */
 	protected $height;
@@ -37,30 +39,30 @@ class ClearBorderTask extends Task {
 	 * ClearBorderTask constructor.
 	 *
 	 * @param MyPlot $plugin
-	 * @param Plot $plot
+	 * @param Plot   $plot
 	 */
-	public function __construct(MyPlot $plugin, Plot $plot) {
+	public function __construct(MyPlot $plugin, Plot $plot){
 		$this->plugin = $plugin;
 		$this->plot = $plot;
 		$plotLevel = $plugin->getLevelSettings($plot->levelName);
 		$plotSize = $plotLevel->plotSize;
-        $this->plotBeginPos = $plugin->getPlotPosition($plot, false);
-        $this->xMax = (int)($this->plotBeginPos->x + $plotSize);
-        $this->zMax = (int)($this->plotBeginPos->z + $plotSize);
-        foreach ($plugin->getProvider()->getMergedPlots($plot) as $mergedPlot){
-            $xplot = $plugin->getPlotPosition($mergedPlot, false)->x;
-            $zplot = $plugin->getPlotPosition($mergedPlot, false)->z;
-            $xMaxPlot = (int)($xplot + $plotSize);
-            $zMaxPlot = (int)($zplot + $plotSize);
-            if($this->plotBeginPos->x > $xplot) $this->plotBeginPos->x = $xplot;
-            if($this->plotBeginPos->z > $zplot) $this->plotBeginPos->z = $zplot;
-            if($this->xMax < $xMaxPlot) $this->xMax = $xMaxPlot;
-            if($this->zMax < $zMaxPlot) $this->zMax = $zMaxPlot;
-        }
+		$this->plotBeginPos = $plugin->getPlotPosition($plot, false);
+		$this->xMax = (int) ($this->plotBeginPos->x + $plotSize);
+		$this->zMax = (int) ($this->plotBeginPos->z + $plotSize);
+		foreach($plugin->getProvider()->getMergedPlots($plot) as $mergedPlot){
+			$xplot = $plugin->getPlotPosition($mergedPlot, false)->x;
+			$zplot = $plugin->getPlotPosition($mergedPlot, false)->z;
+			$xMaxPlot = (int) ($xplot + $plotSize);
+			$zMaxPlot = (int) ($zplot + $plotSize);
+			if($this->plotBeginPos->x > $xplot) $this->plotBeginPos->x = $xplot;
+			if($this->plotBeginPos->z > $zplot) $this->plotBeginPos->z = $zplot;
+			if($this->xMax < $xMaxPlot) $this->xMax = $xMaxPlot;
+			if($this->zMax < $zMaxPlot) $this->zMax = $zMaxPlot;
+		}
 
-        --$this->plotBeginPos->x;
-        --$this->plotBeginPos->z;
-        $this->level = $this->plotBeginPos->getLevelNonNull();
+		--$this->plotBeginPos->x;
+		--$this->plotBeginPos->z;
+		$this->level = $this->plotBeginPos->getLevelNonNull();
 		$this->height = $plotLevel->groundHeight;
 		$this->plotWallBlock = $plotLevel->wallBlock;
 		$this->roadBlock = $plotLevel->roadBlock;
@@ -69,9 +71,9 @@ class ClearBorderTask extends Task {
 		$plugin->getLogger()->debug("Border Clear Task started at plot {$plot->X};{$plot->Z}");
 	}
 
-	public function onRun() : void {
-		for($x = $this->plotBeginPos->x; $x <= $this->xMax; $x++) {
-			for($y = 0; $y < $this->level->getWorldHeight(); ++$y) {
+	public function onRun() : void{
+		for($x = $this->plotBeginPos->x; $x <= $this->xMax; $x++){
+			for($y = 0; $y < $this->level->getWorldHeight(); ++$y){
 				if($y > $this->height + 1)
 					$block = VanillaBlocks::AIR();
 				elseif($y === $this->height + 1)
@@ -86,9 +88,9 @@ class ClearBorderTask extends Task {
 				$this->level->setBlock(new Vector3($x, $y, $this->zMax), $block, false);
 			}
 		}
-		for($z = $this->plotBeginPos->z; $z <= $this->zMax; $z++) {
-			for($y = 0; $y < $this->level->getWorldHeight(); ++$y) {
-				if($y > $this->height+1)
+		for($z = $this->plotBeginPos->z; $z <= $this->zMax; $z++){
+			for($y = 0; $y < $this->level->getWorldHeight(); ++$y){
+				if($y > $this->height + 1)
 					$block = VanillaBlocks::AIR();
 				elseif($y === $this->height + 1)
 					$block = $this->plotWallBlock;

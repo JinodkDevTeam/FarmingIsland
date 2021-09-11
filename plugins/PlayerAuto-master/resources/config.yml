@@ -1,11 +1,11 @@
 # PlayerAuto Config
 features:
-    autosell: true
-    autofeed: true
-    autofix: "event" #Use "task" will cause more lag,use "event" if you are using PocketMine-MP 3.11.7 or newer.
+  autosell: true
+  autofeed: true
+  autofix: "event" #Use "task" will cause more lag,use "event" if you are using PocketMine-MP 3.11.7 or newer.
 setting:
-    sell-cmd: "sell all" # Lệnh bán đồ
-    damage: 100 # Nếu bạn bật auto fix và độ hư hỏng dụng cụ bạn đạt tới mức này, nó sẽ tự động sửa
+  sell-cmd: "sell all" # Lệnh bán đồ
+  damage: 100 # Nếu bạn bật auto fix và độ hư hỏng dụng cụ bạn đạt tới mức này, nó sẽ tự động sửa
 msg:
-    auto-sell: "AutoSell"
-    auto-fix: "AutoFix"
+  auto-sell: "AutoSell"
+  auto-fix: "AutoFix"

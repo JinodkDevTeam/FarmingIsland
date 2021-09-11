@@ -44,16 +44,20 @@ use CortexPE\Hierarchy\command\subcommand\TransferPrivilegesCommand;
 use CortexPE\Hierarchy\Hierarchy;
 use pocketmine\command\CommandSender;
 
-class HierarchyCommand extends BaseCommand {
+class HierarchyCommand extends BaseCommand{
 	/** @var Hierarchy */
 	private $plugin;
 
-	public function __construct(Hierarchy $plugin, string $name, string $description = "", array $aliases = []) {
+	public function __construct(Hierarchy $plugin, string $name, string $description = "", array $aliases = []){
 		$this->plugin = $plugin;
 		parent::__construct($plugin, $name, $description, $aliases);
 	}
 
-	protected function prepare(): void {
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		$this->sendUsage();
+	}
+
+	protected function prepare() : void{
 		$this->registerSubCommand(
 			new CreateRoleCommand(
 				$this->plugin,
@@ -127,9 +131,5 @@ class HierarchyCommand extends BaseCommand {
 				"Transfer privileges between players"
 			)
 		);
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		$this->sendUsage();
 	}
 }

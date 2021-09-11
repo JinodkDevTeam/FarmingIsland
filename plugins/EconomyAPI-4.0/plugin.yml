@@ -3,7 +3,7 @@ main: onebone\economyapi\EconomyAPI
 version: "3.0.0-SNAPSHOT"
 author: onebone
 api:
-- 4.0.0
+  - 4.0.0
 
 permissions:
   economyapi.command.setmoney:

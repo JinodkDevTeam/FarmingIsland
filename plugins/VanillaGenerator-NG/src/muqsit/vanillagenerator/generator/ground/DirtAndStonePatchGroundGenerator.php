@@ -5,21 +5,19 @@ declare(strict_types=1);
 namespace muqsit\vanillagenerator\generator\ground;
 
 use pocketmine\block\VanillaBlocks;
-use Random;
 use pocketmine\world\ChunkManager;
+use Random;
 
-class DirtAndStonePatchGroundGenerator extends GroundGenerator
-{
+class DirtAndStonePatchGroundGenerator extends GroundGenerator{
 
-	public function generateTerrainColumn(ChunkManager $world, Random $random, int $x, int $z, int $biome, float $surface_noise): void
-	{
-		if ($surface_noise > 1.75) {
+	public function generateTerrainColumn(ChunkManager $world, Random $random, int $x, int $z, int $biome, float $surface_noise) : void{
+		if($surface_noise > 1.75){
 			$this->setTopMaterial(VanillaBlocks::STONE());
 			$this->setGroundMaterial(VanillaBlocks::STONE());
-		} elseif ($surface_noise > -0.5) {
+		}elseif($surface_noise > -0.5){
 			$this->setTopMaterial(VanillaBlocks::DIRT()->setCoarse(true));
 			$this->setGroundMaterial(VanillaBlocks::DIRT());
-		} else {
+		}else{
 			$this->setTopMaterial(VanillaBlocks::GRASS());
 			$this->setGroundMaterial(VanillaBlocks::DIRT());
 		}

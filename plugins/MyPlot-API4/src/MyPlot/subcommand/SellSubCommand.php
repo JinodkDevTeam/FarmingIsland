@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\subcommand;
 
 use MyPlot\forms\MyPlotForm;
@@ -7,20 +8,19 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class SellSubCommand extends SubCommand
-{
-	public function canUse(CommandSender $sender) : bool {
+class SellSubCommand extends SubCommand{
+	public function canUse(CommandSender $sender) : bool{
 		return ($sender instanceof Player) and $sender->hasPermission("myplot.command.sell");
 	}
 
 	/**
-	 * @param Player $sender
+	 * @param Player   $sender
 	 * @param string[] $args
 	 *
 	 * @return bool
 	 */
-	public function execute(CommandSender $sender, array $args) : bool {
-		if(count($args) === 0) {
+	public function execute(CommandSender $sender, array $args) : bool{
+		if(count($args) === 0){
 			return false;
 		}
 		$plot = $this->getPlugin()->getPlotByPosition($sender->getPosition());
@@ -34,8 +34,8 @@ class SellSubCommand extends SubCommand
 		}
 		if(!is_numeric($args[0]))
 			return false;
-		$price = (float)$args[0];
-		if($this->getPlugin()->sellPlot($plot, $price) and $price > 0) {
+		$price = (float) $args[0];
+		if($this->getPlugin()->sellPlot($plot, $price) and $price > 0){
 			$sender->sendMessage($this->translateString("sell.success", ["{$plot->X};{$plot->Z}", $price]));
 		}elseif($price <= 0){
 			$sender->sendMessage(TextFormat::RED . $this->translateString("sell.unlisted", ["{$plot->X};{$plot->Z}"]));
@@ -45,7 +45,7 @@ class SellSubCommand extends SubCommand
 		return true;
 	}
 
-	public function getForm(?Player $player = null) : ?MyPlotForm {
+	public function getForm(?Player $player = null) : ?MyPlotForm{
 		// TODO: Implement getForm() method.
 		return null;
 	}

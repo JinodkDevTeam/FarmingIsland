@@ -30,6 +30,6 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\command\subcommand;
 
 
-interface FormedCommand {
-	public function sendForm(): void;
+interface FormedCommand{
+	public function sendForm() : void;
 }

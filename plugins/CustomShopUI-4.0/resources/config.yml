@@ -12,7 +12,7 @@ Back_to_Start: false
 Survival: false
 
 # This is Used to Ban Commands in only the Worlds Below.
-Worlds: ["bannedworld1", "bannedworld2"] # You can add as Many as needed
+Worlds: [ "bannedworld1", "bannedworld2" ] # You can add as Many as needed
 
 # This adds an Exit Button to Categories Section of Plugin (Recommended to Leave false)
 Category_ExitButton: true
@@ -44,4 +44,4 @@ Types:
   Slider_Minimum: 1 # Must be a Number (Number for Normal Slider)
   Slider_Maximum: 128 # Must be a Number (Number for Maximum Amount they can Buy)
   StepSlider: false # true or false (adds step Slider)
-  Slider_Numbers: ["1", "15", "30", "64", "128"] # You can add more Numbers if you follow the Same format!
+  Slider_Numbers: [ "1", "15", "30", "64", "128" ] # You can add more Numbers if you follow the Same format!

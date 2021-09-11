@@ -11,8 +11,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\SkillLevel;
 
-class SkillLevelHandle
-{
+class SkillLevelHandle{
 	private array $mining;
 	private array $farming;
 	private array $farming2;
@@ -22,8 +21,7 @@ class SkillLevelHandle
 
 	private Core $core;
 
-	public function __construct(Core $core)
-	{
+	public function __construct(Core $core){
 		$this->core = $core;
 
 		$this->mining = [
@@ -65,77 +63,40 @@ class SkillLevelHandle
 		];
 	}
 
-	public function getCore(): Core
-	{
+	public function getCore() : Core{
 		return $this->core;
 	}
 
-	public function getSkillLevel(): ?SkillLevel
-	{
-		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
-		if ($sl instanceof SkillLevel)
-		{
-			return $sl;
-		}
-		return null;
-	}
-
-	public function onBreak(BlockBreakEvent $event)
-	{
+	public function onBreak(BlockBreakEvent $event){
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 
 		//MINING
-		if (in_array($block->getId(), array_keys($this->mining)))
-		{
+		if(in_array($block->getId(), array_keys($this->mining))){
 			$amount = $this->mining[$block->getId()];
 			$this->addXp($player, SkillLevel::MINING, $amount);
 		}
 		//FORAGING
-		if (in_array($block->getId(), array_keys($this->foraging)))
-		{
+		if(in_array($block->getId(), array_keys($this->foraging))){
 			$amount = $this->foraging[$block->getId()];
 			$this->addXp($player, SkillLevel::FORAGING, $amount);
 		}
 		//FARMING TYPE 1
-		if (in_array($block->getId(), array_keys($this->farming)))
-		{
-			if ($block->getMeta() == 8) //FULL GROW
+		if(in_array($block->getId(), array_keys($this->farming))){
+			if($block->getMeta() == 8) //FULL GROW
 			{
 				$amount = $this->farming[$block->getId()];
 				$this->addXp($player, SkillLevel::FARMING, $amount);
 			}
 		}
 		//FARMING TYPE 2
-		if (in_array($block->getId(), array_keys($this->farming3)))
-		{
+		if(in_array($block->getId(), array_keys($this->farming3))){
 			$amount = $this->farming3[$block->getId()];
 			$this->addXp($player, SkillLevel::FARMING, $amount);
 		}
 	}
 
-	public function onInteract(PlayerInteractEvent $event)
-	{
-		$player = $event->getPlayer();
-		$block = $event->getBlock();
-		$action = $event->getAction();
-		if ($action == PlayerInteractEvent::LEFT_CLICK_BLOCK) return;
-		//FARMING TYPE 2
-		if (in_array($block->getId(), array_keys($this->farming2)))
-		{
-			if ($block instanceof Crops){
-				if ($block->getAge() >= 2)
-				{
-					$amount = $this->farming2[$block->getId()];
-					$this->addXp($player, SkillLevel::FARMING, $amount);
-				}
-			}
-		}
-	}
-	//TODO: Fishing
-
-	public function addXp(Player $player, int $skill_code, int $amount)
-	{
+	public function addXp(Player $player, int $skill_code, int $amount){
 		$data = $this->getSkillLevel()->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
 		$data->addSkillExp($skill_code, $amount);
 
@@ -145,14 +106,38 @@ class SkillLevelHandle
 		$player->sendPopup($this->IdToSkillName($skill_code) . " " . $level . ": " . $exp . "/" . $data->getMaxExp($level) . " (+" . $amount . ")");
 	}
 
-	public function IdToSkillName(int $id): string
-	{
-		return match ($id)
-		{
+	public function getSkillLevel() : ?SkillLevel{
+		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
+		if($sl instanceof SkillLevel){
+			return $sl;
+		}
+		return null;
+	}
+
+	//TODO: Fishing
+
+	public function IdToSkillName(int $id) : string{
+		return match ($id) {
 			SkillLevel::MINING => "Mining",
 			SkillLevel::FARMING => "Farming",
 			SkillLevel::FORAGING => "Foraging",
 			SkillLevel::FISHING => "Fishing"
 		};
+	}
+
+	public function onInteract(PlayerInteractEvent $event){
+		$player = $event->getPlayer();
+		$block = $event->getBlock();
+		$action = $event->getAction();
+		if($action == PlayerInteractEvent::LEFT_CLICK_BLOCK) return;
+		//FARMING TYPE 2
+		if(in_array($block->getId(), array_keys($this->farming2))){
+			if($block instanceof Crops){
+				if($block->getAge() >= 2){
+					$amount = $this->farming2[$block->getId()];
+					$this->addXp($player, SkillLevel::FARMING, $amount);
+				}
+			}
+		}
 	}
 }

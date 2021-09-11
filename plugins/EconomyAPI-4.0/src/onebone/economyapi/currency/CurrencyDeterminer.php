@@ -22,6 +22,6 @@ namespace onebone\economyapi\currency;
 
 use pocketmine\player\Player;
 
-interface CurrencyDeterminer {
-	public function getDefaultCurrency(Player $player): Currency;
+interface CurrencyDeterminer{
+	public function getDefaultCurrency(Player $player) : Currency;
 }

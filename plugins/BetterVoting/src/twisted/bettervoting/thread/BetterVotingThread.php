@@ -169,24 +169,6 @@ final class BetterVotingThread extends Thread{
 		curl_close($ch);
 	}
 
-	public function sleep() : void{
-		$this->synchronized(function() : void{
-			if($this->running){
-				$this->wait();
-			}
-		});
-	}
-
-
-	public function quit() : void{
-		$this->running = false;
-		$this->synchronized(function() : void{
-			$this->notify();
-		});
-
-		parent::quit();
-	}
-
 	/**
 	 * Appends $args to the MinecraftPocket-Servers API URL to be used for http requests.
 	 *
@@ -198,22 +180,21 @@ final class BetterVotingThread extends Thread{
 		return "https://minecraftpocket-servers.com/api/?" . $args;
 	}
 
-	/**
-	 * Adds an action to the queue that will be executed on the next run.
-	 *
-	 * @param int         $action
-	 * @param Player|null $player
-	 */
-	public function addActionToQueue(int $action, ?Player $player = null) : void{
-		$toAdd = ["type" => $action];
-		if($player !== null){
-			$toAdd["player"] = $player->getName();
-		}
-		$this->actionQueue[] = igbinary_serialize($toAdd);
+	public function sleep() : void{
+		$this->synchronized(function() : void{
+			if($this->running){
+				$this->wait();
+			}
+		});
+	}
 
+	public function quit() : void{
+		$this->running = false;
 		$this->synchronized(function() : void{
 			$this->notify();
 		});
+
+		parent::quit();
 	}
 
 	/**
@@ -325,6 +306,24 @@ final class BetterVotingThread extends Thread{
 				}
 			}
 		}
+	}
+
+	/**
+	 * Adds an action to the queue that will be executed on the next run.
+	 *
+	 * @param int         $action
+	 * @param Player|null $player
+	 */
+	public function addActionToQueue(int $action, ?Player $player = null) : void{
+		$toAdd = ["type" => $action];
+		if($player !== null){
+			$toAdd["player"] = $player->getName();
+		}
+		$this->actionQueue[] = igbinary_serialize($toAdd);
+
+		$this->synchronized(function() : void{
+			$this->notify();
+		});
 	}
 
 	/**

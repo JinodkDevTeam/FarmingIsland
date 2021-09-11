@@ -51,7 +51,7 @@ use pocketmine\plugin\PluginBase;
 use function extension_loaded;
 use function strtolower;
 
-class Hierarchy extends PluginBase {
+class Hierarchy extends PluginBase{
 	/** @var RoleDataSource */
 	private $roleDS;
 	/** @var MemberDataSource */
@@ -65,7 +65,7 @@ class Hierarchy extends PluginBase {
 	/** @var bool */
 	private $superAdminOPs = false;
 
-	public function onEnable(): void {
+	public function onEnable() : void{
 		try{
 			DSMigrator::tryMigration($this);
 			IndexedToSQL::tryMigration($this);
@@ -77,7 +77,7 @@ class Hierarchy extends PluginBase {
 
 			$this->superAdminOPs = $conf->get("superAdminOPs", $this->superAdminOPs);
 
-			switch($conf->getNested("roleDataSource.type", "yaml")) {
+			switch($conf->getNested("roleDataSource.type", "yaml")){
 				case "json":
 					$this->roleDS = new JSONRoleDS($this, $conf->getNested("roleDataSource.json"));
 					break;
@@ -88,15 +88,15 @@ class Hierarchy extends PluginBase {
 					throw new StartupFailureException("Invalid role data source type, must be one of the following: 'json', 'yaml'");
 			}
 
-			switch($conf->getNested("memberDataSource.type", "yaml")) {
+			switch($conf->getNested("memberDataSource.type", "yaml")){
 				case "sqlite3":
-					if(!extension_loaded("sqlite3")) {
+					if(!extension_loaded("sqlite3")){
 						throw new StartupFailureException("SQLite3 PHP Extension is not enabled! Please check php.ini or choose a different data source type");
 					}
 					$this->memberDS = new SQLiteMemberDS($this, $conf->getNested("memberDataSource.sqlite3"));
 					break;
 				case "mysql":
-					if(!extension_loaded("mysqli")) {
+					if(!extension_loaded("mysqli")){
 						throw new StartupFailureException("MySQLi PHP Extension is not enabled! Please check php.ini or choose a different data source type");
 					}
 					$this->memberDS = new MySQLMemberDS($this, $conf->getNested("memberDataSource.mysql"));
@@ -115,7 +115,7 @@ class Hierarchy extends PluginBase {
 			$this->memberDS->initialize();
 
 			$this->getScheduler()->scheduleTask(new InvalidRolePermissionCheckTask($this));
-		} catch(Exception $e){
+		}catch(Exception $e){
 			$this->getLogger()->logException($e);
 			$this->getLogger()->warning("Forcefully shutting down server for the sake of security.");
 			$this->getServer()->forceShutdown();
@@ -125,10 +125,10 @@ class Hierarchy extends PluginBase {
 	/**
 	 * @internal used to continue startup after the data source has finished initialization
 	 */
-	public function continueStartup(): void {
+	public function continueStartup() : void{
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
-		if(!PacketHooker::isRegistered()) {
+		if(!PacketHooker::isRegistered()){
 			PacketHooker::register($this);
 		}
 		$this->getServer()->getCommandMap()->register(
@@ -137,15 +137,15 @@ class Hierarchy extends PluginBase {
 		);
 	}
 
-	public function onDisable(): void {
-		if($this->memberFactory instanceof MemberFactory) {
+	public function onDisable() : void{
+		if($this->memberFactory instanceof MemberFactory){
 			$this->memberFactory->shutdown();
 		}
 		// last
-		if($this->roleDS instanceof RoleDataSource) {
+		if($this->roleDS instanceof RoleDataSource){
 			$this->roleDS->shutdown();
 		}
-		if($this->memberDS instanceof MemberDataSource) {
+		if($this->memberDS instanceof MemberDataSource){
 			$this->memberDS->shutdown();
 		}
 	}
@@ -153,21 +153,21 @@ class Hierarchy extends PluginBase {
 	/**
 	 * @return RoleDataSource
 	 */
-	public function getRoleDataSource(): RoleDataSource {
+	public function getRoleDataSource() : RoleDataSource{
 		return $this->roleDS;
 	}
 
 	/**
 	 * @return MemberDataSource
 	 */
-	public function getMemberDataSource(): ?MemberDataSource {
+	public function getMemberDataSource() : ?MemberDataSource{
 		return $this->memberDS;
 	}
 
 	/**
 	 * @return RoleManager
 	 */
-	public function getRoleManager(): RoleManager {
+	public function getRoleManager() : RoleManager{
 		return $this->roleManager;
 	}
 
@@ -175,14 +175,14 @@ class Hierarchy extends PluginBase {
 	 *
 	 * @return MemberFactory
 	 */
-	public function getMemberFactory(): MemberFactory {
+	public function getMemberFactory() : MemberFactory{
 		return $this->memberFactory;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isSuperAdminOPs(): bool {
+	public function isSuperAdminOPs() : bool{
 		return $this->superAdminOPs;
 	}
 }

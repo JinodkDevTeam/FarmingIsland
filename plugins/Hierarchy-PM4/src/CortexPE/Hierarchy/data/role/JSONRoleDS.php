@@ -33,13 +33,13 @@ namespace CortexPE\Hierarchy\data\role;
 use CortexPE\Hierarchy\data\traits\JSONProcessing;
 use CortexPE\Hierarchy\Hierarchy;
 
-class JSONRoleDS extends IndexedRoleDS {
+class JSONRoleDS extends IndexedRoleDS{
 	use JSONProcessing;
 
 	/** @var string */
 	protected const FILE_EXTENSION = "json";
 
-	public function __construct(Hierarchy $plugin, array $config) {
+	public function __construct(Hierarchy $plugin, array $config){
 		$this->readConfig($config);
 		parent::__construct($plugin);
 	}

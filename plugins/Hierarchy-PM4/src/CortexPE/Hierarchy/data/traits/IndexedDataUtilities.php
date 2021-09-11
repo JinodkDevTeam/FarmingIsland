@@ -35,13 +35,9 @@ use function array_unique;
 use function array_values;
 use function in_array;
 
-trait IndexedDataUtilities {
-	private static function permissionInArray(string $permission, array $array): bool {
-		return in_array($permission, $array) || in_array("-" . $permission, $array);
-	}
-
-	private static function removePermissionFromArray(string $permission, array &$array): void {
-		if(self::permissionInArray($permission, $array)) {
+trait IndexedDataUtilities{
+	private static function removePermissionFromArray(string $permission, array &$array) : void{
+		if(self::permissionInArray($permission, $array)){
 			unset(
 				$array[array_search($permission, $array)],
 				$array[array_search("-" . $permission, $array)]
@@ -49,7 +45,11 @@ trait IndexedDataUtilities {
 		}
 	}
 
-	private function reIndex(array &$array): void {
+	private static function permissionInArray(string $permission, array $array) : bool{
+		return in_array($permission, $array) || in_array("-" . $permission, $array);
+	}
+
+	private function reIndex(array &$array) : void{
 		$array = array_values(array_unique($array));
 	}
 }

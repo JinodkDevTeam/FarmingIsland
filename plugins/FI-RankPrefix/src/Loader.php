@@ -12,32 +12,54 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
 use RankPrefix\utils\UnicodeParser;
 
-class Loader extends PluginBase implements Listener
-{
+class Loader extends PluginBase implements Listener{
 	public array $prefix = [];
 	public Config $data;
 
-	public function onEnable() : void
-	{
+	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->data = new Config($this->getDataFolder() . "data.yml", Config::YAML);
 		$this->prefix = $this->data->getAll();
 	}
 
-	public function onDisable(): void
-	{
+	public function onDisable() : void{
 		$this->data->setAll($this->prefix);
 		$this->data->save();
 	}
 
-	public function getPrefix(Player $player): string
-	{
-		if (!isset($this->prefix[$player->getName()])) return $this->fromString("");
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+		if($command->getName() !== "prefix"){
+			return true;
+		}
+		if(!$sender instanceof Player){
+			$sender->sendMessage("Please use in-game");
+			return true;
+		}
+		if(isset($args[0])){
+			$this->prefix[$sender->getName()] = $args[0];
+		}
+		return true;
+	}
+
+	/**
+	 * @param PlaceholderResolveEvent $event
+	 *
+	 * @priority NORMAL
+	 * @handleCancelled FALSE
+	 */
+	public function onPlaceHolderResovle(PlaceholderResolveEvent $event){
+		if($event->getPlaceholderName() === "prefix.rank"){
+			$event->setValue($this->getPrefix($event->getMember()->getPlayer()));
+		}
+	}
+
+	public function getPrefix(Player $player) : string{
+		if(!isset($this->prefix[$player->getName()])) return $this->fromString("");
 		return $this->fromString($this->prefix[$player->getName()]);
 	}
 
-	public function fromString(string $prefix): string{
-		return match ($prefix){
+	public function fromString(string $prefix) : string{
+		return match ($prefix) {
 			"vip" => UnicodeParser::fromCode("E101"),
 			"admin" => UnicodeParser::fromCode("E102"),
 			"staff" => UnicodeParser::fromCode("E103"),
@@ -57,36 +79,5 @@ class Loader extends PluginBase implements Listener
 			"campiole", "camp" => UnicodeParser::fromCode("E118"),
 			default => UnicodeParser::fromCode("E100"),
 		};
-	}
-
-	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool
-	{
-		if ($command->getName() !== "prefix")
-		{
-			return true;
-		}
-		if (!$sender instanceof Player)
-		{
-			$sender->sendMessage("Please use in-game");
-			return true;
-		}
-		if (isset($args[0]))
-		{
-			$this->prefix[$sender->getName()] = $args[0];
-		}
-		return true;
-	}
-
-	/**
-	 * @param PlaceholderResolveEvent $event
-	 * @priority NORMAL
-	 * @handleCancelled FALSE
-	 */
-	public function onPlaceHolderResovle(PlaceholderResolveEvent $event)
-	{
-		if ($event->getPlaceholderName() === "prefix.rank")
-		{
-			$event->setValue($this->getPrefix($event->getMember()->getPlayer()));
-		}
 	}
 }

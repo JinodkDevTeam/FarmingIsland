@@ -21,134 +21,131 @@ use function strtolower;
 
 class ClearLagg extends PluginBase{
 
-    public const LANG_TIME_LEFT = "time-left";
-    public const LANG_ENTITIES_CLEARED = "entities-cleared";
+	public const LANG_TIME_LEFT = "time-left";
+	public const LANG_ENTITIES_CLEARED = "entities-cleared";
 
-    /** @var int */
-    private $interval;
-    /** @var int */
-    private $seconds;
+	/** @var int */
+	private $interval;
+	/** @var int */
+	private $seconds;
 
-    /** @var bool */
-    private $clearItems;
-    /** @var bool */
-    private $clearMobs;
-    /** @var bool */
-    private $clearXpOrbs;
+	/** @var bool */
+	private $clearItems;
+	/** @var bool */
+	private $clearMobs;
+	/** @var bool */
+	private $clearXpOrbs;
 
-    /** @var string[] */
-    private $exemptEntities;
+	/** @var string[] */
+	private $exemptEntities;
 
-    /** @var string[] */
-    private $messages;
-    /** @var int[] */
-    private $broadcastTimes;
+	/** @var string[] */
+	private $messages;
+	/** @var int[] */
+	private $broadcastTimes;
 
-    public function onEnable() : void{
-        $config = $this->getConfig()->getAll();
+	public function onEnable() : void{
+		$config = $this->getConfig()->getAll();
 
-        if(!is_numeric($config["seconds"] ?? 300)){
-            $this->getLogger()->error("Config error: seconds attribute must an integer");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+		if(!is_numeric($config["seconds"] ?? 300)){
+			$this->getLogger()->error("Config error: seconds attribute must an integer");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
 
-            return;
-        }
-        $this->interval = $this->seconds = $config["seconds"];
+			return;
+		}
+		$this->interval = $this->seconds = $config["seconds"];
 
-        if(!is_array($config["clear"] ?? [])){
-            $this->getLogger()->error("Config error: clear attribute must an array");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+		if(!is_array($config["clear"] ?? [])){
+			$this->getLogger()->error("Config error: clear attribute must an array");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
 
-            return;
-        }
-        $clear = $config["clear"] ?? [];
-        $this->clearItems = (bool) ($clear["items"] ?? false);
-        $this->clearMobs = (bool) ($clear["mobs"] ?? false);
-        $this->clearXpOrbs = (bool) ($clear["xp-orbs"] ?? false);
-        if(!is_array($clear["exempt"] ?? [])){
-            $this->getLogger()->error("Config error: clear.exempt attribute must an array");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+			return;
+		}
+		$clear = $config["clear"] ?? [];
+		$this->clearItems = (bool) ($clear["items"] ?? false);
+		$this->clearMobs = (bool) ($clear["mobs"] ?? false);
+		$this->clearXpOrbs = (bool) ($clear["xp-orbs"] ?? false);
+		if(!is_array($clear["exempt"] ?? [])){
+			$this->getLogger()->error("Config error: clear.exempt attribute must an array");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
 
-            return;
-        }
-        $this->exemptEntities = array_map(function($entity) : string{
-            return strtolower((string) $entity);
-        }, $clear["exempt"] ?? []);
+			return;
+		}
+		$this->exemptEntities = array_map(function($entity) : string{
+			return strtolower((string) $entity);
+		}, $clear["exempt"] ?? []);
 
-        if(!is_array($config["messages"] ?? [])){
-            $this->getLogger()->error("Config error: times attribute must an array");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+		if(!is_array($config["messages"] ?? [])){
+			$this->getLogger()->error("Config error: times attribute must an array");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
 
-            return;
-        }
-        $messages = $config["messages"] ?? [];
-        $this->messages = [
-            self::LANG_TIME_LEFT => $messages[self::LANG_TIME_LEFT] ?? "§cEntities will clear in {SECONDS} seconds",
-            self::LANG_ENTITIES_CLEARED => $messages[self::LANG_ENTITIES_CLEARED] ?? "§cCleared a total of {COUNT} entities"
-        ];
+			return;
+		}
+		$messages = $config["messages"] ?? [];
+		$this->messages = [
+			self::LANG_TIME_LEFT => $messages[self::LANG_TIME_LEFT] ?? "§cEntities will clear in {SECONDS} seconds",
+			self::LANG_ENTITIES_CLEARED => $messages[self::LANG_ENTITIES_CLEARED] ?? "§cCleared a total of {COUNT} entities"
+		];
 
-        if(!is_array($config["times"] ?? [])){
-            $this->getLogger()->error("Config error: times attribute must an array");
-            $this->getServer()->getPluginManager()->disablePlugin($this);
+		if(!is_array($config["times"] ?? [])){
+			$this->getLogger()->error("Config error: times attribute must an array");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
 
-            return;
-        }
-        $this->broadcastTimes = $config["times"] ?? [60, 30, 15, 10, 5, 4, 3, 2, 1];
+			return;
+		}
+		$this->broadcastTimes = $config["times"] ?? [60, 30, 15, 10, 5, 4, 3, 2, 1];
 
-        $this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() : void{
-            if(--$this->seconds === 0){
-            	$this->clearLagg();
-                $this->seconds = $this->interval;
-            }else if(in_array($this->seconds, $this->broadcastTimes) && $this->messages[self::LANG_TIME_LEFT] !== ""){
-                $this->broadcastMessage(str_replace("{SECONDS}", (string)$this->seconds, $this->messages[self::LANG_TIME_LEFT]));
-            }
-        }), 20);
-    }
+		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(function() : void{
+			if(--$this->seconds === 0){
+				$this->clearLagg();
+				$this->seconds = $this->interval;
+			}elseif(in_array($this->seconds, $this->broadcastTimes) && $this->messages[self::LANG_TIME_LEFT] !== ""){
+				$this->broadcastMessage(str_replace("{SECONDS}", (string) $this->seconds, $this->messages[self::LANG_TIME_LEFT]));
+			}
+		}), 20);
+	}
 
-    public function broadcastMessage(string $msg): void{
-        foreach ($this->getServer()->getOnlinePlayers() as $player){
-            $player->sendMessage($msg);
-        }
-    }
-
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool
-    {
-        if (strtolower($command->getName()) !== "clearlagg")
-        {
-            return true;
-        }
-        if (!$sender->hasPermission("clearlagg.cmd"))
-        {
-            $sender->sendMessage("You dont have permission to use this command");
-            return true;
-        }
-        $this->clearLagg();
-        return true;
-    }
-
-    public function clearLagg(): void {
+	public function clearLagg() : void{
 		$entitiesCleared = 0;
 		foreach($this->getServer()->getWorldManager()->getWorlds() as $world){
 			foreach($world->getEntities() as $entity){
 				if($this->clearItems && $entity instanceof ItemEntity){
 					$entity->flagForDespawn();
 					++$entitiesCleared;
-				}else if($this->clearMobs && $entity instanceof Living && !$entity instanceof Human){
+				}elseif($this->clearMobs && $entity instanceof Living && !$entity instanceof Human){
 					if(!in_array(strtolower($entity->getName()), $this->exemptEntities)){
 						$entity->flagForDespawn();
 						++$entitiesCleared;
 					}
-				}else if($this->clearXpOrbs && $entity instanceof ExperienceOrb){
+				}elseif($this->clearXpOrbs && $entity instanceof ExperienceOrb){
 					$entity->flagForDespawn();
 					++$entitiesCleared;
-				}elseif ($entity instanceof PrimedTNT){
+				}elseif($entity instanceof PrimedTNT){
 					$entity->flagForDespawn();
 					++$entitiesCleared;
 				}
 			}
 		}
 		if($this->messages[self::LANG_ENTITIES_CLEARED] !== ""){
-			$this->broadcastMessage(str_replace("{COUNT}", (string)$entitiesCleared, $this->messages[self::LANG_ENTITIES_CLEARED]));
+			$this->broadcastMessage(str_replace("{COUNT}", (string) $entitiesCleared, $this->messages[self::LANG_ENTITIES_CLEARED]));
 		}
+	}
+
+	public function broadcastMessage(string $msg) : void{
+		foreach($this->getServer()->getOnlinePlayers() as $player){
+			$player->sendMessage($msg);
+		}
+	}
+
+	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+		if(strtolower($command->getName()) !== "clearlagg"){
+			return true;
+		}
+		if(!$sender->hasPermission("clearlagg.cmd")){
+			$sender->sendMessage("You dont have permission to use this command");
+			return true;
+		}
+		$this->clearLagg();
+		return true;
 	}
 }

@@ -13,7 +13,7 @@ use pocketmine\item\Item;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 
-class PlayerFishEvent extends PluginEvent implements Cancellable {
+class PlayerFishEvent extends PluginEvent implements Cancellable{
 	use CancellableTrait;
 
 	public const STATE_FISHING = 0;
@@ -38,7 +38,7 @@ class PlayerFishEvent extends PluginEvent implements Cancellable {
 	 * @param int         $xpDropAmount
 	 * @param Item[]      $itemsResult
 	 */
-	public function __construct(Plugin $plugin, Player $player, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []) {
+	public function __construct(Plugin $plugin, Player $player, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
 		parent::__construct($plugin);
 		$this->player = $player;
 		$this->fishingHook = $fishingHook;
@@ -50,56 +50,56 @@ class PlayerFishEvent extends PluginEvent implements Cancellable {
 	/**
 	 * @return Player
 	 */
-	public function getPlayer(): Player {
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 
 	/**
 	 * @return FishingHook
 	 */
-	public function getFishingHook(): FishingHook {
+	public function getFishingHook() : FishingHook{
 		return $this->fishingHook;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getState(): int {
+	public function getState() : int{
 		return $this->state;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getXpDropAmount(): int {
+	public function getXpDropAmount() : int{
 		return $this->xpDropAmount;
-	}
-
-	/**
-	 * @return Item[]
-	 */
-	public function getItemsResult(): ?array {
-		return $this->itemsResult;
 	}
 
 	/**
 	 * @param int $amount
 	 */
-	public function setXpDropAmount(int $amount): void {
+	public function setXpDropAmount(int $amount) : void{
 		$this->xpDropAmount = $amount;
+	}
+
+	/**
+	 * @return Item[]
+	 */
+	public function getItemsResult() : ?array{
+		return $this->itemsResult;
 	}
 
 	/**
 	 * @param Item[] $itemsResult
 	 */
-	public function setItemResult(array $itemsResult): void {
+	public function setItemResult(array $itemsResult) : void{
 		$this->itemsResult = $itemsResult;
 	}
 
 	/**
 	 * @return Plugin
 	 */
-	public function getPlugin() : Plugin {
+	public function getPlugin() : Plugin{
 		return Loader::getInstance();
 	}
 }

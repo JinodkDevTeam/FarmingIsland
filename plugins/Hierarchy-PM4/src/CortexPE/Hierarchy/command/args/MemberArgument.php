@@ -38,31 +38,31 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\Server;
 use function preg_match;
 
-class MemberArgument extends BaseArgument {
+class MemberArgument extends BaseArgument{
 	/** @var MemberFactory */
 	protected $mFac;
 
-	public function __construct(string $name, bool $optional) {
+	public function __construct(string $name, bool $optional){
 		parent::__construct($name, $optional);
 		/** @var Hierarchy $hrk */
 		$hrk = Server::getInstance()->getPluginManager()->getPlugin("Hierarchy");
 		$this->mFac = $hrk->getMemberFactory();
 	}
 
-	public function getNetworkType(): int {
+	public function getNetworkType() : int{
 		return AvailableCommandsPacket::ARG_TYPE_TARGET;
 	}
 
-	public function canParse(string $testString, CommandSender $sender): bool {
+	public function canParse(string $testString, CommandSender $sender) : bool{
 		// PM player username validity regex
-		return (bool)preg_match("/^(?!rcon|console)[a-zA-Z0-9_ ]{1,16}$/i", $testString);
+		return (bool) preg_match("/^(?!rcon|console)[a-zA-Z0-9_ ]{1,16}$/i", $testString);
 	}
 
-	public function parse(string $argument, CommandSender $sender) {
+	public function parse(string $argument, CommandSender $sender){
 		return $this->mFac->getMember($argument);
 	}
 
-	public function getTypeName(): string {
+	public function getTypeName() : string{
 		return "member";
 	}
 }

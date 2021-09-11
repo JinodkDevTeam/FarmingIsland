@@ -10,8 +10,7 @@ use SkillLevel\provider\Sqlite3Provider;
 use SOFe\AwaitGenerator\Await;
 use Throwable;
 
-class SkillLevel extends PluginBase
-{
+class SkillLevel extends PluginBase{
 	public const MINING = 1;
 	public const FISHING = 2;
 	public const FARMING = 3;
@@ -20,21 +19,12 @@ class SkillLevel extends PluginBase
 	private PlayerSkillLevelManager $manager;
 	private Sqlite3Provider $provider;
 
-	public function getProvider(): Sqlite3Provider
-	{
-		return $this->provider;
-	}
-
-	public function onEnable() : void
-	{
+	public function onEnable() : void{
 		$this->saveDefaultConfig();
 		$this->provider = new Sqlite3Provider($this);
-		try
-		{
+		try{
 			$this->getProvider()->register();
-		}
-		catch(Exception)
-		{
+		}catch(Exception){
 			$this->getLogger()->info("Failed to load database, disable this plugin ...");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 		}
@@ -43,37 +33,34 @@ class SkillLevel extends PluginBase
 		$this->manager = new PlayerSkillLevelManager();
 	}
 
-	public function onDisable() : void
-	{
+	public function getProvider() : Sqlite3Provider{
+		return $this->provider;
+	}
+
+	public function onDisable() : void{
 		$this->getProvider()->save();
 	}
 
-	public function getPlayerSkillLevelManager(): PlayerSkillLevelManager
-	{
-		return $this->manager;
-	}
-
-	public function loadPlayer(Player $player): void
-	{
-		Await::f2c(function() use ($player)
-		{
-			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER,  ["player" => $player->getName()]);
-			if (empty($data))
-			{
+	public function loadPlayer(Player $player) : void{
+		Await::f2c(function() use ($player){
+			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER, ["player" => $player->getName()]);
+			if(empty($data)){
 				$this->getProvider()->addPlayerData($player);
 			}
-			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER,  ["player" => $player->getName()]);
+			$data = yield $this->getProvider()->asyncSelect(Sqlite3Provider::LOAD_PLAYER, ["player" => $player->getName()]);
 			$this->getPlayerSkillLevelManager()->registerPlayer($player, $data[0]);
-		}, function() {}, function(Throwable $err) {
+		}, function(){ }, function(Throwable $err){
 			$this->getLogger()->logException($err);
 		});
 	}
 
-	public function unloadPlayer(Player $player): void
-	{
+	public function getPlayerSkillLevelManager() : PlayerSkillLevelManager{
+		return $this->manager;
+	}
+
+	public function unloadPlayer(Player $player) : void{
 		$data = $this->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
-		for ($i = 1; $i <= 4; $i++)
-		{
+		for($i = 1; $i <= 4; $i++){
 			$this->getProvider()->updateExp($player, $i, $data->getSkillExp($i));
 			$this->getProvider()->updateLevel($player, $i, $data->getSkillLevel($i));
 		}

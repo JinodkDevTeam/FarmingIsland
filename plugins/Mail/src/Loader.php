@@ -22,12 +22,12 @@ class Loader extends PluginBase{
 		$this->getServer()->getCommandMap()->register("mail", new MailCommand($this));
 	}
 
-	public function onDisable() : void{
-		$this->getProvider()->close();
+	public function getProvider() : SqliteProvider{
+		return $this->provider;
 	}
 
-	public function getProvider(): SqliteProvider{
-		return $this->provider;
+	public function onDisable() : void{
+		$this->getProvider()->close();
 	}
 
 }

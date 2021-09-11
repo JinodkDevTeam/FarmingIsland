@@ -52,30 +52,16 @@ use pocketmine\player\Player;
 use function count;
 use function implode;
 
-abstract class ACPermissionModifierCommand extends HierarchySubCommand implements FormedCommand {
+abstract class ACPermissionModifierCommand extends HierarchySubCommand implements FormedCommand{
 	protected const CHILD_PERMISSION = null;
 	protected const MESSAGE_ROOT = null;
 
-	protected function prepare(): void {
-		$this->registerArgument(0, new TargetEnumArgument("targetType", true));
-		$this->registerArgument(1, new RoleArgument("targetRole", true));
-		$this->registerArgument(1, new MemberArgument("targetMember", true));
-		$this->registerArgument(2, new PermissionArgument("permission", true));
-		$this->setPermission(implode(";", [
-			"hierarchy",
-			"hierarchy.role",
-			"hierarchy.role." . static::CHILD_PERMISSION,
-			"hierarchy.member",
-			"hierarchy.member." . static::CHILD_PERMISSION
-		]));
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 3) {
+		}elseif(count($args) < 3){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
@@ -84,22 +70,22 @@ abstract class ACPermissionModifierCommand extends HierarchySubCommand implement
 		/** @var Permission|null $permission */
 		$permission = $args["permission"];
 
-		if($permission instanceof Permission) {
-			switch($args["targetType"] ?? "undefined") {
+		if($permission instanceof Permission){
+			switch($args["targetType"] ?? "undefined"){
 				case TargetEnumArgument::TARGET_MEMBER:
 					$target = $args["targetMember"];
-					if($target instanceof BaseMember) {
-						if($sender->hasPermission("hierarchy.member." . static::CHILD_PERMISSION)) {
-							if($this->doHierarchyPositionCheck($target, $permission)) {
+					if($target instanceof BaseMember){
+						if($sender->hasPermission("hierarchy.member." . static::CHILD_PERMISSION)){
+							if($this->doHierarchyPositionCheck($target, $permission)){
 								$this->doOperationOnMember($target, $permission);
 								$this->sendFormattedMessage("cmd." . static::MESSAGE_ROOT . ".member.success", [
 									"permission" => $permission->getName(),
 									"member" => $target->getName()
 								]);
-							} else {
+							}else{
 								$this->sendFormattedMessage("err.target_higher_hrk");
 							}
-						} else {
+						}else{
 							$this->sendPermissionError();
 						}
 						break;
@@ -107,46 +93,46 @@ abstract class ACPermissionModifierCommand extends HierarchySubCommand implement
 					break;
 				case TargetEnumArgument::TARGET_ROLE:
 					$target = $args["targetRole"];
-					if($target instanceof Role) {
-						if($sender->hasPermission("hierarchy.role." . static::CHILD_PERMISSION)) {
-							if($this->doHierarchyPositionCheck($target)) {
+					if($target instanceof Role){
+						if($sender->hasPermission("hierarchy.role." . static::CHILD_PERMISSION)){
+							if($this->doHierarchyPositionCheck($target)){
 								$this->doOperationOnRole($target, $permission);
 								$this->sendFormattedMessage("cmd." . static::MESSAGE_ROOT . ".role.success", [
 									"permission" => $permission->getName(),
 									"role" => $target->getName(),
 									"role_id" => $target->getId()
 								]);
-							} else {
+							}else{
 								$this->sendFormattedMessage("err.target_higher_hrk");
 							}
-						} else {
+						}else{
 							$this->sendPermissionError();
 						}
 						break;
 					}
 					break;
 			}
-		} else {
+		}else{
 			$this->sendFormattedMessage("err.unknown_permission");
 		}
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
 			$this->currentSender->sendForm(new ModalForm(
 				$this->plugin->getName(),
 				MessageStore::getMessage("cmd." . static::MESSAGE_ROOT . ".form.choose_type"),
-				function(Player $player, bool $choice): void {
-					if($choice) {
+				function(Player $player, bool $choice) : void{
+					if($choice){
 						$this->setCurrentSender($player);
-						if(!$this->getRolesApplicable($roles, $roles_i)) {
+						if(!$this->getRolesApplicable($roles, $roles_i)){
 							return;
 						}
 						$player->sendForm(new CustomForm($this->plugin->getName(), [
 							new Label("description", $this->getDescription()),
 							new Dropdown("role", "Role", $roles),
 							new Input("permission", "Permission"),
-						], function(Player $player, CustomFormResponse $response) use ($roles, $roles_i): void {
+						], function(Player $player, CustomFormResponse $response) use ($roles, $roles_i) : void{
 							$this->setCurrentSender($player);
 							$this->onRun($player, $this->getName(), [
 								"targetType" => TargetEnumArgument::TARGET_ROLE,
@@ -155,12 +141,12 @@ abstract class ACPermissionModifierCommand extends HierarchySubCommand implement
 									->getPermission($response->getString("permission")),
 							]);
 						}));
-					} else {
+					}else{
 						$player->sendForm(new CustomForm($this->plugin->getName(), [
 							new Label("description", $this->getDescription()),
 							new Input("member", "Member"),
 							new Input("permission", "Permission"),
-						], function(Player $player, CustomFormResponse $response): void {
+						], function(Player $player, CustomFormResponse $response) : void{
 							$this->setCurrentSender($player);
 							$this->onRun($player, $this->getName(), [
 								"targetType" => TargetEnumArgument::TARGET_MEMBER,
@@ -177,7 +163,21 @@ abstract class ACPermissionModifierCommand extends HierarchySubCommand implement
 		}
 	}
 
-	abstract protected function doOperationOnRole(Role $member, Permission $permission): void;
+	abstract protected function doOperationOnMember(BaseMember $member, Permission $permission) : void;
 
-	abstract protected function doOperationOnMember(BaseMember $member, Permission $permission): void;
+	abstract protected function doOperationOnRole(Role $member, Permission $permission) : void;
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new TargetEnumArgument("targetType", true));
+		$this->registerArgument(1, new RoleArgument("targetRole", true));
+		$this->registerArgument(1, new MemberArgument("targetMember", true));
+		$this->registerArgument(2, new PermissionArgument("permission", true));
+		$this->setPermission(implode(";", [
+			"hierarchy",
+			"hierarchy.role",
+			"hierarchy.role." . static::CHILD_PERMISSION,
+			"hierarchy.member",
+			"hierarchy.member." . static::CHILD_PERMISSION
+		]));
+	}
 }

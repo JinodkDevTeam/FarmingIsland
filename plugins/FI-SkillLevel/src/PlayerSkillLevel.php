@@ -7,10 +7,6 @@ use pocketmine\player\Player;
 use SkillLevel\event\PlayerUpdateExpEvent;
 
 class PlayerSkillLevel{
-	protected Player $player;
-	/** @var int[] */
-	protected array $data;
-
 	public const MAX_EXP = [
 		0,
 		50,
@@ -74,6 +70,9 @@ class PlayerSkillLevel{
 		48000000,
 		50000000
 	];
+	protected Player $player;
+	/** @var int[] */
+	protected array $data;
 
 	public function __construct(Player $player, array $data){
 		$this->player = $player;
@@ -88,38 +87,11 @@ class PlayerSkillLevel{
 		$this->data = $data;
 	}
 
-	public function getPlayer() : Player{
-		return $this->player;
-	}
-
-	public function getSkillLevel(int $skill_code) : int{
-		return $this->data[$this->IDLevelParser($skill_code)];
-	}
-
-	public function getSkillExp(int $skill_code) : int{
-		return $this->data[$this->IDExpParser($skill_code)];
-	}
-
-	public function setSkillLevel(int $skill_code, int $level) : void{
-		$this->data[$this->IDLevelParser($skill_code)] = $level;
-	}
-
-	public function setSkillExp(int $skill_code, int $exp) : void{
-		$ev = new PlayerUpdateExpEvent($this->getPlayer(), $skill_code);
-		$ev->call();
-		if ($ev->isCancelled()) {
-			return;
-		}
-		$this->data[$this->IDExpParser($skill_code)] = $exp;
-	}
-
 	public function addSkillExp(int $skill_code, int $exp) : void{
 		$this->setSkillExp($skill_code, $this->getSkillExp($skill_code) + $exp);
 
-		while ($this->getSkillExp($skill_code) >= $this->getMaxExp($this->getSkillLevel($skill_code)))
-		{
-			if ($this->getSkillLevel($skill_code) < $this->getMaxLevel())
-			{
+		while($this->getSkillExp($skill_code) >= $this->getMaxExp($this->getSkillLevel($skill_code))){
+			if($this->getSkillLevel($skill_code) < $this->getMaxLevel()){
 				//LEVEL UP !
 				$this->setSkillExp($skill_code, $this->getSkillExp($skill_code) - $this->getMaxExp($this->getSkillLevel($skill_code)));
 				$this->setSkillLevel($skill_code, $this->getSkillLevel($skill_code) + 1);
@@ -127,14 +99,39 @@ class PlayerSkillLevel{
 		}
 	}
 
-	public function getMaxExp(int $level): int
-	{
+	public function setSkillExp(int $skill_code, int $exp) : void{
+		$ev = new PlayerUpdateExpEvent($this->getPlayer(), $skill_code);
+		$ev->call();
+		if($ev->isCancelled()){
+			return;
+		}
+		$this->data[$this->IDExpParser($skill_code)] = $exp;
+	}
+
+	public function getPlayer() : Player{
+		return $this->player;
+	}
+
+	public function IDExpParser(int $code = 0) : string{
+		return match ($code) {
+			SkillLevel::MINING => "MiningExp",
+			SkillLevel::FISHING => "FishingExp",
+			SkillLevel::FARMING => "FarmingExp",
+			SkillLevel::FORAGING => "ForagingExp",
+			default => "",
+		};
+	}
+
+	public function getSkillExp(int $skill_code) : int{
+		return $this->data[$this->IDExpParser($skill_code)];
+	}
+
+	public function getMaxExp(int $level) : int{
 		return self::MAX_EXP[$level];
 	}
 
-	public function getMaxLevel(): int
-	{
-		return 60;
+	public function getSkillLevel(int $skill_code) : int{
+		return $this->data[$this->IDLevelParser($skill_code)];
 	}
 
 	public function IDLevelParser(int $code = 0) : string{
@@ -147,14 +144,12 @@ class PlayerSkillLevel{
 		};
 	}
 
-	public function IDExpParser(int $code = 0) : string{
-		return match ($code) {
-			SkillLevel::MINING => "MiningExp",
-			SkillLevel::FISHING => "FishingExp",
-			SkillLevel::FARMING => "FarmingExp",
-			SkillLevel::FORAGING => "ForagingExp",
-			default => "",
-		};
+	public function getMaxLevel() : int{
+		return 60;
+	}
+
+	public function setSkillLevel(int $skill_code, int $level) : void{
+		$this->data[$this->IDLevelParser($skill_code)] = $level;
 	}
 
 }

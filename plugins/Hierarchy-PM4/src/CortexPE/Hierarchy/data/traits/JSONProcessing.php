@@ -34,19 +34,19 @@ use function json_decode;
 use function json_encode;
 use const JSON_PRETTY_PRINT;
 
-trait JSONProcessing {
+trait JSONProcessing{
 	/** @var bool */
 	protected $prettyPrint = false;
 
-	protected function readConfig(array $config) : void{
-		$this->prettyPrint = (bool)$config["prettyPrint"];
-	}
-
-	public function encode(array $data): string {
+	public function encode(array $data) : string{
 		return json_encode($data, $this->prettyPrint ? JSON_PRETTY_PRINT : 0);
 	}
 
-	public function decode(string $string): array {
+	public function decode(string $string) : array{
 		return json_decode($string, true);
+	}
+
+	protected function readConfig(array $config) : void{
+		$this->prettyPrint = (bool) $config["prettyPrint"];
 	}
 }

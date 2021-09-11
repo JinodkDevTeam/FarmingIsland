@@ -54,15 +54,15 @@ use function array_map;
 use function count;
 use function implode;
 
-class InfoCommand extends HierarchySubCommand implements FormedCommand {
+class InfoCommand extends HierarchySubCommand implements FormedCommand{
 	/** @var array */
 	private $opts;
 
-	public function __construct(Hierarchy $plugin, string $name, string $description = "", array $aliases = []) {
+	public function __construct(Hierarchy $plugin, string $name, string $description = "", array $aliases = []){
 		parent::__construct($plugin, $name, $description, $aliases);
 		$roles = [];
 		$roles_i = [];
-		foreach($this->roleManager->getRoles() as $role) {
+		foreach($this->roleManager->getRoles() as $role){
 			$roles[] = "{$role->getName()} ({$role->getId()})";
 			$roles_i[] = $role->getId();
 		}
@@ -74,7 +74,7 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 					new Label("instruction", MessageStore::getMessage("cmd.info.member_form.instruction")),
 					new Input("member", MessageStore::getMessage("cmd.info.member_form.opt_text"))
 				],
-				function(Player $player, CustomFormResponse $response): void {
+				function(Player $player, CustomFormResponse $response) : void{
 					$this->setCurrentSender($player);
 					$this->onRun($player, $this->getName(), [
 						"targetType" => InfoTargetEnumArgument::TARGET_MEMBER,
@@ -93,7 +93,7 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 						$roles
 					)
 				],
-				function(Player $player, CustomFormResponse $response) use ($roles, $roles_i): void {
+				function(Player $player, CustomFormResponse $response) use ($roles, $roles_i) : void{
 					$this->setCurrentSender($player);
 					$this->onRun($player, $this->getName(), [
 						"targetType" => InfoTargetEnumArgument::TARGET_ROLE,
@@ -116,61 +116,47 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 		];
 	}
 
-	protected function prepare(): void {
-		$this->registerArgument(0, new InfoTargetEnumArgument("targetType", true));
-		$this->registerArgument(1, new RoleArgument("targetRole", true));
-		$this->registerArgument(1, new MemberArgument("targetMember", true));
-		$this->setPermission(implode(";", [
-			"hierarchy",
-			"hierarchy.info",
-			"hierarchy.info.list_roles",
-			"hierarchy.info.list_perms",
-			"hierarchy.info.member",
-			"hierarchy.info.role"
-		]));
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 1) {
+		}elseif(count($args) < 1){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
 		}
 
-		if($args["targetType"] === InfoTargetEnumArgument::TARGET_MEMBER && isset($args["targetMember"])) {
-			if($sender->hasPermission("hierarchy.info.member")) {
+		if($args["targetType"] === InfoTargetEnumArgument::TARGET_MEMBER && isset($args["targetMember"])){
+			if($sender->hasPermission("hierarchy.info.member")){
 				/** @var BaseMember $target */
 				$target = $args["targetMember"];
 				$this->sendFormattedMessage("cmd.info.member.header", [
 					"member" => $target->getName()
 				]);
 				$this->sendFormattedMessage("cmd.info.member.roles_header");
-				foreach($target->getRoles() as $role) {
+				foreach($target->getRoles() as $role){
 					$this->sendFormattedMessage("cmd.info.member.role_entry", [
 						"role" => $role->getName(),
 						"role_id" => $role->getId()
 					]);
 				}
 				$this->sendFormattedMessage("cmd.info.member.m_perms_header");
-				if(count($target->getMemberPermissions()) > 0) {
-					foreach($target->getMemberPermissions() as $permission => $allowed) {
+				if(count($target->getMemberPermissions()) > 0){
+					foreach($target->getMemberPermissions() as $permission => $allowed){
 						$this->sendFormattedMessage("cmd.info.member.m_perm_entry", [
 							"permission" => $permission,
 							"color" => $allowed ? TextFormat::GREEN : TextFormat::RED . "-"
 						]);
 					}
-				} else {
+				}else{
 					$this->sendFormattedMessage("cmd.info.member.no_extra_perms");
 				}
-			} else {
+			}else{
 				$this->sendPermissionError();
 			}
-		} elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_ROLE && isset($args["targetRole"])) {
-			if($sender->hasPermission("hierarchy.info.role")) {
+		}elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_ROLE && isset($args["targetRole"])){
+			if($sender->hasPermission("hierarchy.info.role")){
 				/** @var Role $target */
 				$target = $args["targetRole"];
 				$lines = [];
@@ -185,95 +171,95 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 					"isDefault" => $target->isDefault() ? TextFormat::GREEN . "YES" : TextFormat::RED . "NO"
 				]);
 				$lines[] = MessageStore::getMessage("cmd.info.role.perms_header");
-				foreach($target->getCombinedPermissions() as $permission => $allowed) {
+				foreach($target->getCombinedPermissions() as $permission => $allowed){
 					$lines[] = MessageStore::getMessage("cmd.info.role.perm_entry", [
 						"permission" => $permission,
 						"color" => $allowed ? TextFormat::GREEN : TextFormat::RED . "-"
 					]);
 				}
-				if(!$target->isDefault()) {
+				if(!$target->isDefault()){
 					$lines[] = MessageStore::getMessage("cmd.info.role.members_header", [
 						"count" => ($c = count($target->getOnlineMembers()))
 					]);
-					if($c > 0) {
-						foreach($target->getOnlineMembers() as $member) {
+					if($c > 0){
+						foreach($target->getOnlineMembers() as $member){
 							$lines[] = MessageStore::getMessage("cmd.info.role.member_entry", [
 								"member" => $member->getName()
 							]);
 						}
-					} else {
+					}else{
 						$lines[] = MessageStore::getMessage("cmd.info.role.no_online_members");
 					}
-					$target->getOfflineMembers(function(array $members) use ($lines, $sender): void {
+					$target->getOfflineMembers(function(array $members) use ($lines, $sender) : void{
 						$lines[] = MessageStore::getMessage("cmd.info.role.offline_members_header", [
 							"count" => ($c = count($members))
 						]);
-						if($c > 0) {
-							foreach($members as $member) {
+						if($c > 0){
+							foreach($members as $member){
 								$lines[] = MessageStore::getMessage("cmd.info.role.offline_member_entry", [
 									"member" => $member->getName()
 								]);
 							}
-						} else {
+						}else{
 							$lines[] = MessageStore::getMessage("cmd.info.role.no_offline_members");
 						}
-						foreach($lines as $line) {
+						foreach($lines as $line){
 							$sender->sendMessage($line);
 						}
 					});
-				} else {
-					foreach($lines as $line) {
+				}else{
+					foreach($lines as $line){
 						$sender->sendMessage($line);
 					}
 				}
-			} else {
+			}else{
 				$this->sendPermissionError();
 			}
-		} elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_ROLE_LIST) {
+		}elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_ROLE_LIST){
 			$list = $this->roleManager->getRoles();
 			$this->sendFormattedMessage("cmd.info.role_list.header", [
 				"count" => ($c = count($list))
 			]);
-			if($c > 0) {
-				foreach($list as $role) {
+			if($c > 0){
+				foreach($list as $role){
 					$this->sendFormattedMessage("cmd.info.role_list.entry", [
 						"role" => $role->getName(),
 						"role_id" => $role->getId(),
 					]);
 				}
-			} else {
+			}else{
 				$this->sendFormattedMessage("err.no_roles");
 			}
-		} elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_PERM_LIST) {
+		}elseif($args["targetType"] === InfoTargetEnumArgument::TARGET_PERM_LIST){
 			$list = PermissionManager::getInstance()->getPermissions();
 			$this->sendFormattedMessage("cmd.info.perm_list.header", [
 				"count" => ($c = count($list))
 			]);
-			if($c > 0) {
-				foreach($list as $perm) {
+			if($c > 0){
+				foreach($list as $perm){
 					$this->sendFormattedMessage("cmd.info.perm_list.entry", [
 						"permission" => $perm->getName(),
 					]);
 				}
-			} else {
+			}else{
 				$this->sendFormattedMessage("err.no_roles");
 			}
-		} else {
+		}else{
 			$this->sendUsage();
 		}
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
 			$this->currentSender->sendForm(
 				new MenuForm(
 					$this->plugin->getName(),
 					MessageStore::getMessage("cmd.info.menu_form.description"),
-					array_map(function(array $opt): MenuOption {
+					array_map(function(array $opt) : MenuOption{
 						return $opt[0];
 					}, $this->opts),
-					function(Player $player, int $selectedOption): void {
-						if($this->opts[$selectedOption][2] !== null) {
+					function(Player $player, int $selectedOption) : void{
+						if($this->opts[$selectedOption][2] !== null){
 							$player->sendForm(
 								new CustomForm(
 									$this->plugin->getName(),
@@ -281,7 +267,7 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 									$this->opts[$selectedOption][3]
 								)
 							);
-						} else {
+						}else{
 							$this->setCurrentSender($player);
 							$this->onRun($player, $this->getName(), [
 								"targetType" => $this->opts[$selectedOption][1]
@@ -291,5 +277,19 @@ class InfoCommand extends HierarchySubCommand implements FormedCommand {
 				)
 			);
 		}
+	}
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new InfoTargetEnumArgument("targetType", true));
+		$this->registerArgument(1, new RoleArgument("targetRole", true));
+		$this->registerArgument(1, new MemberArgument("targetMember", true));
+		$this->setPermission(implode(";", [
+			"hierarchy",
+			"hierarchy.info",
+			"hierarchy.info.list_roles",
+			"hierarchy.info.list_perms",
+			"hierarchy.info.member",
+			"hierarchy.info.role"
+		]));
 	}
 }

@@ -7,8 +7,7 @@ namespace NgLamVN\GameHandle\Sell;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 
-class SellUndoAction
-{
+class SellUndoAction{
 	/** @var Player */
 	protected Player $player;
 	/** @var float */
@@ -23,8 +22,7 @@ class SellUndoAction
 	 * @param float  $undoprice
 	 * @param Item[] $items
 	 */
-	public function __construct(Player $player, float $undoprice = 0, array $items = [])
-	{
+	public function __construct(Player $player, float $undoprice = 0, array $items = []){
 		$this->player = $player;
 		$this->undoprice = $undoprice;
 		$this->items = $items;
@@ -33,40 +31,35 @@ class SellUndoAction
 	/**
 	 * @return Player
 	 */
-	public function getPlayer(): Player
-	{
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 
 	/**
 	 * @return float
 	 */
-	public function getUndoPrice(): float
-	{
+	public function getUndoPrice() : float{
 		return $this->undoprice;
+	}
+
+	/**
+	 * @param float $price
+	 */
+	public function setUndoPrice(float $price) : void{
+		$this->undoprice = $price;
 	}
 
 	/**
 	 * @return Item[]
 	 */
-	public function getItems(): array
-	{
+	public function getItems() : array{
 		return $this->items;
 	}
 
 	/**
 	 * @param Item[] $items
 	 */
-	public function setItems(array $items): void
-	{
+	public function setItems(array $items) : void{
 		$this->items = $items;
-	}
-
-	/**
-	 * @param float $price
-	 */
-	public function setUndoPrice(float $price): void
-	{
-		$this->undoprice = $price;
 	}
 }

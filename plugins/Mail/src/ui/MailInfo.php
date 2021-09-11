@@ -27,15 +27,15 @@ class MailInfo extends BaseUI{
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
 			$select = yield $this->getLoader()->getProvider()->selectId($this->mail_id);
-			if (empty($select)) return;
+			if(empty($select)) return;
 			$mail = Mail::fromArray($select[0]);
-			if ($this->mode == self::TO){
+			if($this->mode == self::TO){
 				$this->getLoader()->getProvider()->updateIsRead($mail->getId(), true);
 			}
 			$items = ItemUtils::MailItemsDecode($mail->getItems());
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
-				if (!isset($data)) return;
-				if ($data == 0) $this->claimItems($player, $mail);
+				if(!isset($data)) return;
+				if($data == 0) $this->claimItems($player, $mail);
 			});
 			$form->setTitle("Mail Info");
 			$content = [
@@ -47,11 +47,11 @@ class MailInfo extends BaseUI{
 				$mail->getMsg(),
 				"Attachment:"
 			];
-			if ($items == []){
+			if($items == []){
 				array_push($content, "- None");
-			} else {
+			}else{
 				foreach($items as $item){
-					if ($item->hasCustomName()) $name = $item->getCustomName(); else $name = $item->getName();
+					if($item->hasCustomName()) $name = $item->getCustomName();else $name = $item->getName();
 					array_push($content, "x" . $item->getCount() . " " . $name);
 				}
 			}
@@ -62,23 +62,23 @@ class MailInfo extends BaseUI{
 		});
 	}
 
-	public function claimItems(Player $player, Mail $mail): void{
-		if ($this->mode == self::FROM){
+	public function claimItems(Player $player, Mail $mail) : void{
+		if($this->mode == self::FROM){
 			$player->sendMessage("You can't claim items from this mail because you have sended it to another player !");
 			return;
 		}
-		if ($mail->isClaimed()){
+		if($mail->isClaimed()){
 			$player->sendMessage("You already claim items from this mail !");
 			return;
 		}
 		$items = ItemUtils::MailItemsDecode($mail->getItems());
 		$empty = $player->getInventory()->getSize() - count($player->getInventory()->getContents());
-		if ($empty > count($items)){
+		if($empty > count($items)){
 			foreach($items as $item){
 				$player->getInventory()->addItem($item);
 			}
 			$this->getLoader()->getProvider()->updateIsClaimed($mail->getId(), true);
-		} else {
+		}else{
 			$player->sendMessage("Your inventory dont have enough space to claim items, make sure you have enough space and try again !");
 		}
 	}

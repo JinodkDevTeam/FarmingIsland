@@ -6,10 +6,8 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 
-class InitCommand
-{
-	public function __construct(Core $plugin)
-	{
+class InitCommand{
+	public function __construct(Core $plugin){
 		$cmd = $plugin->getServer()->getCommandMap();
 
 		$cmd->register("heal", new Heal($plugin));

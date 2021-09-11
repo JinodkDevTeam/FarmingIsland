@@ -15,7 +15,7 @@ class OrderUpdateEvent extends OrderEvent{
 		parent::__construct($order);
 	}
 
-	public function getResult(): BuyOrder|SellOrder{
+	public function getResult() : BuyOrder|SellOrder{
 		return $this->result;
 	}
 }

@@ -34,15 +34,15 @@ use CortexPE\Hierarchy\member\BaseMember;
 use CortexPE\Hierarchy\role\Role;
 use pocketmine\permission\Permission;
 
-class DenyPermCommand extends ACPermissionModifierCommand {
+class DenyPermCommand extends ACPermissionModifierCommand{
 	protected const CHILD_PERMISSION = "deny_permission";
 	protected const MESSAGE_ROOT = "denyperm";
 
-	protected function doOperationOnMember(BaseMember $member, Permission $permission): void {
+	protected function doOperationOnMember(BaseMember $member, Permission $permission) : void{
 		$member->denyMemberPermission($permission);
 	}
 
-	protected function doOperationOnRole(Role $role, Permission $permission): void {
+	protected function doOperationOnRole(Role $role, Permission $permission) : void{
 		$role->denyPermission($permission);
 	}
 }

@@ -30,7 +30,7 @@ use onebone\economyapi\util\TransactionAction;
 use pocketmine\form\Form;
 use pocketmine\player\Player;
 
-class AskPayForm implements Form {
+class AskPayForm implements Form{
 	/** @var EconomyAPI */
 	private $plugin;
 	/** @var Player */
@@ -46,7 +46,7 @@ class AskPayForm implements Form {
 	private $params;
 
 	public function __construct(EconomyAPI $plugin, Player $player, Currency $currency,
-	                            string $target, float $amount, $label, $params) {
+		string $target, float $amount, $label, $params){
 		$this->plugin = $plugin;
 		$this->player = $player;
 		$this->currency = $currency;
@@ -57,13 +57,13 @@ class AskPayForm implements Form {
 		$this->params = $params;
 	}
 
-	public function handleResponse(Player $player, $data): void {
-		if(!is_bool($data)) {
+	public function handleResponse(Player $player, $data) : void{
+		if(!is_bool($data)){
 			$player->sendMessage($this->plugin->getMessage("pay-failed", $player));
 			return;
 		}
 
-		if(!$data) {
+		if(!$data){
 			$player->sendMessage($this->plugin->getMessage("pay-cancelled", $player));
 			return;
 		}
@@ -72,7 +72,7 @@ class AskPayForm implements Form {
 			new CommandIssuer($this->player, $this->label, $this->label . ' ' . implode(' ', $this->params)));
 		$ev->call();
 
-		if($ev->isCancelled()) {
+		if($ev->isCancelled()){
 			$player->sendMessage($this->plugin->getMessage("pay-failed", $player, [
 				$this->target,
 				new CurrencyReplacer($this->currency, $this->amount)
@@ -83,14 +83,14 @@ class AskPayForm implements Form {
 		if($this->plugin->executeTransaction(new Transaction([
 			new TransactionAction(Transaction::ACTION_REDUCE, $player, $this->amount, $this->currency),
 			new TransactionAction(Transaction::ACTION_ADD, $this->target, $this->amount, $this->currency)
-		]))) {
+		]))){
 			$player->sendMessage($this->plugin->getMessage("pay-success", $player, [
 				new CurrencyReplacer($this->currency, $this->amount),
 				$this->target
 			]));
 
 			$p = $this->plugin->getServer()->getPlayerExact($this->target);
-			if($p instanceof Player) {
+			if($p instanceof Player){
 				$p->sendMessage($this->plugin->getMessage("money-paid", $this->target, [
 					$player->getName(),
 					new CurrencyReplacer($this->currency, $this->amount)
@@ -104,7 +104,7 @@ class AskPayForm implements Form {
 		}
 	}
 
-	public function jsonSerialize() {
+	public function jsonSerialize(){
 		return [
 			'type' => 'modal',
 			'title' => $this->plugin->getMessage("pay-ask-title", $this->player),
