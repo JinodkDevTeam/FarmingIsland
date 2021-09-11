@@ -11,7 +11,6 @@ use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
-use pocketmine\entity\Skin;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
@@ -29,8 +28,6 @@ class Core extends PluginBase
     public array $afktime = [];
     /** @var PlayerStatManager $pstatmanager */
     private PlayerStatManager $pstatmanager;
-    /** @var Skin[] */
-    public array $skin = [];
     /** @var SellHandler $sell */
     public SellHandler $sell;
 

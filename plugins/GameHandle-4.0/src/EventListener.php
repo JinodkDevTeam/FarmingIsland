@@ -66,13 +66,6 @@ class EventListener implements Listener
 
         $this->getCore()->getPlayerStatManager()->registerPlayerStat($player);
     }
-    public function onSkinChange (PlayerChangeSkinEvent $event)
-    {
-        $player = $event->getPlayer();
-        $newSkin = $event->getNewSkin();
-
-        $this->getCore()->skin[$player->getName()] = $newSkin;
-    }
 
     /**
      * @param PlayerRespawnEvent $event
