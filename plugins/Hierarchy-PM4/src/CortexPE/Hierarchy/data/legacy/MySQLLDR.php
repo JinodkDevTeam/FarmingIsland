@@ -32,11 +32,11 @@ namespace CortexPE\Hierarchy\data\legacy;
 
 use CortexPE\Hierarchy\Hierarchy;
 
-class MySQLLDR extends SQLLDR {
+class MySQLLDR extends SQLLDR{
 	protected const DIALECT = "mysql";
 	protected const STMTS_FILE = "mysql_stmts.sql";
 
-	public function getExtraDBSettings(Hierarchy $plugin, array $config): array {
+	public function getExtraDBSettings(Hierarchy $plugin, array $config) : array{
 		$config["schema"] = $config["schema"] ?? strtolower($plugin->getName());
 
 		return $config;

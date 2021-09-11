@@ -10,6 +10,7 @@
       <option name="PHPDOC_BLANK_LINES_AROUND_PARAMETERS" value="true" />
       <option name="LOWER_CASE_BOOLEAN_CONST" value="true" />
       <option name="LOWER_CASE_NULL_CONST" value="true" />
+      <option name="ELSE_IF_STYLE" value="COMBINE" />
       <option name="VARIABLE_NAMING_STYLE" value="CAMEL_CASE" />
       <option name="SPACES_WITHIN_SHORT_ECHO_TAGS" value="false" />
       <option name="SPACE_BEFORE_CLOSURE_LEFT_PARENTHESIS" value="false" />

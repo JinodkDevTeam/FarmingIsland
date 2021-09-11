@@ -30,6 +30,8 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\exception;
 
 
-class HierarchyException extends \Exception {
+use Exception;
+
+class HierarchyException extends Exception{
 
 }

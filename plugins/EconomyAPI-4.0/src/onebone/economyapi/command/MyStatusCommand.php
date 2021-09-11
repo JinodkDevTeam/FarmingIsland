@@ -28,11 +28,11 @@ use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class MyStatusCommand extends Command implements PluginOwned {
+class MyStatusCommand extends Command implements PluginOwned{
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin) {
+	public function __construct(EconomyAPI $plugin){
 		$this->plugin = $plugin;
 
 		$desc = $plugin->getCommandMessage("mystatus");
@@ -41,12 +41,12 @@ class MyStatusCommand extends Command implements PluginOwned {
 		$this->setPermission("economyapi.command.mystatus");
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params): bool {
-		if(!$this->testPermission($sender)) {
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
+		if(!$this->testPermission($sender)){
 			return false;
 		}
 
-		if(!$sender instanceof Player) {
+		if(!$sender instanceof Player){
 			$sender->sendMessage(TextFormat::RED . "Please run this command in-game.");
 			return true;
 		}
@@ -56,11 +56,11 @@ class MyStatusCommand extends Command implements PluginOwned {
 		$money = $plugin->getAllMoney();
 
 		$allMoney = 0;
-		foreach($money as $m) {
+		foreach($money as $m){
 			$allMoney += $m;
 		}
 		$topMoney = 0;
-		if($allMoney > 0) {
+		if($allMoney > 0){
 			$topMoney = round((($money[strtolower($sender->getName())] / $allMoney) * 100), 2);
 		}
 
@@ -68,7 +68,7 @@ class MyStatusCommand extends Command implements PluginOwned {
 		return true;
 	}
 
-	public function getOwningPlugin(): Plugin {
+	public function getOwningPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

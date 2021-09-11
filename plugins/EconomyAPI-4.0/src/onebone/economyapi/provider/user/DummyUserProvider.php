@@ -23,50 +23,50 @@ namespace onebone\economyapi\provider\user;
 use onebone\economyapi\EconomyAPI;
 use onebone\economyapi\UserInfo;
 
-class DummyUserProvider implements UserProvider {
-	public function init() {
+class DummyUserProvider implements UserProvider{
+	public function init(){
 
 	}
 
-	public function getName(): string {
+	public function getName() : string{
 		return 'Dummy';
 	}
 
-	public function exists(string $username): bool {
+	public function exists(string $username) : bool{
 		return false;
 	}
 
-	public function setLanguage(string $username, string $lang): bool {
+	public function setLanguage(string $username, string $lang) : bool{
 		return false;
 	}
 
-	public function getLanguage(string $username): string {
+	public function getLanguage(string $username) : string{
 		return '';
 	}
 
-	public function getPreferredCurrency(string $username): string {
+	public function getPreferredCurrency(string $username) : string{
 		return '';
 	}
 
-	public function setPreferredCurrency(string $username, string $currency): bool {
+	public function setPreferredCurrency(string $username, string $currency) : bool{
 		return false;
 	}
 
-	public function save() {
+	public function save(){
 	}
 
-	public function close() {
+	public function close(){
 	}
 
-	public function create(string $username): bool {
+	public function create(string $username) : bool{
 		return false;
 	}
 
-	public function delete(string $username): bool {
+	public function delete(string $username) : bool{
 		return false;
 	}
 
-	public function getUserInfo(string $username): UserInfo {
+	public function getUserInfo(string $username) : UserInfo{
 		$plugin = EconomyAPI::getInstance();
 		return new UserInfo($username, $plugin->getPluginConfig()->getDefaultLanguage(), $plugin->getDefaultCurrency());
 	}

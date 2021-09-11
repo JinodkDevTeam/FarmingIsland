@@ -26,14 +26,13 @@ use muqsit\vanillagenerator\generator\overworld\populator\biome\SunflowerPlainsP
 use muqsit\vanillagenerator\generator\overworld\populator\biome\SwamplandPopulator;
 use muqsit\vanillagenerator\generator\overworld\populator\biome\TaigaPopulator;
 use muqsit\vanillagenerator\generator\Populator;
-use Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
+use Random;
 use ReflectionClass;
 use function array_key_exists;
 
-class OverworldPopulator implements Populator
-{
+class OverworldPopulator implements Populator{
 
 	/** @var Populator[] */
 	private array $biome_populators = []; // key = biomeId
@@ -41,8 +40,7 @@ class OverworldPopulator implements Populator
 	/**
 	 * Creates a populator with biome populators for all vanilla overworld biomes.
 	 */
-	public function __construct()
-	{
+	public function __construct(){
 		$this->registerBiomePopulator(new BiomePopulator()); // defaults applied to all biomes
 		$this->registerBiomePopulator(new PlainsPopulator());
 		$this->registerBiomePopulator(new SunflowerPlainsPopulator());
@@ -73,23 +71,21 @@ class OverworldPopulator implements Populator
 		*/
 	}
 
-	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
-		$biome = $chunk->getBiomeId(8, 8);
-		if (array_key_exists($biome, $this->biome_populators)) {
-			$this->biome_populators[$biome]->populate($world, $random, $chunk_x, $chunk_z, $chunk);
-		}
-	}
-
-	private function registerBiomePopulator(BiomePopulator $populator): void
-	{
+	private function registerBiomePopulator(BiomePopulator $populator) : void{
 		$biomes = $populator->getBiomes();
-		if ($biomes === null) {
+		if($biomes === null){
 			$biomes = array_values((new ReflectionClass(BiomeIds::class))->getConstants());
 		}
 
-		foreach ($biomes as $biome) {
+		foreach($biomes as $biome){
 			$this->biome_populators[$biome] = $populator;
+		}
+	}
+
+	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
+		$biome = $chunk->getBiomeId(8, 8);
+		if(array_key_exists($biome, $this->biome_populators)){
+			$this->biome_populators[$biome]->populate($world, $random, $chunk_x, $chunk_z, $chunk);
 		}
 	}
 }

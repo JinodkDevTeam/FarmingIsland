@@ -1,15 +1,23 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot;
 
+use JsonException;
 use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\BiomeIds;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
 use pocketmine\world\generator\Generator;
+use SplFixedArray;
 
-class MyPlotGenerator extends Generator {
+class MyPlotGenerator extends Generator{
+	public const PLOT = 0;
+	public const ROAD = 1;
+	public const WALL = 2;
+	public const ISLAND = 3;
+	public const NAME = 'myplot';
 	/** @var Block $roadBlock */
 	protected $roadBlock;
 	/** @var Block $bottomBlock */
@@ -26,23 +34,18 @@ class MyPlotGenerator extends Generator {
 	protected $groundHeight = 64;
 	/** @var int $plotSize */
 	protected $plotSize = 32;
-	public const PLOT = 0;
-	public const ROAD = 1;
-	public const WALL = 2;
-	public const ISLAND = 3;
-	public const NAME = 'myplot';
 
 	/**
 	 * MyPlotGenerator constructor.
 	 *
-	 * @param int $seed
+	 * @param int    $seed
 	 * @param string $preset
 	 */
-	public function __construct(int $seed, string $preset) {
+	public function __construct(int $seed, string $preset){
 		parent::__construct($seed, $preset);
 		try{
 			$options = json_decode($preset, true, 512, JSON_THROW_ON_ERROR);
-		}catch(\JsonException $e) {
+		}catch(JsonException $e){
 			$options = [];
 		}
 		$this->roadBlock = PlotLevelSettings::parseBlock($options, "RoadBlock", VanillaBlocks::OAK_PLANKS());
@@ -55,7 +58,7 @@ class MyPlotGenerator extends Generator {
 		$this->groundHeight = PlotLevelSettings::parseNumber($options, "GroundHeight", 64);
 	}
 
-	public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void {
+	public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void{
 		$shape = $this->getShape($chunkX << 4, $chunkZ << 4);
 		$chunk = $world->getChunk($chunkX, $chunkZ) ?? new Chunk();
 		$bottomBlockId = $this->bottomBlock->getFullId();
@@ -64,18 +67,18 @@ class MyPlotGenerator extends Generator {
 		$roadBlockId = $this->roadBlock->getFullId();
 		$wallBlockId = $this->wallBlock->getFullId();
 		$groundHeight = $this->groundHeight;
-		for($Z = 0; $Z < 16; ++$Z) {
-			for($X = 0; $X < 16; ++$X) {
+		for($Z = 0; $Z < 16; ++$Z){
+			for($X = 0; $X < 16; ++$X){
 				$chunk->setBiomeId($X, $Z, BiomeIds::PLAINS);
 				$chunk->setFullBlock($X, 0, $Z, $bottomBlockId);
 				$chunk->setFullBlock($X, 0, $Z, $bottomBlockId);
-				for($y = 1; $y < $groundHeight; ++$y) {
+				for($y = 1; $y < $groundHeight; ++$y){
 					$chunk->setFullBlock($X, $y, $Z, $plotFillBlockId);
 				}
 				$type = $shape[($Z << 4) | $X];
-				if($type === self::PLOT) {
+				if($type === self::PLOT){
 					$chunk->setFullBlock($X, $groundHeight, $Z, $plotFloorBlockId);
-				}elseif($type === self::ROAD) {
+				}elseif($type === self::ROAD){
 					$chunk->setFullBlock($X, $groundHeight, $Z, $roadBlockId);
 				}else{
 					$chunk->setFullBlock($X, $groundHeight, $Z, $roadBlockId);
@@ -85,52 +88,52 @@ class MyPlotGenerator extends Generator {
 		}
 	}
 
-	public function getShape(int $x, int $z) : \SplFixedArray {
+	public function getShape(int $x, int $z) : SplFixedArray{
 		$totalSize = $this->plotSize + $this->roadWidth;
-		if($x >= 0) {
+		if($x >= 0){
 			$X = $x % $totalSize;
 		}else{
 			$X = $totalSize - abs($x % $totalSize);
 		}
-		if($z >= 0) {
+		if($z >= 0){
 			$Z = $z % $totalSize;
 		}else{
 			$Z = $totalSize - abs($z % $totalSize);
 		}
 		$startX = $X;
-		$shape = new \SplFixedArray(256);
-		for($z = 0; $z < 16; $z++, $Z++) {
-			if($Z === $totalSize) {
+		$shape = new SplFixedArray(256);
+		for($z = 0; $z < 16; $z++, $Z++){
+			if($Z === $totalSize){
 				$Z = 0;
 			}
-			if($Z < $this->plotSize) {
+			if($Z < $this->plotSize){
 				$typeZ = self::PLOT;
-			}elseif($Z === $this->plotSize or $Z === ($totalSize - 1)) {
+			}elseif($Z === $this->plotSize or $Z === ($totalSize - 1)){
 				$typeZ = self::WALL;
 			}else{
 				$typeZ = self::ROAD;
 			}
-			for($x = 0, $X = $startX; $x < 16; $x++, $X++) {
-				if($X === $totalSize) {
+			for($x = 0, $X = $startX; $x < 16; $x++, $X++){
+				if($X === $totalSize){
 					$X = 0;
 				}
-				if($X < $this->plotSize) {
+				if($X < $this->plotSize){
 					$typeX = self::PLOT;
-				}elseif($X === $this->plotSize or $X === ($totalSize - 1)) {
+				}elseif($X === $this->plotSize or $X === ($totalSize - 1)){
 					$typeX = self::WALL;
 				}else{
 					$typeX = self::ROAD;
 				}
-				if($typeX === $typeZ) {
+				if($typeX === $typeZ){
 					$type = $typeX;
-				}elseif($typeX === self::PLOT) {
+				}elseif($typeX === self::PLOT){
 					$type = $typeZ;
-				}elseif($typeZ === self::PLOT) {
+				}elseif($typeZ === self::PLOT){
 					$type = $typeX;
 				}else{
 					$type = self::ROAD;
 				}
-				if($X == floor($this->plotSize / 2) && $Z == floor($this->plotSize / 2)) {
+				if($X == floor($this->plotSize / 2) && $Z == floor($this->plotSize / 2)){
 					$type = self::ISLAND;
 				}
 				$shape[($z << 4) | $x] = $type;
@@ -139,7 +142,7 @@ class MyPlotGenerator extends Generator {
 		return $shape;
 	}
 
-	public function populateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void {
+	public function populateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void{
 		$island = new IslandStructure($this);
 		$island->populate($world, $chunkX, $chunkZ, $this->random);
 	}

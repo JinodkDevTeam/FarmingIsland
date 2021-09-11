@@ -20,18 +20,18 @@
 
 namespace onebone\economyapi\command;
 
-use onebone\economyapi\EconomyAPI;
 use onebone\economyapi\currency\CurrencyReplacer;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
-class TopMoneyCommand extends Command implements PluginOwned {
+class TopMoneyCommand extends Command implements PluginOwned{
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin) {
+	public function __construct(EconomyAPI $plugin){
 		$this->plugin = $plugin;
 
 		$desc = $plugin->getCommandMessage("topmoney");
@@ -40,7 +40,7 @@ class TopMoneyCommand extends Command implements PluginOwned {
 		$this->setPermission("economyapi.command.topmoney");
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params): bool {
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
 		if(!$this->testPermission($sender)) return false;
 
 		$page = max(1, (int) array_shift($params));
@@ -49,23 +49,23 @@ class TopMoneyCommand extends Command implements PluginOwned {
 
 		$currency = $plugin->getPlayerPreferredCurrency($sender, false);
 
-		$plugin->getSortByRange($currency, ($page - 1) * 5, 5)->then(function($value) use ($plugin, $currency, $sender, $page) {
+		$plugin->getSortByRange($currency, ($page - 1) * 5, 5)->then(function($value) use ($plugin, $currency, $sender, $page){
 			$sender->sendMessage($plugin->getMessage('topmoney-tag', $sender, [$page, '&enull&f'])); // TODO: show max page
 
 			$i = 0;
-			foreach($value as $player => $money) {
+			foreach($value as $player => $money){
 				$i++;
 				$sender->sendMessage($plugin->getMessage('topmoney-format', $sender, [
 					($page - 1) * 5 + $i, $player, new CurrencyReplacer($currency, $money)
 				]));
 			}
-		})->catch(function() use ($sender) {
+		})->catch(function() use ($sender){
 			$sender->sendMessage('Failed to fetch money leaderboard :(');
 		});
 		return true;
 	}
 
-	public function getOwningPlugin(): Plugin {
+	public function getOwningPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

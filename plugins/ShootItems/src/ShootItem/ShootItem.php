@@ -11,8 +11,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 
-class ShootItem extends PluginBase implements Listener
-{
+class ShootItem extends PluginBase implements Listener{
 	/** @var bool[] */
 	public array $pickup = [];
 	/** @var ClosureTask[] */
@@ -20,16 +19,16 @@ class ShootItem extends PluginBase implements Listener
 
 	/**
 	 * @param PlayerItemUseEvent $event
+	 *
 	 * @priority HIGHEST
 	 * @handleCancelled false
 	 */
-	public function onItemUse (PlayerItemUseEvent $event)
-	{
+	public function onItemUse(PlayerItemUseEvent $event){
 		//Yeah, it really "cLeAn".
 		$player = $event->getPlayer();
 		$direction = $event->getDirectionVector();
 		$item = $event->getItem();
-		if ($item->getId() == ItemIds::AIR) return;
+		if($item->getId() == ItemIds::AIR) return;
 		$pos = $player->getLocation();
 		$pos->y += $player->getEyeHeight();
 		$shootitem = clone $item;
@@ -38,12 +37,10 @@ class ShootItem extends PluginBase implements Listener
 		$entity->setMotion($direction->multiply(3));
 		$entity->spawnToAll();
 		$this->pickup[$player->getName()] = false;
-		if (isset($this->task[$player->getName()]))
-		{
+		if(isset($this->task[$player->getName()])){
 			$this->task[$player->getName()]->getHandler()->cancel();
 		}
-		$this->task[$player->getName()] = new ClosureTask(function() use ($player) : void
-		{
+		$this->task[$player->getName()] = new ClosureTask(function() use ($player) : void{
 			$this->pickup[$player->getName()] = true;
 			unset($this->task[$player->getName()]);
 		});
@@ -52,14 +49,13 @@ class ShootItem extends PluginBase implements Listener
 
 	/**
 	 * @param InventoryPickupItemEvent $event
+	 *
 	 * @priority LOWEST
 	 * @handleCancelled false
 	 */
-	public function onPickup(InventoryPickupItemEvent $event)
-	{
+	public function onPickup(InventoryPickupItemEvent $event){
 		$viewers = $event->getViewers();
-		foreach($viewers as $viewer)
-		{
+		foreach($viewers as $viewer){
 			if(!isset($this->pickup[$viewer->getName()])) continue;
 			if(!$this->pickup[$viewer->getName()]){
 				$event->cancel();

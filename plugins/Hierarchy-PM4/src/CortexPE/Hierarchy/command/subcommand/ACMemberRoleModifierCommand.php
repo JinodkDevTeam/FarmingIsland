@@ -47,23 +47,16 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use function count;
 
-abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implements FormedCommand {
+abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implements FormedCommand{
 	protected const CHILD_PERMISSION = null;
 	protected const MESSAGE_ROOT = null;
 
-	protected function prepare(): void {
-		$this->registerArgument(0, new MemberArgument("member", true));
-		$this->registerArgument(1, new RoleArgument("role", true));
-		$this->registerArgument(2, new BooleanArgument("temporary", true));
-		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role." . static::CHILD_PERMISSION);
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 2) {
+		}elseif(count($args) < 2){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
@@ -74,8 +67,8 @@ abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implement
 		/** @var Role|null $role */
 		$role = $args["role"];
 
-		if($role instanceof Role) {
-			if(!$this->doHierarchyPositionCheck($member) || !$this->doHierarchyPositionCheck($role)) {
+		if($role instanceof Role){
+			if(!$this->doHierarchyPositionCheck($member) || !$this->doHierarchyPositionCheck($role)){
 				return;
 			}
 
@@ -85,19 +78,19 @@ abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implement
 				"id" => $role->getId()
 			];
 
-			if(!$role->isDefault()) {
+			if(!$role->isDefault()){
 				$this->doOperationOnMember($member, $role, ($args["temporary"] ?? false), $formats);
-			} else {
+			}else{
 				$this->sendFormattedMessage("cmd." . static::MESSAGE_ROOT . ".default", $formats);
 			}
-		} else {
+		}else{
 			$this->sendFormattedMessage("err.unknown_role");
 		}
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
-			if(!$this->getRolesApplicable($roles, $roles_i)) {
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
+			if(!$this->getRolesApplicable($roles, $roles_i)){
 				return;
 			}
 			$this->currentSender->sendForm(new CustomForm($this->plugin->getName(), [
@@ -105,7 +98,7 @@ abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implement
 				new Input("member", "Member", "Member Name"),
 				new Dropdown("role", "Role", $roles),
 				new Toggle("temporary", "Temporary", false)
-			], function (Player $player, CustomFormResponse $response) use ($roles, $roles_i): void {
+			], function(Player $player, CustomFormResponse $response) use ($roles, $roles_i) : void{
 				$this->setCurrentSender($player);
 				$this->onRun($player, $this->getName(), [
 					"member" => $this->memberFactory->getMember($response->getString("member")),
@@ -116,5 +109,12 @@ abstract class ACMemberRoleModifierCommand extends HierarchySubCommand implement
 		}
 	}
 
-	abstract protected function doOperationOnMember(BaseMember $member, Role $role, bool $temporary, array $msgFormats): void;
+	abstract protected function doOperationOnMember(BaseMember $member, Role $role, bool $temporary, array $msgFormats) : void;
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new MemberArgument("member", true));
+		$this->registerArgument(1, new RoleArgument("role", true));
+		$this->registerArgument(2, new BooleanArgument("temporary", true));
+		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role." . static::CHILD_PERMISSION);
+	}
 }

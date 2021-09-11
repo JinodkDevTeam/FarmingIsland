@@ -32,11 +32,11 @@ namespace CortexPE\Hierarchy\data\legacy;
 
 use CortexPE\Hierarchy\Hierarchy;
 
-class SQLiteLDR extends SQLLDR {
+class SQLiteLDR extends SQLLDR{
 	protected const DIALECT = "sqlite";
 	protected const STMTS_FILE = "sqlite_stmts.sql";
 
-	public function getExtraDBSettings(Hierarchy $plugin, array $config): array {
+	public function getExtraDBSettings(Hierarchy $plugin, array $config) : array{
 		return [
 			"file" => $plugin->getDataFolder() . $config["dbPath"]
 		];

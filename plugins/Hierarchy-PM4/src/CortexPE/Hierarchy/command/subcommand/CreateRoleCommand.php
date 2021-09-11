@@ -41,18 +41,13 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use function count;
 
-class CreateRoleCommand extends HierarchySubCommand implements FormedCommand {
-	protected function prepare(): void {
-		$this->registerArgument(0, new RawStringArgument("roleName", true));
-		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role.create");
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+class CreateRoleCommand extends HierarchySubCommand implements FormedCommand{
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 1) {
+		}elseif(count($args) < 1){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
@@ -65,17 +60,22 @@ class CreateRoleCommand extends HierarchySubCommand implements FormedCommand {
 		]);
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
 			$this->currentSender->sendForm(new CustomForm($this->plugin->getName(), [
 				new Label("description", $this->getDescription()),
 				new Input("roleName", "Role", "New Role Name"),
-			], function (Player $player, CustomFormResponse $response): void {
+			], function(Player $player, CustomFormResponse $response) : void{
 				$this->setCurrentSender($player);
 				$this->onRun($player, $this->getName(), [
 					"roleName" => $response->getString("roleName")
 				]);
 			}));
 		}
+	}
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new RawStringArgument("roleName", true));
+		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role.create");
 	}
 }

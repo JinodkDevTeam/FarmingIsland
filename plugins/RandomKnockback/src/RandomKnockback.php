@@ -15,6 +15,7 @@ class RandomKnockback extends PluginBase implements Listener{
 
 	/**
 	 * @param EntityDamageByEntityEvent $event
+	 *
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */

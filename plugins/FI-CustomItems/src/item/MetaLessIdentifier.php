@@ -15,14 +15,14 @@ class MetaLessIdentifier{
 	/**
 	 * @return int
 	 */
-	public function getId(): int{
+	public function getId() : int{
 		return $this->id;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getMeta(): int{
+	public function getMeta() : int{
 		return $this->meta;
 	}
 }

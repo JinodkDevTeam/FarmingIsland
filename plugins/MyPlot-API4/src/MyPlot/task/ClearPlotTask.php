@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\task;
 
 use MyPlot\MyPlot;
@@ -10,13 +11,15 @@ use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\scheduler\Task;
+use pocketmine\world\Position;
+use pocketmine\world\World;
 
-class ClearPlotTask extends Task {
+class ClearPlotTask extends Task{
 	/** @var MyPlot $plugin */
 	protected $plugin;
 	/** @var Plot $plot */
 	protected $plot;
-	/** @var \pocketmine\world\World|null $level */
+	/** @var World|null $level */
 	protected $level;
 	/** @var int $height */
 	protected $height;
@@ -26,7 +29,7 @@ class ClearPlotTask extends Task {
 	protected $plotFillBlock;
 	/** @var Block $plotFloorBlock */
 	protected $plotFloorBlock;
-	/** @var \pocketmine\world\Position|null $plotBeginPos */
+	/** @var Position|null $plotBeginPos */
 	protected $plotBeginPos;
 	/** @var int $xMax */
 	protected $xMax;
@@ -36,17 +39,17 @@ class ClearPlotTask extends Task {
 	protected $maxBlocksPerTick;
 	/** @var Vector3 $pos */
 	protected $pos;
-    /** @var AxisAlignedBB|null $plotBB */
-    protected $plotBB;
+	/** @var AxisAlignedBB|null $plotBB */
+	protected $plotBB;
 
 	/**
 	 * ClearPlotTask constructor.
 	 *
 	 * @param MyPlot $plugin
-	 * @param Plot $plot
-	 * @param int $maxBlocksPerTick
+	 * @param Plot   $plot
+	 * @param int    $maxBlocksPerTick
 	 */
-	public function __construct(MyPlot $plugin, Plot $plot, int $maxBlocksPerTick = 256) {
+	public function __construct(MyPlot $plugin, Plot $plot, int $maxBlocksPerTick = 256){
 		$this->plugin = $plugin;
 		$this->plot = $plot;
 		$this->plotBeginPos = $plugin->getPlotPosition($plot);
@@ -60,29 +63,29 @@ class ClearPlotTask extends Task {
 		$this->maxBlocksPerTick = $maxBlocksPerTick;
 		$this->plugin = $plugin;
 
-        $this->plotBeginPos = $plugin->getPlotPosition($plot, false);
-        $this->xMax = (int)($this->plotBeginPos->x + $plotSize);
-        $this->zMax = (int)($this->plotBeginPos->z + $plotSize);
-		foreach ($plugin->getProvider()->getMergedPlots($plot) as $mergedPlot){
-		    $xplot = $plugin->getPlotPosition($mergedPlot, false)->x;
-		    $zplot = $plugin->getPlotPosition($mergedPlot, false)->z;
-		    $xMaxPlot = (int)($xplot + $plotSize);
-		    $zMaxPlot = (int)($zplot + $plotSize);
-		    if($this->plotBeginPos->x > $xplot) $this->plotBeginPos->x = $xplot;
-		    if($this->plotBeginPos->z > $zplot) $this->plotBeginPos->z = $zplot;
-		    if($this->xMax < $xMaxPlot) $this->xMax = $xMaxPlot;
-		    if($this->zMax < $zMaxPlot) $this->zMax = $zMaxPlot;
-        }
-        $this->level = $this->plotBeginPos->getLevelNonNull();
-        $this->pos = new Vector3($this->plotBeginPos->x, 0, $this->plotBeginPos->z);
-        $this->plotBB = $this->plugin->getPlotBB($plot);
+		$this->plotBeginPos = $plugin->getPlotPosition($plot, false);
+		$this->xMax = (int) ($this->plotBeginPos->x + $plotSize);
+		$this->zMax = (int) ($this->plotBeginPos->z + $plotSize);
+		foreach($plugin->getProvider()->getMergedPlots($plot) as $mergedPlot){
+			$xplot = $plugin->getPlotPosition($mergedPlot, false)->x;
+			$zplot = $plugin->getPlotPosition($mergedPlot, false)->z;
+			$xMaxPlot = (int) ($xplot + $plotSize);
+			$zMaxPlot = (int) ($zplot + $plotSize);
+			if($this->plotBeginPos->x > $xplot) $this->plotBeginPos->x = $xplot;
+			if($this->plotBeginPos->z > $zplot) $this->plotBeginPos->z = $zplot;
+			if($this->xMax < $xMaxPlot) $this->xMax = $xMaxPlot;
+			if($this->zMax < $zMaxPlot) $this->zMax = $zMaxPlot;
+		}
+		$this->level = $this->plotBeginPos->getLevelNonNull();
+		$this->pos = new Vector3($this->plotBeginPos->x, 0, $this->plotBeginPos->z);
+		$this->plotBB = $this->plugin->getPlotBB($plot);
 		$plugin->getLogger()->debug("Plot Clear Task started at plot {$plot->X};{$plot->Z}");
 	}
 
-	public function onRun() : void {
-		foreach($this->level->getEntities() as $entity) {
-			if($this->plotBB->isVectorInXZ($entity->getPosition())) {
-				if(!$entity instanceof Player) {
+	public function onRun() : void{
+		foreach($this->level->getEntities() as $entity){
+			if($this->plotBB->isVectorInXZ($entity->getPosition())){
+				if(!$entity instanceof Player){
 					$entity->flagForDespawn();
 				}else{
 					$this->plugin->teleportPlayerToPlot($entity, $this->plot);
@@ -90,21 +93,21 @@ class ClearPlotTask extends Task {
 			}
 		}
 		$blocks = 0;
-		while($this->pos->x < $this->xMax) {
-			while($this->pos->z < $this->zMax) {
-				while($this->pos->y < $this->level->getWorldHeight()) {
-					if($this->pos->y === 0) {
+		while($this->pos->x < $this->xMax){
+			while($this->pos->z < $this->zMax){
+				while($this->pos->y < $this->level->getWorldHeight()){
+					if($this->pos->y === 0){
 						$block = $this->bottomBlock;
-					}elseif($this->pos->y < $this->height) {
+					}elseif($this->pos->y < $this->height){
 						$block = $this->plotFillBlock;
-					}elseif($this->pos->y === $this->height) {
+					}elseif($this->pos->y === $this->height){
 						$block = $this->plotFloorBlock;
 					}else{
 						$block = VanillaBlocks::AIR();
 					}
 					$this->level->setBlock($this->pos, $block, false);
 					$blocks++;
-					if($blocks >= $this->maxBlocksPerTick) {
+					if($blocks >= $this->maxBlocksPerTick){
 						$this->setHandler(null);
 						$this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
 						return;
@@ -117,10 +120,10 @@ class ClearPlotTask extends Task {
 			$this->pos->z = $this->plotBeginPos->z;
 			$this->pos->x++;
 		}
-		foreach($this->plugin->getPlotChunks($this->plot) as $chunk) {
-			foreach($chunk->getTiles() as $tile) {
-				if(($plot = $this->plugin->getPlotByPosition($tile->getPosition())) != null) {
-					if($this->plot->isSame($plot)) {
+		foreach($this->plugin->getPlotChunks($this->plot) as $chunk){
+			foreach($chunk->getTiles() as $tile){
+				if(($plot = $this->plugin->getPlotByPosition($tile->getPosition())) != null){
+					if($this->plot->isSame($plot)){
 						$tile->close();
 					}
 				}

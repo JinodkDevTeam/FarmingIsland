@@ -6,8 +6,7 @@ namespace muqsit\vanillagenerator\generator\overworld\biome;
 
 use pocketmine\data\bedrock\BiomeIds as VanillaBiomeIds;
 
-interface BiomeIds
-{
+interface BiomeIds{
 
 	public const OCEAN = VanillaBiomeIds::OCEAN;
 	public const PLAINS = VanillaBiomeIds::PLAINS;

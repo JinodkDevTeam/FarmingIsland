@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
+
 namespace YassenTrick\SizePlayer;
 
 use pocketmine\{plugin\Plugin, plugin\PluginOwned, plugin\PluginOwnedTrait};
-use pocketmine\player\Player;
 use pocketmine\command\{Command, CommandSender};
+use pocketmine\player\Player;
 use pocketmine\utils\TextFormat as TF;
 
 class SizePlayerCommand extends Command implements PluginOwned{
@@ -13,32 +14,32 @@ class SizePlayerCommand extends Command implements PluginOwned{
 	/** var SizePlayer */
 	private SizePlayer $plugin;
 
-	public function __construct(SizePlayer $plugin) {
+	public function __construct(SizePlayer $plugin){
 		$this->plugin = $plugin;
 		$this->setPermission("sizeplayer.command");
 		parent::__construct("size", "Change your player size!");
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args): bool{
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : bool{
 		if(!$sender instanceof Player){
-			$sender->sendMessage(TF::RED."This command only works in-game");
+			$sender->sendMessage(TF::RED . "This command only works in-game");
 			return true;
 		}
 		if(!$this->testPermission($sender)){
 			return true;
 		}
-		if(isset($args[0])) {
-			if(is_numeric($args[0])) {
-				if($args[0] > 15) {
-					$sender->sendMessage(TF::RED. "This size must not bigger than §e15");
+		if(isset($args[0])){
+			if(is_numeric($args[0])){
+				if($args[0] > 15){
+					$sender->sendMessage(TF::RED . "This size must not bigger than §e15");
 					return true;
-				}elseif($args[0] < 0.05) {
-					$sender->sendMessage(TF::RED. "This size cannot be smaller than §e0.05");
+				}elseif($args[0] < 0.05){
+					$sender->sendMessage(TF::RED . "This size cannot be smaller than §e0.05");
 					return true;
 				}
-				$this->plugin->saveSize(strtolower($sender->getName()), (float)$args[0]);
-				$sender->setScale((float)$args[0]);
-				$sender->sendMessage("§8§l(§a!§8)§r §aYou have changed your size to ".TF::GOLD . $args[0]."§a!");
+				$this->plugin->saveSize(strtolower($sender->getName()), (float) $args[0]);
+				$sender->setScale((float) $args[0]);
+				$sender->sendMessage("§8§l(§a!§8)§r §aYou have changed your size to " . TF::GOLD . $args[0] . "§a!");
 				return true;
 			}
 			if($args[0] === "reset"){
@@ -52,11 +53,11 @@ class SizePlayerCommand extends Command implements PluginOwned{
 				return true;
 			}
 		}
-		$sender->sendMessage(TF::RED."Unknown command, §8» §c/size help §7- if you don`t know the commands!");
+		$sender->sendMessage(TF::RED . "Unknown command, §8» §c/size help §7- if you don`t know the commands!");
 		return true;
 	}
 
-	public function getPlugin(): Plugin{
+	public function getPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

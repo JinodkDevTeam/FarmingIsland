@@ -93,3 +93,7 @@ permissions:
     default: op
   gh.cgive:
     default: op
+  gh.pos:
+    default: true
+  gh.pos.other:
+    default: op

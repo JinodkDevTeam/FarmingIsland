@@ -20,6 +20,6 @@
 
 namespace onebone\economyapi\event;
 
-interface Issuer {
-	public function __toString(): string;
+interface Issuer{
+	public function __toString() : string;
 }

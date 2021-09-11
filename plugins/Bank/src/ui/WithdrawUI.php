@@ -9,28 +9,23 @@ use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 
-class WithdrawUI extends BaseUI
-{
+class WithdrawUI extends BaseUI{
 	private float $balance;
 
-	public function __construct(Player $player, Bank $bank, float $balance)
-	{
+	public function __construct(Player $player, Bank $bank, float $balance){
 		$this->balance = $balance;
 		parent::__construct($player, $bank);
 	}
 
-	public function execute(Player $player) : void
-	{
+	public function execute(Player $player) : void{
 		$all = $this->balance;
 		$half = round($this->balance / 2, 2, PHP_ROUND_HALF_DOWN);
 		$min = round($this->balance / 5, 2, PHP_ROUND_HALF_DOWN);
 
-		$form = new SimpleForm(function(Player $player, ?int $data) use ($all, $half, $min)
-		{
-			if ($data == null) return;
+		$form = new SimpleForm(function(Player $player, ?int $data) use ($all, $half, $min){
+			if($data == null) return;
 
-			switch ($data)
-			{
+			switch($data){
 				case 0:
 					new BankUI($player, $this->getBank());
 					break;
@@ -58,34 +53,29 @@ class WithdrawUI extends BaseUI
 		$player->sendForm($form);
 	}
 
-	public function specificAmount(Player $player)
-	{
-		$form = new CustomForm(function(Player $player, ?array $data)
-		{
-			if ($data == null) return;
-			if (!is_numeric($data[0]))
-			{
-				$player->sendMessage("Amount must be numeric !");
-				return;
-			}
-			$this->withdraw($player, (float)$data[0]);
-		});
-
-		$form->setTitle("Withdraw specific amount");
-		$form->addInput("Amount:", "123456789");
-
-		$player->sendForm($form);
-	}
-
-	public function withdraw(Player $player, float $amount): void
-	{
-		if ($amount > $this->balance)
-		{
+	public function withdraw(Player $player, float $amount) : void{
+		if($amount > $this->balance){
 			$player->sendMessage("You can't withdraw with amount that higher than your balance !");
 			return;
 		}
 		$this->getBank()->getProvider()->update($player, $this->balance - $amount);
 		EconomyAPI::getInstance()->addMoney($player, $amount);
 		$player->sendMessage("Withdraw success full (+ " . $amount . " coin)");
+	}
+
+	public function specificAmount(Player $player){
+		$form = new CustomForm(function(Player $player, ?array $data){
+			if($data == null) return;
+			if(!is_numeric($data[0])){
+				$player->sendMessage("Amount must be numeric !");
+				return;
+			}
+			$this->withdraw($player, (float) $data[0]);
+		});
+
+		$form->setTitle("Withdraw specific amount");
+		$form->addInput("Amount:", "123456789");
+
+		$player->sendForm($form);
 	}
 }

@@ -20,7 +20,8 @@
 
 namespace onebone\economyapi\util;
 
-interface Replacer {
-	public function getRawText(): string;
-	public function getText(): string;
+interface Replacer{
+	public function getRawText() : string;
+
+	public function getText() : string;
 }

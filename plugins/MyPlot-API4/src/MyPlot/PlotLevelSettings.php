@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\VanillaBlocks;
 
-class PlotLevelSettings
-{
+class PlotLevelSettings{
 	/** @var string $name */
 	public $name;
 	/** @var Block $roadBlock */
@@ -52,12 +52,12 @@ class PlotLevelSettings
 	/**
 	 * PlotLevelSettings constructor.
 	 *
-	 * @param string $name
+	 * @param string  $name
 	 * @param mixed[] $settings
 	 */
-	public function __construct(string $name, array $settings = []) {
+	public function __construct(string $name, array $settings = []){
 		$this->name = $name;
-		if(count($settings) > 0) {
+		if(count($settings) > 0){
 			$this->roadBlock = self::parseBlock($settings, "RoadBlock", VanillaBlocks::OAK_PLANKS());
 			$this->wallBlock = self::parseBlock($settings, "WallBlock", VanillaBlocks::SMOOTH_STONE_SLAB());
 			$this->plotFloorBlock = self::parseBlock($settings, "PlotFloorBlock", VanillaBlocks::GRASS());
@@ -80,20 +80,20 @@ class PlotLevelSettings
 	}
 
 	/**
-	 * @param string[] $array
+	 * @param string[]   $array
 	 * @param string|int $key
-	 * @param Block $default
+	 * @param Block      $default
 	 *
 	 * @return Block
 	 */
-	public static function parseBlock(array &$array, $key, Block $default) : Block {
-		if(isset($array[$key])) {
+	public static function parseBlock(array &$array, $key, Block $default) : Block{
+		if(isset($array[$key])){
 			$id = $array[$key];
-			if(is_numeric($id)) {
+			if(is_numeric($id)){
 				$block = BlockFactory::getInstance()->get((int) $id, 0);
 			}else{
 				$split = explode(":", $id);
-				if(count($split) === 2 and is_numeric($split[0]) and is_numeric($split[1])) {
+				if(count($split) === 2 and is_numeric($split[0]) and is_numeric($split[1])){
 					$block = BlockFactory::getInstance()->get((int) $split[0], (int) $split[1]);
 				}else{
 					$block = $default;
@@ -106,14 +106,14 @@ class PlotLevelSettings
 	}
 
 	/**
-	 * @param string[] $array
+	 * @param string[]   $array
 	 * @param string|int $key
-	 * @param int $default
+	 * @param int        $default
 	 *
 	 * @return int
 	 */
-	public static function parseNumber(array &$array, $key, int $default) : int {
-		if(isset($array[$key]) and is_numeric($array[$key])) {
+	public static function parseNumber(array &$array, $key, int $default) : int{
+		if(isset($array[$key]) and is_numeric($array[$key])){
 			return (int) $array[$key];
 		}else{
 			return $default;
@@ -121,14 +121,14 @@ class PlotLevelSettings
 	}
 
 	/**
-	 * @param mixed[] $array
+	 * @param mixed[]    $array
 	 * @param string|int $key
-	 * @param bool $default
+	 * @param bool       $default
 	 *
 	 * @return bool
 	 */
-	public static function parseBool(array &$array, $key, bool $default) : bool {
-		if(isset($array[$key]) and is_bool($array[$key])) {
+	public static function parseBool(array &$array, $key, bool $default) : bool{
+		if(isset($array[$key]) and is_bool($array[$key])){
 			return $array[$key];
 		}else{
 			return $default;

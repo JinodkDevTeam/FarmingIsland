@@ -35,8 +35,8 @@ use CortexPE\Hierarchy\data\member\SQLiteMemberDS;
 use CortexPE\Hierarchy\Hierarchy;
 use CortexPE\Hierarchy\member\OfflineMember;
 
-class IndexedToSQL extends BaseMigrator {
-	public static function tryMigration(Hierarchy $plugin): void {
+class IndexedToSQL extends BaseMigrator{
+	public static function tryMigration(Hierarchy $plugin) : void{
 		if(is_dir(($dir = $plugin->getDataFolder() . "members/"))){
 			$plugin->getLogger()->info("Migrating member data to newer Data Storage format");
 			self::createBackup($plugin);

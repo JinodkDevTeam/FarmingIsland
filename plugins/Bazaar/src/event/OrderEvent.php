@@ -21,15 +21,15 @@ class OrderEvent extends PluginEvent implements Cancellable{
 		parent::__construct($this->getBazaar());
 	}
 
-	public function getOrder(): SellOrder|BuyOrder{
-		return $this->order;
-	}
-
-	private function getBazaar(): ?Bazaar{
+	private function getBazaar() : ?Bazaar{
 		$bazaar = Server::getInstance()->getPluginManager()->getPlugin("BazaarShop");
-		if ($bazaar instanceof Bazaar){
+		if($bazaar instanceof Bazaar){
 			return $bazaar;
 		}
 		return null;
+	}
+
+	public function getOrder() : SellOrder|BuyOrder{
+		return $this->order;
 	}
 }

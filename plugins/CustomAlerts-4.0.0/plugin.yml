@@ -1,7 +1,7 @@
 name: CustomAlerts
 main: CustomAlerts\CustomAlerts
 version: 2.1
-api: [4.0.0]
+api: [ 4.0.0 ]
 load: STARTUP
 author: EvolSoft
 description: Customize or hide alerts (join/leave messages, whitelist messages, outdated server/client messages, etc...) plugin

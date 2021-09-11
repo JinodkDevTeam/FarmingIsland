@@ -29,11 +29,11 @@ use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class MyMoneyCommand extends Command implements PluginOwned {
+class MyMoneyCommand extends Command implements PluginOwned{
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin) {
+	public function __construct(EconomyAPI $plugin){
 		$this->plugin = $plugin;
 
 		$desc = $plugin->getCommandMessage("mymoney");
@@ -42,19 +42,19 @@ class MyMoneyCommand extends Command implements PluginOwned {
 		$this->setPermission("economyapi.command.mymoney");
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params): bool {
-		if(!$this->testPermission($sender)) {
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
+		if(!$this->testPermission($sender)){
 			return false;
 		}
 
-		if($sender instanceof Player) {
+		if($sender instanceof Player){
 			$plugin = $this->plugin;
 
 			$currencyId = array_shift($params);
-			if($currencyId !== null) {
+			if($currencyId !== null){
 				$currency = $plugin->getCurrency($currencyId);
 
-				if($currency === null) {
+				if($currency === null){
 					$sender->sendMessage($plugin->getMessage('currency-unavailable', $sender, [$currencyId]));
 					return true;
 				}
@@ -65,9 +65,9 @@ class MyMoneyCommand extends Command implements PluginOwned {
 			$money = $plugin->myMoney($sender, $currency);
 			$sender->sendMessage($plugin->getMessage("mymoney-mymoney", $sender, [new CurrencyReplacer($currency, $money)]));
 
-			if($currencyId === null) { // show all balance of each currency when currency is not specified
-				foreach($plugin->getCurrencies() as $val) {
-					if($val->isExposed() and $val !== $currency) {
+			if($currencyId === null){ // show all balance of each currency when currency is not specified
+				foreach($plugin->getCurrencies() as $val){
+					if($val->isExposed() and $val !== $currency){
 						$money = $plugin->myMoney($sender, $val);
 						if($money === false or $money === 0) continue;
 
@@ -83,7 +83,7 @@ class MyMoneyCommand extends Command implements PluginOwned {
 		return true;
 	}
 
-	public function getOwningPlugin(): Plugin {
+	public function getOwningPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

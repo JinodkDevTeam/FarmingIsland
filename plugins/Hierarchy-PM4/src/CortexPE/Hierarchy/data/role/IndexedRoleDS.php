@@ -41,7 +41,7 @@ use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
 
-abstract class IndexedRoleDS extends RoleDataSource {
+abstract class IndexedRoleDS extends RoleDataSource{
 	use IndexedDataUtilities;
 
 	/** @var string */
@@ -53,15 +53,15 @@ abstract class IndexedRoleDS extends RoleDataSource {
 	/** @var string */
 	protected $rolesFile;
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		parent::__construct($plugin);
 		$this->rolesFile = $this->plugin->getDataFolder() . "roles." . static::FILE_EXTENSION;
 	}
 
-	public function initialize(): void {
-		if(file_exists($this->rolesFile)) {
+	public function initialize() : void{
+		if(file_exists($this->rolesFile)){
 			$this->roles = $this->decode(file_get_contents($this->rolesFile));
-		} else {
+		}else{
 			// create default role & add default permissions
 			$pMgr = PermissionManager::getInstance();
 			file_put_contents($this->rolesFile, $this->encode(($this->roles = [
@@ -83,43 +83,28 @@ abstract class IndexedRoleDS extends RoleDataSource {
 		$this->postInitialize($this->roles);
 	}
 
-	abstract function decode(string $string): array;
+	abstract function decode(string $string) : array;
 
-	abstract function encode(array $data): string;
+	abstract function encode(array $data) : string;
 
-	public function addRolePermission(Role $role, Permission $permission, bool $inverted = false): void {
+	public function addRolePermission(Role $role, Permission $permission, bool $inverted = false) : void{
 		$this->removeRolePermission($role, $permission);
 		$permission = ($inverted ? "-" : "") . $permission->getName();
 		$k = $this->resolveRoleIndex($role->getId());
-		if(!self::permissionInArray($permission, $this->roles[$k]["Permissions"])) {
+		if(!self::permissionInArray($permission, $this->roles[$k]["Permissions"])){
 			$this->roles[$k]["Permissions"][] = $permission;
 		}
 		$this->reIndex($this->roles[$k]["Permissions"]);
 		$this->flush();
 	}
 
-	public function removeRolePermission(Role $role, $permission): void {
-		if($permission instanceof Permission) {
+	public function removeRolePermission(Role $role, $permission) : void{
+		if($permission instanceof Permission){
 			$permission = $permission->getName();
 		}
 		$k = $this->resolveRoleIndex($role->getId());
 		self::removePermissionFromArray($permission, $this->roles[$k]["Permissions"]);
 		$this->reIndex($this->roles[$k]["Permissions"]);
-		$this->flush();
-	}
-
-	public function createRoleOnStorage(string $name, int $id, int $position): void {
-		array_splice($this->roles, $position, 0, [[
-			"ID" => $id,
-			"Name" => $name,
-			"isDefault" => false,
-			"Permissions" => []
-		]]);
-		$this->flush();
-	}
-
-	public function deleteRoleFromStorage(Role $role): void {
-		unset($this->roles[$this->resolveRoleIndex($role->getId())]);
 		$this->flush();
 	}
 
@@ -129,29 +114,45 @@ abstract class IndexedRoleDS extends RoleDataSource {
 	 * @return int
 	 * @throws UnresolvedRoleException
 	 */
-	private function resolveRoleIndex(int $roleID): int {
-		foreach($this->roles as $i => $role) {
-			if($role["ID"] == $roleID) {
+	private function resolveRoleIndex(int $roleID) : int{
+		foreach($this->roles as $i => $role){
+			if($role["ID"] == $roleID){
 				return $i;
 			}
 		}
 		throw new UnresolvedRoleException("Unable to resolve unknown role with ID {$roleID}");
 	}
 
-	public function shutdown(): void {
+	public function flush() : void{
+		ksort($this->roles);
+		file_put_contents($this->rolesFile, $this->encode($this->roles));
+	}
+
+	public function createRoleOnStorage(string $name, int $id, int $position) : void{
+		array_splice($this->roles, $position, 0, [[
+			"ID" => $id,
+			"Name" => $name,
+			"isDefault" => false,
+			"Permissions" => []
+		]]);
+		$this->flush();
+	}
+
+	public function deleteRoleFromStorage(Role $role) : void{
+		unset($this->roles[$this->resolveRoleIndex($role->getId())]);
+		$this->flush();
+	}
+
+	public function shutdown() : void{
 		// should be saved already
 	}
 
 	/**
 	 * @param array $roles
+	 *
 	 * @internal Only used for writing data directly
 	 */
-	public function setRoles(array $roles): void {
+	public function setRoles(array $roles) : void{
 		$this->roles = $roles;
-	}
-
-	public function flush(): void {
-		ksort($this->roles);
-		file_put_contents($this->rolesFile, $this->encode($this->roles));
 	}
 }

@@ -27,12 +27,12 @@ use onebone\economyapi\event\Issuer;
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
 
-class MoneyChangedEvent extends EconomyAPIEvent implements Cancellable {
+class MoneyChangedEvent extends EconomyAPIEvent implements Cancellable{
 	use CancellableTrait;
 
 	private $username, $currency, $money;
 
-	public function __construct(EconomyAPI $plugin, $username, Currency $currency, float $money, ?Issuer $issuer) {
+	public function __construct(EconomyAPI $plugin, $username, Currency $currency, float $money, ?Issuer $issuer){
 		parent::__construct($plugin, $issuer);
 		$this->username = $username;
 		$this->currency = $currency;
@@ -42,18 +42,18 @@ class MoneyChangedEvent extends EconomyAPIEvent implements Cancellable {
 	/**
 	 * @return string
 	 */
-	public function getUsername() {
+	public function getUsername(){
 		return $this->username;
 	}
 
-	public function getCurrency(): Currency {
+	public function getCurrency() : Currency{
 		return $this->currency;
 	}
 
 	/**
 	 * @return float Returns old balance of the player before change
 	 */
-	public function getMoney() {
+	public function getMoney(){
 		return $this->money;
 	}
 }

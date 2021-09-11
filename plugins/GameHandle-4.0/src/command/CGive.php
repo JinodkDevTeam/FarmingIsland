@@ -9,52 +9,40 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class CGive extends BaseCommand
-{
-	public function __construct(Core $core)
-	{
+class CGive extends BaseCommand{
+	public function __construct(Core $core){
 		parent::__construct($core, "cgive");
 		$this->setDescription("Give a item from Custom Item Code");
 		$this->setPermission("gh.cgive");
 	}
-	public function execute(CommandSender $sender, string $commandLabel, array $args)
-	{
-		if (!$sender instanceof Player)
-		{
+
+	public function execute(CommandSender $sender, string $commandLabel, array $args){
+		if(!$sender instanceof Player){
 			$sender->sendMessage("Use in-game only");
 			return;
 		}
-		if (isset($args[0]))
-		{
-			if (!$sender->hasPermission("gh.cgive"))
-			{
+		if(isset($args[0])){
+			if(!$sender->hasPermission("gh.cgive")){
 				$sender->sendMessage("You not have permission to use this command !");
 				return;
 			}
-			try
-			{
-				$item = CustomItemFactory::getInstance()->get((int)$args[0]);
-				if ($item == null)
-				{
+			try{
+				$item = CustomItemFactory::getInstance()->get((int) $args[0]);
+				if($item == null){
 					$sender->sendMessage("Unknow item ID");
 					return;
 				}
 				$item = $item->toItem();
-				if (!$sender->getInventory()->canAddItem($item))
-				{
+				if(!$sender->getInventory()->canAddItem($item)){
 					$sender->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
 					return;
 				}
 				$sender->getInventory()->addItem($item);
 				$sender->sendMessage("Item Added !");
-			}
-			catch(Exception)
-			{
+			}catch(Exception){
 				$sender->sendMessage("Error while decode give items");
 			}
-		}
-		else
-		{
+		}else{
 			$sender->sendMessage("/cgive <item_code>");
 		}
 	}

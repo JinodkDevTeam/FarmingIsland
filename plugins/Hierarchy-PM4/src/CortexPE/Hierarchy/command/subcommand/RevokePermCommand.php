@@ -34,15 +34,15 @@ use CortexPE\Hierarchy\member\BaseMember;
 use CortexPE\Hierarchy\role\Role;
 use pocketmine\permission\Permission;
 
-class RevokePermCommand extends ACPermissionModifierCommand {
+class RevokePermCommand extends ACPermissionModifierCommand{
 	protected const CHILD_PERMISSION = "remove_permission";
 	protected const MESSAGE_ROOT = "revokeperm";
 
-	protected function doOperationOnMember(BaseMember $member, Permission $permission): void {
+	protected function doOperationOnMember(BaseMember $member, Permission $permission) : void{
 		$member->removeMemberPermission($permission);
 	}
 
-	protected function doOperationOnRole(Role $role, Permission $permission): void {
+	protected function doOperationOnRole(Role $role, Permission $permission) : void{
 		$role->removePermission($permission);
 	}
 }

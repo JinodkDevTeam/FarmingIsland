@@ -10,9 +10,6 @@ use SOFe\AwaitGenerator\Await;
 
 class SqliteProvider{
 
-	private DataConnector $db;
-	private Loader $loader;
-
 	public const INIT = "mail.init";
 	public const REGISTER = "mail.register";
 	public const REMOVE = "mail.remove";
@@ -22,16 +19,14 @@ class SqliteProvider{
 	public const SELECT_ID = "mail.select.id";
 	public const UPDATE_ISREAD = "mail.update.isread";
 	public const UPDATE_ISCLAIMED = "mail.update.isclaimed";
+	private DataConnector $db;
+	private Loader $loader;
 
 	public function __construct(Loader $loader){
 		$this->loader = $loader;
 	}
 
-	private function getLoader(): Loader{
-		return $this->loader;
-	}
-
-	public function init(): void{
+	public function init() : void{
 		$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
 			"sqlite" => "sqlite.sql"
 		]);
@@ -39,26 +34,30 @@ class SqliteProvider{
 		$this->db->executeGeneric(self::INIT);
 	}
 
-	public function close(): void{
-		if (isset($this->db)) $this->db->close();
+	private function getLoader() : Loader{
+		return $this->loader;
 	}
 
-	public function asyncSelect(string $query, array $args): Generator{
+	public function close() : void{
+		if(isset($this->db)) $this->db->close();
+	}
+
+	public function selectAll() : Generator{
+		return yield $this->asyncSelect(self::SELECT_ALL, []);
+	}
+
+	public function asyncSelect(string $query, array $args) : Generator{
 		$this->db->executeSelect($query, $args, yield, yield Await::REJECT);
 		return yield Await::ONCE;
 	}
 
-	public function selectAll(): Generator{
-		return yield $this->asyncSelect(self::SELECT_ALL, []);
-	}
-
-	public function selectFrom(string $name): Generator{
+	public function selectFrom(string $name) : Generator{
 		return yield $this->asyncSelect(self::SELECT_FROM, [
 			"name" => $name
 		]);
 	}
 
-	public function selectTo(string $name): Generator{
+	public function selectTo(string $name) : Generator{
 		return yield $this->asyncSelect(self::SELECT_TO, [
 			"name" => $name
 		]);
@@ -70,21 +69,21 @@ class SqliteProvider{
 		]);
 	}
 
-	public function updateIsRead(int $id, bool $value): void{
+	public function updateIsRead(int $id, bool $value) : void{
 		$this->db->executeChange(self::UPDATE_ISREAD, [
 			"id" => $id,
 			"isread" => $value
 		]);
 	}
 
-	public function updateIsClaimed(int $id, bool $value): void{
+	public function updateIsClaimed(int $id, bool $value) : void{
 		$this->db->executeChange(self::UPDATE_ISCLAIMED, [
 			"id" => $id,
 			"isclaimed" => $value
 		]);
 	}
 
-	public function register(Mail $mail): void{
+	public function register(Mail $mail) : void{
 		$this->db->executeChange(self::REGISTER, [
 			"from" => $mail->getFrom(),
 			"to" => $mail->getTo(),

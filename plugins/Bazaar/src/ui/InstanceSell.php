@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\provider\SqliteProvider;
-use JinodkDevTeam\utils\ItemUtils;
 use Bazaar\utils\OrderDataHelper;
+use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
 use onebone\economyapi\EconomyAPI;
@@ -27,21 +27,21 @@ class InstanceSell extends BaseUI{
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			$max = ItemUtils::getItemCount($player->getInventory(), ItemUtils::toItem($this->itemid));
 			$form = new CustomForm(function(Player $player, ?array $pos) use ($data, $max){
-				if (!isset($pos[1])) return;
+				if(!isset($pos[1])) return;
 				$amount = $pos[1];
-				if (is_int($amount)){
+				if(is_int($amount)){
 					$player->sendMessage("Amount must be a integer number !");
 					return;
 				}
-				if ((int)$amount <= 0){
+				if((int) $amount <= 0){
 					$player->sendMessage("Amount must be > 0 !");
 					return;
 				}
-				if ($amount > $max){
+				if($amount > $max){
 					$player->sendMessage("You dont have enough item to sell.");
 					return;
 				}
-				$this->confirm($player, (int)$amount, $data);
+				$this->confirm($player, (int) $amount, $data);
 			});
 
 			$form->setTitle("Instance sell");
@@ -51,29 +51,29 @@ class InstanceSell extends BaseUI{
 		});
 	}
 
-	public function confirm(Player $player, int $amount, array $data): void{
+	public function confirm(Player $player, int $amount, array $data) : void{
 		$total = 0;
 		$count = $amount;
 		foreach($data as $arrayOrder){
 			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::BUY);
 			$item_left = $order->getAmount() - $order->getFilled();
-			if ($count <= $item_left){
+			if($count <= $item_left){
 				$total += $count * $order->getPrice();
 				$count = 0;
 				break;
-			} else {
+			}else{
 				$count -= $item_left;
 				$total += $item_left * $order->getPrice();
 			}
 		}
-		if ($count > 0){
+		if($count > 0){
 			$player->sendMessage("Bazaar just want to buy from you " . $amount - $count . " items !");
 			return;
 		}
 
 		$form = new ModalForm(function(Player $player, $value) use ($amount, $total, $data){
-			if (!isset($value)) return;
-			if ($value == false) return;
+			if(!isset($value)) return;
+			if($value == false) return;
 			$this->instanceSell($player, $amount, $data);
 		});
 		$form->setTitle("Confirm");
@@ -84,26 +84,26 @@ class InstanceSell extends BaseUI{
 		$player->sendForm($form);
 	}
 
-	public function instanceSell(Player $player, int $amount, array $data): void{
+	public function instanceSell(Player $player, int $amount, array $data) : void{
 		$total = 0;
 		$count = $amount;
 		foreach($data as $arrayOrder){
 			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::BUY);
 			$item_left = $order->getAmount() - $order->getFilled();
-			if ($count <= $item_left){
+			if($count <= $item_left){
 				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_FILLED, [
 					"id" => $order->getId(),
 					"filled" => $order->getFilled() + $count
 				]);
 				$total += $count * $order->getPrice();
-				if ($count == $item_left){
+				if($count == $item_left){
 					$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_ISFILLED, [
 						"id" => $order->getId(),
 						"isfilled" => true
 					]);
 				}
 				break;
-			} else {
+			}else{
 				$count -= $item_left;
 				$total += $item_left * $order->getPrice();
 				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_FILLED, [

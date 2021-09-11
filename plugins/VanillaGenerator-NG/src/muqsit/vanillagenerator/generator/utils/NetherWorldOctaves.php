@@ -7,8 +7,7 @@ namespace muqsit\vanillagenerator\generator\utils;
 use PerlinOctaveGenerator;
 use SimplexOctaveGenerator;
 
-class NetherWorldOctaves extends WorldOctaves
-{
+class NetherWorldOctaves extends WorldOctaves{
 
 	public function __construct(
 		SimplexOctaveGenerator|PerlinOctaveGenerator $height,
@@ -18,8 +17,7 @@ class NetherWorldOctaves extends WorldOctaves
 		SimplexOctaveGenerator|PerlinOctaveGenerator $surface,
 		public SimplexOctaveGenerator|PerlinOctaveGenerator $soul_sand,
 		public SimplexOctaveGenerator|PerlinOctaveGenerator $gravel
-	)
-	{
+	){
 		parent::__construct($height, $roughness, $roughness_2, $detail, $surface);
 	}
 }

@@ -6,46 +6,97 @@
 -- #    { rolesTable
 CREATE TABLE IF NOT EXISTS Roles
 (
-    ID        INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-    Position  INTEGER      NOT NULL UNIQUE,
-    Name      VARCHAR(100) NOT NULL DEFAULT 'new role',
-    isDefault BOOLEAN      NOT NULL DEFAULT 0
-);
+    ID
+    INTEGER
+    PRIMARY
+    KEY
+    AUTOINCREMENT
+    UNIQUE,
+    Position
+    INTEGER
+    NOT
+    NULL
+    UNIQUE,
+    Name
+    VARCHAR
+(
+    100
+) NOT NULL DEFAULT 'new role',
+    isDefault BOOLEAN NOT NULL DEFAULT 0
+    );
 -- #    }
 -- #    { rolePermissionTable
 CREATE TABLE IF NOT EXISTS RolePermissions
 (
-    RoleID     INTEGER NOT NULL,
-    Permission TEXT    NOT NULL,
-    PRIMARY KEY (RoleID, Permission)
-);
+    RoleID
+    INTEGER
+    NOT
+    NULL,
+    Permission
+    TEXT
+    NOT
+    NULL,
+    PRIMARY
+    KEY
+(
+    RoleID,
+    Permission
+)
+    );
 -- #    }
 -- #    { memberRolesTable
 CREATE TABLE IF NOT EXISTS MemberRoles
 (
-    Player VARCHAR(16) NOT NULL COLLATE NOCASE, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
-    RoleID INTEGER     NOT NULL,
-    AdditionalData VARCHAR(1024),
-    PRIMARY KEY (Player, RoleID)
-);
+    Player VARCHAR
+(
+    16
+) NOT NULL COLLATE NOCASE, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
+    RoleID INTEGER NOT NULL,
+    AdditionalData VARCHAR
+(
+    1024
+),
+    PRIMARY KEY
+(
+    Player,
+    RoleID
+)
+    );
 -- #    }
 -- #    { memberPermissionsTable
 CREATE TABLE IF NOT EXISTS MemberPermissions
 (
-    Player     VARCHAR(16)  NOT NULL COLLATE NOCASE, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
-    Permission VARCHAR(128) NOT NULL,                -- who tf has a permission node with 128 characters anyways?
-    AdditionalData VARCHAR(1024),
-    PRIMARY KEY (Player, Permission)
-);
+    Player VARCHAR
+(
+    16
+) NOT NULL COLLATE NOCASE, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
+    Permission VARCHAR
+(
+    128
+) NOT NULL, -- who tf has a permission node with 128 characters anyways?
+    AdditionalData VARCHAR
+(
+    1024
+),
+    PRIMARY KEY
+(
+    Player,
+    Permission
+)
+    );
 -- #    }
 -- #  }
 
 -- #  { check
 -- #    { memberRoles_check1
-SELECT COUNT(*) AS result FROM pragma_table_info('MemberRoles') WHERE name='AdditionalData';
+SELECT COUNT(*) AS result
+FROM pragma_table_info('MemberRoles')
+WHERE name = 'AdditionalData';
 -- #    }
 -- #    { memberPermissions_check1
-SELECT COUNT(*) AS result FROM pragma_table_info('MemberPermissions') WHERE name='AdditionalData';
+SELECT COUNT(*) AS result
+FROM pragma_table_info('MemberPermissions')
+WHERE name = 'AdditionalData';
 -- #    }
 -- #  }
 
@@ -84,7 +135,8 @@ WHERE Player = :username;
 -- #     { add
 -- #       :username string
 -- #       :role_id int
-INSERT OR
+INSERT
+OR
 REPLACE
 INTO MemberRoles (Player, RoleID)
 VALUES (:username, :role_id);
@@ -108,7 +160,8 @@ WHERE Player = :username;
 -- #     { add
 -- #       :username string
 -- #       :permission string
-INSERT OR
+INSERT
+OR
 REPLACE
 INTO MemberPermissions (Player, Permission)
 VALUES (:username, :permission);
@@ -199,7 +252,8 @@ WHERE RoleID = :role_id;
 -- #      { add
 -- #        :role_id int
 -- #        :permission string
-INSERT OR
+INSERT
+OR
 REPLACE
 INTO RolePermissions (RoleID, Permission)
 VALUES (:role_id, :permission);

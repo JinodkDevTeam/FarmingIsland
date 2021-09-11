@@ -36,13 +36,13 @@ use CortexPE\Hierarchy\role\Role;
 use pocketmine\permission\PermissionAttachment;
 use pocketmine\player\Player;
 
-class Member extends BaseMember {
+class Member extends BaseMember{
 	/** @var Player */
 	protected $player;
 	/** @var PermissionAttachment */
 	protected $attachment;
 
-	public function __construct(Hierarchy $plugin, Player $player) {
+	public function __construct(Hierarchy $plugin, Player $player){
 		parent::__construct($plugin);
 		$this->player = $player;
 		$this->attachment = $player->addAttachment($plugin);
@@ -51,11 +51,11 @@ class Member extends BaseMember {
 	/**
 	 * @return PermissionAttachment|null
 	 */
-	public function getAttachment(): ?PermissionAttachment {
+	public function getAttachment() : ?PermissionAttachment{
 		return $this->attachment;
 	}
 
-	public function recalculatePermissions(): void {
+	public function recalculatePermissions() : void{
 		parent::recalculatePermissions();
 		$this->attachment->clearPermissions();
 		$this->attachment->setPermissions($this->permissions);
@@ -64,17 +64,17 @@ class Member extends BaseMember {
 	/**
 	 * @return Player
 	 */
-	public function getPlayer(): Player {
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 
-	public function getName(): string {
+	public function getName() : string{
 		return $this->player->getName();
 	}
 
-	public function loadData(array $memberData): void {
+	public function loadData(array $memberData) : void{
 		parent::loadData($memberData);
-		foreach($this->roles as $role) {
+		foreach($this->roles as $role){
 			$role->bind($this);
 		}
 
@@ -82,17 +82,17 @@ class Member extends BaseMember {
 		(new MemberRoleUpdateEvent($this))->call();
 	}
 
-	protected function onRoleAdd(Role $role): void {
+	public function onDestroy() : void{
+		foreach($this->roles as $k => $role){
+			$role->unbind($this);
+		}
+	}
+
+	protected function onRoleAdd(Role $role) : void{
 		$role->bind($this);
 	}
 
-	protected function onRoleRemove(Role $role): void {
+	protected function onRoleRemove(Role $role) : void{
 		$role->unbind($this);
-	}
-
-	public function onDestroy(): void {
-		foreach($this->roles as $k => $role) {
-			$role->unbind($this);
-		}
 	}
 }

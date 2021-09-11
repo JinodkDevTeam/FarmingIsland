@@ -37,35 +37,35 @@ use CortexPE\Hierarchy\Hierarchy;
  * @package  CortexPE\Hierarchy\data
  * @internal This class (and its children) are only used for the plugin's internal data storage. DO NOT TOUCH!
  */
-abstract class DataSource {
+abstract class DataSource{
 	/** @var Hierarchy */
 	protected $plugin;
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->plugin = $plugin;
 	}
 
-	abstract public function initialize(): void;
-
-	protected function postInitialize(array $roles): void {
-		$this->plugin->getRoleManager()->loadRoles($roles);
-		$this->plugin->continueStartup();
-	}
+	abstract public function initialize() : void;
 
 	/**
 	 * @return Hierarchy
 	 */
-	public function getPlugin(): Hierarchy {
+	public function getPlugin() : Hierarchy{
 		return $this->plugin;
 	}
 
 	/**
 	 * Gracefully shutdown the data source
 	 */
-	abstract public function shutdown(): void;
+	abstract public function shutdown() : void;
 
 	/**
 	 * Save current state to disk (if applicable)
 	 */
-	abstract public function flush(): void;
+	abstract public function flush() : void;
+
+	protected function postInitialize(array $roles) : void{
+		$this->plugin->getRoleManager()->loadRoles($roles);
+		$this->plugin->continueStartup();
+	}
 }

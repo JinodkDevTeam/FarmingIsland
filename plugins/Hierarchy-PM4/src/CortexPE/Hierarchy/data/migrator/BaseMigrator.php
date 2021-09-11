@@ -31,16 +31,31 @@ namespace CortexPE\Hierarchy\data\migrator;
 
 
 use CortexPE\Hierarchy\Hierarchy;
+use Generator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use SplFileInfo;
 
-abstract class BaseMigrator {
-	private final function __construct() {
+abstract class BaseMigrator{
+	private final function __construct(){
 	}
 
-	abstract public static function tryMigration(Hierarchy $plugin): void;
+	abstract public static function tryMigration(Hierarchy $plugin) : void;
 
-	protected static function createBackup(Hierarchy $plugin):void {
+	public static function iterateDirectoryFiles(string $directoryPath) : Generator{
+		if($handle = opendir($directoryPath)){
+			while(false !== ($file = readdir($handle))){
+				if(in_array($file, [".", ".."])){
+					continue;
+				}
+
+				yield $directoryPath . DIRECTORY_SEPARATOR . $file;
+			}
+			closedir($handle);
+		}
+	}
+
+	protected static function createBackup(Hierarchy $plugin) : void{
 		self::recursiveCopy(
 			$plugin->getDataFolder(),
 			realpath($plugin->getDataFolder()) . "_backup_" . date("d-m-Y_H-i-s")
@@ -51,31 +66,19 @@ abstract class BaseMigrator {
 	 * @param string $path
 	 * @param string $destination
 	 */
-	private static function recursiveCopy(string $path, string $destination): void {
+	private static function recursiveCopy(string $path, string $destination) : void{
 		mkdir($destination);
-		/** @var \SplFileInfo $item */
+		/** @var SplFileInfo $item */
 		foreach(
 			$iterator = new RecursiveIteratorIterator(
-				new RecursiveDirectoryIterator($path, \RecursiveDirectoryIterator::SKIP_DOTS),
+				new RecursiveDirectoryIterator($path, RecursiveDirectoryIterator::SKIP_DOTS),
 				RecursiveIteratorIterator::SELF_FIRST) as $item
-		) {
-			if($item->isDir()) {
+		){
+			if($item->isDir()){
 				mkdir($destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
-			} else {
+			}else{
 				copy($item->getPathname(), $destination . DIRECTORY_SEPARATOR . $iterator->getSubPathName());
 			}
-		}
-	}
-	public static function iterateDirectoryFiles(string $directoryPath):\Generator{
-		if ($handle = opendir($directoryPath)) {
-			while (false !== ($file = readdir($handle))) {
-				if(in_array($file, [".", ".."])){
-					continue;
-				}
-
-				yield $directoryPath . DIRECTORY_SEPARATOR . $file;
-			}
-			closedir($handle);
 		}
 	}
 }

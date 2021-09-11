@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\events;
 
 use MyPlot\Plot;
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
 
-class MyPlotSaveEvent extends MyPlotPlotEvent implements Cancellable {
+class MyPlotSaveEvent extends MyPlotPlotEvent implements Cancellable{
 	use CancellableTrait;
 
 	public const SQLITE3 = 0;
@@ -17,12 +18,12 @@ class MyPlotSaveEvent extends MyPlotPlotEvent implements Cancellable {
 	/** @var int $type */
 	private $type;
 
-	public function __construct(int $type, Plot $plot) {
+	public function __construct(int $type, Plot $plot){
 		$this->type = $type;
 		parent::__construct($plot);
 	}
 
-	public function getSaveType() : int {
+	public function getSaveType() : int{
 		return $this->type;
 	}
 }

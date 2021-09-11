@@ -13,10 +13,10 @@ namespace CustomAlerts\Events;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 
-class CustomAlertsJoinEvent extends CustomAlertsEvent {
-	
+class CustomAlertsJoinEvent extends CustomAlertsEvent{
+
 	public static $handlerList = null;
-	
+
 	/** @var Player $player */
 	private $player;
 
@@ -30,10 +30,10 @@ class CustomAlertsJoinEvent extends CustomAlertsEvent {
 
 	/**
 	 * Get join event player
-	 * 
+	 *
 	 * @return Player
 	 */
-	public function getPlayer() : Player {
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 }

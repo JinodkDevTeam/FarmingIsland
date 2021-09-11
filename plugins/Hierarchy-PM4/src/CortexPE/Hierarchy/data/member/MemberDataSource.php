@@ -33,8 +33,9 @@ namespace CortexPE\Hierarchy\data\member;
 use CortexPE\Hierarchy\data\DataSource;
 use CortexPE\Hierarchy\member\BaseMember;
 use CortexPE\Hierarchy\role\Role;
+use Generator;
 
-abstract class MemberDataSource extends DataSource {
+abstract class MemberDataSource extends DataSource{
 	public const ACTION_MEMBER_ROLE_ADD = "member.role.add";
 	public const ACTION_MEMBER_ROLE_REMOVE = "member.role.remove";
 	public const ACTION_MEMBER_PERMS_ADD = "member.perm.add";
@@ -48,7 +49,7 @@ abstract class MemberDataSource extends DataSource {
 	 * @internal Get member data from the data source then pass to member object
 	 *
 	 */
-	abstract public function loadMemberData(BaseMember $member): void;
+	abstract public function loadMemberData(BaseMember $member) : void;
 
 	/**
 	 * @param BaseMember $member
@@ -58,7 +59,7 @@ abstract class MemberDataSource extends DataSource {
 	 * @internal Update member data on data source
 	 *
 	 */
-	abstract public function updateMemberData(BaseMember $member, string $action, $data): void;
+	abstract public function updateMemberData(BaseMember $member, string $action, $data) : void;
 
-	abstract public function getMemberNamesOf(Role $role): \Generator;
+	abstract public function getMemberNamesOf(Role $role) : Generator;
 }

@@ -44,17 +44,17 @@ use function unlink;
 use function yaml_emit_file;
 use function yaml_parse_file;
 
-class DSMigrator extends BaseMigrator {
-	public static function tryMigration(Hierarchy $plugin): void {
-		if(file_exists(($fp = $plugin->getDataFolder() . "config.yml"))) {
+class DSMigrator extends BaseMigrator{
+	public static function tryMigration(Hierarchy $plugin) : void{
+		if(file_exists(($fp = $plugin->getDataFolder() . "config.yml"))){
 			$data = yaml_parse_file($fp);
-			if(!isset($data["configVersion"])) { // v1.0.0 -> v1.1.0
+			if(!isset($data["configVersion"])){ // v1.0.0 -> v1.1.0
 				$plugin->getLogger()->info("Migrating all data to newer Data Storage format");
 				self::createBackup($plugin);
 				unlink($fp);
 				$plugin->saveConfig();
 				$conf = $plugin->getConfig();
-				switch($data["dataSource"]["type"]) {
+				switch($data["dataSource"]["type"]){
 					case "json":
 						$source = new JSONLDR($plugin);
 						break;
@@ -75,7 +75,7 @@ class DSMigrator extends BaseMigrator {
 				$conf->setNested("memberDataSource.type", $data["dataSource"]["type"]);
 				$conf->setNested("memberDataSource.sqlite3", $data["dataSource"]["sqlite3"]);
 				$conf->setNested("memberDataSource.mysql", $data["dataSource"]["mysql"]);
-				if(!($source instanceof IndexedLDR)) {
+				if(!($source instanceof IndexedLDR)){
 					// default to yaml
 					$conf->setNested("roleDataSource.type", "yaml");
 

@@ -30,11 +30,11 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\data\legacy;
 
 
-class JSONLDR extends IndexedLDR {
+class JSONLDR extends IndexedLDR{
 	/** @var string */
 	protected const FILE_EXTENSION = "json";
 
-	public function decode(string $string): array {
+	public function decode(string $string) : array{
 		return json_decode($string, true);
 	}
 }

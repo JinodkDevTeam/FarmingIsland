@@ -34,7 +34,7 @@ use CortexPE\Hierarchy\data\DataSource;
 use CortexPE\Hierarchy\role\Role;
 use pocketmine\permission\Permission;
 
-abstract class RoleDataSource extends DataSource {
+abstract class RoleDataSource extends DataSource{
 	/**
 	 * @param Role       $role
 	 * @param Permission $permission
@@ -43,7 +43,7 @@ abstract class RoleDataSource extends DataSource {
 	 * @internal Add role permission
 	 *
 	 */
-	abstract public function addRolePermission(Role $role, Permission $permission, bool $inverted = false): void;
+	abstract public function addRolePermission(Role $role, Permission $permission, bool $inverted = false) : void;
 
 	/**
 	 * @param Role              $role
@@ -52,7 +52,7 @@ abstract class RoleDataSource extends DataSource {
 	 * @internal Remove role permission
 	 *
 	 */
-	abstract public function removeRolePermission(Role $role, Permission|string $permission): void;
+	abstract public function removeRolePermission(Role $role, Permission|string $permission) : void;
 
 	/**
 	 * @param string $name
@@ -61,12 +61,12 @@ abstract class RoleDataSource extends DataSource {
 	 *
 	 * @internal Create role on storage
 	 */
-	abstract public function createRoleOnStorage(string $name, int $id, int $position): void;
+	abstract public function createRoleOnStorage(string $name, int $id, int $position) : void;
 
 	/**
 	 * @param Role $role
 	 *
 	 * @internal Delete role from storage
 	 */
-	abstract public function deleteRoleFromStorage(Role $role): void;
+	abstract public function deleteRoleFromStorage(Role $role) : void;
 }

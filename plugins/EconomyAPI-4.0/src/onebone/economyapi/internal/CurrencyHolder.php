@@ -28,8 +28,9 @@ use onebone\economyapi\provider\Provider;
 // for internal purposes of EconomyAPI, thus it is subject
 // to change any time without any notice. Do not use this
 // class anyway.
+
 /** @internal */
-final class CurrencyHolder {
+final class CurrencyHolder{
 	/** @var string */
 	private $id;
 	/** @var Currency */
@@ -39,29 +40,29 @@ final class CurrencyHolder {
 	/** @var CurrencyConfig */
 	private $config = null;
 
-	public function __construct(string $id, Currency $currency, Provider $provider) {
+	public function __construct(string $id, Currency $currency, Provider $provider){
 		$this->id = $id;
 		$this->currency = $currency;
 		$this->provider = $provider;
 	}
 
-	public function getId(): string {
+	public function getId() : string{
 		return $this->id;
 	}
 
-	public function getCurrency(): Currency {
+	public function getCurrency() : Currency{
 		return $this->currency;
 	}
 
-	public function getProvider(): Provider {
+	public function getProvider() : Provider{
 		return $this->provider;
 	}
 
-	public function setConfig(CurrencyConfig $config) {
-		$this->config = $config;
+	public function getConfig() : ?CurrencyConfig{
+		return $this->config;
 	}
 
-	public function getConfig(): ?CurrencyConfig {
-		return $this->config;
+	public function setConfig(CurrencyConfig $config){
+		$this->config = $config;
 	}
 }

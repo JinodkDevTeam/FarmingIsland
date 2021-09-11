@@ -30,14 +30,11 @@ use pocketmine\world\particle\SplashParticle;
 use pocketmine\world\particle\WaterParticle;
 use pocketmine\world\World;
 
-class FishingHook extends Projectile
-{
-	public static function getNetworkTypeId() : string {return EntityIds::FISHING_HOOK;}
+class FishingHook extends Projectile{
 	/** @var float */
 	protected $gravity = 0.1;
 	/** @var float */
 	protected $drag = 0.05;
-
 	protected ?Entity $caughtEntity;
 	protected int $ticksCatchable = 0;
 	protected int $ticksCaughtDelay = 0;
@@ -45,34 +42,18 @@ class FishingHook extends Projectile
 	protected float $fishApproachAngle = 0;
 	protected Random $random;
 
-	protected function getInitialSizeInfo() : EntitySizeInfo {return new EntitySizeInfo(0.15, 0.15);}
-
-	public function attack(EntityDamageEvent $source) : void {
-		if ($source instanceof EntityDamageByEntityEvent)
-		{
-			$source->cancel();
-		}
-		parent::attack($source);
-	}
-
-	public function __construct(Location $location, ?Entity $shootingEntity, ?CompoundTag $nbt = null) {
+	public function __construct(Location $location, ?Entity $shootingEntity, ?CompoundTag $nbt = null){
 		parent::__construct($location, $shootingEntity, $nbt);
 		$this->random = new Random(intval(microtime(true) * 1000));
 
-		if ($shootingEntity instanceof Player) {
+		if($shootingEntity instanceof Player){
 			Loader::getInstance()->setFishingHook($shootingEntity, $this);
 
 			$this->handleHookCasting($this->motion->x, $this->motion->y, $this->motion->z, 1.5, 1.0);
 		}
 	}
 
-	public function onHitEntity(Entity $entityHit, RayTraceResult $hitResult) : void {
-		$entityHit->attack(new EntityDamageByEntityEvent($this, $entityHit, EntityDamageEvent::CAUSE_ENTITY_ATTACK, 0));
-
-		$this->mountEntity($entityHit);
-	}
-
-	public function handleHookCasting(float $x, float $y, float $z, float $f1, float $f2) {
+	public function handleHookCasting(float $x, float $y, float $z, float $f1, float $f2){
 		$f = sqrt($x * $x + $y * $y + $z * $z);
 		$x = $x / $f;
 		$y = $y / $f;
@@ -88,14 +69,29 @@ class FishingHook extends Projectile
 		$this->motion->z += $z;
 	}
 
-	public function onUpdate(int $currentTick) : bool {
+	public static function getNetworkTypeId() : string{ return EntityIds::FISHING_HOOK; }
+
+	public function onHitEntity(Entity $entityHit, RayTraceResult $hitResult) : void{
+		$entityHit->attack(new EntityDamageByEntityEvent($this, $entityHit, EntityDamageEvent::CAUSE_ENTITY_ATTACK, 0));
+
+		$this->mountEntity($entityHit);
+	}
+
+	public function attack(EntityDamageEvent $source) : void{
+		if($source instanceof EntityDamageByEntityEvent){
+			$source->cancel();
+		}
+		parent::attack($source);
+	}
+
+	public function onUpdate(int $currentTick) : bool{
 		if($this->isClosed()) return false;
 
 		$owner = $this->getOwningEntity();
 
 		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3());
 
-		if($inGround) {
+		if($inGround){
 			$this->motion->x *= $this->random->nextFloat() * 0.2;
 			$this->motion->y *= $this->random->nextFloat() * 0.2;
 			$this->motion->z *= $this->random->nextFloat() * 0.2;
@@ -104,7 +100,7 @@ class FishingHook extends Projectile
 		$hasUpdate = parent::onUpdate($currentTick);
 
 		if($owner instanceof Player){
-			if($owner->isClosed() or !$owner->isAlive() or !($owner->getInventory()->getItemInHand() instanceof FishingRod) or $owner->getPosition()->distanceSquared($this->getPosition()) > 1024) {
+			if($owner->isClosed() or !$owner->isAlive() or !($owner->getInventory()->getItemInHand() instanceof FishingRod) or $owner->getPosition()->distanceSquared($this->getPosition()) > 1024){
 				$this->flagForDespawn();
 			}
 
@@ -127,12 +123,12 @@ class FishingHook extends Projectile
 
 					$bb2 = new AxisAlignedBB($bb->minX, $d1, $bb->minZ, $bb->maxX, $d3, $bb->maxZ);
 
-					if ($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::WATER())) {
+					if($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::WATER())){
 						$d10 += 0.2;
 					}
 				}
 
-				if($this->getPosition()->isValid() and $d10 > 0) {
+				if($this->getPosition()->isValid() and $d10 > 0){
 					$l = 1;
 
 					// TODO: lightninstrike
@@ -163,7 +159,7 @@ class FishingHook extends Projectile
 							$block1 = $this->getWorld()->getBlock(new Vector3($d13, $d15 - 1, $d16));
 
 							if($block1 instanceof Water){
-								if($this->random->nextFloat() < 0.15) {
+								if($this->random->nextFloat() < 0.15){
 									$this->getWorld()->addParticle(new Vector3($d13, $d15 - 0.1, $d16), new WaterParticle());
 								}
 								$this->getWorld()->addParticle(new Vector3($d13, $d15, $d16), new WaterParticle());
@@ -227,6 +223,38 @@ class FishingHook extends Projectile
 		return $hasUpdate;
 	}
 
+	public function isLiquidInBoundingBox(World $world, AxisAlignedBB $bb, Liquid $material) : bool{
+		$minX = (int) floor($bb->minX);
+		$minY = (int) floor($bb->minY);
+		$minZ = (int) floor($bb->minZ);
+		$maxX = (int) floor($bb->maxX + 1);
+		$maxY = (int) floor($bb->maxY + 1);
+		$maxZ = (int) floor($bb->maxZ + 1);
+
+		for($x = $minX; $x < $maxX; ++$x){
+			for($y = $minY; $y < $maxY; ++$y){
+				for($z = $minZ; $z < $maxZ; ++$z){
+					$block = $world->getBlockAt($x, $y, $z);
+
+					if($block instanceof $material){
+						$j2 = $block->getMeta();
+						$d0 = $y + 1;
+
+						if($j2 < 8){
+							$d0 -= $j2 / 8;
+						}
+
+						if($d0 >= $bb->minY){
+							return true;
+						}
+					}
+				}
+			}
+		}
+
+		return false;
+	}
+
 	public function onDispose() : void{
 		$owner = $this->getOwningEntity();
 		if($owner instanceof Player){
@@ -263,8 +291,7 @@ class FishingHook extends Projectile
 
 				if(!$ev->isCancelled()){
 					$results = $ev->getItemsResult();
-					foreach ($results as $result)
-					{
+					foreach($results as $result){
 						$entityItem = new ItemEntity($this->getLocation(), $result);
 						$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
 						$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
@@ -282,35 +309,5 @@ class FishingHook extends Projectile
 		}
 	}
 
-	public function isLiquidInBoundingBox(World $world, AxisAlignedBB $bb, Liquid $material) : bool{
-		$minX = (int) floor($bb->minX);
-		$minY = (int) floor($bb->minY);
-		$minZ = (int) floor($bb->minZ);
-		$maxX = (int) floor($bb->maxX + 1);
-		$maxY = (int) floor($bb->maxY + 1);
-		$maxZ = (int) floor($bb->maxZ + 1);
-
-		for($x = $minX; $x < $maxX; ++$x) {
-			for($y = $minY; $y < $maxY; ++$y) {
-				for($z = $minZ; $z < $maxZ; ++$z) {
-					$block = $world->getBlockAt($x, $y, $z);
-
-					if($block instanceof $material) {
-						$j2 = $block->getMeta();
-						$d0 = $y + 1;
-
-						if($j2 < 8){
-							$d0 -= $j2 / 8;
-						}
-
-						if($d0 >= $bb->minY){
-							return true;
-						}
-					}
-				}
-			}
-		}
-
-		return false;
-	}
+	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }
 }

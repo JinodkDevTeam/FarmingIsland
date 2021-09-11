@@ -13,13 +13,13 @@ namespace CustomAlerts\Events;
 use pocketmine\player\PlayerInfo;
 use pocketmine\plugin\Plugin;
 
-class CustomAlertsWhitelistKickEvent extends CustomAlertsEvent {
-	
+class CustomAlertsWhitelistKickEvent extends CustomAlertsEvent{
+
 	public static $handlerList = null;
-	
+
 	/** @var PlayerInfo $player */
 	private $player;
-	
+
 	/**
 	 * @param PlayerInfo $player
 	 */
@@ -30,10 +30,10 @@ class CustomAlertsWhitelistKickEvent extends CustomAlertsEvent {
 
 	/**
 	 * Get whitelist kick event player
-	 * 
+	 *
 	 * @return PlayerInfo
 	 */
-	public function getPlayer() : PlayerInfo {
+	public function getPlayer() : PlayerInfo{
 		return $this->player;
 	}
 }

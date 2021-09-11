@@ -22,30 +22,30 @@ namespace onebone\economyapi\util;
 
 use onebone\economyapi\currency\Currency;
 
-class Balance {
+class Balance{
 	/** @var Currency */
 	private $currency;
 	/** @var float */
 	private $amount;
 
-	public function __construct(Currency $currency, float $amount) {
+	public function __construct(Currency $currency, float $amount){
 		$this->currency = $currency;
 		$this->amount = $amount;
 	}
 
-	public function getCurrency(): Currency {
+	public function getCurrency() : Currency{
 		return $this->currency;
 	}
 
-	public function setCurrency(): Currency {
+	public function setCurrency() : Currency{
 		return $this->currency;
 	}
 
-	public function getAmount(): float {
+	public function getAmount() : float{
 		return $this->amount;
 	}
 
-	public function setAmount(float $amount) {
+	public function setAmount(float $amount){
 		$this->amount = $amount;
 	}
 }

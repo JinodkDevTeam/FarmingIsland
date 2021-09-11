@@ -33,30 +33,30 @@ namespace CortexPE\Hierarchy\data\legacy;
 use CortexPE\Hierarchy\Hierarchy;
 use Generator;
 
-abstract class LegacyDataReader {
+abstract class LegacyDataReader{
 	/** @var Hierarchy */
 	protected $plugin;
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->plugin = $plugin;
 	}
 
 	/**
 	 * Gracefully shutdown the legacy data reader
 	 */
-	abstract public function shutdown(): void;
+	abstract public function shutdown() : void;
 
-	abstract public function getRoles(): array;
+	abstract public function getMemberDatum() : Generator;
 
-	abstract public function getMemberDatum(): Generator;
-
-	protected function getDefaultRoleID(): ?int {
-		foreach($this->getRoles() as $role) {
-			if((bool)$role["isDefault"]) {
+	protected function getDefaultRoleID() : ?int{
+		foreach($this->getRoles() as $role){
+			if((bool) $role["isDefault"]){
 				return $role["ID"];
 			}
 		}
 
 		return null;
 	}
+
+	abstract public function getRoles() : array;
 }

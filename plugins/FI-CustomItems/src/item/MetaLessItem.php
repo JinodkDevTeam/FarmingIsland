@@ -14,15 +14,15 @@ class MetaLessItem extends CustomItem{
 		parent::__construct($identifier, "", RarityType::COMMON);
 	}
 
-	public function getMetaLessIdentifier(): MetaLessIdentifier{
-		return $this->metaLessIdentifier;
+	public function getName() : string{
+		return $this->toItem()->getName();
 	}
 
 	public function toItem() : Item{
 		return ItemFactory::getInstance()->get($this->getMetaLessIdentifier()->getId(), $this->getMetaLessIdentifier()->getMeta());
 	}
 
-	public function getName() : string{
-		return $this->toItem()->getName();
+	public function getMetaLessIdentifier() : MetaLessIdentifier{
+		return $this->metaLessIdentifier;
 	}
 }

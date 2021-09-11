@@ -29,19 +29,19 @@ class CustomItem{
 	 * @return Item
 	 * @description Convert to Item
 	 */
-	public function toItem(): Item{
+	public function toItem() : Item{
 		return ItemFactory::air();
 	}
 
-	public function getItemIdentifier(): CustomItemIdentifier{
-		return $this->identifier;
-	}
-
-	public function getId(): int{
+	public function getId() : int{
 		return $this->getItemIdentifier()->getId();
 	}
 
-	public function getName(): string{
+	public function getItemIdentifier() : CustomItemIdentifier{
+		return $this->identifier;
+	}
+
+	public function getName() : string{
 		return $this->name;
 	}
 
@@ -49,7 +49,7 @@ class CustomItem{
 		return $this->rarity;
 	}
 
-	public function setEnchantGlint(Item $item): Item{
+	public function setEnchantGlint(Item $item) : Item{
 		$item->addEnchantment(new EnchantmentInstance(EnchantmentIdMap::getInstance()->fromId(100), 1));
 		return $item;
 	}

@@ -5,8 +5,8 @@ namespace Bazaar\ui;
 
 use Bazaar\Bazaar;
 use Bazaar\order\BuyOrder;
-use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
+use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
@@ -23,11 +23,11 @@ class BuyOrderManagerUI{
 	public function execute(Player $player, int $order_id) : void{
 		Await::f2c(function() use ($player, $order_id){
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ID, ["id" => $order_id]);
-			if (empty($data)) return;
+			if(empty($data)) return;
 			$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($order){
-				if (!isset($data)) return;
-				if ($data == 0) $this->cancel($player, $order);
+				if(!isset($data)) return;
+				if($data == 0) $this->cancel($player, $order);
 			});
 			$form->setTitle("Buy Order Manager");
 			$msg = [
@@ -44,13 +44,21 @@ class BuyOrderManagerUI{
 		});
 	}
 
-	public function cancel(Player $player, BuyOrder $order): void{
+	public function getBazaar() : ?Bazaar{
+		$bazaar = Server::getInstance()->getPluginManager()->getPlugin("BazaarShop");
+		if($bazaar instanceof Bazaar){
+			return $bazaar;
+		}
+		return null;
+	}
+
+	public function cancel(Player $player, BuyOrder $order) : void{
 		$form = new ModalForm(function(Player $player, $data) use ($order){
-			if (!isset($data)) return;
-			if ($data == true){
+			if(!isset($data)) return;
+			if($data == true){
 				$item = ItemUtils::toItem($order->getItemID());
 				$item->setCount($order->getFilled());
-				if (!$player->getInventory()->canAddItem($item)){
+				if(!$player->getInventory()->canAddItem($item)){
 					$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
 					return;
 				}
@@ -74,14 +82,6 @@ class BuyOrderManagerUI{
 		$form->setButton2("NO");
 
 		$player->sendForm($form);
-	}
-
-	public function getBazaar(): ?Bazaar{
-		$bazaar = Server::getInstance()->getPluginManager()->getPlugin("BazaarShop");
-		if ($bazaar instanceof Bazaar){
-			return $bazaar;
-		}
-		return null;
 	}
 
 
