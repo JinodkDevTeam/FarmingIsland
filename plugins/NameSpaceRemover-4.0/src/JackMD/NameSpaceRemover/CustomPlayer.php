@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  *  _   _                      _____                     ______
@@ -44,7 +44,7 @@ class CustomPlayer extends Player{
 	 *
 	 * @return string
 	 */
-	public function getName(): string{
+	public function getName() : string{
 		$username = $this->username;
 
 		if($this->hasSpaces($username)){
@@ -60,23 +60,14 @@ class CustomPlayer extends Player{
 	}
 
 	/**
-	 * Returns the display name of the player replacing the spaces in players name.
+	 * Checks if the string has spaces or not.
 	 *
-	 * @return string
+	 * @param string $string
+	 *
+	 * @return bool
 	 */
-	public function getDisplayName(): string{
-		$displayName = $this->displayName;
-
-		if($this->hasSpaces($displayName)){
-			$displayName = str_replace(" ", "_", $displayName);
-
-			$this->username = $displayName;
-			$this->displayName = $displayName;
-
-			return $displayName;
-		}
-
-		return $displayName;
+	private function hasSpaces(string $string) : bool{
+		return strpos($string, ' ') !== false;
 	}
 
 	/**
@@ -101,12 +92,22 @@ class CustomPlayer extends Player{
 	}*/
 
 	/**
-	 * Checks if the string has spaces or not.
+	 * Returns the display name of the player replacing the spaces in players name.
 	 *
-	 * @param string $string
-	 * @return bool
+	 * @return string
 	 */
-	private function hasSpaces(string $string): bool{
-		return strpos($string, ' ') !== false;
+	public function getDisplayName() : string{
+		$displayName = $this->displayName;
+
+		if($this->hasSpaces($displayName)){
+			$displayName = str_replace(" ", "_", $displayName);
+
+			$this->username = $displayName;
+			$this->displayName = $displayName;
+
+			return $displayName;
+		}
+
+		return $displayName;
 	}
 }

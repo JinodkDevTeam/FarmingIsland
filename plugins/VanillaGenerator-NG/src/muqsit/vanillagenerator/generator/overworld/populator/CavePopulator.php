@@ -10,12 +10,11 @@ use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Liquid;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\math\Math;
-use Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
+use Random;
 
-class CavePopulator implements Populator
-{
+class CavePopulator implements Populator{
 	// The density of vanilla caves. Higher = more caves, closer together.
 	// Default: 14 (value used in vanilla)
 	const CAVE_DENSITY = 14;
@@ -34,13 +33,12 @@ class CavePopulator implements Populator
 	/** @var Random */
 	private Random $random;
 
-	public function populate(ChunkManager $world, Random $random, int $chunkX, int $chunkZ, Chunk $chunk): void
-	{
+	public function populate(ChunkManager $world, Random $random, int $chunkX, int $chunkZ, Chunk $chunk) : void{
 		$this->random = new Random($random->getSeed());
 
 		$allCondition = [];
-		for ($x = 0; $x < 16; $x++) {
-			for ($z = 0; $z < 16; $z++) {
+		for($x = 0; $x < 16; $x++){
+			for($z = 0; $z < 16; $z++){
 				$allCondition[$x][$z] = true;
 			}
 		}
@@ -49,8 +47,8 @@ class CavePopulator implements Populator
 		$k = $this->random->nextLong();
 
 		$chunk = $world->getChunk($chunkX, $chunkZ);
-		for ($currentChunkX = $chunkX - self::CAVE_RANGE; $currentChunkX <= $chunkX + self::CAVE_RANGE; $currentChunkX++) {
-			for ($currentChunkZ = $chunkZ - self::CAVE_RANGE; $currentChunkZ <= $chunkZ + self::CAVE_RANGE; $currentChunkZ++) {
+		for($currentChunkX = $chunkX - self::CAVE_RANGE; $currentChunkX <= $chunkX + self::CAVE_RANGE; $currentChunkX++){
+			for($currentChunkZ = $chunkZ - self::CAVE_RANGE; $currentChunkZ <= $chunkZ + self::CAVE_RANGE; $currentChunkZ++){
 				$rx = $currentChunkX * $j;
 				$rz = $currentChunkZ * $k;
 
@@ -67,44 +65,43 @@ class CavePopulator implements Populator
 	 * This means that when a chunk is checked multiple times by different neighbor chunks, each time it will be processed
 	 * the same way, ensuring the tunnels are always consistent and connecting.
 	 *
-	 * @param int $chunkX
-	 * @param int $chunkZ
-	 * @param int $refChunkX
-	 * @param int $refChunkZ
+	 * @param int   $chunkX
+	 * @param int   $chunkZ
+	 * @param int   $refChunkX
+	 * @param int   $refChunkZ
 	 * @param Chunk $chunk
-	 * @param bool $addRooms
+	 * @param bool  $addRooms
 	 * @param array $carvingMask
 	 *
 	 */
-	protected function recursiveGenerate(int $chunkX, int $chunkZ, int $refChunkX, int $refChunkZ, Chunk $chunk, bool $addRooms = true, array $carvingMask = []): void
-	{
+	protected function recursiveGenerate(int $chunkX, int $chunkZ, int $refChunkX, int $refChunkZ, Chunk $chunk, bool $addRooms = true, array $carvingMask = []) : void{
 		$numAttempts = $this->random->nextBoundedInt($this->random->nextBoundedInt($this->random->nextBoundedInt(15) + 1) + 1);
 
-		if ($this->random->nextBoundedInt(100) > self::CAVE_DENSITY) {
+		if($this->random->nextBoundedInt(100) > self::CAVE_DENSITY){
 			$numAttempts = 0;
 		}
 
-		for ($i = 0; $i < $numAttempts; ++$i) {
+		for($i = 0; $i < $numAttempts; ++$i){
 			$caveStartX = $chunkX * 16 + $this->random->nextBoundedInt(16);
 			$caveStartY = $this->random->nextBoundedInt(self::CAVE_MAX_Y - self::CAVE_MIN_Y) + self::CAVE_MIN_Y;
 			$caveStartZ = $chunkZ * 16 + $this->random->nextBoundedInt(16);
 
 			$numAddTunnelCalls = 1;
 
-			if ($addRooms && $this->random->nextBoundedInt(4) == 0) {
+			if($addRooms && $this->random->nextBoundedInt(4) == 0){
 				$this->addRoom($this->random->nextLong(), $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, $carvingMask);
 				$numAddTunnelCalls += $this->random->nextBoundedInt(4);
 			}
 
-			for ($j = 0; $j < $numAddTunnelCalls; ++$j) {
-				$yaw = $this->random->nextFloat() * ((float)M_PI * 2);
+			for($j = 0; $j < $numAddTunnelCalls; ++$j){
+				$yaw = $this->random->nextFloat() * ((float) M_PI * 2);
 				$pitch = ($this->random->nextFloat() - 0.5) * 2.0 / 8.0;
 				$width = $this->random->nextFloat() * 2.0 + $this->random->nextFloat();
 
 				// Chance of wider caves.
 				// Although not actually related to adding rooms, I perform an addRoom check here
 				// to avoid the chance of really large caves when generating surface caves.
-				if ($addRooms && $this->random->nextBoundedInt(10) == 0) {
+				if($addRooms && $this->random->nextBoundedInt(10) == 0){
 					$width *= $this->random->nextFloat() * $this->random->nextFloat() * 3.0 + 1.0;
 				}
 
@@ -113,13 +110,11 @@ class CavePopulator implements Populator
 		}
 	}
 
-	private function addRoom(int $seed, Chunk $chunk, int $refChunkX, int $refChunkZ, float $caveStartX, float $caveStartY, float $caveStartZ, array $carvingMask = []): void
-	{
+	private function addRoom(int $seed, Chunk $chunk, int $refChunkX, int $refChunkZ, float $caveStartX, float $caveStartY, float $caveStartZ, array $carvingMask = []) : void{
 		$this->addTunnel($seed, $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, 1.0 + $this->random->nextFloat() * 6.0, 0.0, 0.0, -1, -1, 0.5, $carvingMask);
 	}
 
-	private function addTunnel(int $seed, Chunk $chunk, int $refChunkX, int $refChunkZ, float $caveStartX, float $caveStartY, float $caveStartZ, float $width, float $yaw, float $pitch, int $startCounter, int $endCounter, float $heightModifier, array $carvingMask = []): void
-	{
+	private function addTunnel(int $seed, Chunk $chunk, int $refChunkX, int $refChunkZ, float $caveStartX, float $caveStartY, float $caveStartZ, float $width, float $yaw, float $pitch, int $startCounter, int $endCounter, float $heightModifier, array $carvingMask = []) : void{
 		$random = new Random($seed);
 
 		// Center block of the origin chunk
@@ -134,9 +129,9 @@ class CavePopulator implements Populator
 		// Calls from addRoom make them both -1.
 
 		// This appears to be called regardless of where addTunnel was called from.
-		if ($endCounter <= 0) {
+		if($endCounter <= 0){
 			$i = self::CAVE_RANGE * 16 - 16;
-			$endCounter = $i - $random->nextBoundedInt((int)($i / 4));
+			$endCounter = $i - $random->nextBoundedInt((int) ($i / 4));
 		}
 
 		// Whether or not this function call was made from addRoom.
@@ -145,19 +140,19 @@ class CavePopulator implements Populator
 		// Only called if the function call came from addRoom.
 		// If this call came from addRoom, startCounter is set to halfway to endCounter.
 		// If this is a raw call from recursiveGenerate, startCounter will be zero.
-		if ($startCounter == -1) {
+		if($startCounter == -1){
 			$startCounter = $endCounter / 2;
 			$comesFromRoom = true;
 		}
 
-		$randomCounterValue = $random->nextBoundedInt((int)($endCounter / 2)) + $endCounter / 4;
+		$randomCounterValue = $random->nextBoundedInt((int) ($endCounter / 2)) + $endCounter / 4;
 
 		// Loops one block at a time to the endCounter (about 6-7 chunks away on average).
 		// startCounter starts at either zero or endCounter / 2.
-		while ($startCounter < $endCounter) {
+		while($startCounter < $endCounter){
 			// Appears to change how wide caves are. Value will be between 1.5 and 1.5 + width.
 			// Note that caves will become wider toward the middle, and close off on the ends.
-			$xzOffset = 1.5 + (double)(sin((float)$startCounter * (float)M_PI / (float)$endCounter) * $width);
+			$xzOffset = 1.5 + (double) (sin((float) $startCounter * (float) M_PI / (float) $endCounter) * $width);
 
 			$yOffset = $xzOffset * $heightModifier;
 
@@ -169,9 +164,9 @@ class CavePopulator implements Populator
 			$caveStartZ += sin($yaw) * $pitchXZ;
 
 			$flag = $random->nextBoundedInt(6) == 0;
-			if ($flag) {
+			if($flag){
 				$pitch = $pitch * 0.92;
-			} else {
+			}else{
 				$pitch = $pitch * 0.7;
 			}
 
@@ -184,27 +179,27 @@ class CavePopulator implements Populator
 			$pitchModifier = $pitchModifier + ($random->nextFloat() - $random->nextFloat()) * $random->nextFloat() * 2.0;
 			$yawModifier = $yawModifier + ($random->nextFloat() - $random->nextFloat()) * $random->nextFloat() * 4.0;
 
-			if ((!$comesFromRoom) && ($startCounter === $randomCounterValue) && ($width > 1.0) && ($endCounter > 0)) {
-				$this->addTunnel($this->random->nextLong(), $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, $random->nextFloat() * 0.5 + 0.5, $yaw - ((float)M_PI / 2), $pitch / 3.0, $startCounter, $endCounter, 1.0, $carvingMask);
-				$this->addTunnel($this->random->nextLong(), $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, $random->nextFloat() * 0.5 + 0.5, $yaw + ((float)M_PI / 2), $pitch / 3.0, $startCounter, $endCounter, 1.0, $carvingMask);
+			if((!$comesFromRoom) && ($startCounter === $randomCounterValue) && ($width > 1.0) && ($endCounter > 0)){
+				$this->addTunnel($this->random->nextLong(), $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, $random->nextFloat() * 0.5 + 0.5, $yaw - ((float) M_PI / 2), $pitch / 3.0, $startCounter, $endCounter, 1.0, $carvingMask);
+				$this->addTunnel($this->random->nextLong(), $chunk, $refChunkX, $refChunkZ, $caveStartX, $caveStartY, $caveStartZ, $random->nextFloat() * 0.5 + 0.5, $yaw + ((float) M_PI / 2), $pitch / 3.0, $startCounter, $endCounter, 1.0, $carvingMask);
 
 				return;
 			}
 
-			if ($comesFromRoom || $random->nextBoundedInt(4) != 0) {
+			if($comesFromRoom || $random->nextBoundedInt(4) != 0){
 				$caveStartXOffsetFromCenter = $caveStartX - $originBlockX; // Number of blocks from current caveStartX to center of origin chunk
 				$caveStartZOffsetFromCenter = $caveStartZ - $originBlockZ; // Number of blocks from current caveStartZ to center of origin chunk
 				$distanceToEnd = $endCounter - $startCounter;
 				$d7 = $width + 2.0 + 16.0;
 
 				// I think this prevents caves from generating too far from the origin chunk
-				if ($caveStartXOffsetFromCenter * $caveStartXOffsetFromCenter + $caveStartZOffsetFromCenter * $caveStartZOffsetFromCenter - $distanceToEnd * $distanceToEnd > $d7 * $d7) {
+				if($caveStartXOffsetFromCenter * $caveStartXOffsetFromCenter + $caveStartZOffsetFromCenter * $caveStartZOffsetFromCenter - $distanceToEnd * $distanceToEnd > $d7 * $d7){
 					return;
 				}
 
 
 				// Only continue if cave start is close enough to origin
-				if ($caveStartX >= $originBlockX - 16.0 - $xzOffset * 2.0 && $caveStartZ >= $originBlockZ - 16.0 - $xzOffset * 2.0 && $caveStartX <= $originBlockX + 16.0 + $xzOffset * 2.0 && $caveStartZ <= $originBlockZ + 16.0 + $xzOffset * 2.0) {
+				if($caveStartX >= $originBlockX - 16.0 - $xzOffset * 2.0 && $caveStartZ >= $originBlockZ - 16.0 - $xzOffset * 2.0 && $caveStartX <= $originBlockX + 16.0 + $xzOffset * 2.0 && $caveStartZ <= $originBlockZ + 16.0 + $xzOffset * 2.0){
 					$minX = Math::floorFloat($caveStartX - $xzOffset) - $refChunkX * 16 - 1;
 					$minY = Math::floorFloat($caveStartY - $yOffset) - 1;
 					$minZ = Math::floorFloat($caveStartZ - $xzOffset) - $refChunkZ * 16 - 1;
@@ -212,44 +207,44 @@ class CavePopulator implements Populator
 					$maxY = Math::floorFloat($caveStartY + $yOffset) + 1;
 					$maxZ = Math::floorFloat($caveStartZ + $xzOffset) - $refChunkZ * 16 + 1;
 
-					if ($minX < 0) $minX = 0;
-					if ($maxX > 16) $maxX = 16;
-					if ($minY < 1) $minY = 1;
-					if ($maxY > 248) $maxY = 248;
-					if ($minZ < 0) $minZ = 0;
-					if ($maxZ > 16) $maxZ = 16;
+					if($minX < 0) $minX = 0;
+					if($maxX > 16) $maxX = 16;
+					if($minY < 1) $minY = 1;
+					if($maxY > 248) $maxY = 248;
+					if($minZ < 0) $minZ = 0;
+					if($maxZ > 16) $maxZ = 16;
 
-					for ($currX = $minX; $currX < $maxX; ++$currX) {
+					for($currX = $minX; $currX < $maxX; ++$currX){
 						// Distance along the x-axis from the center (caveStart) of this ellipsoid.
 						// You can think of this value as (x/a), where a is the length of the ellipsoid's semi-axis in the x direction.
-						$xAxisDist = ((double)($currX + $refChunkX * 16) + 0.5 - $caveStartX) / $xzOffset;
+						$xAxisDist = ((double) ($currX + $refChunkX * 16) + 0.5 - $caveStartX) / $xzOffset;
 
-						for ($currZ = $minZ; $currZ < $maxZ; ++$currZ) {
+						for($currZ = $minZ; $currZ < $maxZ; ++$currZ){
 							// Distance along the z-axis from the center (caveStart) of this ellipsoid.
 							// You can think of this value as (z/b), where b is the length of the ellipsoid's semi-axis in the z direction (same as a in this case).
-							$zAxisDist = ((double)($currZ + $refChunkZ * 16) + 0.5 - $caveStartZ) / $xzOffset;
+							$zAxisDist = ((double) ($currZ + $refChunkZ * 16) + 0.5 - $caveStartZ) / $xzOffset;
 
 							// Skip column if carving mask not set
-							if (!$carvingMask[$currX][$currZ]) continue;
+							if(!$carvingMask[$currX][$currZ]) continue;
 
 							// Only operate on points within ellipse on XZ axis. Avoids unnecessary computation along y axis
-							if ($xAxisDist * $xAxisDist + $zAxisDist * $zAxisDist < 1.0) {
-								for ($currY = $maxY; $currY > $minY; --$currY) {
+							if($xAxisDist * $xAxisDist + $zAxisDist * $zAxisDist < 1.0){
+								for($currY = $maxY; $currY > $minY; --$currY){
 									// Distance along the y-axis from the center (caveStart) of this ellipsoid.
 									// You can think of this value as (y/c), where c is the length of the ellipsoid's semi-axis in the y direction.
-									$yAxisDist = ((double)($currY - 1) + 0.5 - $caveStartY) / $yOffset;
+									$yAxisDist = ((double) ($currY - 1) + 0.5 - $caveStartY) / $yOffset;
 
 									// Only operate on points within the ellipsoid.
 									// This conditional is validating the current coordinate against the equation of the ellipsoid, that is,
 									// (x/a)^2 + (z/b)^2 + (y/c)^2 <= 1.
-									if ($yAxisDist > -0.7 && $xAxisDist * $xAxisDist + $yAxisDist * $yAxisDist + $zAxisDist * $zAxisDist < 1.0) {
+									if($yAxisDist > -0.7 && $xAxisDist * $xAxisDist + $yAxisDist * $yAxisDist + $zAxisDist * $zAxisDist < 1.0){
 										$this->digBlock($chunk, $currX, $currY, $currZ, self::CAVE_LIQUID_ALTITUDE);
 									}
 								}
 							}
 						}
 					}
-					if ($comesFromRoom) {
+					if($comesFromRoom){
 						break;
 					}
 				}
@@ -258,15 +253,14 @@ class CavePopulator implements Populator
 		}
 	}
 
-	private function digBlock(Chunk $chunk, int $currX, int $currY, int $currZ, int $caveLiquidAltitude): void
-	{
+	private function digBlock(Chunk $chunk, int $currX, int $currY, int $currZ, int $caveLiquidAltitude) : void{
 		$block = BlockFactory::getInstance()->fromFullBlock($chunk->getFullBlock($currX, $currY, $currZ));
 		$blockAbove = BlockFactory::getInstance()->fromFullBlock($chunk->getFullBlock($currX, $currY + 1, $currZ));
 
-		if (self::canReplaceBlock($block, $blockAbove)) {
-			if ($currY - 1 < $caveLiquidAltitude) {
+		if(self::canReplaceBlock($block, $blockAbove)){
+			if($currY - 1 < $caveLiquidAltitude){
 				$chunk->setFullBlock($currX, $currY, $currZ, VanillaBlocks::LAVA()->getFullId());
-			} else {
+			}else{
 				$chunk->setFullBlock($currX, $currY, $currZ, VanillaBlocks::AIR()->getFullId());
 			}
 		}
@@ -278,22 +272,22 @@ class CavePopulator implements Populator
 	 *
 	 * @param Block $block the block's IBlockState
 	 * @param Block $blockAbove the IBlockState of the block above this one
+	 *
 	 * @return bool Returns true if the blockState can be replaced
 	 */
-	public static function canReplaceBlock(Block $block, Block $blockAbove): bool
-	{
+	public static function canReplaceBlock(Block $block, Block $blockAbove) : bool{
 		// Avoid damaging trees
-		if (in_array($block->getId(), [BlockLegacyIds::LEAVES, BlockLegacyIds::LEAVES2, BlockLegacyIds::LOG, BlockLegacyIds::LOG2])) {
+		if(in_array($block->getId(), [BlockLegacyIds::LEAVES, BlockLegacyIds::LEAVES2, BlockLegacyIds::LOG, BlockLegacyIds::LOG2])){
 			return false;
 		}
 
 		// Avoid digging out under trees
-		if (in_array($blockAbove->getId(), [BlockLegacyIds::LOG, BlockLegacyIds::LOG2])) {
+		if(in_array($blockAbove->getId(), [BlockLegacyIds::LOG, BlockLegacyIds::LOG2])){
 			return false;
 		}
 
 		// Mine-able blocks
-		if (in_array($block->getId(), [
+		if(in_array($block->getId(), [
 			BlockLegacyIds::STONE,
 			BlockLegacyIds::DIRT,
 			BlockLegacyIds::GRASS,
@@ -302,7 +296,7 @@ class CavePopulator implements Populator
 			BlockLegacyIds::SANDSTONE,
 			BlockLegacyIds::RED_SANDSTONE,
 			BlockLegacyIds::MYCELIUM,
-			BlockLegacyIds::SNOW_LAYER])) {
+			BlockLegacyIds::SNOW_LAYER])){
 			return true;
 		}
 
