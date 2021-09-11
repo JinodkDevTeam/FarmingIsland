@@ -9,39 +9,53 @@ use pocketmine\command\CommandSender;
 use pocketmine\event\Listener;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\utils\Config;
 use RankPrefix\utils\UnicodeParser;
 
 class Loader extends PluginBase implements Listener
 {
 	public array $prefix = [];
+	public Config $data;
 
 	public function onEnable() : void
 	{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
+		$this->data = new Config($this->getDataFolder() . "data.yml", Config::YAML);
+		$this->prefix = $this->data->getAll();
+	}
+
+	public function onDisable(): void
+	{
+		$this->data->setAll($this->prefix);
+		$this->data->save();
 	}
 
 	public function getPrefix(Player $player): string
 	{
-		if (!isset($this->prefix[$player->getName()])) return UnicodeParser::fromCode("E100");
-		return match ($this->prefix[$player->getName()]) {
+		if (!isset($this->prefix[$player->getName()])) return $this->fromString("");
+		return $this->fromString($this->prefix[$player->getName()]);
+	}
+
+	public function fromString(string $prefix): string{
+		return match ($prefix){
 			"vip" => UnicodeParser::fromCode("E101"),
 			"admin" => UnicodeParser::fromCode("E102"),
 			"staff" => UnicodeParser::fromCode("E103"),
-			"member" => UnicodeParser::fromCharactor("E104"),
-			"youtuber", "ytber" => UnicodeParser::fromCharactor("E105"),
-			"developer", "dev" => UnicodeParser::fromCharactor("E106"),
-			"owner" => UnicodeParser::fromCharactor("E107"),
-			"helper" => UnicodeParser::fromCharactor("E108"),
-			"catlazy" => UnicodeParser::fromCharactor("E110"),
-			"rgb" => UnicodeParser::fromCharactor("E111"),
-			"nglam" => UnicodeParser::fromCharactor("E112"),
-			"jinodk" => UnicodeParser::fromCharactor("E113"),
-			"uwu" => UnicodeParser::fromCharactor("E114"),
-			"wibu", "weeb", "weeeb" => UnicodeParser::fromCharactor("E115"),
-			"simp" => UnicodeParser::fromCharactor("E116"),
-			"lgbt", "lgbtq+" => UnicodeParser::fromCharactor("E117"),
-			"campiole", "camp" => UnicodeParser::fromCharactor("E118"),
-			default => UnicodeParser::fromCharactor("E100"),
+			"member" => UnicodeParser::fromCode("E104"),
+			"youtuber", "ytber" => UnicodeParser::fromCode("E105"),
+			"developer", "dev" => UnicodeParser::fromCode("E106"),
+			"owner" => UnicodeParser::fromCode("E107"),
+			"helper" => UnicodeParser::fromCode("E108"),
+			"catlazy" => UnicodeParser::fromCode("E110"),
+			"rgb" => UnicodeParser::fromCode("E111"),
+			"nglam" => UnicodeParser::fromCode("E112"),
+			"jinodk" => UnicodeParser::fromCode("E113"),
+			"uwu" => UnicodeParser::fromCode("E114"),
+			"wibu", "weeb", "weeeb" => UnicodeParser::fromCode("E115"),
+			"simp" => UnicodeParser::fromCode("E116"),
+			"lgbt", "lgbtq+" => UnicodeParser::fromCode("E117"),
+			"campiole", "camp" => UnicodeParser::fromCode("E118"),
+			default => UnicodeParser::fromCode("E100"),
 		};
 	}
 
