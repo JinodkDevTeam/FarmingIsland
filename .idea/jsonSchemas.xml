@@ -41,6 +41,9 @@
                   <Item>
                     <option name="path" value="plugins/ExamplePlugin/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FavoriteIsland/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

@@ -1,0 +1,9 @@
+name: FavoriteIslands
+api: 4.0.0
+version: 0.0.1
+author: JinodkDevTeam|NgLamVN
+main: FavoriteIslands\Loader
+src-namespace-prefix: FavoriteIslands
+permissions:
+  favoriteisland.command:
+    default: true
