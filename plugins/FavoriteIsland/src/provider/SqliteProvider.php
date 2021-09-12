@@ -42,6 +42,10 @@ class SqliteProvider{
 		$this->database->executeGeneric(self::INIT);
 	}
 
+	public function close() : void{
+		if (isset($this->database)) $this->database->close();
+	}
+
 	public function register(Player|string $player, int $x, int $z) : void{
 		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::REGISTER, [
