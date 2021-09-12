@@ -14,7 +14,7 @@ class Bank extends PluginBase{
 	public function onEnable() : void{
 		$this->provider = new SqliteProvider($this);
 		$this->getProvider()->init();
-
+		
 		$this->getServer()->getCommandMap()->register("bank", new BankCommand($this, "bank"));
 		$repeat = (int) $this->getConfig()->get("setting")["repeat"];
 		$this->getScheduler()->scheduleDelayedRepeatingTask(new AutoInterestTask($this), $repeat, $repeat);
