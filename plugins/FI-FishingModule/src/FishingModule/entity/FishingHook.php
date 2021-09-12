@@ -43,6 +43,10 @@ class FishingHook extends Projectile{
 		}
 	}
 
+	public static function getNetworkTypeId() : string{ return EntityIds::FISHING_HOOK; }
+
+	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }
+
 	public function handleHookCasting(float $x, float $y, float $z, float $f1, float $f2){
 		$f = sqrt($x * $x + $y * $y + $z * $z);
 		$x = $x / $f;
@@ -58,8 +62,6 @@ class FishingHook extends Projectile{
 		$this->motion->y += $y;
 		$this->motion->z += $z;
 	}
-
-	public static function getNetworkTypeId() : string{ return EntityIds::FISHING_HOOK; }
 
 	public function onHitEntity(Entity $entityHit, RayTraceResult $hitResult) : void{
 		$entityHit->attack(new EntityDamageByEntityEvent($this, $entityHit, EntityDamageEvent::CAUSE_ENTITY_ATTACK, 0));
@@ -297,6 +299,4 @@ class FishingHook extends Projectile{
 		}*/
 		$this->flagForDespawn();
 	}
-
-	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }
 }
