@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace FavoriteIslands\provider;
 
 use FavoriteIslands\Loader;
+use Generator;
+use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use SOFe\AwaitGenerator\Await;
@@ -23,11 +25,11 @@ class SqliteProvider{
 		$this->loader = $loader;
 	}
 
-	protected function getLoader(): Loader{
+	protected function getLoader() : Loader{
 		return $this->loader;
 	}
 
-	protected function asyncSelect(string $query, array $args){
+	protected function asyncSelect(string $query, array $args) : Generator{
 		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
 		return yield Await::ONCE;
 	}
@@ -38,5 +40,36 @@ class SqliteProvider{
 		]);
 
 		$this->database->executeGeneric(self::INIT);
+	}
+
+	public function register(Player|string $player, int $x, int $z) : void{
+		if($player instanceof Player) $player = $player->getName();
+		$this->database->executeChange(self::REGISTER, [
+			"player" => $player,
+			"x" => $x,
+			"z" => $z
+		]);
+	}
+
+	public function selectPlayer(Player|string $player) : Generator{
+		if($player instanceof Player) $player = $player->getName();
+		return $this->asyncSelect(self::SELECT_PLAYER, [
+			"player" => $player
+		]);
+	}
+
+	public function selectID(int $x, int $z) : Generator{
+		return $this->asyncSelect(self::SELECT_PLAYER, [
+			"x" => $x,
+			"z" => $z
+		]);
+	}
+
+	public function remove(Player|string $player, int $x, int $z) : void{
+		$this->database->executeChange(self::REMOVE, [
+			"player" => $player,
+			"x" => $x,
+			"z" => $z
+		]);
 	}
 }
