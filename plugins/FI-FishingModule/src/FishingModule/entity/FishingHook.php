@@ -4,30 +4,19 @@ declare(strict_types=1);
 
 namespace FishingModule\entity;
 
-use FishingModule\entity\animation\FishingHookHookAnimation;
-use FishingModule\event\PlayerFishEvent;
-use FishingModule\item\FishingRod;
 use FishingModule\Loader;
 use pocketmine\block\Liquid;
-use pocketmine\block\VanillaBlocks;
-use pocketmine\block\Water;
 use pocketmine\entity\Entity;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\entity\Location;
-use pocketmine\entity\object\ItemEntity;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\VanillaItems;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\RayTraceResult;
-use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
 use pocketmine\utils\Random;
-use pocketmine\world\particle\SplashParticle;
-use pocketmine\world\particle\WaterParticle;
 use pocketmine\world\World;
 
 class FishingHook extends Projectile{
@@ -43,13 +32,14 @@ class FishingHook extends Projectile{
 	protected Random $random;
 
 	public function __construct(Location $location, ?Entity $shootingEntity, ?CompoundTag $nbt = null){
+		if($this->isClosed()) $this->closed = false;
 		parent::__construct($location, $shootingEntity, $nbt);
 		$this->random = new Random(intval(microtime(true) * 1000));
 
 		if($shootingEntity instanceof Player){
 			Loader::getInstance()->setFishingHook($shootingEntity, $this);
 
-			$this->handleHookCasting($this->motion->x, $this->motion->y, $this->motion->z, 1.5, 1.0);
+			$this->handleHookCasting(1, 1, 1, 1.5, 1.0);
 		}
 	}
 
@@ -84,7 +74,7 @@ class FishingHook extends Projectile{
 		parent::attack($source);
 	}
 
-	public function onUpdate(int $currentTick) : bool{
+	/*public function onUpdate(int $currentTick) : bool{
 		if($this->isClosed()) return false;
 
 		$owner = $this->getOwningEntity();
@@ -221,7 +211,7 @@ class FishingHook extends Projectile{
 		}
 
 		return $hasUpdate;
-	}
+	}*/
 
 	public function isLiquidInBoundingBox(World $world, AxisAlignedBB $bb, Liquid $material) : bool{
 		$minX = (int) floor($bb->minX);
@@ -255,16 +245,16 @@ class FishingHook extends Projectile{
 		return false;
 	}
 
-	public function onDispose() : void{
+	/*public function onDispose() : void{
 		$owner = $this->getOwningEntity();
 		if($owner instanceof Player){
 			Loader::getInstance()->setFishingHook($owner, null);
 		}
 		$this->dismountEntity();
-	}
+	}*/
 
 	public function handleHookRetraction() : void{
-		$angler = $this->getOwningEntity();
+		/*$angler = $this->getOwningEntity();
 		if($this->getPosition()->isValid() and $angler instanceof Player){
 			if($this->getRidingEntity() != null){
 				$ev = new PlayerFishEvent(Loader::getInstance(), $angler, $this, PlayerFishEvent::STATE_CAUGHT_ENTITY);
@@ -304,9 +294,8 @@ class FishingHook extends Projectile{
 					$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
 				}
 			}
-
-			$this->flagForDespawn();
-		}
+		}*/
+		$this->flagForDespawn();
 	}
 
 	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }

@@ -169,9 +169,9 @@ abstract class Entity{
 	protected $attributeMap;
 
 	/** @var float */
-	protected float $gravity;
+	protected $gravity;
 	/** @var float */
-	protected float $drag;
+	protected $drag;
 	/** @var bool */
 	protected $gravityEnabled = true;
 
