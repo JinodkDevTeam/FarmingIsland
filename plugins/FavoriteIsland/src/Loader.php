@@ -5,6 +5,7 @@ namespace FavoriteIslands;
 
 use FavoriteIslands\command\FavIslandCommand;
 use FavoriteIslands\provider\SqliteProvider;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Loader extends PluginBase{
@@ -24,5 +25,9 @@ class Loader extends PluginBase{
 
 	public function getProvider() : SqliteProvider{
 		return $this->provider;
+	}
+
+	public function addFavorite(Player $player, int $x = 0, int $z = 0) : void{
+		$this->getProvider()->register($player, $x, $z);
 	}
 }

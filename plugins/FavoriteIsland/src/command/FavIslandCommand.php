@@ -20,11 +20,11 @@ class FavIslandCommand extends Command implements PluginOwned{
 		$this->setPermission("favoriteisland.command");
 	}
 
-	protected function getLoader(): Loader{
-		return $this->loader;
-	}
-
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 
+	}
+
+	protected function getLoader() : Loader{
+		return $this->loader;
 	}
 }
