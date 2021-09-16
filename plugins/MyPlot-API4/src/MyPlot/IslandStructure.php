@@ -9,7 +9,7 @@ use pocketmine\utils\Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\generator\populator\Populator;
 
-class IslandStructure extends Populator{
+class IslandStructure implements Populator{
 
 	public ?MyPlotGenerator $generator = null;
 
