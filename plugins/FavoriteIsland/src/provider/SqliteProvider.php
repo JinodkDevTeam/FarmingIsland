@@ -70,6 +70,7 @@ class SqliteProvider{
 	}
 
 	public function remove(Player|string $player, int $x, int $z) : void{
+		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::REMOVE, [
 			"player" => $player,
 			"x" => $x,
