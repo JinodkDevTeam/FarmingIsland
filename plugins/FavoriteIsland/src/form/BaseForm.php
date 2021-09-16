@@ -31,5 +31,5 @@ abstract class BaseForm{
 		if ($execute) $this->execute();
 	}
 
-	public abstract function execute() : void;
+	protected abstract function execute() : void;
 }

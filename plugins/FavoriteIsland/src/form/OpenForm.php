@@ -9,7 +9,7 @@ use pocketmine\player\Player;
 
 class OpenForm extends BaseForm{
 
-	public function execute() : void{
+	protected function execute() : void{
 		$form = new SimpleForm(function(Player $player, ?int $data){
 			if (!isset($data)) return;
 			switch($data){
@@ -18,6 +18,14 @@ class OpenForm extends BaseForm{
 					$this->getLoader()->addFavorite($player, $plot->X, $plot->Z);
 					$player->sendMessage("Added island to favorite !");
 					break;
+				case 1:
+					new AddByIdForm($this->getLoader(), $player);
+					break;
+				case 2:
+					new TeleportForm($this->getLoader(), $player);
+					break;
+				case 3:
+					new RemoveForm($this->getLoader(), $player);
 			}
 		});
 		$form->setTitle("Favorite Islands Manager");
@@ -25,7 +33,6 @@ class OpenForm extends BaseForm{
 		$form->addButton("Add island by id");
 		$form->addButton("Teleport to favorite islands");
 		$form->addButton("Remove Favorite island");
-		$form->addButton("View Island Favorite Info");
 
 		$this->getPlayer()->sendForm($form);
 	}
