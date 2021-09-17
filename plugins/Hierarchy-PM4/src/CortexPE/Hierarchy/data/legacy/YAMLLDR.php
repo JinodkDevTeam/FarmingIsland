@@ -30,11 +30,11 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\data\legacy;
 
 
-class YAMLLDR extends IndexedLDR {
+class YAMLLDR extends IndexedLDR{
 	/** @var string */
 	protected const FILE_EXTENSION = "yml";
 
-	public function decode(string $string): array {
+	public function decode(string $string) : array{
 		return yaml_parse($string);
 	}
 }

@@ -33,15 +33,15 @@ namespace CortexPE\Hierarchy\command\subcommand;
 use CortexPE\Hierarchy\member\BaseMember;
 use CortexPE\Hierarchy\role\Role;
 
-class TakeRoleCommand extends ACMemberRoleModifierCommand {
+class TakeRoleCommand extends ACMemberRoleModifierCommand{
 	protected const CHILD_PERMISSION = "take";
 	protected const MESSAGE_ROOT = "takerole";
 
-	protected function doOperationOnMember(BaseMember $member, Role $role, bool $temporary, array $msgFormats): void {
-		if($member->hasRole($role)) {
+	protected function doOperationOnMember(BaseMember $member, Role $role, bool $temporary, array $msgFormats) : void{
+		if($member->hasRole($role)){
 			$member->removeRole($role, true, !$temporary);
 			$this->sendFormattedMessage("cmd." . static::MESSAGE_ROOT . ".success", $msgFormats);
-		} else {
+		}else{
 			$this->sendFormattedMessage("cmd." . static::MESSAGE_ROOT . ".no_role", $msgFormats);
 		}
 	}

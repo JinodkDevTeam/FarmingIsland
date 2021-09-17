@@ -42,18 +42,13 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use function count;
 
-class DeleteRoleCommand extends HierarchySubCommand implements FormedCommand {
-	protected function prepare(): void {
-		$this->registerArgument(0, new RoleArgument("role", true));
-		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role.delete");
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+class DeleteRoleCommand extends HierarchySubCommand implements FormedCommand{
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 1) {
+		}elseif(count($args) < 1){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
@@ -61,41 +56,46 @@ class DeleteRoleCommand extends HierarchySubCommand implements FormedCommand {
 
 		/** @var Role|null $role */
 		$role = $args["role"];
-		if($role instanceof Role) {
+		if($role instanceof Role){
 			$formats = [
 				"role" => $role->getName(),
 				"role_id" => $role->getId(),
 			];
 
-			if(!$this->doHierarchyPositionCheck($role)) {
+			if(!$this->doHierarchyPositionCheck($role)){
 				return;
 			}
 
-			if(!$role->isDefault()) {
+			if(!$role->isDefault()){
 				$this->roleManager->deleteRole($role);
 				$this->sendFormattedMessage("cmd.deleterole.success", $formats);
-			} else {
+			}else{
 				$this->sendFormattedMessage("cmd.deleterole.fail_role_default", $formats);
 			}
-		} else {
+		}else{
 			$this->sendFormattedMessage("err.unknown_role");
 		}
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
-            if(!$this->getRolesApplicable($roles, $roles_i)) {
-                return;
-            }
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
+			if(!$this->getRolesApplicable($roles, $roles_i)){
+				return;
+			}
 			$this->currentSender->sendForm(new CustomForm($this->plugin->getName(), [
 				new Label("description", $this->getDescription()),
 				new Dropdown("role", "Role", $roles),
-			], function (Player $player, CustomFormResponse $response) use ($roles_i): void {
+			], function(Player $player, CustomFormResponse $response) use ($roles_i) : void{
 				$this->setCurrentSender($player);
 				$this->onRun($player, $this->getName(), [
 					"role" => $roles_i[$response->getInt("role")]
 				]);
 			}));
 		}
+	}
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new RoleArgument("role", true));
+		$this->setPermission("hierarchy;hierarchy.role;hierarchy.role.delete");
 	}
 }

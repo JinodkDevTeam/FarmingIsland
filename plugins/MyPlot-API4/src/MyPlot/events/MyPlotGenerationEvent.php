@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\events;
 
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
 use pocketmine\event\Event;
 
-class MyPlotGenerationEvent extends Event implements Cancellable {
+class MyPlotGenerationEvent extends Event implements Cancellable{
 	use CancellableTrait;
 
 	/** @var string $levelName */
@@ -19,30 +20,30 @@ class MyPlotGenerationEvent extends Event implements Cancellable {
 	/**
 	 * MyPlotGenerationEvent constructor.
 	 *
-	 * @param string $levelName
-	 * @param string $generator
+	 * @param string  $levelName
+	 * @param string  $generator
 	 * @param mixed[] $settings
 	 */
-	public function __construct(string $levelName, string $generator = "myplot", array $settings = []) {
+	public function __construct(string $levelName, string $generator = "myplot", array $settings = []){
 		$this->levelName = $levelName;
 		$this->generator = $generator;
 		$this->settings = $settings;
 	}
 
-	public function getLevelName() : string {
+	public function getLevelName() : string{
 		return $this->levelName;
 	}
 
-	public function setLevelName(string $levelName) : self {
+	public function setLevelName(string $levelName) : self{
 		$this->levelName = $levelName;
 		return $this;
 	}
 
-	public function getGenerator() : string {
+	public function getGenerator() : string{
 		return $this->generator;
 	}
 
-	public function setGenerator(string $generator) : self {
+	public function setGenerator(string $generator) : self{
 		$this->generator = $generator;
 		return $this;
 	}
@@ -50,7 +51,7 @@ class MyPlotGenerationEvent extends Event implements Cancellable {
 	/**
 	 * @return mixed[]
 	 */
-	public function getSettings() : array {
+	public function getSettings() : array{
 		return $this->settings;
 	}
 
@@ -59,7 +60,7 @@ class MyPlotGenerationEvent extends Event implements Cancellable {
 	 *
 	 * @return self
 	 */
-	public function setSettings(array $settings) : self {
+	public function setSettings(array $settings) : self{
 		$this->settings = $settings;
 		$this->settings["preset"] = json_encode($settings);
 		return $this;

@@ -21,16 +21,16 @@ class MailCommand extends Command implements PluginOwned{
 		$this->setPermission("mail.command");
 	}
 
-	public function getLoader(): Loader{
-		return $this->loader;
-	}
-
-	public function execute(CommandSender $sender, string $commandLabel, array $args): void{
-		if ($sender instanceof Player){
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
+		if($sender instanceof Player){
 			new MailUI($this->getLoader(), $sender);
 			return;
 		}
 		$sender->sendMessage("Please use this command as a player !");
+	}
+
+	public function getLoader() : Loader{
+		return $this->loader;
 	}
 
 	public function getOwningPlugin() : Plugin{

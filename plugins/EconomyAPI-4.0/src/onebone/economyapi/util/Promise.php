@@ -20,7 +20,9 @@
 
 namespace onebone\economyapi\util;
 
-class Promise {
+use InvalidStateException;
+
+class Promise{
 	const STATE_PENDING = 0;
 	const STATE_FULFILLED = 1;
 	const STATE_REJECTED = 2;
@@ -32,8 +34,8 @@ class Promise {
 
 	private $result = null;
 
-	public function then(callable $onFulfill): self {
-		if($this->state === self::STATE_FULFILLED) {
+	public function then(callable $onFulfill) : self{
+		if($this->state === self::STATE_FULFILLED){
 			$onFulfill($this->result);
 			return $this;
 		}
@@ -43,10 +45,10 @@ class Promise {
 		return $this;
 	}
 
-	public function catch(callable $onFailure): self {
-		if($this->state === self::STATE_REJECTED) {
-		    $onFailure($this->result);
-		    return $this;
+	public function catch(callable $onFailure) : self{
+		if($this->state === self::STATE_REJECTED){
+			$onFailure($this->result);
+			return $this;
 		}
 
 		$this->reject[] = $onFailure;
@@ -54,18 +56,14 @@ class Promise {
 		return $this;
 	}
 
-	public function resolve($value) {
+	public function resolve($value){
 		$this->settle(self::STATE_FULFILLED, $value);
 	}
 
-	public function reject($value) {
-		$this->settle(self::STATE_REJECTED, $value);
-	}
-
-	private function settle($state, $value) {
-		if($this->state !== self::STATE_PENDING) {
-			if($this->state !== $state) {
-				throw new \InvalidStateException();
+	private function settle($state, $value){
+		if($this->state !== self::STATE_PENDING){
+			if($this->state !== $state){
+				throw new InvalidStateException();
 			}
 
 			if($value === $this->result) return;
@@ -77,8 +75,12 @@ class Promise {
 
 		$this->result = $value;
 		$arg = $value;
-		foreach($handlers as $handler) {
+		foreach($handlers as $handler){
 			$arg = $handler($arg);
 		}
+	}
+
+	public function reject($value){
+		$this->settle(self::STATE_REJECTED, $value);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-declare(strict_types = 1);
+declare(strict_types=1);
 
 /**
  *  _   _                      _____                     ______
@@ -41,7 +41,7 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase implements Listener{
 
-	public function onEnable(): void{
+	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info("Plugin Enabled.");
 	}

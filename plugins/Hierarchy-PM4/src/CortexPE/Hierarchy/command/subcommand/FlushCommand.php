@@ -33,14 +33,14 @@ namespace CortexPE\Hierarchy\command\subcommand;
 use CortexPE\Hierarchy\command\HierarchySubCommand;
 use pocketmine\command\CommandSender;
 
-class FlushCommand extends HierarchySubCommand {
-	protected function prepare(): void {
-		$this->setPermission("hierarchy;hierarchy.flush");
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
+class FlushCommand extends HierarchySubCommand{
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		$this->plugin->getRoleDataSource()->flush();
 		$this->plugin->getMemberDataSource()->flush();
 		$this->sendFormattedMessage("cmd.flush.success");
+	}
+
+	protected function prepare() : void{
+		$this->setPermission("hierarchy;hierarchy.flush");
 	}
 }

@@ -4,6 +4,6 @@
 namespace CortexPE\Hierarchy\exception;
 
 
-class StartupFailureException extends HierarchyException {
+class StartupFailureException extends HierarchyException{
 
 }

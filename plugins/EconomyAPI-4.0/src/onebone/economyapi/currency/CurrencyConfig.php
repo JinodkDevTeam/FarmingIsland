@@ -20,7 +20,7 @@
 
 namespace onebone\economyapi\currency;
 
-class CurrencyConfig {
+class CurrencyConfig{
 	/** @var Currency */
 	private $currency;
 	private $max;
@@ -28,7 +28,7 @@ class CurrencyConfig {
 	private $exchange;
 	private $isExposed;
 
-	public function __construct(Currency $currency, float $max, ?float $default, array $exchange, bool $isExposed) {
+	public function __construct(Currency $currency, float $max, ?float $default, array $exchange, bool $isExposed){
 		$this->currency = $currency;
 
 		$this->max = $max;
@@ -37,27 +37,27 @@ class CurrencyConfig {
 		$this->isExposed = $isExposed;
 	}
 
-	public function getCurrency(): Currency {
+	public function getCurrency() : Currency{
 		return $this->currency;
 	}
 
-	public function hasMaxMoney(): bool {
+	public function hasMaxMoney() : bool{
 		return $this->max >= 0;
 	}
 
-	public function getMaxMoney(): float {
+	public function getMaxMoney() : float{
 		return $this->max;
 	}
 
-	public function getDefaultMoney(): ?float {
+	public function getDefaultMoney() : ?float{
 		return $this->default;
 	}
 
-	public function getExchange(): array {
+	public function getExchange() : array{
 		return $this->exchange;
 	}
 
-	public function isExposed(): bool {
+	public function isExposed() : bool{
 		return $this->isExposed;
 	}
 }

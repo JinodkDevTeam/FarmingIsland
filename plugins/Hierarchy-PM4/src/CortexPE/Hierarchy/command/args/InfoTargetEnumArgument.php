@@ -33,7 +33,7 @@ namespace CortexPE\Hierarchy\command\args;
 use CortexPE\Commando\args\StringEnumArgument;
 use pocketmine\command\CommandSender;
 
-class InfoTargetEnumArgument extends StringEnumArgument {
+class InfoTargetEnumArgument extends StringEnumArgument{
 	public const TARGET_MEMBER = "member";
 	public const TARGET_ROLE = "role";
 	public const TARGET_ROLE_LIST = "role_list";
@@ -45,11 +45,11 @@ class InfoTargetEnumArgument extends StringEnumArgument {
 		"perm_list" => self::TARGET_PERM_LIST,
 	];
 
-	public function parse(string $argument, CommandSender $sender) {
-		return (string)$this->getValue($argument);
+	public function parse(string $argument, CommandSender $sender){
+		return (string) $this->getValue($argument);
 	}
 
-	public function getTypeName(): string {
+	public function getTypeName() : string{
 		return "infoTarget";
 	}
 }

@@ -33,16 +33,13 @@ namespace CortexPE\Hierarchy\data\legacy;
 use CortexPE\Hierarchy\Hierarchy;
 use Generator;
 use pocketmine\permission\DefaultPermissions;
-use pocketmine\permission\Permission;
 use pocketmine\permission\PermissionManager;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use SOFe\AwaitGenerator\Await;
 use Throwable;
-use function array_map;
-use function array_values;
 
-abstract class SQLLDR extends LegacyDataReader {
+abstract class SQLLDR extends LegacyDataReader{
 	protected const STMTS_FILE = null;
 	protected const DIALECT = null;
 
@@ -54,7 +51,7 @@ abstract class SQLLDR extends LegacyDataReader {
 	/** @var array */
 	private $memberData = []; // I can't think of any way to yield back data from inside an anonymous function
 
-	public function __construct(Hierarchy $plugin, array $config) {
+	public function __construct(Hierarchy $plugin, array $config){
 		parent::__construct($plugin);
 
 		$this->db = libasynql::create($plugin, [
@@ -65,9 +62,9 @@ abstract class SQLLDR extends LegacyDataReader {
 			static::DIALECT => static::STMTS_FILE
 		]);
 
-		Await::f2c(function () {
+		Await::f2c(function(){
 			$this->roles = yield $this->asyncSelect("hierarchy.role.list");
-			if(empty($this->roles)) {
+			if(empty($this->roles)){
 				$pMgr = PermissionManager::getInstance();
 				$this->roles[] = [
 					"ID" => 1,
@@ -83,12 +80,12 @@ abstract class SQLLDR extends LegacyDataReader {
 					"isDefault" => 0,
 					"Permissions" => array_keys($pMgr->getPermission(DefaultPermissions::ROOT_OPERATOR)->getChildren())
 				];
-			} else {
-				foreach($this->roles as $k => $role) {
+			}else{
+				foreach($this->roles as $k => $role){
 					$permissions = yield $this->asyncSelect("hierarchy.role.permissions.get", [
 						"role_id" => $role["ID"]
 					]);
-					foreach($permissions as $permission_row) {
+					foreach($permissions as $permission_row){
 						$this->roles[$k]["Permissions"][] = $permission_row["Permission"];
 					}
 				}
@@ -103,46 +100,46 @@ abstract class SQLLDR extends LegacyDataReader {
 				$rows = yield $this->asyncSelect("hierarchy.member.roles.get", [
 					"username" => $name
 				]);
-				foreach($rows as $row) {
+				foreach($rows as $row){
 					$this->memberData[$name]["roles"][] = $row["RoleID"];
 				}
 				$rows = yield $this->asyncSelect("hierarchy.member.permissions.get", [
 					"username" => $name
 				]);
-				foreach($rows as $row) {
+				foreach($rows as $row){
 					$this->memberData[$name]["permissions"][] = $row["Permission"];
 				}
 			}
-		}, function () {
-		}, function (Throwable $err) {
+		}, function(){
+		}, function(Throwable $err){
 			$this->plugin->getLogger()->logException($err);
 		});
 		$this->db->waitAll();
 	}
 
-	/**
-	 * @return array
-	 */
-	public function getRoles(): array {
-		return $this->roles;
-	}
+	abstract function getExtraDBSettings(Hierarchy $plugin, array $config) : array;
 
-	abstract function getExtraDBSettings(Hierarchy $plugin, array $config): array;
-
-	protected function asyncSelect(string $query, array $args = []): Generator {
+	protected function asyncSelect(string $query, array $args = []) : Generator{
 		$this->db->executeSelect($query, $args, yield, yield Await::REJECT);
 
 		return yield Await::ONCE;
 	}
 
-	public function getMemberDatum(): Generator {
+	/**
+	 * @return array
+	 */
+	public function getRoles() : array{
+		return $this->roles;
+	}
+
+	public function getMemberDatum() : Generator{
 		foreach($this->memberData as $datum){
 			yield $datum;
 		}
 	}
 
-	public function shutdown(): void {
-		if($this->db instanceof DataConnector) {
+	public function shutdown() : void{
+		if($this->db instanceof DataConnector){
 			$this->db->waitAll();
 			$this->db->close();
 		}
@@ -151,7 +148,7 @@ abstract class SQLLDR extends LegacyDataReader {
 	/**
 	 * @return DataConnector
 	 */
-	public function getDB(): DataConnector {
+	public function getDB() : DataConnector{
 		return $this->db;
 	}
 }

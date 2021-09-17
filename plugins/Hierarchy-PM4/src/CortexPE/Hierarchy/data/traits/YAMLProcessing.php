@@ -30,12 +30,12 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\data\traits;
 
 
-trait YAMLProcessing {
-	public function encode(array $data): string {
+trait YAMLProcessing{
+	public function encode(array $data) : string{
 		return yaml_emit($data, YAML_UTF8_ENCODING);
 	}
 
-	public function decode(string $string): array {
+	public function decode(string $string) : array{
 		return yaml_parse($string);
 	}
 }

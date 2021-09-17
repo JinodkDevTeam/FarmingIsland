@@ -15,8 +15,8 @@ class RarityType{
 	public const VERY_SPECIAL = 7;
 	public const ULTIMATE = 8;
 
-	public static function toString(int $code): string{
-		return match ($code){
+	public static function toString(int $code) : string{
+		return match ($code) {
 			self::COMMON => "§l§fCommon",
 			self::UNCOMMON => "§l§aUncommon",
 			self::RARE => "§l§eRare",
@@ -30,8 +30,8 @@ class RarityType{
 		};
 	}
 
-	public static function toColor(int $code): string{
-		return match ($code){
+	public static function toColor(int $code) : string{
+		return match ($code) {
 			self::COMMON => "§r§f",
 			self::UNCOMMON => "§r§a",
 			self::RARE => "§r§e",

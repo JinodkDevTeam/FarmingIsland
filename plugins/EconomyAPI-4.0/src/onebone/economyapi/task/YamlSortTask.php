@@ -22,14 +22,13 @@ namespace onebone\economyapi\task;
 
 use onebone\economyapi\util\Promise;
 use pocketmine\scheduler\AsyncTask;
-use pocketmine\Server;
 
-class YamlSortTask extends AsyncTask {
+class YamlSortTask extends AsyncTask{
 	/** @var int */
 	private $from, $len;
 	private $money;
 
-	public function __construct(Promise $promise, array $money, int $from, ?int $len) {
+	public function __construct(Promise $promise, array $money, int $from, ?int $len){
 		$this->storeLocal('promise', $promise);
 
 		$this->money = $money;
@@ -37,7 +36,7 @@ class YamlSortTask extends AsyncTask {
 		$this->len = $len;
 	}
 
-	public function onRun(): void {
+	public function onRun() : void{
 		$money = (array) $this->money;
 		arsort($money);
 
@@ -47,11 +46,11 @@ class YamlSortTask extends AsyncTask {
 		$this->setResult(array_slice($money, $this->from, $this->len, true));
 	}
 
-	public function onCompletion(): void {
+	public function onCompletion() : void{
 		/** @var Promise $promise */
 		$promise = $this->fetchLocal('promise');
 
-		if(!$this->isCrashed()) {
+		if(!$this->isCrashed()){
 			$promise->resolve($this->getResult());
 		}else{
 			$promise->reject(null);

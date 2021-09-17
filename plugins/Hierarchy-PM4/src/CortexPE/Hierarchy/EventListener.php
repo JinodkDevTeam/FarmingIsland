@@ -35,11 +35,11 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 
-class EventListener implements Listener {
+class EventListener implements Listener{
 	/** @var MemberFactory */
 	protected $memberFactory;
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->memberFactory = $plugin->getMemberFactory();
 	}
 
@@ -49,7 +49,7 @@ class EventListener implements Listener {
 	 * @priority HIGHEST
 	 * @ignoreCancelled true
 	 */
-	public function onLogin(PlayerLoginEvent $ev) {
+	public function onLogin(PlayerLoginEvent $ev){
 		$this->memberFactory->createSession($ev->getPlayer());
 	}
 
@@ -58,7 +58,7 @@ class EventListener implements Listener {
 	 *
 	 * @priority LOWEST
 	 */
-	public function onLeave(PlayerQuitEvent $ev) {
+	public function onLeave(PlayerQuitEvent $ev){
 		$this->memberFactory->destroySession($ev->getPlayer());
 	}
 }

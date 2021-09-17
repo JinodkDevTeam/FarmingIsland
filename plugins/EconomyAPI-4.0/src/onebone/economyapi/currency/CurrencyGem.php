@@ -22,33 +22,33 @@ namespace onebone\economyapi\currency;
 
 use pocketmine\player\Player;
 
-class CurrencyGem implements Currency {
-	public function getName(): string {
+class CurrencyGem implements Currency{
+	public function getName() : string{
 		return 'Gem';
 	}
 
-	public function isAvailableTo(Player $player): bool {
+	public function isAvailableTo(Player $player) : bool{
 		return true;
 	}
 
-	public function isExposed(): bool {
+	public function isExposed() : bool{
 		return true;
 	}
 
-	public function getDefaultMoney(): float {
+	public function getDefaultMoney() : float{
 		return 0;
 	}
 
-	public function getSymbol(): string {
+	public function getSymbol() : string{
 		return 'gem';
 	}
 
-	public function format(float $money): string {
+	public function format(float $money) : string{
 		$money = floor($money * 100) / 100;
 		return sprintf('%.2f gem', $money);
 	}
 
-	public function stringify(float $money): string {
+	public function stringify(float $money) : string{
 		$money = floor($money * 100) / 100;
 		return sprintf('%d gem', $money);
 	}

@@ -23,15 +23,15 @@ namespace onebone\economyapi\event;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\event\plugin\PluginEvent;
 
-class EconomyAPIEvent extends PluginEvent {
+class EconomyAPIEvent extends PluginEvent{
 	private $issuer;
 
-	public function __construct(EconomyAPI $plugin, ?Issuer $issuer) {
+	public function __construct(EconomyAPI $plugin, ?Issuer $issuer){
 		parent::__construct($plugin);
 		$this->issuer = $issuer;
 	}
 
-	public function getIssuer(): ?Issuer {
+	public function getIssuer() : ?Issuer{
 		return $this->issuer;
 	}
 }

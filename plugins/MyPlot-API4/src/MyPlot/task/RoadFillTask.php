@@ -1,14 +1,15 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\task;
 
+use Exception;
 use MyPlot\MyPlot;
 use MyPlot\Plot;
 use pocketmine\block\Block;
 use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
 use pocketmine\scheduler\Task;
 
 class RoadFillTask extends Task{
@@ -43,9 +44,9 @@ class RoadFillTask extends Task{
 	/** @var int $cornerDirection */
 	protected $cornerDirection = -1;
 
-	public function __construct(MyPlot $plugin, Plot $start, Plot $end, bool $fillCorner = false, int $cornerDirection = -1, int $maxBlocksPerTick = 256) {
+	public function __construct(MyPlot $plugin, Plot $start, Plot $end, bool $fillCorner = false, int $cornerDirection = -1, int $maxBlocksPerTick = 256){
 		if($start->isSame($end))
-			throw new \Exception("Plot arguments cannot be the same plot or already be merged");
+			throw new Exception("Plot arguments cannot be the same plot or already be merged");
 
 		$this->plugin = $plugin;
 		$this->start = $start;
@@ -88,10 +89,10 @@ class RoadFillTask extends Task{
 		$plugin->getLogger()->debug("Road Clear Task started between plots {$start->X};{$start->Z} and {$end->X};{$end->Z}");
 	}
 
-	public function onRun(int $currentTick) : void {
-		foreach($this->level->getEntities() as $entity) {
-			if($entity->x > $this->pos->x - 1 and $entity->x < $this->xMax + 1) {
-				if($entity->z > $this->pos->z - 1 and $entity->z < $this->zMax + 1) {
+	public function onRun(int $currentTick) : void{
+		foreach($this->level->getEntities() as $entity){
+			if($entity->x > $this->pos->x - 1 and $entity->x < $this->xMax + 1){
+				if($entity->z > $this->pos->z - 1 and $entity->z < $this->zMax + 1){
 					if(!$entity instanceof Player){
 						$entity->flagForDespawn();
 					}else{
@@ -101,9 +102,9 @@ class RoadFillTask extends Task{
 			}
 		}
 		$blocks = 0;
-		while($this->pos->x < $this->xMax) {
-			while($this->pos->z < $this->zMax) {
-				while($this->pos->y < $this->level->getWorldHeight()) {
+		while($this->pos->x < $this->xMax){
+			while($this->pos->z < $this->zMax){
+				while($this->pos->y < $this->level->getWorldHeight()){
 					if($this->pos->y === 0)
 						$block = $this->bottomBlock;
 					elseif($this->pos->y < $this->height)
@@ -117,7 +118,7 @@ class RoadFillTask extends Task{
 					$this->pos->y++;
 
 					$blocks++;
-					if($blocks >= $this->maxBlocksPerTick) {
+					if($blocks >= $this->maxBlocksPerTick){
 						$this->setHandler();
 						$this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
 						return;

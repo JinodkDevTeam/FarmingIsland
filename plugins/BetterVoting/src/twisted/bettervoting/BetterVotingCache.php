@@ -79,6 +79,16 @@ class BetterVotingCache{
 	}
 
 	/**
+	 * This should only be called from the BetterVotingThread, it
+	 *  will update every 3 minutes with an array of unclaimed votes.
+	 *
+	 * @param string[] $unclaimedVotes
+	 */
+	public static function setUnclaimedVotes(array $unclaimedVotes) : void{
+		self::$unclaimedVotes = $unclaimedVotes;
+	}
+
+	/**
 	 * Returns whether the player has an unclaimed vote or not, this
 	 *  should only be used for automatic claiming since it will
 	 *  only update once every 3 minutes due to the API caching.
@@ -89,16 +99,6 @@ class BetterVotingCache{
 	 */
 	public static function hasUnclaimedVote(Player $player) : bool{
 		return in_array($player->getName(), self::$unclaimedVotes);
-	}
-
-	/**
-	 * This should only be called from the BetterVotingThread, it
-	 *  will update every 3 minutes with an array of unclaimed votes.
-	 *
-	 * @param string[] $unclaimedVotes
-	 */
-	public static function setUnclaimedVotes(array $unclaimedVotes) : void{
-		self::$unclaimedVotes = $unclaimedVotes;
 	}
 
 	/**

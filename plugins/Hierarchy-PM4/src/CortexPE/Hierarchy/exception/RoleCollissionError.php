@@ -30,6 +30,6 @@ declare(strict_types=1);
 namespace CortexPE\Hierarchy\exception;
 
 
-class RoleCollissionError extends HierarchyException {
+class RoleCollissionError extends HierarchyException{
 
 }

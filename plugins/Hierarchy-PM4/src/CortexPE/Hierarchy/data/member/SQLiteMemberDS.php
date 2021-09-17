@@ -32,11 +32,11 @@ namespace CortexPE\Hierarchy\data\member;
 
 use CortexPE\Hierarchy\Hierarchy;
 
-class SQLiteMemberDS extends SQLMemberDS {
+class SQLiteMemberDS extends SQLMemberDS{
 	protected const DIALECT = "sqlite";
 	protected const STMTS_FILE = "sqlite_stmts.sql";
 
-	public function getExtraDBSettings(Hierarchy $plugin, array $config): array {
+	public function getExtraDBSettings(Hierarchy $plugin, array $config) : array{
 		return [
 			"file" => $plugin->getDataFolder() . $config["dbPath"]
 		];

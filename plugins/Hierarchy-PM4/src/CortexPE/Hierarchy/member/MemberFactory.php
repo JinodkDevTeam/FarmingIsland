@@ -36,17 +36,17 @@ use pocketmine\player\OfflinePlayer;
 use pocketmine\player\Player;
 use function is_string;
 
-class MemberFactory {
+class MemberFactory{
 	/** @var Hierarchy */
 	protected $plugin;
 	/** @var Member[] */
 	protected $onlineMembers = [];
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->plugin = $plugin;
 	}
 
-	public function createSession(Player $player): void {
+	public function createSession(Player $player) : void{
 		$this->getMember($player); // just call this function, does the same thing
 	}
 
@@ -55,25 +55,25 @@ class MemberFactory {
 	 *
 	 * @return BaseMember
 	 */
-	public function getMember(Player|OfflinePlayer|string $player): BaseMember {
-		if(is_string($player)) {
-			$player = $this->plugin->getServer()->getOfflinePlayer((string)$player);
+	public function getMember(Player|OfflinePlayer|string $player) : BaseMember{
+		if(is_string($player)){
+			$player = $this->plugin->getServer()->getOfflinePlayer((string) $player);
 		}
 		$newMember = false;
-		if($player instanceof Player) {
-			if(!isset($this->onlineMembers[($n = $player->getName())])) {
+		if($player instanceof Player){
+			if(!isset($this->onlineMembers[($n = $player->getName())])){
 				$this->onlineMembers[$n] = new Member($this->plugin, $player);
 				$newMember = true;
 				$this->plugin->getLogger()->debug("Created {$player->getName()}'s Session");
 			}
 			$m = $this->onlineMembers[$n];
-		} else {
+		}else{
 			$m = new OfflineMember($this->plugin, $player->getName());
 			$newMember = true;
 		}
-		if($newMember) {
+		if($newMember){
 			($ds = $this->plugin->getMemberDataSource())->loadMemberData($m);
-			if($m instanceof OfflineMember && $ds instanceof SQLMemberDS) {
+			if($m instanceof OfflineMember && $ds instanceof SQLMemberDS){
 				/**
 				 * TODO:
 				 *   Make this better...
@@ -87,16 +87,16 @@ class MemberFactory {
 		return $m;
 	}
 
-	public function shutdown(): void {
-		foreach($this->onlineMembers as $member) {
+	public function shutdown() : void{
+		foreach($this->onlineMembers as $member){
 			$this->destroySession($member->getPlayer());
 		}
 	}
 
-	public function destroySession(Player $player): void {
+	public function destroySession(Player $player) : void{
 		$this->plugin->getLogger()->debug("Destroying {$player->getName()}'s Session");
 		$k = $player->getName();
-		if(isset($this->onlineMembers[$k])) {
+		if(isset($this->onlineMembers[$k])){
 			$this->onlineMembers[$k]->onDestroy();
 		}
 		unset($this->onlineMembers[$k]);

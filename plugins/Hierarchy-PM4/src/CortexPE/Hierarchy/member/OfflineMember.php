@@ -34,32 +34,32 @@ use CortexPE\Hierarchy\Hierarchy;
 use CortexPE\Hierarchy\role\Role;
 use pocketmine\player\Player;
 
-class OfflineMember extends BaseMember {
+class OfflineMember extends BaseMember{
 	/** @var string */
 	protected $username;
 
-	public function __construct(Hierarchy $plugin, string $username) {
+	public function __construct(Hierarchy $plugin, string $username){
 		parent::__construct($plugin);
 		$this->username = $username;
 	}
 
-	public function getPlayer(): ?Player {
+	public function getPlayer() : ?Player{
 		return $this->server->getPlayerExact($this->username);
 	}
 
-	public function getName(): string {
+	public function getName() : string{
 		return $this->username;
 	}
 
-	protected function onRoleAdd(Role $role): void {
+	public function onDestroy() : void{
 		// noop
 	}
 
-	protected function onRoleRemove(Role $role): void {
+	protected function onRoleAdd(Role $role) : void{
 		// noop
 	}
 
-	public function onDestroy(): void {
+	protected function onRoleRemove(Role $role) : void{
 		// noop
 	}
 }

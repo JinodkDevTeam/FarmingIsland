@@ -22,17 +22,19 @@ namespace onebone\economyapi\currency;
 
 use pocketmine\player\Player;
 
-interface Currency {
-	public function getName(): string;
+interface Currency{
+	public function getName() : string;
 
 	/**
 	 * Returns if the currency is available to player. Availability
 	 * may vary on the world where player is in or position or
 	 * something else.
+	 *
 	 * @param Player $player
+	 *
 	 * @return bool
 	 */
-	public function isAvailableTo(Player $player): bool;
+	public function isAvailableTo(Player $player) : bool;
 
 	/**
 	 * Returns if the currency wants to be exposed to information
@@ -43,7 +45,7 @@ interface Currency {
 	 * their plugin.
 	 * @return bool
 	 */
-	public function isExposed(): bool;
+	public function isExposed() : bool;
 
 	/**
 	 * Returns default money which is given to player for the first
@@ -51,25 +53,29 @@ interface Currency {
 	 * sets the default value.
 	 * @return float
 	 */
-	public function getDefaultMoney(): float;
+	public function getDefaultMoney() : float;
 
 	/**
 	 * Returns the symbol of currency
 	 * @return string
 	 */
-	public function getSymbol(): string;
+	public function getSymbol() : string;
 
 	/**
 	 * Formats money into string
+	 *
 	 * @param float $money
+	 *
 	 * @return string
 	 */
-	public function format(float $money): string;
+	public function format(float $money) : string;
 
 	/**
 	 * Stringify money into string
+	 *
 	 * @param float $money
+	 *
 	 * @return string
 	 */
-	public function stringify(float $money): string;
+	public function stringify(float $money) : string;
 }

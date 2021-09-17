@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\task;
 
 use MyPlot\MyPlot;
@@ -8,7 +9,6 @@ use pocketmine\block\Block;
 use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\math\Vector3;
-use pocketmine\Player;
 use pocketmine\scheduler\Task;
 
 class CornerCorrectionTask extends Task{
@@ -42,7 +42,7 @@ class CornerCorrectionTask extends Task{
 	/** @var Vector3 $pos */
 	protected $pos;
 
-	public function __construct(MyPlot $plugin, Plot $start, Plot $end, int $cornerDirection, int $maxBlocksPerTick = 256) {
+	public function __construct(MyPlot $plugin, Plot $start, Plot $end, int $cornerDirection, int $maxBlocksPerTick = 256){
 		$this->plugin = $plugin;
 		$this->start = $start;
 		$this->plotBeginPos = $plugin->getPlotPosition($start, false);
@@ -58,32 +58,32 @@ class CornerCorrectionTask extends Task{
 		$this->groundBlock = $plotLevel->plotFillBlock;
 		$this->bottomBlock = $plotLevel->bottomBlock;
 
-		if(($start->Z - $end->Z) === 1) { // North Z-
-			if($cornerDirection === Vector3::SIDE_EAST) {
+		if(($start->Z - $end->Z) === 1){ // North Z-
+			if($cornerDirection === Vector3::SIDE_EAST){
 				$this->plotBeginPos = $this->plotBeginPos->subtract(0, 0, $roadWidth);
 				$this->plotBeginPos = $this->plotBeginPos->add($plotSize);
-			}elseif($cornerDirection === Vector3::SIDE_WEST) {
+			}elseif($cornerDirection === Vector3::SIDE_WEST){
 				$this->plotBeginPos = $this->plotBeginPos->subtract($roadWidth, 0, $roadWidth);
 			}
-		}elseif(($start->X - $end->X) === -1) { // East X+
-			if($cornerDirection === Vector3::SIDE_NORTH) {
+		}elseif(($start->X - $end->X) === -1){ // East X+
+			if($cornerDirection === Vector3::SIDE_NORTH){
 				$this->plotBeginPos = $this->plotBeginPos->add($plotSize);
 				$this->plotBeginPos = $this->plotBeginPos->subtract(0, 0, $roadWidth);
-			}elseif($cornerDirection === Vector3::SIDE_SOUTH) {
+			}elseif($cornerDirection === Vector3::SIDE_SOUTH){
 				$this->plotBeginPos = $this->plotBeginPos->add($plotSize, 0, $plotSize);
 			}
-		}elseif(($start->Z - $end->Z) === -1) { // South Z+
-			if($cornerDirection === Vector3::SIDE_EAST) {
+		}elseif(($start->Z - $end->Z) === -1){ // South Z+
+			if($cornerDirection === Vector3::SIDE_EAST){
 				$this->plotBeginPos = $this->plotBeginPos->add($plotSize, 0, $plotSize);
 				$this->plotBeginPos = $this->plotBeginPos->add($plotSize);
-			}elseif($cornerDirection === Vector3::SIDE_WEST) {
+			}elseif($cornerDirection === Vector3::SIDE_WEST){
 				$this->plotBeginPos = $this->plotBeginPos->add(0, 0, $plotSize);
 				$this->plotBeginPos = $this->plotBeginPos->subtract($roadWidth);
 			}
-		}elseif(($start->X - $end->X) === 1) { // West X-
-			if($cornerDirection === Vector3::SIDE_NORTH) {
+		}elseif(($start->X - $end->X) === 1){ // West X-
+			if($cornerDirection === Vector3::SIDE_NORTH){
 				$this->plotBeginPos = $this->plotBeginPos->subtract($roadWidth, 0, $roadWidth);
-			}elseif($cornerDirection === Vector3::SIDE_SOUTH) {
+			}elseif($cornerDirection === Vector3::SIDE_SOUTH){
 				$this->plotBeginPos = $this->plotBeginPos->add(0, 0, $plotSize);
 				$this->plotBeginPos = $this->plotBeginPos->subtract($roadWidth);
 			}
@@ -94,11 +94,11 @@ class CornerCorrectionTask extends Task{
 		$plugin->getLogger()->debug("Corner Correction Task started between plots {$start->X};{$start->Z} and {$end->X};{$end->Z}");
 	}
 
-	public function onRun(int $currentTick) : void {
-		foreach($this->level->getEntities() as $entity) {
-			if($entity->x > $this->pos->x - 1 and $entity->x < $this->xMax + 1) {
-				if($entity->z > $this->pos->z - 1 and $entity->z < $this->zMax + 1) {
-					if(!$entity instanceof Player) {
+	public function onRun(int $currentTick) : void{
+		foreach($this->level->getEntities() as $entity){
+			if($entity->x > $this->pos->x - 1 and $entity->x < $this->xMax + 1){
+				if($entity->z > $this->pos->z - 1 and $entity->z < $this->zMax + 1){
+					if(!$entity instanceof Player){
 						$entity->flagForDespawn();
 					}else{
 						$this->plugin->teleportPlayerToPlot($entity, $this->start);
@@ -107,9 +107,9 @@ class CornerCorrectionTask extends Task{
 			}
 		}
 		$blocks = 0;
-		while($this->pos->x < $this->xMax) {
-			while($this->pos->z < $this->zMax) {
-				while($this->pos->y < $this->level->getWorldHeight()) {
+		while($this->pos->x < $this->xMax){
+			while($this->pos->z < $this->zMax){
+				while($this->pos->y < $this->level->getWorldHeight()){
 					if($this->pos->y === 0)
 						$block = $this->bottomBlock;
 					elseif($this->pos->y < $this->height)
@@ -123,7 +123,7 @@ class CornerCorrectionTask extends Task{
 					$this->pos->y++;
 
 					$blocks++;
-					if($blocks >= $this->maxBlocksPerTick) {
+					if($blocks >= $this->maxBlocksPerTick){
 						$this->setHandler();
 						$this->plugin->getScheduler()->scheduleDelayedTask($this, 1);
 						return;

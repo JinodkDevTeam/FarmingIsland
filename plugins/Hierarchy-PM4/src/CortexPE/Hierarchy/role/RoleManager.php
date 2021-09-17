@@ -38,7 +38,7 @@ use CortexPE\Hierarchy\member\OfflineMember;
 use RuntimeException;
 use function uasort;
 
-class RoleManager {
+class RoleManager{
 	/** @var Hierarchy */
 	protected $plugin;
 	/** @var Role[] */
@@ -52,20 +52,20 @@ class RoleManager {
 	/** @var array */
 	protected $lookupTable = []; // NAME => ID
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->plugin = $plugin;
 		$this->dataSource = $plugin->getRoleDataSource();
 	}
 
 	/**
-	 * @internal Used to load role data from a data source
-	 *
 	 * @param array $roles
 	 *
 	 * @throws HierarchyException
+	 * @internal Used to load role data from a data source
+	 *
 	 */
-	public function loadRoles(array $roles): void {
-		foreach($roles as $i => $roleData) {
+	public function loadRoles(array $roles) : void{
+		foreach($roles as $i => $roleData){
 			$role = new Role($this->plugin, $roleData["ID"], $roleData["Name"], [
 				"position" => $i,
 				"isDefault" => $roleData["isDefault"]
@@ -79,80 +79,34 @@ class RoleManager {
 			}
 			$role->loadPermissions($roleData["Permissions"] ?? []);
 
-			if($roleData["ID"] < 0) {
+			if($roleData["ID"] < 0){
 				throw new HierarchyException("Role '{$role->getName()}'({$role->getId()}) has a negative ID");
 			}
-			if(!isset($this->roles[$roleData["ID"]])) {
+			if(!isset($this->roles[$roleData["ID"]])){
 				$this->roles[$roleData["ID"]] = $role;
-			} else {
+			}else{
 				throw new RoleCollissionError("Role '{$role->getName()}'({$role->getId()}) has a colliding ID");
 			}
-			if($roleData["ID"] > $this->lastID) {
+			if($roleData["ID"] > $this->lastID){
 				$this->lastID = $roleData["ID"];
 			}
-			if($roleData["isDefault"]) {
+			if($roleData["isDefault"]){
 				if($i !== 0){
 					throw new HierarchyException("Default role must always be the first role (lowest position).");
 				}
-				if($this->defaultRole === null) {
+				if($this->defaultRole === null){
 					$this->defaultRole = $role;
-				} else {
+				}else{
 					throw new RoleCollissionError("There can only be one default role");
 				}
 			}
 			$this->addToLookupTable($role);
 		}
-		if(!($this->defaultRole instanceof Role)) {
+		if(!($this->defaultRole instanceof Role)){
 			throw new RuntimeException("No default role is set");
 		}
 		$this->sortRoles();
 		$this->plugin->getLogger()->info("Loaded " . count($this->roles) . " roles");
-	}
-
-	/**
-	 * Gets a role by its ID
-	 *
-	 * @param int $id
-	 * @return Role|null
-	 */
-	public function getRole(int $id): ?Role {
-		return $this->roles[$id] ?? null;
-	}
-
-	/**
-	 * Adds a role to the lookup dictionary where Role Name => ID
-	 *
-	 * @param Role $role
-	 */
-	private function addToLookupTable(Role $role): void {
-		$name = $role->getName();
-		$id = $role->getId();
-		if(isset($this->lookupTable[$name])) {
-			$_id = $this->lookupTable[$name];
-			unset($this->lookupTable[$name]);
-			$this->lookupTable["{$name}.{$_id}"] = $_id;
-			$this->lookupTable["{$name}.{$id}"] = $role->getId();
-		} else {
-			$this->lookupTable[$name] = $id;
-		}
-		$this->lookupTable[$id] = $id;
-	}
-
-	/**
-	 * Removes a role from the lookup dictionary where Role Name => ID
-	 *
-	 * @param Role $role
-	 */
-	private function removeFromLookupTable(Role $role): void {
-		$name = $role->getName();
-		$id = $role->getId();
-		if(isset($this->lookupTable["{$name}.{$id}"]) && !isset($this->lookupTable[$name])){
-			unset($this->lookupTable["{$name}.{$id}"]);
-			$this->lookupTable[$name] = $id;
-		} else {
-			unset($this->lookupTable[$name]);
-		}
-		unset($this->lookupTable[$id]);
 	}
 
 	/**
@@ -164,14 +118,53 @@ class RoleManager {
 	 *
 	 * @return Role|null
 	 */
-	public function getRoleByName(string $roleName): ?Role {
+	public function getRoleByName(string $roleName) : ?Role{
 		return $this->getRole($this->lookupTable[$roleName] ?? -1);
+	}
+
+	/**
+	 * Gets a role by its ID
+	 *
+	 * @param int $id
+	 *
+	 * @return Role|null
+	 */
+	public function getRole(int $id) : ?Role{
+		return $this->roles[$id] ?? null;
+	}
+
+	/**
+	 * Adds a role to the lookup dictionary where Role Name => ID
+	 *
+	 * @param Role $role
+	 */
+	private function addToLookupTable(Role $role) : void{
+		$name = $role->getName();
+		$id = $role->getId();
+		if(isset($this->lookupTable[$name])){
+			$_id = $this->lookupTable[$name];
+			unset($this->lookupTable[$name]);
+			$this->lookupTable["{$name}.{$_id}"] = $_id;
+			$this->lookupTable["{$name}.{$id}"] = $role->getId();
+		}else{
+			$this->lookupTable[$name] = $id;
+		}
+		$this->lookupTable[$id] = $id;
+	}
+
+	/**
+	 * Sorts roles by position (ascending)
+	 */
+	private function sortRoles() : void{
+		uasort($this->roles, function(Role $a, Role $b) : int{
+			return $a->getPosition() <=> $b->getPosition();
+		});
 	}
 
 	/**
 	 * @return Role
 	 */
-	public function getDefaultRole(): Role {
+	public function getDefaultRole() : Role{
 		return $this->defaultRole;
 	}
 
@@ -180,7 +173,7 @@ class RoleManager {
 	 *
 	 * @return Role[]
 	 */
-	public function getRoles(): array {
+	public function getRoles() : array{
 		return $this->roles;
 	}
 
@@ -191,10 +184,10 @@ class RoleManager {
 	 *
 	 * @return Role
 	 */
-	public function createRole(string $name = "new role"): Role {
+	public function createRole(string $name = "new role") : Role{
 		$newRolePos = ($defRolePos = $this->defaultRole->getPosition()) + 1;
-		foreach($this->roles as $role) {
-			if($role->getPosition() > $defRolePos) {
+		foreach($this->roles as $role){
+			if($role->getPosition() > $defRolePos){
 				$role->bumpPosition();
 			}
 		}
@@ -209,32 +202,24 @@ class RoleManager {
 	}
 
 	/**
-	 * Sorts roles by position (ascending)
-	 */
-	private function sortRoles(): void {
-		uasort($this->roles, function (Role $a, Role $b): int {
-			return $a->getPosition() <=> $b->getPosition();
-		});
-	}
-
-	/**
 	 * Deletes a role, also deletes from the database.
 	 *
 	 * @param Role $role
+	 *
 	 * @throws HierarchyException
 	 */
-	public function deleteRole(Role $role): void {
-		if($role->isDefault()) {
+	public function deleteRole(Role $role) : void{
+		if($role->isDefault()){
 			throw new RuntimeException("Default role cannot be deleted while at runtime");
 		}
 		foreach($role->getChildren() as $child){
 			$child->unInheritRole($role);
 		}
 		$members = $role->getOnlineMembers();
-		foreach($members as $member) {
+		foreach($members as $member){
 			$member->removeRole($role);
 		}
-		$role->getOfflineMembers(function(array $members) use ($role): void{
+		$role->getOfflineMembers(function(array $members) use ($role) : void{
 			/** @var OfflineMember $member */
 			foreach($members as $member){
 				$member->removeRole($role, false);
@@ -244,5 +229,22 @@ class RoleManager {
 			$this->removeFromLookupTable($role);
 			$this->dataSource->deleteRoleFromStorage($role);
 		});
+	}
+
+	/**
+	 * Removes a role from the lookup dictionary where Role Name => ID
+	 *
+	 * @param Role $role
+	 */
+	private function removeFromLookupTable(Role $role) : void{
+		$name = $role->getName();
+		$id = $role->getId();
+		if(isset($this->lookupTable["{$name}.{$id}"]) && !isset($this->lookupTable[$name])){
+			unset($this->lookupTable["{$name}.{$id}"]);
+			$this->lookupTable[$name] = $id;
+		}else{
+			unset($this->lookupTable[$name]);
+		}
+		unset($this->lookupTable[$id]);
 	}
 }

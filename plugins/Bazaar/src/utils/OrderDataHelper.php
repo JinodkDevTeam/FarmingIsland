@@ -18,28 +18,28 @@ class OrderDataHelper{
 	 * @return SellOrder|BuyOrder
 	 * @description Convert from Array Data to Order format
 	 */
-	public static function formData(array $data, int $mode): SellOrder|BuyOrder{
-		if ($mode == self::BUY){
+	public static function formData(array $data, int $mode) : SellOrder|BuyOrder{
+		if($mode == self::BUY){
 			return new BuyOrder(
-				(int)$data["Id"],
-				(string)$data["Player"],
-				(int)$data["ItemID"],
-				(int)$data["Amount"],
-				(int)$data["Filled"],
-				(float)$data["Price"],
-				(int)$data["Time"],
-				(bool)$data["IsFilled"]
+				(int) $data["Id"],
+				(string) $data["Player"],
+				(int) $data["ItemID"],
+				(int) $data["Amount"],
+				(int) $data["Filled"],
+				(float) $data["Price"],
+				(int) $data["Time"],
+				(bool) $data["IsFilled"]
 			);
 		}
 		return new SellOrder(
-			(int)$data["Id"],
-			(string)$data["Player"],
-			(int)$data["ItemID"],
-			(int)$data["Amount"],
-			(int)$data["Filled"],
-			(float)$data["Price"],
-			(int)$data["Time"],
-			(bool)$data["IsFilled"]
+			(int) $data["Id"],
+			(string) $data["Player"],
+			(int) $data["ItemID"],
+			(int) $data["Amount"],
+			(int) $data["Filled"],
+			(float) $data["Price"],
+			(int) $data["Time"],
+			(bool) $data["IsFilled"]
 		);
 	}
 
@@ -50,28 +50,28 @@ class OrderDataHelper{
 	 * @return SellOrder|BuyOrder
 	 * @description Covert SQL Query data to Order Format
 	 */
-	public static function fromSqlQueryData(array $data, int $mode): SellOrder|BuyOrder{
-		if ($mode == self::BUY){
+	public static function fromSqlQueryData(array $data, int $mode) : SellOrder|BuyOrder{
+		if($mode == self::BUY){
 			return new BuyOrder(
 				-1,
-				(string)$data["player"],
-				(int)$data["itemID"],
-				(int)$data["amount"],
-				(int)$data["filled"],
-				(float)$data["price"],
-				(int)$data["time"],
-				(bool)$data["isfilled"]
+				(string) $data["player"],
+				(int) $data["itemID"],
+				(int) $data["amount"],
+				(int) $data["filled"],
+				(float) $data["price"],
+				(int) $data["time"],
+				(bool) $data["isfilled"]
 			);
 		}
 		return new SellOrder(
 			-1,
-			(string)$data["player"],
-			(int)$data["itemID"],
-			(int)$data["amount"],
-			(int)$data["filled"],
-			(float)$data["price"],
-			(int)$data["time"],
-			(bool)$data["isfilled"]
+			(string) $data["player"],
+			(int) $data["itemID"],
+			(int) $data["amount"],
+			(int) $data["filled"],
+			(float) $data["price"],
+			(int) $data["time"],
+			(bool) $data["isfilled"]
 		);
 	}
 
@@ -81,7 +81,7 @@ class OrderDataHelper{
 	 * @return array
 	 * @description Convert Order format to array data
 	 */
-	public static function toData(BuyOrder|SellOrder $order):array{
+	public static function toData(BuyOrder|SellOrder $order) : array{
 		return [
 			"Id" => $order->getId(),
 			"Player" => $order->getPlayer(),
@@ -100,7 +100,7 @@ class OrderDataHelper{
 	 * @return array
 	 * @description Convert Order format to SQL Query data
 	 */
-	public static function toSqlQueryData(BuyOrder|SellOrder $order): array{
+	public static function toSqlQueryData(BuyOrder|SellOrder $order) : array{
 		return [
 			"id" => $order->getId(),
 			"player" => $order->getPlayer(),

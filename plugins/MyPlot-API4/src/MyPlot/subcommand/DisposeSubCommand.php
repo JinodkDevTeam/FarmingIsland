@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace MyPlot\subcommand;
 
 use MyPlot\forms\MyPlotForm;
@@ -7,36 +8,35 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
-class DisposeSubCommand extends SubCommand
-{
-	public function canUse(CommandSender $sender) : bool {
+class DisposeSubCommand extends SubCommand{
+	public function canUse(CommandSender $sender) : bool{
 		return ($sender instanceof Player) and $sender->hasPermission("myplot.command.dispose");
 	}
 
 	/**
-	 * @param Player $sender
+	 * @param Player   $sender
 	 * @param string[] $args
 	 *
 	 * @return bool
 	 */
-	public function execute(CommandSender $sender, array $args) : bool {
+	public function execute(CommandSender $sender, array $args) : bool{
 		$plot = $this->getPlugin()->getPlotByPosition($sender->getPosition());
-		if($plot === null) {
+		if($plot === null){
 			$sender->sendMessage(TextFormat::RED . $this->translateString("notinplot"));
 			return true;
 		}
-		if($plot->owner !== $sender->getName() and !$sender->hasPermission("myplot.admin.dispose")) {
+		if($plot->owner !== $sender->getName() and !$sender->hasPermission("myplot.admin.dispose")){
 			$sender->sendMessage(TextFormat::RED . $this->translateString("notowner"));
 			return true;
 		}
-		if(isset($args[0]) and $args[0] == $this->translateString("confirm")) {
+		if(isset($args[0]) and $args[0] == $this->translateString("confirm")){
 			$economy = $this->getPlugin()->getEconomyProvider();
 			$price = $this->getPlugin()->getLevelSettings($plot->levelName)->disposePrice;
-			if($economy !== null and !$economy->reduceMoney($sender, $price)) {
+			if($economy !== null and !$economy->reduceMoney($sender, $price)){
 				$sender->sendMessage(TextFormat::RED . $this->translateString("dispose.nomoney"));
 				return true;
 			}
-			if($this->getPlugin()->disposePlot($plot)) {
+			if($this->getPlugin()->disposePlot($plot)){
 				$sender->sendMessage($this->translateString("dispose.success"));
 			}else{
 				$sender->sendMessage(TextFormat::RED . $this->translateString("error"));
@@ -48,7 +48,7 @@ class DisposeSubCommand extends SubCommand
 		return true;
 	}
 
-	public function getForm(?Player $player = null) : ?MyPlotForm {
+	public function getForm(?Player $player = null) : ?MyPlotForm{
 		return null;
 	}
 }

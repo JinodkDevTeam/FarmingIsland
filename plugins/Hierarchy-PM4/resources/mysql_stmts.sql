@@ -6,37 +6,83 @@
 -- #    { rolesTable
 CREATE TABLE IF NOT EXISTS Roles
 (
-    ID        INTEGER PRIMARY KEY AUTO_INCREMENT UNIQUE,
-    Position  INTEGER      NOT NULL,
-    Name      VARCHAR(100) NOT NULL DEFAULT 'new role',
-    isDefault BOOLEAN      NOT NULL DEFAULT 0
-);
+    ID
+    INTEGER
+    PRIMARY
+    KEY
+    AUTO_INCREMENT
+    UNIQUE,
+    Position
+    INTEGER
+    NOT
+    NULL,
+    Name
+    VARCHAR
+(
+    100
+) NOT NULL DEFAULT 'new role',
+    isDefault BOOLEAN NOT NULL DEFAULT 0
+    );
 -- #    }
 -- #    { rolePermissionTable
 CREATE TABLE IF NOT EXISTS RolePermissions
 (
-    RoleID     INTEGER      NOT NULL,
-    Permission VARCHAR(128) NOT NULL,
-    PRIMARY KEY (RoleID, Permission)
-);
+    RoleID
+    INTEGER
+    NOT
+    NULL,
+    Permission
+    VARCHAR
+(
+    128
+) NOT NULL,
+    PRIMARY KEY
+(
+    RoleID,
+    Permission
+)
+    );
 -- #    }
 -- #    { memberRolesTable
 CREATE TABLE IF NOT EXISTS MemberRoles
 (
-    Player         VARCHAR(16) NOT NULL, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
-    RoleID         INTEGER     NOT NULL,
-    AdditionalData VARCHAR(1024),
-    PRIMARY KEY (Player, RoleID)
-);
+    Player VARCHAR
+(
+    16
+) NOT NULL, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
+    RoleID INTEGER NOT NULL,
+    AdditionalData VARCHAR
+(
+    1024
+),
+    PRIMARY KEY
+(
+    Player,
+    RoleID
+)
+    );
 -- #    }
 -- #    { memberPermissionsTable
 CREATE TABLE IF NOT EXISTS MemberPermissions
 (
-    Player         VARCHAR(16)  NOT NULL, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
-    Permission     VARCHAR(128) NOT NULL, -- who tf has a permission node with 128 characters anyways?
-    AdditionalData VARCHAR(1024),
-    PRIMARY KEY (Player, Permission)
-);
+    Player VARCHAR
+(
+    16
+) NOT NULL, -- MC Only allows IGNs upto 3-16 chars, case in-sensitive.
+    Permission VARCHAR
+(
+    128
+) NOT NULL, -- who tf has a permission node with 128 characters anyways?
+    AdditionalData VARCHAR
+(
+    1024
+),
+    PRIMARY KEY
+(
+    Player,
+    Permission
+)
+    );
 -- #    }
 -- #  }
 
@@ -93,7 +139,7 @@ WHERE Player = :username;
 -- #       :username string
 -- #       :role_id int
 REPLACE
-    INTO MemberRoles (Player, RoleID)
+INTO MemberRoles (Player, RoleID)
 VALUES (:username, :role_id);
 -- #     }
 -- #     { remove
@@ -116,7 +162,7 @@ WHERE Player = :username;
 -- #       :username string
 -- #       :permission string
 REPLACE
-    INTO MemberPermissions (Player, Permission)
+INTO MemberPermissions (Player, Permission)
 VALUES (:username, :permission);
 -- #     }
 -- #     { remove
@@ -187,8 +233,7 @@ WHERE ID = :role_id;
 -- #        :amount int
 UPDATE Roles
 SET Position = Position + :amount
-WHERE Position > :offset
-ORDER BY Position DESC;
+WHERE Position > :offset ORDER BY Position DESC;
 -- #      }
 -- #    }
 -- #    { permissions
@@ -202,7 +247,7 @@ WHERE RoleID = :role_id;
 -- #        :role_id int
 -- #        :permission string
 REPLACE
-    INTO RolePermissions (RoleID, Permission)
+INTO RolePermissions (RoleID, Permission)
 VALUES (:role_id, :permission);
 -- #      }
 -- #      { remove

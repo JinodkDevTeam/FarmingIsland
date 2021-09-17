@@ -37,15 +37,13 @@ use function array_merge;
 use function file_exists;
 use function file_get_contents;
 
-abstract class IndexedLDR extends LegacyDataReader {
+abstract class IndexedLDR extends LegacyDataReader{
 	/** @var string */
 	protected const FILE_EXTENSION = null;
 
-	abstract function decode(string $string): array;
-
-	public function getMemberDatum(): Generator {
-		foreach(new DirectoryIterator($this->plugin->getDataFolder() . "members") as $fInfo) {
-			if($fInfo->getExtension() === self::FILE_EXTENSION) {
+	public function getMemberDatum() : Generator{
+		foreach(new DirectoryIterator($this->plugin->getDataFolder() . "members") as $fInfo){
+			if($fInfo->getExtension() === self::FILE_EXTENSION){
 				$dat = $this->decode(file_get_contents($fInfo->getPathname()));
 
 				yield [
@@ -57,14 +55,16 @@ abstract class IndexedLDR extends LegacyDataReader {
 		}
 	}
 
-	public function shutdown(): void {
+	abstract function decode(string $string) : array;
+
+	public function shutdown() : void{
 		// noop
 	}
 
-	public function getRoles(): array {
-		if(file_exists(($fp = $this->plugin->getDataFolder() . "roles." . static::FILE_EXTENSION))) {
+	public function getRoles() : array{
+		if(file_exists(($fp = $this->plugin->getDataFolder() . "roles." . static::FILE_EXTENSION))){
 			return $this->decode(file_get_contents($fp));
-		} else {
+		}else{
 			$pMgr = PermissionManager::getInstance();
 
 			return [

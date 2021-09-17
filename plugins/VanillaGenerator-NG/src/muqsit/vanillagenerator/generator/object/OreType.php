@@ -8,8 +8,7 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockLegacyIds;
 use Random;
 
-class OreType
-{
+class OreType{
 
 	/**
 	 * Creates an ore type. If {@code min_y} and {@code max_y} are equal, then the height range is
@@ -17,10 +16,10 @@ class OreType
 	 * over the height range.
 	 *
 	 * @param Block $type the block type
-	 * @param int $min_y the minimum height
-	 * @param int $max_y the maximum height
-	 * @param int $amount the size of a vein
-	 * @param int $target_type the block this can replace
+	 * @param int   $min_y the minimum height
+	 * @param int   $max_y the maximum height
+	 * @param int   $amount the size of a vein
+	 * @param int   $target_type the block this can replace
 	 */
 	public function __construct(
 		private Block $type,
@@ -28,33 +27,27 @@ class OreType
 		private int $max_y,
 		private int $amount,
 		private int $target_type = BlockLegacyIds::STONE
-	)
-	{
+	){
 		$this->amount = ++$amount;
 	}
 
-	public function getType(): Block
-	{
+	public function getType() : Block{
 		return $this->type;
 	}
 
-	public function getMinY(): int
-	{
+	public function getMinY() : int{
 		return $this->min_y;
 	}
 
-	public function getMaxY(): int
-	{
+	public function getMaxY() : int{
 		return $this->max_y;
 	}
 
-	public function getAmount(): int
-	{
+	public function getAmount() : int{
 		return $this->amount;
 	}
 
-	public function getTargetType(): int
-	{
+	public function getTargetType() : int{
 		return $this->target_type;
 	}
 
@@ -65,8 +58,7 @@ class OreType
 	 *
 	 * @return int a random height for this ore
 	 */
-	public function getRandomHeight(Random $random): int
-	{
+	public function getRandomHeight(Random $random) : int{
 		return $this->min_y === $this->max_y
 			? $random->nextBoundedInt($this->min_y) + $random->nextBoundedInt($this->min_y)
 			: $random->nextBoundedInt($this->max_y - $this->min_y) + $this->min_y;

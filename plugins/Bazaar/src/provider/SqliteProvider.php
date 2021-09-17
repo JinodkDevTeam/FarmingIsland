@@ -46,13 +46,6 @@ class SqliteProvider implements Provider{
 	}
 
 	/**
-	 * @return Bazaar
-	 */
-	private function getBazaar(): Bazaar{
-		return $this->bazaar;
-	}
-
-	/**
 	 * @description Load everything...
 	 */
 	public function init() : void{
@@ -64,17 +57,24 @@ class SqliteProvider implements Provider{
 		$this->database->executeGeneric(self::INIT_SELL);
 	}
 
-	public function close() : void{
-		if (isset($this->database)) $this->database->close();
+	/**
+	 * @return Bazaar
+	 */
+	private function getBazaar() : Bazaar{
+		return $this->bazaar;
 	}
 
-	public function asyncSelect(string $query, array $args): Generator{
+	public function close() : void{
+		if(isset($this->database)) $this->database->close();
+	}
+
+	public function asyncSelect(string $query, array $args) : Generator{
 		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
 
 		return yield Await::ONCE;
 	}
 
-	public function executeChange(string $query, array $args): void{
+	public function executeChange(string $query, array $args) : void{
 		$this->database->executeChange($query, $args);
 	}
 }

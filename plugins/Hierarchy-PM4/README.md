@@ -3,6 +3,7 @@
 [![Poggit](https://poggit.pmmp.io/ci.shield/CortexPE/Hierarchy/~)](https://poggit.pmmp.io/ci/CortexPE/Hierarchy/~)
 
 ## Features:
+
 | Feature | Hierarchy | PurePerms |
 | :-----: | :-------: | :-------: |
 | Multiple roles/groups per user | ✔️ | ❌ |
@@ -19,5 +20,6 @@
 | In-game cmd argument list | ✔️ | ❌ |
 
 ### TODO (sorted by priority):
- - [ ] Documentation, documentation, DOCUMENTATION!
- - [ ] (Possibly) A WebGUI extension for ultra fanciness
+
+- [ ] Documentation, documentation, DOCUMENTATION!
+- [ ] (Possibly) A WebGUI extension for ultra fanciness

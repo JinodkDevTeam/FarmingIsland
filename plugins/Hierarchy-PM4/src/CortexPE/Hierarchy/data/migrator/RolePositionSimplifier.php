@@ -31,9 +31,10 @@ namespace CortexPE\Hierarchy\data\migrator;
 
 
 use CortexPE\Hierarchy\Hierarchy;
+use InvalidStateException;
 
-class RolePositionSimplifier extends BaseMigrator {
-	public static function tryMigration(Hierarchy $plugin): void {
+class RolePositionSimplifier extends BaseMigrator{
+	public static function tryMigration(Hierarchy $plugin) : void{
 		switch($plugin->getConfig()->getNested("roleDataSource.type")){
 			case "yaml":
 				$data = file_exists($fn = $plugin->getDataFolder() . "roles.yml") ? yaml_parse_file($fn) : [];
@@ -42,7 +43,7 @@ class RolePositionSimplifier extends BaseMigrator {
 				$data = file_exists($fn = $plugin->getDataFolder() . "roles.json") ? json_decode(file_get_contents($fn), true) : [];
 				break;
 			default:
-				throw new \InvalidStateException("Invalid role DataSource type, please use either 'json' or 'yaml'");
+				throw new InvalidStateException("Invalid role DataSource type, please use either 'json' or 'yaml'");
 		}
 		$migrated = false;
 		$roles = [];
@@ -52,11 +53,11 @@ class RolePositionSimplifier extends BaseMigrator {
 				unset($role["Position"]);
 				if(isset($roles[$n])){
 					array_splice($roles, $n, 0, $role);
-				} else {
+				}else{
 					$roles[$n] = $role;
 				}
 				$migrated = true;
-			} else {
+			}else{
 				$roles[$n] = $role;
 			}
 		}

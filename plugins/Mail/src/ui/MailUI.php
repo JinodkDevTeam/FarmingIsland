@@ -10,7 +10,7 @@ class MailUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, ?int $data){
-			if (!isset($data)) return;
+			if(!isset($data)) return;
 			switch($data){
 				case 0:
 					new CreateMailUI($this->getLoader(), $player);

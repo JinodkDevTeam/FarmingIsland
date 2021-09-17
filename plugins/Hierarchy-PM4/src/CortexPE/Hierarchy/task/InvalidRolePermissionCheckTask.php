@@ -35,18 +35,18 @@ use CortexPE\Hierarchy\role\RoleManager;
 use pocketmine\permission\PermissionManager;
 use pocketmine\scheduler\Task;
 
-class InvalidRolePermissionCheckTask extends Task {
+class InvalidRolePermissionCheckTask extends Task{
 	/** @var Hierarchy */
 	private $plugin;
 	/** @var RoleManager */
 	private $rMgr;
 
-	public function __construct(Hierarchy $plugin) {
+	public function __construct(Hierarchy $plugin){
 		$this->plugin = $plugin;
 		$this->rMgr = $plugin->getRoleManager();
 	}
 
-	public function onRun():void {
+	public function onRun() : void{
 		foreach($this->plugin->getServer()->getPluginManager()->getPlugins() as $plugin){
 			if($plugin->isDisabled()){
 				$this->plugin->getLogger()->warning("Skipping permission existence check to avoid un-necessary console spam, please fix crashed plugins first.");
@@ -56,13 +56,13 @@ class InvalidRolePermissionCheckTask extends Task {
 		$pMgr = PermissionManager::getInstance();
 		foreach($this->rMgr->getRoles() as $role){
 			$missing = [];
-			foreach($role->getPermissions() as $permission => $val) {
-				if($pMgr->getPermission($permission) === null) {
+			foreach($role->getPermissions() as $permission => $val){
+				if($pMgr->getPermission($permission) === null){
 					$missing[] = $permission;
 					$role->removePermissionInternal($permission);
 				}
 			}
-			if(!empty($missing)) {
+			if(!empty($missing)){
 				$this->plugin->getLogger()->warning("Unknown permission nodes " . implode(", ", $missing) . " on " . $role->getName() . "(" . $role->getId() . ") role");
 				$role->updateMemberPermissions();
 			}

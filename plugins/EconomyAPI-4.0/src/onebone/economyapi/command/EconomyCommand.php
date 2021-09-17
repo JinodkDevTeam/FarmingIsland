@@ -29,11 +29,11 @@ use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class EconomyCommand extends Command implements PluginOwned {
+class EconomyCommand extends Command implements PluginOwned{
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin) {
+	public function __construct(EconomyAPI $plugin){
 		$this->plugin = $plugin;
 
 		$desc = $plugin->getCommandMessage("economy");
@@ -42,8 +42,8 @@ class EconomyCommand extends Command implements PluginOwned {
 		$this->setPermission("economyapi.command.economy");
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args) {
-		if(!$this->testPermission($sender)) {
+	public function execute(CommandSender $sender, string $commandLabel, array $args){
+		if(!$this->testPermission($sender)){
 			return false;
 		}
 
@@ -52,15 +52,15 @@ class EconomyCommand extends Command implements PluginOwned {
 		$mode = strtolower(array_shift($args));
 		$val = array_shift($args);
 
-		switch($mode) {
+		switch($mode){
 			case 'lang':
 			case 'language':
-				if(trim($val) === "") {
+				if(trim($val) === ""){
 					$sender->sendMessage(TextFormat::RED . "Usage: " . $this->getUsage());
 					return true;
 				}
 
-				if($plugin->setPlayerLanguage($sender->getName(), $val)) {
+				if($plugin->setPlayerLanguage($sender->getName(), $val)){
 					$sender->sendMessage($plugin->getMessage("language-set", $sender, [$val]));
 				}else{
 					$sender->sendMessage(TextFormat::RED . "There is no language such as $val");
@@ -70,8 +70,8 @@ class EconomyCommand extends Command implements PluginOwned {
 				/** @var EconomyAPI $plugin */
 				$plugin = $this->getOwningPlugin();
 
-				if(trim($val) === '') {
-					if(!$sender instanceof Player) {
+				if(trim($val) === ''){
+					if(!$sender instanceof Player){
 						$sender->sendMessage($plugin->getMessage('economy-currency-specify', $sender));
 						return true;
 					}
@@ -81,12 +81,12 @@ class EconomyCommand extends Command implements PluginOwned {
 				}
 
 				$currency = $plugin->getCurrency($val);
-				if($currency === null) {
+				if($currency === null){
 					$sender->sendMessage($plugin->getMessage('currency-unavailable', $sender, [$val]));
 					return true;
 				}
 
-				if($plugin->setPlayerPreferredCurrency($sender, $currency)) {
+				if($plugin->setPlayerPreferredCurrency($sender, $currency)){
 					$sender->sendMessage($plugin->getMessage('economy-currency-set', $sender, [
 						$currency->getName(), $currency->getSymbol()
 					]));
@@ -102,7 +102,7 @@ class EconomyCommand extends Command implements PluginOwned {
 		return false;
 	}
 
-	public function getOwningPlugin(): Plugin {
+	public function getOwningPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

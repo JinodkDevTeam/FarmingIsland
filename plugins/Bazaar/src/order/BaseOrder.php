@@ -28,63 +28,63 @@ abstract class BaseOrder{
 	/**
 	 * @return bool
 	 */
-	public function isFilled(): bool{
+	public function isFilled() : bool{
 		return $this->isfilled;
 	}
 
-	public function getAmount(): int{
+	public function getAmount() : int{
 		return $this->amount;
 	}
 
-	public function getFilled(): int{
-		return $this->filled;
-	}
-
-	public function getId(): int{
-		return $this->id;
-	}
-
-	public function getItemID(): int{
-		return $this->itemID;
-	}
-
-	public function getPlayer(): string{
-		return $this->player;
-	}
-
-	public function getPrice(): float{
-		return $this->price;
-	}
-
-	public function getTime(): int{
-		return $this->time;
-	}
-
-	public function setAmount(int $amount): void{
+	public function setAmount(int $amount) : void{
 		$this->amount = $amount;
 	}
 
-	public function setFilled(int $filled): void{
+	public function getFilled() : int{
+		return $this->filled;
+	}
+
+	public function setFilled(int $filled) : void{
 		$this->filled = $filled;
 	}
 
-	public function setPrice(float $price): void{
-		$this->price = $price;
+	public function getId() : int{
+		return $this->id;
 	}
 
-	public function setTime(int $time): void{
-		$this->time = $time;
-	}
-
-	public function setId(int $id): void{
+	public function setId(int $id) : void{
 		$this->id = $id;
 	}
 
-	public function setItemID(int $itemID): void{
+	public function getItemID() : int{
+		return $this->itemID;
+	}
+
+	public function setItemID(int $itemID) : void{
 		$this->itemID = $itemID;
 	}
 
-	public function setFilledStatus(bool $status): void{
+	public function getPlayer() : string{
+		return $this->player;
+	}
+
+	public function getPrice() : float{
+		return $this->price;
+	}
+
+	public function setPrice(float $price) : void{
+		$this->price = $price;
+	}
+
+	public function getTime() : int{
+		return $this->time;
+	}
+
+	public function setTime(int $time) : void{
+		$this->time = $time;
+	}
+
+	public function setFilledStatus(bool $status) : void{
 		$this->isfilled = $status;
 	}
 }

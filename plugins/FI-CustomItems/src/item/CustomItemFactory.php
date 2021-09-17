@@ -18,51 +18,6 @@ class CustomItemFactory{
 	/** @var MetaLessItem[] */
 	private array $mlist = [];
 
-	/**
-	 * @param CustomItem $item
-	 * @param bool       $overwrite
-	 * @throws RuntimeException
-	 */
-	public function register(CustomItem $item, bool $overwrite = false): void{
-		$id = $item->getId();
-		if (isset($this->list[$id]) && (!$overwrite)){
-			throw new RuntimeException("Trying to overwrite an already registered item !");
-		}
-		$this->list[$id] = clone $item;
-	}
-
-	public function registerMetaLess(MetaLessItem $item, bool $overwrite = false): void{
-		$id = $item->getMetaLessIdentifier()->getId();
-		$meta = $item->getMetaLessIdentifier()->getMeta();
-		if (isset($this->mlist[$id . ":" . $meta]) && (!$overwrite)){
-			throw new RuntimeException("Trying to overwrite an already registered item !");
-		}
-		$this->list[$id . ":" . $meta] = clone $item;
-
-		$this->register($item);
-	}
-
-	public function isRegistered(int $id): bool{
-		if (isset($this->list[$id])){
-			return true;
-		}
-		return false;
-	}
-
-	public function get(int $id): ?CustomItem{
-		if (isset($this->list[$id])){
-			return $this->list[$id];
-		}
-		return null;
-	}
-
-	public function getMetaLessItem(int $id, int $meta): ?MetaLessItem{
-		if (isset($this->mlist[$id . ":" . $meta])){
-			return $this->mlist[$id . ":" . $meta];
-		}
-		return null;
-	}
-
 	public function __construct(){
 		$i = ItemFactory::getInstance();
 		//Register custom items
@@ -124,5 +79,51 @@ class CustomItemFactory{
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));
 
 		$this->registerMetaLess(new MetaLessItem(new CustomItemIdentifier(CustomItemIds::LAPIS_LAZULI), new MetaLessIdentifier(ItemIds::DYE, 4)));
+	}
+
+	/**
+	 * @param CustomItem $item
+	 * @param bool       $overwrite
+	 *
+	 * @throws RuntimeException
+	 */
+	public function register(CustomItem $item, bool $overwrite = false) : void{
+		$id = $item->getId();
+		if(isset($this->list[$id]) && (!$overwrite)){
+			throw new RuntimeException("Trying to overwrite an already registered item !");
+		}
+		$this->list[$id] = clone $item;
+	}
+
+	public function get(int $id) : ?CustomItem{
+		if(isset($this->list[$id])){
+			return $this->list[$id];
+		}
+		return null;
+	}
+
+	public function registerMetaLess(MetaLessItem $item, bool $overwrite = false) : void{
+		$id = $item->getMetaLessIdentifier()->getId();
+		$meta = $item->getMetaLessIdentifier()->getMeta();
+		if(isset($this->mlist[$id . ":" . $meta]) && (!$overwrite)){
+			throw new RuntimeException("Trying to overwrite an already registered item !");
+		}
+		$this->list[$id . ":" . $meta] = clone $item;
+
+		$this->register($item);
+	}
+
+	public function isRegistered(int $id) : bool{
+		if(isset($this->list[$id])){
+			return true;
+		}
+		return false;
+	}
+
+	public function getMetaLessItem(int $id, int $meta) : ?MetaLessItem{
+		if(isset($this->mlist[$id . ":" . $meta])){
+			return $this->mlist[$id . ":" . $meta];
+		}
+		return null;
 	}
 }

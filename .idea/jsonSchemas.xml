@@ -39,7 +39,13 @@
                     <option name="path" value="plugins/Bank/plugin.yml" />
                   </Item>
                   <Item>
-                    <option name="path" value="plugins/RemoveWindowsTest/plugin.yml" />
+                    <option name="path" value="plugins/ExamplePlugin/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/FavoriteIsland/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/YandereDevStyle/plugin.yml" />
                   </Item>
                 </list>
               </option>

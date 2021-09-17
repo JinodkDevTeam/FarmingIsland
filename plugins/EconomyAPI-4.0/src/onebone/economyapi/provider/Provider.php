@@ -38,62 +38,69 @@ namespace onebone\economyapi\provider;
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-use pocketmine\player\Player;
 use onebone\economyapi\util\Promise;
+use pocketmine\player\Player;
 
 // Provider is currency-related data provider
-interface Provider {
+interface Provider{
 	/**
 	 * @param Player|string $player
+	 *
 	 * @return bool
 	 */
-	public function hasAccount($player): bool;
+	public function hasAccount($player) : bool;
 
 	/**
 	 * @param Player|string $player
-	 * @param float $defaultMoney
+	 * @param float         $defaultMoney
+	 *
 	 * @return bool
 	 */
-	public function createAccount($player, float $defaultMoney = 1000): bool;
+	public function createAccount($player, float $defaultMoney = 1000) : bool;
 
 	/**
 	 * @param Player|string $player
+	 *
 	 * @return bool
 	 */
-	public function removeAccount($player): bool;
+	public function removeAccount($player) : bool;
 
 	/**
 	 * @param Player|string $player
+	 *
 	 * @return float|bool
 	 */
 	public function getMoney($player);
 
 	/**
 	 * @param Player|string $player
-	 * @param float $amount
+	 * @param float         $amount
+	 *
 	 * @return bool
 	 */
-	public function setMoney($player, float $amount): bool;
+	public function setMoney($player, float $amount) : bool;
 
 	/**
 	 * @param Player|string $player
-	 * @param float $amount
+	 * @param float         $amount
+	 *
 	 * @return bool
 	 */
-	public function addMoney($player, float $amount): bool;
+	public function addMoney($player, float $amount) : bool;
 
 	/**
 	 * @param Player|string $player
-	 * @param float $amount
+	 * @param float         $amount
+	 *
 	 * @return bool
 	 */
-	public function reduceMoney($player, float $amount): bool;
+	public function reduceMoney($player, float $amount) : bool;
 
-	public function getAll(): array;
+	public function getAll() : array;
 
-	public function sortByRange(int $from, ?int $len): Promise;
+	public function sortByRange(int $from, ?int $len) : Promise;
 
-	public function getName(): string;
+	public function getName() : string;
 
 	public function save();
 

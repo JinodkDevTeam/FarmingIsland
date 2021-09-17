@@ -6,18 +6,16 @@ namespace muqsit\vanillagenerator\generator\overworld\decorator;
 
 use muqsit\vanillagenerator\generator\Decorator;
 use muqsit\vanillagenerator\generator\object\StoneBoulder;
-use Random;
 use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
+use Random;
 
-class StoneBoulderDecorator extends Decorator
-{
+class StoneBoulderDecorator extends Decorator{
 
-	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
+	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
 		$source_x = $chunk_x << 4;
 		$source_z = $chunk_z << 4;
-		for ($i = 0; $i < $random->nextBoundedInt(3); ++$i) {
+		for($i = 0; $i < $random->nextBoundedInt(3); ++$i){
 			$x = $source_x + $random->nextBoundedInt(16);
 			$z = $source_z + $random->nextBoundedInt(16);
 			$y = $chunk->getHighestBlockAt($x & 0x0f, $z & 0x0f);
@@ -25,7 +23,6 @@ class StoneBoulderDecorator extends Decorator
 		}
 	}
 
-	public function decorate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
+	public function decorate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
 	}
 }

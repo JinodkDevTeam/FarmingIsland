@@ -20,20 +20,20 @@
 
 namespace onebone\economyapi\command;
 
+use onebone\economyapi\currency\CurrencyReplacer;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\command\Command;
-use onebone\economyapi\currency\CurrencyReplacer;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
 
-class GiveMoneyCommand extends Command implements PluginOwned {
+class GiveMoneyCommand extends Command implements PluginOwned{
 	/** @var EconomyAPI */
 	private $plugin;
 
-	public function __construct(EconomyAPI $plugin) {
+	public function __construct(EconomyAPI $plugin){
 		$this->plugin = $plugin;
 
 		$desc = $plugin->getCommandMessage("givemoney");
@@ -42,8 +42,8 @@ class GiveMoneyCommand extends Command implements PluginOwned {
 		$this->setPermission("economyapi.command.givemoney");
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params): bool {
-		if(!$this->testPermission($sender)) {
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
+		if(!$this->testPermission($sender)){
 			return false;
 		}
 
@@ -51,30 +51,30 @@ class GiveMoneyCommand extends Command implements PluginOwned {
 		$amount = array_shift($params);
 		$currencyId = array_shift($params);
 
-		if(!is_numeric($amount)) {
+		if(!is_numeric($amount)){
 			$sender->sendMessage(TextFormat::RED . "Usage: " . $this->getUsage());
 			return true;
 		}
 
 		$plugin = $this->plugin;
 
-		if(($p = $plugin->getServer()->getPlayerByPrefix($player)) instanceof Player) {
+		if(($p = $plugin->getServer()->getPlayerByPrefix($player)) instanceof Player){
 			$player = $p->getName();
 		}
 
-		if($currencyId === null) {
+		if($currencyId === null){
 			$currency = $plugin->getPlayerPreferredCurrency($player, false);
 		}else{
 			$currencyId = trim($currencyId);
 			$currency = $plugin->getCurrency($currencyId);
-			if($currency === null) {
+			if($currency === null){
 				$sender->sendMessage($plugin->getMessage('currency-unavailable', $sender, [$currencyId]));
 				return true;
 			}
 		}
 
 		$result = $plugin->addMoney($player, $amount, $currency, null, false); // TODO issuer
-		switch ($result) {
+		switch($result){
 			case EconomyAPI::RET_INVALID:
 				$sender->sendMessage($plugin->getMessage("givemoney-invalid-number", $sender, [$amount]));
 				break;
@@ -84,7 +84,7 @@ class GiveMoneyCommand extends Command implements PluginOwned {
 					$player
 				]));
 
-				if($p instanceof Player) {
+				if($p instanceof Player){
 					$p->sendMessage($plugin->getMessage("givemoney-money-given", $sender, [new CurrencyReplacer($currency, $amount)]));
 				}
 				break;
@@ -102,7 +102,7 @@ class GiveMoneyCommand extends Command implements PluginOwned {
 		return true;
 	}
 
-	public function getOwningPlugin(): Plugin {
+	public function getOwningPlugin() : Plugin{
 		return $this->plugin;
 	}
 }

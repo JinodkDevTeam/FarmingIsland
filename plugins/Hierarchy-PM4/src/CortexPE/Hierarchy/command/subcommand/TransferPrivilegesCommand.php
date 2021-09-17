@@ -43,24 +43,14 @@ use pocketmine\permission\Permission;
 use pocketmine\permission\PermissionManager;
 use pocketmine\player\Player;
 
-class TransferPrivilegesCommand extends HierarchySubCommand implements FormedCommand {
+class TransferPrivilegesCommand extends HierarchySubCommand implements FormedCommand{
 
-	protected function prepare(): void {
-		$this->registerArgument(0, new MemberArgument("sourceMember", false));
-		$this->registerArgument(1, new MemberArgument("targetMember", false));
-		$this->setPermission(implode(";", [
-			"hierarchy",
-			"hierarchy.member",
-			"hierarchy.member.transfer_privileges"
-		]));
-	}
-
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args): void {
-		if($this->isSenderInGameNoArguments($args)) {
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if($this->isSenderInGameNoArguments($args)){
 			$this->sendForm();
 
 			return;
-		} elseif(count($args) < 2) {
+		}elseif(count($args) < 2){
 			$this->sendError(BaseCommand::ERR_INSUFFICIENT_ARGUMENTS);
 
 			return;
@@ -71,26 +61,26 @@ class TransferPrivilegesCommand extends HierarchySubCommand implements FormedCom
 		/** @var BaseMember $target */
 		$target = $args["targetMember"];
 
-		if($source === $target) {
+		if($source === $target){
 			$this->sendFormattedMessage("cmd.transfer_privileges.same_member");
 			return;
 		}
 
-		if(!$this->doHierarchyPositionCheck($source) || !$this->doHierarchyPositionCheck($target)) {
+		if(!$this->doHierarchyPositionCheck($source) || !$this->doHierarchyPositionCheck($target)){
 			return;
 		}
 
-		foreach($source->getRoles() as $role) {
+		foreach($source->getRoles() as $role){
 			$target->addRole($role);
 			$source->removeRole($role);
 		}
 		$pMgr = PermissionManager::getInstance();
-		foreach($source->getMemberPermissions() as $permissionName => $value) {
+		foreach($source->getMemberPermissions() as $permissionName => $value){
 			$perm = $pMgr->getPermission($permissionName);
-			if($perm instanceof Permission) {
+			if($perm instanceof Permission){
 				if($value){
 					$target->addMemberPermission($perm);
-				} else {
+				}else{
 					$target->denyMemberPermission($perm);
 				}
 			}
@@ -102,14 +92,14 @@ class TransferPrivilegesCommand extends HierarchySubCommand implements FormedCom
 		]);
 	}
 
-	public function sendForm(): void {
-		if($this->currentSender instanceof Player) {
+	public function sendForm() : void{
+		if($this->currentSender instanceof Player){
 			$this->currentSender->sendForm(new CustomForm($this->plugin->getName(), [
 				new Label("description", $this->getDescription()),
 				new Input("sourceMember", "Source Member", "Source Member Name"),
 				new Input("targetMember", "Target Member", "Target Member Name")
 			],
-				function(Player $player, CustomFormResponse $response): void {
+				function(Player $player, CustomFormResponse $response) : void{
 					$this->setCurrentSender($player);
 					$this->onRun($player, $this->getName(), [
 						"sourceMember" => $this->memberFactory->getMember($response->getString("sourceMember")),
@@ -118,5 +108,15 @@ class TransferPrivilegesCommand extends HierarchySubCommand implements FormedCom
 				}
 			));
 		}
+	}
+
+	protected function prepare() : void{
+		$this->registerArgument(0, new MemberArgument("sourceMember", false));
+		$this->registerArgument(1, new MemberArgument("targetMember", false));
+		$this->setPermission(implode(";", [
+			"hierarchy",
+			"hierarchy.member",
+			"hierarchy.member.transfer_privileges"
+		]));
 	}
 }

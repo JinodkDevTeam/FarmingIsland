@@ -11,8 +11,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 
-class BazaarCommand extends Command implements PluginOwned
-{
+class BazaarCommand extends Command implements PluginOwned{
 	private Bazaar $bazaar;
 
 	public function __construct(Bazaar $bazaar){
@@ -20,12 +19,8 @@ class BazaarCommand extends Command implements PluginOwned
 		parent::__construct("bazaar", "", null, []);
 	}
 
-	public function getBazaar(): Bazaar{
-		return $this->bazaar;
-	}
-
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if (!$sender instanceof Player){
+		if(!$sender instanceof Player){
 			$sender->sendMessage("Please use this command as Player");
 			return;
 		}
@@ -34,5 +29,9 @@ class BazaarCommand extends Command implements PluginOwned
 
 	public function getOwningPlugin() : Plugin{
 		return $this->getBazaar();
+	}
+
+	public function getBazaar() : Bazaar{
+		return $this->bazaar;
 	}
 }

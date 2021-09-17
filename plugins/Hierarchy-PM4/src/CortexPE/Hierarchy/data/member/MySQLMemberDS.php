@@ -33,11 +33,11 @@ namespace CortexPE\Hierarchy\data\member;
 use CortexPE\Hierarchy\Hierarchy;
 use function strtolower;
 
-class MySQLMemberDS extends SQLMemberDS {
+class MySQLMemberDS extends SQLMemberDS{
 	protected const DIALECT = "mysql";
 	protected const STMTS_FILE = "mysql_stmts.sql";
 
-	public function getExtraDBSettings(Hierarchy $plugin, array $config): array {
+	public function getExtraDBSettings(Hierarchy $plugin, array $config) : array{
 		if(isset($config["user"]) && !isset($config["username"])){
 			$config["username"] = $config["user"];
 		}

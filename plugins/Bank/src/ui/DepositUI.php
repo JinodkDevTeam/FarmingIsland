@@ -9,29 +9,24 @@ use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 
-class DepositUI extends BaseUI
-{
+class DepositUI extends BaseUI{
 	private float $balance;
 
-	public function __construct(Player $player, Bank $bank, float $balance)
-	{
+	public function __construct(Player $player, Bank $bank, float $balance){
 		$this->balance = $balance;
 		parent::__construct($player, $bank);
 	}
 
-	public function execute(Player $player) : void
-	{
+	public function execute(Player $player) : void{
 		$purse = EconomyAPI::getInstance()->myMoney($player);
 		$all = $purse;
 		$half = round($purse / 2, 2, PHP_ROUND_HALF_DOWN);
 		$min = round($purse / 5, 2, PHP_ROUND_HALF_DOWN);
 
-		$form = new SimpleForm(function(Player $player, ?int $data) use ($all, $half, $min)
-		{
-			if ($data == null) return;
+		$form = new SimpleForm(function(Player $player, ?int $data) use ($all, $half, $min){
+			if($data == null) return;
 
-			switch ($data)
-			{
+			switch($data){
 				case 0:
 					new BankUI($player, $this->getBank());
 					break;
@@ -59,36 +54,31 @@ class DepositUI extends BaseUI
 		$player->sendForm($form);
 	}
 
-	public function specificAmount(Player $player)
-	{
-		$form = new CustomForm(function(Player $player, ?array $data)
-		{
-			if ($data == null) return;
-			if (!is_numeric($data[0]))
-			{
-				$player->sendMessage("Amount must be numeric !");
-				return;
-			}
-			$this->deposit($player, (float)$data[0]);
-		});
-
-		$form->setTitle("Deposit specific amount");
-		$form->addInput("Amount:", "123456789");
-
-		$player->sendForm($form);
-	}
-
-	public function deposit(Player $player, float $amount): void
-	{
+	public function deposit(Player $player, float $amount) : void{
 		$purse = EconomyAPI::getInstance()->myMoney($player);
 
-		if ($amount > $purse)
-		{
+		if($amount > $purse){
 			$player->sendMessage("You can't deposit with amount that higher than your coins in purse !");
 			return;
 		}
 		$this->getBank()->getProvider()->update($player, $this->balance + $amount);
 		EconomyAPI::getInstance()->reduceMoney($player, $amount);
 		$player->sendMessage("Deposit success full (- " . $amount . " coin)");
+	}
+
+	public function specificAmount(Player $player){
+		$form = new CustomForm(function(Player $player, ?array $data){
+			if($data == null) return;
+			if(!is_numeric($data[0])){
+				$player->sendMessage("Amount must be numeric !");
+				return;
+			}
+			$this->deposit($player, (float) $data[0]);
+		});
+
+		$form->setTitle("Deposit specific amount");
+		$form->addInput("Amount:", "123456789");
+
+		$player->sendForm($form);
 	}
 }

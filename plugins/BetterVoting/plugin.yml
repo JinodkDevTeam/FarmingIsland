@@ -9,5 +9,5 @@ softdepend: PiggyCustomEnchants
 author: Twisted | Updated to api4 by NgLamVN
 
 permissions:
-    bettervoting.command.reload:
-        default: op
+  bettervoting.command.reload:
+    default: op

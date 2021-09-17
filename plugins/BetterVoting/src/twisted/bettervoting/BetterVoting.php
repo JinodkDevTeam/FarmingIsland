@@ -9,12 +9,15 @@ use DaPigGuy\PiggyCustomEnchants\PiggyCustomEnchants;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\item\VanillaItems;*/
+
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
-/*use pocketmine\utils\TextFormat;*/
 use twisted\bettervoting\command\VoteCommand;
 use twisted\bettervoting\thread\BetterVotingThread;
+
+/*use pocketmine\utils\TextFormat;*/
+
 /*use function array_slice;
 use function count;
 use function explode;
@@ -48,15 +51,6 @@ final class BetterVoting extends PluginBase{
 		$this->getScheduler()->scheduleRepeatingTask(new ClosureTask(static function() use ($thread, $server) : void{
 			$thread->collectActionResults($server);
 		}), 1);
-	}
-
-	/**
-	 * Returns the thread used for voting related actions.
-	 *
-	 * @return BetterVotingThread
-	 */
-	public function getVoteThread() : BetterVotingThread{
-		return $this->thread;
 	}
 
 	/**
@@ -95,20 +89,29 @@ final class BetterVoting extends PluginBase{
 							$enchant = CustomEnchant::getEnchantment(constant($const));
 						}
 					}*/
-					/*if($enchant === null){
-						$enchant = VanillaEnchantments::fromString($enchants[$i] ?? "");
-					}
+		/*if($enchant === null){
+			$enchant = VanillaEnchantments::fromString($enchants[$i] ?? "");
+		}
 
-					if($enchant !== null){
-						$level = (int) ($enchants[$i + 1] ?? 1);
-						$level = $level > 0 ? $level : 1;
+		if($enchant !== null){
+			$level = (int) ($enchants[$i + 1] ?? 1);
+			$level = $level > 0 ? $level : 1;
 
-						$item->addEnchantment(new EnchantmentInstance($enchant, $level));
-					}
-				}
-			}
-			$items[] = $item;
-		}*/
+			$item->addEnchantment(new EnchantmentInstance($enchant, $level));
+		}
+	}
+}
+$items[] = $item;
+}*/
 		BetterVotingCache::setItems($items);
+	}
+
+	/**
+	 * Returns the thread used for voting related actions.
+	 *
+	 * @return BetterVotingThread
+	 */
+	public function getVoteThread() : BetterVotingThread{
+		return $this->thread;
 	}
 }

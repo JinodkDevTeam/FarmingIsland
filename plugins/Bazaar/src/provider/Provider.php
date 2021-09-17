@@ -5,7 +5,7 @@ namespace Bazaar\provider;
 
 interface Provider{
 
-	public function init(): void;
+	public function init() : void;
 
-	public function close(): void;
+	public function close() : void;
 }

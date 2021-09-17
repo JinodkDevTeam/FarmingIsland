@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\utils\OrderDataHelper;
 use Bazaar\provider\SqliteProvider;
+use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
@@ -19,9 +19,9 @@ class MyOrderUI extends BaseUI{
 			$sell_data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_PLAYER, ["player" => $player->getName()]);
 
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($buy_data, $sell_data){
-				if (!isset($data)) return;
-				if ($data > (count($buy_data) - 1)){
-					new SellOrderManagerUI($player, (int)$sell_data[$data - count($buy_data)]["Id"]);
+				if(!isset($data)) return;
+				if($data > (count($buy_data) - 1)){
+					new SellOrderManagerUI($player, (int) $sell_data[$data - count($buy_data)]["Id"]);
 					return;
 				}
 				new BuyOrderManagerUI($player, $buy_data[$data]["Id"]);

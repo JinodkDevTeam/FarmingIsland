@@ -15,7 +15,7 @@ class PlayerOrderEvent extends OrderEvent{
 		parent::__construct($order);
 	}
 
-	public function getPlayer(): Player{
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 }

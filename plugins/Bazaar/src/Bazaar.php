@@ -33,7 +33,7 @@ class Bazaar extends PluginBase{
 		$this->getProvider()->close();
 	}
 
-	public function getProvider(): SqliteProvider{
+	public function getProvider() : SqliteProvider{
 		return $this->provider;
 	}
 }

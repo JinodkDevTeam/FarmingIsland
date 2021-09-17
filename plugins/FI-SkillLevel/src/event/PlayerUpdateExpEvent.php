@@ -23,23 +23,19 @@ class PlayerUpdateExpEvent extends PluginEvent implements Cancellable{
 		$this->skill_id = $skill_id;
 	}
 
-	private function getSkillLevel(): ?SkillLevel
-	{
+	private function getSkillLevel() : ?SkillLevel{
 		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
-		if ($sl instanceof SkillLevel)
-		{
+		if($sl instanceof SkillLevel){
 			return $sl;
 		}
 		return null;
 	}
 
-	public function getPlayer() : Player
-	{
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 
-	public function getSkillID(): int
-	{
+	public function getSkillID() : int{
 		return $this->skill_id;
 	}
 }

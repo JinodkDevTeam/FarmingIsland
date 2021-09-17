@@ -22,55 +22,55 @@ namespace onebone\economyapi\provider;
 
 use onebone\economyapi\util\Promise;
 
-class DummyProvider implements Provider {
-	public function hasAccount($player): bool {
+class DummyProvider implements Provider{
+	public function hasAccount($player) : bool{
 		return false;
 	}
 
-	public function createAccount($player, $defaultMoney = 1000): bool {
+	public function createAccount($player, $defaultMoney = 1000) : bool{
 		return false;
 	}
 
-	public function removeAccount($player): bool {
+	public function removeAccount($player) : bool{
 		return false;
 	}
 
-	public function getMoney($player) {
+	public function getMoney($player){
 		return false;
 	}
 
-	public function setMoney($player, $amount): bool {
+	public function setMoney($player, $amount) : bool{
 		return false;
 	}
 
-	public function addMoney($player, $amount): bool {
+	public function addMoney($player, $amount) : bool{
 		return false;
 	}
 
-	public function reduceMoney($player, $amount): bool {
+	public function reduceMoney($player, $amount) : bool{
 		return false;
 	}
 
-	public function getAll(): array {
+	public function getAll() : array{
 		return [];
 	}
 
-	public function sortByRange(int $from, ?int $len): Promise {
+	public function sortByRange(int $from, ?int $len) : Promise{
 		$promise = new Promise();
 		$promise->reject(null);
 
 		return $promise;
 	}
 
-	public function getName(): string {
+	public function getName() : string{
 		return "Dummy";
 	}
 
-	public function save() {
+	public function save(){
 
 	}
 
-	public function close() {
+	public function close(){
 
 	}
 }

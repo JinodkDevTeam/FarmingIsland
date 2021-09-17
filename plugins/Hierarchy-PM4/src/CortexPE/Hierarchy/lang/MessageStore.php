@@ -34,7 +34,7 @@ use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat;
 use RuntimeException;
 
-class MessageStore {
+class MessageStore{
 	/** @var Config */
 	protected static $config;
 	/** @var array */
@@ -73,7 +73,7 @@ class MessageStore {
 		"cmd.info.member.role_entry" => "&e - &6{role} ({role_id})",
 		"cmd.info.member.m_perms_header" => "&e&lMember Permission Overrides:",
 		"cmd.info.member.m_perm_entry" => "&e - {color}{permission}",
-        "cmd.info.member.no_extra_perms" => "&e - &cNo extra member permissions",
+		"cmd.info.member.no_extra_perms" => "&e - &cNo extra member permissions",
 
 		"cmd.info.role.header" => "&9 ----- Role Info for &b{role} ({role_id})&9 ----- ",
 		"cmd.info.role.position" => "&e&lPosition: &r&6{position}",
@@ -103,8 +103,8 @@ class MessageStore {
 		"cmd.takerole.no_role" => "&c{member} does not have the '{role}' role",
 		"cmd.takerole.default" => "&cCannot remove default role from {member}",
 
-        "cmd.transfer_privileges.same_member" => "&cCannot transfer privileges to the same player.",
-        "cmd.transfer_privileges.success" => "&aTransferred privileges from {source} to {target}",
+		"cmd.transfer_privileges.same_member" => "&cCannot transfer privileges to the same player.",
+		"cmd.transfer_privileges.success" => "&aTransferred privileges from {source} to {target}",
 
 		"err.target_higher_hrk" => "&cYou cannot use this command on '{target}' due to higher role hierarchy",
 		"err.unknown_permission" => "&cUnknown permission node.",
@@ -115,11 +115,11 @@ class MessageStore {
 		"err.player_only" => "&cThis command is player only",
 	];
 
-	public function __construct(string $filePath, int $type = Config::YAML, ?array $defaults = null) {
-		if($defaults !== null) {
+	public function __construct(string $filePath, int $type = Config::YAML, ?array $defaults = null){
+		if($defaults !== null){
 			static::$defaults = $defaults;
 		}
-		if(empty(static::$defaults)) {
+		if(empty(static::$defaults)){
 			throw new RuntimeException("No defaults given to message store instance for " . get_class($this));
 		}
 		static::$config = new Config($filePath, $type, static::$defaults);
@@ -130,22 +130,22 @@ class MessageStore {
 		array $args = [],
 		string $prefix = "{",
 		string $suffix = "}"
-	): string {
+	) : string{
 		return TextFormat::colorize(
 			self::substituteString(static::getMessageRaw($dataKey), $args, $prefix, $suffix),
 			"&"
 		);
 	}
 
-	protected static function substituteString(string $str, array $args, string $prefix, string $suffix): string {
-		foreach($args as $item => $value) {
-			$str = str_ireplace($prefix . $item . $suffix, (string)$value, $str);
+	protected static function substituteString(string $str, array $args, string $prefix, string $suffix) : string{
+		foreach($args as $item => $value){
+			$str = str_ireplace($prefix . $item . $suffix, (string) $value, $str);
 		}
 
 		return $str;
 	}
 
-	public static function getMessageRaw(string $dataKey): string {
-		return (string)static::$config->get($dataKey, static::$defaults[$dataKey]);
+	public static function getMessageRaw(string $dataKey) : string{
+		return (string) static::$config->get($dataKey, static::$defaults[$dataKey]);
 	}
 }

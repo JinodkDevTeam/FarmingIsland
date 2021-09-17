@@ -13,13 +13,13 @@ namespace CustomAlerts\Events;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 
-class CustomAlertsQuitEvent extends CustomAlertsEvent {
-	
+class CustomAlertsQuitEvent extends CustomAlertsEvent{
+
 	public static $handlerList = null;
-	
+
 	/** @var Player $player */
 	private $player;
-	
+
 	/**
 	 * @param Player $player
 	 */
@@ -27,13 +27,13 @@ class CustomAlertsQuitEvent extends CustomAlertsEvent {
 		parent::__construct($plugin);
 		$this->player = $player;
 	}
-	
+
 	/**
 	 * Get quit event player
 	 *
 	 * @return Player
 	 */
-	public function getPlayer() : Player {
+	public function getPlayer() : Player{
 		return $this->player;
 	}
 }

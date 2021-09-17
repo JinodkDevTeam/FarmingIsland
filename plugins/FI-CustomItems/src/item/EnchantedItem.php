@@ -26,7 +26,7 @@ class EnchantedItem extends CustomItem{
 		return $item;
 	}
 
-	public function getBaseItem(): Item{
+	public function getBaseItem() : Item{
 		return $this->baseitem;
 	}
 }

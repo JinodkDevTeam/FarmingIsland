@@ -13,12 +13,12 @@ abstract class BaseUI{
 		$this->execute($player);
 	}
 
-	public function execute(Player $player): void{
+	public function execute(Player $player) : void{
 	}
 
-	public function getBazaar(): ?Bazaar{
+	public function getBazaar() : ?Bazaar{
 		$bazaar = Server::getInstance()->getPluginManager()->getPlugin("BazaarShop");
-		if ($bazaar instanceof Bazaar){
+		if($bazaar instanceof Bazaar){
 			return $bazaar;
 		}
 		return null;

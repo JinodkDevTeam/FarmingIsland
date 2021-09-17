@@ -8,47 +8,38 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class Freeze extends BaseCommand
-{
-    public function __construct(Core $core)
-    {
-        parent::__construct($core, "freeze");
-        $this->setDescription("Freeze command");
-        $this->setPermission("gh.freeze");
-    }
-    public function execute(CommandSender $sender, string $commandLabel, array $args)
-    {
-        if (isset($args[0]))
-        {
-            if (!$sender->hasPermission("gh.freeze"))
-            {
-                $sender->sendMessage("You not have permission to use this command");
-                return;
-            }
-            $player = Server::getInstance()->getPlayerByPrefix($args[0]);
-            if (!isset($player))
-            {
-                $sender->sendMessage("Player not exist !");
-                return;
-            }
-            $time = PHP_INT_MAX;
-            if (isset($args[1]))
-            {
-                if (is_numeric($args[1]))
-                {
-                    $time = (int) $args[1];
-                }
-                else
-                {
-                    $sender->sendMessage("Time must me numeric !");
-                    return;
-                }
-            }
-            $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
-            $sender->sendMessage("Frozen " .$player->getName(). " for " . $time . " seconds !");
-            $player->sendMessage("You have been frozen for " . $time . " seconds");
-            return;
-        }
-        $sender->sendMessage("/freeze <player> <time>");
-    }
+class Freeze extends BaseCommand{
+	public function __construct(Core $core){
+		parent::__construct($core, "freeze");
+		$this->setDescription("Freeze command");
+		$this->setPermission("gh.freeze");
+	}
+
+	public function execute(CommandSender $sender, string $commandLabel, array $args){
+		if(isset($args[0])){
+			if(!$sender->hasPermission("gh.freeze")){
+				$sender->sendMessage("You not have permission to use this command");
+				return;
+			}
+			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
+			if(!isset($player)){
+				$sender->sendMessage("Player not exist !");
+				return;
+			}
+			$time = PHP_INT_MAX;
+			if(isset($args[1])){
+				if(is_numeric($args[1])){
+					$time = (int) $args[1];
+				}else{
+					$sender->sendMessage("Time must me numeric !");
+					return;
+				}
+			}
+			$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
+			$sender->sendMessage("Frozen " . $player->getName() . " for " . $time . " seconds !");
+			$player->sendMessage("You have been frozen for " . $time . " seconds");
+			return;
+		}
+		$sender->sendMessage("/freeze <player> <time>");
+	}
 }

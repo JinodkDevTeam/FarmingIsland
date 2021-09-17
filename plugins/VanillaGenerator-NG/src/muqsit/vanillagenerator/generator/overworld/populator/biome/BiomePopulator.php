@@ -25,88 +25,47 @@ use pocketmine\world\ChunkManager;
 use pocketmine\world\format\Chunk;
 use Random;
 
-class BiomePopulator implements Populator
-{
+class BiomePopulator implements Populator{
 
 	/** @var TreeDecoration[] */
 	protected static array $TREES;
 
 	/** @var FlowerDecoration[] */
 	protected static array $FLOWERS;
-
-	public static function init(): void
-	{
-		static::initTrees();
-		static::initFlowers();
-	}
-
-	protected static function initTrees(): void
-	{
-		self::$TREES = [
-			new TreeDecoration(BigOakTree::class, 1),
-			new TreeDecoration(GenericTree::class, 9)
-		];
-	}
-
-	protected static function initFlowers(): void
-	{
-		self::$FLOWERS = [
-			new FlowerDecoration(VanillaBlocks::DANDELION(), 2),
-			new FlowerDecoration(VanillaBlocks::POPPY(), 1)
-		];
-	}
-
 	/** @var LakeDecorator */
 	protected LakeDecorator $water_lake_decorator;
-
 	/** @var LakeDecorator */
 	protected LakeDecorator $lava_lake_decorator;
-
 	/** @var OrePopulator */
 	protected OrePopulator $ore_populator;
-
 	/** @var UnderwaterDecorator */
 	protected UnderwaterDecorator $sand_patch_decorator;
-
 	/** @var UnderwaterDecorator */
 	protected UnderwaterDecorator $clay_patch_decorator;
-
 	/** @var UnderwaterDecorator */
 	protected UnderwaterDecorator $gravel_patch_decorator;
-
 	/** @var DoublePlantDecorator */
 	protected DoublePlantDecorator $double_plant_decorator;
-
 	/** @var TreeDecorator */
 	protected TreeDecorator $tree_decorator;
-
 	/** @var FlowerDecorator */
 	protected FlowerDecorator $flower_decorator;
-
 	/** @var TallGrassDecorator */
 	protected TallGrassDecorator $tall_grass_decorator;
-
 	/** @var DeadBushDecorator */
 	protected DeadBushDecorator $dead_bush_decorator;
-
 	/** @var MushroomDecorator */
 	protected MushroomDecorator $brown_mushroom_decorator;
-
 	/** @var MushroomDecorator */
 	protected MushroomDecorator $red_mushroom_decorator;
-
 	/** @var SugarCaneDecorator */
 	protected SugarCaneDecorator $sugar_cane_decorator;
-
 	/** @var PumpkinDecorator */
 	protected PumpkinDecorator $pumpkin_decorator;
-
 	/** @var CactusDecorator */
 	protected CactusDecorator $cactus_decorator;
-
 	/** @var Populator[] */
 	private array $in_ground_populators = [];
-
 	/** @var Populator[] */
 	private array $on_ground_populators = [];
 
@@ -114,8 +73,7 @@ class BiomePopulator implements Populator
 	 * Creates a populator for lakes; dungeons; caves; ores; sand, gravel and clay patches; desert
 	 * wells; and vegetation.
 	 */
-	public function __construct()
-	{
+	public function __construct(){
 		$this->water_lake_decorator = new LakeDecorator(VanillaBlocks::WATER()->getStillForm(), 4);
 		$this->lava_lake_decorator = new LakeDecorator(VanillaBlocks::LAVA()->getStillForm(), 8, 8);
 		$this->ore_populator = new OrePopulator();
@@ -158,8 +116,7 @@ class BiomePopulator implements Populator
 		$this->initPopulators();
 	}
 
-	protected function initPopulators(): void
-	{
+	protected function initPopulators() : void{
 		$this->water_lake_decorator->setAmount(1);
 		$this->lava_lake_decorator->setAmount(1);
 		$this->sand_patch_decorator->setAmount(3);
@@ -187,33 +144,48 @@ class BiomePopulator implements Populator
 		$this->cactus_decorator->setAmount(0);
 	}
 
+	public static function init() : void{
+		static::initTrees();
+		static::initFlowers();
+	}
+
+	protected static function initTrees() : void{
+		self::$TREES = [
+			new TreeDecoration(BigOakTree::class, 1),
+			new TreeDecoration(GenericTree::class, 9)
+		];
+	}
+
+	protected static function initFlowers() : void{
+		self::$FLOWERS = [
+			new FlowerDecoration(VanillaBlocks::DANDELION(), 2),
+			new FlowerDecoration(VanillaBlocks::POPPY(), 1)
+		];
+	}
+
 	/**
 	 * Returns an array of biome ids or null if this populator targets all
 	 * biomes.
 	 *
 	 * @return int[]|null
 	 */
-	public function getBiomes(): ?array
-	{
+	public function getBiomes() : ?array{
 		return null;
 	}
 
-	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
+	public function populate(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
 		$this->populateInGround($world, $random, $chunk_x, $chunk_z, $chunk);
 		$this->populateOnGround($world, $random, $chunk_x, $chunk_z, $chunk);
 	}
 
-	protected function populateInGround(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
-		foreach ($this->in_ground_populators as $populator) {
+	protected function populateInGround(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
+		foreach($this->in_ground_populators as $populator){
 			$populator->populate($world, $random, $chunk_x, $chunk_z, $chunk);
 		}
 	}
 
-	protected function populateOnGround(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk): void
-	{
-		foreach ($this->on_ground_populators as $populator) {
+	protected function populateOnGround(ChunkManager $world, Random $random, int $chunk_x, int $chunk_z, Chunk $chunk) : void{
+		foreach($this->on_ground_populators as $populator){
 			$populator->populate($world, $random, $chunk_x, $chunk_z, $chunk);
 		}
 	}

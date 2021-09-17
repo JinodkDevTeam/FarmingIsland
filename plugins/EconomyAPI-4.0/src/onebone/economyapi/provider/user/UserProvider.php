@@ -25,26 +25,26 @@ namespace onebone\economyapi\provider\user;
 // Provider that is created by each currencies.
 use onebone\economyapi\UserInfo;
 
-interface UserProvider {
+interface UserProvider{
 	public function init();
 
-	public function getName(): string;
+	public function getName() : string;
 
-	public function create(string $username): bool;
+	public function create(string $username) : bool;
 
-	public function delete(string $username): bool;
+	public function delete(string $username) : bool;
 
-	public function exists(string $username): bool;
+	public function exists(string $username) : bool;
 
-	public function setLanguage(string $username, string $lang): bool;
+	public function setLanguage(string $username, string $lang) : bool;
 
-	public function getLanguage(string $username): string;
+	public function getLanguage(string $username) : string;
 
-	public function setPreferredCurrency(string $username, string $currency): bool;
+	public function setPreferredCurrency(string $username, string $currency) : bool;
 
-	public function getPreferredCurrency(string $username): string;
+	public function getPreferredCurrency(string $username) : string;
 
-	public function getUserInfo(string $username): UserInfo;
+	public function getUserInfo(string $username) : UserInfo;
 
 	public function save();
 
