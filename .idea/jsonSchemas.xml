@@ -47,6 +47,15 @@
                   <Item>
                     <option name="path" value="plugins/YandereDevStyle/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI-main/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI/CustomBreakTimeExample/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

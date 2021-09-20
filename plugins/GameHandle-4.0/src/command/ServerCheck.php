@@ -24,7 +24,7 @@ class ServerCheck extends BaseCommand{
 			switch($args[0]){
 				case "php-extensions":
 					$sender->sendMessage("PHP Loaded Extensions:");
-					foreach(get_loaded_extensions(true) as $extension){
+					foreach(get_loaded_extensions() as $extension){
 						$sender->sendMessage($extension . " v" .phpversion($extension));
 					}
 					break;

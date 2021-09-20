@@ -85,6 +85,7 @@ final class CustomItemIds{
 
 	//Custom Stuff
 	public const CROOK = 2100;
+	public const TITANIUM_DRILL = 2101;
 
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;

@@ -12,6 +12,7 @@
     <mapping directory="$PROJECT_DIR$/plugins/Altay/tests/plugins/DevTools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/BuilderTools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/CustomAlerts" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/CustomBreakTimeAPI" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/MineSweeperPE" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/MyPlot-4.0" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/PureChat" vcs="Git" />
