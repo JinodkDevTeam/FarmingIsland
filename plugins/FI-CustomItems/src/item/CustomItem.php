@@ -6,6 +6,7 @@ namespace CustomItems\item;
 use pocketmine\block\Block;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\entity\Entity;
+use pocketmine\entity\Human;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -66,12 +67,16 @@ class CustomItem{
 		return ItemUseResult::NONE();
 	}
 
-	public function onDestroyBlock(Block $block) : bool{
-		return false;
+	public function onDestroyBlock(Player $player, Block $block) : ItemUseResult{
+		return ItemUseResult::NONE();
 	}
 
-	public function onAttackEntity(Entity $victim) : bool{
-		return false;
+	public function onAttackEntity(Human $damager, Entity $victim) : ItemUseResult{
+		return ItemUseResult::NONE();
+	}
+
+	public function onInteractEntity(Player $player, Entity $target, Vector3 $clickVector) : ItemUseResult{
+		return ItemUseResult::NONE();
 	}
 
 }
