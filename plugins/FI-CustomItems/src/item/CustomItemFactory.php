@@ -79,6 +79,10 @@ class CustomItemFactory{
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));
 		$this->register(new TitaniumDrill(new CustomItemIdentifier(CustomItemIds::TITANIUM_DRILL), "Titanium Drill", RarityType::VERY_SPECIAL));
 
+		$this->registerMetaLessItems();
+	}
+
+	public function registerMetaLessItems() : void{
 		$this->registerMetaLess(new MetaLessItem(new CustomItemIdentifier(CustomItemIds::LAPIS_LAZULI), new MetaLessIdentifier(ItemIds::DYE, 4)));
 	}
 
@@ -96,6 +100,11 @@ class CustomItemFactory{
 		$this->list[$id] = clone $item;
 	}
 
+	/**
+	 * @param int $id
+	 *
+	 * @return CustomItem|null
+	 */
 	public function get(int $id) : ?CustomItem{
 		if(isset($this->list[$id])){
 			return $this->list[$id];
@@ -103,6 +112,12 @@ class CustomItemFactory{
 		return null;
 	}
 
+	/**
+	 * @param MetaLessItem $item
+	 * @param bool         $overwrite
+	 *
+	 * @throws RuntimeException
+	 */
 	public function registerMetaLess(MetaLessItem $item, bool $overwrite = false) : void{
 		$id = $item->getMetaLessIdentifier()->getId();
 		$meta = $item->getMetaLessIdentifier()->getMeta();
@@ -114,6 +129,11 @@ class CustomItemFactory{
 		$this->register($item);
 	}
 
+	/**
+	 * @param int $id
+	 *
+	 * @return bool
+	 */
 	public function isRegistered(int $id) : bool{
 		if(isset($this->list[$id])){
 			return true;
@@ -121,6 +141,12 @@ class CustomItemFactory{
 		return false;
 	}
 
+	/**
+	 * @param int $id
+	 * @param int $meta
+	 *
+	 * @return MetaLessItem|null
+	 */
 	public function getMetaLessItem(int $id, int $meta) : ?MetaLessItem{
 		if(isset($this->mlist[$id . ":" . $meta])){
 			return $this->mlist[$id . ":" . $meta];
