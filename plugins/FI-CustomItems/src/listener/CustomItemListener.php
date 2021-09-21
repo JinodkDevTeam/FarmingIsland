@@ -78,13 +78,13 @@ class CustomItemListener implements Listener{
 	 * @handleCancelled FALSE
 	 */
 	public function onBreak(BlockBreakEvent $event){
-		$item = $event->getItem();
+		$item = $event->getPlayer()->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 
 			$block = $event->getBlock();
-			if ($citem->onDestroyBlock($block) === ItemUseResult::FAIL()){
+			if ($citem->onDestroyBlock($event->getPlayer(), $block) === ItemUseResult::FAIL()){
 				$event->cancel();
 			}
 		}

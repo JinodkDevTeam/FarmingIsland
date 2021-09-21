@@ -78,6 +78,7 @@ class CustomItemFactory{
 
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", RarityType::LEGENDARY));
 		$this->register(new TitaniumDrill(new CustomItemIdentifier(CustomItemIds::TITANIUM_DRILL), "Titanium Drill", RarityType::VERY_SPECIAL));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::DRILL_FUEL), "Drill Fuel", RarityType::LEGENDARY, VanillaItems::NETHER_STAR()));
 
 		$this->registerMetaLessItems();
 	}
