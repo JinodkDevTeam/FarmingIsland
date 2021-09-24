@@ -12,7 +12,7 @@ class PlayerInfo extends BaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "playerinfo");
 		$this->setDescription("Show player infomation");
-		$this->setPermission("gh.info");
+		$this->setPermission("gh.playerinfo");
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
