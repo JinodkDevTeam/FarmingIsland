@@ -56,6 +56,9 @@
                   <Item>
                     <option name="path" value="plugins/CustomBreakTimeAPI/CustomBreakTimeExample/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/PickaxeLevel/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
