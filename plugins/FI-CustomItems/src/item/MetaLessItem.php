@@ -5,6 +5,7 @@ namespace CustomItems\item;
 
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
+use CustomItems\item\utils\RarityType;
 
 class MetaLessItem extends CustomItem{
 	protected MetaLessIdentifier $metaLessIdentifier;

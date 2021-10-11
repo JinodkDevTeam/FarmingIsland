@@ -9,6 +9,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
 use RuntimeException;
+use CustomItems\item\utils\RarityType;
 
 class CustomItemFactory{
 	use SingletonTrait;

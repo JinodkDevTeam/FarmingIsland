@@ -8,6 +8,7 @@ use pocketmine\item\Item;
 use pocketmine\item\ItemUseResult;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
+use CustomItems\item\utils\RarityType;
 
 class TitaniumDrill extends CustomItem{
 

@@ -11,6 +11,7 @@ use pocketmine\item\ItemIds;
 use pocketmine\item\ItemUseResult;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
+use CustomItems\item\utils\RarityType;
 
 class NoicePaper extends CustomItem{
 

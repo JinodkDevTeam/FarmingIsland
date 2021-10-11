@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CustomItems\item;
+namespace CustomItems\item\utils;
 
 class RarityType{
 
@@ -11,9 +11,10 @@ class RarityType{
 	public const EPIC = 3;
 	public const LEGENDARY = 4;
 	public const MYTHIC = 5;
-	public const SPECIAL = 6;
-	public const VERY_SPECIAL = 7;
-	public const ULTIMATE = 8;
+	public const DIVINE = 6;
+	public const SPECIAL = 7;
+	public const VERY_SPECIAL = 8;
+	public const ULTIMATE = 9;
 
 	public static function toString(int $code) : string{
 		return match ($code) {
