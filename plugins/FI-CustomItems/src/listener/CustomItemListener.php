@@ -18,13 +18,23 @@ class CustomItemListener implements Listener{
 	/**
 	 * @param BlockPlaceEvent $event
 	 *
-	 * @priority HIGH
+	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
 	public function onPlace(BlockPlaceEvent $event) : void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$event->cancel();
+			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			if($citem == null) return;
+
+			$player = $event->getPlayer();
+			$block = $event->getBlock();
+			$blockreplaced = $event->getBlockReplaced();
+			$blockagains = $event->getBlockAgainst();
+			$result = $citem->onPlace($player, $block, $blockreplaced, $blockagains);
+			if ($result === ItemUseResult::FAIL()){
+				$event->cancel();
+			}
 		}
 	}
 

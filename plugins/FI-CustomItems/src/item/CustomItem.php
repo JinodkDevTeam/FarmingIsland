@@ -78,5 +78,8 @@ class CustomItem{
 	public function onInteractEntity(Player $player, Entity $target, Vector3 $clickVector) : ItemUseResult{
 		return ItemUseResult::NONE();
 	}
+	public function onPlace(Player $player, Block $block, Block $blockreplaced, Block $blockagains): ItemUseResult{
+		return ItemUseResult::FAIL();
+	}
 
 }
