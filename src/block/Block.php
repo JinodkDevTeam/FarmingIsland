@@ -179,7 +179,7 @@ class Block{
 	 * Returns whether the given block has the same type and properties as this block.
 	 */
 	public function isSameState(Block $other) : bool{
-		return $this->isSameType($other) and $this->writeStateToMeta() === $other->writeStateToMeta();
+		return $this->getFullId() === $other->getFullId();
 	}
 
 	/**
@@ -577,7 +577,7 @@ class Block{
 	final public function getCollisionBoxes() : array{
 		if($this->collisionBoxes === null){
 			$this->collisionBoxes = $this->recalculateCollisionBoxes();
-			$extraOffset = $this->getPositionOffset();
+			$extraOffset = $this->getModelPositionOffset();
 			$offset = $extraOffset !== null ? $this->position->addVector($extraOffset) : $this->position;
 			foreach($this->collisionBoxes as $bb){
 				$bb->offset($offset->x, $offset->y, $offset->z);
@@ -588,10 +588,10 @@ class Block{
 	}
 
 	/**
-	 * Returns an additional fractional vector to shift the block's effective position by based on the current position.
+	 * Returns an additional fractional vector to shift the block model's position by based on the current position.
 	 * Used to randomize position of things like bamboo canes and tall grass.
 	 */
-	public function getPositionOffset() : ?Vector3{
+	public function getModelPositionOffset() : ?Vector3{
 		return null;
 	}
 
