@@ -8,3 +8,4 @@ mode: blacklist
 plugins:
   - PickaxeLevel
   - ItemLevel
+  - ExplosiveSnowball

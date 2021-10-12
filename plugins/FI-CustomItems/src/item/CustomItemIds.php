@@ -88,6 +88,8 @@ final class CustomItemIds{
 	public const TITANIUM_DRILL = 2101;
 	public const DRILL_FUEL = 2102;
 
+	public const EMERALD_BLADE = 2150;
+
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;
 

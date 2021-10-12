@@ -6,16 +6,16 @@ namespace CustomItems\item\utils;
 class RarityHelper{
 	public static function toString(Rarity $rarity) : string{
 		return match ($rarity) {
-			Rarity::COMMON() => "§l§fCommon",
-			Rarity::UNCOMMON() => "§l§aUncommon",
-			Rarity::RARE() => "§l§eRare",
-			Rarity::EPIC() => "§l§5Epic",
-			Rarity::LEGENDARY() => "§l§6Legendary",
-			Rarity::MYTHIC() => "§l§9Mythic",
-			Rarity::DIVINE() => "§l§bDivine",
-			Rarity::SPECIAL() => "§l§cSpecial",
-			Rarity::VERY_SPECIAL() => "§l§cVery Special",
-			Rarity::ULTIMATE() => "§l§dUltimate",
+			Rarity::COMMON() => "§r§l§fCommon",
+			Rarity::UNCOMMON() => "§r§l§aUncommon",
+			Rarity::RARE() => "§r§l§eRare",
+			Rarity::EPIC() => "§r§l§5Epic",
+			Rarity::LEGENDARY() => "§r§l§6Legendary",
+			Rarity::MYTHIC() => "§r§l§9Mythic",
+			Rarity::DIVINE() => "§r§l§bDivine",
+			Rarity::SPECIAL() => "§r§l§cSpecial",
+			Rarity::VERY_SPECIAL() => "§r§l§cVery Special",
+			Rarity::ULTIMATE() => "§r§l§dUltimate",
 			default => "",
 		};
 	}
@@ -28,7 +28,7 @@ class RarityHelper{
 			Rarity::EPIC() => "§r§5",
 			Rarity::LEGENDARY() => "§r§6",
 			Rarity::MYTHIC() => "§r§9",
-			Rarity::DIVINE() => "§l§b",
+			Rarity::DIVINE() => "§r§b",
 			Rarity::SPECIAL(), Rarity::VERY_SPECIAL() => "§r§c",
 			Rarity::ULTIMATE() => "§r§d",
 			default => "",

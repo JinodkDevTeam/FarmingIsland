@@ -81,6 +81,8 @@ class CustomItemFactory{
 		$this->register(new TitaniumDrill(new CustomItemIdentifier(CustomItemIds::TITANIUM_DRILL), "Titanium Drill", Rarity::VERY_SPECIAL()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::DRILL_FUEL), "Drill Fuel", Rarity::LEGENDARY(), VanillaItems::NETHER_STAR()));
 
+		$this->register(new EmeraldBlade(new CustomItemIdentifier(CustomItemIds::EMERALD_BLADE), "Emerald Blade", Rarity::EPIC()));
+
 		$this->registerMetaLessItems();
 	}
 
