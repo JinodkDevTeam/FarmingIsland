@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use CustomItems\item\utils\Rarity;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
-use CustomItems\item\utils\RarityType;
 
 class MetaLessItem extends CustomItem{
 	protected MetaLessIdentifier $metaLessIdentifier;
 
 	public function __construct(CustomItemIdentifier $identifier, MetaLessIdentifier $metaLessIdentifier){
 		$this->metaLessIdentifier = $metaLessIdentifier;
-		parent::__construct($identifier, "", RarityType::COMMON);
+		parent::__construct($identifier, "", Rarity::COMMON());
 	}
 
 	public function getName() : string{

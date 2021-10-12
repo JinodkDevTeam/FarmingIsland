@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use CustomItems\item\utils\RarityHelper;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\item\ItemUseResult;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
-use CustomItems\item\utils\RarityType;
 
 class TitaniumDrill extends CustomItem{
 
@@ -19,9 +19,9 @@ class TitaniumDrill extends CustomItem{
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setString("basebreaktime", "TitaniumDrill");
 		$nbt->setInt("Fuel", 1000);
-		$item->setCustomName(RarityType::toColor($this->getRarity()) . $this->getName());
+		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
-			RarityType::toString($this->getRarity()),
+			RarityHelper::toString($this->getRarity()),
 			"Fuel: 1000/1000"
 		]);
 		return $item;
@@ -36,7 +36,7 @@ class TitaniumDrill extends CustomItem{
 			$nbt->setInt("Fuel", $fuel);
 			$item->setNamedTag($nbt);
 			$item->setLore([
-				RarityType::toString($this->getRarity()),
+				RarityHelper::toString($this->getRarity()),
 				"Fuel: " . $fuel . "/1000"
 			]);
 			$player->getInventory()->setItemInHand($item);

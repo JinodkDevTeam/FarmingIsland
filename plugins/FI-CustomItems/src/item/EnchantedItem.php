@@ -3,14 +3,15 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use CustomItems\item\utils\Rarity;
+use CustomItems\item\utils\RarityHelper;
 use pocketmine\item\Item;
-use CustomItems\item\utils\RarityType;
 
 class EnchantedItem extends CustomItem{
 
 	protected Item $baseitem;
 
-	public function __construct(CustomItemIdentifier $identifier, string $name, int $rarity, Item $baseitem){
+	public function __construct(CustomItemIdentifier $identifier, string $name, Rarity $rarity, Item $baseitem){
 		$this->baseitem = $baseitem;
 		parent::__construct($identifier, $name, $rarity);
 	}
@@ -20,9 +21,9 @@ class EnchantedItem extends CustomItem{
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
-		$item->setCustomName(RarityType::toColor($this->getRarity()) . $this->getName());
+		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
-			RarityType::toString($this->getRarity())
+			RarityHelper::toString($this->getRarity())
 		]);
 		return $item;
 	}

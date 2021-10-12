@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use CustomItems\item\utils\Rarity;
 use pocketmine\block\Block;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\entity\Entity;
@@ -18,9 +19,9 @@ class CustomItem{
 
 	protected CustomItemIdentifier $identifier;
 	protected string $name;
-	protected int $rarity;
+	protected Rarity $rarity;
 
-	public function __construct(CustomItemIdentifier $identifier, string $name, int $rarity){
+	public function __construct(CustomItemIdentifier $identifier, string $name, Rarity $rarity){
 		$this->identifier = $identifier;
 		$this->name = $name;
 		$this->rarity = $rarity;
@@ -46,7 +47,7 @@ class CustomItem{
 		return $this->name;
 	}
 
-	public function getRarity() : int{
+	public function getRarity() : Rarity{
 		return $this->rarity;
 	}
 
