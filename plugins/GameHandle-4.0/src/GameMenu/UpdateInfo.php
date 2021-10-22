@@ -22,7 +22,7 @@ class UpdateInfo{
 		$text = [
 			"§　Updates:",
 			"- Welcome to API 4.0.0 branch for FarmingIslandServer",
-			"Thông báo: GUI không còn được update trên Island Menu, các bạn vui lòng chuyển sang sử dụng UI trên Island Menu",
+			"- View changelogs at changelogs",
 			"Official wiki: bit.ly/fi-wiki",
 			"Vote for server: bit.ly/fi-vote",
 			"Official Facebook group: bit.ly/jinodkgroupfb",
