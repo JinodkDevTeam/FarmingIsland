@@ -5,6 +5,7 @@ $finder = PhpCsFixer\Finder::create()
 	->in(__DIR__ . '/build')
 	->in(__DIR__ . '/tests')
 	->in(__DIR__ . '/tools')
+	->in(__DIR__ . '/plugins')
 	->notPath('plugins/DevTools')
 	->notPath('preprocessor')
 	->notContains('#ifndef COMPILE') //preprocessor will break if these are changed
