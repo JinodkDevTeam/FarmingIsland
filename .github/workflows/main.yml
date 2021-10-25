@@ -25,7 +25,7 @@ jobs:
         run: php-cs-fixer fix --dry-run --diff
   no_u:
     name: No U checks
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - name: Setup something
