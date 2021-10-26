@@ -27,7 +27,7 @@ final class Loader extends PluginBase
 		}
 
 		$generatorManager = GeneratorManager::getInstance();
-		$generatorManager->addGenerator(NetherGenerator::class, "vanilla_nether");
-		$generatorManager->addGenerator(OverworldGenerator::class, "vanilla_overworld");
+		$generatorManager->addGenerator(NetherGenerator::class, "vanilla_nether", fn() => null);
+		$generatorManager->addGenerator(OverworldGenerator::class, "vanilla_overworld", fn() => null);
 	}
 }

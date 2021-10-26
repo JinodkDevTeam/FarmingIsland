@@ -25,7 +25,7 @@ class DogeWorlds extends PluginBase{
 	}
 
 	protected function onLoad() : void{
-		GeneratorManager::getInstance()->addGenerator(VoidGenerator::class, "void");
+		GeneratorManager::getInstance()->addGenerator(VoidGenerator::class, "void", fn() => null);
 		foreach($this->getResources() as $resource){
 			$this->saveResource($resource->getFilename());
 		}
