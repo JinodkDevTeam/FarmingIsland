@@ -64,11 +64,11 @@ class CustomBreakTimeAPI extends PluginBase{
 			return;
 		}
 		switch($packet->action){
-			case PlayerAction::START_SNEAK:
+			case PlayerAction::START_BREAK:
 				$item = $player->getInventory()->getItemInHand();
 				$basetime = CustomBreakTimeAPI::getBaseBreakTime($item);
 				if($basetime == null) return;
-				$pos = new Vector3($packet->x, $packet->y, $packet->z);
+				$pos = new Vector3($packet->blockPosition->getX(), $packet->blockPosition->getY(), $packet->blockPosition->getZ());
 				$block = $player->getWorld()->getBlock($pos);
 				$time = $basetime->reCaculateBreakTime($block, $item, $player);
 				$this->setBreakStatus($player, true);
