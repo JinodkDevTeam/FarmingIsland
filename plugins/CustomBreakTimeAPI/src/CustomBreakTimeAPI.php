@@ -10,6 +10,7 @@ use pocketmine\item\Item;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\NetworkSession;
 use pocketmine\network\mcpe\protocol\PlayerActionPacket;
+use pocketmine\network\mcpe\protocol\types\PlayerAction;
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
@@ -63,7 +64,7 @@ class CustomBreakTimeAPI extends PluginBase{
 			return;
 		}
 		switch($packet->action){
-			case PlayerActionPacket::ACTION_START_BREAK:
+			case PlayerAction::START_SNEAK:
 				$item = $player->getInventory()->getItemInHand();
 				$basetime = CustomBreakTimeAPI::getBaseBreakTime($item);
 				if($basetime == null) return;
@@ -74,8 +75,8 @@ class CustomBreakTimeAPI extends PluginBase{
 				$this->task[$player->getName()] = new BreakTask($player, $pos, $this);
 				$this->getScheduler()->scheduleDelayedTask($this->task[$player->getName()], $time);
 				break;
-			case PlayerActionPacket::ACTION_ABORT_BREAK:
-			case PlayerActionPacket::ACTION_STOP_BREAK:
+			case PlayerAction::ABORT_BREAK:
+			case PlayerAction::STOP_BREAK:
 				$this->setBreakStatus($player, false);
 				if(isset($this->task[$player->getName()])){
 					$this->task[$player->getName()]->cancel();
