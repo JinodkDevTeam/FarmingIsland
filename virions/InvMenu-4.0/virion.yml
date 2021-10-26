@@ -1,12 +1,6 @@
 name: InvMenu
 antigen: muqsit\invmenu
 api:
-  - 4.0.0
-  - 4.0.0-BETA1
-  - 4.0.0-BETA2
-  - 4.0.0-BETA3
-  - 4.0.0-BETA4
-  - 4.0.0-BETA5
   - 4.0.0-BETA6
   - 4.0.0-BETA7
 version: 4.3.3
