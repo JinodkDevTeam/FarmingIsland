@@ -28,6 +28,7 @@ declare(strict_types=1);
 namespace pocketmine\utils;
 
 use DaveRandom\CallbackValidator\CallbackType;
+use pocketmine\errorhandler\ErrorTypeToStringMap;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidInterface;
 use function array_combine;
@@ -46,13 +47,17 @@ use function file;
 use function file_exists;
 use function file_get_contents;
 use function function_exists;
+use function get_class;
 use function get_current_user;
 use function get_loaded_extensions;
 use function getenv;
 use function gettype;
 use function implode;
+use function interface_exists;
+use function is_a;
 use function is_array;
 use function is_bool;
+use function is_int;
 use function is_object;
 use function is_string;
 use function mb_check_encoding;
@@ -384,6 +389,49 @@ final class Utils{
 		return -1;
 	}
 
+	private static function printableExceptionMessage(\Throwable $e) : string{
+		$errstr = preg_replace('/\s+/', ' ', trim($e->getMessage()));
+
+		$errno = $e->getCode();
+		if(is_int($errno)){
+			try{
+				$errno = ErrorTypeToStringMap::get($errno);
+			}catch(\InvalidArgumentException $ex){
+				//pass
+			}
+		}
+
+		$errfile = Filesystem::cleanPath($e->getFile());
+		$errline = $e->getLine();
+
+		return get_class($e) . ": \"$errstr\" ($errno) in \"$errfile\" at line $errline";
+	}
+
+	/**
+	 * @param mixed[] $trace
+	 * @return string[]
+	 */
+	public static function printableExceptionInfo(\Throwable $e, $trace = null) : array{
+		if($trace === null){
+			$trace = $e->getTrace();
+		}
+
+		$lines = [self::printableExceptionMessage($e)];
+		$lines[] = "--- Stack trace ---";
+		foreach(Utils::printableTrace($trace) as $line){
+			$lines[] = "  " . $line;
+		}
+		for($prev = $e->getPrevious(); $prev !== null; $prev = $prev->getPrevious()){
+			$lines[] = "--- Previous ---";
+			$lines[] = self::printableExceptionMessage($prev);
+			foreach(Utils::printableTrace($prev->getTrace()) as $line){
+				$lines[] = "  " . $line;
+			}
+		}
+		$lines[] = "--- End of exception information ---";
+		return $lines;
+	}
+
 	/**
 	 * @param mixed[][] $trace
 	 * @phpstan-param list<array<string, mixed>> $trace
@@ -467,18 +515,20 @@ final class Utils{
 	 * @phpstan-param class-string $baseName
 	 */
 	public static function testValidInstance(string $className, string $baseName) : void{
+		$baseInterface = false;
 		if(!class_exists($baseName)){
-			throw new \InvalidArgumentException("Base class $baseName does not exist");
+			if(!interface_exists($baseName)){
+				throw new \InvalidArgumentException("Base class $baseName does not exist");
+			}
+			$baseInterface = true;
 		}
 		if(!class_exists($className)){
-			throw new \InvalidArgumentException("Class $className does not exist");
+			throw new \InvalidArgumentException("Class $className does not exist or is not a class");
 		}
-		$base = new \ReflectionClass($baseName);
+		if(!is_a($className, $baseName, true)){
+			throw new \InvalidArgumentException("Class $className does not " . ($baseInterface ? "implement" : "extend") . " $baseName");
+		}
 		$class = new \ReflectionClass($className);
-
-		if(!$class->isSubclassOf($baseName)){
-			throw new \InvalidArgumentException("Class $className does not " . ($base->isInterface() ? "implement" : "extend") . " " . $baseName);
-		}
 		if(!$class->isInstantiable()){
 			throw new \InvalidArgumentException("Class $className cannot be constructed");
 		}

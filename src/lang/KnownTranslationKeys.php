@@ -338,6 +338,7 @@ final class KnownTranslationKeys{
 	public const POCKETMINE_LEVEL_CORRUPTED = "pocketmine.level.corrupted";
 	public const POCKETMINE_LEVEL_DEFAULTERROR = "pocketmine.level.defaultError";
 	public const POCKETMINE_LEVEL_GENERATIONERROR = "pocketmine.level.generationError";
+	public const POCKETMINE_LEVEL_INVALIDGENERATOROPTIONS = "pocketmine.level.invalidGeneratorOptions";
 	public const POCKETMINE_LEVEL_LOADERROR = "pocketmine.level.loadError";
 	public const POCKETMINE_LEVEL_NOTFOUND = "pocketmine.level.notFound";
 	public const POCKETMINE_LEVEL_PREPARING = "pocketmine.level.preparing";
@@ -429,6 +430,7 @@ final class KnownTranslationKeys{
 	public const POTION_REGENERATION = "potion.regeneration";
 	public const POTION_RESISTANCE = "potion.resistance";
 	public const POTION_SATURATION = "potion.saturation";
+	public const POTION_SLOWFALLING = "potion.slowFalling";
 	public const POTION_WATERBREATHING = "potion.waterBreathing";
 	public const POTION_WEAKNESS = "potion.weakness";
 	public const POTION_WITHER = "potion.wither";

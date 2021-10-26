@@ -1575,6 +1575,14 @@ final class KnownTranslationFactory{
 		]);
 	}
 
+	public static function pocketmine_level_invalidGeneratorOptions(Translatable|string $preset, Translatable|string $generatorName, Translatable|string $details) : Translatable{
+		return new Translatable(KnownTranslationKeys::POCKETMINE_LEVEL_INVALIDGENERATOROPTIONS, [
+			"preset" => $preset,
+			"generatorName" => $generatorName,
+			"details" => $details,
+		]);
+	}
+
 	public static function pocketmine_level_loadError(Translatable|string $param0, Translatable|string $param1) : Translatable{
 		return new Translatable(KnownTranslationKeys::POCKETMINE_LEVEL_LOADERROR, [
 			0 => $param0,
@@ -2065,6 +2073,10 @@ final class KnownTranslationFactory{
 
 	public static function potion_saturation() : Translatable{
 		return new Translatable(KnownTranslationKeys::POTION_SATURATION, []);
+	}
+
+	public static function potion_slowFalling() : Translatable{
+		return new Translatable(KnownTranslationKeys::POTION_SLOWFALLING, []);
 	}
 
 	public static function potion_waterBreathing() : Translatable{
