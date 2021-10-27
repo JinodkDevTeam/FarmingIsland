@@ -12,7 +12,6 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerEntityInteractEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
-use pocketmine\item\ItemUseResult;
 
 class CustomItemListener implements Listener{
 	/**
@@ -26,15 +25,7 @@ class CustomItemListener implements Listener{
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$player = $event->getPlayer();
-			$block = $event->getBlock();
-			$blockreplaced = $event->getBlockReplaced();
-			$blockagains = $event->getBlockAgainst();
-			$result = $citem->onPlace($player, $block, $blockreplaced, $blockagains);
-			if ($result === ItemUseResult::FAIL()){
-				$event->cancel();
-			}
+			$citem->onPlace($event);
 		}
 	}
 
@@ -44,20 +35,12 @@ class CustomItemListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onInteract(PlayerInteractEvent $event){
+	public function onInteract(PlayerInteractEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$player = $event->getPlayer();
-			$blockClicked = $event->getBlock();
-			$face = $event->getFace();
-			$clickVector = $event->getTouchVector();
-			$blockReplace = $blockClicked->getSide($face);
-			if ($citem->onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector) === ItemUseResult::FAIL()){
-				$event->cancel();
-			}
+			$citem->onInteractBlock($event);
 		}
 	}
 
@@ -67,17 +50,12 @@ class CustomItemListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onItemUse(PlayerItemUseEvent $event){
+	public function onItemUse(PlayerItemUseEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$player = $event->getPlayer();
-			$directionVector = $event->getDirectionVector();
-			if ($citem->onClickAir($player, $directionVector) === ItemUseResult::FAIL()){
-				$event->cancel();
-			}
+			$citem->onClickAir($event);
 		}
 	}
 
@@ -87,16 +65,12 @@ class CustomItemListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onBreak(BlockBreakEvent $event){
+	public function onBreak(BlockBreakEvent $event): void{
 		$item = $event->getPlayer()->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$block = $event->getBlock();
-			if ($citem->onDestroyBlock($event->getPlayer(), $block) === ItemUseResult::FAIL()){
-				$event->cancel();
-			}
+			$citem->onDestroyBlock($event);
 		}
 	}
 
@@ -106,18 +80,14 @@ class CustomItemListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onDamage(EntityDamageByEntityEvent $event){
-		$victim = $event->getEntity();
+	public function onDamage(EntityDamageByEntityEvent $event): void{
 		$damager = $event->getDamager();
 		if ($damager instanceof Human){
 			$item = $damager->getInventory()->getItemInHand();
 			if($item->getNamedTag()->getTag("CustomItemID") !== null){
 				$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 				if($citem == null) return;
-
-				if ($citem->onAttackEntity($damager, $victim) === ItemUseResult::FAIL()){
-					$event->cancel();
-				}
+				$citem->onAttackEntity($event);
 			}
 		}
 	}
@@ -127,18 +97,13 @@ class CustomItemListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onEntityInteract(PlayerEntityInteractEvent $event){
-		$target = $event->getEntity();
+	public function onEntityInteract(PlayerEntityInteractEvent $event): void{
 		$player = $event->getPlayer();
-		$clickVector = $event->getClickPosition();
 		$item = $player->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			if ($citem->onInteractEntity($player, $target, $clickVector) === ItemUseResult::FAIL()){
-				$event->cancel();
-			}
+			$citem->onInteractEntity($event);
 		}
 	}
 

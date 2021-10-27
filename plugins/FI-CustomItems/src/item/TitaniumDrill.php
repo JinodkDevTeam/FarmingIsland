@@ -4,11 +4,9 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use CustomItems\item\utils\RarityHelper;
-use pocketmine\block\Block;
+use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\item\Item;
-use pocketmine\item\ItemUseResult;
 use pocketmine\item\VanillaItems;
-use pocketmine\player\Player;
 
 class TitaniumDrill extends CustomItem{
 
@@ -27,7 +25,8 @@ class TitaniumDrill extends CustomItem{
 		return $item;
 	}
 
-	public function onDestroyBlock(Player $player, Block $block) : ItemUseResult{
+	public function onDestroyBlock(BlockBreakEvent $event) : void{
+		$player = $event->getPlayer();
 		$item = $player->getInventory()->getItemInHand();
 		$nbt = $item->getNamedTag();
 		$fuel = $nbt->getTag("Fuel")?->getValue();
@@ -40,9 +39,9 @@ class TitaniumDrill extends CustomItem{
 				"Fuel: " . $fuel . "/1000"
 			]);
 			$player->getInventory()->setItemInHand($item);
-			return ItemUseResult::SUCCESS();
+			return;
 		}
 		$player->sendMessage("Fuel is not enough to use !");
-		return ItemUseResult::FAIL();
+		$event->cancel();
 	}
 }

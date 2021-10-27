@@ -4,16 +4,16 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use CustomItems\item\utils\Rarity;
-use pocketmine\block\Block;
 use pocketmine\data\bedrock\EnchantmentIdMap;
-use pocketmine\entity\Entity;
-use pocketmine\entity\Human;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\player\PlayerEntityInteractEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemUseResult;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
 class CustomItem{
 
@@ -56,31 +56,18 @@ class CustomItem{
 		return $item;
 	}
 
-	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onInteractBlock(PlayerInteractEvent $event) : void{ }
 
-	public function onClickAir(Player $player, Vector3 $directionVector) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onClickAir(PlayerItemUseEvent $event) : void{ }
 
-	public function onReleaseUsing(Player $player) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onDestroyBlock(BlockBreakEvent $event) : void{ }
 
-	public function onDestroyBlock(Player $player, Block $block) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onAttackEntity(EntityDamageByEntityEvent $event) : void{ }
 
-	public function onAttackEntity(Human $damager, Entity $victim) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onInteractEntity(PlayerEntityInteractEvent $event) : void{ }
 
-	public function onInteractEntity(Player $player, Entity $target, Vector3 $clickVector) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
-	public function onPlace(Player $player, Block $block, Block $blockreplaced, Block $blockagains): ItemUseResult{
-		return ItemUseResult::FAIL();
+	public function onPlace(BlockPlaceEvent $event): void{
+		$event->cancel();
 	}
 
 }
