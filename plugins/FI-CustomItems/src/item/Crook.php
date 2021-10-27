@@ -1,47 +1,40 @@
 <?php
 declare(strict_types=1);
 
-namespace CustomStuff\item;
+namespace CustomItems\item;
 
-use CustomStuff\CustomStuff;
+use CustomItems\item\utils\RarityHelper;
 use pocketmine\block\Block;
 use pocketmine\block\Leaves;
 use pocketmine\event\block\BlockBreakEvent;
-use pocketmine\event\Listener;
 use pocketmine\item\Item;
-use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
-class Crook implements Listener{
-	/** @var bool[] */
+class Crook extends CustomItem{
+
 	public array $isBreaking = [];
-	/** @var int[] */
 	public array $breaked = [];
 
-	private CustomStuff $core;
-
-	public function __construct(CustomStuff $core){
-		$this->core = $core;
+	public function toItem() : Item{
+		$item = VanillaItems::STICK();
+		$item = $this->setEnchantGlint($item);
+		$nbt = $item->getNamedTag();
+		$nbt->setInt("CustomItemID", $this->getId());
+		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
+		$item->setLore([
+			"",
+			"§r§7A forceful stick which can\nbreak a large amount of leaves\nin a single hit.",
+			"",
+			RarityHelper::toString($this->getRarity())
+		]);
+		return $item;
 	}
 
-	public function getCore() : CustomStuff{
-		return $this->core;
-	}
-
-	/**
-	 * @param BlockBreakEvent $event
-	 *
-	 * @priority HIGHEST
-	 * @ignoreCancelled true
-	 */
-	public function onBreak(BlockBreakEvent $event){
+	public function onDestroyBlock(BlockBreakEvent $event) : void{
 		$player = $event->getPlayer();
 		$item = $event->getItem();
 		$block = $event->getBlock();
-
-		if($item->getId() !== ItemIds::STICK) return;
-		if($item->getNamedTag()->getTag("crook") == null) return;
-
 		if($block instanceof Leaves){
 			if($this->isBreaking($player)){
 				return;
@@ -60,32 +53,13 @@ class Crook implements Listener{
 		}else return false;
 	}
 
-	/*//RECURSION (Wait, did you mean RECURSION ?)
-
-	public function CrookMineR(Block $block, Item $item, Player $player, array &$ignore = [])
-	{
-		if($block->isValid())
-		{
-			if ($this->breaked[$player->getName()] > 1100)
-			{
-				return;
-			}
-			$ignore[] = $block->asVector3()->__toString();
-			$this->breaked[$player->getName()]++;
-			foreach($block->getAllSides() as $side)
-			{
-				if((($side instanceof Leaves) or ($side instanceof Leaves2)) and !in_array($side->asVector3()->__toString(), $ignore))
-				{
-					$this->CrookMine($side, $item, $player, $ignore);
-				}
-			}
-			$block->getLevel()->useBreakOn($block, $item, $player, true);
-		}
-	}*/
-
-	//DYNAMIC PROGRAMMING
-	//Algorithm by JINODK
-
+	/**
+	 * @param Block  $blockbreak
+	 * @param Item   $item
+	 * @param Player $player
+	 *
+	 * @description Algorithm design by JINODK
+	 */
 	public function CrookMine(Block $blockbreak, Item $item, Player $player){
 		$pending = [];
 		$pos = $blockbreak;
@@ -101,7 +75,7 @@ class Crook implements Listener{
 			}
 
 			if($pos !== $blockbreak){
-				$pos->getPosition()->getWorld()->useBreakOn($pos, $item, $player, true);
+				$pos->getPosition()->getWorld()->useBreakOn($pos->getPosition()->asVector3(), $item, $player, true);
 				$this->breaked[$player->getName()]++;
 			}
 
@@ -117,13 +91,6 @@ class Crook implements Listener{
 			$pending = array_values($pending);
 		}
 	}
-
-	/**
-	 * @param Block   $block
-	 * @param Block[] $pending
-	 *
-	 * @return Block[]
-	 */
 
 	public function getAllSide(Block $block, array $pending) : array{
 		$blocks = [];
@@ -143,15 +110,8 @@ class Crook implements Listener{
 		return $blocks;
 	}
 
-	/**
-	 * @param Block   $block
-	 * @param Block[] $pending
-	 *
-	 * @return bool
-	 */
 	public function isChecked(Block $block, array $pending) : bool{
 		if(in_array($block, $pending)) return true;
 		return false;
 	}
-
 }

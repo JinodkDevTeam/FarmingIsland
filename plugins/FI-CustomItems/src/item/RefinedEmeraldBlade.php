@@ -12,6 +12,7 @@ class RefinedEmeraldBlade extends CustomItem{
 		$item = VanillaItems::EMERALD();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
+		$nbt->setInt("CustomItemID", $this->getId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

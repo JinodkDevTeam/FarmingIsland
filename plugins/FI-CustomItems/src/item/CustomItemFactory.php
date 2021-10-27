@@ -78,6 +78,7 @@ class CustomItemFactory{
 		$this->register(new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_DIAMOND), "Refined Diamond", Rarity::RARE(), VanillaItems::LIGHT_BLUE_DYE()));
 
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", Rarity::LEGENDARY()));
+		$this->register(new Crook(new CustomItemIdentifier(CustomItemIds::CROOK), "Crook", Rarity::RARE()));
 		$this->register(new TitaniumDrill(new CustomItemIdentifier(CustomItemIds::TITANIUM_DRILL), "Titanium Drill", Rarity::VERY_SPECIAL()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::DRILL_FUEL), "Drill Fuel", Rarity::LEGENDARY(), VanillaItems::NETHER_STAR()));
 
