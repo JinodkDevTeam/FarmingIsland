@@ -69,7 +69,8 @@ class Loader extends PluginBase implements Listener{
 
 	public function grow(Sapling $sapling, Player $player) : void{
 		$random = new Random(mt_rand());
-		$tree = TreeFactory::get($random, TreeType::fromMagicNumber($sapling->getMeta()));
+		if ($sapling->getMeta() > 5) $meta = 0; else $meta = $sapling->getMeta();
+		$tree = TreeFactory::get($random, TreeType::fromMagicNumber($meta));
 		$transaction = $tree?->getBlockTransaction($sapling->getPosition()->getWorld(), $sapling->getPosition()->getFloorX(), $sapling->getPosition()->getFloorY(), $sapling->getPosition()->getFloorZ(), $random);
 		if($transaction === null){
 			return;
