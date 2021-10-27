@@ -59,6 +59,9 @@
                   <Item>
                     <option name="path" value="plugins/PickaxeLevel/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/Backpack/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
