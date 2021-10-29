@@ -32,7 +32,7 @@ class MailInfo extends BaseUI{
 			if($this->mode == self::TO){
 				$this->getLoader()->getProvider()->updateIsRead($mail->getId(), true);
 			}
-			$items = ItemUtils::MailItemsDecode($mail->getItems());
+			$items = ItemUtils::string2ItemArray($mail->getItems());
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
 				if(!isset($data)) return;
 				if($data == 0) $this->claimItems($player, $mail);
@@ -71,7 +71,7 @@ class MailInfo extends BaseUI{
 			$player->sendMessage("You already claim items from this mail !");
 			return;
 		}
-		$items = ItemUtils::MailItemsDecode($mail->getItems());
+		$items = ItemUtils::string2ItemArray($mail->getItems());
 		$empty = $player->getInventory()->getSize() - count($player->getInventory()->getContents());
 		if($empty > count($items)){
 			foreach($items as $item){
