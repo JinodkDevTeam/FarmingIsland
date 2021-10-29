@@ -87,6 +87,7 @@ final class CustomItemIds{
 	public const CROOK = 2100;
 	public const TITANIUM_DRILL = 2101;
 	public const DRILL_FUEL = 2102;
+	public const BACKPACK_SLOT = 2103;
 
 	public const EMERALD_BLADE = 2150;
 	public const REFINED_EMERALD_BLADE = 2151;
