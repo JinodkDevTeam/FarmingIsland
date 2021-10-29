@@ -3,15 +3,17 @@ declare(strict_types=1);
 
 namespace Backpack\provider;
 
+use Backpack\Loader;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 
 class SqliteProvider{
 
 	protected DataConnector $database;
+	protected Loader $loader;
 
-	public function __construct(){
-
+	public function __construct(Loader $loader){
+		$this->loader = $loader;
 	}
 
 	public function init() : void{
