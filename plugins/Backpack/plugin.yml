@@ -4,3 +4,7 @@ src-namespace-prefix: Backpack
 version: 0.0.1
 api: 4.0.0
 author: JinodkDevTeam
+
+permissions:
+  backpack.command:
+    default: true
