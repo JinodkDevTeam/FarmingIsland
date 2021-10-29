@@ -17,7 +17,7 @@ class BackpackManagerUI extends BaseUI{
 				return;
 			}
 			$form = new SimpleForm(function(Player $player, ?int $value) use ($data){
-				if ($value == null) return;
+				if (!isset($value)) return;
 				if (isset($data[$value])){
 					new BackpackOpenGUI($this->getLoader(), $player, $data[$value]["Slot"]);
 				} else {
@@ -27,6 +27,8 @@ class BackpackManagerUI extends BaseUI{
 			foreach($data as $backpack){
 				$form->addButton("Backpack slot " . $backpack["Slot"]);
 			}
+			$form->setTitle("Backpack manager");
+			$player->sendForm($form);
 		});
 	}
 }
