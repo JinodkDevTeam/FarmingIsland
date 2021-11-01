@@ -29,9 +29,6 @@ class UiMenu{
 		array_push($list, "vip");
 		array_push($list, "tutorial");
 		array_push($list, "invcraft");
-		if(in_array($this->getCore()->getPlayerGroupName($player), ["Vip", "VipPlus", "Staff", "Admin", "Youtuber", "Member"])){
-			array_push($list, "rankcolor");
-		}
 
 		$form = new SimpleForm(function(Player $player, $data) use ($list) : void{
 			if(!isset($data)){
@@ -39,16 +36,13 @@ class UiMenu{
 			}
 			switch($list[$data]){
 				case "is-manager":
-					new IslandManager($player);
+					/*new IslandManager($player);*/
 					break;
 				case "teleport":
-					new TeleportManager($player);
-					break;
-				case "rankcolor":
-					Server::getInstance()->dispatchCommand($player, "rankcolor");
+					/*new TeleportManager($player);*/
 					break;
 				case "vip":
-					new VipManager($player);
+					/*new VipManager($player);*/
 					break;
 				case "shop":
 					Server::getInstance()->dispatchCommand($player, "shop");
@@ -57,10 +51,10 @@ class UiMenu{
 					Server::getInstance()->dispatchCommand($player, "sell all");
 					break;
 				case "vip-shop":
-					Server::getInstance()->dispatchCommand($player, "cuahang");
+					/*Server::getInstance()->dispatchCommand($player, "cuahang");*/
 					break;
 				case "is-info":
-					$this->IslandInfoForm($player);
+					/*$this->IslandInfoForm($player);*/
 					break;
 				case "tutorial":
 					Server::getInstance()->dispatchCommand($player, "tutorial");
@@ -71,20 +65,17 @@ class UiMenu{
 			}
 		});
 		if($player->getWorld()->getDisplayName() == "island"){
-			$form->addButton("§　§lIsland Manager\nQuản lý đảo");
-			$form->addButton("§　§lIsland Info\nThông tin đảo");
+			$form->addButton("§　§lIsland Manager(Comming soon)\nQuản lý đảo");
+			$form->addButton("§　§lIsland Info(Comming soon)\nThông tin đảo");
 
 		}
-		$form->addButton("§lTeleport\nDịch chuyển");
+		$form->addButton("§lTeleport(Comming soon)\nDịch chuyển");
 		$form->addButton("§　§lShop");
-		$form->addButton("§　§lVipItem Shop");
+		$form->addButton("§　§lVipItem Shop\n(Comming soon)");
 		$form->addButton("§lSell All Inventory\nBán toàn bộ vật phẩm");
-		$form->addButton("§　§lVIP");
+		$form->addButton("§　§lVIP(Comming soon)");
 		$form->addButton("§lTutorial\nXem cách chơi");
 		$form->addButton("§lInvCraft\nBàn chế tạo siêu to khổng lồ");
-		if(in_array($this->getCore()->getPlayerGroupName($player), ["Vip", "VipPlus", "Staff", "Admin", "Youtuber", "Member"])){
-			$form->addButton("§　§lRankColor");
-		}
 		$form->setTitle("§　Island Menu");
 		$player->sendForm($form);
 	}

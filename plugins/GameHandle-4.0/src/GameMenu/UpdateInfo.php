@@ -22,6 +22,7 @@ class UpdateInfo{
 		$text = [
 			"§　Updates:",
 			"- Welcome to API 4.0.0 branch for FarmingIslandServer",
+			"- This server is for testing only",
 			"- View changelogs at changelogs",
 			"Official wiki: bit.ly/fi-wiki",
 			"Vote for server: bit.ly/fi-vote",
