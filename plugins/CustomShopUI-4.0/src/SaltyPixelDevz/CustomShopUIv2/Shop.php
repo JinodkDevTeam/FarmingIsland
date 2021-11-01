@@ -333,7 +333,7 @@ class Shop extends PluginBase{
 				$name = ItemFactory::getInstance()->get((int) $list[0], (int) $list[1], 1)->getName();
 				$vars = ["{item}" => $name, "{cost}" => $list[4]];
 				foreach($vars as $var => $replacement){
-					$message = str_replace($var, $replacement, $message);
+					$message = str_replace($var, (string)$replacement, $message);
 				}
 				$data1 = 0;
 				if($this->getConfig()->getNested("Types.Toggle") == true){
@@ -367,13 +367,13 @@ class Shop extends PluginBase{
 							$message = $msg->getNested("Messages.Paid_for");
 							$vars = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1];
 							foreach($vars as $var => $replacement){
-								$message = str_replace($var, $replacement, $message);
+								$message = str_replace($var, (string)$replacement, $message);
 							}
 						}else{
 							$message = $msg->getNested("Messages.Not_enough_money");
 							$tags = ["{amount}" => $data1, "{item}" => $name, "{cost}" => $list[3] * $data1, "{missing}" => $list[3] * $data1 - $money];
 							foreach($tags as $tag => $replacement){
-								$message = str_replace($tag, $replacement, $message);
+								$message = str_replace($tag, (string)$replacement, $message);
 							}
 						}
 						$player->sendMessage($message);
@@ -387,13 +387,13 @@ class Shop extends PluginBase{
 							$message = $msg->getNested("Messages.Paid");
 							$vars = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
 							foreach($vars as $var => $replacement){
-								$message = str_replace($var, $replacement, $message);
+								$message = str_replace($var, (string)$replacement, $message);
 							}
 						}else{
 							$message = $msg->getNested("Messages.Not_enough_items");
 							$tags = ["{amount}" => $data1, "{item}" => $name, "{pay}" => $list[4] * $data1];
 							foreach($tags as $tag => $replacement){
-								$message = str_replace($tag, $replacement, $message);
+								$message = str_replace($tag, (string)$replacement, $message);
 							}
 						}
 						$player->sendMessage($message);
@@ -426,7 +426,7 @@ class Shop extends PluginBase{
 			$name = ItemFactory::getInstance()->get((int) $list[0], (int) $list[1], 1)->getName();
 			$vars = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
 			foreach($vars as $var => $replacement){
-				$message = str_replace($var, $replacement, $message);
+				$message = str_replace($var, (string)$replacement, $message);
 			}
 			$form->setTitle($msg->getNested("Titles.Amount"));
 			$form->addLabel($message);
@@ -434,7 +434,7 @@ class Shop extends PluginBase{
 				$message2 = $msg->getNested("Messages.BuySell");
 				$vars2 = ["{item}" => $name, "{cost}" => $list[3], "{sell}" => $list[4]];
 				foreach($vars2 as $var => $replacement){
-					$message2 = str_replace($var, $replacement, $message2);
+					$message2 = str_replace($var, (string)$replacement, $message2);
 				}
 				$form->addToggle($message2);
 			}
@@ -511,7 +511,7 @@ class Shop extends PluginBase{
 						$form->addButton($list[1] . " " . $list[2] . $msg->getNested("Messages.Each"), 0, $list[5]);
 					}
 				}else{
-					$msg2 = str_replace("{price}", "$list[3]", $msg->getNested("Messages.Each"));
+					$msg2 = str_replace("{price}", $list[3], $msg->getNested("Messages.Each"));
 					if(str_starts_with($list[6], "http")){
 						$form->addButton($name . " " . $msg2, 1, $list[6] . ":" . $list[7]);
 					}else{

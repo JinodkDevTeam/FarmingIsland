@@ -33,7 +33,9 @@ class BreakTask extends Task{
 	public function onRun() : void{
 		if(!$this->getAPI()->isBreaking($this->player)) return;
 		$item = $this->getPlayer()->getInventory()->getItemInHand();
-		CustomBreakTimeAPI::getBaseBreakTime($item)->onBreak($this->getPos(), $item, $this->getPlayer());
+		if (CustomBreakTimeAPI::getBaseBreakTime($item) !== null){
+			CustomBreakTimeAPI::getBaseBreakTime($item)->onBreak($this->getPos(), $item, $this->getPlayer());
+		}
 	}
 
 	public function cancel(){
