@@ -22,6 +22,7 @@ class Bazaar extends PluginBase{
 	public const PROVIDER = "sqlite"; //I set it as default because i dont have any other provider;
 
 	private SqliteProvider $provider;
+	//I haz about 200+ms of ping in discord channel lol
 
 	public function onEnable() : void{
 		$this->provider = new SqliteProvider($this);
