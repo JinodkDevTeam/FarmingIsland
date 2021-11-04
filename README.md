@@ -1,2 +1,2 @@
-# FI-pm4
+# FarmingIsland
 FarmingIslandServer files run on PocketMine-MP 4.0+
