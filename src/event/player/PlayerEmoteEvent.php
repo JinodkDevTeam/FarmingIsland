@@ -21,15 +21,31 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\data\bedrock;
+namespace pocketmine\event\player;
 
-use pocketmine\utils\SingletonTrait;
-use Webmozart\PathUtil\Path;
+use pocketmine\event\Cancellable;
+use pocketmine\event\CancellableTrait;
+use pocketmine\player\Player;
 
-final class LegacyEntityIdToStringIdMap extends LegacyToStringBidirectionalIdMap{
-	use SingletonTrait;
+/**
+ * Called when a player uses an emote.
+ */
+class PlayerEmoteEvent extends PlayerEvent implements Cancellable{
+	use CancellableTrait;
 
-	public function __construct(){
-		parent::__construct(Path::join(\pocketmine\BEDROCK_DATA_PATH, 'entity_id_map.json'));
+	public function __construct(
+		Player $player,
+		private string $emoteId
+	){
+		$this->player = $player;
 	}
+
+	public function getEmoteId() : string{
+		return $this->emoteId;
+	}
+
+	public function setEmoteId(string $emoteId) : void{
+		$this->emoteId = $emoteId;
+	}
+
 }

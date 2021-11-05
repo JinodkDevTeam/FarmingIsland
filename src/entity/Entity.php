@@ -980,7 +980,7 @@ abstract class Entity{
 
 	final public function scheduleUpdate() : void{
 		if($this->closed){
-			throw new \InvalidStateException("Cannot schedule update on garbage entity " . get_class($this));
+			throw new \LogicException("Cannot schedule update on garbage entity " . get_class($this));
 		}
 		$this->getWorld()->updateEntities[$this->id] = $this;
 	}
@@ -1436,14 +1436,11 @@ abstract class Entity{
 	}
 
 	public function spawnTo(Player $player) : void{
-		if($player->getWorld() !== $this->getWorld()){
-			throw new \InvalidArgumentException("Player is not in the same world");
-		}
 		$id = spl_object_id($player);
 		//TODO: this will cause some visible lag during chunk resends; if the player uses a spawn egg in a chunk, the
 		//created entity won't be visible until after the resend arrives. However, this is better than possibly crashing
 		//the player by sending them entities too early.
-		if(!isset($this->hasSpawned[$id]) and $player->hasReceivedChunk($this->location->getFloorX() >> Chunk::COORD_BIT_SIZE, $this->location->getFloorZ() >> Chunk::COORD_BIT_SIZE)){
+		if(!isset($this->hasSpawned[$id]) and $player->getWorld() === $this->getWorld() and $player->hasReceivedChunk($this->location->getFloorX() >> Chunk::COORD_BIT_SIZE, $this->location->getFloorZ() >> Chunk::COORD_BIT_SIZE)){
 			$this->hasSpawned[$id] = $player;
 
 			$this->sendSpawnPacket($player);

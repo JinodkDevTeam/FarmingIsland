@@ -21,15 +21,31 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\data\bedrock;
+namespace pocketmine\promise;
 
-use pocketmine\utils\SingletonTrait;
-use Webmozart\PathUtil\Path;
+/**
+ * @internal
+ * @see PromiseResolver
+ * @phpstan-template TValue
+ */
+final class PromiseSharedData{
+	/**
+	 * @var \Closure[]
+	 * @phpstan-var array<int, \Closure(TValue) : void>
+	 */
+	public array $onSuccess = [];
 
-final class LegacyEntityIdToStringIdMap extends LegacyToStringBidirectionalIdMap{
-	use SingletonTrait;
+	/**
+	 * @var \Closure[]
+	 * @phpstan-var array<int, \Closure() : void>
+	 */
+	public array $onFailure = [];
 
-	public function __construct(){
-		parent::__construct(Path::join(\pocketmine\BEDROCK_DATA_PATH, 'entity_id_map.json'));
-	}
+	public bool $resolved = false;
+
+	/**
+	 * @var mixed
+	 * @phpstan-var TValue|null
+	 */
+	public $result = null;
 }

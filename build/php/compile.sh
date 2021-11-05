@@ -1,5 +1,5 @@
 #!/bin/bash
-[ -z "$PHP_VERSION" ] && PHP_VERSION="8.0.11"
+[ -z "$PHP_VERSION" ] && PHP_VERSION="8.0.12"
 
 ZLIB_VERSION="1.2.11"
 GMP_VERSION="6.2.1"
@@ -15,7 +15,7 @@ SQLITE3_YEAR="2021"
 SQLITE3_VERSION="3360000" #3.36.0
 LIBDEFLATE_VERSION="047aa84e01b38d82f3612810e357bd40f14a3d39" #1.8
 
-EXT_PTHREADS_VERSION="4213ce7dcdc2cf1d71d63e59950e33144220dfdb"
+EXT_PTHREADS_VERSION="4.0.0"
 EXT_YAML_VERSION="2.2.1"
 EXT_LEVELDB_VERSION="317fdcd8415e1566fc2835ce2bdb8e19b890f9f3"
 EXT_CHUNKUTILS2_VERSION="0.3.1"
@@ -814,10 +814,6 @@ function get_pecl_extension {
 
 echo "[PHP] Downloading additional extensions..."
 
-if [[ "$DO_STATIC" != "yes" ]] && [[ "$COMPILE_DEBUG" == "yes" ]]; then
-	get_pecl_extension "xdebug" "$EXT_XDEBUG_VERSION"
-fi
-
 get_github_extension "pthreads" "$EXT_PTHREADS_VERSION" "pmmp" "pthreads" #"v" needed for release tags because github removes the "v"
 #get_pecl_extension "pthreads" "$EXT_PTHREADS_VERSION"
 
@@ -1064,6 +1060,7 @@ fi
 echo " done!"
 
 if [[ "$DO_STATIC" != "yes" ]] && [[ "$COMPILE_DEBUG" == "yes" ]]; then
+	get_pecl_extension "xdebug" "$EXT_XDEBUG_VERSION"
 	echo -n "[xdebug] checking..."
 	cd "$BUILD_DIR/php/ext/xdebug"
 	$DIR/bin/php7/bin/phpize >> "$DIR/install.log" 2>&1

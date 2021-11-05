@@ -21,15 +21,18 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\data\bedrock;
+namespace pocketmine\world;
 
-use pocketmine\utils\SingletonTrait;
-use Webmozart\PathUtil\Path;
+use pocketmine\utils\NotCloneable;
+use pocketmine\utils\NotSerializable;
 
-final class LegacyEntityIdToStringIdMap extends LegacyToStringBidirectionalIdMap{
-	use SingletonTrait;
-
-	public function __construct(){
-		parent::__construct(Path::join(\pocketmine\BEDROCK_DATA_PATH, 'entity_id_map.json'));
-	}
+/**
+ * Represents a unique lock ID for use with World chunk locking.
+ *
+ * @see World::lockChunk()
+ * @see World::unlockChunk()
+ */
+final class ChunkLockId{
+	use NotCloneable;
+	use NotSerializable;
 }

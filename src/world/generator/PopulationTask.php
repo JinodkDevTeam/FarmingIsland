@@ -34,35 +34,38 @@ use pocketmine\world\World;
 use function array_map;
 use function igbinary_serialize;
 use function igbinary_unserialize;
-use function intdiv;
 
+/**
+ * @phpstan-type OnCompletion \Closure(Chunk $centerChunk, array<int, Chunk> $adjacentChunks) : void
+ */
 class PopulationTask extends AsyncTask{
-	private const TLS_KEY_WORLD = "world";
+	private const TLS_KEY_ON_COMPLETION = "onCompletion";
 
-	/** @var int */
-	public $worldId;
-	/** @var int */
-	private $chunkX;
-	/** @var int */
-	private $chunkZ;
+	private int $worldId;
+	private int $chunkX;
+	private int $chunkZ;
 
-	/** @var string|null */
-	public $chunk;
+	private ?string $chunk;
 
 	private string $adjacentChunks;
 
-	public function __construct(World $world, int $chunkX, int $chunkZ, ?Chunk $chunk){
-		$this->worldId = $world->getId();
+	/**
+	 * @param Chunk[]|null[] $adjacentChunks
+	 * @phpstan-param array<int, Chunk|null> $adjacentChunks
+	 * @phpstan-param OnCompletion $onCompletion
+	 */
+	public function __construct(int $worldId, int $chunkX, int $chunkZ, ?Chunk $chunk, array $adjacentChunks, \Closure $onCompletion){
+		$this->worldId = $worldId;
 		$this->chunkX = $chunkX;
 		$this->chunkZ = $chunkZ;
 		$this->chunk = $chunk !== null ? FastChunkSerializer::serializeTerrain($chunk) : null;
 
 		$this->adjacentChunks = igbinary_serialize(array_map(
 			fn(?Chunk $c) => $c !== null ? FastChunkSerializer::serializeTerrain($c) : null,
-			$world->getAdjacentChunks($chunkX, $chunkZ)
+			$adjacentChunks
 		)) ?? throw new AssumptionFailedError("igbinary_serialize() returned null");
 
-		$this->storeLocal(self::TLS_KEY_WORLD, $world);
+		$this->storeLocal(self::TLS_KEY_ON_COMPLETION, $onCompletion);
 	}
 
 	public function onRun() : void{
@@ -86,10 +89,9 @@ class PopulationTask extends AsyncTask{
 
 		/** @var Chunk[] $resultChunks */
 		$resultChunks = []; //this is just to keep phpstan's type inference happy
-		foreach($chunks as $i => $c){
-			$cX = (-1 + $i % 3) + $this->chunkX;
-			$cZ = (-1 + intdiv($i, 3)) + $this->chunkZ;
-			$resultChunks[$i] = self::setOrGenerateChunk($manager, $generator, $cX, $cZ, $c);
+		foreach($chunks as $relativeChunkHash => $c){
+			World::getXZ($relativeChunkHash, $relativeX, $relativeZ);
+			$resultChunks[$relativeChunkHash] = self::setOrGenerateChunk($manager, $generator, $this->chunkX + $relativeX, $this->chunkZ + $relativeZ, $c);
 		}
 		$chunks = $resultChunks;
 
@@ -103,8 +105,8 @@ class PopulationTask extends AsyncTask{
 		$this->chunk = FastChunkSerializer::serializeTerrain($chunk);
 
 		$serialChunks = [];
-		foreach($chunks as $i => $c){
-			$serialChunks[$i] = $c->isTerrainDirty() ? FastChunkSerializer::serializeTerrain($c) : null;
+		foreach($chunks as $relativeChunkHash => $c){
+			$serialChunks[$relativeChunkHash] = $c->isTerrainDirty() ? FastChunkSerializer::serializeTerrain($c) : null;
 		}
 		$this->adjacentChunks = igbinary_serialize($serialChunks) ?? throw new AssumptionFailedError("igbinary_serialize() returned null");
 	}
@@ -124,29 +126,28 @@ class PopulationTask extends AsyncTask{
 	}
 
 	public function onCompletion() : void{
-		/** @var World $world */
-		$world = $this->fetchLocal(self::TLS_KEY_WORLD);
-		if($world->isLoaded()){
-			$chunk = $this->chunk !== null ?
-				FastChunkSerializer::deserializeTerrain($this->chunk) :
-				throw new AssumptionFailedError("Center chunk should never be null");
+		/**
+		 * @var \Closure $onCompletion
+		 * @phpstan-var OnCompletion $onCompletion
+		 */
+		$onCompletion = $this->fetchLocal(self::TLS_KEY_ON_COMPLETION);
 
-			/**
-			 * @var string[]|null[] $serialAdjacentChunks
-			 * @phpstan-var array<int, string|null> $serialAdjacentChunks
-			 */
-			$serialAdjacentChunks = igbinary_unserialize($this->adjacentChunks);
-			$adjacentChunks = [];
-			foreach($serialAdjacentChunks as $i => $c){
-				if($c !== null){
-					$xx = -1 + $i % 3;
-					$zz = -1 + intdiv($i, 3);
+		$chunk = $this->chunk !== null ?
+			FastChunkSerializer::deserializeTerrain($this->chunk) :
+			throw new AssumptionFailedError("Center chunk should never be null");
 
-					$adjacentChunks[World::chunkHash($this->chunkX + $xx, $this->chunkZ + $zz)] = FastChunkSerializer::deserializeTerrain($c);
-				}
+		/**
+		 * @var string[]|null[] $serialAdjacentChunks
+		 * @phpstan-var array<int, string|null> $serialAdjacentChunks
+		 */
+		$serialAdjacentChunks = igbinary_unserialize($this->adjacentChunks);
+		$adjacentChunks = [];
+		foreach($serialAdjacentChunks as $relativeChunkHash => $c){
+			if($c !== null){
+				$adjacentChunks[$relativeChunkHash] = FastChunkSerializer::deserializeTerrain($c);
 			}
-
-			$world->generateChunkCallback($this->chunkX, $this->chunkZ, $chunk, $adjacentChunks);
 		}
+
+		$onCompletion($chunk, $adjacentChunks);
 	}
 }

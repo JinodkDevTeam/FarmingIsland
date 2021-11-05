@@ -21,15 +21,26 @@
 
 declare(strict_types=1);
 
-namespace pocketmine\data\bedrock;
+namespace pocketmine\crash;
 
-use pocketmine\utils\SingletonTrait;
-use Webmozart\PathUtil\Path;
+final class CrashDumpDataGeneral{
 
-final class LegacyEntityIdToStringIdMap extends LegacyToStringBidirectionalIdMap{
-	use SingletonTrait;
-
-	public function __construct(){
-		parent::__construct(Path::join(\pocketmine\BEDROCK_DATA_PATH, 'entity_id_map.json'));
-	}
+	/**
+	 * @param string[] $composer_libraries
+	 * @phpstan-param array<string, string> $composer_libraries
+	 */
+	public function __construct(
+		public string $name,
+		public string $base_version,
+		public int $build,
+		public bool $is_dev,
+		public int $protocol,
+		public string $git,
+		public string $uname,
+		public string $php,
+		public string $zend,
+		public string $php_os,
+		public string $os,
+		public array $composer_libraries,
+	){}
 }
