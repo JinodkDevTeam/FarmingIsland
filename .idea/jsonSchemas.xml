@@ -12,7 +12,31 @@
               <option name="patterns">
                 <list>
                   <Item>
+                    <option name="path" value="plugins/Backpack/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/Bank/plugin.yml" />
+                  </Item>
+                  <Item>
                     <option name="path" value="plugins/CursedCraftingTable/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI-main/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI/CustomBreakTimeExample/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CustomBreakTimeAPI/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/devirion-4.0/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/ExamplePlugin/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/FavoriteIsland/plugin.yml" />
                   </Item>
                   <Item>
                     <option name="path" value="plugins/FI-FishingModule/plugin.yml" />
@@ -30,37 +54,16 @@
                     <option name="path" value="plugins/ItemLevel/plugin.yml" />
                   </Item>
                   <Item>
+                    <option name="path" value="plugins/PickaxeLevel/plugin.yml" />
+                  </Item>
+                  <Item>
                     <option name="path" value="plugins/RankColor-4.0/plugin.yml" />
                   </Item>
                   <Item>
                     <option name="path" value="plugins/ShootItems/plugin.yml" />
                   </Item>
                   <Item>
-                    <option name="path" value="plugins/Bank/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/ExamplePlugin/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/FavoriteIsland/plugin.yml" />
-                  </Item>
-                  <Item>
                     <option name="path" value="plugins/YandereDevStyle/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/CustomBreakTimeAPI-main/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/CustomBreakTimeAPI/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/CustomBreakTimeAPI/CustomBreakTimeExample/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/PickaxeLevel/plugin.yml" />
-                  </Item>
-                  <Item>
-                    <option name="path" value="plugins/Backpack/plugin.yml" />
                   </Item>
                 </list>
               </option>
