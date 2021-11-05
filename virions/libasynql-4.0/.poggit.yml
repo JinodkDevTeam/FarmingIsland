@@ -1,0 +1,14 @@
+# Note: libasynql is placed above LibasynqlExample so that libasynql is built before LibasynqlExample. This ensures that the latest version of libasynql is used to infect LibasynqlExample.
+projects:
+  libasynql:
+    type: library
+    model: virion
+    path: libasynql
+
+# possible shade strategies:
+#   syntax (use token_get_all() to scan all syntactical references)
+#   single (use str_replace(); will also replace single-quoted references)
+#   double (use str_replace() with \ and \\; will also replace double-quoted references
+
+# possible formats: virion
+# possible vendors: poggit-project, raw

@@ -11,5 +11,7 @@ api:
   - 4.0.0-BETA7
   - 4.0.0-BETA8
   - 4.0.0-BETA9
+  - 4.0.0-BETA10
+  - 4.0.0-BETA11
 version: 1.4.0-alpha
 antigen: jojoe77777\FormAPI
