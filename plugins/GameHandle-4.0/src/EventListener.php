@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle;
 
 use Exception;
-use FishingModule\event\PlayerFishEvent;
+use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\GameMenu\Menu;
 use pocketmine\event\block\BlockBreakEvent;
@@ -91,7 +91,7 @@ class EventListener implements Listener{
 		$this->slevel->onInteract($event);
 	}
 
-	public function onFish(PlayerFishEvent $event){
+	public function onFish(EntityFishEvent $event){
 		$this->fish->onFish($event);
 	}
 

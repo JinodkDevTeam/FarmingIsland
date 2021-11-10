@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace FishingModule\item;
 
 use FishingModule\entity\FishingHook;
-use FishingModule\event\PlayerFishEvent;
+use FishingModule\event\EntityFishEvent;
 use FishingModule\Loader;
 use pocketmine\item\Durable;
 use pocketmine\item\ItemUseResult;
@@ -32,7 +32,6 @@ class FishingRod extends Durable{
 			$hook = Loader::getInstance()->getFishingHook($player);
 			$hook?->onRetraction();
 			$this->applyDamage(1);
-			Loader::getInstance()->setFishingHook($player, null);
 		}
 		return ItemUseResult::SUCCESS();
 	}
@@ -41,7 +40,7 @@ class FishingRod extends Durable{
 		$location = $player->getLocation();
 		$location->y += $player->getEyeHeight();
 		$entity = new FishingHook($location, $player);
-		$ev = new PlayerFishEvent(Loader::getInstance(), $player, $entity, PlayerFishEvent::STATE_FISHING);
+		$ev = new EntityFishEvent(Loader::getInstance(), $player, $entity, EntityFishEvent::STATE_FISHING);
 		$ev->call();
 		if($ev->isCancelled()){
 			return false;

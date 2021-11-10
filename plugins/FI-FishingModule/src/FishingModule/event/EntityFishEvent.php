@@ -13,7 +13,7 @@ use pocketmine\event\plugin\PluginEvent;
 use pocketmine\item\Item;
 use pocketmine\plugin\Plugin;
 
-class PlayerFishEvent extends PluginEvent implements Cancellable{
+class EntityFishEvent extends PluginEvent implements Cancellable{
 	use CancellableTrait;
 
 	public const STATE_FISHING = 0;

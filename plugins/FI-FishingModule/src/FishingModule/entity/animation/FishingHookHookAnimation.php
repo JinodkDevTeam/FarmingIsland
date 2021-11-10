@@ -7,6 +7,7 @@ namespace FishingModule\entity\animation;
 use FishingModule\entity\FishingHook;
 use pocketmine\entity\animation\Animation;
 use pocketmine\network\mcpe\protocol\ActorEventPacket;
+use pocketmine\network\mcpe\protocol\types\ActorEvent;
 
 final class FishingHookHookAnimation implements Animation{
 
@@ -18,7 +19,7 @@ final class FishingHookHookAnimation implements Animation{
 
 	public function encode() : array{
 		return [
-			ActorEventPacket::create($this->fishinghook->getId(), ActorEventPacket::FISH_HOOK_HOOK, 0)
+			ActorEventPacket::create($this->fishinghook->getId(), ActorEvent::FISH_HOOK_HOOK, 0)
 		];
 	}
 }
