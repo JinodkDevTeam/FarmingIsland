@@ -5,4 +5,7 @@
 # - whitelist: Only plugins which ARE listed will load.
 mode: blacklist
 #List names of plugins here.
-plugins: []
+plugins:
+  - PickaxeLevel
+  - ItemLevel
+  - ExplosiveSnowball

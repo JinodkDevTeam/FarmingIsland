@@ -50,7 +50,7 @@ class CreateMailUI extends BaseUI{
 			foreach($inventory->getContents() as $item){
 				array_push($items, $item);
 			}
-			$data = ItemUtils::MailItemsEncode($items);
+			$data = ItemUtils::ItemArray2string($items);
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 			$notice = Server::getInstance()->getPlayerExact($to);

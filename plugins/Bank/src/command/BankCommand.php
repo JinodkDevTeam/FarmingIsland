@@ -7,6 +7,7 @@ use Bank\Bank;
 use Bank\ui\BankUI;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\lang\Translatable;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\plugin\PluginOwnedTrait;
@@ -16,7 +17,7 @@ class BankCommand extends Command implements PluginOwned{
 
 	private Bank $bank;
 
-	public function __construct(Bank $bank, string $name, string $description = "", ?string $usageMessage = null, array $aliases = []){
+	public function __construct(Bank $bank, string $name, Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = []){
 		parent::__construct($name, $description, $usageMessage, $aliases);
 		$this->bank = $bank;
 		$this->setDescription("Bank manager");

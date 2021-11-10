@@ -4,28 +4,30 @@ declare(strict_types=1);
 
 namespace muqsit\vanillagenerator;
 
-use muqsit\vanillagenerator\generator\nether\NetherGenerator;
-use muqsit\vanillagenerator\generator\overworld\OverworldGenerator;
+use muqsit\vanillagenerator\generator\NetherGenerator;
+use muqsit\vanillagenerator\generator\OverworldGenerator;
 use pocketmine\plugin\PluginBase;
 use pocketmine\world\generator\GeneratorManager;
 
-final class Loader extends PluginBase{
+final class Loader extends PluginBase
+{
 
-	private const EXT_NOISE_VERSION = "1.3.0";
+	private const EXT_MCGENERATOR_VERSION = "2.0.0";
 
-	public function onLoad() : void{
-		if(!extension_loaded('extnoise')){
-			$this->getLogger()->critical("Unable to find the extnoise extension.");
+	public function onLoad(): void
+	{
+		if (!extension_loaded('vanillagenerator')) {
+			$this->getLogger()->critical("Unable to find the vanillagenerator extension.");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return;
-		}elseif(($phpver = phpversion('extnoise')) < self::EXT_NOISE_VERSION){
-			$this->getLogger()->critical("Version " . self::EXT_NOISE_VERSION . " is required, you have $phpver.");
+		} elseif (($phpver = phpversion('vanillagenerator')) < self::EXT_MCGENERATOR_VERSION) {
+			$this->getLogger()->critical("vanillagenerator extension version " . self::EXT_MCGENERATOR_VERSION . " is required, you have $phpver.");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return;
 		}
 
 		$generatorManager = GeneratorManager::getInstance();
-		$generatorManager->addGenerator(NetherGenerator::class, "vanilla_nether");
-		$generatorManager->addGenerator(OverworldGenerator::class, "vanilla_overworld");
+		$generatorManager->addGenerator(NetherGenerator::class, "vanilla_nether", fn() => null);
+		$generatorManager->addGenerator(OverworldGenerator::class, "vanilla_overworld", fn() => null);
 	}
 }

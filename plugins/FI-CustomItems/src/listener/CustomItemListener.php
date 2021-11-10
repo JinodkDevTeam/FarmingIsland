@@ -4,9 +4,12 @@ declare(strict_types=1);
 namespace CustomItems\listener;
 
 use CustomItems\item\CustomItemFactory;
+use pocketmine\entity\Human;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerEntityInteractEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 
@@ -14,69 +17,94 @@ class CustomItemListener implements Listener{
 	/**
 	 * @param BlockPlaceEvent $event
 	 *
-	 * @priority HIGH
+	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
 	public function onPlace(BlockPlaceEvent $event) : void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$event->cancel();
+			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			if($citem == null) return;
+			$citem->onPlace($event);
 		}
 	}
 
 	/**
 	 * @param PlayerInteractEvent $event
 	 *
-	 * @priority MONITOR
+	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onInteract(PlayerInteractEvent $event){
+	public function onInteract(PlayerInteractEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$player = $event->getPlayer();
-			$blockClicked = $event->getBlock();
-			$face = $event->getFace();
-			$clickVector = $event->getTouchVector();
-			$blockReplace = $blockClicked->getSide($face);
-			$citem->onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector);
+			$citem->onInteractBlock($event);
 		}
 	}
 
 	/**
 	 * @param PlayerItemUseEvent $event
 	 *
-	 * @priority MONITOR
+	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onItemUse(PlayerItemUseEvent $event){
+	public function onItemUse(PlayerItemUseEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$player = $event->getPlayer();
-			$directionVector = $event->getDirectionVector();
-			$citem->onClickAir($player, $directionVector);
+			$citem->onClickAir($event);
 		}
 	}
 
 	/**
 	 * @param BlockBreakEvent $event
 	 *
-	 * @priority MONITOR
+	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onBreak(BlockBreakEvent $event){
-		$item = $event->getItem();
+	public function onBreak(BlockBreakEvent $event): void{
+		$item = $event->getPlayer()->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-
-			$block = $event->getBlock();
-			$citem->onDestroyBlock($block);
+			$citem->onDestroyBlock($event);
 		}
 	}
+
+	/**
+	 * @param EntityDamageByEntityEvent $event
+	 *
+	 * @priority HIGHEST
+	 * @handleCancelled FALSE
+	 */
+	public function onDamage(EntityDamageByEntityEvent $event): void{
+		$damager = $event->getDamager();
+		if ($damager instanceof Human){
+			$item = $damager->getInventory()->getItemInHand();
+			if($item->getNamedTag()->getTag("CustomItemID") !== null){
+				$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+				if($citem == null) return;
+				$citem->onAttackEntity($event);
+			}
+		}
+	}
+
+	/**
+	 * @param PlayerEntityInteractEvent $event
+	 * @priority HIGHEST
+	 * @handleCancelled FALSE
+	 */
+	public function onEntityInteract(PlayerEntityInteractEvent $event): void{
+		$player = $event->getPlayer();
+		$item = $player->getInventory()->getItemInHand();
+		if($item->getNamedTag()->getTag("CustomItemID") !== null){
+			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			if($citem == null) return;
+			$citem->onInteractEntity($event);
+		}
+	}
+
 }

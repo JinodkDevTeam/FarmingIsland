@@ -8,6 +8,7 @@ author: NgLamVN
 commands:
   clearlagg:
     description: Instant Clear lagggg !!
+    permission: clearlagg.cmd
 permissions:
   clearlagg.cmd:
     default: op

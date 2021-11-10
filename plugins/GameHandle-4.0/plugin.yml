@@ -93,7 +93,7 @@ permissions:
     default: op
   gh.cgive:
     default: op
-  gh.pos:
-    default: true
-  gh.pos.other:
+  gh.playerinfo:
+    default: op
+  gh.playerinfo.other:
     default: op

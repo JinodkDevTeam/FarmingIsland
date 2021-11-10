@@ -52,8 +52,6 @@ class EventListener implements Listener{
 		$this->menu->sendUpdatesForm($player);
 		Server::getInstance()->dispatchCommand($player, "is home");
 
-		$this->getCore()->skin[$player->getName()] = $player->getSkin();
-
 		$this->getCore()->getPlayerStatManager()->registerPlayerStat($player);
 	}
 

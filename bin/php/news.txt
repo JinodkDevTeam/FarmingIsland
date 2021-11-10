@@ -1,5 +1,96 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+21 Oct 2021, PHP 8.0.12
+
+- CLI:
+  . Fixed bug #81496 (Server logs incorrect request method). (lauri)
+
+- Core:
+  . Fixed bug #81435 (Observer current_observed_frame may point to an old
+    (overwritten) frame). (Bob)
+  . Fixed bug #81380 (Observer may not be initialized properly). (krakjoe)
+
+- DOM:
+  . Fixed bug #81433 (DOMElement::setIdAttribute() called twice may remove ID).
+    (Viktor Volkov)
+
+- FFI:
+  . Fixed bug #79576 ("TYPE *" shows unhelpful message when type is not
+    defined). (Dmitry)
+
+- FPM:
+  . Fixed bug #81026 (PHP-FPM oob R/W in root process leading to privilege
+    escalation) (CVE-2021-21703). (Jakub Zelenka)
+
+- Fileinfo:
+  . Fixed bug #78987 (High memory usage during encoding detection). (Anatol)
+
+- Filter:
+  . Fixed bug #61700 (FILTER_FLAG_IPV6/FILTER_FLAG_NO_PRIV|RES_RANGE failing).
+    (cmb, Nikita)
+
+- Opcache:
+  . Fixed bug #81472 (Cannot support large linux major/minor device number when
+    read /proc/self/maps). (Lin Yang)
+
+- Reflection:
+  . ReflectionAttribute is no longer final. (sasezaki)
+
+- SPL:
+  . Fixed bug #80663 (Recursive SplFixedArray::setSize() may cause double-free).
+    (cmb, Nikita, Tyson Andre)
+  . Fixed bug #81477 (LimitIterator + SplFileObject regression in 8.0.1). (cmb)
+
+- Standard:
+  . Fixed bug #69751 (Change Error message of sprintf/printf for missing/typo
+    position specifier). (Aliaksandr Bystry)
+
+- Streams:
+  . Fixed bug #81475 (stream_isatty emits warning with attached stream wrapper).
+    (cmb)
+
+- XML:
+  . Fixed bug #70962 (XML_OPTION_SKIP_WHITE strips embedded whitespace).
+    (Aliaksandr Bystry, cmb)
+
+- Zip:
+  . Fixed bug #81490 (ZipArchive::extractTo() may leak memory). (cmb, Remi)
+  . Fixed bug #77978 (Dirname ending in colon unzips to wrong dir). (cmb)
+
+23 Sep 2021, PHP 8.0.11
+
+- Core:
+  . Fixed bug #81302 (Stream position after stream filter removed). (cmb)
+  . Fixed bug #81346 (Non-seekable streams don't update position after write).
+    (cmb)
+  . Fixed bug #73122 (Integer Overflow when concatenating strings). (cmb)
+
+-GD:
+  . Fixed bug #53580 (During resize gdImageCopyResampled cause colors change).
+    (cmb)
+
+- Opcache:
+  . Fixed bug #81353 (segfault with preloading and statically bound closure).
+    (Nikita)
+
+- Shmop:
+  . Fixed bug #81407 (shmop_open won't attach and causes php to crash). (cmb)
+
+- Standard:
+  . Fixed bug #71542 (disk_total_space does not work with relative paths). (cmb)
+  . Fixed bug #81400 (Unterminated string in dns_get_record() results). (cmb)
+
+- SysVMsg:
+  . Fixed bug #78819 (Heap Overflow in msg_send). (cmb)
+
+- XML:
+  . Fixed bug #81351 (xml_parse may fail, but has no error code). (cmb, Nikita)
+
+- Zip:
+  . Fixed bug #80833 (ZipArchive::getStream doesn't use setPassword). (Remi)
+  . Fixed bug #81420 (ZipArchive::extractTo extracts outside of destination).
+    (CVE-2021-21706) (cmb)
+
 26 Aug 2021, PHP 8.0.10
 
 - Core:
@@ -48,9 +139,6 @@ PHP                                                                        NEWS
 
 - PDO_ODBC:
   . Fixed bug #81252 (PDO_ODBC doesn't account for SQL_NO_TOTAL). (cmb)
-
-- Phar:
-  . Fixed bug #81211: Symlinks are followed when creating PHAR archive (cmb)
 
 - Shmop:
   . Fixed bug #81283 (shmop can't read beyond 2147483647 bytes). (cmb, Nikita)
@@ -115,6 +203,7 @@ PHP                                                                        NEWS
     (Nikita)
   . Fixed bug #81070 (Integer underflow in memory limit comparison).
     (Peter van Dommelen)
+  . Fixed bug #81122: SSRF bypass in FILTER_VALIDATE_URL. (CVE-2021-21705) (cmb)
 
 - Bzip2:
   . Fixed bug #81092 (fflush before stream_filter_remove corrupts stream).
@@ -127,6 +216,9 @@ PHP                                                                        NEWS
 - GMP:
   . Fixed bug #81119 (GMP operators throw errors with wrong parameter names).
     (Nikita)
+
+- MySQLnd:
+  . Fixed bug #80761 (PDO uses too much memory). (Nikita)
 
 - OCI8:
   . Fixed bug #81088 (error in regression test for oci_fetch_object() and
@@ -141,8 +233,13 @@ PHP                                                                        NEWS
   . Fixed bug #76694 (native Windows cert verification uses CN as sever name).
     (cmb)
 
-- MySQLnd:
-  . Fixed bug #80761 (PDO uses too much memory). (Nikita)
+- PDO_Firebird:
+  . Fixed bug #76448: Stack buffer overflow in firebird_info_cb.
+    (CVE-2021-21704) (cmb)
+  . Fixed bug #76449: SIGSEGV in firebird_handle_doer. (CVE-2021-21704) (cmb)
+  . Fixed bug #76450: SIGSEGV in firebird_stmt_execute. (CVE-2021-21704) (cmb)
+  . Fixed bug #76452: Crash while parsing blob data in firebird_fetch_blob.
+    (CVE-2021-21704) (cmb)
 
 - readline:
   . Fixed bug #72998 (invalid read in readline completion). (krakjoe)
