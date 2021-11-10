@@ -30,21 +30,24 @@ class FishingRod extends Durable{
 			}
 		}else{
 			$hook = Loader::getInstance()->getFishingHook($player);
-			$hook?->handleHookRetraction();
+			$hook?->onRetraction();
 			$this->applyDamage(1);
+			Loader::getInstance()->setFishingHook($player, null);
 		}
 		return ItemUseResult::SUCCESS();
 	}
 
 	protected function spawnFishingHook(Player $player, Vector3 $direction) : bool{
-		$entity = new FishingHook($player->getLocation(), $player);
+		$location = $player->getLocation();
+		$location->y += $player->getEyeHeight();
+		$entity = new FishingHook($location, $player);
 		$ev = new PlayerFishEvent(Loader::getInstance(), $player, $entity, PlayerFishEvent::STATE_FISHING);
 		$ev->call();
 		if($ev->isCancelled()){
 			return false;
 		}
-		$entity->spawnToAll();
 		$entity->setMotion($direction->multiply(1.4));
+		$entity->spawnToAll();
 		Loader::getInstance()->setFishingHook($player, $entity);
 		return true;
 	}

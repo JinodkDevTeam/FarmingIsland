@@ -8,6 +8,7 @@ use pocketmine\event\Listener;
 use pocketmine\math\Vector3;
 
 class GrapplingHook implements Listener{
+
 	public function onFish(PlayerFishEvent $event){
 		$item = $event->getPlayer()->getInventory()->getItemInHand();
 		$nbt = $item->getNamedTag();
