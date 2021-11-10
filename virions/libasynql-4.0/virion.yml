@@ -17,6 +17,8 @@ api:
 - 4.0.0-BETA9
 - 4.0.0-BETA10
 - 4.0.0-BETA11
+- 4.0.0-BETA12
+- 4.0.0-BETA13
 build:
   builder: PoggitCI/1.0-beta/beta poggit-virion/1.0
   builderName: poggit
