@@ -9,7 +9,6 @@ use Exception;
 use muqsit\invmenu\InvMenuHandler;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
-use NgLamVN\GameHandle\InvCrashFix\IC_PacketHandler;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
@@ -39,7 +38,6 @@ class Core extends PluginBase{
 
 			$plmanager = $this->getServer()->getPluginManager();
 			$plmanager->registerEvents(new EventListener($this), $this);
-			$plmanager->registerEvents(new IC_PacketHandler(), $this);
 			$plmanager->registerEvents(new CT_PacketHandler(), $this);
 			new InitCommand($this);
 			new InitTask($this);
