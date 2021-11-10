@@ -4,6 +4,7 @@
 -- #        { auction
 CREATE TABLE IF NOT EXISTS Auction(
     Id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    AuctionType INTEGER NOT NULL DEFAULT 0,
     Player VARCHAR(40) NOT NULL,
     Item BLOB NOT NULL,
     Category TEXT NOT NULL,
@@ -34,13 +35,15 @@ DELETE FROM Bid WHERE Id = :id;
 -- #    }
 -- #    { register
 -- #        { auction
+-- #            :auctiontype int
 -- #            :player string
 -- #            :item string
 -- #            :category string
 -- #            :price floats
 -- #            :time int
 -- #            :auctiontime int
-INSERT OR REPLACE INTO Auction(Player, Item, Category, Price, Time, AuctionTime) VALUES (:player, :item, :category, :price, :time, :auctiontime);
+INSERT OR REPLACE INTO Auction(AuctionType, Player, Item, Category, Price, Time, AuctionTime)
+VALUES (:auctiontype, :player, :item, :category, :price, :time, :auctiontime);
 -- #        }
 -- #        { bid
 -- #            :player string
@@ -92,6 +95,10 @@ SELECT * FROM Auction WHERE Expired = FALSE AND Category = :category;
 -- #            { all.expired
 -- #                :category string
 SELECT * FROM Auction WHERE (Expired = TRUE) AND (Category = :category) AND (HaveBid = FALSE);
+-- #            }
+-- #            { type
+-- #                :type int
+SELECT * FROM Auction WHERE (Expired = FALSE) AND (AuctionType = :type);
 -- #            }
 -- #        }
 -- #        { bid
