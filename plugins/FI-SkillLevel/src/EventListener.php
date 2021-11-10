@@ -18,7 +18,6 @@ class EventListener implements Listener{
 	 * @param PlayerJoinEvent $event
 	 *
 	 * @priority HIGHEST
-	 * @handleCancelled FALSE
 	 */
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();

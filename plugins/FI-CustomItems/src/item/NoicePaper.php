@@ -3,14 +3,12 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
-use pocketmine\block\Block;
+use CustomItems\item\utils\RarityHelper;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
-use pocketmine\item\ItemUseResult;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
 class NoicePaper extends CustomItem{
 
@@ -19,17 +17,17 @@ class NoicePaper extends CustomItem{
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
-		$item->setCustomName(RarityType::toColor($this->getRarity()) . $this->getName());
+		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"NOICE !",
 			"Turn every clicked block into Diamond Block",
-			RarityType::toString($this->getRarity())
+			RarityHelper::toString($this->getRarity())
 		]);
 		return $item;
 	}
 
-	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
+	public function onInteractBlock(PlayerInteractEvent $event) : void{
+		$blockClicked =  $event->getBlock();
 		$blockClicked->getPosition()->getWorld()->setBlock($blockClicked->getPosition()->asVector3(), VanillaBlocks::DIAMOND());
-		return parent::onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector);
 	}
 }

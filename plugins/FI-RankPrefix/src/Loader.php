@@ -45,7 +45,6 @@ class Loader extends PluginBase implements Listener{
 	 * @param PlaceholderResolveEvent $event
 	 *
 	 * @priority NORMAL
-	 * @handleCancelled FALSE
 	 */
 	public function onPlaceHolderResovle(PlaceholderResolveEvent $event){
 		if($event->getPlaceholderName() === "prefix.rank"){

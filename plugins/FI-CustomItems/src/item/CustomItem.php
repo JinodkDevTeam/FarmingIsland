@@ -3,23 +3,25 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
-use pocketmine\block\Block;
+use CustomItems\item\utils\Rarity;
 use pocketmine\data\bedrock\EnchantmentIdMap;
-use pocketmine\entity\Entity;
+use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\block\BlockPlaceEvent;
+use pocketmine\event\entity\EntityDamageByEntityEvent;
+use pocketmine\event\player\PlayerEntityInteractEvent;
+use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemUseResult;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
 class CustomItem{
 
 	protected CustomItemIdentifier $identifier;
 	protected string $name;
-	protected int $rarity;
+	protected Rarity $rarity;
 
-	public function __construct(CustomItemIdentifier $identifier, string $name, int $rarity){
+	public function __construct(CustomItemIdentifier $identifier, string $name, Rarity $rarity){
 		$this->identifier = $identifier;
 		$this->name = $name;
 		$this->rarity = $rarity;
@@ -45,7 +47,7 @@ class CustomItem{
 		return $this->name;
 	}
 
-	public function getRarity() : int{
+	public function getRarity() : Rarity{
 		return $this->rarity;
 	}
 
@@ -54,24 +56,18 @@ class CustomItem{
 		return $item;
 	}
 
-	public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onInteractBlock(PlayerInteractEvent $event) : void{ }
 
-	public function onClickAir(Player $player, Vector3 $directionVector) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onClickAir(PlayerItemUseEvent $event) : void{ }
 
-	public function onReleaseUsing(Player $player) : ItemUseResult{
-		return ItemUseResult::NONE();
-	}
+	public function onDestroyBlock(BlockBreakEvent $event) : void{ }
 
-	public function onDestroyBlock(Block $block) : bool{
-		return false;
-	}
+	public function onAttackEntity(EntityDamageByEntityEvent $event) : void{ }
 
-	public function onAttackEntity(Entity $victim) : bool{
-		return false;
+	public function onInteractEntity(PlayerEntityInteractEvent $event) : void{ }
+
+	public function onPlace(BlockPlaceEvent $event): void{
+		$event->cancel();
 	}
 
 }

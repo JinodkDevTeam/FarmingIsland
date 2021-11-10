@@ -1,9 +1,9 @@
 This snapshot was automatically generated on
-Tue, 07 Sep 2021 21:53:25 +0000
+Tue, 02 Nov 2021 12:35:52 +0000
 
-Version: 8.0.10
+Version: 8.0.12
 Branch: HEAD
-Build: D:\a\1\s\pocketmine-php-sdk\php-src\x64\Release_TS
+Build: D:\a\php-build-scripts\php-build-scripts\pocketmine-php-sdk\php-src\x64\Release_TS
 
 Built-in Extensions
 ===========================
@@ -52,6 +52,7 @@ Module: php8ts.dll
 	nghttp2.dll
 	libsodium.dll
 	yaml.dll
+	vcruntime140_1.dll
 
 Module: libssl-1_1-x64.dll
 ===========================

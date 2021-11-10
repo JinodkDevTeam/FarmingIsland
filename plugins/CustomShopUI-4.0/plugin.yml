@@ -9,6 +9,7 @@ depend:
 commands:
   shop:
     description: "Opens CustomShopUI"
+    permission: shop.shop
 permissions:
   shop.shop:
     default: true

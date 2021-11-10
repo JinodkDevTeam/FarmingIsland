@@ -32,6 +32,6 @@ class InitCommand{
 		$cmd->register("notp", new NoTP($plugin));
 		$cmd->register("icgive", new IcGive($plugin)); //TODO: Slove NBT problem
 		$cmd->register("cgive", new CGive($plugin));
-		$cmd->register("pos", new Pos($plugin));
+		$cmd->register("pos", new PlayerInfo($plugin));
 	}
 }

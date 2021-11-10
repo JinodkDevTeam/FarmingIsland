@@ -150,7 +150,7 @@ class ItemUtils{
 	 *
 	 * @return string
 	 */
-	public static function MailItemsEncode(array $items): string{
+	public static function ItemArray2string(array $items): string{
 		$data = [];
 		foreach($items as $item){
 			array_push($data, $item->nbtSerialize());
@@ -163,7 +163,8 @@ class ItemUtils{
 	 *
 	 * @return Item[]
 	 */
-	public static function MailItemsDecode(string $data): array{
+	public static function string2ItemArray(string $data): array{
+		if ($data == "") return [];
 		$array = unserialize(utf8_decode($data));
 		$items = [];
 		foreach($array as $nbt){

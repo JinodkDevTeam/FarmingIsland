@@ -6,8 +6,6 @@ $finder = PhpCsFixer\Finder::create()
 	->in(__DIR__ . '/tests')
 	->in(__DIR__ . '/tools')
 	->notPath('plugins/DevTools')
-	->notPath('preprocessor')
-	->notContains('#ifndef COMPILE') //preprocessor will break if these are changed
 	->notName('PocketMine.php');
 
 return (new PhpCsFixer\Config)
@@ -62,6 +60,11 @@ return (new PhpCsFixer\Config)
 				'const',
 			],
 			'sort_algorithm' => 'alpha'
+		],
+		'phpdoc_line_span' => [
+			'property' => 'single',
+			'method' => null,
+			'const' => null
 		],
 		'phpdoc_trim' => true,
 		'phpdoc_trim_consecutive_blank_line_separation' => true,
