@@ -1,26 +1,22 @@
 <?php
-
 declare(strict_types=1);
 
 namespace FishingModule\entity;
 
 use FishingModule\entity\animation\FishingHookHookAnimation;
-use FishingModule\event\PlayerFishEvent;
+use FishingModule\event\EntityFishEvent;
 use FishingModule\item\FishingRod;
 use FishingModule\Loader;
 use pocketmine\block\Liquid;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Water;
-use pocketmine\entity\Entity;
 use pocketmine\entity\EntitySizeInfo;
+use pocketmine\entity\Human;
 use pocketmine\entity\Location;
 use pocketmine\entity\object\ItemEntity;
-use pocketmine\event\entity\EntityDamageByEntityEvent;
-use pocketmine\event\entity\EntityDamageEvent;
-use pocketmine\item\ItemFactory;
+use pocketmine\entity\projectile\Projectile;
 use pocketmine\item\VanillaItems;
 use pocketmine\math\AxisAlignedBB;
-use pocketmine\math\RayTraceResult;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
@@ -31,26 +27,21 @@ use pocketmine\world\particle\WaterParticle;
 use pocketmine\world\World;
 
 class FishingHook extends Projectile{
-	/** @var float */
+
 	protected $gravity = 0.1;
-	/** @var float */
-	protected $drag = 0.05;
-	protected ?Entity $caughtEntity;
-	protected int $ticksCatchable = 0;
-	protected int $ticksCaughtDelay = 0;
-	protected int $ticksCatchableDelay = 0;
+	protected $drag = 0.2;
+
+	protected int $ticksCatchable = 0; //How much time player can cactch items after hook is catchable
+	protected int $ticksCaughtDelay = 0; //How much time player need to wait until hook is ready to catch
+	protected int $ticksCatchableDelay = 0; //How much time player need to wait from hook is ready to catch to catchable (Line of particle appeard)
 	protected float $fishApproachAngle = 0;
 	protected Random $random;
+	//CaughtDelay (long) -> CatchableDelay (short) -> (able to catch) -> Catchable -> (unable to catch)
 
-	public function __construct(Location $location, ?Entity $shootingEntity, ?CompoundTag $nbt = null){
-		parent::__construct($location, $shootingEntity, $nbt);
+
+	public function __construct(Location $location, ?Human $shootingEntity, ?CompoundTag $nbt = null){
 		$this->random = new Random(intval(microtime(true) * 1000));
-
-		if($shootingEntity instanceof Player){
-			Loader::getInstance()->setFishingHook($shootingEntity, $this);
-
-			$this->handleHookCasting($this->motion->x, $this->motion->y, $this->motion->z, 1.5, 1.0);
-		}
+		parent::__construct($location, $shootingEntity, $nbt);
 	}
 
 	public function handleHookCasting(float $x, float $y, float $z, float $f1, float $f2){
@@ -69,27 +60,26 @@ class FishingHook extends Projectile{
 		$this->motion->z += $z;
 	}
 
+	public function getOwningEntity() : ?Human{
+		if ($this->ownerId !== null){
+			$player = $this->server->getWorldManager()->findEntity($this->ownerId);
+			if ($player instanceof Human){
+				return $player;
+			}
+		}
+		return null;
+	}
+
+	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }
+
 	public static function getNetworkTypeId() : string{ return EntityIds::FISHING_HOOK; }
 
-	public function onHitEntity(Entity $entityHit, RayTraceResult $hitResult) : void{
-		$entityHit->attack(new EntityDamageByEntityEvent($this, $entityHit, EntityDamageEvent::CAUSE_ENTITY_ATTACK, 0));
-
-		$this->mountEntity($entityHit);
-	}
-
-	public function attack(EntityDamageEvent $source) : void{
-		if($source instanceof EntityDamageByEntityEvent){
-			$source->cancel();
-		}
-		parent::attack($source);
-	}
-
 	public function onUpdate(int $currentTick) : bool{
-		if($this->isClosed()) return false;
-
 		$owner = $this->getOwningEntity();
-
-		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3());
+		if ($owner === null){
+			return false;
+		}
+		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3())->isSolid();
 
 		if($inGround){
 			$this->motion->x *= $this->random->nextFloat() * 0.2;
@@ -97,130 +87,159 @@ class FishingHook extends Projectile{
 			$this->motion->z *= $this->random->nextFloat() * 0.2;
 		}
 
-		$hasUpdate = parent::onUpdate($currentTick);
-
-		if($owner instanceof Player){
-			if($owner->isClosed() or !$owner->isAlive() or !($owner->getInventory()->getItemInHand() instanceof FishingRod) or $owner->getPosition()->distanceSquared($this->getPosition()) > 1024){
-				$this->flagForDespawn();
-			}
-
-			if(!$inGround){
-				$hasUpdate = true;
-
-				$f6 = 0.92;
-
-				if($this->onGround or $this->isCollidedHorizontally){
-					$f6 = 0.5;
-				}
-
-				$d10 = 0;
-
-				$bb = $this->getBoundingBox();
-
-				for($j = 0; $j < 5; ++$j){
-					$d1 = $bb->minY + ($bb->maxY - $bb->minY) * $j / 5;
-					$d3 = $bb->minY + ($bb->maxY - $bb->minY) * ($j + 1) / 5;
-
-					$bb2 = new AxisAlignedBB($bb->minX, $d1, $bb->minZ, $bb->maxX, $d3, $bb->maxZ);
-
-					if($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::WATER())){
-						$d10 += 0.2;
-					}
-				}
-
-				if($this->getPosition()->isValid() and $d10 > 0){
-					$l = 1;
-
-					// TODO: lightninstrike
-
-					if($this->ticksCatchable > 0){
-						--$this->ticksCatchable;
-
-						if($this->ticksCatchable <= 0){
-							$this->ticksCaughtDelay = 0;
-							$this->ticksCatchableDelay = 0;
-						}
-					}elseif($this->ticksCatchableDelay > 0){
-						$this->ticksCatchableDelay -= $l;
-
-						if($this->ticksCatchableDelay <= 0){
-							$this->broadcastAnimation(new FishingHookHookAnimation($this));
-
-							$this->motion->y -= 0.2;
-							$this->ticksCatchable = mt_rand(10, 30);
-						}else{
-							$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
-							$f7 = $this->fishApproachAngle * 0.01745;
-							$f10 = sin($f7);
-							$f11 = cos($f7);
-							$d13 = $this->getPosition()->getX() + ($f10 * $this->ticksCatchableDelay * 0.1);
-							$d15 = $this->getPosition()->getY() + 1;
-							$d16 = $this->getPosition()->getZ() + ($f11 * $this->ticksCatchableDelay * 0.1);
-							$block1 = $this->getWorld()->getBlock(new Vector3($d13, $d15 - 1, $d16));
-
-							if($block1 instanceof Water){
-								if($this->random->nextFloat() < 0.15){
-									$this->getWorld()->addParticle(new Vector3($d13, $d15 - 0.1, $d16), new WaterParticle());
-								}
-								$this->getWorld()->addParticle(new Vector3($d13, $d15, $d16), new WaterParticle());
-							}
-						}
-					}elseif($this->ticksCaughtDelay > 0){
-						$this->ticksCaughtDelay -= $l;
-						$f1 = 0.15;
-
-						if($this->ticksCaughtDelay < 20){
-							$f1 = ($f1 + (20 - $this->ticksCaughtDelay) * 0.05);
-						}elseif($this->ticksCaughtDelay < 40){
-							$f1 = ($f1 + (40 - $this->ticksCaughtDelay) * 0.02);
-						}elseif($this->ticksCaughtDelay < 60){
-							$f1 = ($f1 + (60 - $this->ticksCaughtDelay) * 0.01);
-						}
-
-						if($this->random->nextFloat() < $f1){
-							$f9 = mt_rand(0, 360) * 0.01745;
-							$f2 = mt_rand(25, 60);
-							$d12 = $this->getPosition()->getX() + (sin($f9) * $f2 * 0.1);
-							$d14 = floor($this->getPosition()->getY()) + 1.0;
-							$d6 = $this->getPosition()->getZ() + (cos($f9) * $f2 * 0.1);
-							$block = $this->getWorld()->getBlock(new Vector3($d12, $d14 - 1, $d6));
-
-							if($block instanceof Water){
-								$this->getWorld()->addParticle(new Vector3($d12, $d14, $d6), new SplashParticle());
-							}
-						}
-
-						if($this->ticksCaughtDelay <= 0){
-							$this->ticksCatchableDelay = mt_rand(20, 80);
-							$this->fishApproachAngle = mt_rand(0, 360);
-						}
-					}else{
-						$this->ticksCaughtDelay = mt_rand(100, 900);
-						$this->ticksCaughtDelay -= 20 * 5; // TODO: Lure
-					}
-
-					if($this->ticksCatchable > 0){
-						$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
-					}
-				}
-
-				$d11 = $d10 * 2.0 - 1.0;
-				$this->motion->y += 0.04 * $d11;
-
-				if($d10 > 0.0){
-					$f6 = $f6 * 0.9;
-					$this->motion->y *= 0.8;
-				}
-
-				$this->motion->x *= $f6;
-				$this->motion->y *= $f6;
-				$this->motion->z *= $f6;
-			}
-		}else{
+		if($owner->isClosed() or !$owner->isAlive() or !($owner->getInventory()->getItemInHand() instanceof FishingRod) or $owner->getPosition()->distanceSquared($this->getPosition()) > 1024){
 			$this->flagForDespawn();
 		}
 
+		if((!$inGround) and $this->getWorld()->getBlock($this->getPosition()->asVector3()) instanceof Liquid){ //Check if hook is not in ground.
+			$hasUpdate = true;
+
+			$f6 = 0.92;
+
+			if($this->onGround or $this->isCollidedHorizontally){
+				$f6 = 0.5;
+			}
+
+			$d10 = 0;
+
+			$bb = $this->getBoundingBox();
+
+			for($j = 0; $j < 5; ++$j){
+				$d1 = $bb->minY + ($bb->maxY - $bb->minY) * $j / 5;
+				$d3 = $bb->minY + ($bb->maxY - $bb->minY) * ($j + 1) / 5;
+
+				$bb2 = new AxisAlignedBB($bb->minX, $d1, $bb->minZ, $bb->maxX, $d3, $bb->maxZ);
+
+				if($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::WATER())){
+					$d10 += 0.2;
+				}
+			}
+
+			$d11 = $d10 * 2.0 - 1.0;
+			$this->motion->y += 0.04 * $d11; //Rise up.
+
+			if($d10 > 0.0){
+				$f6 = $f6 * 0.9;
+				$this->motion->y *= 0.8;
+			}
+
+			$this->motion->x *= $f6;
+			$this->motion->y *= $f6;
+			$this->motion->z *= $f6;
+
+			if($this->getPosition()->isValid() and $d10 > 0){
+				$this->handleFishingUpdate();
+			}
+		}
+		if (!isset($hasUpdate)){
+			$hasUpdate = parent::onUpdate($currentTick);
+		}
 		return $hasUpdate;
+	}
+
+	public function handleFishingUpdate(): void{
+		$l = 1;
+		// TODO: lightninstrike
+
+		if($this->ticksCatchable > 0){
+			--$this->ticksCatchable;
+
+			if($this->ticksCatchable <= 0){
+				$this->ticksCaughtDelay = 0;
+				$this->ticksCatchableDelay = 0;
+			}
+		}elseif($this->ticksCatchableDelay > 0){
+			$this->ticksCatchableDelay -= $l;
+
+			if($this->ticksCatchableDelay <= 0){ // Catch
+				$this->broadcastAnimation(new FishingHookHookAnimation($this));
+
+				$this->motion->y -= 0.02;
+				$this->ticksCatchable = mt_rand(10, 30);
+			}else{
+				$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
+				$f7 = $this->fishApproachAngle * 0.01745;
+				$f10 = sin($f7);
+				$f11 = cos($f7);
+				$d13 = $this->getPosition()->getX() + ($f10 * $this->ticksCatchableDelay * 0.1);
+				$d15 = $this->getPosition()->getY() + 1;
+				$d16 = $this->getPosition()->getZ() + ($f11 * $this->ticksCatchableDelay * 0.1);
+				$block1 = $this->getWorld()->getBlock(new Vector3($d13, $d15 - 1, $d16));
+
+				if($block1 instanceof Water){
+					if($this->random->nextFloat() < 0.15){
+						$this->getWorld()->addParticle(new Vector3($d13, $d15 - 0.1, $d16), new WaterParticle());
+					}
+					$this->getWorld()->addParticle(new Vector3($d13, $d15, $d16), new WaterParticle());
+				}
+			}
+		}elseif($this->ticksCaughtDelay > 0){
+			$this->ticksCaughtDelay -= $l;
+			$f1 = 0.15;
+
+			if($this->ticksCaughtDelay < 20){
+				$f1 = ($f1 + (20 - $this->ticksCaughtDelay) * 0.05);
+			}elseif($this->ticksCaughtDelay < 40){
+				$f1 = ($f1 + (40 - $this->ticksCaughtDelay) * 0.02);
+			}elseif($this->ticksCaughtDelay < 60){
+				$f1 = ($f1 + (60 - $this->ticksCaughtDelay) * 0.01);
+			}
+
+			if($this->random->nextFloat() < $f1){
+				$f9 = mt_rand(0, 360) * 0.01745;
+				$f2 = mt_rand(25, 60);
+				$d12 = $this->getPosition()->getX() + (sin($f9) * $f2 * 0.1);
+				$d14 = floor($this->getPosition()->getY()) + 1.0;
+				$d6 = $this->getPosition()->getZ() + (cos($f9) * $f2 * 0.1);
+				$block = $this->getWorld()->getBlock(new Vector3($d12, $d14 - 1, $d6));
+
+				if($block instanceof Water){
+					$this->getWorld()->addParticle(new Vector3($d12, $d14, $d6), new SplashParticle());
+				}
+			}
+
+			if($this->ticksCaughtDelay <= 0){
+				$this->ticksCatchableDelay = mt_rand(20, 80);
+				$this->fishApproachAngle = mt_rand(0, 360);
+			}
+		}else{
+			$this->ticksCaughtDelay = mt_rand(200, 900);
+			//TODO: Fishing speed.
+		}
+		if($this->ticksCatchable > 0){
+			$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
+		}
+	}
+
+	public function onRetraction() : void{
+		$angler = $this->getOwningEntity();
+		if ($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
+			if ($this->ticksCatchable > 0){
+				$result = [
+					VanillaItems::RAW_FISH(),
+					VanillaItems::PUFFERFISH()
+				];
+				$xp_drop = mt_rand(1,10);
+				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $result);
+				if (!$ev->isCancelled()){
+					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
+					//DROP Items
+					$results = $ev->getItemsResult();
+					foreach($results as $result){
+						$entityItem = new ItemEntity($this->getLocation(), $result);
+						$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
+						$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
+						$d4 = $angler->getPosition()->getZ() - $this->getPosition()->getZ();
+						$d6 = sqrt($d0 * $d0 + $d2 * $d2 + $d4 * $d4);
+						$d8 = 0.1;
+						$entityItem->setMotion(new Vector3($d0 * $d8, $d2 * $d8 + sqrt($d6) * 0.08, $d4 * $d8));
+						$entityItem->spawnToAll();
+					}
+					$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
+				}
+			}
+		}
+		$this->flagForDespawn();
 	}
 
 	public function isLiquidInBoundingBox(World $world, AxisAlignedBB $bb, Liquid $material) : bool{
@@ -255,59 +274,11 @@ class FishingHook extends Projectile{
 		return false;
 	}
 
-	public function onDispose() : void{
-		$owner = $this->getOwningEntity();
-		if($owner instanceof Player){
-			Loader::getInstance()->setFishingHook($owner, null);
+	public function flagForDespawn() : void{
+		$player = $this->getOwningEntity();
+		if ($player instanceof Player){
+			Loader::getInstance()->setFishingHook($player, null);
 		}
-		$this->dismountEntity();
+		parent::flagForDespawn();
 	}
-
-	public function handleHookRetraction() : void{
-		$angler = $this->getOwningEntity();
-		if($this->getPosition()->isValid() and $angler instanceof Player){
-			if($this->getRidingEntity() != null){
-				$ev = new PlayerFishEvent(Loader::getInstance(), $angler, $this, PlayerFishEvent::STATE_CAUGHT_ENTITY);
-				$ev->call();
-
-				if(!$ev->isCancelled()){
-					$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
-					$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
-					$d4 = $angler->getPosition()->getZ() - $this->getPosition()->getZ();
-					$d6 = sqrt($d0 * $d0 + $d2 * $d2 + $d4 * $d4);
-					$d8 = 0.1;
-					$this->getRidingEntity()->setMotion(new Vector3($d0 * $d8, $d2 * $d8 + sqrt($d6) * 0.08, $d4 * $d8));
-				}
-			}elseif($this->ticksCatchable > 0){
-				// TODO: Random weighted items
-				$items = [
-					VanillaItems::RAW_FISH()->getId(), VanillaItems::PUFFERFISH()->getId(), VanillaItems::RAW_SALMON()->getId(), VanillaItems::CLOWNFISH()->getId()
-				];
-				$randomFish = $items[mt_rand(0, count($items) - 1)];
-				$results = [ItemFactory::getInstance()->get($randomFish)];
-
-				$ev = new PlayerFishEvent(Loader::getInstance(), $angler, $this, PlayerFishEvent::STATE_CAUGHT_FISH, $this->random->nextBoundedInt(6) + 1, $results);
-				$ev->call();
-
-				if(!$ev->isCancelled()){
-					$results = $ev->getItemsResult();
-					foreach($results as $result){
-						$entityItem = new ItemEntity($this->getLocation(), $result);
-						$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
-						$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
-						$d4 = $angler->getPosition()->getZ() - $this->getPosition()->getZ();
-						$d6 = sqrt($d0 * $d0 + $d2 * $d2 + $d4 * $d4);
-						$d8 = 0.1;
-						$entityItem->setMotion(new Vector3($d0 * $d8, $d2 * $d8 + sqrt($d6) * 0.08, $d4 * $d8));
-						$entityItem->spawnToAll();
-					}
-					$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
-				}
-			}
-
-			$this->flagForDespawn();
-		}
-	}
-
-	protected function getInitialSizeInfo() : EntitySizeInfo{ return new EntitySizeInfo(0.15, 0.15); }
 }

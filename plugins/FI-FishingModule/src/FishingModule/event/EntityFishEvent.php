@@ -6,14 +6,14 @@ namespace FishingModule\event;
 
 use FishingModule\entity\FishingHook;
 use FishingModule\Loader;
+use pocketmine\entity\Entity;
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
 use pocketmine\event\plugin\PluginEvent;
 use pocketmine\item\Item;
-use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 
-class PlayerFishEvent extends PluginEvent implements Cancellable{
+class EntityFishEvent extends PluginEvent implements Cancellable{
 	use CancellableTrait;
 
 	public const STATE_FISHING = 0;
@@ -21,7 +21,7 @@ class PlayerFishEvent extends PluginEvent implements Cancellable{
 	public const STATE_CAUGHT_ENTITY = 2;
 	public const STATE_CAUGHT_NOTHING = 3;
 
-	protected Player $player;
+	protected Entity $entity;
 	protected FishingHook $fishingHook;
 	protected int $state;
 	protected int $xpDropAmount;
@@ -32,15 +32,15 @@ class PlayerFishEvent extends PluginEvent implements Cancellable{
 	 * PlayerFishEvent constructor.
 	 *
 	 * @param Plugin      $plugin
-	 * @param Player      $player
+	 * @param Entity      $entity
 	 * @param FishingHook $fishingHook
 	 * @param int         $state
 	 * @param int         $xpDropAmount
 	 * @param Item[]      $itemsResult
 	 */
-	public function __construct(Plugin $plugin, Player $player, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
+	public function __construct(Plugin $plugin, Entity $entity, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
 		parent::__construct($plugin);
-		$this->player = $player;
+		$this->entity = $entity;
 		$this->fishingHook = $fishingHook;
 		$this->state = $state;
 		$this->xpDropAmount = $xpDropAmount;
@@ -48,10 +48,10 @@ class PlayerFishEvent extends PluginEvent implements Cancellable{
 	}
 
 	/**
-	 * @return Player
+	 * @return Entity
 	 */
-	public function getPlayer() : Player{
-		return $this->player;
+	public function getEntity() : Entity{
+		return $this->entity;
 	}
 
 	/**
@@ -83,7 +83,7 @@ class PlayerFishEvent extends PluginEvent implements Cancellable{
 	}
 
 	/**
-	 * @return Item[]
+	 * @return Item[]|null
 	 */
 	public function getItemsResult() : ?array{
 		return $this->itemsResult;

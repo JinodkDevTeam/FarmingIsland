@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace FishingModule\item;
 
 use FishingModule\entity\FishingHook;
-use FishingModule\event\PlayerFishEvent;
+use FishingModule\event\EntityFishEvent;
 use FishingModule\Loader;
-use pocketmine\entity\EntityDataHelper;
 use pocketmine\item\Durable;
 use pocketmine\item\ItemUseResult;
 use pocketmine\math\Vector3;
@@ -23,27 +22,33 @@ class FishingRod extends Durable{
 	}
 
 	public function onClickAir(Player $player, Vector3 $directionVector) : ItemUseResult{
-
 		if(Loader::getInstance()->getFishingHook($player) == null){
-			$location = $player->getLocation();
-			$location->add(0, $player->getEyeHeight() - 0.1, 0);
-			$motion = $player->getDirectionVector();
-			$motion->multiply(1.4);
-			$hook = new FishingHook($location, $player, EntityDataHelper::createBaseNBT($location->asVector3(), $motion));
-			($ev = new PlayerFishEvent(Loader::getInstance(), $player, $hook, PlayerFishEvent::STATE_FISHING))->call();
-			if($ev->isCancelled()){
-				$hook->flagForDespawn();
+			if($this->spawnFishingHook($player, $directionVector)){
+				return ItemUseResult::SUCCESS();
 			}else{
-				$hook->spawnToAll();
-				$hook->setMotion($motion);
+				return ItemUseResult::FAIL();
 			}
-			return ItemUseResult::SUCCESS();
 		}else{
 			$hook = Loader::getInstance()->getFishingHook($player);
-			$hook->handleHookRetraction();
+			$hook?->onRetraction();
 			$this->applyDamage(1);
 		}
-
 		return ItemUseResult::SUCCESS();
+	}
+
+	protected function spawnFishingHook(Player $player, Vector3 $direction) : bool{
+		$location = $player->getLocation();
+		$location->y += $player->getEyeHeight();
+		$entity = new FishingHook($location, $player);
+		$ev = new EntityFishEvent(Loader::getInstance(), $player, $entity, EntityFishEvent::STATE_FISHING);
+		$ev->call();
+		if($ev->isCancelled()){
+			return false;
+		}
+		$entity->setMotion($direction->multiply(0.4));
+		$entity->spawnToAll();
+		$entity->handleHookCasting($entity->getMotion()->x, $entity->getMotion()->y, $entity->getMotion()->z, 1.5, 1.0);
+		Loader::getInstance()->setFishingHook($player, $entity);
+		return true;
 	}
 }

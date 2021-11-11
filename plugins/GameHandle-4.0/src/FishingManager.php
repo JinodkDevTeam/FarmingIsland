@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
-use FishingModule\event\PlayerFishEvent;
+use FishingModule\event\EntityFishEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
@@ -135,8 +135,8 @@ class FishingManager{
 		}
 	}
 
-	public function onFish(PlayerFishEvent $event){
-		if($event->getState() == PlayerFishEvent::STATE_CAUGHT_FISH){
+	public function onFish(EntityFishEvent $event){
+		if($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
 			$event->setItemResult($this->getRandomItems());
 		}
 	}

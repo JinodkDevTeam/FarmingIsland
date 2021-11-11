@@ -12,7 +12,6 @@ class __init{
 		$this->core = $core;
 		$plmng = $this->core->getServer()->getPluginManager();
 		$plmng->registerEvents(new DivingHelmet($core), $core);
-		$plmng->registerEvents(new GrapplingHook(), $core);
 		$plmng->registerEvents(new NoUArmor(), $core);
 	}
 }
