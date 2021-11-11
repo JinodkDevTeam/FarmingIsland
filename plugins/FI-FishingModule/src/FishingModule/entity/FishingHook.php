@@ -29,6 +29,7 @@ use pocketmine\world\World;
 class FishingHook extends Projectile{
 
 	protected $gravity = 0.1;
+	protected $drag = 0.5;
 
 	protected int $ticksCatchable = 0;
 	protected int $ticksCaughtDelay = 0;
@@ -39,6 +40,22 @@ class FishingHook extends Projectile{
 	public function __construct(Location $location, ?Human $shootingEntity, ?CompoundTag $nbt = null){
 		$this->random = new Random(intval(microtime(true) * 1000));
 		parent::__construct($location, $shootingEntity, $nbt);
+	}
+
+	public function handleHookCasting(float $x, float $y, float $z, float $f1, float $f2){
+		$f = sqrt($x * $x + $y * $y + $z * $z);
+		$x = $x / $f;
+		$y = $y / $f;
+		$z = $z / $f;
+		$x = $x + $this->random->nextSignedFloat() * 0.0075 * $f2;
+		$y = $y + $this->random->nextSignedFloat() * 0.0075 * $f2;
+		$z = $z + $this->random->nextSignedFloat() * 0.0075 * $f2;
+		$x = $x * $f1;
+		$y = $y * $f1;
+		$z = $z * $f1;
+		$this->motion->x += $x;
+		$this->motion->y += $y;
+		$this->motion->z += $z;
 	}
 
 	public function getOwningEntity() : ?Human{
@@ -60,12 +77,15 @@ class FishingHook extends Projectile{
 		if ($owner === null){
 			return false;
 		}
-		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3());
-		$hasUpdate = parent::onUpdate($currentTick);
+		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3())->isSolid() or (!$this->getWorld()->getBlock($this->getPosition()->asVector3()) instanceof Liquid);
 
-		if ($owner->isClosed() or (!$owner->isAlive()) or (!$owner->getInventory()->getItemInHand() instanceof FishingRod) or ($owner->getPosition()->distanceSquared($this->getPosition()) > 1024)){
-			$this->flagForDespawn();
+		if($inGround){
+			$this->motion->x *= $this->random->nextFloat() * 0.2;
+			$this->motion->y *= $this->random->nextFloat() * 0.2;
+			$this->motion->z *= $this->random->nextFloat() * 0.2;
 		}
+
+		$hasUpdate = parent::onUpdate($currentTick);
 
 		if($owner->isClosed() or !$owner->isAlive() or !($owner->getInventory()->getItemInHand() instanceof FishingRod) or $owner->getPosition()->distanceSquared($this->getPosition()) > 1024){
 			$this->flagForDespawn();
@@ -113,7 +133,7 @@ class FishingHook extends Projectile{
 					if($this->ticksCatchableDelay <= 0){
 						$this->broadcastAnimation(new FishingHookHookAnimation($this));
 
-						$this->motion->y -= 0.2;
+						$this->motion->y -= 0.02;
 						$this->ticksCatchable = mt_rand(10, 30);
 					}else{
 						$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
@@ -165,7 +185,6 @@ class FishingHook extends Projectile{
 					$this->ticksCaughtDelay = mt_rand(100, 900);
 					$this->ticksCaughtDelay -= 20 * 5; // TODO: Lure
 				}
-
 				if($this->ticksCatchable > 0){
 					$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
 				}
@@ -179,37 +198,40 @@ class FishingHook extends Projectile{
 				$this->motion->y *= 0.8;
 			}
 
-			$this->motion->x *= $f6;
-			$this->motion->y *= $f6;
-			$this->motion->z *= $f6;
+			$this->getMotion()->multiply($f6);
 		}
+
+		$this->getOwningEntity()?->teleport($this->getPosition()->add(0, 1, 0));
+
 		return $hasUpdate;
 	}
 
 	public function onRetraction() : void{
 		$angler = $this->getOwningEntity();
 		if ($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
-			$result = [
-				VanillaItems::RAW_FISH(),
-				VanillaItems::PUFFERFISH()
-			];
-			$xp_drop = mt_rand(1,10);
-			$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $result);
-			if (!$ev->isCancelled()){
-				$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
-				//DROP Items
-				$results = $ev->getItemsResult();
-				foreach($results as $result){
-					$entityItem = new ItemEntity($this->getLocation(), $result);
-					$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
-					$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
-					$d4 = $angler->getPosition()->getZ() - $this->getPosition()->getZ();
-					$d6 = sqrt($d0 * $d0 + $d2 * $d2 + $d4 * $d4);
-					$d8 = 0.1;
-					$entityItem->setMotion(new Vector3($d0 * $d8, $d2 * $d8 + sqrt($d6) * 0.08, $d4 * $d8));
-					$entityItem->spawnToAll();
+			if ($this->ticksCatchable > 0){
+				$result = [
+					VanillaItems::RAW_FISH(),
+					VanillaItems::PUFFERFISH()
+				];
+				$xp_drop = mt_rand(1,10);
+				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $result);
+				if (!$ev->isCancelled()){
+					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
+					//DROP Items
+					$results = $ev->getItemsResult();
+					foreach($results as $result){
+						$entityItem = new ItemEntity($this->getLocation(), $result);
+						$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
+						$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
+						$d4 = $angler->getPosition()->getZ() - $this->getPosition()->getZ();
+						$d6 = sqrt($d0 * $d0 + $d2 * $d2 + $d4 * $d4);
+						$d8 = 0.1;
+						$entityItem->setMotion(new Vector3($d0 * $d8, $d2 * $d8 + sqrt($d6) * 0.08, $d4 * $d8));
+						$entityItem->spawnToAll();
+					}
+					$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
 				}
-				$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
 			}
 		}
 		$this->flagForDespawn();

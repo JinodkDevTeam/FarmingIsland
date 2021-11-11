@@ -45,8 +45,9 @@ class FishingRod extends Durable{
 		if($ev->isCancelled()){
 			return false;
 		}
-		$entity->setMotion($direction->multiply(1.4));
+		$entity->setMotion($direction->multiply(0.4));
 		$entity->spawnToAll();
+		$entity->handleHookCasting($entity->getMotion()->x, $entity->getMotion()->y, $entity->getMotion()->z, 1.5, 1.0);
 		Loader::getInstance()->setFishingHook($player, $entity);
 		return true;
 	}
