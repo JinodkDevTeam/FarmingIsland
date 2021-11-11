@@ -238,6 +238,8 @@ class FishingHook extends Projectile{
 					$this->getWorld()->dropExperience($angler->getPosition()->asVector3(), $ev->getXpDropAmount());
 				}
 			}
+		}else{
+			new EntityFishEvent(Loader::getInstance(), $angler, $this, EntityFishEvent::STATE_CAUGHT_NOTHING);
 		}
 		$this->flagForDespawn();
 	}

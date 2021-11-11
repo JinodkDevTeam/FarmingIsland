@@ -8,7 +8,6 @@ use FishingModule\event\EntityFishEvent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
-use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
 
 class FishingManager{
@@ -43,18 +42,6 @@ class FishingManager{
 	public array $customItem_rlevel = [];
 
 	public function __construct(){
-		$item = VanillaItems::IRON_NUGGET();
-		$item->setCustomName("§r§bLazy §fShard");
-		$nbt = $item->getNamedTag();
-		$nbt->setString("CustomItem", "LazyShard");
-		$item->setNamedTag($nbt);
-
-		$item2 = VanillaItems::BEETROOT_SEEDS();
-		$item2->setCustomName("§r§aInferium §fSeed");
-		$nbt = $item2->getNamedTag();
-		$nbt->setString("CustomItem", "InferiumSeed");
-		/*$item2->setNamedTagEntry(new ListTag(Item::TAG_ENCH, [], NBT::TAG_Compound));*/
-
 		$this->items = [
 			ItemFactory::getInstance()->get(ItemIds::COBBLESTONE),
 			ItemFactory::getInstance()->get(ItemIds::DIRT),
@@ -72,9 +59,7 @@ class FishingManager{
 			ItemFactory::getInstance()->get(ItemIds::POTATO),
 			ItemFactory::getInstance()->get(ItemIds::CACTUS),
 			ItemFactory::getInstance()->get(ItemIds::SUGARCANE),
-			ItemFactory::getInstance()->get(ItemIds::EMERALD),
-			$item,
-			$item2
+			ItemFactory::getInstance()->get(ItemIds::EMERALD)
 		];
 		$this->rlevel = [
 			ItemIds::COBBLESTONE => 1,
@@ -94,11 +79,6 @@ class FishingManager{
 			ItemIds::CACTUS => 3,
 			ItemIds::SUGARCANE => 2,
 			ItemIds::EMERALD => 5
-		];
-
-		$this->customItem_rlevel = [
-			"LazyShard" => 8,
-			"InferiumSeed" => 7
 		];
 
 		$this->build();
@@ -136,7 +116,7 @@ class FishingManager{
 	}
 
 	public function onFish(EntityFishEvent $event){
-		if($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
+		if($event->getState() === EntityFishEvent::STATE_CAUGHT_FISH){
 			$event->setItemResult($this->getRandomItems());
 		}
 	}
@@ -150,11 +130,7 @@ class FishingManager{
 		$items = [];
 		while($more == true){
 			$item = $this->items[array_rand($this->items)];
-			if($item->getNamedTag()->getTag("CustomItem") !== null){
-				$level = $this->customItem_rlevel[$item->getNamedTag()->getTag("CustomItem")->getValue()];
-			}else{
-				$level = $this->rlevel[$item->getId()];
-			}
+			$level = $this->rlevel[$item->getId()];
 			$item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
 			if($item->getCount() > 0){
 				array_push($items, $item);
