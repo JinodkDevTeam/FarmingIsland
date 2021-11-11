@@ -91,6 +91,11 @@ class EventListener implements Listener{
 		$this->slevel->onInteract($event);
 	}
 
+	/**
+	 * @param EntityFishEvent $event
+	 * @priority LOWEST
+	 * @handleCancelled FALSE
+	 */
 	public function onFish(EntityFishEvent $event){
 		$this->fish->onFish($event);
 	}

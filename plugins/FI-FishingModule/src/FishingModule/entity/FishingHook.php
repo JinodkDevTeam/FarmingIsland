@@ -215,12 +215,13 @@ class FishingHook extends Projectile{
 		$angler = $this->getOwningEntity();
 		if ($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
 			if ($this->ticksCatchable > 0){
-				$result = [
+				$results = [
 					VanillaItems::RAW_FISH(),
 					VanillaItems::PUFFERFISH()
 				];
 				$xp_drop = mt_rand(1,10);
-				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $result);
+				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
+				$ev->call();
 				if (!$ev->isCancelled()){
 					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
 					//DROP Items
@@ -239,7 +240,7 @@ class FishingHook extends Projectile{
 				}
 			}
 		}else{
-			new EntityFishEvent(Loader::getInstance(), $angler, $this, EntityFishEvent::STATE_CAUGHT_NOTHING);
+			(new EntityFishEvent(Loader::getInstance(), $angler, $this, EntityFishEvent::STATE_CAUGHT_NOTHING))->call();
 		}
 		$this->flagForDespawn();
 	}
