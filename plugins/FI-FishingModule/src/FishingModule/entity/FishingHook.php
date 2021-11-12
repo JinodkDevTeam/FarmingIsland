@@ -10,6 +10,8 @@ use FishingModule\Loader;
 use pocketmine\block\Liquid;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Water;
+use pocketmine\data\bedrock\EnchantmentIdMap;
+use pocketmine\data\bedrock\EnchantmentIds;
 use pocketmine\entity\EntitySizeInfo;
 use pocketmine\entity\Human;
 use pocketmine\entity\Location;
@@ -204,7 +206,17 @@ class FishingHook extends Projectile{
 			}
 		}else{
 			$this->ticksCaughtDelay = mt_rand(200, 900);
-			//TODO: Fishing speed.
+
+			$fishing_speed = 0;
+			$item = $this->getOwningEntity()?->getInventory()->getItemInHand();
+			$enchant = $item->getEnchantment(EnchantmentIdMap::getInstance()->fromId(EnchantmentIds::LURE));
+			if ($enchant !== null){
+				$fishing_speed += $enchant->getLevel()*2;
+			}
+			if ($item->getNamedTag()->getTag("FishingSpeed") !== null){
+				$fishing_speed += $item->getNamedTag()->getTag("FishingSpeed")->getValue();
+			}
+			$this->ticksCaughtDelay -= (int)($this->ticksCaughtDelay*($fishing_speed/100));
 		}
 		if($this->ticksCatchable > 0){
 			$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
