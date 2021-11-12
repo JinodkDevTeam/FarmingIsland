@@ -60,6 +60,10 @@ class SkillLevel extends PluginBase{
 
 	public function unloadPlayer(Player $player) : void{
 		$data = $this->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
+		if ($data === null){
+			$this->getLogger()->error("Unable to save data of player " . $player->getName());
+			return;
+		}
 		for($i = 1; $i <= 4; $i++){
 			$this->getProvider()->updateExp($player, $i, $data->getSkillExp($i));
 			$this->getProvider()->updateLevel($player, $i, $data->getSkillLevel($i));
