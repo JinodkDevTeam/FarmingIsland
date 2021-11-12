@@ -5,7 +5,6 @@ namespace CustomItems\item;
 
 use CustomItems\item\utils\Rarity;
 use pocketmine\data\bedrock\EnchantmentIdMap;
-use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\player\PlayerEntityInteractEvent;
@@ -59,8 +58,6 @@ class CustomItem{
 	public function onInteractBlock(PlayerInteractEvent $event) : void{ }
 
 	public function onClickAir(PlayerItemUseEvent $event) : void{ }
-
-	public function onDestroyBlock(BlockBreakEvent $event) : void{ }
 
 	public function onAttackEntity(EntityDamageByEntityEvent $event) : void{ }
 

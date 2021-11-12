@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CustomItems\listener;
 
 use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomTool;
 use pocketmine\entity\Human;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -70,7 +71,9 @@ class CustomItemListener implements Listener{
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
-			$citem->onDestroyBlock($event);
+			if ($citem instanceof CustomTool){
+				$citem->onDestroyBlock($event);
+			}
 		}
 	}
 

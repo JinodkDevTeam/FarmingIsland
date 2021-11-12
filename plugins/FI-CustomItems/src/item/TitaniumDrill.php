@@ -8,7 +8,7 @@ use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class TitaniumDrill extends CustomItem{
+class TitaniumDrill extends CustomTool{
 
 	public function toItem() : Item{
 		$item = VanillaItems::PRISMARINE_SHARD();

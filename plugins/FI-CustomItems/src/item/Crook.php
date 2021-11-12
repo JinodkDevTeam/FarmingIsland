@@ -11,7 +11,7 @@ use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 
-class Crook extends CustomItem{
+class Crook extends CustomTool{
 
 	public array $isBreaking = [];
 	public array $breaked = [];
