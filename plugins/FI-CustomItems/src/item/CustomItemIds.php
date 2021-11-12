@@ -88,12 +88,38 @@ final class CustomItemIds{
 	public const TITANIUM_DRILL = 2101;
 	public const DRILL_FUEL = 2102;
 	public const BACKPACK_SLOT = 2103;
-
+	public const DRILL_ENGINE = 2104; //TODO: Drill Engine
+	public const GOLDEN_PLATE = 2105; //TODO: Golden Plate
+	public const TITANIUM_PLATE = 2106; //TODO: Titanium Plate
+	public const SILICON = 2107; //TODO: Silicon
+	public const TITANIUM = 2108; //TODO: Titanium
+	public const DRILL_BIT = 2109; //TODO: Drill Bit
+	public const TITANIUM_PLATED_DRILL_BIT = 2110; //TODO: Titanium-plated drill bit
+	public const DIAMOND_POLISHED_DRILL_BIT = 2111; //TODO: Diamond-polished drill bit
+	public const TITANIUM_DRILL_ENGINE = 2112; //TODO: Titanium drill engine
+	public const DRILL_B1000 = 2113;
+	public const DRILL_B2000 = 2114;
+	public const DRILL_B5000 = 2115;
+	public const DRILL_A3000 = 2116;
+	public const DRILL_A5000 = 2117;
+	public const DRILL_S2222 = 2118;
+	public const DRILL_S3000 = 2119;
+	public const DRILL_S9999 = 2120;
+	public const TITANIUM_DRILL_AX225 = 2121;
+	public const TITANIUM_DRILL_AX325 = 2122;
+	public const TITANIUM_DRILL_AX525 = 2123;
+	public const TITANIUM_DRILL_AX696 = 2124;
+	public const TITANIUM_DRILL_SR172 = 2125;
+	public const TITANIUM_DRILL_SR173 = 2126;
+	public const TITANIUM_DRILL_SR219 = 2127;
+	public const TITANIUM_DRILL_SR255 = 2128;
+	public const TITANIUM_DRILL_SR341 = 2129;
+	public const TITANIUM_DRILL_TX165 = 2130;
 	public const EMERALD_BLADE = 2150;
 	public const REFINED_EMERALD_BLADE = 2151;
 	//UNUSED = 2152 -> 2199
 
-	public const OP_ROD = 2200; //TODO: OP ROD
+	public const OP_ROD = 2200;
 
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;
