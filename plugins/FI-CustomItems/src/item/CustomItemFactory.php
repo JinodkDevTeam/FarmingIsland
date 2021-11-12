@@ -85,6 +85,7 @@ class CustomItemFactory{
 
 		$this->register(new EmeraldBlade(new CustomItemIdentifier(CustomItemIds::EMERALD_BLADE), "Emerald Blade", Rarity::EPIC()));
 		$this->register(new RefinedEmeraldBlade(new CustomItemIdentifier(CustomItemIds::REFINED_EMERALD_BLADE), "Refined Emerald Blade", Rarity::LEGENDARY()));
+		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 
 		$this->registerMetaLessItems();
 	}

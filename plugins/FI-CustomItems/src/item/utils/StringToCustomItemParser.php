@@ -51,7 +51,7 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("enchanted_sugar", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SUGAR));
 		$result->register("enchanted_sugar_cane", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SUGAR_CANE));
 
-
+		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
 		return $result;
 	}
 
