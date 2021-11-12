@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use CustomItems\item\CustomItemFactory;
+use CustomItems\item\utils\StringToCustomItemParser;
 use Exception;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
@@ -27,7 +28,11 @@ class CGive extends BaseCommand{
 				return;
 			}
 			try{
-				$item = CustomItemFactory::getInstance()->get((int) $args[0]);
+				if (is_numeric($args[0])){
+					$item = CustomItemFactory::getInstance()->get((int) $args[0]);
+				} else {
+					$item = StringToCustomItemParser::getInstance()->parse($args[0]);
+				}
 				if($item == null){
 					$sender->sendMessage("Unknow item ID");
 					return;

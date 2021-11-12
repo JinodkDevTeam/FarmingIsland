@@ -91,6 +91,9 @@ final class CustomItemIds{
 
 	public const EMERALD_BLADE = 2150;
 	public const REFINED_EMERALD_BLADE = 2151;
+	//UNUSED = 2152 -> 2199
+
+	public const OP_ROD = 2200; //TODO: OP ROD
 
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;
