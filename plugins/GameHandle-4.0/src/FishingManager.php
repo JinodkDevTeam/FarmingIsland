@@ -134,8 +134,8 @@ class FishingManager{
 			$item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
 			if(!$item->isNull()){
 				array_push($items, $item);
+				$i++;
 			}
-			$i++;
 			if($i <= 5){
 				$more = $this->more_items[$i][array_rand($this->more_items[$i])];
 			}else{
