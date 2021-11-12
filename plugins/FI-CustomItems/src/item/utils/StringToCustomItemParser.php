@@ -55,6 +55,11 @@ class StringToCustomItemParser extends StringToTParser{
 		return $result;
 	}
 
+	/**
+	 * @param string $input
+	 *
+	 * @return CustomItem|null
+	 */
 	public function parse(string $input) : ?CustomItem{
 		return parent::parse($input);
 	}
