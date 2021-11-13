@@ -105,24 +105,31 @@ class ClearLagg extends PluginBase{
 		}), 20);
 	}
 
-	public function clearLagg() : void{
+	public function clearLagg($safeClearlagg = true) : void{
 		$entitiesCleared = 0;
 		foreach($this->getServer()->getWorldManager()->getWorlds() as $world){
 			foreach($world->getEntities() as $entity){
-				if($this->clearItems && $entity instanceof ItemEntity){
-					$entity->flagForDespawn();
-					++$entitiesCleared;
-				}elseif($this->clearMobs && $entity instanceof Living && !$entity instanceof Human){
-					if(!in_array(strtolower($entity->getName()), $this->exemptEntities)){
+				if ($safeClearlagg){
+					if($this->clearItems && $entity instanceof ItemEntity){
+						$entity->flagForDespawn();
+						++$entitiesCleared;
+					}elseif($this->clearMobs && $entity instanceof Living && !$entity instanceof Human){
+						if(!in_array(strtolower($entity->getName()), $this->exemptEntities)){
+							$entity->flagForDespawn();
+							++$entitiesCleared;
+						}
+					}elseif($this->clearXpOrbs && $entity instanceof ExperienceOrb){
+						$entity->flagForDespawn();
+						++$entitiesCleared;
+					}elseif($entity instanceof PrimedTNT){
 						$entity->flagForDespawn();
 						++$entitiesCleared;
 					}
-				}elseif($this->clearXpOrbs && $entity instanceof ExperienceOrb){
-					$entity->flagForDespawn();
-					++$entitiesCleared;
-				}elseif($entity instanceof PrimedTNT){
-					$entity->flagForDespawn();
-					++$entitiesCleared;
+				} else {
+					if (!$entity instanceof Human){
+						$entity->flagForDespawn();
+						++$entitiesCleared;
+					}
 				}
 			}
 		}
@@ -145,7 +152,13 @@ class ClearLagg extends PluginBase{
 			$sender->sendMessage("You dont have permission to use this command");
 			return true;
 		}
-		$this->clearLagg();
+		if (!isset($args[0])){
+			$this->clearLagg();
+		} else {
+			if ($args[0] == "all"){
+				$this->clearLagg(false);
+			}
+		}
 		return true;
 	}
 }
