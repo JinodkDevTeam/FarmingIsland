@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Bazaar;
 
 use Bazaar\command\BazaarCommand;
+use Bazaar\provider\ShopYAMLProvider;
 use Bazaar\provider\SqliteProvider;
 use pocketmine\plugin\PluginBase;
 
@@ -22,19 +23,26 @@ class Bazaar extends PluginBase{
 	public const PROVIDER = "sqlite"; //I set it as default because i dont have any other provider;
 
 	private SqliteProvider $provider;
-	//I haz about 200+ms of ping in discord channel lol
+	private ShopYAMLProvider $shopYAMLProvider;
 
 	public function onEnable() : void{
 		$this->provider = new SqliteProvider($this);
 		$this->provider->init();
+		$this->shopYAMLProvider = new ShopYAMLProvider($this);
+		$this->shopYAMLProvider->init();
 		$this->getServer()->getCommandMap()->register("bazaar", new BazaarCommand($this));
 	}
 
 	public function onDisable() : void{
 		$this->getProvider()->close();
+		$this->getShopYAMLProvider()->close();
 	}
 
 	public function getProvider() : SqliteProvider{
 		return $this->provider;
+	}
+
+	public function getShopYAMLProvider() : ShopYAMLProvider{
+		return $this->shopYAMLProvider;
 	}
 }

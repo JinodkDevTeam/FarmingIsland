@@ -1,0 +1,18 @@
+Mining:
+  Cobblestone:
+    - 4 #Cobblestone
+    - 2000 #Enchanted Cobblestone
+  Coal:
+    - 263 #Coal
+    - 2001 #Enchanted Coal
+    - 2002 #Enchanted Coal Block
+Farming:
+  Wheat:
+    - 295 #Seed
+    - 296 #Wheat
+    - 2031 #Enchanted Wheat
+    - 2032 #Enchanted Hay Bale
+  Carrot:
+    - 391 #Carrot
+    - 2033 #Enchanted Carrot
+    - 2034 #Enchanted Golden Carrot
