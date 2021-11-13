@@ -231,7 +231,7 @@ class FishingHook extends Projectile{
 					VanillaItems::RAW_FISH(),
 					VanillaItems::PUFFERFISH()
 				];
-				$xp_drop = mt_rand(1,10);
+				$xp_drop = mt_rand(1);
 				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
 				$ev->call();
 				if (!$ev->isCancelled()){
