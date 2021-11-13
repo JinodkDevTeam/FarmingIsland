@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
+use FishingModule\event\EntityFishEvent;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Crops;
 use pocketmine\event\block\BlockBreakEvent;
@@ -93,6 +94,15 @@ class SkillLevelHandle{
 		if(in_array($block->getId(), array_keys($this->farming3))){
 			$amount = $this->farming3[$block->getId()];
 			$this->addXp($player, SkillLevel::FARMING, $amount);
+		}
+	}
+
+	public function onFish(EntityFishEvent $event){
+		$player = $event->getEntity();
+		if ($player instanceof Player){
+			if ($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
+				$this->addXp($player, SkillLevel::FISHING, mt_rand(10, 100));
+			}
 		}
 	}
 

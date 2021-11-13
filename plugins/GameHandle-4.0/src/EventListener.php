@@ -98,6 +98,7 @@ class EventListener implements Listener{
 	 */
 	public function onFish(EntityFishEvent $event){
 		$this->fish->onFish($event);
+		$this->slevel->onFish($event);
 	}
 
 	/**
