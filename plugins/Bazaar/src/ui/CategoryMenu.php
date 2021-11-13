@@ -12,9 +12,9 @@ use SOFe\AwaitGenerator\Await;
 
 class CategoryMenu extends BaseUI{
 
-	protected ?string $category = null;
+	protected ?array $category = null;
 
-	public function __construct(Player $player, ?string $category = null){
+	public function __construct(Player $player, ?array $category = null){
 		$this->category = $category;
 		parent::__construct($player);
 	}
@@ -24,12 +24,12 @@ class CategoryMenu extends BaseUI{
 			if ($this->category == null){
 				$shop = $this->getBazaar()->getShopYAMLProvider()->getAll();
 			} else {
-				$shop = $this->getBazaar()->getShopYAMLProvider()->getAll()[$this->category];
+				$shop = $this->category;
 			}
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($shop){
 				if(!isset($data)) return;
 				if (is_array($shop[array_keys($shop)[$data]])){
-					new CategoryMenu($player, array_keys($shop)[$data]);
+					new CategoryMenu($player, $shop[array_keys($shop)[$data]]);
 				} else {
 					new ItemUI($player, $shop[array_keys($shop)[$data]]);
 				}

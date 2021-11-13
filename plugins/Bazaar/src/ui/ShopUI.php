@@ -17,7 +17,6 @@ class ShopUI extends BaseUI{
 			}
 			if ($data == 1){
 				new CategoryMenu($player);
-				return;
 			}
 		});
 		$form->addButton("My orders");

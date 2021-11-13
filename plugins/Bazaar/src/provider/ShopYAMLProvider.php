@@ -20,6 +20,7 @@ class ShopYAMLProvider implements Provider{
 	}
 
 	public function init() : void{
+		$this->getBazaar()->saveResource("shop.yml");
 		$this->data = new Config($this->getBazaar()->getDataFolder() . "shop.yml", Config::YAML);
 	}
 
