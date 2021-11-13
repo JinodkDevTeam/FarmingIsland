@@ -21,6 +21,7 @@ class UiMenu{
 		if($player->getWorld()->getDisplayName() == "island"){
 			array_push($list, "is-manager");
 			array_push($list, "is-info");
+			array_push($list, "favorite-island");
 		}
 		array_push($list, "teleport");
 		array_push($list, "shop");
@@ -29,6 +30,10 @@ class UiMenu{
 		array_push($list, "vip");
 		array_push($list, "tutorial");
 		array_push($list, "invcraft");
+		array_push($list, "backpack");
+		array_push($list, "mail");
+		array_push($list, "bank");
+		array_push($list, "bazaar");
 
 		$form = new SimpleForm(function(Player $player, $data) use ($list) : void{
 			if(!isset($data)){
@@ -62,6 +67,18 @@ class UiMenu{
 				case "invcraft":
 					Server::getInstance()->dispatchCommand($player, "invcraft");
 					break;
+				case "backpack":
+					Server::getInstance()->dispatchCommand($player, "backpack");
+					break;
+				case "mail":
+					Server::getInstance()->dispatchCommand($player, "mail");
+					break;
+				case "bank":
+					Server::getInstance()->dispatchCommand($player, "bank");
+					break;
+				case "bazaar":
+					Server::getInstance()->dispatchCommand($player, "bazaar");
+					break;
 			}
 		});
 		if($player->getWorld()->getDisplayName() == "island"){
@@ -76,6 +93,10 @@ class UiMenu{
 		$form->addButton("§　§lVIP(Comming soon)");
 		$form->addButton("§lTutorial\nXem cách chơi");
 		$form->addButton("§lInvCraft\nBàn chế tạo siêu to khổng lồ");
+		$form->addButton("§　§lBackpack");
+		$form->addButton("§　§lMail");
+		$form->addButton("§　§lBank");
+		$form->addButton("§　§lBazaar");
 		$form->setTitle("§　Island Menu");
 		$player->sendForm($form);
 	}
