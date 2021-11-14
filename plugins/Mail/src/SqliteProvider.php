@@ -32,7 +32,6 @@ class SqliteProvider{
 		$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
 			"sqlite" => "sqlite.sql"
 		]);
-
 		$this->db->executeGeneric(self::INIT);
 	}
 
@@ -115,5 +114,4 @@ class SqliteProvider{
 			"time" => time()
 		]);
 	}
-
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Mail\ui;
 
 use JinodkDevTeam\utils\ItemUtils;
+use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
 use Mail\Loader;
 use Mail\Mail;
@@ -35,11 +36,17 @@ class MailInfo extends BaseUI{
 			$items = ItemUtils::string2ItemArray($mail->getItems());
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
 				if(!isset($data)) return;
-				if($data == 0){
-					new CreateMailUI($this->getLoader(), $player, $mail->getFrom());
-					return;
+				switch($data){
+					case 0:
+						$this->delete($player, $mail);
+						break;
+					case 1:
+						new CreateMailUI($this->getLoader(), $player, $mail->getFrom());
+						break;
+					case 2:
+						$this->claimItems($player, $mail);
+						break;
 				}
-				if($data == 1) $this->claimItems($player, $mail);
 			});
 			$form->setTitle("Mail Info");
 			$content = [
@@ -60,6 +67,7 @@ class MailInfo extends BaseUI{
 				}
 			}
 			$form->setContent(implode("\n", $content));
+			$form->addButton("Delete");
 			if ($this->mode = self::TO){
 				$form->addButton("Reply");
 				if (!$mail->isClaimed()){
@@ -90,5 +98,36 @@ class MailInfo extends BaseUI{
 		}else{
 			$player->sendMessage("Your inventory dont have enough space to claim items, make sure you have enough space and try again !");
 		}
+	}
+
+	public function delete(Player $player, Mail $mail){
+		$message = "Are you sure about delete this mail, this action can't be undone !";
+		if (($this->mode == self::TO) and (!$mail->isClaimed())){
+			$message = "Are you sure about delete this mail without claiming items, this action can't be undone !";
+		}
+		$form = new ModalForm(function(Player $player, ?bool $data) use ($mail){
+			if(!isset($data)) return;
+			if($data == false) return;
+			if ($this->mode == self::FROM){
+				if ($mail->isDeletedByTo()){
+					$this->getLoader()->getProvider()->remove($mail->getId());
+				} else {
+					$this->getLoader()->getProvider()->updateIsDeletedByFrom($mail->getId(), true);
+				}
+			}
+			if ($this->mode == self::TO){
+				if ($mail->isDeletedByFrom()){
+					$this->getLoader()->getProvider()->remove($mail->getId());
+				} else {
+					$this->getLoader()->getProvider()->updateIsDeletedByTo($mail->getId(), true);
+				}
+			}
+		});
+
+		$form->setTitle("Confirm");
+		$form->setContent($message);
+		$form->setButton1("YES");
+		$form->setButton2("NO");
+		$player->sendForm($form);
 	}
 }
