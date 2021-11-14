@@ -5,6 +5,7 @@ namespace Mail\ui;
 
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
+use Mail\Loader;
 use Mail\Mail;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\InvMenuTypeIds;
@@ -13,6 +14,13 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 
 class CreateMailUI extends BaseUI{
+
+	protected string $reply = "";
+
+	public function __construct(Loader $loader, Player $player, string $reply = ""){
+		$this->reply = $reply;
+		parent::__construct($loader, $player);
+	}
 
 	public function execute(Player $player) : void{
 		$form = new CustomForm(function(Player $player, ?array $data){
@@ -32,9 +40,8 @@ class CreateMailUI extends BaseUI{
 				$player->sendMessage("Mail Created !");
 			}
 		});
-
 		$form->setTitle("Create new mail");
-		$form->addInput("To:", "Steve123");
+		$form->addInput("To:", "Steve123", $this->reply);
 		$form->addInput("Title:", "Hi ?");
 		$form->addInput("Message:", "Type some thing ...");
 		$form->addToggle("Attach items", false);

@@ -35,7 +35,11 @@ class MailInfo extends BaseUI{
 			$items = ItemUtils::string2ItemArray($mail->getItems());
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
 				if(!isset($data)) return;
-				if($data == 0) $this->claimItems($player, $mail);
+				if($data == 0){
+					new CreateMailUI($this->getLoader(), $player, $mail->getFrom());
+					return;
+				}
+				if($data == 1) $this->claimItems($player, $mail);
 			});
 			$form->setTitle("Mail Info");
 			$content = [
@@ -56,7 +60,12 @@ class MailInfo extends BaseUI{
 				}
 			}
 			$form->setContent(implode("\n", $content));
-			$form->addButton("Claim items");
+			if ($this->mode = self::TO){
+				$form->addButton("Reply");
+				if (!$mail->isClaimed()){
+					$form->addButton("Claim items");
+				}
+			}
 
 			$player->sendForm($form);
 		});
