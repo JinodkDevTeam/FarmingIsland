@@ -68,7 +68,7 @@ class MailInfo extends BaseUI{
 			}
 			$form->setContent(implode("\n", $content));
 			$form->addButton("Delete");
-			if ($this->mode = self::TO){
+			if ($this->mode == self::TO){
 				$form->addButton("Reply");
 				if (!$mail->isClaimed()){
 					$form->addButton("Claim items");
