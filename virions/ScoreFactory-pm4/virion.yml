@@ -1,0 +1,24 @@
+name: ScoreFactory
+version: 3.0.2
+api:
+  - 4.0.0
+  - 4.0.0-BETA1
+  - 4.0.0-BETA2
+  - 4.0.0-BETA3
+  - 4.0.4-BETA4
+  - 4.0.0-BETA5
+  - 4.0.0-BETA6
+  - 4.0.0-BETA7
+  - 4.0.0-BETA8
+  - 4.0.0-BETA9
+  - 4.0.0-BETA10
+  - 4.0.0-BETA11
+  - 4.0.0-BETA12
+  - 4.0.0-BETA13
+antigen: jackmd\scorefactory
+authors:
+  - JackMD
+  - TwistedAsylumMC
+php:
+  - 7.4
+  - 8.0
