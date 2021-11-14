@@ -19,6 +19,8 @@ class SqliteProvider{
 	public const SELECT_ID = "mail.select.id";
 	public const UPDATE_ISREAD = "mail.update.isread";
 	public const UPDATE_ISCLAIMED = "mail.update.isclaimed";
+	public const UPDATE_IS_DELETED_BY_FROM = "mail.update.isdeletedbyfrom";
+	public const UPDATE_IS_DELETED_BY_TO = "mail.update.isdeletedbyto";
 	private DataConnector $db;
 	private Loader $loader;
 
@@ -80,6 +82,20 @@ class SqliteProvider{
 		$this->db->executeChange(self::UPDATE_ISCLAIMED, [
 			"id" => $id,
 			"isclaimed" => $value
+		]);
+	}
+
+	public function updateIsDeletedByFrom(int $id, bool $value) : void{
+		$this->db->executeChange(self::UPDATE_IS_DELETED_BY_FROM, [
+			"id" => $id,
+			"isdeletedbyfrom" => $value
+		]);
+	}
+
+	public function updateIsDeletedByTo(int $id, bool $value) : void{
+		$this->db->executeChange(self::UPDATE_IS_DELETED_BY_TO, [
+			"id" => $id,
+			"isdeletedbyto" => $value
 		]);
 	}
 

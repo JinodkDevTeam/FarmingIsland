@@ -11,7 +11,9 @@ CREATE TABLE IF NOT EXISTS Mail
     Items     BLOB,
     Time      INTEGER,
     IsRead    BOOLEAN NOT NULL DEFAULT FALSE,
-    IsClaimed BOOLEAN NOT NULL DEFAULT FALSE
+    IsClaimed BOOLEAN NOT NULL DEFAULT FALSE,
+    IsDeletedByFrom BOOLEAN NOT NULL DEFAULT FALSE,
+    IsDeletedByTo BOOLEAN NOT NULL DEFAULT FALSE
 );
 -- #    }
 -- #    { register
@@ -50,13 +52,13 @@ FROM Mail;
 -- #            :name string
 SELECT *
 FROM Mail
-WHERE FromName = :name;
+WHERE (FromName = :name) AND (IsDeletedByFrom = FALSE);
 -- #        }
 -- #        { to
 -- #            :name string
 SELECT *
 FROM Mail
-WHERE ToName = :name;
+WHERE (ToName = :name) AND (IsDeletedByTo = FALSE);
 -- #        }
 -- #        { id
 -- #            :id int
@@ -78,6 +80,20 @@ WHERE Id = :id;
 -- #            :isclaimed bool
 UPDATE Mail
 SET IsClaimed = :isclaimed
+WHERE Id = :id;
+-- #        }
+-- #        { isdeletedbyfrom
+-- #            :id int
+-- #            :isdeletedbyfrom bool
+UPDATE Mail
+SET IsDeletedByFrom = :isdeletedbyfrom
+WHERE Id = :id;
+-- #        }
+-- #        { isdeletedbyto
+-- #            :id int
+-- #            :isdeletedbyto bool
+UPDATE Mail
+SET IsDeletedByTo = :isdeletedbyto
 WHERE Id = :id;
 -- #        }
 -- #    }
