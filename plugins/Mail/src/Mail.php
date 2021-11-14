@@ -14,8 +14,10 @@ class Mail{
 	protected int $time = 0;
 	protected bool $isread = false;
 	protected bool $isclaimed = false;
+	protected bool $isdeletedbyfrom = false;
+	protected bool $isdeletedbyto = false;
 
-	public function __construct(int $id = 0, string $from = "", string $to = "", string $title = "", string $msg = "", string $items = "", int $time = 0, bool $isread = false, bool $isclaimed = false){
+	public function __construct(int $id = 0, string $from = "", string $to = "", string $title = "", string $msg = "", string $items = "", int $time = 0, bool $isread = false, bool $isclaimed = false, bool $isdeletedbyfrom = false, bool $isdeletedbyto = false){
 		$this->id = $id;
 		$this->from = $from;
 		$this->to = $to;
@@ -25,6 +27,8 @@ class Mail{
 		$this->time = $time;
 		$this->isread = $isread;
 		$this->isclaimed = $isclaimed;
+		$this->isdeletedbyfrom = $isdeletedbyfrom;
+		$this->isdeletedbyto = $isdeletedbyto;
 	}
 
 	public static function fromArray(array $data) : Mail{
@@ -37,7 +41,9 @@ class Mail{
 			(string) $data["Items"],
 			(int) $data["Time"],
 			(bool) $data["IsRead"],
-			(bool) $data["IsClaimed"]
+			(bool) $data["IsClaimed"],
+			(bool) $data["IsDeletedByFrom"],
+			(bool) $data["IsDeletedByTo"]
 		);
 	}
 
@@ -51,6 +57,8 @@ class Mail{
 		$data["Time"] = $this->getTime();
 		$data["IsRead"] = $this->isRead();
 		$data["IsClaimed"] = $this->isClaimed();
+		$data["IsDeletedByFrom"] = $this->isDeletedByFrom();
+		$data["IsDeletedByTo"] = $this->isDeletedByTo();
 		return $data;
 	}
 
@@ -90,11 +98,27 @@ class Mail{
 		return $this->isclaimed;
 	}
 
+	public function isDeletedByFrom() : bool{
+		return $this->isdeletedbyfrom;
+	}
+
+	public function isDeletedByTo() : bool{
+		return $this->isdeletedbyto;
+	}
+
 	public function setRead(bool $value) : void{
 		$this->isread = $value;
 	}
 
 	public function setClaimed(bool $value) : void{
 		$this->isclaimed = $value;
+	}
+
+	public function setDeletedByFrom(bool $value) : void{
+		$this->isdeletedbyfrom = $value;
+	}
+
+	public function setDeletecByTo(bool $value) : void{
+		$this->isdeletedbyto = $value;
 	}
 }

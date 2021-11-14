@@ -19,6 +19,8 @@ class SqliteProvider{
 	public const SELECT_ID = "mail.select.id";
 	public const UPDATE_ISREAD = "mail.update.isread";
 	public const UPDATE_ISCLAIMED = "mail.update.isclaimed";
+	public const UPDATE_IS_DELETED_BY_FROM = "mail.update.isdeletedbyfrom";
+	public const UPDATE_IS_DELETED_BY_TO = "mail.update.isdeletedbyto";
 	private DataConnector $db;
 	private Loader $loader;
 
@@ -30,7 +32,6 @@ class SqliteProvider{
 		$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
 			"sqlite" => "sqlite.sql"
 		]);
-
 		$this->db->executeGeneric(self::INIT);
 	}
 
@@ -83,6 +84,26 @@ class SqliteProvider{
 		]);
 	}
 
+	public function updateIsDeletedByFrom(int $id, bool $value) : void{
+		$this->db->executeChange(self::UPDATE_IS_DELETED_BY_FROM, [
+			"id" => $id,
+			"isdeletedbyfrom" => $value
+		]);
+	}
+
+	public function updateIsDeletedByTo(int $id, bool $value) : void{
+		$this->db->executeChange(self::UPDATE_IS_DELETED_BY_TO, [
+			"id" => $id,
+			"isdeletedbyto" => $value
+		]);
+	}
+
+	public function remove(int $id) : void{
+		$this->db->executeChange(self::REMOVE, [
+			"id" => $id,
+		]);
+	}
+
 	public function register(Mail $mail) : void{
 		$this->db->executeChange(self::REGISTER, [
 			"from" => $mail->getFrom(),
@@ -93,5 +114,4 @@ class SqliteProvider{
 			"time" => time()
 		]);
 	}
-
 }
