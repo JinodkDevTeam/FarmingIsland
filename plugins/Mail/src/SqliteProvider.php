@@ -99,6 +99,12 @@ class SqliteProvider{
 		]);
 	}
 
+	public function remove(int $id) : void{
+		$this->db->executeChange(self::REMOVE, [
+			"id" => $id,
+		]);
+	}
+
 	public function register(Mail $mail) : void{
 		$this->db->executeChange(self::REGISTER, [
 			"from" => $mail->getFrom(),
