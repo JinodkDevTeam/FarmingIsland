@@ -14,45 +14,38 @@ use pocketmine\player\Player;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\Server;
 
-class EventListener implements Listener
-{
-    public function onJoin(PlayerJoinEvent $event)
-    {
-        (new ServerTagUpdateEvent(new ScoreTag("fi-scoreloader.online", strval(count(Server::getInstance()->getOnlinePlayers())))))->call();
-    }
+class EventListener implements Listener{
+	public function onJoin(PlayerJoinEvent $event){
+		(new ServerTagUpdateEvent(new ScoreTag("fi-scoreloader.online", strval(count(Server::getInstance()->getOnlinePlayers())))))->call();
+	}
 
-    /**
-     * @param PlayerQuitEvent $event
-     * @priority HIGHEST
-     */
-    public function onQuit(PlayerQuitEvent $event)
-    {
-        Server::getInstance()->getPluginManager()->getPlugin("FI-ScoreLoader")->getScheduler()->scheduleDelayedTask(new ClosureTask(function (int $_): void
-        {
-            (new ServerTagUpdateEvent(new ScoreTag("fi-scoreloader.online", strval(count(Server::getInstance()->getOnlinePlayers())))))->call();
-        }), 20);
-    }
+	/**
+	 * @param PlayerQuitEvent $event
+	 *
+	 * @priority HIGHEST
+	 */
+	public function onQuit(PlayerQuitEvent $event){
+		Server::getInstance()->getPluginManager()->getPlugin("FI-ScoreLoader")->getScheduler()->scheduleDelayedTask(new ClosureTask(function(){
+			(new ServerTagUpdateEvent(new ScoreTag("fi-scoreloader.online", strval(count(Server::getInstance()->getOnlinePlayers())))))->call();
+		}), 20);
+	}
 
-    public function onMoneyChange(MoneyChangedEvent $event)
-    {
-        $username = $event->getUsername();
+	public function onMoneyChange(MoneyChangedEvent $event){
+		$username = $event->getUsername();
+		if(is_null($username)){
+			return;
+		}
 
-        if(is_null($username))
-        {
-            return;
-        }
+		$player = Server::getInstance()->getPlayerExact($username);
 
-        $player = Server::getInstance()->getPlayerExact($username);
-
-        if($player instanceof Player && $player->isOnline())
-        {
-			switch ($event->getCurrency()->getSymbol()){
-				case "coin":
-					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.coin", (string) $event->getMoney())))->call();
+		if($player instanceof Player && $player->isOnline()){
+			switch($event->getCurrency()->getName()){
+				case "Coin":
+					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.coin", (string) $event->getNewMoney())))->call();
 					break;
-				case "gem":
-					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.gem", (string) $event->getMoney())))->call();
+				case "Gem":
+					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.gem", (string) $event->getNewMoney())))->call();
 			}
-        }
-    }
+		}
+	}
 }

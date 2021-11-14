@@ -30,13 +30,14 @@ use pocketmine\event\CancellableTrait;
 class MoneyChangedEvent extends EconomyAPIEvent implements Cancellable{
 	use CancellableTrait;
 
-	private $username, $currency, $money;
+	private $username, $currency, $money, $new_money;
 
-	public function __construct(EconomyAPI $plugin, $username, Currency $currency, float $money, ?Issuer $issuer){
+	public function __construct(EconomyAPI $plugin, $username, Currency $currency, float $money, float $new_money, ?Issuer $issuer){
 		parent::__construct($plugin, $issuer);
 		$this->username = $username;
 		$this->currency = $currency;
 		$this->money = $money;
+		$this->new_money = $new_money;
 	}
 
 	/**
@@ -55,5 +56,9 @@ class MoneyChangedEvent extends EconomyAPIEvent implements Cancellable{
 	 */
 	public function getMoney(){
 		return $this->money;
+	}
+
+	public function getNewMoney(){
+		return $this->new_money;
 	}
 }

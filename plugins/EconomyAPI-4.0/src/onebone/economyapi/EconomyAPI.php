@@ -423,7 +423,7 @@ class EconomyAPI extends PluginBase implements Listener{
 			$money = $holder->getProvider()->getMoney($player);
 
 			$holder->getProvider()->setMoney($player, $amount);
-			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $issuer))->call();
+			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $amount, $issuer))->call();
 			return self::RET_SUCCESS;
 		}
 
@@ -494,7 +494,7 @@ class EconomyAPI extends PluginBase implements Listener{
 			$money = $holder->getProvider()->getMoney($player);
 
 			$holder->getProvider()->addMoney($player, $amount);
-			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $issuer))->call();
+			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $money + $amount, $issuer))->call();
 			return self::RET_SUCCESS;
 		}
 
@@ -566,7 +566,7 @@ class EconomyAPI extends PluginBase implements Listener{
 			$money = $holder->getProvider()->getMoney($player);
 
 			$holder->getProvider()->reduceMoney($player, $amount);
-			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $issuer))->call();
+			(new MoneyChangedEvent($this, $player, $holder->getCurrency(), $money, $money - $amount, $issuer))->call();
 			return self::RET_SUCCESS;
 		}
 
@@ -627,19 +627,23 @@ class EconomyAPI extends PluginBase implements Listener{
 		foreach($transaction->getActions() as $action){
 			$holder = $this->getCurrencyHolder($action->getCurrency());
 			$money = $holder->getProvider()->getMoney($action->getPlayer());
+			$new_money = $money;
 			switch($action->getType()){
 				case Transaction::ACTION_SET:
 					$holder->getProvider()->setMoney($action->getPlayer(), $action->getAmount());
+					$new_money = $action->getAmount();
 					break;
 				case Transaction::ACTION_ADD:
 					$holder->getProvider()->addMoney($action->getPlayer(), $action->getAmount());
+					$new_money += $action->getAmount();
 					break;
 				case Transaction::ACTION_REDUCE:
 					$holder->getProvider()->reduceMoney($action->getPlayer(), $action->getAmount());
+					$new_money -= $action->getAmount();
 					break;
 			}
 
-			(new MoneyChangedEvent($this, $action->getPlayer(), $action->getCurrency(), $money, $issuer))->call();
+			(new MoneyChangedEvent($this, $action->getPlayer(), $action->getCurrency(), $money, $new_money, $issuer))->call();
 		}
 
 		return true;
@@ -898,9 +902,11 @@ class EconomyAPI extends PluginBase implements Listener{
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
 
-		if(!$this->defaultCurrency->getProvider()->hasAccount($player)){
-			$this->getLogger()->debug("UserInfo of '" . $player->getName() . "' is not found. Creating account...");
-			$this->createAccount($player, $this->defaultCurrency->getCurrency());
+		foreach($this->getCurrencies() as $currency){
+			if(!$this->getCurrencyHolder($currency)->getProvider()->hasAccount($player)){
+				$this->getLogger()->debug("UserInfo of '" . $player->getName() . "' is not found. Creating account...");
+				$this->createAccount($player, $currency);
+			}
 		}
 	}
 

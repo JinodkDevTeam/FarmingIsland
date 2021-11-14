@@ -21,7 +21,11 @@ class TagResloveListener implements Listener{
 				$tag->setValue((string) $value);
 				break;
 			case "fi-scoreloader.gem":
-				$value = EconomyAPI::getInstance()->myMoney($player, EconomyAPI::getInstance()->getCurrency("gem"));
+				$currency = EconomyAPI::getInstance()->getCurrency('gem');
+				$value = EconomyAPI::getInstance()->myMoney($player, $currency);
+				if ($value === false){
+					$value = 0;
+				}
 				$tag->setValue((string) $value);
 				break;
 			case "fi-scoreloader.online":

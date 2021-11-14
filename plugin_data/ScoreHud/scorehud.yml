@@ -65,11 +65,11 @@ titles:
 # in 'scoreboards' key below then set 'multi-world.active' along
 # with 'multi-world.use-default' keys to true in config.yml.
 default-board:
-- "§　§l§eWelcome:§r§f{fi-scoreloader.name}"
-- "§　§l§eOnline: §r§f{fi-scoreloader.online}"
-- "§　§l§ePurse:  §r§f{fi-scoreloader.coin} coin"
-- "§　§l§dGem:    §r§f{fi-scoreloader.gem} gem"
-- "§　§l§ePing:   §r§f{fi-scoreloader.ping}"
+- "§　§l§eWelcome:§r §f{fi-scoreloader.name}"
+- "§　§l§eOnline: §r §f{fi-scoreloader.online}"
+- "§　§l§ePurse:  §r §f{fi-scoreloader.coin} coin"
+- "§　§l§dGem:    §r §f{fi-scoreloader.gem}"
+- "§　§l§ePing:   §r §f{fi-scoreloader.ping}"
 - ""
 - "§　§l§4j§ci§6n§eo§ad§2k§f.§eddns§f.§bnet§f:§e19132"
 

@@ -10,7 +10,7 @@ use pocketmine\scheduler\ClosureTask;
 
 class Loader extends PluginBase{
 	public function onEnable() : void{
-		$task = new ClosureTask(function() : void{
+		$task = new ClosureTask(function(){
 			foreach($this->getServer()->getOnlinePlayers() as $player){
 				$ping = $player->getNetworkSession()->getPing();
 				if($ping < 80) $color = "§a";
