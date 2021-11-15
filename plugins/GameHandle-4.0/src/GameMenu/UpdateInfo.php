@@ -30,7 +30,7 @@ class UpdateInfo{
 			"Server Version: " . Core::VERSION . " build " . Core::BUILD_NUMBER
 		];
 		$form->setTitle("§　BREAKING NEWS");
-		$form->setContent($this->ArrayToString($text));
+		$form->setContent(implode(PHP_EOL, $text));
 		$form->addButton("§　§lOK");
 		$form->addButton("§　§lTutorial\nXem cách chơi.");
 
@@ -46,18 +46,9 @@ class UpdateInfo{
 			//NOTHING
 		});
 		$form->setTitle("§　§lTutorial");
-		$form->setContent($this->ArrayToString($text));
+		$form->setContent(implode(PHP_EOL, $text));
 		$form->addButton("§　§lOK, LEST PLAY !");
 
 		$player->sendForm($form);
-	}
-
-	public function ArrayToString(array $array) : string{
-		$string = "";
-		foreach($array as $a){
-			if($string == "") $string = $a;
-			else $string = $string . "\n" . $a;
-		}
-		return $string;
 	}
 }
