@@ -9,51 +9,49 @@ use pocketmine\block\VanillaBlocks;
 
 class PlotLevelSettings{
 	/** @var string $name */
-	public $name;
+	public string $name;
 	/** @var Block $roadBlock */
-	public $roadBlock;
+	public Block $roadBlock;
 	/** @var Block $bottomBlock */
-	public $bottomBlock;
+	public Block $bottomBlock;
 	/** @var Block $plotFillBlock */
-	public $plotFillBlock;
+	public Block $plotFillBlock;
 	/** @var Block $plotFloorBlock */
-	public $plotFloorBlock;
+	public Block $plotFloorBlock;
 	/** @var Block $wallBlock */
-	public $wallBlock;
+	public Block $wallBlock;
 	/** @var int $roadWidth */
-	public $roadWidth = 7;
+	public int $roadWidth = 7;
 	/** @var int $plotSize */
-	public $plotSize = 32;
+	public int $plotSize = 32;
 	/** @var int $groundHeight */
-	public $groundHeight = 64;
+	public int $groundHeight = 64;
 	/** @var int $claimPrice */
-	public $claimPrice = 0;
+	public int $claimPrice = 0;
 	/** @var int $clearPrice */
-	public $clearPrice = 0;
+	public int $clearPrice = 0;
 	/** @var int $disposePrice */
-	public $disposePrice = 0;
+	public int $disposePrice = 0;
 	/** @var int $resetPrice */
-	public $resetPrice = 0;
+	public int $resetPrice = 0;
 	/** @var int $clonePrice */
-	public $clonePrice = 0;
+	public int $clonePrice = 0;
 	/** @var bool $restrictEntityMovement */
-	public $restrictEntityMovement = true;
+	public bool $restrictEntityMovement = true;
 	/** @var bool $restrictPVP */
-	public $restrictPVP = false;
+	public bool $restrictPVP = false;
 	/** @var bool $updatePlotLiquids */
-	public $updatePlotLiquids = false;
+	public bool $updatePlotLiquids = false;
 	/** @var bool $allowOutsidePlotSpread */
-	public $allowOutsidePlotSpread = false;
-	/** @var bool $displayDoneNametags */
-	public $displayDoneNametags = false;
+	public bool $allowOutsidePlotSpread = false;
 	/** @var bool $editBorderBlocks */
-	public $editBorderBlocks = true;
+	public bool $editBorderBlocks = true;
 
 	/**
 	 * PlotLevelSettings constructor.
 	 *
-	 * @param string  $name
-	 * @param mixed[] $settings
+	 * @param string $name
+	 * @param array  $settings
 	 */
 	public function __construct(string $name, array $settings = []){
 		$this->name = $name;
@@ -81,12 +79,12 @@ class PlotLevelSettings{
 
 	/**
 	 * @param string[]   $array
-	 * @param string|int $key
+	 * @param int|string $key
 	 * @param Block      $default
 	 *
 	 * @return Block
 	 */
-	public static function parseBlock(array &$array, $key, Block $default) : Block{
+	public static function parseBlock(array $array, int|string $key, Block $default) : Block{
 		if(isset($array[$key])){
 			$id = $array[$key];
 			if(is_numeric($id)){
@@ -107,12 +105,12 @@ class PlotLevelSettings{
 
 	/**
 	 * @param string[]   $array
-	 * @param string|int $key
+	 * @param int|string $key
 	 * @param int        $default
 	 *
 	 * @return int
 	 */
-	public static function parseNumber(array &$array, $key, int $default) : int{
+	public static function parseNumber(array $array, int|string $key, int $default) : int{
 		if(isset($array[$key]) and is_numeric($array[$key])){
 			return (int) $array[$key];
 		}else{
@@ -121,13 +119,13 @@ class PlotLevelSettings{
 	}
 
 	/**
-	 * @param mixed[]    $array
-	 * @param string|int $key
+	 * @param array      $array
+	 * @param int|string $key
 	 * @param bool       $default
 	 *
 	 * @return bool
 	 */
-	public static function parseBool(array &$array, $key, bool $default) : bool{
+	public static function parseBool(array $array, int|string $key, bool $default) : bool{
 		if(isset($array[$key]) and is_bool($array[$key])){
 			return $array[$key];
 		}else{

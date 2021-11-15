@@ -9,12 +9,11 @@ use MyPlot\subcommand\SubCommand;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 use ReflectionClass;
-use ReflectionException;
 
 class MainForm extends SimpleMyPlotForm{
 
 	/** @var SubCommand[] $link */
-	private $link = [];
+	private array $link = [];
 
 	/**
 	 * MainForm constructor.
@@ -22,7 +21,6 @@ class MainForm extends SimpleMyPlotForm{
 	 * @param Player       $player
 	 * @param SubCommand[] $subCommands
 	 *
-	 * @throws ReflectionException
 	 */
 	public function __construct(Player $player, array $subCommands){
 		$plugin = MyPlot::getInstance();
@@ -30,7 +28,7 @@ class MainForm extends SimpleMyPlotForm{
 		$this->plot = $plugin->getPlotByPosition($player->getPosition());
 
 		$elements = [];
-		foreach($subCommands as $name => $command){
+		foreach($subCommands as $command){
 			if(!$command->canUse($player) or $command->getForm($player) === null)
 				continue;
 			$name = (new ReflectionClass($command))->getShortName();

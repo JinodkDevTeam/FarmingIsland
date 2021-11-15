@@ -12,9 +12,9 @@ use pocketmine\plugin\PluginOwned;
 
 abstract class SubCommand implements PluginOwned{
 	/** @var MyPlot $plugin */
-	private $plugin;
+	private MyPlot $plugin;
 	/** @var string $name */
-	private $name;
+	private string $name;
 
 	public function __construct(MyPlot $plugin, string $name){
 		$this->plugin = $plugin;
@@ -68,10 +68,9 @@ abstract class SubCommand implements PluginOwned{
 	public abstract function execute(CommandSender $sender, array $args) : bool;
 
 	/**
-	 * @param string $str
-	 * @param (float|int|string)[] $params
-	 *
-	 * @param string $onlyPrefix
+	 * @param string      $str
+	 * @param array       $params
+	 * @param string|null $onlyPrefix
 	 *
 	 * @return string
 	 */

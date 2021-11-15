@@ -7,27 +7,27 @@ use pocketmine\math\Facing;
 
 class Plot{
 	/** @var string $levelName */
-	public $levelName = "";
+	public string $levelName = "";
 	/** @var int $X */
-	public $X = -0;
+	public int $X = -0;
 	/** @var int $Z */
-	public $Z = -0;
+	public int $Z = -0;
 	/** @var string $name */
-	public $name = "";
+	public string $name = "";
 	/** @var string $owner */
-	public $owner = "";
+	public string $owner = "";
 	/** @var string[] $helpers */
-	public $helpers = [];
+	public array $helpers = [];
 	/** @var string[] $denied */
-	public $denied = [];
+	public array $denied = [];
 	/** @var string $biome */
-	public $biome = "PLAINS";
+	public string $biome = "PLAINS";
 	/** @var bool $pvp */
-	public $pvp = true;
-	/** @var float $price */
-	public $price = 0.0;
+	public bool $pvp = true;
+	/** @var int|float $price */
+	public int|float $price = 0.0;
 	/** @var int $id */
-	public $id = -1;
+	public int $id = -1;
 
 	/**
 	 * Plot constructor.

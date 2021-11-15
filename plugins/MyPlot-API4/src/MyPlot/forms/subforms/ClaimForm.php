@@ -74,7 +74,7 @@ class ClaimForm extends ComplexMyPlotForm{
 				$plotsOfPlayer = 0;
 				foreach($plugin->getPlotLevels() as $level => $settings){
 					$level = $plugin->getServer()->getWorldManager()->getWorldByName((string) $level);
-					if($level !== null and !$level->isClosed()){
+					if($level !== null and $level->isLoaded()){
 						$plotsOfPlayer += count($plugin->getPlotsOfPlayer($player->getName(), $level->getFolderName()));
 					}
 				}

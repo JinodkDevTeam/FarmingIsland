@@ -16,7 +16,7 @@ use pocketmine\utils\TextFormat;
 
 class GenerateForm extends ComplexMyPlotForm{
 	/** @var string[] $keys */
-	private $keys = [];
+	private array $keys = [];
 
 	public function __construct(){
 		$plugin = MyPlot::getInstance();
@@ -73,7 +73,7 @@ class GenerateForm extends ComplexMyPlotForm{
 
 				$blockIds = array_slice($data, -5, 5, true);
 				$blockIds = array_map(function($val){
-					if(strpos($val, ':') !== false){
+					if(str_contains($val, ':')){
 						$peices = explode(':', $val);
 						if(defined(BlockLegacyIds::class . "::" . strtoupper(str_replace(' ', '_', $peices[0]))))
 							return constant(BlockLegacyIds::class . "::" . strtoupper(str_replace(' ', '_', $val))) . ':' . ($peices[1] ?? 0);

@@ -11,7 +11,7 @@ use pocketmine\player\Player;
 
 abstract class SimpleMyPlotForm extends MenuForm implements MyPlotForm{
 	/** @var Plot|null $plot */
-	protected $plot;
+	protected ?Plot $plot;
 
 	public function __construct(string $title, string $text, array $options, Closure $onSubmit, ?Closure $onClose = null){
 		parent::__construct($title, $text, $options, $onSubmit,

@@ -14,9 +14,9 @@ class MyPlotDenyEvent extends MyPlotPlotEvent implements Cancellable{
 	public const ADD = 0;
 	public const REMOVE = 1;
 	/** @var int $type */
-	private $type;
+	private int $type;
 	/** @var string $player */
-	private $player;
+	private string $player;
 
 	/**
 	 * MyPlotDenyEvent constructor.
@@ -45,11 +45,11 @@ class MyPlotDenyEvent extends MyPlotPlotEvent implements Cancellable{
 	}
 
 	/**
-	 * @param IPlayer|string $player
+	 * @param string|IPlayer $player
 	 *
 	 * @return self
 	 */
-	public function setDenied($player) : self{
+	public function setDenied(string|IPlayer $player) : self{
 		if($player instanceof IPlayer){
 			$this->player = $player->getName();
 		}elseif(is_string($player)){

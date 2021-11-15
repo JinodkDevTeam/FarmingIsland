@@ -8,7 +8,6 @@ use pocketmine\block\Block;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\BiomeIds;
 use pocketmine\world\ChunkManager;
-use pocketmine\world\format\Chunk;
 use pocketmine\world\generator\Generator;
 use SplFixedArray;
 
@@ -19,21 +18,21 @@ class MyPlotGenerator extends Generator{
 	public const ISLAND = 3;
 	public const NAME = 'myplot';
 	/** @var Block $roadBlock */
-	protected $roadBlock;
+	protected Block $roadBlock;
 	/** @var Block $bottomBlock */
-	protected $bottomBlock;
+	protected Block $bottomBlock;
 	/** @var Block $plotFillBlock */
-	protected $plotFillBlock;
+	protected Block $plotFillBlock;
 	/** @var Block $plotFloorBlock */
-	protected $plotFloorBlock;
+	protected Block $plotFloorBlock;
 	/** @var Block $wallBlock */
-	protected $wallBlock;
+	protected Block $wallBlock;
 	/** @var int $roadWidth */
-	protected $roadWidth = 7;
+	protected int $roadWidth = 7;
 	/** @var int $groundHeight */
-	protected $groundHeight = 64;
+	protected int $groundHeight = 64;
 	/** @var int $plotSize */
-	protected $plotSize = 32;
+	protected int $plotSize = 32;
 
 	/**
 	 * MyPlotGenerator constructor.
@@ -45,7 +44,7 @@ class MyPlotGenerator extends Generator{
 		parent::__construct($seed, $preset);
 		try{
 			$options = json_decode($preset, true, 512, JSON_THROW_ON_ERROR);
-		}catch(JsonException $e){
+		}catch(JsonException){
 			$options = [];
 		}
 		$this->roadBlock = PlotLevelSettings::parseBlock($options, "RoadBlock", VanillaBlocks::OAK_PLANKS());
@@ -60,7 +59,7 @@ class MyPlotGenerator extends Generator{
 
 	public function generateChunk(ChunkManager $world, int $chunkX, int $chunkZ) : void{
 		$shape = $this->getShape($chunkX << 4, $chunkZ << 4);
-		$chunk = $world->getChunk($chunkX, $chunkZ) ?? new Chunk();
+		$chunk = $world->getChunk($chunkX, $chunkZ);
 		$bottomBlockId = $this->bottomBlock->getFullId();
 		$plotFillBlockId = $this->plotFillBlock->getFullId();
 		$plotFloorBlockId = $this->plotFloorBlock->getFullId();

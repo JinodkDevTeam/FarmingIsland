@@ -8,7 +8,7 @@ use pocketmine\event\Event;
 
 class MyPlotPlotEvent extends Event{
 	/** @var Plot $plot */
-	protected $plot;
+	protected Plot $plot;
 
 	public function __construct(Plot $plot){
 		$this->plot = $plot;

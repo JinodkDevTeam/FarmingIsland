@@ -9,7 +9,7 @@ use pocketmine\player\Player;
 
 class EconomySProvider implements EconomyProvider{
 	/** @var EconomyAPI $plugin */
-	private $plugin;
+	private EconomyAPI $plugin;
 
 	/**
 	 * EconomySProvider constructor.
@@ -26,7 +26,7 @@ class EconomySProvider implements EconomyProvider{
 		}elseif($amount < 0){
 			$amount = -$amount;
 		}
-		$ret = $this->plugin->reduceMoney($player, $amount, true, "MyPlot");
+		$ret = $this->plugin->reduceMoney($player, $amount);
 		if($ret === EconomyAPI::RET_SUCCESS){
 			$this->plugin->getLogger()->debug("MyPlot Reduced money of " . $player->getName());
 			return true;
@@ -38,7 +38,7 @@ class EconomySProvider implements EconomyProvider{
 	public function addMoney(IPlayer $player, float $amount) : bool{
 		if($amount < 1)
 			return true;
-		$ret = $this->plugin->addMoney($player->getName(), $amount, true, "MyPlot");
+		$ret = $this->plugin->addMoney($player->getName(), $amount);
 		if($ret === EconomyAPI::RET_SUCCESS){
 			$this->plugin->getLogger()->debug("MyPlot Add money of " . $player->getName());
 			return true;

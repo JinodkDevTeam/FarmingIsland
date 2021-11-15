@@ -1,13 +1,14 @@
-name: MyPlot
+name: Island
 main: MyPlot\MyPlot
-version: 1.11.1
+version: 1.11.2
 api:
   - 4.0.0
 authors:
   - Wiez
   - Exxarion
   - jasonwynn10
-description: "Plots and Protection Plugin for PocketMine-MP Servers"
+  - NgLamVN
+description: "Plots and Protection Plugin for PocketMine-MP Servers, currently maintained by JinodkDevTeam"
 load: STARTUP
 softdepend:
   - EconomyAPI

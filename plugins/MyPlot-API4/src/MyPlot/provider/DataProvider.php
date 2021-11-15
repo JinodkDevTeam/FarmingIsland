@@ -8,11 +8,11 @@ use MyPlot\Plot;
 
 abstract class DataProvider{
 	/** @var MyPlot $plugin */
-	protected $plugin;
+	protected MyPlot $plugin;
 	/** @var Plot[] $cache */
-	private $cache = [];
+	private array $cache = [];
 	/** @var int $cacheSize */
-	private $cacheSize;
+	private int $cacheSize;
 
 	/**
 	 * DataProvider constructor.
@@ -97,7 +97,7 @@ abstract class DataProvider{
 				array_shift($this->cache);
 			}
 			$this->cache = array_merge([$key => clone $plot], $this->cache);
-			$this->plugin->getLogger()->debug("Plot {$plot->X};{$plot->Z} has been cached");
+			$this->plugin->getLogger()->debug("Plot $plot->X;$plot->Z has been cached");
 		}
 	}
 

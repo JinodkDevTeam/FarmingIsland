@@ -11,7 +11,7 @@ class MyPlotMergeEvent extends MyPlotPlotEvent implements Cancellable{
 	use CancellableTrait;
 
 	/** @var Plot[][] $toMerge */
-	private $toMerge;
+	private array $toMerge;
 
 
 	/**

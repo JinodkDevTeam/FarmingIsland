@@ -14,7 +14,7 @@ use RuntimeException;
 
 class MySQLProvider extends DataProvider{
 	/** @var MyPlot $plugin */
-	protected $plugin;
+	protected MyPlot $plugin;
 	/** @var mysqli $db */
 	protected $db;
 	/** @var mixed[] $settings */

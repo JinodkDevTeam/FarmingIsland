@@ -13,11 +13,11 @@ class MyPlotPvpEvent extends MyPlotPlotEvent implements Cancellable{
 	use CancellableTrait;
 
 	/** @var Player $attacker */
-	private $attacker;
+	private Player $attacker;
 	/** @var Player $damaged */
-	private $damaged;
+	private Player $damaged;
 	/** @var EntityDamageByEntityEvent|null $event */
-	private $event;
+	private ?EntityDamageByEntityEvent $event;
 
 	public function __construct(Plot $plot, Player $attacker, Player $damaged, ?EntityDamageByEntityEvent $event = null){
 		$this->attacker = $attacker;

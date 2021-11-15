@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace MyPlot;
 
+use JsonException;
 use MyPlot\events\MyPlotBlockEvent;
 use MyPlot\events\MyPlotBorderChangeEvent;
 use MyPlot\events\MyPlotPlayerEnterPlotEvent;
@@ -33,7 +34,7 @@ use pocketmine\world\World;
 
 class EventListener implements Listener{
 	/** @var MyPlot $plugin */
-	private $plugin;
+	private MyPlot $plugin;
 
 	/**
 	 * EventListener constructor.
@@ -49,6 +50,8 @@ class EventListener implements Listener{
 	 * @priority LOWEST
 	 *
 	 * @param WorldLoadEvent $event
+	 *
+	 * @throws JsonException
 	 */
 	public function onLevelLoad(WorldLoadEvent $event) : void{
 		if(file_exists($this->plugin->getDataFolder() . "worlds" . DIRECTORY_SEPARATOR . $event->getWorld()->getFolderName() . ".yml")){
@@ -98,9 +101,9 @@ class EventListener implements Listener{
 	}
 
 	/**
-	 * @param BlockPlaceEvent|BlockBreakEvent|PlayerInteractEvent|SignChangeEvent $event
+	 * @param BlockBreakEvent|BlockPlaceEvent|PlayerInteractEvent|SignChangeEvent $event
 	 */
-	private function onEventOnBlock($event) : void{
+	private function onEventOnBlock(BlockPlaceEvent|SignChangeEvent|PlayerInteractEvent|BlockBreakEvent $event) : void{
 		if(!$event->getBlock()->getPosition()->isValid())
 			return;
 		$levelName = $event->getBlock()->getPosition()->getWorld()->getFolderName();
@@ -309,16 +312,16 @@ class EventListener implements Listener{
 
 	/**
 	 * @param Player                              $player
-	 * @param PlayerMoveEvent|EntityTeleportEvent $event
+	 * @param EntityTeleportEvent|PlayerMoveEvent $event
 	 */
-	private function onEventOnMove(Player $player, $event) : void{
+	private function onEventOnMove(Player $player, EntityTeleportEvent|PlayerMoveEvent $event) : void{
 		$levelName = $player->getWorld()->getFolderName();
 		if(!$this->plugin->isLevelLoaded($levelName))
 			return;
 		$plot = $this->plugin->getPlotByPosition($event->getTo());
 		$plotFrom = $this->plugin->getPlotByPosition($event->getFrom());
 		if($plot !== null and ($plotFrom === null or !$plot->isSame($plotFrom))){
-			if(strpos((string) $plot, "-0") !== false){
+			if(str_contains((string) $plot, "-0")){
 				return;
 			}
 			$ev = new MyPlotPlayerEnterPlotEvent($plot, $player);
@@ -360,7 +363,7 @@ class EventListener implements Listener{
 			$popup = TextFormat::WHITE . $paddingPopup . $popup . "\n" . TextFormat::WHITE . $paddingOwnerPopup . $ownerPopup;
 			$ev->getPlayer()->sendTip($popup);
 		}elseif($plotFrom !== null and ($plot === null or !$plot->isSame($plotFrom))){
-			if(strpos((string) $plotFrom, "-0") !== false){
+			if(str_contains((string) $plotFrom, "-0")){
 				return;
 			}
 			$ev = new MyPlotPlayerLeavePlotEvent($plotFrom, $player);

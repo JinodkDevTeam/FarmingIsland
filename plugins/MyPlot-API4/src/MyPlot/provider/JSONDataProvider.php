@@ -10,9 +10,9 @@ use pocketmine\utils\Config;
 
 class JSONDataProvider extends DataProvider{
 	/** @var MyPlot $plugin */
-	protected $plugin;
+	protected MyPlot $plugin;
 	/** @var Config $json */
-	private $json;
+	private Config $json;
 
 	/**
 	 * JSONDataProvider constructor.

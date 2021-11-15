@@ -10,9 +10,9 @@ use pocketmine\utils\Config;
 
 class YAMLDataProvider extends DataProvider{
 	/** @var MyPlot $plugin */
-	protected $plugin;
+	protected MyPlot $plugin;
 	/** @var Config $yaml */
-	private $yaml;
+	private Config $yaml;
 
 	/**
 	 * YAMLDataProvider constructor.

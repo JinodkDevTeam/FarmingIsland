@@ -11,7 +11,7 @@ class MyPlotClearEvent extends MyPlotPlotEvent implements Cancellable{
 	use CancellableTrait;
 
 	/** @var int $maxBlocksPerTick */
-	private $maxBlocksPerTick = 256;
+	private int $maxBlocksPerTick;
 
 	/**
 	 * MyPlotClearEvent constructor.
@@ -28,6 +28,12 @@ class MyPlotClearEvent extends MyPlotPlotEvent implements Cancellable{
 		return $this->maxBlocksPerTick;
 	}
 
+	/**
+	 * @param int $maxBlocksPerTick
+	 * @description sexMaxBlocksPerTick
+	 *
+	 * @return $this
+	 */
 	public function setMaxBlocksPerTick(int $maxBlocksPerTick) : self{
 		$this->maxBlocksPerTick = $maxBlocksPerTick;
 		return $this;

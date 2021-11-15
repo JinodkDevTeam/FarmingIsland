@@ -13,8 +13,6 @@ use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
 class WarpForm extends ComplexMyPlotForm{
-	/** @var Player $player */
-	private $player;
 
 	public function __construct(Player $player){
 		$plugin = MyPlot::getInstance();
@@ -35,7 +33,7 @@ class WarpForm extends ComplexMyPlotForm{
 					"2",
 					$plugin->getLanguage()->get("warp.formworld"),
 					"world",
-					$player->getLevelNonNull()->getFolderName()
+					$player->getWorld()->getFolderName()
 				)
 			],
 			function(Player $player, CustomFormResponse $response) use ($plugin) : void{
@@ -43,7 +41,7 @@ class WarpForm extends ComplexMyPlotForm{
 					$data = [
 						(int) $response->getString("0"),
 						(int) $response->getString("1"),
-						$response->getString("2") === '' ? $player->getLevelNonNull()->getFolderName() : $response->getString("2")
+						$response->getString("2") === '' ? $player->getWorld()->getFolderName() : $response->getString("2")
 					];
 				elseif($response->getString("0") === '' and $response->getString("1") === ''){
 					$player->sendForm(new self($player));
