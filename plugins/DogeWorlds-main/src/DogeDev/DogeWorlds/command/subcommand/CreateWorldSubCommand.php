@@ -51,7 +51,7 @@ class CreateWorldSubCommand extends WorldSubCommand{
 		}
 
 		$options = new WorldCreationOptions();
-		$options->setGeneratorClass($generator);
+		$options->setGeneratorClass($generator->getGeneratorClass());
 		$options->setDifficulty($difficulty === -1 ? 2 : $difficulty);
 		$this->getOwningPlugin()->getServer()->getWorldManager()->generateWorld($name, $options);
 		$sender->sendMessage($this->getOwningPlugin()->getLanguage()->getMessage("worldCreation", ["{WORLD}" => $name, "{DIFFICULTY}" => DifficultyUtils::getDifficultyNameFromInteger($difficulty), "{GENERATOR}" => ucwords($generatorName)]));
