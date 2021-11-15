@@ -3,17 +3,17 @@
 -- #    { init
 CREATE TABLE IF NOT EXISTS Mail
 (
-    Id        INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-    FromName  VARCHAR NOT NULL,
-    ToName    VARCHAR NOT NULL,
-    Title     TEXT    NOT NULL,
-    Msg       TEXT,
-    Items     BLOB,
-    Time      INTEGER,
-    IsRead    BOOLEAN NOT NULL DEFAULT FALSE,
-    IsClaimed BOOLEAN NOT NULL DEFAULT FALSE,
+    Id              INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+    FromName        VARCHAR NOT NULL,
+    ToName          VARCHAR NOT NULL,
+    Title           TEXT    NOT NULL,
+    Msg             TEXT,
+    Items           BLOB,
+    Time            INTEGER,
+    IsRead          BOOLEAN NOT NULL DEFAULT FALSE,
+    IsClaimed       BOOLEAN NOT NULL DEFAULT FALSE,
     IsDeletedByFrom BOOLEAN NOT NULL DEFAULT FALSE,
-    IsDeletedByTo BOOLEAN NOT NULL DEFAULT FALSE
+    IsDeletedByTo   BOOLEAN NOT NULL DEFAULT FALSE
 );
 -- #    }
 -- #    { register
@@ -24,12 +24,13 @@ CREATE TABLE IF NOT EXISTS Mail
 -- #        :items string
 -- #        :time int
 INSERT OR
-REPLACE INTO Mail (FromName,
-                   ToName,
-                   Title,
-                   Msg,
-                   Items,
-                   Time)
+REPLACE
+INTO Mail (FromName,
+           ToName,
+           Title,
+           Msg,
+           Items,
+           Time)
 VALUES (:from,
         :to,
         :title,
@@ -52,19 +53,28 @@ FROM Mail;
 -- #            :name string
 SELECT *
 FROM Mail
-WHERE (FromName = :name) AND (IsDeletedByFrom = FALSE);
+WHERE (FromName = :name)
+  AND (IsDeletedByFrom = FALSE);
 -- #        }
 -- #        { to
 -- #            :name string
 SELECT *
 FROM Mail
-WHERE (ToName = :name) AND (IsDeletedByTo = FALSE);
+WHERE (ToName = :name)
+  AND (IsDeletedByTo = FALSE);
 -- #        }
 -- #        { id
 -- #            :id int
 SELECT *
 FROM Mail
 WHERE Id = :id;
+-- #        }
+-- #        { unread
+-- #            :name string
+SELECT *
+FROM Mail
+WHERE (ToName = :name)
+  AND (IsRead = FALSE);
 -- #        }
 -- #    }
 -- #    { update

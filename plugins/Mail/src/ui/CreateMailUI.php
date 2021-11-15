@@ -61,7 +61,7 @@ class CreateMailUI extends BaseUI{
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 			$notice = Server::getInstance()->getPlayerExact($to);
-			$notice?->sendMessage("You have new mail form " . $player->getName());
+			$notice?->sendMessage("[Mail] You have new message from " . $player->getName());
 		});
 		$menu->send($player);
 	}

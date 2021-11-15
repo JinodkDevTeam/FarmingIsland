@@ -20,6 +20,7 @@ class Loader extends PluginBase{
 		}
 
 		$this->getServer()->getCommandMap()->register("mail", new MailCommand($this));
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 	}
 
 	public function getProvider() : SqliteProvider{

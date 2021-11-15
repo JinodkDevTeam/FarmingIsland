@@ -17,6 +17,7 @@ class SqliteProvider{
 	public const SELECT_FROM = "mail.select.from";
 	public const SELECT_TO = "mail.select.to";
 	public const SELECT_ID = "mail.select.id";
+	public const SELECT_UNREAD = "mail.select.unread";
 	public const UPDATE_ISREAD = "mail.update.isread";
 	public const UPDATE_ISCLAIMED = "mail.update.isclaimed";
 	public const UPDATE_IS_DELETED_BY_FROM = "mail.update.isdeletedbyfrom";
@@ -67,6 +68,12 @@ class SqliteProvider{
 	public function selectId(int $id){
 		return yield $this->asyncSelect(self::SELECT_ID, [
 			"id" => $id
+		]);
+	}
+
+	public function selectUnread(string $name) : Generator{
+		return yield $this->asyncSelect(self::SELECT_UNREAD, [
+			"name" => $name
 		]);
 	}
 
