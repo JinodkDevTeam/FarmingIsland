@@ -16,8 +16,11 @@ class UpdateInfo{
 
 	public function execute(Player $player){
 		$form = new SimpleForm(function(Player $player, ?int $data){
-			if($data == null) return;
-			if($data == 1) $this->TutorialForm($player);
+			if($data == 1) {
+				$this->TutorialForm($player);
+			} else {
+				$this->WarningForm($player);
+			}
 		});
 		$text = [
 			"§　Updates:",
@@ -43,11 +46,27 @@ class UpdateInfo{
 			"Tutorial will be updated when the server is completed"
 		];
 		$form = new SimpleForm(function(Player $player, ?int $data){
-			//NOTHING
+			$this->WarningForm($player);
 		});
 		$form->setTitle("§　§lTutorial");
 		$form->setContent(implode(PHP_EOL, $text));
 		$form->addButton("§　§lOK, LEST PLAY !");
+
+		$player->sendForm($form);
+	}
+
+	public function WarningForm(Player $player){
+		$text = [
+			"* Currenly, this server is in development, every player data may be reseted by some reason. Just for testing.",
+			"",
+			"* Hiện tại server đang trong giai đoạn phát triển, do đó dữ liệu người chơi có thể bị reset bất cứ lúc nào với nhiều lý do, do đó cần cân nhắc khi chơi ở thời điểm này."
+		];
+		$form = new SimpleForm(function(Player $player, ?int $data){
+			//NOTHING
+		});
+		$form->setTitle("§　§lWARNING");
+		$form->setContent(implode(PHP_EOL, $text));
+		$form->addButton("§　§lI know what i am doing !");
 
 		$player->sendForm($form);
 	}
