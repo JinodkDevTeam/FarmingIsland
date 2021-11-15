@@ -16,6 +16,6 @@ class FiVersion extends BaseCommand{
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		$sender->sendMessage("Server version: " . Core::VERSION . " build " . Core::BUILD_NUMBER);
+		$sender->sendMessage("Server version: " . Core::VERSION);
 	}
 }

@@ -17,9 +17,7 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 
 class Core extends PluginBase{
-	public const VERSION = "0.1-indev";
-	public const BUILD_NUMBER = "5";
-	public const INDEV = true;
+	public const VERSION = "ALPHA-0.1";
 
 	use SingletonTrait;
 
