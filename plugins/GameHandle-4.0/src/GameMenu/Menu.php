@@ -57,7 +57,7 @@ class Menu{
 		$player->getInventory()->setItem(8, $i);
 	}
 
-	public function onTap(PlayerInteractEvent $event){
+	public function onTap(PlayerInteractEvent|PlayerItemUseEvent $event){
 		$player = $event->getPlayer();
 
 		$slot = $player->getInventory()->getHeldItemIndex();
@@ -67,23 +67,7 @@ class Menu{
 		}
 
 		if($slot == 8){
-			if($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null){
-				return;
-			}else{
-				new UiMenu($player);
-			}
-		}
-	}
-
-	public function onUse(PlayerItemUseEvent $event){
-		$player = $event->getPlayer();
-
-		$slot = $player->getInventory()->getHeldItemIndex();
-
-		if($slot == 8){
-			if($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") == null){
-				return;
-			}else{
+			if($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") !== null){
 				new UiMenu($player);
 			}
 		}

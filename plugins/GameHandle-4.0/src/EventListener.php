@@ -16,6 +16,7 @@ use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
@@ -89,6 +90,16 @@ class EventListener implements Listener{
 	public function onInteract(PlayerInteractEvent $event){
 		$this->menu->onTap($event);
 		$this->slevel->onInteract($event);
+	}
+
+	/**
+	 * @param PlayerItemUseEvent $event
+	 *
+	 * @priority MONITOR
+	 * @handleCancelled FALSE
+	 */
+	public function onUse(PlayerItemUseEvent $event){
+		$this->menu->onTap($event);
 	}
 
 	/**
