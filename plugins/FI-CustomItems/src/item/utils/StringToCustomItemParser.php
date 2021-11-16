@@ -52,6 +52,9 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("enchanted_sugar_cane", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SUGAR_CANE));
 
 		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
+
+		$result->register("game_breaker", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::GAME_BREAKER));
+		$result->register("game_annihilator", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::GAME_ANNIHILATOR));
 		return $result;
 	}
 

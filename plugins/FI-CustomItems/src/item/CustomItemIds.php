@@ -121,6 +121,9 @@ final class CustomItemIds{
 
 	public const OP_ROD = 2200;
 
+	public const GAME_BREAKER = 3000;
+	public const GAME_ANNIHILATOR = 3001;
+
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;
 
