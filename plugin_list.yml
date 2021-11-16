@@ -7,3 +7,4 @@ mode: blacklist
 #List names of plugins here.
 plugins:
   - PickaxeLevel
+  - WorldStyler
