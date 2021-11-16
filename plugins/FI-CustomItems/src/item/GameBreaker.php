@@ -11,7 +11,7 @@ use pocketmine\item\ItemIds;
 class GameBreaker extends CustomItem{
 
 	public function toItem() : Item{
-		$item = ItemFactory::getInstance()->get(ItemIds::END_CRYSTAL);
+		$item = ItemFactory::getInstance()->get(ItemIds::TNT);
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
