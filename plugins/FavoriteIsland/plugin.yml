@@ -5,7 +5,7 @@ author: JinodkDevTeam|NgLamVN
 main: FavoriteIslands\Loader
 src-namespace-prefix: FavoriteIslands
 depend:
-  - MyPlot
+  - Island
 permissions:
   favoriteisland.command:
     default: true

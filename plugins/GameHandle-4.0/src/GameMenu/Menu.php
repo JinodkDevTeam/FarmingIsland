@@ -61,11 +61,11 @@ class Menu{
 		$player = $event->getPlayer();
 
 		$slot = $player->getInventory()->getHeldItemIndex();
-
-		if(in_array($event->getBlock()->getId(), self::BAN_BLOCK)){
-			return;
+		if ($event instanceof PlayerInteractEvent){
+			if(in_array($event->getBlock()->getId(), self::BAN_BLOCK)){
+				return;
+			}
 		}
-
 		if($slot == 8){
 			if($player->getInventory()->getItemInHand()->getNamedTag()->getTag("menu-mode") !== null){
 				new UiMenu($player);
