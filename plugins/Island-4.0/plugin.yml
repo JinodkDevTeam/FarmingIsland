@@ -37,11 +37,11 @@ permissions:
   myplot.command.auto:
     default: true
   myplot.command.clear:
-    default: true
+    default: op
   myplot.command.dispose:
-    default: true
+    default: op
   myplot.command.reset:
-    default: true
+    default: op
   myplot.command.biome:
     default: true
   myplot.command.biomes:
@@ -53,7 +53,7 @@ permissions:
   myplot.command.name:
     default: true
   myplot.command.give:
-    default: true
+    default: op
   myplot.command.warp:
     default: true
   myplot.command.done:
@@ -65,7 +65,7 @@ permissions:
   myplot.command.pvp:
     default: true
   myplot.command.clone:
-    default: true
+    default: op
   myplot.admin:
     default: op
   myplot.admin.clear:
@@ -112,7 +112,7 @@ permissions:
     default: op
   myplot.claimplots:
     default: op
-  myplot.claimplots.2:
+  myplot.claimplots.1:
     default: true
   myplot.claimplots.unlimited:
     default: op

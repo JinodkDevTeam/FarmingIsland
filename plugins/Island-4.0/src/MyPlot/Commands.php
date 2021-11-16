@@ -38,6 +38,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
+use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use ReflectionException;
 
@@ -230,8 +231,10 @@ class Commands extends Command implements PluginOwned{
 		if(!isset($args[0])){
 			$args[0] = "help";
 			if($sender instanceof Player and $plugin->getConfig()->get("UI Forms", true)){
-				$sender->sendForm(new MainForm($sender, $this->subCommands));
-				return true;
+				if (Server::getInstance()->isOp($sender->getName())){
+					$sender->sendForm(new MainForm($sender, $this->subCommands));
+					return true;
+				}
 			}
 		}
 		$subCommand = strtolower((string) array_shift($args));
