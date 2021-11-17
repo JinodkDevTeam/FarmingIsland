@@ -356,6 +356,10 @@ class Shop extends PluginBase{
 					}
 				}else{
 					if($data[1] == false){
+						if ($data1 <= 0){
+							$player->sendMessage("Amount must be > 0");
+							return;
+						}
 						if($money >= $list[3] * $data1){
 							$item = $player->getInventory();
 							if($list[5] !== "Default"){
