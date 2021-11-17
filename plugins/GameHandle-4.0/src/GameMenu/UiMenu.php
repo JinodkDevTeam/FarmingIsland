@@ -18,7 +18,7 @@ class UiMenu{
 
 	public function MenuForm(Player $player){
 		$list = [];
-		if($player->getWorld()->getDisplayName() == "island"){
+		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
 			array_push($list, "is-manager");
 			array_push($list, "is-info");
 			array_push($list, "favorite-island");
@@ -41,7 +41,10 @@ class UiMenu{
 			}
 			switch($list[$data]){
 				case "is-manager":
-					/*new IslandManager($player);*/
+					new IslandManager($player);
+					break;
+				case "favorite-island":
+					Server::getInstance()->dispatchCommand($player, "favislands");
 					break;
 				case "teleport":
 					/*new TeleportManager($player);*/
@@ -59,7 +62,7 @@ class UiMenu{
 					/*Server::getInstance()->dispatchCommand($player, "cuahang");*/
 					break;
 				case "is-info":
-					/*$this->IslandInfoForm($player);*/
+					$this->IslandInfoForm($player);
 					break;
 				case "tutorial":
 					Server::getInstance()->dispatchCommand($player, "tutorial");
@@ -81,10 +84,10 @@ class UiMenu{
 					break;
 			}
 		});
-		if($player->getWorld()->getDisplayName() == "island"){
-			$form->addButton("§　§lIsland Manager(Comming soon)\nQuản lý đảo");
-			$form->addButton("§　§lIsland Info(Comming soon)\nThông tin đảo");
-
+		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
+			$form->addButton("§　§lIsland Manager\nQuản lý đảo");
+			$form->addButton("§　§lIsland Info\nThông tin đảo");
+			$form->addButton("§　§lFavorite Islands");
 		}
 		$form->addButton("§lTeleport(Comming soon)\nDịch chuyển");
 		$form->addButton("§　§lShop");
@@ -110,9 +113,13 @@ class UiMenu{
 	}
 
 	public function IslandInfoForm(Player $player){
+		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
+		if ($plot == null){
+			$player->sendMessage("Failed to get island info.");
+			return;
+		}
 		$form = new CustomForm(function(Player $player, $data){ });
 		$form->setTitle("§　§lIsland Info");
-		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 		$h = "";
 		foreach($plot->helpers as $helper){
 			if($h == ""){

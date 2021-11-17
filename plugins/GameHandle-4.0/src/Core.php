@@ -7,6 +7,7 @@ namespace NgLamVN\GameHandle;
 use CortexPE\Hierarchy\Hierarchy;
 use Exception;
 use muqsit\invmenu\InvMenuHandler;
+use MyPlot\MyPlot;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
@@ -26,7 +27,9 @@ class Core extends PluginBase{
 	/** @var SellHandler $sell */
 	public SellHandler $sell;
 	/** @var PlayerStatManager $pstatmanager */
-	private PlayerStatManager $pstatmanager;
+	protected PlayerStatManager $pstatmanager;
+
+	protected ?string $island_world_name = null;
 
 	public function onEnable() : void{
 		try{
@@ -41,6 +44,28 @@ class Core extends PluginBase{
 			new InitTask($this);
 			$this->pstatmanager = new PlayerStatManager();
 			$this->sell = new SellHandler($this);
+			//LOAD ALL WORLDS AND FIND ISLAND WORLD
+			$worlds = [];
+			foreach (scandir($this->getServer()->getDataPath() . "worlds") as $world) {
+				if ($world === "." || $world === ".." || pathinfo($world, PATHINFO_EXTENSION) !== "") {
+					continue;
+				}
+				$worlds[] = $world;
+			}
+			$worldmanager = $this->getServer()->getWorldManager();
+			foreach($worlds as $world){
+				if (!$worldmanager->isWorldLoaded($world)){
+					$worldmanager->loadWorld($world);
+					if (MyPlot::getInstance()->isLevelLoaded($world)){
+						$this->island_world_name = $world;
+					} else {
+						$worldmanager->unloadWorld($worldmanager->getWorldByName($world));
+					}
+				} elseif (MyPlot::getInstance()->isLevelLoaded($world)){
+					$this->island_world_name = $world;
+				}
+			}
+
 		}catch(Exception $e){
 			$this->getLogger()->error($e->getMessage());
 			$this->getLogger()->error("An error caused by GameHandle, force disable this plugin...");
@@ -76,5 +101,9 @@ class Core extends PluginBase{
 
 	public function getSellHandler() : SellHandler{
 		return $this->sell;
+	}
+
+	public function getIslandWorldName(): ?string{
+		return $this->island_world_name;
 	}
 }

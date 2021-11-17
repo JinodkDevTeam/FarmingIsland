@@ -177,8 +177,6 @@ aliases:
   #savestop: [save-all, stop]
 
 worlds:
-  world:
-    generator: vanilla_overworld
   nether:
     generator: vanilla_nether
   Game:

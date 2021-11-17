@@ -1,0 +1,13 @@
+---
+RestrictEntityMovement: false
+RestrictPVP: false
+UpdatePlotLiquids: true
+AllowOutsidePlotSpread: true
+AllowFireTicking: true
+EditBorderBlocks: true
+ClaimPrice: 0
+ClearPrice: 0
+DisposePrice: 0
+ResetPrice: 0
+ClonePrice: 0
+...

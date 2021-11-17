@@ -7,6 +7,7 @@ use Exception;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\GameMenu\Menu;
+use pocketmine\console\ConsoleCommandSender;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
@@ -45,14 +46,23 @@ class EventListener implements Listener{
 	 */
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
-		if($player->getWorld()->getDisplayName() !== "island"){
-			/*Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "mw tp island ". $player->getName());*/
+		if ($this->getCore()->getIslandWorldName() == null){
+			return;
 		}
-
+		if($player->getWorld()->getDisplayName() !== $this->getCore()->getIslandWorldName()){
+			Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "dw tp " . $this->getCore()->getIslandWorldName() . " " . $player->getName());
+		}
 		$this->menu->registerMenuItem($player);
 		$this->menu->sendUpdatesForm($player);
-		Server::getInstance()->dispatchCommand($player, "is home");
+		$homes = MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), $this->getCore()->getIslandWorldName());
+		if (!empty($homes)){
+			Server::getInstance()->dispatchCommand($player, "is home");
+		} else {
+			Server::getInstance()->dispatchCommand($player, "is auto");
+			Server::getInstance()->dispatchCommand($player, "is claim");
+			$player->sendMessage("LEST START.");
 
+		}
 		$this->getCore()->getPlayerStatManager()->registerPlayerStat($player);
 	}
 
@@ -67,10 +77,13 @@ class EventListener implements Listener{
 	 */
 	public function onRespawn(PlayerRespawnEvent $event){
 		$player = $event->getPlayer();
-		if(!isset(MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), "island")[0])){
+		if ($this->getCore()->getIslandWorldName() == null){
 			return;
 		}
-		$plot = MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), "island")[0];
+		if(!isset(MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), $this->getCore()->getIslandWorldName())[0])){
+			return;
+		}
+		$plot = MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), $this->getCore()->getIslandWorldName())[0];
 
 		$plotLevel = MyPlot::getInstance()->getLevelSettings($plot->levelName);
 		$pos = MyPlot::getInstance()->getPlotPosition($plot);
