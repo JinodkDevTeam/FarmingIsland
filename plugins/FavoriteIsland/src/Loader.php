@@ -10,8 +10,6 @@ use pocketmine\plugin\PluginBase;
 
 class Loader extends PluginBase{
 
-	public const WORLD_NAME = "island";
-
 	protected SqliteProvider $provider;
 
 	protected function onEnable() : void{
