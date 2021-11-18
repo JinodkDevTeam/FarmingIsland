@@ -50,6 +50,35 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("enchanted_potato", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_POTATO));
 		$result->register("enchanted_sugar", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SUGAR));
 		$result->register("enchanted_sugar_cane", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SUGAR_CANE));
+		$result->register("enchanted_apple", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_APPLE));
+		$result->register("enchanted_pumkin", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_PUMKIN));
+		$result->register("enchanted_melon", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_MELON));
+		$result->register("enchanted_melon_block", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_MELON_BLOCK));
+		$result->register("enchanted_apple", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_APPLE));
+		$result->register("enchanted_glisterin_melon", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_GLISTERIN_MELON));
+		$result->register("enchanted_cactus", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_CACTUS));
+		$result->register("enchanted_netherwart", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_NETHERWART));
+		$result->register("enchanted_netherwart_block", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_NETHERWART_BLOCK));
+
+		$result->register("enchanted_oak_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_OAK_WOOD));
+		$result->register("enchanted_birch_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_BIRCH_WOOD));
+		$result->register("enchanted_spruce_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_SPRUCE_WOOD));
+		$result->register("enchanted_jungle_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_JUNGLE_WOOD));
+		$result->register("enchanted_acia_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_ACIA_WOOD));
+		$result->register("enchanted_dark_oak_wood", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_DARK_OAK_WOOD));
+
+		$result->register("refined_iron", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_IRON));
+		$result->register("refined_gold", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_GOLD));
+		$result->register("refined_emerald", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_EMERALD));
+		$result->register("refined_diamond", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_DIAMOND));
+
+		$result->register("noice_paper", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::NOICE_PAPER));
+
+		$result->register("crook", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::CROOK));
+		$result->register("titanium_drill", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::TITANIUM_DRILL));
+		$result->register("drill_fuel", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::DRILL_FUEL));
+
+		$result->register("backpack_slot", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::BACKPACK_SLOT));
 
 		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
 
