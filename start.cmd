@@ -30,5 +30,5 @@ if exist bin\mintty.exe (
 	%PHP_BINARY% %POCKETMINE_FILE% %* || pause
 )
 
-timeout 5
+timeout 10
 goto :loop
