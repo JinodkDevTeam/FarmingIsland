@@ -2,6 +2,7 @@
 TITLE PocketMine-MP server software for Minecraft: Bedrock Edition
 cd /d %~dp0
 
+:loop
 if exist bin\php\php.exe (
 	set PHPRC=""
 	set PHP_BINARY=bin\php\php.exe
@@ -28,3 +29,6 @@ if exist bin\mintty.exe (
 	REM pause on exitcode != 0 so the user can see what went wrong
 	%PHP_BINARY% %POCKETMINE_FILE% %* || pause
 )
+
+timeout 5
+goto :loop
