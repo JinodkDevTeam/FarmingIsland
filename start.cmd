@@ -1,5 +1,5 @@
 @echo off
-TITLE PocketMine-MP server software for Minecraft: Pocket Edition
+TITLE PocketMine-MP server software for Minecraft: Bedrock Edition
 cd /d %~dp0
 
 if exist bin\php\php.exe (
@@ -12,14 +12,14 @@ if exist bin\php\php.exe (
 if exist src/PocketMine.php (
 	set POCKETMINE_FILE=src/PocketMine.php
 ) else (
-	if exist PocketMine-MP.phar(
-	    set POCKETMINE_FILE=PocketMine-MP.phar
-	) else (
-	    echo PocketMine-MP.phar not found
+    if exist PocketMine-MP.phar (
+        set POCKETMINE_FILE=PocketMine-MP.phar
+    ) else (
+        echo PocketMine-MP.phar not found
         echo Downloads can be found at https://github.com/pmmp/PocketMine-MP/releases
         pause
         exit 1
-	)
+    )
 )
 
 if exist bin\mintty.exe (
