@@ -78,6 +78,7 @@ final class CustomItemIds{
 	public const REFINED_GOLD = 2061;
 	public const REFINED_EMERALD = 2062;
 	public const REFINED_DIAMOND = 2063;
+	public const REFINED_TITANIUM = 2064;
 
 	//Another stuff
 	public const NOICE_PAPER = 2069;

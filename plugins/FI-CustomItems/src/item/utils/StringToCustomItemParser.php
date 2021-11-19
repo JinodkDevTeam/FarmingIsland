@@ -71,6 +71,7 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("refined_gold", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_GOLD));
 		$result->register("refined_emerald", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_EMERALD));
 		$result->register("refined_diamond", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_DIAMOND));
+		$result->register("refined_titanium", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::REFINED_TITANIUM));
 
 		$result->register("noice_paper", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::NOICE_PAPER));
 

@@ -76,6 +76,7 @@ class CustomItemFactory{
 		$this->register(new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_GOLD), "Refined Gold", Rarity::RARE(), VanillaItems::YELLOW_DYE()));
 		$this->register(new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_EMERALD), "Refined Emerald", Rarity::RARE(), VanillaItems::LIME_DYE()));
 		$this->register(new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_DIAMOND), "Refined Diamond", Rarity::RARE(), VanillaItems::LIGHT_BLUE_DYE()));
+		$this->register(new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_TITANIUM), "Refined Titanium", Rarity::LEGENDARY(), ItemFactory::getInstance()->get(ItemIds::STONE, 4)));
 
 		$this->register(new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", Rarity::LEGENDARY()));
 		$this->register(new Crook(new CustomItemIdentifier(CustomItemIds::CROOK), "Crook", Rarity::RARE()));
