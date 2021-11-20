@@ -50,6 +50,7 @@ chatFormat:
   2: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
   3: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
   4: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
+  5: "{{prefix.rank}} {{hrk.displayName}} > {{msg}}"
 
 # NameTag formatting
 nameTagFormat:
@@ -58,4 +59,5 @@ nameTagFormat:
   2: "{{prefix.rank}} {{hrk.displayName}}"
   3: "{{prefix.rank}} {{hrk.displayName}}"
   4: "{{prefix.rank}} {{hrk.displayName}}"
+  5: "{{prefix.rank}} {{hrk.displayName}}"
 ...
