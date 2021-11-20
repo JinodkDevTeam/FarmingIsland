@@ -18,7 +18,7 @@ class AddByIdForm extends BaseForm{
 				if (is_numeric($ids[0]) and is_numeric($ids[1])){
 					$plot = MyPlot::getInstance()->getProvider()->getPlot(Core::getInstance()->getIslandWorldName(), (int)$ids[0], (int)$ids[1]);
 					if ($plot->owner == ""){
-						$player->sendMessage("You cannot add un-claimed plot !");
+						$player->sendMessage("You cannot add un-claimed island !");
 						return;
 					}
 					$this->getLoader()->addFavorite($player, (int)$ids[0], (int)$ids[1]);

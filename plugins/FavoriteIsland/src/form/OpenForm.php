@@ -16,7 +16,7 @@ class OpenForm extends BaseForm{
 				case 0:
 					$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 					if ($plot == null){
-						$player->sendMessage("You are not in a plot !");
+						$player->sendMessage("You are not in a island !");
 						return;
 					}
 					$this->getLoader()->addFavorite($player, $plot->X, $plot->Z);
