@@ -22,6 +22,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityExplodeEvent;
 use pocketmine\event\entity\EntityMotionEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
+use pocketmine\event\entity\EntityTrampleFarmlandEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerMoveEvent;
@@ -90,6 +91,10 @@ class EventListener implements Listener{
 		}
 	}
 
+	public function onEntityTrample(EntityTrampleFarmlandEvent $event){
+		$this->onEventOnBlock($event);
+	}
+
 	/**
 	 * @ignoreCancelled false
 	 * @priority LOWEST
@@ -101,9 +106,9 @@ class EventListener implements Listener{
 	}
 
 	/**
-	 * @param BlockBreakEvent|BlockPlaceEvent|PlayerInteractEvent|SignChangeEvent $event
+	 * @param BlockBreakEvent|BlockPlaceEvent|PlayerInteractEvent|SignChangeEvent|EntityTrampleFarmlandEvent $event
 	 */
-	private function onEventOnBlock(BlockPlaceEvent|SignChangeEvent|PlayerInteractEvent|BlockBreakEvent $event) : void{
+	private function onEventOnBlock(BlockPlaceEvent|SignChangeEvent|PlayerInteractEvent|BlockBreakEvent|EntityTrampleFarmlandEvent $event) : void{
 		if(!$event->getBlock()->getPosition()->isValid())
 			return;
 		$levelName = $event->getBlock()->getPosition()->getWorld()->getFolderName();
