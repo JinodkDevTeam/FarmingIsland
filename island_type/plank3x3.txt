@@ -1,0 +1,10 @@
+/**
+ * Name: Planks Island 3x3
+ * DESIGNER: NgLamVN
+ * Created date: 29/3/2020
+ * Builder: None
+ */
+for($i = 6; $i < 9; $i++)
+    for($j = 6; $j < 9; $j++){
+        $world->setBlockAt($vec->x + $i, 64, $vec->z + $j, VanillaBlocks::OAK_PLANKS());
+    }

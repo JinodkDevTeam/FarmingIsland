@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /*
  * CustomAlerts v2.0 by EvolSoft
@@ -58,7 +59,6 @@ class EventListener implements Listener{
 				if($cevent->getMessage() != ""){
 					$origin->disconnect($cevent->getMessage());
 					$event->cancel();
-					return;
 				}
 			}elseif($packet->protocol > ProtocolInfo::CURRENT_PROTOCOL){
 				//Outdated Server message
@@ -70,7 +70,6 @@ class EventListener implements Listener{
 				if($cevent->getMessage() != ""){
 					$origin->disconnect($cevent->getMessage());
 					$event->cancel();
-					return;
 				}
 			}
 		}
@@ -93,7 +92,6 @@ class EventListener implements Listener{
 				$cevent->call();
 				if($cevent->getMessage() != ""){
 					$event->setKickReason(0, $cevent->getMessage());
-					return;
 				}
 			}
 		}else{
@@ -105,7 +103,6 @@ class EventListener implements Listener{
 			$cevent->call();
 			if($cevent->getMessage() != ""){
 				$event->setKickReason(0, $cevent->getMessage());
-				return;
 			}
 		}
 	}

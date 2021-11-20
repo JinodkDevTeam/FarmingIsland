@@ -135,13 +135,13 @@ class CustomAlerts extends PluginBase{
 	/**
 	 * Get outdated client message
 	 *
-	 * @param Player
+	 * @param ?Player
 	 *
 	 * @return string
 	 */
-	public function getOutdatedClientMessage(Player $player){
+	public function getOutdatedClientMessage(?Player $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["OutdatedClient"]["message"], [
-			"PLAYER" => $player->getName(),
+			"PLAYER" => $player?$player->getName():"",
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
 			"TOTALPLAYERS" => count($this->getServer()->getOnlinePlayers()),
 			"TIME" => date($this->cfg["datetime-format"])]));

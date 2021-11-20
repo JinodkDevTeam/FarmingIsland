@@ -1,0 +1,243 @@
+/**
+ * Name: Turtle Island
+ * Designer: NgLamVN
+ * Created date: 17/10/2019
+ * Builder: None
+ */
+////////// SET ISLAND //////////////
+for ($x = 3; $x <12; $x++)
+{
+    for ($z = 2; $z < 10; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 69, $vec->z + $z, VanillaBlocks::GRASS());
+        $world->setBlockAt($vec->x + $x, 68, $vec->z + $z, VanillaBlocks::PRISMARINE());
+        $world->setBlockAt($vec->x + $x, 67, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::PLANKS, 2));
+    }
+}
+/////////////REMAKE ISLAND//////////
+for ($y = 67; $y < 70; $y++)
+{
+    $world->setBlockAt($vec->x + 11, $y, $vec->z + 9, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 10, $y, $vec->z + 9, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 11, $y, $vec->z + 8, VanillaBlocks::AIR());
+
+    $world->setBlockAt($vec->x + 11, $y, $vec->z + 3, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 11, $y, $vec->z + 2, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 10, $y, $vec->z + 2, VanillaBlocks::AIR());
+
+    $world->setBlockAt($vec->x + 4, $y, $vec->z + 2, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 2, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 3, VanillaBlocks::AIR());
+
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 8, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 9, VanillaBlocks::AIR());
+    $world->setBlockAt($vec->x + 4, $y, $vec->z + 9, VanillaBlocks::AIR());
+}
+/////////// TREE Generator//////////////////
+for ($x = 2; $x < 13; $x++)
+    for ($z = -2; $z < 8; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 75, $vec->z + $z, VanillaBlocks::OAK_LEAVES());
+    }
+$world->setBlockAt($vec->x + 12, 75, $vec->z + 7, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 12, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 11, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 75, $vec->z + -1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + -1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + -1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + -2, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 4, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + 5, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 75, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 75, $vec->z + 7, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 5, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 75, $vec->z + 7, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 75, $vec->z + 7, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 75, $vec->z + 7, VanillaBlocks::AIR());
+
+for ($x = 4; $x < 12; $x++)
+    for ($z = -1; $z < 7; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 76, $vec->z + $z, VanillaBlocks::OAK_LEAVES());
+    }
+$world->setBlockAt($vec->x + 4, 76, $vec->z + -1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 76, $vec->z + -1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 76, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 76, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 76, $vec->z + 5, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 76, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 11, 76, $vec->z + 6, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 11, 76, $vec->z + -1, VanillaBlocks::AIR());
+
+for ($x = 5; $x < 11; $x++)
+    for ($z = 0; $z < 6; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 77, $vec->z + $z, VanillaBlocks::OAK_LEAVES());
+    }
+$world->setBlockAt($vec->x + 5, 77, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 77, $vec->z + 5, VanillaBlocks::AIR());
+
+for ($x = 6; $x < 10; $x++)
+    for ($z = 1; $z < 5; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 78, $vec->z + $z, VanillaBlocks::OAK_LEAVES());
+    }
+
+for ($y = 70; $y < 75; $y++)
+{
+    $world->setBlockAt($vec->x + 8, $y, $vec->z + 3, VanillaBlocks::OAK_LOG());
+}
+for ($y = 74; $y < 76; $y++)
+{
+    $world->setBlockAt($vec->x + 9, $y, $vec->z + 3, VanillaBlocks::OAK_LOG());
+    $world->setBlockAt($vec->x + 8, $y, $vec->z + 2, VanillaBlocks::OAK_LOG());
+    $world->setBlockAt($vec->x + 7, $y, $vec->z + 3, VanillaBlocks::OAK_LOG());
+}
+$world->setBlockAt($vec->x + 7, 76, $vec->z + 3, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 6, 76, $vec->z + 4, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 6, 76, $vec->z + 4, VanillaBlocks::OAK_LOG());
+
+$world->setBlockAt($vec->x + 10, 76, $vec->z + 4, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 10, 76, $vec->z + 5, VanillaBlocks::OAK_LOG());
+
+$world->setBlockAt($vec->x + 8, 76, $vec->z + 1, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 9, 76, $vec->z + 0, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 10, 76, $vec->z + 0, VanillaBlocks::OAK_LOG());
+
+$world->setBlockAt($vec->x + 9, 70, $vec->z + 3, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 8, 70, $vec->z + 2, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 7, 70, $vec->z + 4, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 7, 70, $vec->z + 3, VanillaBlocks::OAK_LOG());
+$world->setBlockAt($vec->x + 7, 71, $vec->z + 3, VanillaBlocks::OAK_LOG());
+
+///////////// TRANG TRÍ ///////////////
+
+$world->setBlockAt($vec->x + 7, 71, $vec->z + 4, VanillaBlocks::COBWEB());
+
+$world->setBlockAt($vec->x + 4, 69, $vec->z + 5, VanillaBlocks::WATER());
+$world->setBlockAt($vec->x + 4, 69, $vec->z + 6, VanillaBlocks::WATER());
+$world->setBlockAt($vec->x + 3, 69, $vec->z + 5, BlockFactory::getInstance()->get(BlockLegacyIds::FLOWING_WATER, 0));
+$world->setBlockAt($vec->x + 3, 69, $vec->z + 6, BlockFactory::getInstance()->get(BlockLegacyIds::FLOWING_WATER, 0));
+
+for ($z = 4; $z < 8; $z++)
+{
+    $world->setBlockAt($vec->x + 5, 69, $vec->z + $z, VanillaBlocks::FARMLAND());
+}
+$world->setBlockAt($vec->x + 5, 70, $vec->z + 7, VanillaBlocks::WHEAT());
+$world->setBlockAt($vec->x + 5, 70, $vec->z + 4, VanillaBlocks::WHEAT());
+$world->setBlockAt($vec->x + 5, 70, $vec->z + 5, VanillaBlocks::POTATOES());
+$world->setBlockAt($vec->x + 5, 70, $vec->z + 6, VanillaBlocks::POTATOES());
+
+$world->setBlockAt($vec->x + 3, 69, $vec->z + 7, VanillaBlocks::SAND());
+$world->setBlockAt($vec->x + 4, 69, $vec->z + 7, VanillaBlocks::SAND());
+$world->setBlockAt($vec->x + 3, 69, $vec->z + 4, VanillaBlocks::SAND());
+$world->setBlockAt($vec->x + 4, 69, $vec->z + 4, VanillaBlocks::SAND());
+for ($y = 70; $y < 73; $y++)
+{
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 7, VanillaBlocks::CACTUS());
+    $world->setBlockAt($vec->x + 4, $y, $vec->z + 7, VanillaBlocks::SUGARCANE());
+    $world->setBlockAt($vec->x + 3, $y, $vec->z + 4, VanillaBlocks::CACTUS());
+    $world->setBlockAt($vec->x + 4, $y, $vec->z + 4, VanillaBlocks::SUGARCANE());
+}
+
+$world->setBlockAt($vec->x + 10, 69, $vec->z + 5, VanillaBlocks::WATER());
+$world->setBlockAt($vec->x + 9, 69, $vec->z + 5, BlockFactory::getInstance()->get(BlockLegacyIds::FLOWING_WATER, 0));
+$world->setBlockAt($vec->x + 8, 69, $vec->z + 5, VanillaBlocks::STONE());
+$world->setBlockAt($vec->x + 7, 69, $vec->z + 5, VanillaBlocks::LAVA());
+
+//////////////////// TURTLE MAKE ////////////////////////
+for ($x = 4; $x < 11;$x++)
+    for ($z = 3; $z < 10; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 66, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::PLANKS, 2));
+    }
+for ($x = 5; $x < 10;$x++)
+    for ($z = 4; $z < 9; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 65, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::PLANKS, 2));
+    }
+$world->setBlockAt($vec->x + 9, 66, $vec->z + 9, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 10, 66, $vec->z + 9, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 10, 66, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 66, $vec->z + 9, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 66, $vec->z + 9, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 66, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 66, $vec->z + 3, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 10, 66, $vec->z + 3, VanillaBlocks::AIR());
+
+$world->setBlockAt($vec->x + 9, 65, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 65, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 65, $vec->z + 4, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 9, 65, $vec->z + 4, VanillaBlocks::AIR());
+
+$world->setBlockAt($vec->x + 7, 67, $vec->z + 10, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 7, 67, $vec->z + 11, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+
+for ($x = 6; $x < 9;$x++)
+    for ($y = 67; $y < 70; $y++)
+        for ($z = 12; $z < 16; $z++)
+        {
+            $world->setBlockAt($vec->x + $x, $y, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+        }
+$world->setBlockAt($vec->x + 8, 68, $vec->z + 13, VanillaBlocks::WOOL()->setColor(DyeColor::BLACK()));
+$world->setBlockAt($vec->x + 6, 68, $vec->z + 13, VanillaBlocks::WOOL()->setColor(DyeColor::BLACK()));
+$world->setBlockAt($vec->x + 8, 68, $vec->z + 14, VanillaBlocks::WOOL()->setColor(DyeColor::BLACK()));
+$world->setBlockAt($vec->x + 6, 68, $vec->z + 14, VanillaBlocks::WOOL()->setColor(DyeColor::BLACK()));
+
+for ($x = 9; $x < 15;$x++)
+    for ($z = 8; $z < 11; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 67, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+    }
+for ($x = 0; $x < 6;$x++)
+    for ($z = 8; $z < 11; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 67, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+    }
+$world->setBlockAt($vec->x + 1, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 2, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 3, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 0, 67, $vec->z + 10, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 4, 67, $vec->z + 10, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 67, $vec->z + 10, VanillaBlocks::AIR());
+
+$world->setBlockAt($vec->x + 11, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 12, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 13, 67, $vec->z + 8, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 9, 67, $vec->z + 10, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 10, 67, $vec->z + 10, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 14, 67, $vec->z + 10, VanillaBlocks::AIR());
+
+$world->setBlockAt($vec->x + 10, 67, $vec->z + 2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 9, 67, $vec->z + 2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 9, 67, $vec->z + 3, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 7, 67, $vec->z + 2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 5, 67, $vec->z + 2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 4, 67, $vec->z + 2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 1, 67, $vec->z + -1, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 2, 67, $vec->z + -1, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 12, 67, $vec->z + -1, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 13, 67, $vec->z + -1, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 1, 67, $vec->z + -2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+$world->setBlockAt($vec->x + 13, 67, $vec->z + -2, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+for ($x = 1; $x < 14;$x++)
+    for ($z = 0; $z < 2; $z++)
+    {
+        $world->setBlockAt($vec->x + $x, 67, $vec->z + $z, BlockFactory::getInstance()->get(BlockLegacyIds::CONCRETE, 13));
+    }
+$world->setBlockAt($vec->x + 1, 67, $vec->z + 1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 13, 67, $vec->z + 1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 6, 67, $vec->z + 1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 8, 67, $vec->z + 1, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 5, 67, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 6, 67, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 8, 67, $vec->z + 0, VanillaBlocks::AIR());
+$world->setBlockAt($vec->x + 9, 67, $vec->z + 0, VanillaBlocks::AIR());

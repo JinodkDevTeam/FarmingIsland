@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /*
  * CustomAlerts v2.0 by EvolSoft
@@ -17,13 +18,13 @@ class CustomAlertsOutdatedClientKickEvent extends CustomAlertsEvent{
 
 	public static $handlerList = null;
 
-	/** @var Player $player */
-	private $player;
+	/** @var ?Player $player */
+	private ?Player $player;
 
 	/**
-	 * @param Player $player
+	 * @param ?Player $player
 	 */
-	public function __construct(Plugin $plugin, Player $player){
+	public function __construct(Plugin $plugin, ?Player $player){
 		parent::__construct($plugin);
 		$this->player = $player;
 	}
@@ -31,9 +32,9 @@ class CustomAlertsOutdatedClientKickEvent extends CustomAlertsEvent{
 	/**
 	 * Get outdated client kick event player
 	 *
-	 * @return Player
+	 * @return ?Player
 	 */
-	public function getPlayer() : Player{
+	public function getPlayer() : ?Player{
 		return $this->player;
 	}
 }

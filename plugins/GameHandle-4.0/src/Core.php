@@ -15,12 +15,9 @@ use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\utils\SingletonTrait;
 
 class Core extends PluginBase{
 	public const VERSION = "ALPHA-0.1";
-
-	use SingletonTrait;
 
 	/** @var int[] */
 	public array $afktime = [];
@@ -28,8 +25,17 @@ class Core extends PluginBase{
 	public SellHandler $sell;
 	/** @var PlayerStatManager $pstatmanager */
 	protected PlayerStatManager $pstatmanager;
+	protected static Core $instance;
 
 	protected ?string $island_world_name = null;
+
+	protected function onLoad() : void{
+		self::$instance = $this;
+	}
+
+	public function getInstance() : Core{
+		return self::$instance;
+	}
 
 	public function onEnable() : void{
 		try{
