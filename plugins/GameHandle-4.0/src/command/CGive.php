@@ -44,7 +44,9 @@ class CGive extends BaseCommand{
 				}
 				$sender->getInventory()->addItem($item);
 				$sender->sendMessage("Item Added !");
-			}catch(Exception){
+			}catch(Exception $exception){
+				$sender->sendMessage($exception->getMessage());
+				$sender->sendMessage("Line: " . $exception->getLine());
 				$sender->sendMessage("Error while decode give items");
 			}
 		}else{

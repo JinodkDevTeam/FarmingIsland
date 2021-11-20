@@ -54,7 +54,6 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("enchanted_pumkin", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_PUMKIN));
 		$result->register("enchanted_melon", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_MELON));
 		$result->register("enchanted_melon_block", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_MELON_BLOCK));
-		$result->register("enchanted_apple", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_APPLE));
 		$result->register("enchanted_glisterin_melon", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_GLISTERIN_MELON));
 		$result->register("enchanted_cactus", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_CACTUS));
 		$result->register("enchanted_netherwart", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ENCHANTED_NETHERWART));
