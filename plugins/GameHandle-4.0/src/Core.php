@@ -34,7 +34,7 @@ class Core extends PluginBase{
 		self::$instance = $this;
 	}
 
-	public function getInstance() : Core{
+	public static function getInstance() : Core{
 		return self::$instance;
 	}
 
