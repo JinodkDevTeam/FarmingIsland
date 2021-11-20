@@ -77,7 +77,6 @@ class Core extends PluginBase{
 				$this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "is generate island");
 				$this->island_world_name = "island";
 			}
-
 		}catch(Exception $e){
 			$this->getLogger()->error($e->getMessage());
 			$this->getLogger()->error("An error caused by GameHandle, force disable this plugin...");

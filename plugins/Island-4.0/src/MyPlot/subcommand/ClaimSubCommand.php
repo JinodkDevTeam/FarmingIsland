@@ -67,6 +67,7 @@ class ClaimSubCommand extends SubCommand{
 			$inv->addItem(VanillaItems::DIAMOND_HOE());
 			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::DIRT)->setCount(10));
 			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::SAPLING)->setCount(5));
+			$inv->addItem(VanillaItems::BONE_MEAL()->setCount(20));
 			$inv->addItem(CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD)->toItem());
 			$sender->sendMessage($this->translateString("claim.success"));
 		}else{
