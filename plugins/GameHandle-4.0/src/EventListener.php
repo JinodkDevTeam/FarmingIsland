@@ -60,8 +60,7 @@ class EventListener implements Listener{
 		} else {
 			Server::getInstance()->dispatchCommand($player, "is auto");
 			Server::getInstance()->dispatchCommand($player, "is claim");
-			$player->sendMessage("LEST START.");
-
+			$player->sendMessage("LET'S START !");
 		}
 		$this->getCore()->getPlayerStatManager()->registerPlayerStat($player);
 	}

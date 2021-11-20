@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 declare(strict_types=1);
 
 namespace CustomItems\item\utils;
@@ -24,8 +24,8 @@ use pocketmine\utils\EnumTrait;
  */
 
 final class Rarity{
-	use EnumTrait{
-		__construct as Enum___construct;
+	use EnumTrait {
+		EnumTrait::__construct as Enum___construct;
 	}
 
 	protected static function setup() : void{
