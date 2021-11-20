@@ -5,9 +5,10 @@ namespace NgLamVN\GameHandle;
 
 use FishingModule\event\EntityFishEvent;
 use pocketmine\block\BlockLegacyIds;
-use pocketmine\block\Crops;
+use pocketmine\block\SweetBerryBush;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\item\Fertilizer;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\SkillLevel;
@@ -84,7 +85,7 @@ class SkillLevelHandle{
 		}
 		//FARMING TYPE 1
 		if(in_array($block->getId(), array_keys($this->farming))){
-			if($block->getMeta() == 8) //FULL GROW
+			if($block->getMeta() == 7) //FULL GROW
 			{
 				$amount = $this->farming[$block->getId()];
 				$this->addXp($player, SkillLevel::FARMING, $amount);
@@ -141,12 +142,17 @@ class SkillLevelHandle{
 		$action = $event->getAction();
 		if($action == PlayerInteractEvent::LEFT_CLICK_BLOCK) return;
 		//FARMING TYPE 2
-		if(in_array($block->getId(), array_keys($this->farming2))){
-			if($block instanceof Crops){
-				if($block->getAge() >= 2){
-					$amount = $this->farming2[$block->getId()];
+		if($block instanceof SweetBerryBush){ //Handle SweetBerries
+			switch($block->getMeta()){
+				case 2:
+					if (!$event->getItem() instanceof Fertilizer){ //BONEMEAT WILL GROW ITEM, NOT DROP THE RESULT
+						$amount = $this->farming2[$block->getId()];
+						$this->addXp($player, SkillLevel::FARMING, $amount);
+					}
+					break;
+				case 3:
+					$amount = $this->farming2[$block->getId()] * 2;
 					$this->addXp($player, SkillLevel::FARMING, $amount);
-				}
 			}
 		}
 	}
