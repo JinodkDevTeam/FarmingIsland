@@ -1,6 +1,0 @@
-name: RandomKnockback
-src-namespace-prefix: RandKB
-main: RandKB\RandomKnockback
-api: 4.0.0
-author: JinodkDevTeam
-version: 0.1
