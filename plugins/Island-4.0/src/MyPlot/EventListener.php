@@ -159,7 +159,7 @@ class EventListener implements Listener{
 
 				/** @var Sapling $block */
 				$block = $event->getBlock();
-				$maxLengthLeaves = ($block->getIdInfo()->getVariant() == TreeType::SPRUCE()) ? 3 : 2;
+				$maxLengthLeaves = ($block->getIdInfo()->getVariant() == TreeType::SPRUCE()->id()) ? 3 : 2;
 				$beginPos = $this->plugin->getPlotPosition($plot);
 				$endPos = clone $beginPos;
 				$beginPos->x += $maxLengthLeaves;

@@ -91,6 +91,7 @@ class CustomItemFactory{
 
 		$this->register(new GameBreaker(new CustomItemIdentifier(CustomItemIds::GAME_BREAKER), "Game Breaker", Rarity::SPECIAL()));
 		$this->register(new GameAnnihilator(new CustomItemIdentifier(CustomItemIds::GAME_ANNIHILATOR), "Game Annihilator", Rarity::VERY_SPECIAL()));
+		$this->register(new AnnihilatorSword(new CustomItemIdentifier(CustomItemIds::ANNIHILATOR_SWORD), "Annihilator Sword", Rarity::ULTIMATE()));
 
 		$this->registerMetaLessItems();
 	}

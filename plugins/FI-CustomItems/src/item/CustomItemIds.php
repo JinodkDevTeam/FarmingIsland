@@ -125,6 +125,7 @@ final class CustomItemIds{
 
 	public const GAME_BREAKER = 3000;
 	public const GAME_ANNIHILATOR = 3001;
+	public const ANNIHILATOR_SWORD = 3002;
 
 	//Haz meta items (For Bazaar Shop Uses)
 	public const LAPIS_LAZULI = 5000;
