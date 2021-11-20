@@ -4,23 +4,15 @@
   isDefault: true
   Permissions:
   - pocketmine.broadcast.user
-  - pocketmine.command.kill.self
   - pocketmine.command.clear.self
+  - pocketmine.command.help
+  - pocketmine.command.kill.self
   - pocketmine.command.me
   - pocketmine.command.tell
-  - pocketmine.command.help
   - pocketmine.command.version
   - devtools.command.checkperm
-  - rc.command
-  - gh.coin.use
-  - gh.coin.pay
-  - gh.sell
-  - gh.sell.use
-  - gh.sell.all
-  - gh.ac
-  - gh.tutorial
-  - gh.notp
-  - gh.fiver
+  - sh.command.sh
+  - Farms
   - economyapi.command.mymoney
   - economyapi.command.pay
   - economyapi.command.seemoney
@@ -28,7 +20,23 @@
   - economyapi.command.topmoney
   - economyapi.command.mystatus
   - economyapi.command.economy
+  - bank.command
+  - playerauto.autosell
+  - playerauto.autofix
+  - playerauto.autofeed
   - hierarchy.info.member
+  - prefix.command
+  - shop.shop
+  - ic.command
+  - gh.sell
+  - gh.sell.use
+  - gh.sell.all
+  - gh.ac
+  - gh.tutorial
+  - gh.notp
+  - gh.fiver
+  - backpack.command
+  - mail.command
   - myplot.command.help
   - myplot.command.claim
   - myplot.command.info
@@ -37,89 +45,149 @@
   - myplot.command.denyplayer
   - myplot.command.undenyplayer
   - myplot.command.auto
-  - myplot.command.clear
-  - myplot.command.dispose
-  - myplot.command.reset
   - myplot.command.biome
   - myplot.command.biomes
   - myplot.command.home
   - myplot.command.homes
   - myplot.command.name
-  - myplot.command.give
   - myplot.command.warp
   - myplot.command.done
   - myplot.command.middle
   - myplot.command.list
   - myplot.command.pvp
-  - myplot.command.clone
   - myplot.admin.middle
-  - myplot.claimplots.2
-  - shop.shop
-- ID: 3
-  Name: TestRole
-  isDefault: false
-  Permissions: []
+  - myplot.claimplots.1
+  - favoriteisland.command
 - ID: 2
   Name: Operator
   isDefault: false
   Permissions:
   - pocketmine.group.user
   - pocketmine.broadcast.admin
-  - pocketmine.command.whitelist.add
-  - pocketmine.command.whitelist.remove
-  - pocketmine.command.whitelist.reload
-  - pocketmine.command.whitelist.enable
-  - pocketmine.command.whitelist.disable
-  - pocketmine.command.whitelist.list
-  - pocketmine.command.ban.player
   - pocketmine.command.ban.ip
   - pocketmine.command.ban.list
-  - pocketmine.command.unban.player
-  - pocketmine.command.unban.ip
+  - pocketmine.command.ban.player
+  - pocketmine.command.clear.other
+  - pocketmine.command.defaultgamemode
+  - pocketmine.command.difficulty
+  - pocketmine.command.effect
+  - pocketmine.command.enchant
+  - pocketmine.command.gamemode
+  - pocketmine.command.gc
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.kill.other
+  - pocketmine.command.list
   - pocketmine.command.op.give
   - pocketmine.command.op.take
-  - pocketmine.command.save.enable
+  - pocketmine.command.particle
+  - pocketmine.command.plugins
   - pocketmine.command.save.disable
+  - pocketmine.command.save.enable
   - pocketmine.command.save.perform
+  - pocketmine.command.say
+  - pocketmine.command.seed
+  - pocketmine.command.setworldspawn
+  - pocketmine.command.spawnpoint
+  - pocketmine.command.status
+  - pocketmine.command.stop
+  - pocketmine.command.teleport
   - pocketmine.command.time.add
+  - pocketmine.command.time.query
   - pocketmine.command.time.set
   - pocketmine.command.time.start
   - pocketmine.command.time.stop
-  - pocketmine.command.time.query
-  - pocketmine.command.kill.other
-  - pocketmine.command.clear.other
-  - pocketmine.command.say
-  - pocketmine.command.give
-  - pocketmine.command.effect
-  - pocketmine.command.enchant
-  - pocketmine.command.particle
-  - pocketmine.command.teleport
-  - pocketmine.command.kick
-  - pocketmine.command.stop
-  - pocketmine.command.list
-  - pocketmine.command.plugins
-  - pocketmine.command.gamemode
-  - pocketmine.command.defaultgamemode
-  - pocketmine.command.seed
-  - pocketmine.command.status
-  - pocketmine.command.gc
   - pocketmine.command.timings
-  - pocketmine.command.spawnpoint
-  - pocketmine.command.setworldspawn
-  - pocketmine.command.transferserver
   - pocketmine.command.title
-  - pocketmine.command.difficulty
+  - pocketmine.command.transferserver
+  - pocketmine.command.unban.ip
+  - pocketmine.command.unban.player
+  - pocketmine.command.whitelist.add
+  - pocketmine.command.whitelist.disable
+  - pocketmine.command.whitelist.enable
+  - pocketmine.command.whitelist.list
+  - pocketmine.command.whitelist.reload
+  - pocketmine.command.whitelist.remove
   - devtools.command.makeplugin
   - devtools.command.extractplugin
   - devtools.command.checkperm.other
   - devtools.command.genplugin
   - devtools.command.listperms.self
   - devtools.command.listperms.other
+  - Farms.VIP
+  - Farms.OP
+  - Farms.Member
   - clearlagg.cmd
+  - economyapi.command.setmoney
+  - economyapi.command.givemoney
+  - economyapi.command.takemoney
+  - dogeworlds.command
+  - dogeworlds.command.create
+  - dogeworlds.command.delete
+  - dogeworlds.command.list
+  - dogeworlds.command.load
+  - dogeworlds.command.teleport
+  - dogeworlds.command.unload
+  - hierarchy.flush
+  - hierarchy.info
+  - hierarchy.info.list_roles
+  - hierarchy.info.list_perms
+  - hierarchy.info.role
+  - hierarchy.role.add_permission
+  - hierarchy.role.deny_permission
+  - hierarchy.role.remove_permission
+  - hierarchy.role.create
+  - hierarchy.role.delete
+  - hierarchy.role.give
+  - hierarchy.role.take
+  - hierarchy.member.add_permission
+  - hierarchy.member.deny_permission
+  - hierarchy.member.remove_permission
+  - hierarchy.member.transfer_privileges
   - customalerts
   - customalerts.help
   - customalerts.info
   - customalerts.reload
+  - ic.admin
+  - buildertools.command
+  - buildertools.command.biome
+  - buildertools.command.blockinfo
+  - buildertools.command.center
+  - buildertools.command.clearinventory
+  - buildertools.command.copy
+  - buildertools.command.cube
+  - buildertools.command.cut
+  - buildertools.command.cylinder
+  - buildertools.command.decoration
+  - buildertools.command.draw
+  - buildertools.command.fill
+  - buildertools.command.pos1
+  - buildertools.command.fix
+  - buildertools.command.flip
+  - buildertools.command.help
+  - buildertools.command.hcube
+  - buildertools.command.hcylinder
+  - buildertools.command.hpyramid
+  - buildertools.command.hsphere
+  - buildertools.command.id
+  - buildertools.command.island
+  - buildertools.command.merge
+  - buildertools.command.move
+  - buildertools.command.naturalize
+  - buildertools.command.outline
+  - buildertools.command.paste
+  - buildertools.command.pyramid
+  - buildertools.command.redo
+  - buildertools.command.replace
+  - buildertools.command.rotate
+  - buildertools.command.schematic
+  - buildertools.command.pos2
+  - buildertools.command.sphere
+  - buildertools.command.stack
+  - buildertools.command.tree
+  - buildertools.command.undo
+  - buildertools.command.walls
+  - buildertools.command.wand
   - gh.feed
   - gh.feed.use
   - gh.feed.other
@@ -141,9 +209,6 @@
   - gh.gm3
   - gh.gm3.use
   - gh.gm3.other
-  - gh.coin.add
-  - gh.coin.set
-  - gh.coin.reduce
   - gh.tpall
   - gh.haste
   - gh.haste.use
@@ -158,27 +223,17 @@
   - gh.reloadskin
   - gh.servercheck
   - gh.icgive
-  - economyapi.command.setmoney
-  - economyapi.command.givemoney
-  - economyapi.command.takemoney
-  - hierarchy.flush
-  - hierarchy.info
-  - hierarchy.info.list_roles
-  - hierarchy.info.list_perms
-  - hierarchy.info.role
-  - hierarchy.role.add_permission
-  - hierarchy.role.deny_permission
-  - hierarchy.role.remove_permission
-  - hierarchy.role.create
-  - hierarchy.role.delete
-  - hierarchy.role.give
-  - hierarchy.role.take
-  - hierarchy.member.add_permission
-  - hierarchy.member.deny_permission
-  - hierarchy.member.remove_permission
-  - hierarchy.member.transfer_privileges
+  - gh.cgive
+  - gh.playerinfo
+  - gh.playerinfo.other
+  - sizeplayer.command
   - myplot.command
   - myplot.command.generate
+  - myplot.command.clear
+  - myplot.command.dispose
+  - myplot.command.reset
+  - myplot.command.give
+  - myplot.command.clone
   - myplot.admin
   - myplot.admin.clear
   - myplot.admin.biome
@@ -202,4 +257,133 @@
   - myplot.admin.clone
   - myplot.claimplots
   - myplot.claimplots.unlimited
+  - bettervoting.command.reload
+- ID: 3
+  Name: Staff
+  isDefault: false
+  Permissions:
+  - pocketmine.broadcast.user
+  - pocketmine.command.clear.self
+  - pocketmine.command.help
+  - pocketmine.command.kill.self
+  - pocketmine.command.me
+  - pocketmine.command.tell
+  - pocketmine.command.version
+  - devtools.command.checkperm
+  - sh.command.sh
+  - Farms
+  - economyapi.command.mymoney
+  - economyapi.command.pay
+  - economyapi.command.seemoney
+  - economyapi.command.setlang
+  - economyapi.command.topmoney
+  - economyapi.command.mystatus
+  - economyapi.command.economy
+  - bank.command
+  - playerauto.autosell
+  - playerauto.autofix
+  - playerauto.autofeed
+  - hierarchy.info.member
+  - prefix.command
+  - shop.shop
+  - ic.command
+  - gh.sell
+  - gh.sell.use
+  - gh.sell.all
+  - gh.ac
+  - gh.tutorial
+  - gh.notp
+  - gh.fiver
+  - backpack.command
+  - mail.command
+  - myplot.command.help
+  - myplot.command.claim
+  - myplot.command.info
+  - myplot.command.addhelper
+  - myplot.command.removehelper
+  - myplot.command.denyplayer
+  - myplot.command.undenyplayer
+  - myplot.command.auto
+  - myplot.command.biome
+  - myplot.command.biomes
+  - myplot.command.home
+  - myplot.command.homes
+  - myplot.command.name
+  - myplot.command.warp
+  - myplot.command.done
+  - myplot.command.middle
+  - myplot.command.list
+  - myplot.command.pvp
+  - myplot.admin.middle
+  - myplot.claimplots.1
+  - favoriteisland.command
+  - pocketmine.command.gamemode
+  - pocketmine.command.give
+  - pocketmine.command.kick
+  - pocketmine.command.teleport
+  - pocketmine.command.time.add
+  - pocketmine.command.time.query
+  - pocketmine.command.time.set
+  - pocketmine.command.time.start
+  - pocketmine.command.time.stop
+  - Farms.VIP
+  - clearlagg.cmd
+  - dogeworlds.command.teleport
+  - dogeworlds.command.list
+  - buildertools.command
+  - buildertools.command.biome
+  - buildertools.command.blockinfo
+  - buildertools.command.center
+  - buildertools.command.clearinventory
+  - buildertools.command.copy
+  - buildertools.command.cube
+  - buildertools.command.cut
+  - buildertools.command.cylinder
+  - buildertools.command.decoration
+  - buildertools.command.draw
+  - buildertools.command.fill
+  - buildertools.command.pos1
+  - buildertools.command.fix
+  - buildertools.command.flip
+  - buildertools.command.help
+  - buildertools.command.hcube
+  - buildertools.command.hcylinder
+  - buildertools.command.hpyramid
+  - buildertools.command.hsphere
+  - buildertools.command.id
+  - buildertools.command.island
+  - buildertools.command.merge
+  - buildertools.command.move
+  - buildertools.command.naturalize
+  - buildertools.command.outline
+  - buildertools.command.paste
+  - buildertools.command.pyramid
+  - buildertools.command.redo
+  - buildertools.command.replace
+  - buildertools.command.rotate
+  - buildertools.command.schematic
+  - buildertools.command.pos2
+  - buildertools.command.sphere
+  - buildertools.command.stack
+  - buildertools.command.tree
+  - buildertools.command.undo
+  - buildertools.command.walls
+  - buildertools.command.wand
+  - gh.feed.use
+  - gh.heal.use
+  - gh.fly.use
+  - gh.gm1.use
+  - gh.gm0.use
+  - gh.gm2.use
+  - gh.gm3.use
+  - gh.tpall
+  - gh.haste.use
+  - gh.mute
+  - gh.unmute
+  - gh.freeze
+  - gh.unfreeze
+  - gh.notp.bypass
+  - myplot.admin.build
+  - myplot.admin.build.plot
+  - myplot.admin.build.road
 ...
