@@ -91,8 +91,27 @@ class EventListener implements Listener{
 		}
 	}
 
+	/**
+	 * @param EntityTrampleFarmlandEvent $event
+	 * @priority LOWEST
+	 */
 	public function onEntityTrample(EntityTrampleFarmlandEvent $event){
-		$this->onEventOnBlock($event);
+		$plot = $this->plugin->getPlotByPosition($event->getBlock()->getPosition());
+		if ($plot !== null){
+			$entity = $event->getEntity();
+			if ($entity instanceof Player){
+				if ($plot->owner == $entity->getName()){
+					return;
+				}
+				if ($plot->isHelper($entity->getName())){
+					return;
+				}
+				if ($entity->hasPermission("myplot.admin.build.plot")){
+					return;
+				}
+			}
+			$event->cancel();
+		}
 	}
 
 	/**
@@ -106,9 +125,9 @@ class EventListener implements Listener{
 	}
 
 	/**
-	 * @param BlockBreakEvent|BlockPlaceEvent|PlayerInteractEvent|SignChangeEvent|EntityTrampleFarmlandEvent $event
+	 * @param BlockBreakEvent|BlockPlaceEvent|PlayerInteractEvent|SignChangeEvent $event
 	 */
-	private function onEventOnBlock(BlockPlaceEvent|SignChangeEvent|PlayerInteractEvent|BlockBreakEvent|EntityTrampleFarmlandEvent $event) : void{
+	private function onEventOnBlock(BlockPlaceEvent|SignChangeEvent|PlayerInteractEvent|BlockBreakEvent $event) : void{
 		if(!$event->getBlock()->getPosition()->isValid())
 			return;
 		$levelName = $event->getBlock()->getPosition()->getWorld()->getFolderName();
