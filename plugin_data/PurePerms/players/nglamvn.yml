@@ -1,9 +1,0 @@
----
-userName: NgLamVN
-group: VIP1
-permissions:
-- pocketmine.command.teleport
-worlds: []
-time: -1
-expTime: -1
-...

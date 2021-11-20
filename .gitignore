@@ -12,3 +12,16 @@ plugins/RandomKnockback/src/RandomKnockback.php
 plugins/RandomKnockback/plugin.yml
 plugins/FartBattle-main/*
 plugins/PickaxeLevel/*
+plugin_data/Backpack/backpack.sqlite
+plugin_data/Bank/bank.db
+plugin_data/BazaarShop/bazaardata.sqlite
+plugin_data/EconomyAPI/Coin.yml
+plugin_data/EconomyAPI/Gem.yml
+plugin_data/FavoriteIslands/data.db
+plugin_data/FI-RankPrefix/data.yml
+plugin_data/FI-SkillLevel/playerdata.db
+plugin_data/Hierarchy/members.sqlite
+plugin_data/Island/plots.db
+plugin_data/Mail/mail.db
+plugin_data/EconomyAPI/users/*
+plugin_data/Island/worlds/*
