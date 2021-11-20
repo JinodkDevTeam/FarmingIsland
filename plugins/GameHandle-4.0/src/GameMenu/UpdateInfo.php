@@ -50,7 +50,7 @@ class UpdateInfo{
 		});
 		$form->setTitle("§　§lTutorial");
 		$form->setContent(implode(PHP_EOL, $text));
-		$form->addButton("§　§lOK, LEST PLAY !");
+		$form->addButton("§　§lOK, LET'S PLAY !");
 
 		$player->sendForm($form);
 	}
