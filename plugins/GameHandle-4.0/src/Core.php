@@ -13,6 +13,7 @@ use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
+use pocketmine\console\ConsoleCommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
@@ -70,6 +71,11 @@ class Core extends PluginBase{
 				} elseif (MyPlot::getInstance()->isLevelLoaded($world)){
 					$this->island_world_name = $world;
 				}
+			}
+			if ($this->island_world_name == null){
+				$this->getLogger()->warning("Island world not found, creating a new one...");
+				$this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "is generate island");
+				$this->island_world_name = "island";
 			}
 
 		}catch(Exception $e){
