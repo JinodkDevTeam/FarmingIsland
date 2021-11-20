@@ -11,4 +11,4 @@ commands:
 
 permissions:
   prefix.command:
-    default: op
+    default: true

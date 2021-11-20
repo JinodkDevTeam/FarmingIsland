@@ -3,10 +3,15 @@ declare(strict_types=1);
 
 namespace MyPlot\subcommand;
 
+use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomItemIds;
 use MyPlot\forms\MyPlotForm;
 use MyPlot\forms\subforms\ClaimForm;
 use MyPlot\MyPlot;
 use pocketmine\command\CommandSender;
+use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;
 
@@ -57,6 +62,12 @@ class ClaimSubCommand extends SubCommand{
 			return true;
 		}
 		if($this->getPlugin()->claimPlot($plot, $sender->getName(), $name)){
+			$inv = $sender->getInventory();
+			$inv->addItem(VanillaItems::WHEAT_SEEDS()->setCount(10));
+			$inv->addItem(VanillaItems::DIAMOND_HOE());
+			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::DIRT)->setCount(10));
+			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::SAPLING)->setCount(5));
+			$inv->addItem(CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD)->toItem());
 			$sender->sendMessage($this->translateString("claim.success"));
 		}else{
 			$sender->sendMessage(TextFormat::RED . $this->translateString("error"));
