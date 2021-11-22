@@ -1,0 +1,11 @@
+name: FI-IslandMaker
+main: IslandMaker\Loader
+src-namespace-prefix: IslandMaker
+description: Island Maker for FarmingIsland, generate construct code for IslandStructure.php in Island plugin.
+version: 0.0.1
+author: NgLamVN
+api: 4.0.0
+
+permissions:
+  islandmaker.cmd:
+    default: op

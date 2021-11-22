@@ -90,6 +90,9 @@
                   <Item>
                     <option name="path" value="plugins/Island-4.0/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/IslandMaker/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
