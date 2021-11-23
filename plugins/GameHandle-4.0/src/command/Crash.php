@@ -6,6 +6,7 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
+use pocketmine\console\ConsoleCommandSender;
 use RuntimeException;
 
 class Crash extends BaseCommand{
@@ -16,6 +17,10 @@ class Crash extends BaseCommand{
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		throw new RuntimeException("Crashed due to crash command.");
+		if ($sender instanceof ConsoleCommandSender){
+			throw new RuntimeException("Crashed due to crash command.");
+		} else {
+			$sender->sendMessage("No you ! <there is another way to use this command but you should find it for urself !>");
+		}
 	}
 }
