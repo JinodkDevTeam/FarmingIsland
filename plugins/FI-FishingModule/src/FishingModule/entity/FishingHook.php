@@ -5,6 +5,7 @@ namespace FishingModule\entity;
 
 use FishingModule\entity\animation\FishingHookHookAnimation;
 use FishingModule\event\EntityFishEvent;
+use FishingModule\event\FishingHookCatchableEvent;
 use FishingModule\item\FishingRod;
 use FishingModule\Loader;
 use pocketmine\block\Liquid;
@@ -158,6 +159,11 @@ class FishingHook extends Projectile{
 
 				$this->motion->y -= 0.02;
 				$this->ticksCatchable = mt_rand(10, 30);
+				$ev = new FishingHookCatchableEvent($this->getOwningEntity(), $this);
+				$ev->call();
+				if ($ev->isCancelled()){
+					$this->ticksCatchable = 0;
+				}
 			}else{
 				$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
 				$f7 = $this->fishApproachAngle * 0.01745;
@@ -232,7 +238,7 @@ class FishingHook extends Projectile{
 					VanillaItems::PUFFERFISH()
 				];
 				$xp_drop = mt_rand(0, 1);
-				$ev = new EntityFishEvent(Loader::getInstance(), $this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
+				$ev = new EntityFishEvent($this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
 				$ev->call();
 				if (!$ev->isCancelled()){
 					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
@@ -252,7 +258,7 @@ class FishingHook extends Projectile{
 				}
 			}
 		}else{
-			(new EntityFishEvent(Loader::getInstance(), $angler, $this, EntityFishEvent::STATE_CAUGHT_NOTHING))->call();
+			(new EntityFishEvent($angler, $this, EntityFishEvent::STATE_CAUGHT_NOTHING))->call();
 		}
 		$this->flagForDespawn();
 	}

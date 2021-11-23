@@ -40,7 +40,7 @@ class FishingRod extends Durable{
 		$location = $player->getLocation();
 		$location->y += $player->getEyeHeight();
 		$entity = new FishingHook($location, $player);
-		$ev = new EntityFishEvent(Loader::getInstance(), $player, $entity, EntityFishEvent::STATE_FISHING);
+		$ev = new EntityFishEvent($player, $entity, EntityFishEvent::STATE_FISHING);
 		$ev->call();
 		if($ev->isCancelled()){
 			return false;

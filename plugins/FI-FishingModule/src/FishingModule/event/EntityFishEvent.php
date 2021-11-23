@@ -6,7 +6,6 @@ namespace FishingModule\event;
 
 use FishingModule\entity\FishingHook;
 use FishingModule\Loader;
-use pocketmine\entity\Entity;
 use pocketmine\entity\Human;
 use pocketmine\event\Cancellable;
 use pocketmine\event\CancellableTrait;
@@ -32,15 +31,14 @@ class EntityFishEvent extends PluginEvent implements Cancellable{
 	/**
 	 * PlayerFishEvent constructor.
 	 *
-	 * @param Plugin      $plugin
-	 * @param Human      $entity
+	 * @param Human       $entity
 	 * @param FishingHook $fishingHook
 	 * @param int         $state
 	 * @param int         $xpDropAmount
 	 * @param Item[]      $itemsResult
 	 */
-	public function __construct(Plugin $plugin, Human $entity, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
-		parent::__construct($plugin);
+	public function __construct(Human $entity, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
+		parent::__construct(Loader::getInstance());
 		$this->entity = $entity;
 		$this->fishingHook = $fishingHook;
 		$this->state = $state;
