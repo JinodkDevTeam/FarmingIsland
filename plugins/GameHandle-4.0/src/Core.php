@@ -18,7 +18,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase{
-	public const VERSION = "ALPHA-0.1";
+	public const VERSION = "ALPHA-0.1.1";
 
 	/** @var int[] */
 	public array $afktime = [];
@@ -83,16 +83,6 @@ class Core extends PluginBase{
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 		}
 	}
-
-	public function onDisable() : void{
-	}
-
-	/*public function CreateIsland (Player $player)
-	{
-		Server::getInstance()->dispatchCommand($player, "is auto");
-		Server::getInstance()->dispatchCommand($player, "is claim");
-		$player->sendMessage("Lest Play !");
-	}*/
 
 	public function getPlayerGroupName(Player $player) : string{
 		return $this->getHiearchy()->getMemberFactory()->getMember($player)->getTopRole()->getName();
