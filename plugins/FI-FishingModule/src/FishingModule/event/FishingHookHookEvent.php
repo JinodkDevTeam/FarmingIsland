@@ -8,7 +8,7 @@ use FishingModule\Loader;
 use pocketmine\entity\Human;
 use pocketmine\event\plugin\PluginEvent;
 
-class FishingHookCatchableEvent extends PluginEvent{
+class FishingHookHookEvent extends PluginEvent{
 
 	protected Human $entity;
 	protected FishingHook $hook;

@@ -5,7 +5,7 @@ namespace FishingModule\entity;
 
 use FishingModule\entity\animation\FishingHookHookAnimation;
 use FishingModule\event\EntityFishEvent;
-use FishingModule\event\FishingHookCatchableEvent;
+use FishingModule\event\FishingHookHookEvent;
 use FishingModule\item\FishingRod;
 use FishingModule\Loader;
 use pocketmine\block\Liquid;
@@ -159,7 +159,7 @@ class FishingHook extends Projectile{
 
 				$this->motion->y -= 0.02;
 				$this->ticksCatchable = mt_rand(10, 30);
-				$ev = new FishingHookCatchableEvent($this->getOwningEntity(), $this);
+				$ev = new FishingHookHookEvent($this->getOwningEntity(), $this);
 				$ev->call();
 			}else{
 				$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
