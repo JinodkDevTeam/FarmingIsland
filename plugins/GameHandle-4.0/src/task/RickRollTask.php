@@ -22,6 +22,7 @@ class RickRollTask extends Task{
 		"Gotta make you understand !", //5
 		"Never gonna give you up", //6
 		"Never gonna let you down", //7
+		"Never gonna run around and..." //8
 	];
 
 	public function __construct(Player $player){
@@ -29,8 +30,8 @@ class RickRollTask extends Task{
 	}
 
 	public function onRun() : void{
-		if ($this->line > 7){
-			$this->player->kick("Never gonna run around and desert you");
+		if ($this->line > 8){
+			$this->player->kick("Desert you !!!!!");
 			$this->getHandler()->cancel();
 			return;
 		}

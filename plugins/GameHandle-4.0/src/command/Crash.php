@@ -14,7 +14,7 @@ use RuntimeException;
 class Crash extends BaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "crash");
-		$this->setDescription("Instance crash the server");
+		$this->setDescription("Instantly crash the server");
 		$this->setPermission("gh.crash");
 	}
 
