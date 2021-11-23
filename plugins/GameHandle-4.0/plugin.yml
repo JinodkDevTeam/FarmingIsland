@@ -97,3 +97,5 @@ permissions:
     default: op
   gh.playerinfo.other:
     default: op
+  gh.crash:
+    default: op
