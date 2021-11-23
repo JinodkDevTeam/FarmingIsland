@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
+use NgLamVN\GameHandle\task\RickRollTask;
 use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
+use pocketmine\player\Player;
 use RuntimeException;
 
 class Crash extends BaseCommand{
@@ -20,7 +22,10 @@ class Crash extends BaseCommand{
 		if ($sender instanceof ConsoleCommandSender){
 			throw new RuntimeException("Crashed due to crash command.");
 		} else {
-			$sender->sendMessage("No you ! <there is another way to use this command but you should find it for urself !>");
+			if ($sender instanceof Player){
+				//Rickroll them :>>>
+				$this->getCore()->getScheduler()->scheduleRepeatingTask(new RickRollTask($sender), 40);
+			}
 		}
 	}
 }
