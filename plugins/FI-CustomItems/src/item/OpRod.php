@@ -8,7 +8,7 @@ use pocketmine\item\Durable;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class OpRod extends CustomItem{
+class OpRod extends CustomRod{
 
 	public function toItem() : Item{
 		$item = VanillaItems::FISHING_ROD();

@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace CustomItems\listener;
 
 use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomRod;
 use CustomItems\item\CustomTool;
+use FishingModule\event\FishingHookHookEvent;
 use pocketmine\entity\Human;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -107,6 +109,23 @@ class CustomItemListener implements Listener{
 			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			$citem->onInteractEntity($event);
+		}
+	}
+
+	/**
+	 * @param FishingHookHookEvent $event
+	 * @priority LOWEST
+	 * @description Handle onHook event for CustomRod items
+	 */
+	public function onHook(FishingHookHookEvent $event){
+		$player = $event->getEntity();
+		$item = $player->getInventory()->getItemInHand();
+		if($item->getNamedTag()->getTag("CustomItemID") !== null){
+			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			if($citem == null) return;
+			if ($citem instanceof CustomRod){
+				$citem->onHook($event);
+			}
 		}
 	}
 
