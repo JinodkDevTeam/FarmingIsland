@@ -18,7 +18,7 @@ class RickRollTask extends Task{
 		"You know the rules and so do I !", //1
 		"A full commitment's what I'm thinking of", //2
 		"You wouldn't get this from any other guy...", //3
-		"I just wanna tell you how I'm feeling...", //4
+		"IIIIIIII just wanna tell you how I'm feeling...", //4
 		"Gotta make you understand !", //5
 		"Never gonna give you up", //6
 		"Never gonna let you down", //7

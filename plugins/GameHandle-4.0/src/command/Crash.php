@@ -24,7 +24,7 @@ class Crash extends BaseCommand{
 		} else {
 			if ($sender instanceof Player){
 				//Rickroll them :>>>
-				$this->getCore()->getScheduler()->scheduleRepeatingTask(new RickRollTask($sender), 40);
+				$this->getCore()->getScheduler()->scheduleRepeatingTask(new RickRollTask($sender), 60);
 			}
 		}
 	}
