@@ -161,9 +161,6 @@ class FishingHook extends Projectile{
 				$this->ticksCatchable = mt_rand(10, 30);
 				$ev = new FishingHookCatchableEvent($this->getOwningEntity(), $this);
 				$ev->call();
-				if ($ev->isCancelled()){
-					$this->ticksCatchable = 0;
-				}
 			}else{
 				$this->fishApproachAngle = $this->fishApproachAngle + $this->random->nextSignedFloat() * 4.0;
 				$f7 = $this->fishApproachAngle * 0.01745;

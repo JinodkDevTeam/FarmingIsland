@@ -6,13 +6,9 @@ namespace FishingModule\event;
 use FishingModule\entity\FishingHook;
 use FishingModule\Loader;
 use pocketmine\entity\Human;
-use pocketmine\event\Cancellable;
-use pocketmine\event\CancellableTrait;
 use pocketmine\event\plugin\PluginEvent;
-use pocketmine\plugin\Plugin;
 
-class FishingHookCatchableEvent extends PluginEvent implements Cancellable{
-	use CancellableTrait;
+class FishingHookCatchableEvent extends PluginEvent{
 
 	protected Human $entity;
 	protected FishingHook $hook;
