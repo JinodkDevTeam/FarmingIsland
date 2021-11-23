@@ -219,6 +219,9 @@ class FishingHook extends Projectile{
 			if ($item->getNamedTag()->getTag("FishingSpeed") !== null){
 				$fishing_speed += $item->getNamedTag()->getTag("FishingSpeed")->getValue();
 			}
+			if ($fishing_speed > 100){
+				$fishing_speed = 100;
+			}
 			$this->ticksCaughtDelay -= (int)($this->ticksCaughtDelay*($fishing_speed/100));
 		}
 		if($this->ticksCatchable > 0){
