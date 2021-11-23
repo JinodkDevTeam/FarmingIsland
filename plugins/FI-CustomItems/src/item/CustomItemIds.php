@@ -122,6 +122,7 @@ final class CustomItemIds{
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;
+	public const OP_AUTOMATION_ROD = 2250;
 
 	public const GAME_BREAKER = 3000;
 	public const GAME_ANNIHILATOR = 3001;

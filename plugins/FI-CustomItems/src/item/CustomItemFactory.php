@@ -88,6 +88,7 @@ class CustomItemFactory{
 		$this->register(new RefinedEmeraldBlade(new CustomItemIdentifier(CustomItemIds::REFINED_EMERALD_BLADE), "Refined Emerald Blade", Rarity::LEGENDARY()));
 		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 		$this->register(new StarterRod(new CustomItemIdentifier(CustomItemIds::STARTER_ROD), "Starter Rod", Rarity::COMMON()));
+		$this->register(new OpAutomationRod(new CustomItemIdentifier(CustomItemIds::OP_AUTOMATION_ROD), "OP Automation Rod", Rarity::SPECIAL()));
 
 		$this->register(new GameBreaker(new CustomItemIdentifier(CustomItemIds::GAME_BREAKER), "Game Breaker", Rarity::SPECIAL()));
 		$this->register(new GameAnnihilator(new CustomItemIdentifier(CustomItemIds::GAME_ANNIHILATOR), "Game Annihilator", Rarity::VERY_SPECIAL()));

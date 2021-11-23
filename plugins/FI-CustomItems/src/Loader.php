@@ -15,6 +15,16 @@ use pocketmine\plugin\PluginBase;
 
 class Loader extends PluginBase{
 
+	protected static Loader $instance;
+
+	public static function getInstance() : Loader{
+		return self::$instance;
+	}
+
+	public function onLoad() : void{
+		self::$instance = $this;
+	}
+
 	public function onEnable() : void{
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
 		new CustomItemFactory();
