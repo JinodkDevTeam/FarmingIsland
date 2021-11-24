@@ -180,6 +180,9 @@ class Farms extends PluginBase implements Listener{
 	 * @return bool
 	 */
 	public function updateNormalCrops($key, World $level, Vector3 $position) : bool{
+		if ($level->getBlock($position)->getMeta() >=8){ //Already full grown
+			return true;
+		}
 		if(++$this->farmData[$key]["damage"] >= 8){ //FULL GROWN!
 			return true;
 		}
