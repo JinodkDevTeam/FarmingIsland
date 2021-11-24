@@ -41,10 +41,10 @@ class ItemUI extends BaseUI{
 				if(!isset($data)) return;
 				switch($data){
 					case 0:
-						new InstanceBuy($player, $this->itemid);
+						new InstantBuy($player, $this->itemid);
 						break;
 					case 1:
-						new InstanceSell($player, $this->itemid);
+						new InstantSell($player, $this->itemid);
 						break;
 					case 2:
 						new BuyOrderUI($player, $this->itemid);

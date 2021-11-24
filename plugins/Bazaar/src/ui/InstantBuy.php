@@ -12,7 +12,7 @@ use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
 
-class InstanceSell extends BaseUI{
+class InstantBuy extends BaseUI{
 
 	private int $itemid;
 
@@ -23,10 +23,9 @@ class InstanceSell extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			//GETTING TOP BUY ORDER...
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
-			$max = ItemUtils::getItemCount($player->getInventory(), ItemUtils::toItem($this->itemid));
-			$form = new CustomForm(function(Player $player, ?array $pos) use ($data, $max){
+			//GETTING TOP SELL ORDER...
+			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$form = new CustomForm(function(Player $player, ?array $pos) use ($data){
 				if(!isset($pos[1])) return;
 				$amount = $pos[1];
 				if(is_int($amount)){
@@ -37,16 +36,16 @@ class InstanceSell extends BaseUI{
 					$player->sendMessage("Amount must be > 0 !");
 					return;
 				}
-				if($amount > $max){
-					$player->sendMessage("You dont have enough item to sell.");
+				if($amount > 71680){
+					$player->sendMessage("Amount must be <= 71680 items");
 					return;
 				}
 				$this->confirm($player, (int) $amount, $data);
 			});
 
-			$form->setTitle("Instant sell");
+			$form->setTitle("Instant buy");
 			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
-			$form->addInput("Amount:", "Max: " . $max);
+			$form->addInput("Amount:", "123456789");
 			$player->sendForm($form);
 		});
 	}
@@ -55,7 +54,7 @@ class InstanceSell extends BaseUI{
 		$total = 0;
 		$count = $amount;
 		foreach($data as $arrayOrder){
-			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::BUY);
+			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::SELL);
 			$item_left = $order->getAmount() - $order->getFilled();
 			if($count <= $item_left){
 				$total += $count * $order->getPrice();
@@ -67,37 +66,41 @@ class InstanceSell extends BaseUI{
 			}
 		}
 		if($count > 0){
-			$player->sendMessage("Bazaar just want to buy from you " . $amount - $count . " items !");
+			$player->sendMessage("Sorry, the bazaar doesnt have enough item for you :< They need " . $count . " items !");
 			return;
 		}
 
 		$form = new ModalForm(function(Player $player, $value) use ($amount, $total, $data){
 			if(!isset($value)) return;
 			if($value == false) return;
-			$this->instanceSell($player, $amount, $data);
+			if(EconomyAPI::getInstance()->myMoney($player) < $total){
+				$player->sendMessage("You dont have enough money to do it !");
+				return;
+			}
+			$this->instantBuy($player, $amount, $data);
 		});
 		$form->setTitle("Confirm");
-		$form->setContent("Instant sell: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou gain: " . $total . " coins");
+		$form->setContent("Instant buy: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou pay: " . $total . " coins");
 		$form->setButton1("YES");
 		$form->setButton2("NO");
 
 		$player->sendForm($form);
 	}
 
-	public function instanceSell(Player $player, int $amount, array $data) : void{
+	public function instantBuy(Player $player, int $amount, array $data) : void{
 		$total = 0;
 		$count = $amount;
 		foreach($data as $arrayOrder){
-			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::BUY);
+			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::SELL);
 			$item_left = $order->getAmount() - $order->getFilled();
 			if($count <= $item_left){
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_FILLED, [
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_FILLED, [
 					"id" => $order->getId(),
 					"filled" => $order->getFilled() + $count
 				]);
 				$total += $count * $order->getPrice();
 				if($count == $item_left){
-					$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_ISFILLED, [
+					$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
 						"id" => $order->getId(),
 						"isfilled" => true
 					]);
@@ -106,11 +109,11 @@ class InstanceSell extends BaseUI{
 			}else{
 				$count -= $item_left;
 				$total += $item_left * $order->getPrice();
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_FILLED, [
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_FILLED, [
 					"id" => $order->getId(),
 					"filled" => $order->getFilled() + $item_left
 				]);
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_BUY_ISFILLED, [
+				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
 					"id" => $order->getId(),
 					"isfilled" => true
 				]);
@@ -118,8 +121,12 @@ class InstanceSell extends BaseUI{
 		}
 		$item = ItemUtils::toItem($this->itemid);
 		$item->setCount($amount);
-		EconomyAPI::getInstance()->addMoney($player, $total);
-		ItemUtils::removeItem($player->getInventory(), $item);
-		$player->sendMessage("You have sold x" . $amount . " " . ItemUtils::toName($this->itemid) . " for " . $total . " coins.");
+		if(!$player->getInventory()->canAddItem($item)){
+			$player->sendMessage("Your inventory not enough to get this items, make sure you have enough space !");
+			return;
+		}
+		EconomyAPI::getInstance()->reduceMoney($player, $total);
+		$player->getInventory()->addItem($item);
+		$player->sendMessage("You have bought x" . $amount . " " . ItemUtils::toName($this->itemid) . " for " . $total . " coins.");
 	}
 }
