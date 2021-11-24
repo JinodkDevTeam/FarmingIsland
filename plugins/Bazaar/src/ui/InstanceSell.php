@@ -44,7 +44,7 @@ class InstanceSell extends BaseUI{
 				$this->confirm($player, (int) $amount, $data);
 			});
 
-			$form->setTitle("Instance sell");
+			$form->setTitle("Instant sell");
 			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
 			$form->addInput("Amount:", "Max: " . $max);
 			$player->sendForm($form);
@@ -77,7 +77,7 @@ class InstanceSell extends BaseUI{
 			$this->instanceSell($player, $amount, $data);
 		});
 		$form->setTitle("Confirm");
-		$form->setContent("Instance sell: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou gain: " . $total . " coins");
+		$form->setContent("Instant sell: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou gain: " . $total . " coins");
 		$form->setButton1("YES");
 		$form->setButton2("NO");
 

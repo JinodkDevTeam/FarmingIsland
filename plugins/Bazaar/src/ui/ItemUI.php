@@ -55,8 +55,8 @@ class ItemUI extends BaseUI{
 			});
 			$form->setTitle(ItemUtils::toName($this->itemid));
 			$form->setContent("Item: " . ItemUtils::toName($this->itemid));
-			$form->addButton("Instance buy" . "\n" . "Price: " . $top_sell_price);
-			$form->addButton("Instance sell" . "\n" . "Price: " . $top_buy_price);
+			$form->addButton("Instant buy" . "\n" . "Price: " . $top_sell_price);
+			$form->addButton("Instant sell" . "\n" . "Price: " . $top_buy_price);
 			$form->addButton("Create buy order");
 			$form->addButton("Create sell order");
 

@@ -43,7 +43,7 @@ class InstanceBuy extends BaseUI{
 				$this->confirm($player, (int) $amount, $data);
 			});
 
-			$form->setTitle("Instance buy");
+			$form->setTitle("Instant buy");
 			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
 			$form->addInput("Amount:", "123456789");
 			$player->sendForm($form);
@@ -80,7 +80,7 @@ class InstanceBuy extends BaseUI{
 			$this->instanceBuy($player, $amount, $data);
 		});
 		$form->setTitle("Confirm");
-		$form->setContent("Instance buy: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou pay: " . $total . " coins");
+		$form->setContent("Instant buy: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou pay: " . $total . " coins");
 		$form->setButton1("YES");
 		$form->setButton2("NO");
 
