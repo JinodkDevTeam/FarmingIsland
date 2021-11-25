@@ -18,6 +18,7 @@ use pocketmine\entity\Human;
 use pocketmine\entity\Location;
 use pocketmine\entity\object\ItemEntity;
 use pocketmine\entity\projectile\Projectile;
+use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
@@ -245,6 +246,16 @@ class FishingHook extends Projectile{
 					//DROP Items
 					$results = $ev->getItemsResult();
 					foreach($results as $result){
+						if (!$result instanceof Item){
+							Loader::getInstance()->getLogger()->error("Fishing loot result contain an unknow item. var_dump...");
+							var_dump($result);
+							continue;
+						}
+						if ($result->isNull()){
+							Loader::getInstance()->getLogger()->error("Fishing loot contain <Null> item. var_dump...");
+							var_dump($result);
+							continue;
+						}
 						$entityItem = new ItemEntity($this->getLocation(), $result);
 						$d0 = $angler->getPosition()->getX() - $this->getPosition()->getX();
 						$d2 = $angler->getPosition()->getY() - $this->getPosition()->getY();
