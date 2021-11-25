@@ -7,6 +7,7 @@ use Exception;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\GameMenu\Menu;
+use onebone\economyapi\EconomyAPI;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\SignChangeEvent;
@@ -244,5 +245,7 @@ class EventListener implements Listener{
 	 */
 	public function onDeath(PlayerDeathEvent $event){
 		$event->setKeepInventory(true);
+		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), EconomyAPI::getInstance()->myMoney($event->getPlayer()) / 2);
+		$event->getPlayer()->sendMessage("You died and lost " . EconomyAPI::getInstance()->myMoney($event->getPlayer()) . " coins");
 	}
 }
