@@ -15,6 +15,7 @@ use pocketmine\event\inventory\InventoryTransactionEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerCommandPreprocessEvent;
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
@@ -235,5 +236,13 @@ class EventListener implements Listener{
 	 */
 	public function onBlockBreak(BlockBreakEvent $event){
 		$this->slevel->onBreak($event);
+	}
+
+	/**
+	 * @param PlayerDeathEvent $event
+	 * @priority LOWEST
+	 */
+	public function onDeath(PlayerDeathEvent $event){
+		$event->setKeepInventory(true);
 	}
 }
