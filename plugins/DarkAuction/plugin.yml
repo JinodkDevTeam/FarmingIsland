@@ -1,0 +1,7 @@
+name: DarkAuction
+api: 4.0.0
+main: DarkAuction\Loader
+src-namespace-prefix: DarkAuction
+version: 0.0.1
+author: JinodkDevTeam
+depend: EconomyAPI
