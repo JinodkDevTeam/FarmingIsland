@@ -15,5 +15,6 @@ api:
   - 4.0.0-BETA11
   - 4.0.0-BETA12
   - 4.0.0-BETA13
+  - 4.0.0-BETA14
 antigen: JackMD\UpdateNotifier
 authors: [JackMD, Sandertv]

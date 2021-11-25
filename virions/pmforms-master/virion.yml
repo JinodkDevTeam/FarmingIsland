@@ -16,5 +16,6 @@ api:
   - 4.0.0-BETA11
   - 4.0.0-BETA12
   - 4.0.0-BETA13
+  - 4.0.0-BETA14
 authors: [dktapps]
 description: API allowing to manipulate the JSON forms implemented in MCPE 1.2
