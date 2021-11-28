@@ -30,20 +30,18 @@ class SizePlayerCommand extends Command implements PluginOwned{
 		}
 		if(isset($args[0])){
 			if(is_numeric($args[0])){
-				if($args[0] > 15){
+				if($args[0] > SizePlayer::MAX_SIZE){
 					$sender->sendMessage(TF::RED . "This size must not bigger than §e15");
 					return true;
-				}elseif($args[0] < 0.05){
+				}elseif($args[0] < SizePlayer::MIN_SIZE){
 					$sender->sendMessage(TF::RED . "This size cannot be smaller than §e0.05");
 					return true;
 				}
-				$this->plugin->saveSize(strtolower($sender->getName()), (float) $args[0]);
 				$sender->setScale((float) $args[0]);
 				$sender->sendMessage("§8§l(§a!§8)§r §aYou have changed your size to " . TF::GOLD . $args[0] . "§a!");
 				return true;
 			}
 			if($args[0] === "reset"){
-				$this->plugin->deleteSize(strtolower($sender->getName()));
 				$sender->setScale(1);
 				$sender->sendMessage("§8§l(§a!§8)§r §aYou have reset your size!");
 				return true;

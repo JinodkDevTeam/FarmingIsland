@@ -3,83 +3,14 @@ declare(strict_types=1);
 
 namespace YassenTrick\SizePlayer;
 
-use pocketmine\event\Listener;
-use pocketmine\event\player\{PlayerJoinEvent, PlayerRespawnEvent};
 use pocketmine\plugin\PluginBase;
 
-class SizePlayer extends PluginBase implements Listener{
+class SizePlayer extends PluginBase{
 
-	/** @var Array<string, float> */
-	private array $data;
+	public const MAX_SIZE = 10; // Prevent lags when go over 10, its was 15 but got lag.
+	public const MIN_SIZE = 0.05; //Prevent server frezee when set size too low.
 
 	public function onEnable() : void{
 		$this->getServer()->getCommandMap()->register("sizeplayer", new SizePlayerCommand($this));
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-		if(!$this->checkLegacyData()) $this->loadData();
-	}
-
-	private function checkLegacyData() : bool{
-		if(file_exists($this->getDataFolder() . "data.yml")){
-			//["version" => 1, "sizes" => []] Old format...
-			$data = yaml_parse_file($this->getDataFolder() . "data.yml");
-			rename($this->getDataFolder() . "data.yml", $this->getDataFolder() . "data.yml.OLD");
-			if($data !== false and is_array($data["sizes"] ?? null)){
-				$this->data = $data["sizes"];
-				$this->saveData();
-				$this->getLogger()->info("Converted old data to new file data.json, old data can be found in data.yml.OLD");
-				return true;
-			}
-		}
-		return false;
-	}
-
-	public function saveData() : void{
-		if(file_put_contents($this->getDataFolder() . "data.json", json_encode($this->data)) === false){
-			$this->getLogger()->error("Failed to save data.");
-		}
-	}
-
-	public function loadData() : void{
-		if(!file_exists($this->getDataFolder() . "data.json")){
-			$this->data = [];
-			$this->saveData();
-			return;
-		}
-		$this->data = json_decode(file_get_contents($this->getDataFolder() . "data.json"));
-		if($this->data === null){
-			$this->getLogger()->warning("Failed to load data, reset to []");
-			$this->data = [];
-			$this->saveData();
-		}
-	}
-
-	public function onDisable() : void{
-		$this->saveData();
-	}
-
-	public function saveSize(string $name, float $size) : void{
-		$this->data[$name] = $size;
-	}
-
-	public function deleteSize(string $name) : void{
-		unset($this->data[$name]);
-	}
-
-	public function onJoin(PlayerJoinEvent $ev) : void{
-		$p = $ev->getPlayer();
-		if(($size = $this->getSize(strtolower($p->getName()))) !== null){
-			$p->setScale($size);
-		}
-	}
-
-	public function getSize(string $name) : ?float{
-		return $this->data[$name] ?? null;
-	}
-
-	public function onRespawn(PlayerRespawnEvent $ev) : void{
-		$p = $ev->getPlayer();
-		if(($size = $this->getSize(strtolower($p->getName()))) !== null){
-			$p->setScale($size);
-		}
 	}
 }
