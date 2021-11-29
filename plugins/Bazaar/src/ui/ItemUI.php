@@ -51,6 +51,13 @@ class ItemUI extends BaseUI{
 						break;
 					case 3:
 						new SellOrderUI($player, $this->itemid);
+						break;
+					case 4:
+						new ListOrderUI($player, $this->itemid, ListOrderUI::BUY);
+						break;
+					case 5:
+						new ListOrderUI($player, $this->itemid, ListOrderUI::SELL);
+						break;
 				}
 			});
 			$form->setTitle(ItemUtils::toName($this->itemid));
@@ -59,6 +66,8 @@ class ItemUI extends BaseUI{
 			$form->addButton("Instant sell" . "\n" . "Price: " . $top_buy_price);
 			$form->addButton("Create buy order");
 			$form->addButton("Create sell order");
+			$form->addButton("List buy order");
+			$form->addButton("List sell order");
 
 			$player->sendForm($form);
 		});
