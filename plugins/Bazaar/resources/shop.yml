@@ -6,6 +6,36 @@ Mining:
     - 263 #Coal
     - 2001 #Enchanted Coal
     - 2002 #Enchanted Coal Block
+  Iron:
+    - 265 #Iron Ingot
+    - 2003 #Enchanted Iron Ingot
+    - 2004 #Enchanted Iron Block
+  Gold:
+    - 266 #Gold Ingot
+    - 2005 #Enchanted Gold Ingot
+    - 2006 #Enchanted Gold Block
+  Lapis:
+    - 5000 #Lapis Lazuli
+    - 2007 #Enchanted Lapis
+    - 2008 #Enchanted Lapis Block
+  RedStone:
+    - 331 #Redstone
+    - 2009 #Enchanted Redstone
+    - 2010 #Enchanted Redstone Block
+  Emerald:
+    - 388 #Emerald
+    - 2011 #Enchanted Emerald
+    - 2012 #Enchanted Emerald Block
+  Diamond:
+    - 264 #Diamond
+    - 2013 #Enchanted Diamond
+    - 2014 #Enchanted Diamond Block
+  Other:
+    - 12 #Sand
+    - 2016 #Enchanted Sand
+    - 13 #Gravel
+    - 318 #Flint
+    - 2015 #Enchanted Flint
 Farming:
   Wheat:
     - 295 #Seed
@@ -16,3 +46,12 @@ Farming:
     - 391 #Carrot
     - 2033 #Enchanted Carrot
     - 2034 #Enchanted Golden Carrot
+Fishing:
+  Clay:
+    - 337 #Clay ball
+    - 2017 #Enchanted Clay
+    - 2018 #Enchanted Clay Block
+Foraging:
+  "Oak Log":
+    - 17 #Oak Log
+    - 2050 #Enchanted Oak Log
