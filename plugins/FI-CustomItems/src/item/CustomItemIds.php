@@ -26,20 +26,20 @@ final class CustomItemIds{
 	public const ENCHANTED_FLINT = 2015;
 	public const ENCHANTED_SAND = 2016;
 	public const ENCHANTED_CLAY = 2017;
-	public const ENCHANTED_SNOW = 2018;
-	public const ENCHANTED_ICE = 2019;
-	public const ENCHANTED_PACKED_ICE = 2020;
-	public const ENCHANTED_BLUE_ICE = 2021;
+	public const ENCHANTED_CLAY_BLOCK = 2018;
+	public const ENCHANTED_SNOW = 2019;
+	public const ENCHANTED_ICE = 2020;
+	public const ENCHANTED_PACKED_ICE = 2021;
+	public const ENCHANTED_BLUE_ICE = 2022;
 
-	public const ENCHANTED_GLOWSTONE_DUST = 2022;
-	public const ENCHANTED_GLOWSTONE = 2023;
-	public const ENCHANTED_NETHERRACK = 2024;
+	public const ENCHANTED_GLOWSTONE_DUST = 2023;
+	public const ENCHANTED_GLOWSTONE = 2024;
+	public const ENCHANTED_NETHERRACK = 2025;
+	public const ENCHANTED_QUARTZ = 2026;
+	public const ENCHANTED_QUARTZ_BLOCK = 2027;
 
-	public const ENCHANTED_ENDSTONE = 2025;
-	public const ENCHANTED_OBSIDIAN = 2026;
-	public const ENCHANTED_QUARTZ = 2027;
-	public const ENCHANTED_QUARTZ_BLOCK = 2028;
-	public const ENCHANTED_CLAY_BLOCK = 2029;
+	public const ENCHANTED_ENDSTONE = 2028;
+	public const ENCHANTED_OBSIDIAN = 2029;
 
 	//Farming Stuff
 	public const ENCHANTED_SEED = 2030;
