@@ -55,6 +55,9 @@ class ListOrderUI extends BaseUI{
 				$count++;
 				$order = OrderDataHelper::formData($o, $this->mode);
 				array_push($msg, "#" . $count . " " . $order->getAmount() - $order->getFilled() . "x | " . $order->getPrice() . " coins each");
+				if ($count > 9){
+					break;
+				}
 			}
 			$form->setContent(implode("\n", $msg));
 			$player->sendForm($form);
