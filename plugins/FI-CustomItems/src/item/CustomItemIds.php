@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use czechpmdevs\buildertools\utils\IncompatibleConfigException;
+
 final class CustomItemIds{
 	//Mining Stuff
 	public const ENCHANTED_COBBLESTONE = 2000;
@@ -35,9 +37,9 @@ final class CustomItemIds{
 
 	public const ENCHANTED_ENDSTONE = 2025;
 	public const ENCHANTED_OBSIDIAN = 2026;
-	//UNUSED = 2027
-	//UNUSED = 2028
-	//UNUSED = 2029
+	public const ENCHANTED_QUARTZ = 2027;
+	public const ENCHANTED_QUARTZ_BLOCK = 2028;
+	public const ENCHANTED_CLAY_BLOCK = 2029;
 
 	//Farming Stuff
 	public const ENCHANTED_SEED = 2030;
