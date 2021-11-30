@@ -122,6 +122,8 @@ final class CustomItemIds{
 	public const REFINED_EMERALD_BLADE = 2151;
 	//UNUSED = 2152 -> 2199
 
+	public const ASPECT_OF_THE_END = 2160;
+
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;
 	public const OP_AUTOMATION_ROD = 2250;
