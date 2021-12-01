@@ -120,9 +120,10 @@ final class CustomItemIds{
 	public const TITANIUM_DRILL_TX165 = 2130;
 	public const EMERALD_BLADE = 2150;
 	public const REFINED_EMERALD_BLADE = 2151;
-	//UNUSED = 2152 -> 2199
+	//UNUSED = 2152 -> 2159
 
 	public const ASPECT_OF_THE_END = 2160;
+	public const TREECAPITATOR = 2161;
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;

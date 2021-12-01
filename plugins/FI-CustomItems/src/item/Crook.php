@@ -33,9 +33,6 @@ class Crook extends VeinMineTool{
 			VanillaBlocks::DARK_OAK_LEAVES(),
 			VanillaBlocks::BIRCH_LEAVES(),
 			VanillaBlocks::ACACIA_LEAVES(),
-			VanillaBlocks::OAK_LOG()
 		];
 	}
-
-
 }

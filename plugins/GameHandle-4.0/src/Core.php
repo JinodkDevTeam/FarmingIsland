@@ -18,7 +18,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase{
-	public const VERSION = "ALPHA-0.1.3";
+	public const VERSION = "ALPHA-0.1.4";
 
 	/** @var int[] */
 	public array $afktime = [];
