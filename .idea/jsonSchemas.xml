@@ -93,6 +93,15 @@
                   <Item>
                     <option name="path" value="plugins/IslandMaker/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/DamageTag/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/PlayerStat/src/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/PlayerStat/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
