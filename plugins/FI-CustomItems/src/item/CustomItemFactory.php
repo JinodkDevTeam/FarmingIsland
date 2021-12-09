@@ -40,6 +40,7 @@ class CustomItemFactory{
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_FLINT), "Enchanted Flint", Rarity::COMMON(), VanillaItems::FLINT()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SAND), "Enchanted Sand", Rarity::COMMON(), $i->get(ItemIds::SAND)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_CLAY), "Enchanted Clay", Rarity::COMMON(), VanillaItems::CLAY()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_CLAY_BLOCK), "Enchanted Clay Block", Rarity::UNCOMMON(), ItemFactory::getInstance()->get(ItemIds::CLAY_BLOCK)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SNOW), "Enchanted Snow", Rarity::COMMON(), $i->get(ItemIds::SNOW)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_ICE), "Enchanted Ice", Rarity::COMMON(), $i->get(ItemIds::ICE)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_PACKED_ICE), "Enchanted Packed Ice", Rarity::UNCOMMON(), $i->get(ItemIds::PACKED_ICE)));
@@ -47,6 +48,8 @@ class CustomItemFactory{
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GLOWSTONE_DUST), "Enchanted Glowstone Dust", Rarity::COMMON(), VanillaItems::GLOWSTONE_DUST()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_GLOWSTONE), "Enchanted Glowstone", Rarity::UNCOMMON(), $i->get(ItemIds::GLOWSTONE)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_NETHERRACK), "Enchanted Netherrack", Rarity::COMMON(), $i->get(ItemIds::NETHERRACK)));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_QUARTZ), "Enchanted Quartz", Rarity::COMMON(), VanillaItems::NETHER_QUARTZ()));
+		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_QUARTZ_BLOCK), "Enchanted Quartz Block", Rarity::UNCOMMON(), ItemFactory::getInstance()->get(ItemIds::QUARTZ_BLOCK)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_ENDSTONE), "Enchanted Endstone", Rarity::COMMON(), $i->get(ItemIds::END_STONE)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_OBSIDIAN), "Enchanted Obsidian", Rarity::COMMON(), $i->get(ItemIds::OBSIDIAN)));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_SEED), "Enchanted Seed", Rarity::COMMON(), VanillaItems::WHEAT_SEEDS()));
@@ -86,6 +89,9 @@ class CustomItemFactory{
 
 		$this->register(new EmeraldBlade(new CustomItemIdentifier(CustomItemIds::EMERALD_BLADE), "Emerald Blade", Rarity::EPIC()));
 		$this->register(new RefinedEmeraldBlade(new CustomItemIdentifier(CustomItemIds::REFINED_EMERALD_BLADE), "Refined Emerald Blade", Rarity::LEGENDARY()));
+		$this->register(new AspectOfTheEnd(new CustomItemIdentifier(CustomItemIds::ASPECT_OF_THE_END), "Aspect of the End", Rarity::RARE()));
+		$this->register(new TreeCapitator(new CustomItemIdentifier(CustomItemIds::TREECAPITATOR), "Treecapitator", Rarity::EPIC()));
+
 		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 		$this->register(new StarterRod(new CustomItemIdentifier(CustomItemIds::STARTER_ROD), "Starter Rod", Rarity::COMMON()));
 		$this->register(new OpAutomationRod(new CustomItemIdentifier(CustomItemIds::OP_AUTOMATION_ROD), "OP Automation Rod", Rarity::SPECIAL()));

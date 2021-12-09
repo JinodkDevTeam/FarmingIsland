@@ -79,6 +79,8 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("drill_fuel", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::DRILL_FUEL));
 
 		$result->register("backpack_slot", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::BACKPACK_SLOT));
+		$result->register("aspect_of_the_end", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ASPECT_OF_THE_END));
+		$result->register("treecapitator", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::TREECAPITATOR));
 
 		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
 		$result->register("starter_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD));

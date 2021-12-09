@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /*
  * CustomAlerts v2.0 by EvolSoft
@@ -30,14 +31,14 @@ class CustomAlerts extends PluginBase{
 	const API_VERSION = "4.0";
 	/** @var null|CustomAlerts $instance */
 	private static ?CustomAlerts $instance = null;
-	public $cfg;
+	public array $cfg;
 
 	/**
 	 * Get CustomAlerts API
 	 *
-	 * @return CustomAlerts
+	 * @return CustomAlerts|null
 	 */
-	public static function getAPI(){
+	public static function getAPI() : ?CustomAlerts{
 		return self::$instance;
 	}
 
@@ -63,7 +64,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getVersion(){
+	public function getVersion() : string{
 		return $this->getVersion();
 	}
 
@@ -72,7 +73,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getAPIVersion(){
+	public function getAPIVersion() : string{
 		return self::API_VERSION;
 	}
 
@@ -101,7 +102,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getMotdMessage(){
+	public function getMotdMessage() : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["Motd"]["message"], [
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
 			"TOTALPLAYERS" => count($this->getServer()->getOnlinePlayers()),
@@ -116,9 +117,9 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function replaceVars($str, array $vars){
+	public function replaceVars(string $str, array $vars) : string{
 		foreach($vars as $key => $value){
-			$str = str_replace("{" . $key . "}", $value, $str);
+			$str = str_replace("{" . $key . "}", (string)$value, $str);
 		}
 		return $str;
 	}
@@ -135,7 +136,7 @@ class CustomAlerts extends PluginBase{
 	/**
 	 * Get outdated client message
 	 *
-	 * @param ?Player
+	 * @param Player|null $player
 	 *
 	 * @return string
 	 */
@@ -159,13 +160,13 @@ class CustomAlerts extends PluginBase{
 	/**
 	 * Get outdated server message
 	 *
-	 * @param Player
+	 * @param Player|null $player
 	 *
 	 * @return string
 	 */
-	public function getOutdatedServerMessage(Player $player){
+	public function getOutdatedServerMessage(?Player $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["OutdatedServer"]["message"], [
-			"PLAYER" => $player->getName(),
+			"PLAYER" => $player?$player->getName():"",
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
 			"TOTALPLAYERS" => count($this->getServer()->getOnlinePlayers()),
 			"TIME" => date($this->cfg["datetime-format"])]));
@@ -183,11 +184,11 @@ class CustomAlerts extends PluginBase{
 	/**
 	 * Get whitelist message
 	 *
-	 * @param Player
+	 * @param PlayerInfo $player
 	 *
 	 * @return string
 	 */
-	public function getWhitelistMessage(PlayerInfo $player){
+	public function getWhitelistMessage(PlayerInfo $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["WhitelistedServer"]["message"], [
 			"PLAYER" => $player->getUsername(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
@@ -208,11 +209,11 @@ class CustomAlerts extends PluginBase{
 	/**
 	 * Get full server message
 	 *
-	 * @param Player $player
+	 * @param PlayerInfo $player
 	 *
 	 * @return string
 	 */
-	public function getFullServerMessage(PlayerInfo $player){
+	public function getFullServerMessage(PlayerInfo $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["FullServer"]["message"], [
 			"PLAYER" => $player->getUsername(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
@@ -236,7 +237,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getFirstJoinMessage(Player $player){
+	public function getFirstJoinMessage(Player $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["FirstJoin"]["message"], [
 			"PLAYER" => $player->getName(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
@@ -269,7 +270,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getJoinMessage(Player $player){
+	public function getJoinMessage(Player $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["Join"]["message"], [
 			"PLAYER" => $player->getName(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
@@ -282,7 +283,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return bool
 	 */
-	public function isQuitMessageCustom(){
+	public function isQuitMessageCustom() : bool{
 		return $this->cfg["Quit"]["custom"];
 	}
 
@@ -291,7 +292,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return bool
 	 */
-	public function isQuitMessageHidden(){
+	public function isQuitMessageHidden() : bool{
 		return $this->cfg["Quit"]["hide"];
 	}
 
@@ -302,7 +303,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getQuitMessage(Player $player){
+	public function getQuitMessage(Player $player) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["Quit"]["message"], [
 			"PLAYER" => $player->getName(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),
@@ -315,7 +316,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return bool
 	 */
-	public function isWorldChangeMessageEnabled(){
+	public function isWorldChangeMessageEnabled() : bool{
 		return $this->cfg["WorldChange"]["enable"];
 	}
 
@@ -328,7 +329,7 @@ class CustomAlerts extends PluginBase{
 	 *
 	 * @return string
 	 */
-	public function getWorldChangeMessage(Player $player, World $origin, World $target){
+	public function getWorldChangeMessage(Player $player, World $origin, World $target) : string{
 		return TextFormat::colorize($this->replaceVars($this->cfg["WorldChange"]["message"], [
 			"ORIGIN" => $origin->getDisplayName(),
 			"TARGET" => $target->getDisplayName(),
@@ -340,98 +341,71 @@ class CustomAlerts extends PluginBase{
 
 	/**
 	 * Check if death messages are custom
+	 *
+	 * @param EntityDamageEvent|null $cause
+	 *
 	 * @return bool
 	 */
-	public function isDeathMessageCustom(EntityDamageEvent $cause = null){
+	public function isDeathMessageCustom(EntityDamageEvent $cause = null) : bool{
 		if(!$cause){
 			return $this->cfg["Death"]["custom"];
 		}
-		switch($cause->getCause()){
-			case EntityDamageEvent::CAUSE_CONTACT:
-				return $this->cfg["Death"]["death-contact-message"]["custom"];
-			case EntityDamageEvent::CAUSE_ENTITY_ATTACK:
-				return $this->cfg["Death"]["kill-message"]["custom"];
-			case EntityDamageEvent::CAUSE_PROJECTILE:
-				return $this->cfg["Death"]["death-projectile-message"]["custom"];
-			case EntityDamageEvent::CAUSE_SUFFOCATION:
-				return $this->cfg["Death"]["death-suffocation-message"]["custom"];
-			case EntityDamageEvent::CAUSE_FALL:
-				return $this->cfg["Death"]["death-fall-message"]["custom"];
-			case EntityDamageEvent::CAUSE_FIRE:
-				return $this->cfg["Death"]["death-fire-message"]["custom"];
-			case EntityDamageEvent::CAUSE_FIRE_TICK:
-				return $this->cfg["Death"]["death-on-fire-message"]["custom"];
-			case EntityDamageEvent::CAUSE_LAVA:
-				return $this->cfg["Death"]["death-lava-message"]["custom"];
-			case EntityDamageEvent::CAUSE_DROWNING:
-				return $this->cfg["Death"]["death-drowning-message"]["custom"];
-			case EntityDamageEvent::CAUSE_ENTITY_EXPLOSION:
-			case EntityDamageEvent::CAUSE_BLOCK_EXPLOSION:
-				return $this->cfg["Death"]["death-explosion-message"]["custom"];
-			case EntityDamageEvent::CAUSE_VOID:
-				return $this->cfg["Death"]["death-void-message"]["custom"];
-			case EntityDamageEvent::CAUSE_SUICIDE:
-				return $this->cfg["Death"]["death-suicide-message"]["custom"];
-			case EntityDamageEvent::CAUSE_MAGIC:
-				return $this->cfg["Death"]["death-magic-message"]["custom"];
-			default:
-				return $this->cfg["Death"]["custom"];
-		}
+		return match ($cause->getCause()) {
+			EntityDamageEvent::CAUSE_CONTACT => $this->cfg["Death"]["death-contact-message"]["custom"],
+			EntityDamageEvent::CAUSE_ENTITY_ATTACK => $this->cfg["Death"]["kill-message"]["custom"],
+			EntityDamageEvent::CAUSE_PROJECTILE => $this->cfg["Death"]["death-projectile-message"]["custom"],
+			EntityDamageEvent::CAUSE_SUFFOCATION => $this->cfg["Death"]["death-suffocation-message"]["custom"],
+			EntityDamageEvent::CAUSE_FALL => $this->cfg["Death"]["death-fall-message"]["custom"],
+			EntityDamageEvent::CAUSE_FIRE => $this->cfg["Death"]["death-fire-message"]["custom"],
+			EntityDamageEvent::CAUSE_FIRE_TICK => $this->cfg["Death"]["death-on-fire-message"]["custom"],
+			EntityDamageEvent::CAUSE_LAVA => $this->cfg["Death"]["death-lava-message"]["custom"],
+			EntityDamageEvent::CAUSE_DROWNING => $this->cfg["Death"]["death-drowning-message"]["custom"],
+			EntityDamageEvent::CAUSE_ENTITY_EXPLOSION, EntityDamageEvent::CAUSE_BLOCK_EXPLOSION => $this->cfg["Death"]["death-explosion-message"]["custom"],
+			EntityDamageEvent::CAUSE_VOID => $this->cfg["Death"]["death-void-message"]["custom"],
+			EntityDamageEvent::CAUSE_SUICIDE => $this->cfg["Death"]["death-suicide-message"]["custom"],
+			EntityDamageEvent::CAUSE_MAGIC => $this->cfg["Death"]["death-magic-message"]["custom"],
+			default => $this->cfg["Death"]["custom"],
+		};
 	}
 
 	/**
 	 * Check if death messages are hidden
 	 *
-	 * @param EntityDamageEvent $cause
+	 * @param EntityDamageEvent|null $cause
 	 *
 	 * @return bool
 	 */
-	public function isDeathMessageHidden(EntityDamageEvent $cause = null){
+	public function isDeathMessageHidden(EntityDamageEvent $cause = null) : bool{
 		if(!$cause){
 			return $this->cfg["Death"]["hide"];
 		}
-		switch($cause->getCause()){
-			case EntityDamageEvent::CAUSE_CONTACT:
-				return $this->cfg["Death"]["death-contact-message"]["hide"];
-			case EntityDamageEvent::CAUSE_ENTITY_ATTACK:
-				return $this->cfg["Death"]["kill-message"]["hide"];
-			case EntityDamageEvent::CAUSE_PROJECTILE:
-				return $this->cfg["Death"]["death-projectile-message"]["hide"];
-			case EntityDamageEvent::CAUSE_SUFFOCATION:
-				return $this->cfg["Death"]["death-suffocation-message"]["hide"];
-			case EntityDamageEvent::CAUSE_FALL:
-				return $this->cfg["Death"]["death-fall-message"]["hide"];
-			case EntityDamageEvent::CAUSE_FIRE:
-				return $this->cfg["Death"]["death-fire-message"]["hide"];
-			case EntityDamageEvent::CAUSE_FIRE_TICK:
-				return $this->cfg["Death"]["death-on-fire-message"]["hide"];
-			case EntityDamageEvent::CAUSE_LAVA:
-				return $this->cfg["Death"]["death-lava-message"]["hide"];
-			case EntityDamageEvent::CAUSE_DROWNING:
-				return $this->cfg["Death"]["death-drowning-message"]["hide"];
-			case EntityDamageEvent::CAUSE_ENTITY_EXPLOSION:
-			case EntityDamageEvent::CAUSE_BLOCK_EXPLOSION:
-				return $this->cfg["Death"]["death-explosion-message"]["hide"];
-			case EntityDamageEvent::CAUSE_VOID:
-				return $this->cfg["Death"]["death-void-message"]["hide"];
-			case EntityDamageEvent::CAUSE_SUICIDE:
-				return $this->cfg["Death"]["death-suicide-message"]["hide"];
-			case EntityDamageEvent::CAUSE_MAGIC:
-				return $this->cfg["Death"]["death-magic-message"]["hide"];
-			default:
-				return $this->cfg["Death"]["hide"];
-		}
+		return match ($cause->getCause()) {
+			EntityDamageEvent::CAUSE_CONTACT => $this->cfg["Death"]["death-contact-message"]["hide"],
+			EntityDamageEvent::CAUSE_ENTITY_ATTACK => $this->cfg["Death"]["kill-message"]["hide"],
+			EntityDamageEvent::CAUSE_PROJECTILE => $this->cfg["Death"]["death-projectile-message"]["hide"],
+			EntityDamageEvent::CAUSE_SUFFOCATION => $this->cfg["Death"]["death-suffocation-message"]["hide"],
+			EntityDamageEvent::CAUSE_FALL => $this->cfg["Death"]["death-fall-message"]["hide"],
+			EntityDamageEvent::CAUSE_FIRE => $this->cfg["Death"]["death-fire-message"]["hide"],
+			EntityDamageEvent::CAUSE_FIRE_TICK => $this->cfg["Death"]["death-on-fire-message"]["hide"],
+			EntityDamageEvent::CAUSE_LAVA => $this->cfg["Death"]["death-lava-message"]["hide"],
+			EntityDamageEvent::CAUSE_DROWNING => $this->cfg["Death"]["death-drowning-message"]["hide"],
+			EntityDamageEvent::CAUSE_ENTITY_EXPLOSION, EntityDamageEvent::CAUSE_BLOCK_EXPLOSION => $this->cfg["Death"]["death-explosion-message"]["hide"],
+			EntityDamageEvent::CAUSE_VOID => $this->cfg["Death"]["death-void-message"]["hide"],
+			EntityDamageEvent::CAUSE_SUICIDE => $this->cfg["Death"]["death-suicide-message"]["hide"],
+			EntityDamageEvent::CAUSE_MAGIC => $this->cfg["Death"]["death-magic-message"]["hide"],
+			default => $this->cfg["Death"]["hide"],
+		};
 	}
 
 	/**
 	 * Get death message related to the specified cause
 	 *
-	 * @param Player            $player
-	 * @param EntityDamageEvent $cause
+	 * @param Player                 $player
+	 * @param EntityDamageEvent|null $cause
 	 *
 	 * @return string
 	 */
-	public function getDeathMessage(Player $player, EntityDamageEvent $cause = null){
+	public function getDeathMessage(Player $player, EntityDamageEvent $cause = null) : string{
 		$array = [
 			"PLAYER" => $player->getName(),
 			"MAXPLAYERS" => $this->getServer()->getMaxPlayers(),

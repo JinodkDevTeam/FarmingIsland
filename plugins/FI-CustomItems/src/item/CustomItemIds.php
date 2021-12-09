@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use czechpmdevs\buildertools\utils\IncompatibleConfigException;
+
 final class CustomItemIds{
 	//Mining Stuff
 	public const ENCHANTED_COBBLESTONE = 2000;
@@ -24,20 +26,20 @@ final class CustomItemIds{
 	public const ENCHANTED_FLINT = 2015;
 	public const ENCHANTED_SAND = 2016;
 	public const ENCHANTED_CLAY = 2017;
-	public const ENCHANTED_SNOW = 2018;
-	public const ENCHANTED_ICE = 2019;
-	public const ENCHANTED_PACKED_ICE = 2020;
-	public const ENCHANTED_BLUE_ICE = 2021;
+	public const ENCHANTED_CLAY_BLOCK = 2018;
+	public const ENCHANTED_SNOW = 2019;
+	public const ENCHANTED_ICE = 2020;
+	public const ENCHANTED_PACKED_ICE = 2021;
+	public const ENCHANTED_BLUE_ICE = 2022;
 
-	public const ENCHANTED_GLOWSTONE_DUST = 2022;
-	public const ENCHANTED_GLOWSTONE = 2023;
-	public const ENCHANTED_NETHERRACK = 2024;
+	public const ENCHANTED_GLOWSTONE_DUST = 2023;
+	public const ENCHANTED_GLOWSTONE = 2024;
+	public const ENCHANTED_NETHERRACK = 2025;
+	public const ENCHANTED_QUARTZ = 2026;
+	public const ENCHANTED_QUARTZ_BLOCK = 2027;
 
-	public const ENCHANTED_ENDSTONE = 2025;
-	public const ENCHANTED_OBSIDIAN = 2026;
-	//UNUSED = 2027
-	//UNUSED = 2028
-	//UNUSED = 2029
+	public const ENCHANTED_ENDSTONE = 2028;
+	public const ENCHANTED_OBSIDIAN = 2029;
 
 	//Farming Stuff
 	public const ENCHANTED_SEED = 2030;
@@ -118,7 +120,10 @@ final class CustomItemIds{
 	public const TITANIUM_DRILL_TX165 = 2130;
 	public const EMERALD_BLADE = 2150;
 	public const REFINED_EMERALD_BLADE = 2151;
-	//UNUSED = 2152 -> 2199
+	//UNUSED = 2152 -> 2159
+
+	public const ASPECT_OF_THE_END = 2160;
+	public const TREECAPITATOR = 2161;
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;

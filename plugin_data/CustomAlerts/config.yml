@@ -6,7 +6,7 @@ Motd:
   message: "&e[{TIME}] &aWelcome to your server! &n&b[{TOTALPLAYERS}/{MAXPLAYERS}]"
 OutdatedClient:
   custom: true
-  message: "&cPlease use MCBE version 1.17.10+!"
+  message: "&cPlease use MCBE version 1.18.0+!"
 OutdatedServer:
   custom: true
   message: "&cOops! Server outdated!"
