@@ -1,9 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace DamageTag\entity;
+namespace PlayerStat\entity;
 
-use PlayerStat\utils\CritDmgFormater;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\entity\Entity;
 use pocketmine\entity\EntitySizeInfo;
@@ -19,7 +18,7 @@ use pocketmine\network\mcpe\protocol\types\entity\EntityMetadataProperties;
 
 class DamageTagEntity extends Entity{
 
-	protected float $damage = 0;
+	protected string $damage = "0";
 
 	protected $gravity = 0;
 	protected $gravityEnabled = false;
@@ -37,14 +36,14 @@ class DamageTagEntity extends Entity{
 		return new EntitySizeInfo(0.0, 0.0);
 	}
 
-	public function __construct(Location $location, float $damage = 0, ?CompoundTag $nbt = null){
+	public function __construct(Location $location, string $damage = "0", ?CompoundTag $nbt = null){
 		$this->damage = $damage;
 		parent::__construct($location, $nbt);
 	}
 
 	public function initEntity(CompoundTag $nbt) : void{
 		parent::initEntity($nbt);
-		$this->setNameTag(CritDmgFormater::format($this->damage));
+		$this->setNameTag($this->damage);
 		$this->setNameTagAlwaysVisible(true);
 	}
 

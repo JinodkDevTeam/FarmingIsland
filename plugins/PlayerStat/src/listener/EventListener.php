@@ -3,9 +3,12 @@ declare(strict_types=1);
 
 namespace PlayerStat\listener;
 
+use PlayerStat\entity\DamageTagEntity;
 use PlayerStat\Loader;
 use PlayerStat\session\PlayerSession;
 use PlayerStat\utils\ChanceCaculator;
+use PlayerStat\utils\CritDmgFormater;
+use pocketmine\entity\Living;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
@@ -64,10 +67,27 @@ class EventListener implements Listener{
 				if ($stat->getHealth() <= 0){
 					$victim->kill();
 				}
+				//DamageTag
+				$damage = round($event->getFinalDamage(), 2);
+				$location = $victim->getLocation();
+				$location->y += 1.5;
+				$tag = (string)$damage;
+				if (isset($crit)){
+					if ($crit){
+						$tag = CritDmgFormater::format($damage);
+					}
+				}
+				$tag = new DamageTagEntity($location, $tag);
+				$tag->spawnToAll();
 				//Set damage to 0
-				$event->setBaseDamage(0);
 				foreach(array_keys($event->getModifiers()) as $key){
 					$event->setModifier(0, $key);
+				}
+				if ($event->getCause() !== EntityDamageEvent::CAUSE_LAVA){
+					$event->setBaseDamage(0);
+				} else {
+					$event->setBaseDamage(4);
+					$event->setModifier(-4, EntityDamageEvent::MODIFIER_RESISTANCE); //HACK: Fix spaming lava damage when recieve.
 				}
 				//Knockback
 				if ($event instanceof EntityDamageByEntityEvent){
@@ -78,6 +98,22 @@ class EventListener implements Listener{
 						$event->setKnockBack($event->getKnockBack() - $knockback_resistance);
 					}
 				}
+				$stat->show();
+			}
+		} else {
+			//Normal entity.
+			if ($victim instanceof Living){
+				$damage = round($event->getFinalDamage(), 2);
+				$location = $victim->getLocation();
+				$location->y += 1.5;
+				$tag = (string)$damage;
+				if (isset($crit)){
+					if ($crit){
+						$tag = CritDmgFormater::format($damage);
+					}
+				}
+				$tag = new DamageTagEntity($location, $tag);
+				$tag->spawnToAll();
 			}
 		}
 	}

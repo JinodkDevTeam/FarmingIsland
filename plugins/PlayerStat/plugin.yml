@@ -4,3 +4,7 @@ src-namespace-prefix: PlayerStat
 api: 4.0.0
 version: 0.0.1
 author: JinodkDevTeam
+
+permissions:
+  playerstat.cmd:
+    default: op

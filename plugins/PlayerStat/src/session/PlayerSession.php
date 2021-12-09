@@ -45,20 +45,20 @@ class PlayerSession{
 		float $health = self::BASE_HEALTH,
 		float $max_mana = self::BASE_MANA,
 		float $mana = self::BASE_MANA,
-		float $intelligence = 1200,
+		float $intelligence = 0,
 		float $health_regeneration = 1,
 		float $mana_regeneration = 1,
-		float $defense = 1600,
+		float $defense = 0,
 		float $true_defense = 0,
 		float $knockback_resistance = 0,
 		float $true_knockback_resistance = 0,
-		float $strength = 212000,
-		float $damage = 250,
+		float $strength = 0,
+		float $damage = 0,
 		float $true_damage = 0,
-		float $crit_chance = 100,
-		float $crit_damage = 420000,
-		float $attack_speed = 100,
-		float $ferocity = 100000,
+		float $crit_chance = 0,
+		float $crit_damage = 50,
+		float $attack_speed = 0,
+		float $ferocity = 0,
 		float $knockback = 0,
 		float $true_knockback = 0,
 		float $mining_fortune = 0,
@@ -322,7 +322,8 @@ class PlayerSession{
 
 	public function show() : void{
 		if ($this->getPlayer()->isOnline()){
-			$this->getPlayer()->sendPopup("§c".$this->getHealth()."/".$this->getMaxHealth()."❤      §a".$this->getDefense()."❈ Defense      §b".$this->getMana()."/".$this->getMaxMana()."✎ Mana");
+			$health = round($this->getHealth());
+			$this->getPlayer()->sendPopup("§c".$health."/".$this->getMaxHealth()."❤      §a".$this->getDefense()."❈ Defense      §b".$this->getMana()."/".$this->getMaxMana()."✎ Mana");
 		}
 	}
 }
