@@ -67,10 +67,7 @@ class VeinMineTool extends CustomTool{
 		$pending = [];
 		$pos = $blockbreak;
 
-		while(true){
-			if($this->breaked[$player->getName()] > $this->getBreakLimit()){
-				break;
-			}
+		while($this->breaked <= $this->getBreakLimit()){
 			$sides = $this->getAllSide($pos, $pending);
 
 			if($sides !== []){
@@ -106,7 +103,7 @@ class VeinMineTool extends CustomTool{
 					$side = $block->getPosition()->getWorld()->getBlockAt($x, $y, $z);
 					if($this->isCompative($side)){
 						if(!$this->isChecked($side, $pending)){
-							array_push($blocks, $side);
+							$blocks[] = $side;
 						}
 					}
 				}
