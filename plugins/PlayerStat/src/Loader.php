@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace PlayerStat;
 
+use PlayerStat\command\PlayerStatCommand;
 use PlayerStat\entity\DamageTagEntity;
 use PlayerStat\listener\EventListener;
 use PlayerStat\session\SessionManager;
@@ -35,6 +36,7 @@ class Loader extends PluginBase{
 		$this->sessionManager = new SessionManager();
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 		$this->getScheduler()->scheduleRepeatingTask(new RegenTask(), 20);
+		$this->getServer()->getCommandMap()->register("playerstat", new PlayerStatCommand());
 	}
 
 	protected function onDisable() : void{
