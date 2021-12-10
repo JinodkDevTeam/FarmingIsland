@@ -25,6 +25,8 @@ class TagResloveListener implements Listener{
 				$value = EconomyAPI::getInstance()->myMoney($player, $currency);
 				if ($value === false){
 					$value = 0;
+				} else {
+					$value = round($value, 2, PHP_ROUND_HALF_DOWN);
 				}
 				$tag->setValue((string) $value);
 				break;

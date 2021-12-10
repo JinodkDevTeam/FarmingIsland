@@ -245,7 +245,7 @@ class EventListener implements Listener{
 	 */
 	public function onDeath(PlayerDeathEvent $event){
 		$event->setKeepInventory(true);
-		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), EconomyAPI::getInstance()->myMoney($event->getPlayer()) / 2);
-		$event->getPlayer()->sendMessage("You died and lost " . EconomyAPI::getInstance()->myMoney($event->getPlayer()) . " coins");
+		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), round(EconomyAPI::getInstance()->myMoney($event->getPlayer()) / 2, 2, PHP_ROUND_HALF_DOWN));
+		$event->getPlayer()->sendMessage("You died and lost " . round(EconomyAPI::getInstance()->myMoney($event->getPlayer()), 2, PHP_ROUND_HALF_DOWN) . " coins");
 	}
 }
