@@ -38,7 +38,11 @@ class ListOrderUI extends BaseUI{
 					return;
 			}
 			if (empty($data)){
-				$player->sendMessage("This item doesnt have any order !");
+				if ($this->mode == self::BUY){
+					$player->sendMessage("Noone want to buy this item.");
+				} else {
+					$player->sendMessage("Noone sell this item.");
+				}
 				return;
 			}
 
@@ -54,7 +58,7 @@ class ListOrderUI extends BaseUI{
 			foreach($data as $o){
 				$count++;
 				$order = OrderDataHelper::formData($o, $this->mode);
-				array_push($msg, "#" . $count . " " . $order->getAmount() - $order->getFilled() . "x | " . $order->getPrice() . " coins each");
+				$msg[] = "#" . $count . " " . $order->getAmount() - $order->getFilled() . "x | " . $order->getPrice() . " coins each";
 				if ($count > 9){
 					break;
 				}

@@ -23,7 +23,7 @@ class ItemUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if(empty($data)){
-				$top_buy_price = 0;
+				$top_buy_price = "N/A";
 			}else{
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 				$top_buy_price = $order->getPrice();
@@ -31,7 +31,7 @@ class ItemUI extends BaseUI{
 
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if(empty($data)){
-				$top_sell_price = 0;
+				$top_sell_price = "N/A";
 			}else{
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
 				$top_sell_price = $order->getPrice();
