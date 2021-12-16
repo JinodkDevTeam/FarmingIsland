@@ -41,10 +41,10 @@ class EventListener implements Listener{
 		if($player instanceof Player && $player->isOnline()){
 			switch($event->getCurrency()->getName()){
 				case "Coin":
-					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.coin", (string) $event->getNewMoney())))->call();
+					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.coin", (string) round($event->getNewMoney(), 2, PHP_ROUND_HALF_DOWN))))->call();
 					break;
 				case "Gem":
-					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.gem", (string) $event->getNewMoney())))->call();
+					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.gem", (string) round($event->getNewMoney(), 2, PHP_ROUND_HALF_DOWN))))->call();
 			}
 		}
 	}

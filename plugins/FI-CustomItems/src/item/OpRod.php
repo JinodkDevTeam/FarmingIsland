@@ -18,13 +18,13 @@ class OpRod extends CustomRod{
 		}
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
-		$nbt->setInt("FishingSpeed", 80);
+		$nbt->setInt("FishingSpeed", 90);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
 			"§r§7A powerful fishing rod make for OP player",
 			"",
-			"§r§6+80% §bfishing speed.",
+			"§r§6+90% §bfishing speed.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);
