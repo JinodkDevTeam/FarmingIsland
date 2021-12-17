@@ -25,6 +25,10 @@ class InstantSell extends BaseUI{
 		Await::f2c(function() use ($player){
 			//GETTING TOP BUY ORDER...
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			if (empty($data)){
+				$player->sendMessage("Sorry, noone want to buy this item !");
+				return;
+			}
 			$max = ItemUtils::getItemCount($player->getInventory(), ItemUtils::toItem($this->itemid));
 			$form = new CustomForm(function(Player $player, ?array $pos) use ($data, $max){
 				if(!isset($pos[1])) return;
@@ -67,7 +71,7 @@ class InstantSell extends BaseUI{
 			}
 		}
 		if($count > 0){
-			$player->sendMessage("Bazaar just want to buy from you " . $amount - $count . " items !");
+			$player->sendMessage("Sorry, Bazaar just want to buy from you " . $amount - $count . " items !");
 			return;
 		}
 

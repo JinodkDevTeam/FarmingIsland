@@ -25,6 +25,10 @@ class InstantBuy extends BaseUI{
 		Await::f2c(function() use ($player){
 			//GETTING TOP SELL ORDER...
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			if (empty($data)){
+				$player->sendMessage("Sorry, noone sell this item !");
+				return;
+			}
 			$form = new CustomForm(function(Player $player, ?array $pos) use ($data){
 				if(!isset($pos[1])) return;
 				$amount = $pos[1];

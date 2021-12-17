@@ -26,7 +26,7 @@ class SellOrderUI extends BaseUI{
 			//GETTING TOP ORDER INFO
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if(empty($data)){
-				$top_sell = 0;
+				$top_sell = "";
 			}else{
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
 				$top_sell = $order->getPrice();
@@ -66,7 +66,11 @@ class SellOrderUI extends BaseUI{
 			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
 			$form->addLabel("Current top sell order: " . $top_sell);
 			$form->addInput("Amount:", "Max: " . $max);
-			$form->addInput("Price per item:", (string) ($top_sell - 0.1));
+			if($top_sell == ""){
+				$form->addInput("Price per item:", "123456789");
+			}else{
+				$form->addInput("Price per item:", (string) ($top_sell - 0.1));
+			}
 
 			$player->sendForm($form);
 		});

@@ -27,7 +27,7 @@ class BuyOrderUI extends BaseUI{
 			//GETTING TOP ORDER INFO
 			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
 			if(empty($data)){
-				$top_buy = 0;
+				$top_buy = "";
 			}else{
 				$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 				$top_buy = $order->getPrice();
@@ -64,7 +64,11 @@ class BuyOrderUI extends BaseUI{
 			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
 			$form->addLabel("Current top buy order: " . $top_buy);
 			$form->addInput("Amount:", "Max: 71680");
-			$form->addInput("Price per item:", (string) ($top_buy + 0.1));
+			if($top_buy == ""){
+				$form->addInput("Price per item:", "123456789");
+			}else{
+				$form->addInput("Price per item:", (string) ($top_buy + 0.1));
+			}
 
 			$player->sendForm($form);
 		});
