@@ -1,0 +1,15 @@
+name: TestPlugin
+version: 0.0.1
+api: 4.0.0
+main: TestPlugin\Loader
+src-namespace-prefix: TestPlugin
+author: NgLam2911
+description: "Use for testing only !"
+
+commands:
+  smtest:
+    permission: "smtest.cmd"
+
+permissions:
+  smtest.cmd:
+    default: op
