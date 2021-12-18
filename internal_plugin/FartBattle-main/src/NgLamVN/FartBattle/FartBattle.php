@@ -5,11 +5,16 @@ namespace NgLamVN\FartBattle;
 
 use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockLegacyIds;
+use pocketmine\entity\Living;
 use pocketmine\entity\object\FallingBlock;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerToggleSneakEvent;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\world\particle\ExplodeParticle;
 
 class FartBattle extends PluginBase implements Listener{
 	public function onEnable() : void{
@@ -98,7 +103,7 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 		}
 	}*/
 
-	/*public function onSneak(PlayerToggleSneakEvent $event)
+	public function onSneak(PlayerToggleSneakEvent $event)
 	{
 		//Shooting a beam and deal damage to nearby entity.
 
@@ -107,9 +112,9 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 		{
 			return;
 		}
-		$x = $player->getX();
-		$y = $player->getY() + 0.5;
-		$z = $player->getZ();
+		$x = $player->getPosition()->getX();
+		$y = $player->getPosition()->getY() + 0.5;
+		$z = $player->getPosition()->getZ();
 		$stepx = $player->getDirectionVector()->getX();
 		$stepy = 0;
 		$stepz = $player->getDirectionVector()->getZ();
@@ -119,13 +124,13 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 			$x = $x - $stepx;
 			$y = $y - $stepy;
 			$z = $z - $stepz;
-			$player->getLevel()->addParticle(new ExplodeParticle(new Vector3($x,$y,$z)));
-			if ($event->getPlayer()->getLevel()->getBlockAt($x,$y,$z)->getId() !== Block::AIR)
+			$player->getWorld()->addParticle(new Vector3($x, $y, $z), new ExplodeParticle());
+			if ($event->getPlayer()->getWorld()->getBlockAt((int)$x,(int)$y,(int)$z)->getId() !== BlockLegacyIds::AIR)
 			{
 				break;
 			}
 			$bb = new AxisAlignedBB($x-1, $y-1, $z-1, $x+1, $y+1, $z+1);
-			$entitys = $player->getLevel()->getNearbyEntities($bb);
+			$entitys = $player->getWorld()->getNearbyEntities($bb);
 			foreach ($entitys as $entity)
 			{
 				if ($entity instanceof Living)
@@ -145,7 +150,7 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 				}
 			}
 		}
-	}*/
+	}
 	/*public function onSneak (PlayerToggleSneakEvent $event)
 	{
 
@@ -161,7 +166,7 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 		$player->getLevel()->addParticle(new HugeExplodeSeedParticle($player->asVector3()));
 	}*/
 
-	public function onSneak(PlayerToggleSneakEvent $event){
+	/*public function onSneak(PlayerToggleSneakEvent $event){
 
 		//Shooting falling block mode
 
@@ -180,6 +185,5 @@ o//::--:+ooooooo+ooo++oo -.-.....--::/ooooossyysymNNdhs+:-----://+osssssyyyyyyyy
 			$Direction = new Vector3(-(sin($pitch) * cos($yaw + $anglesBetween * $i)) * $multiply, 0.5, -(sin($pitch) * sin($yaw + $anglesBetween * $i)) * $multiply);
 			$entity->setMotion($Direction);
 		}
-	}
-
+	}*/
 }
