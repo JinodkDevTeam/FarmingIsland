@@ -96,6 +96,9 @@
                   <Item>
                     <option name="path" value="plugins/Testentity/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-LMAO/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

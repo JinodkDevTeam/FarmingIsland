@@ -1,0 +1,12 @@
+name: FI-LMAO
+main: LMAO/Loader
+src-namespace-prefix: LMAO
+version: 0.0.1
+api: 4.0.0
+author: JinodkDevTeam
+description: A ultimate troll plugin for JINODK Network
+
+permissions:
+  lmao.cmd:
+    default: op
+    description: "Make player able to use /lmao command"
