@@ -40,6 +40,7 @@ class FishingHook extends Projectile{
 	protected int $ticksCatchableDelay = 0; //How much time player need to wait from hook is ready to catch to catchable (Line of particle appeard)
 	protected float $fishApproachAngle = 0;
 	protected Random $random;
+
 	//CaughtDelay (long) -> CatchableDelay (short) -> (able to catch) -> Catchable -> (unable to catch)
 
 
@@ -65,9 +66,9 @@ class FishingHook extends Projectile{
 	}
 
 	public function getOwningEntity() : ?Human{
-		if ($this->ownerId !== null){
+		if($this->ownerId !== null){
 			$player = $this->server->getWorldManager()->findEntity($this->ownerId);
-			if ($player instanceof Human){
+			if($player instanceof Human){
 				return $player;
 			}
 		}
@@ -80,8 +81,9 @@ class FishingHook extends Projectile{
 
 	public function onUpdate(int $currentTick) : bool{
 		$owner = $this->getOwningEntity();
-		if ($owner === null){
-			return false;
+		if($owner === null){
+			$this->flagForDespawn();
+			return true;
 		}
 		$inGround = $this->getWorld()->getBlock($this->getPosition()->asVector3())->isSolid();
 
@@ -135,13 +137,13 @@ class FishingHook extends Projectile{
 				$this->handleFishingUpdate();
 			}
 		}
-		if (!isset($hasUpdate)){
+		if(!isset($hasUpdate)){
 			$hasUpdate = parent::onUpdate($currentTick);
 		}
 		return $hasUpdate;
 	}
 
-	public function handleFishingUpdate(): void{
+	public function handleFishingUpdate() : void{
 		$l = 1;
 		// TODO: lightninstrike
 
@@ -214,16 +216,16 @@ class FishingHook extends Projectile{
 			$fishing_speed = 0;
 			$item = $this->getOwningEntity()?->getInventory()->getItemInHand();
 			$enchant = $item->getEnchantment(EnchantmentIdMap::getInstance()->fromId(EnchantmentIds::LURE));
-			if ($enchant !== null){
-				$fishing_speed += $enchant->getLevel()*2;
+			if($enchant !== null){
+				$fishing_speed += $enchant->getLevel() * 2;
 			}
-			if ($item->getNamedTag()->getTag("FishingSpeed") !== null){
+			if($item->getNamedTag()->getTag("FishingSpeed") !== null){
 				$fishing_speed += $item->getNamedTag()->getTag("FishingSpeed")->getValue();
 			}
-			if ($fishing_speed > 100){
+			if($fishing_speed > 100){
 				$fishing_speed = 100;
 			}
-			$this->ticksCaughtDelay -= (int)($this->ticksCaughtDelay*($fishing_speed/100));
+			$this->ticksCaughtDelay -= (int) ($this->ticksCaughtDelay * ($fishing_speed / 100));
 		}
 		if($this->ticksCatchable > 0){
 			$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
@@ -232,8 +234,8 @@ class FishingHook extends Projectile{
 
 	public function onRetraction() : void{
 		$angler = $this->getOwningEntity();
-		if ($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
-			if ($this->ticksCatchable > 0){
+		if($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
+			if($this->ticksCatchable > 0){
 				$results = [
 					VanillaItems::RAW_FISH(),
 					VanillaItems::PUFFERFISH()
@@ -241,17 +243,17 @@ class FishingHook extends Projectile{
 				$xp_drop = mt_rand(0, 1);
 				$ev = new EntityFishEvent($this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
 				$ev->call();
-				if (!$ev->isCancelled()){
+				if(!$ev->isCancelled()){
 					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
 					//DROP Items
 					$results = $ev->getItemsResult();
 					foreach($results as $result){
-						if (!$result instanceof Item){
+						if(!$result instanceof Item){
 							Loader::getInstance()->getLogger()->error("Fishing loot result contain an unknow item. var_dump...");
 							var_dump($result);
 							continue;
 						}
-						if ($result->isNull()){
+						if($result->isNull()){
 							Loader::getInstance()->getLogger()->error("Fishing loot contain <Null> item. var_dump...");
 							var_dump($result);
 							continue;
@@ -308,7 +310,7 @@ class FishingHook extends Projectile{
 
 	public function flagForDespawn() : void{
 		$player = $this->getOwningEntity();
-		if ($player instanceof Player){
+		if($player instanceof Player){
 			Loader::getInstance()->setFishingHook($player, null);
 		}
 		parent::flagForDespawn();
