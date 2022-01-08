@@ -3,49 +3,19 @@ declare(strict_types=1);
 
 namespace LMAO\command;
 
-use LMAO\command\args\HelpArgs;
-use LMAO\Loader;
-use pocketmine\command\Command;
+use CortexPE\Commando\args\BaseArgument;
+use CortexPE\Commando\BaseCommand;
+use LMAO\command\subcommand\HelpCommand;
 use pocketmine\command\CommandSender;
-use pocketmine\plugin\Plugin;
-use pocketmine\plugin\PluginOwned;
-use pocketmine\plugin\PluginOwnedTrait;
 
-class LmaoCommand extends Command implements PluginOwned{
+class LmaoCommand extends BaseCommand{
 
-	protected Loader $loader;
-
-	public function __construct(Loader $loader){
-		parent::__construct("lmao", "", null, []);
-		$this->loader = $loader;
-		$this->setDescription("LOLOLOLOLOLOLOLOLOLOLOL");
+	protected function prepare() : void{
 		$this->setPermission("lmao.cmd");
+		$this->registerSubCommand(new HelpCommand("help", "List troll feature."));
 	}
 
-	protected function getLoader() : Loader{
-		return $this->loader;
-	}
-
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if (!$sender->hasPermission("lmao.cmd")){
-			$sender->sendMessage("Do you think you can use this command??? LOL you can't !");
-			return;
-		}
-		if (!isset($args[0])){
-			$sender->sendMessage("Unknow args, please use /lmao help");
-			return;
-		}
-		switch($args[0]){
-			case "help":
-				new HelpArgs($sender, $args);
-				break;
-
-			default:
-				$sender->sendMessage("Unknow args, please use /lmao help");
-		}
-	}
-
-	public function getOwningPlugin() : Plugin{
-		return $this->getLoader();
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		$sender->sendMessage("Use </lmao help> for more info");
 	}
 }

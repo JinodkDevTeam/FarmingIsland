@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LMAO;
 
+use CortexPE\Commando\PacketHooker;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\SingletonTrait;
 
@@ -16,6 +17,10 @@ class Loader extends PluginBase{
 	}
 
 	public function onEnable() : void{
+		if(!PacketHooker::isRegistered()) {
+			PacketHooker::register($this);
+		}
+
 		$this->provider = new Provider($this);
 	}
 

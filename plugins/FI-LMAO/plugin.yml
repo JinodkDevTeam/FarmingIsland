@@ -10,3 +10,5 @@ permissions:
   lmao.cmd:
     default: op
     description: "Make player able to use /lmao command"
+  lmao.burn:
+    default: op
