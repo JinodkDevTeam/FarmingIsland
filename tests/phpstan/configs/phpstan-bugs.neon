@@ -36,9 +36,9 @@ parameters:
 			path: ../../../src/plugin/ScriptPluginLoader.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between string and false will always evaluate to false\\.$#"
+			message: "#^Dead catch \\- JsonException is never thrown in the try block\\.$#"
 			count: 1
-			path: ../../../src/utils/Utils.php
+			path: ../../../src/utils/Config.php
 
 		-
 			message: "#^Call to function is_resource\\(\\) with resource will always evaluate to true\\.$#"
