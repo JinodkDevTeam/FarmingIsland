@@ -1,0 +1,144 @@
+items:
+  copper_drill:
+    id: 1000
+    meta: 0
+    namespace: "fi:copper_drill"
+    name: copper_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: copper_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  diamond_drill:
+    id: 1001
+    meta: 0
+    namespace: "fi:diamond_drill"
+    name: diamond_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: diamond_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  drill_t1:
+    id: 1002
+    meta: 0
+    namespace: "fi:drill_t1"
+    name: drill_t1
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: drill_t1
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  drill_t2:
+    id: 1003
+    meta: 0
+    namespace: "fi:drill_t2"
+    name: drill_t2
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: drill_t2
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  golden_drill:
+    id: 1004
+    meta: 0
+    namespace: "fi:golden_drill"
+    name: golden_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: golden_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  iron_drill:
+    id: 1005
+    meta: 0
+    namespace: "fi:iron_drill"
+    name: iron_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: iron_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  lazer_drill:
+    id: 1006
+    meta: 0
+    namespace: "fi:lazer_drill"
+    name: lazer_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: lazer_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  ng_drill:
+    id: 1007
+    meta: 0
+    namespace: "fi:ng_drill"
+    name: ng_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: ng_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  quantum_drill:
+    id: 1008
+    meta: 0
+    namespace: "fi:quantum_drill"
+    name: quantum_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: quantum_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  superior_drill:
+    id: 1009
+    meta: 0
+    namespace: "fi:superior_drill"
+    name: superior_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: superior_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
+  titanium_drill:
+    id: 1010
+    meta: 0
+    namespace: "fi:titanium_drill"
+    name: titanium_drill
+    allow_off_hand: false
+    max_stack_size: 1
+    texture: titanium_drill
+    mining_speed: 1
+    tool_type: 4 # This will make this tool as pickaxe, replace it as you want
+    tool_tier: 5 # This will make this tool's tier as Diamond, replace it as you want
+    tool: true
+    add_creative_inventory: true
