@@ -1,0 +1,12 @@
+name: ItemEditor
+main: ItemEditor/Loader
+src-namespace-prefix: ItemEditor
+version: 0.1-alpha
+api: 4.0.0
+author: NgLamVN
+description: Item Editor Plugin For PocketMine-MP
+
+permissions:
+  iedit.command:
+    default: op
+    description: Allow player edit item.

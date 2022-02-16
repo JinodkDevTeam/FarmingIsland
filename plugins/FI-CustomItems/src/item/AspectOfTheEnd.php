@@ -45,13 +45,18 @@ class AspectOfTheEnd extends CustomItem{
 		$direction = $player->getDirectionVector();
 		$pos = $player->getPosition();
 		$world = $player->getWorld();
+		$blocked = false;
 		for($i = 1; $i <= 8; $i++){
 			$pos = $pos->addVector($direction);
 
 			if((!$world->getBlock($pos) instanceof Air) and (!$world->getBlock($pos) instanceof Liquid)){
 				$pos = $pos->subtractVector($direction);
+				$blocked = true;
 				break;
 			}
+		}
+		if ($blocked){
+			$player->sendMessage("§r§7There are blocks in the way!");
 		}
 		$player->teleport($pos);
 		$world->addSound($pos, new EndermanTeleportSound(), [$player]);
