@@ -39,11 +39,7 @@ class Anvil extends Transparent implements Fallable{
 	use FallableTrait;
 	use HorizontalFacingTrait;
 
-	public const UNDAMAGED = 0;
-	public const SLIGHTLY_DAMAGED = 1;
-	public const VERY_DAMAGED = 2;
-
-	private int $damage = self::UNDAMAGED;
+	private int $damage = 0;
 
 	protected function writeStateToMeta() : int{
 		return BlockDataSerializer::writeLegacyHorizontalFacing($this->facing) | ($this->damage << 2);
@@ -51,7 +47,7 @@ class Anvil extends Transparent implements Fallable{
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
 		$this->facing = BlockDataSerializer::readLegacyHorizontalFacing($stateMeta & 0x3);
-		$this->damage = BlockDataSerializer::readBoundedInt("damage", $stateMeta >> 2, self::UNDAMAGED, self::VERY_DAMAGED);
+		$this->damage = BlockDataSerializer::readBoundedInt("damage", $stateMeta >> 2, 0, 2);
 	}
 
 	public function getStateBitmask() : int{
@@ -66,8 +62,8 @@ class Anvil extends Transparent implements Fallable{
 
 	/** @return $this */
 	public function setDamage(int $damage) : self{
-		if($damage < self::UNDAMAGED || $damage > self::VERY_DAMAGED){
-			throw new \InvalidArgumentException("Damage must be in range " . self::UNDAMAGED . " ... " . self::VERY_DAMAGED);
+		if($damage < 0 || $damage > 2){
+			throw new \InvalidArgumentException("Damage must be in range 0-2");
 		}
 		$this->damage = $damage;
 		return $this;

@@ -40,17 +40,14 @@ use function max;
 class SnowLayer extends Flowable implements Fallable{
 	use FallableTrait;
 
-	public const MIN_LAYERS = 1;
-	public const MAX_LAYERS = 8;
-
-	protected int $layers = self::MIN_LAYERS;
+	protected int $layers = 1;
 
 	protected function writeStateToMeta() : int{
 		return $this->layers - 1;
 	}
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->layers = BlockDataSerializer::readBoundedInt("layers", $stateMeta + 1, self::MIN_LAYERS, self::MAX_LAYERS);
+		$this->layers = BlockDataSerializer::readBoundedInt("layers", $stateMeta + 1, 1, 8);
 	}
 
 	public function getStateBitmask() : int{
@@ -61,15 +58,15 @@ class SnowLayer extends Flowable implements Fallable{
 
 	/** @return $this */
 	public function setLayers(int $layers) : self{
-		if($layers < self::MIN_LAYERS || $layers > self::MAX_LAYERS){
-			throw new \InvalidArgumentException("Layers must be in range " . self::MIN_LAYERS . " ... " . self::MAX_LAYERS);
+		if($layers < 1 || $layers > 8){
+			throw new \InvalidArgumentException("Layers must be in range 1-8");
 		}
 		$this->layers = $layers;
 		return $this;
 	}
 
 	public function canBeReplaced() : bool{
-		return $this->layers < self::MAX_LAYERS;
+		return $this->layers < 8;
 	}
 
 	/**
@@ -81,12 +78,12 @@ class SnowLayer extends Flowable implements Fallable{
 	}
 
 	private function canBeSupportedBy(Block $b) : bool{
-		return $b->isSolid() || ($b instanceof SnowLayer && $b->isSameType($this) && $b->layers === self::MAX_LAYERS);
+		return $b->isSolid() || ($b instanceof SnowLayer && $b->isSameType($this) && $b->layers === 8);
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 		if($blockReplace instanceof SnowLayer){
-			if($blockReplace->layers >= self::MAX_LAYERS){
+			if($blockReplace->layers >= 8){
 				return false;
 			}
 			$this->layers = $blockReplace->layers + 1;

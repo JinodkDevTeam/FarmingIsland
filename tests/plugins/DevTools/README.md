@@ -8,11 +8,12 @@ DevTools is a collection of utilities used for developing PocketMine-MP plugins.
 - Check player permissions using commands
 
 ## Commands
-* _/genplugin <pluginName> <authorName>_: Generates skeleton files for a new plugin
-* _/makeplugin \<pluginName\>_: Creates a Phar plugin archive for its distribution
-* _/makeplugin *_: Creates Phar plugin archives for all loaded plugins
-* _/checkperm \<node\> [playerName]_: Checks a permission node
-* _/listperms [playerName]_: Lists permissions assigned to the command sender, or the target player
+* `/genplugin <pluginName> <authorName>`: Generates skeleton files for a new plugin
+* `/extractplugin <pluginName>`: Extracts the source of a loaded plugin from its Phar file
+* `/makeplugin <pluginName>`: Creates a Phar plugin archive for its distribution
+* `/makeplugin *`: Creates Phar plugin archives for all loaded plugins
+* `/checkperm <node> [playerName]`: Checks a permission node
+* `/listperms [playerName]`: Lists permissions assigned to the command sender, or the target player
 
 ## Using ConsoleScript to build a DevTools phar from source code
 Contrary to popular belief, this is very simple. Assuming you have a php executable in your PATH variable, cd into the DevTools directory (the folder where plugin.yml is located) and simply run the following:
@@ -28,10 +29,9 @@ The script currently takes the following arguments:
 
 | argument | required | description |
 |:--------:|:--------:|:------------|
-| `--make` | yes | The path to the files you want to bundle into a phar |
-| `--relative` | no | Relative path to use when building the phar. This usually isn't necessary for plugins. Used to build PocketMine-MP phars with the `src` directory without including the files in the repository root. |
-| `--entry` | no | PHP file within the phar to execute when running the phar from the command-line. Usually not needed for plugins, but required for a PocketMine-MP phar. Used to generate phar stubs. |
-| `--stub` | no | (Optional) PHP file to use as a custom phar stub. The stub will be executed when the phar is run from the command line. |
+| `--make` | yes | The comma-separated path(s) to the files you want to bundle into a phar |
+| `--relative` | no | Make DevTools resolve paths relative to the given path. If not specified, defaults to the current working directory. |
+| `--stub` | no | PHP file to use as a custom phar stub. The stub will be executed when the phar is run from the command line. |
 | `--out` | yes | Path and filename of the output phar file. |
 
 Example command line for building a plugin:

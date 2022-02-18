@@ -28,12 +28,11 @@ use pocketmine\event\block\BlockMeltEvent;
 use function mt_rand;
 
 class FrostedIce extends Ice{
-	public const MAX_AGE = 3;
 
 	protected int $age = 0;
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, self::MAX_AGE);
+		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, 3);
 	}
 
 	protected function writeStateToMeta() : int{
@@ -48,8 +47,8 @@ class FrostedIce extends Ice{
 
 	/** @return $this */
 	public function setAge(int $age) : self{
-		if($age < 0 || $age > self::MAX_AGE){
-			throw new \InvalidArgumentException("Age must be in range 0 ... " . self::MAX_AGE);
+		if($age < 0 || $age > 3){
+			throw new \InvalidArgumentException("Age must be in range 0-3");
 		}
 		$this->age = $age;
 		return $this;
@@ -106,7 +105,7 @@ class FrostedIce extends Ice{
 	 * @return bool Whether the ice was destroyed.
 	 */
 	private function tryMelt() : bool{
-		if($this->age >= self::MAX_AGE){
+		if($this->age >= 3){
 			$ev = new BlockMeltEvent($this, VanillaBlocks::WATER());
 			$ev->call();
 			if(!$ev->isCancelled()){

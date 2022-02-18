@@ -33,7 +33,6 @@ use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
 class Sugarcane extends Flowable{
-	public const MAX_AGE = 15;
 
 	protected int $age = 0;
 
@@ -42,7 +41,7 @@ class Sugarcane extends Flowable{
 	}
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, self::MAX_AGE);
+		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, 15);
 	}
 
 	public function getStateBitmask() : int{
@@ -77,8 +76,8 @@ class Sugarcane extends Flowable{
 
 	/** @return $this */
 	public function setAge(int $age) : self{
-		if($age < 0 || $age > self::MAX_AGE){
-			throw new \InvalidArgumentException("Age must be in range 0 ... " . self::MAX_AGE);
+		if($age < 0 || $age > 15){
+			throw new \InvalidArgumentException("Age must be in range 0-15");
 		}
 		$this->age = $age;
 		return $this;
@@ -109,7 +108,7 @@ class Sugarcane extends Flowable{
 
 	public function onRandomTick() : void{
 		if(!$this->getSide(Facing::DOWN)->isSameType($this)){
-			if($this->age === self::MAX_AGE){
+			if($this->age === 15){
 				$this->grow();
 			}else{
 				++$this->age;

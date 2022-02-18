@@ -41,7 +41,6 @@ use function min;
 use function mt_rand;
 
 class Fire extends Flowable{
-	public const MAX_AGE = 15;
 
 	protected int $age = 0;
 
@@ -50,7 +49,7 @@ class Fire extends Flowable{
 	}
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, self::MAX_AGE);
+		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, 15);
 	}
 
 	public function getStateBitmask() : int{
@@ -61,8 +60,8 @@ class Fire extends Flowable{
 
 	/** @return $this */
 	public function setAge(int $age) : self{
-		if($age < 0 || $age > self::MAX_AGE){
-			throw new \InvalidArgumentException("Age must be in range 0 ... " . self::MAX_AGE);
+		if($age < 0 || $age > 15){
+			throw new \InvalidArgumentException("Age must be in range 0-15");
 		}
 		$this->age = $age;
 		return $this;
@@ -115,7 +114,7 @@ class Fire extends Flowable{
 		$down = $this->getSide(Facing::DOWN);
 
 		$result = null;
-		if($this->age < self::MAX_AGE && mt_rand(0, 2) === 0){
+		if($this->age < 15 && mt_rand(0, 2) === 0){
 			$this->age++;
 			$result = $this;
 		}
@@ -123,7 +122,7 @@ class Fire extends Flowable{
 
 		if(!$down->burnsForever()){
 			//TODO: check rain
-			if($this->age === self::MAX_AGE){
+			if($this->age === 15){
 				if(!$down->isFlammable() && mt_rand(0, 3) === 3){ //1/4 chance to extinguish
 					$canSpread = false;
 					$result = VanillaBlocks::AIR();
@@ -184,7 +183,7 @@ class Fire extends Flowable{
 				$spreadedFire = false;
 				if(mt_rand(0, $this->age + 9) < 5){ //TODO: check rain
 					$fire = clone $this;
-					$fire->age = min(self::MAX_AGE, $fire->age + (mt_rand(0, 4) >> 2));
+					$fire->age = min(15, $fire->age + (mt_rand(0, 4) >> 2));
 					$spreadedFire = $this->spreadBlock($block, $fire);
 				}
 				if(!$spreadedFire){
@@ -244,7 +243,7 @@ class Fire extends Flowable{
 
 					if($maxChance > 0 && mt_rand(0, $randomBound - 1) <= $maxChance){
 						$new = clone $this;
-						$new->age = min(self::MAX_AGE, $this->age + (mt_rand(0, 4) >> 2));
+						$new->age = min(15, $this->age + (mt_rand(0, 4) >> 2));
 						$this->spreadBlock($block, $new);
 					}
 				}

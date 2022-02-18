@@ -30,7 +30,7 @@ use function mt_rand;
 class Beetroot extends Crops{
 
 	public function getDropsForCompatibleTool(Item $item) : array{
-		if($this->age >= self::MAX_AGE){
+		if($this->age >= 7){
 			return [
 				VanillaItems::BEETROOT(),
 				VanillaItems::BEETROOT_SEEDS()->setCount(mt_rand(0, 3))

@@ -36,7 +36,6 @@ use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
 class Cactus extends Transparent{
-	public const MAX_AGE = 15;
 
 	protected int $age = 0;
 
@@ -45,7 +44,7 @@ class Cactus extends Transparent{
 	}
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, self::MAX_AGE);
+		$this->age = BlockDataSerializer::readBoundedInt("age", $stateMeta, 0, 15);
 	}
 
 	public function getStateBitmask() : int{
@@ -56,8 +55,8 @@ class Cactus extends Transparent{
 
 	/** @return $this */
 	public function setAge(int $age) : self{
-		if($age < 0 || $age > self::MAX_AGE){
-			throw new \InvalidArgumentException("Age must be in range 0 ... " . self::MAX_AGE);
+		if($age < 0 || $age > 15){
+			throw new \InvalidArgumentException("Age must be in range 0-15");
 		}
 		$this->age = $age;
 		return $this;
@@ -102,7 +101,7 @@ class Cactus extends Transparent{
 
 	public function onRandomTick() : void{
 		if(!$this->getSide(Facing::DOWN)->isSameType($this)){
-			if($this->age === self::MAX_AGE){
+			if($this->age === 15){
 				for($y = 1; $y < 3; ++$y){
 					if(!$this->position->getWorld()->isInWorld($this->position->x, $this->position->y + $y, $this->position->z)){
 						break;
