@@ -27,3 +27,4 @@ plugin_data/Mail/mail.db
 plugin_data/EconomyAPI/users/*
 plugin_data/Island/worlds/*
 internal_plugin/*
+plugin_data/_NewAlias/players.sqlite
