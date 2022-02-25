@@ -6,6 +6,7 @@ namespace NgLamVN\GameHandle;
 use Exception;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
+use NgLamVN\GameHandle\fishing\LegacyFishingManager;
 use NgLamVN\GameHandle\GameMenu\Menu;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\console\ConsoleCommandSender;
@@ -30,13 +31,13 @@ use pocketmine\Server;
 class EventListener implements Listener{
 	public Core $plugin;
 	public Menu $menu;
-	public FishingManager $fish;
+	public LegacyFishingManager $fish;
 	public SkillLevelHandle $slevel;
 
 	public function __construct(Core $plugin){
 		$this->plugin = $plugin;
 		$this->menu = new Menu();
-		$this->fish = new FishingManager();
+		$this->fish = new LegacyFishingManager();
 		$this->slevel = new SkillLevelHandle($plugin);
 	}
 

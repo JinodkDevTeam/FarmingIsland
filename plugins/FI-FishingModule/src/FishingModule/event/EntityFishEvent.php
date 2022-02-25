@@ -21,12 +21,17 @@ class EntityFishEvent extends PluginEvent implements Cancellable{
 	public const STATE_CAUGHT_ENTITY = 2;
 	public const STATE_CAUGHT_NOTHING = 3;
 
+	public const TYPE_NONE = 0;
+	public const TYPE_WATER = 1;
+	public const TYPE_LAVA = 2;
+
 	protected Human $entity;
 	protected FishingHook $fishingHook;
 	protected int $state;
 	protected int $xpDropAmount;
 	/** @var Item[] */
 	protected array $itemsResult;
+	protected int $liquidType;
 
 	/**
 	 * PlayerFishEvent constructor.
@@ -37,13 +42,14 @@ class EntityFishEvent extends PluginEvent implements Cancellable{
 	 * @param int         $xpDropAmount
 	 * @param Item[]      $itemsResult
 	 */
-	public function __construct(Human $entity, FishingHook $fishingHook, int $state, int $xpDropAmount = 0, array $itemsResult = []){
+	public function __construct(Human $entity, FishingHook $fishingHook, int $state, int $liquidType = self::TYPE_NONE, int $xpDropAmount = 0, array $itemsResult = []){
 		parent::__construct(Loader::getInstance());
 		$this->entity = $entity;
 		$this->fishingHook = $fishingHook;
 		$this->state = $state;
 		$this->xpDropAmount = $xpDropAmount;
 		$this->itemsResult = $itemsResult;
+		$this->liquidType = $liquidType;
 	}
 
 	/**
@@ -93,6 +99,13 @@ class EntityFishEvent extends PluginEvent implements Cancellable{
 	 */
 	public function setItemResult(array $itemsResult) : void{
 		$this->itemsResult = $itemsResult;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLiquidType() : int{
+		return $this->liquidType;
 	}
 
 	/**

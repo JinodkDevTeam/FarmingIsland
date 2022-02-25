@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle;
+namespace NgLamVN\GameHandle\fishing;
 
 use FishingModule\event\EntityFishEvent;
 use pocketmine\item\Item;
@@ -10,7 +10,7 @@ use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
 use pocketmine\utils\SingletonTrait;
 
-class FishingManager{
+class LegacyFishingManager{
 	use SingletonTrait;
 
 	public const R1 = [0, 0, 10, 20, 20, 40, 10];
@@ -92,7 +92,7 @@ class FishingManager{
 				$chance = self::RARE_LEVEL[$i][$j];
 				if($chance > 0){
 					for($k = 0; $k < $chance; $k++){
-						array_push($test, self::COUNT[$j]);
+						$test[] = self::COUNT[$j];
 					}
 				}
 			}
@@ -105,10 +105,10 @@ class FishingManager{
 			$test = [];
 			$chance = self::MORE_ITEMS[$i];
 			for($j = 0; $j < $chance; $j++){
-				array_push($test, true);
+				$test[] = true;
 			}
 			for($j = 0; $j < (100 - $chance); $j++){
-				array_push($test, false);
+				$test[] = false;
 			}
 			shuffle($test);
 			$this->more_items[$i] = $test;
@@ -133,7 +133,7 @@ class FishingManager{
 			$level = $this->rlevel[$item->getId()];
 			$item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
 			if(!$item->isNull()){
-				array_push($items, $item);
+				$items[] = $item;
 				$i++;
 			}
 			if($i <= 5){

@@ -8,6 +8,7 @@ use FishingModule\event\EntityFishEvent;
 use FishingModule\event\FishingHookHookEvent;
 use FishingModule\item\FishingRod;
 use FishingModule\Loader;
+use pocketmine\block\Lava;
 use pocketmine\block\Liquid;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\block\Water;
@@ -26,6 +27,8 @@ use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\network\mcpe\protocol\types\entity\EntityIds;
 use pocketmine\player\Player;
 use pocketmine\utils\Random;
+use pocketmine\world\particle\LavaDripParticle;
+use pocketmine\world\particle\SmokeParticle;
 use pocketmine\world\particle\SplashParticle;
 use pocketmine\world\particle\WaterParticle;
 use pocketmine\world\World;
@@ -42,7 +45,6 @@ class FishingHook extends Projectile{
 	protected Random $random;
 
 	//CaughtDelay (long) -> CatchableDelay (short) -> (able to catch) -> Catchable -> (unable to catch)
-
 
 	public function __construct(Location $location, ?Human $shootingEntity, ?CompoundTag $nbt = null){
 		$this->random = new Random(intval(microtime(true) * 1000));
@@ -119,6 +121,9 @@ class FishingHook extends Projectile{
 				if($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::WATER())){
 					$d10 += 0.2;
 				}
+				if($this->isLiquidInBoundingBox($this->getWorld(), $bb2, VanillaBlocks::LAVA())){
+					$d10 += 0.2;
+				}
 			}
 
 			$d11 = $d10 * 2.0 - 1.0;
@@ -180,6 +185,12 @@ class FishingHook extends Projectile{
 					}
 					$this->getWorld()->addParticle(new Vector3($d13, $d15, $d16), new WaterParticle());
 				}
+				if($block1 instanceof Lava){
+					if($this->random->nextFloat() < 0.15){
+						$this->getWorld()->addParticle(new Vector3($d13, $d15 - 0.1, $d16), new SmokeParticle());
+					}
+					$this->getWorld()->addParticle(new Vector3($d13, $d15, $d16), new SmokeParticle());
+				}
 			}
 		}elseif($this->ticksCaughtDelay > 0){
 			$this->ticksCaughtDelay -= $l;
@@ -203,6 +214,9 @@ class FishingHook extends Projectile{
 
 				if($block instanceof Water){
 					$this->getWorld()->addParticle(new Vector3($d12, $d14, $d6), new SplashParticle());
+				}
+				if($block instanceof Lava){
+					$this->getWorld()->addParticle(new Vector3($d12, $d14, $d6), new LavaDripParticle());
 				}
 			}
 
@@ -234,14 +248,14 @@ class FishingHook extends Projectile{
 
 	public function onRetraction() : void{
 		$angler = $this->getOwningEntity();
-		if($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER())){ //Check if a hook is in water
+		if($this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::WATER()) or $this->isLiquidInBoundingBox($this->getWorld(), $this->getBoundingBox(), VanillaBlocks::LAVA())){ //Check if a hook is in water or Lava
 			if($this->ticksCatchable > 0){
 				$results = [
 					VanillaItems::RAW_FISH(),
 					VanillaItems::PUFFERFISH()
 				];
 				$xp_drop = mt_rand(0, 1);
-				$ev = new EntityFishEvent($this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, $xp_drop, $results);
+				$ev = new EntityFishEvent($this->getOwningEntity(), $this, EntityFishEvent::STATE_CAUGHT_FISH, EntityFishEvent::TYPE_WATER, $xp_drop, $results);
 				$ev->call();
 				if(!$ev->isCancelled()){
 					$this->getOwningEntity()->getPosition()->getWorld()->dropExperience($this->getOwningEntity()->getPosition(), $ev->getXpDropAmount());
@@ -312,6 +326,7 @@ class FishingHook extends Projectile{
 		$player = $this->getOwningEntity();
 		if($player instanceof Player){
 			Loader::getInstance()->setFishingHook($player, null);
+			$player->sendMessage("Fishing Hook Despawned");
 		}
 		parent::flagForDespawn();
 	}

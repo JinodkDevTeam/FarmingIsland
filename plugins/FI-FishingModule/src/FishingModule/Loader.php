@@ -47,4 +47,8 @@ class Loader extends PluginBase{
 		EntityFactory::getInstance()->register(FishingHook::class, $closure, ["FishingHook", "minecraft:fishinghook"], EntityLegacyIds::FISHING_HOOK);
 	}
 
+	public function onEnable() : void{
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+	}
+
 }
