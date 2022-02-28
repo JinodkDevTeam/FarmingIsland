@@ -125,6 +125,7 @@ final class CustomItemIds{
 	public const ASPECT_OF_THE_END = 2160;
 	public const TREECAPITATOR = 2161;
 	public const JUJU_STAFF = 2162;
+	public const MAGMA_BOOTS = 2163;
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;

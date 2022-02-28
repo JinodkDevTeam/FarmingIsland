@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
+use CustomItems\item\armor\MagmaBoots;
 use CustomItems\item\utils\Rarity;
 use pocketmine\block\utils\TreeType;
 use pocketmine\item\ItemFactory;
@@ -92,6 +93,7 @@ class CustomItemFactory{
 		$this->register(new AspectOfTheEnd(new CustomItemIdentifier(CustomItemIds::ASPECT_OF_THE_END), "Aspect of the End", Rarity::RARE()));
 		$this->register(new TreeCapitator(new CustomItemIdentifier(CustomItemIds::TREECAPITATOR), "Treecapitator", Rarity::EPIC()));
 		$this->register(new JujuStaff(new CustomItemIdentifier(CustomItemIds::JUJU_STAFF), "Juju Staff", Rarity::LEGENDARY()));
+		$this->register(new MagmaBoots(new CustomItemIdentifier(CustomItemIds::MAGMA_BOOTS), "Magma Boots", Rarity::LEGENDARY()));
 
 		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 		$this->register(new StarterRod(new CustomItemIdentifier(CustomItemIds::STARTER_ROD), "Starter Rod", Rarity::COMMON()));

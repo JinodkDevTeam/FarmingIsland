@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomItems\listener;
 
+use CustomItems\item\armor\CustomBoots;
 use CustomItems\item\CustomItemFactory;
 use CustomItems\item\CustomRod;
 use CustomItems\item\CustomTool;
@@ -16,6 +17,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerEntityInteractEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
+use pocketmine\event\player\PlayerMoveEvent;
 
 class CustomItemListener implements Listener{
 	/**
@@ -142,4 +144,19 @@ class CustomItemListener implements Listener{
 		}
 	}
 
+	public function onMove(PlayerMoveEvent $event){
+		$player = $event->getPlayer();
+		//TODO: HELMET
+		//TODO: CHESTPLATE
+		//TODO: LEGGINGS
+		//BOOTS ABILITY HANDLER
+		$boots = $player->getArmorInventory()->getBoots();
+		if($boots->getNamedTag()->getTag("CustomItemID") !== null){
+			$citem = CustomItemFactory::getInstance()->get((int) $boots->getNamedTag()->getTag("CustomItemID")->getValue());
+			if($citem == null) return;
+			if ($citem instanceof CustomBoots){
+				$citem->onMove($event);
+			}
+		}
+	}
 }
