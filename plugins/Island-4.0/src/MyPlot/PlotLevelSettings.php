@@ -1,63 +1,45 @@
 <?php
 declare(strict_types=1);
-
 namespace MyPlot;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\VanillaBlocks;
 
-class PlotLevelSettings{
-	/** @var string $name */
+class PlotLevelSettings
+{
 	public string $name;
-	/** @var Block $roadBlock */
 	public Block $roadBlock;
-	/** @var Block $bottomBlock */
 	public Block $bottomBlock;
-	/** @var Block $plotFillBlock */
 	public Block $plotFillBlock;
-	/** @var Block $plotFloorBlock */
 	public Block $plotFloorBlock;
-	/** @var Block $wallBlock */
 	public Block $wallBlock;
-	/** @var int $roadWidth */
 	public int $roadWidth = 7;
-	/** @var int $plotSize */
 	public int $plotSize = 32;
-	/** @var int $groundHeight */
 	public int $groundHeight = 64;
-	/** @var int $claimPrice */
 	public int $claimPrice = 0;
-	/** @var int $clearPrice */
 	public int $clearPrice = 0;
-	/** @var int $disposePrice */
 	public int $disposePrice = 0;
-	/** @var int $resetPrice */
 	public int $resetPrice = 0;
-	/** @var int $clonePrice */
 	public int $clonePrice = 0;
-	/** @var bool $restrictEntityMovement */
 	public bool $restrictEntityMovement = true;
-	/** @var bool $restrictPVP */
 	public bool $restrictPVP = false;
-	/** @var bool $updatePlotLiquids */
 	public bool $updatePlotLiquids = false;
-	/** @var bool $allowOutsidePlotSpread */
 	public bool $allowOutsidePlotSpread = false;
-	/** @var bool $editBorderBlocks */
+	public bool $displayDoneNametags = false;
 	public bool $editBorderBlocks = true;
 
 	/**
 	 * PlotLevelSettings constructor.
 	 *
 	 * @param string $name
-	 * @param array  $settings
+	 * @param mixed[] $settings
 	 */
-	public function __construct(string $name, array $settings = []){
+	public function __construct(string $name, array $settings = []) {
 		$this->name = $name;
-		if(count($settings) > 0){
+		if(count($settings) > 0) {
 			$this->roadBlock = self::parseBlock($settings, "RoadBlock", VanillaBlocks::OAK_PLANKS());
-			$this->wallBlock = self::parseBlock($settings, "WallBlock", VanillaBlocks::SMOOTH_STONE_SLAB());
+			$this->wallBlock = self::parseBlock($settings, "WallBlock", VanillaBlocks::STONE_SLAB());
 			$this->plotFloorBlock = self::parseBlock($settings, "PlotFloorBlock", VanillaBlocks::GRASS());
 			$this->plotFillBlock = self::parseBlock($settings, "PlotFillBlock", VanillaBlocks::DIRT());
 			$this->bottomBlock = self::parseBlock($settings, "BottomBlock", VanillaBlocks::BEDROCK());
@@ -78,20 +60,20 @@ class PlotLevelSettings{
 	}
 
 	/**
-	 * @param string[]   $array
-	 * @param int|string $key
-	 * @param Block      $default
+	 * @param string[] $array
+	 * @param string|int $key
+	 * @param Block $default
 	 *
 	 * @return Block
 	 */
-	public static function parseBlock(array $array, int|string $key, Block $default) : Block{
-		if(isset($array[$key])){
+	public static function parseBlock(array $array, string|int $key, Block $default) : Block {
+		if(isset($array[$key])) {
 			$id = $array[$key];
-			if(is_numeric($id)){
-				$block = BlockFactory::getInstance()->get((int) $id, 0);
+			if(is_numeric($id)) {
+				$block = BlockFactory::getInstance()->get((int) $id);
 			}else{
 				$split = explode(":", $id);
-				if(count($split) === 2 and is_numeric($split[0]) and is_numeric($split[1])){
+				if(count($split) === 2 and is_numeric($split[0]) and is_numeric($split[1])) {
 					$block = BlockFactory::getInstance()->get((int) $split[0], (int) $split[1]);
 				}else{
 					$block = $default;
@@ -104,14 +86,14 @@ class PlotLevelSettings{
 	}
 
 	/**
-	 * @param string[]   $array
-	 * @param int|string $key
-	 * @param int        $default
+	 * @param string[] $array
+	 * @param string|int $key
+	 * @param int $default
 	 *
 	 * @return int
 	 */
-	public static function parseNumber(array $array, int|string $key, int $default) : int{
-		if(isset($array[$key]) and is_numeric($array[$key])){
+	public static function parseNumber(array $array, string|int $key, int $default) : int {
+		if(isset($array[$key]) and is_numeric($array[$key])) {
 			return (int) $array[$key];
 		}else{
 			return $default;
@@ -119,14 +101,14 @@ class PlotLevelSettings{
 	}
 
 	/**
-	 * @param array      $array
-	 * @param int|string $key
-	 * @param bool       $default
+	 * @param mixed[] $array
+	 * @param string|int $key
+	 * @param bool $default
 	 *
 	 * @return bool
 	 */
-	public static function parseBool(array $array, int|string $key, bool $default) : bool{
-		if(isset($array[$key]) and is_bool($array[$key])){
+	public static function parseBool(array $array, string|int $key, bool $default) : bool {
+		if(isset($array[$key]) and is_bool($array[$key])) {
 			return $array[$key];
 		}else{
 			return $default;

@@ -1,23 +1,23 @@
 name: Island
 main: MyPlot\MyPlot
-version: 1.11.2
+version: 2.1.0
 api:
-  - 4.0.0
+- 4.0.0
 authors:
-  - Wiez
-  - Exxarion
-  - jasonwynn10
-  - NgLamVN
-description: "Plots and Protection Plugin for PocketMine-MP Servers, currently maintained by JinodkDevTeam"
+- Wiez
+- Exxarion
+- jasonwynn10
+- NgLamVN
+description: "Plots and Protection Plugin for PocketMine-MP Servers"
 load: STARTUP
 softdepend:
-  - EconomyAPI
-  - DEVirion
-  - WorldStyler
-  - EasyCommandAutofill
+- EconomyAPI
+- DEVirion
+- WorldStyler
+- EasyCommandAutofill
 permissions:
   myplot.command:
-    default: op
+    default: true
   myplot.command.help:
     default: true
   myplot.command.claim:
@@ -37,6 +37,8 @@ permissions:
   myplot.command.auto:
     default: true
   myplot.command.clear:
+    default: op
+  myplot.command.fill:
     default: op
   myplot.command.dispose:
     default: op
@@ -60,15 +62,21 @@ permissions:
     default: true
   myplot.command.middle:
     default: true
+  myplot.command.merge:
+    default: op
   myplot.command.list:
     default: true
   myplot.command.pvp:
     default: true
   myplot.command.clone:
     default: op
-  myplot.admin:
+  myplot.command.sell:
+    default: op
+  myplot.command.buy:
     default: op
   myplot.admin.clear:
+    default: op
+  myplot.admin.fill:
     default: op
   myplot.admin.biome:
     default: op
@@ -102,6 +110,8 @@ permissions:
     default: op
   myplot.admin.middle:
     default: true
+  myplot.admin.merge:
+    default: op
   myplot.admin.list:
     default: op
   myplot.admin.pvp:
@@ -109,6 +119,10 @@ permissions:
   myplot.admin.pvp.bypass:
     default: op
   myplot.admin.clone:
+    default: op
+  myplot.admin.sell:
+    default: op
+  myplot.admin.buy:
     default: op
   myplot.claimplots:
     default: op
