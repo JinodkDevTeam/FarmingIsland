@@ -59,7 +59,7 @@ class Loader extends PluginBase{
 		for($x = $minX; $x <= $maxX; $x++)
 			for($y = $minY; $y <= $maxY; $y++)
 				for($z = $minZ; $z <= $maxZ; $z++){
-					array_push($this->data, $world->getBlockAt($x, $y, $z));
+					$this->data[] = $world->getBlockAt($x, $y, $z);
 				}
 	}
 

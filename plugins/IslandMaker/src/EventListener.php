@@ -23,12 +23,12 @@ class EventListener implements Listener{
 		if ($this->getLoader()->getStatus($player) == Loader::POS1){
 			$this->getLoader()->pos1 = $event->getBlock()->getPosition();
 			$this->getLoader()->setStatus($player, Loader::NONE);
-			$player->sendMessage("Set pos1 successful");
+			$player->sendMessage("[IslandMaker]Set pos1 successful");
 		}
 		if ($this->getLoader()->getStatus($player) == Loader::POS2){
 			$this->getLoader()->pos2 = $event->getBlock()->getPosition();
 			$this->getLoader()->setStatus($player, Loader::NONE);
-			$player->sendMessage("Set pos2 successful");
+			$player->sendMessage("[IslandMaker]Set pos2 successful");
 		}
 	}
 }

@@ -27,47 +27,49 @@ class IsMakerCommand extends Command implements PluginOwned{
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		if (!$sender instanceof Player){
-			$sender->sendMessage("Please use this command as player !");
+			$sender->sendMessage("[IslandMaker]Please use this command as player !");
 			return;
 		}
 		if (isset($args[0])){
 			switch($args[0]){
 				case "pos1":
 					$this->getLoader()->setStatus($sender, Loader::POS1);
-					$sender->sendMessage("Tap a block to set pos1.");
+					$sender->sendMessage("[IslandMaker]Tap a block to set pos1.");
 					break;
 				case "pos2":
 					$this->getLoader()->setStatus($sender, Loader::POS2);
-					$sender->sendMessage("Tap a block to set pos2.");
+					$sender->sendMessage("[IslandMaker]Tap a block to set pos2.");
 					break;
 				case "spawnpoint":
 					$spawn_point = $sender->getPosition()->down();
 					$this->getLoader()->spawn_point = $spawn_point;
-					$sender->sendMessage("Set base spawn point at: " . $spawn_point->getX() . " " . $spawn_point->getY() . " " . $spawn_point->getZ() . " (will be recaculated when use generate !)");
+					$sender->sendMessage("[IslandMaker]Set base spawn point at: " . $spawn_point->getX() . " " . $spawn_point->getY() . " " . $spawn_point->getZ() . " (will be recaculated when use generate !)");
 					break;
 				case "make":
-					$sender->sendMessage("Getting blocks and make data in pos1 and pos2...");
+					$sender->sendMessage("[IslandMaker]Getting blocks and make data in pos1 and pos2...");
 					try{
 						$this->getLoader()->make();
 					} catch(Exception $e){
-						$sender->sendMessage("An error has occour when making data.");
-						$sender->sendMessage("Error: " . $e->getMessage());
+						$sender->sendMessage("[IslandMaker]An error has occour when making data.");
+						$sender->sendMessage("[IslandMaker]Error: " . $e->getMessage());
 						return;
 					}
-					$sender->sendMessage("Making data successful, use /islandmaker generate to write generator data to file.");
+					$sender->sendMessage("[IslandMaker]Making data successful, use /islandmaker generate to write generated data to file.");
 					break;
 				case "generate":
-					$sender->sendMessage("Generating structure code...");
+					$sender->sendMessage("[IslandMaker]Generating structure code...");
 					try{
 						$this->getLoader()->generate();
 					} catch(Exception $e){
-						$sender->sendMessage("An error has occour when generating structure codes.");
-						$sender->sendMessage("Error: " . $e->getMessage());
+						$sender->sendMessage("[IslandMaker]An error has occour when generating structure codes.");
+						$sender->sendMessage("[IslandMaker]Error: " . $e->getMessage());
 						return;
 					}
-					$sender->sendMessage("Generated structure code, check plugin data folder for result !");
+					$sender->sendMessage("[IslandMaker]Generated structure code, check plugin data folder for result !");
 					break;
-
+				default:
+					$sender->sendMessage("[IslandMaker]Usage: /ismaker <pos1|pos2|spawnpoint|make|generate>");
+					break;
 			}
 		}
 	}
