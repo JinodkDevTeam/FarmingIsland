@@ -102,6 +102,12 @@
                   <Item>
                     <option name="path" value="plugins/ItemEditor/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/LMAO/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/CrashReader/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
