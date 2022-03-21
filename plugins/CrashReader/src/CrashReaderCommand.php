@@ -61,7 +61,6 @@ class CrashReaderCommand extends BaseCommand{
 			$text = "";
 		}
 		$text_list = explode(PHP_EOL, (string)$text); //FIX WEIRD CHARACTER
-		var_dump($text_list);
 		foreach($text_list as $stream){
 			$form->addLabel($stream);
 		}
