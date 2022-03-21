@@ -30,7 +30,7 @@ class UpdateInfo{
 			"Official wiki: bit.ly/fi-wiki",
 			"Vote for server: bit.ly/fi-vote",
 			"Official Facebook group: bit.ly/jinodkgroupfb",
-			"Server Version: " . Core::VERSION
+			"Server Version: " . Core::VERSION . " [" . Core::CODE_NAME . "]"
 		];
 		$form->setTitle("§　BREAKING NEWS");
 		$form->setContent(implode(PHP_EOL, $text));
