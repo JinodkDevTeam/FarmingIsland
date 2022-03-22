@@ -1,5 +1,5 @@
 ## DO NOT TOUCH (This is for Updates only!)
-shop-version: 5
+shop-version: 4
 # DO NOT TOUCH ^^^^^
 
 #Command Example!!!
@@ -21,14 +21,15 @@ shop-version: 5
 #  Next Update Finishes Enchants (Can be Done with Commands!)
 #
 #  NEW!!! We have a Minecraft Texture Library on our Website!
-#         Go to: https://minecraft-cdn.witherhosting.com/textures/ after that add the item like this:
-#                   https://minecraft-cdn.witherhosting.com/textures/blocks/tnt_side.png (You can Send us .png files and we will add them!)
+#         Go to: http://saltypixel.gs/textures after that add the item like this:
+#                   http://saltypixel.ga/textures/blocks/tnt_side.png (You can Send us .png files and we will add them!)
 #                          That would Look like this in use!
 #
-#   - "268:0:1:250:0:Default:https://minecraft-cdn.witherhosting.com/textures/blocks/tnt_side.png"
+#   - "268:0:1:250:0:Default:http://saltypixel.ha/textures/blocks/tnt_side.png"
 #
 #
-# Developer: AlexPads
+# Developer: AlexPads Team: SaltyPixelDevz! (hub.saltypixel.ga 19132) Join!
+# NEW!!!!!!!!!! SubCategories!
 #======================================================================================================
 
 # MUST be all Lowercase! RECOMMENDED TO KEEP THIS YOUR DEFAULT SHOP!
@@ -90,3 +91,4 @@ shop: # if you want the shop to have a custom name you must add the options in t
       - "213:0:1:100000:0:Default:textures/blocks/magma"
       - "247:0:1:8000000:0:Default:textures/blocks/reactor_core_stage_0"
       - "246:0:1:5000000:0:Default:textures/blocks/glowing_obsidian"
+

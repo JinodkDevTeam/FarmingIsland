@@ -1,5 +1,5 @@
 # DO NOT TO
-config-version: 6
+config-version: 5
 # DO NOT TOUCH^^^^
 
 # When someone closes the shop it shuts completely out they will have to run the command again!
@@ -10,6 +10,9 @@ Back_to_Start: false
 
 # This makes the Command only work when the player is in Survival
 Survival: false
+
+# This is Used to Ban Commands in only the Worlds Below.
+Worlds: ["bannedworld1", "bannedworld2"] # You can add as Many as needed
 
 # This adds an Exit Button to Categories Section of Plugin (Recommended to Leave false)
 Category_ExitButton: true
@@ -32,12 +35,11 @@ Titles:
   shoptitle: "Shop"
   viptitle: "Vip Shop"
 
-## CustomShopUI Supports EconomyAPI and BedrockEconomy plugings to manage money! (default: BedrockEconomy)
 economy:
   plugin: EconomyAPI
 
 Types:
-  Toggle: true #it is NOT recommended to change this! (Changing this means the Plugin wont work This will be Fixed in a few years at this rate!)
+  Toggle: true #it is NOT recommended to change this! (Changing this means the Plugin wont work This will be Fixed in a few updates!)
   Input: true # true or false (adds Number input player has to type)
   Slider: false # true or false (adds slider Input Player has to Slide the Slider)
   Slider_Minimum: 1 # Must be a Number (Number for Normal Slider)
