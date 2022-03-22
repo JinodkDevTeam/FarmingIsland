@@ -121,13 +121,6 @@
   - economyapi.command.setmoney
   - economyapi.command.givemoney
   - economyapi.command.takemoney
-  - dogeworlds.command
-  - dogeworlds.command.create
-  - dogeworlds.command.delete
-  - dogeworlds.command.list
-  - dogeworlds.command.load
-  - dogeworlds.command.teleport
-  - dogeworlds.command.unload
   - hierarchy.flush
   - hierarchy.info
   - hierarchy.info.list_roles
@@ -188,6 +181,20 @@
   - buildertools.command.undo
   - buildertools.command.walls
   - buildertools.command.wand
+  - multiworld.command
+  - multiworld.command.create
+  - multiworld.command.delete
+  - multiworld.command.duplicate
+  - multiworld.command.gamerule
+  - multiworld.command.help
+  - multiworld.command.info
+  - multiworld.command.list
+  - multiworld.command.load
+  - multiworld.command.manage
+  - multiworld.command.rename
+  - multiworld.command.teleport
+  - multiworld.command.unload
+  - multiworld.command.update
   - gh.feed
   - gh.feed.use
   - gh.feed.other
@@ -234,7 +241,6 @@
   - myplot.command.reset
   - myplot.command.give
   - myplot.command.clone
-  - myplot.admin
   - myplot.admin.clear
   - myplot.admin.biome
   - myplot.admin.biomes
@@ -328,8 +334,6 @@
   - pocketmine.command.time.stop
   - Farms.VIP
   - clearlagg.cmd
-  - dogeworlds.command.teleport
-  - dogeworlds.command.list
   - buildertools.command
   - buildertools.command.biome
   - buildertools.command.blockinfo
@@ -369,6 +373,9 @@
   - buildertools.command.undo
   - buildertools.command.walls
   - buildertools.command.wand
+  - multiworld.command.teleport
+  - multiworld.command.list
+  - multiworld.command.info
   - gh.feed.use
   - gh.heal.use
   - gh.fly.use
