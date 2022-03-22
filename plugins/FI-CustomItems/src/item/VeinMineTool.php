@@ -70,7 +70,6 @@ class VeinMineTool extends CustomTool{
 		$pos = $blockbreak;
 		while($this->breaked[$player->getName()] <= $this->getBreakLimit()){
 			$sides = $this->getAllSide($pos, $pending);
-			var_dump($sides);
 			if($sides !== []){
 				$pending = array_merge($pending, $sides);
 			}

@@ -83,6 +83,7 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("treecapitator", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::TREECAPITATOR));
 		$result->register("juju_staff", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::JUJU_STAFF));
 		$result->register("magma_boots", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::MAGMA_BOOTS));
+		$result->register("treecutter", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::TREECUTTER));
 
 		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
 		$result->register("starter_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD));

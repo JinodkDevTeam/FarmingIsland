@@ -94,6 +94,7 @@ class CustomItemFactory{
 		$this->register(new TreeCapitator(new CustomItemIdentifier(CustomItemIds::TREECAPITATOR), "Treecapitator", Rarity::EPIC()));
 		$this->register(new JujuStaff(new CustomItemIdentifier(CustomItemIds::JUJU_STAFF), "Juju Staff", Rarity::LEGENDARY()));
 		$this->register(new MagmaBoots(new CustomItemIdentifier(CustomItemIds::MAGMA_BOOTS), "Magma Boots", Rarity::LEGENDARY()));
+		$this->register(new TreeCutter(new CustomItemIdentifier(CustomItemIds::TREECUTTER), "Tree Cutter", Rarity::LEGENDARY()));
 
 		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 		$this->register(new StarterRod(new CustomItemIdentifier(CustomItemIds::STARTER_ROD), "Starter Rod", Rarity::COMMON()));
