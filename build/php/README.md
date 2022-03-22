@@ -1,5 +1,6 @@
 # Custom PHP build scripts for PocketMine-MP
-[![Build Status](https://dev.azure.com/pocketmine/PHP-Builds/_apis/build/status/pmmp.php-build-scripts)](https://dev.azure.com/pocketmine/PHP-Builds/_build?definitionId=3&_a=summary&view=branches)
+[![Build status](https://github.com/pmmp/php-build-scripts/actions/workflows/main.yml/badge.svg)](https://github.com/pmmp/php-build-scripts/actions/workflows/main.yml)
+
 ## Looking for prebuilt binaries? Head over to our [Jenkins build server](https://jenkins.pmmp.io/job/PHP-8.0-Aggregate)
 
 ## compile.sh
@@ -28,7 +29,6 @@ Bash script used to compile PHP on MacOS and Linux platforms. Make sure you have
 | -t           | Set target                                                                            |
 | -v           | Enable Valgrind support in PHP                                                        |
 | -x           | Specifies we are doing cross-compile                                                  |
-| -3           | Include extensions used by PM 3.x (**deprecated**, will be removed in the future)     |
 
 ### Example:
 
