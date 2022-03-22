@@ -1043,6 +1043,9 @@ class MyPlot extends PluginBase
 		if($level === null)
 			return false;
 		foreach($this->getPlotChunks($plot) as [$chunkX, $chunkZ, $chunk]) {
+			if (is_null($chunk)){
+				continue;
+			}
 			for($x = 0; $x < 16; ++$x) {
 				for($z = 0; $z < 16; ++$z) {
 					$chunkPlot = $this->getPlotByPosition(new Position(($chunkX << 4) + $x, $plotLevel->groundHeight, ($chunkZ << 4) + $z, $level));

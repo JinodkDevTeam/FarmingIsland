@@ -62,7 +62,7 @@ class CrashReaderCommand extends BaseCommand{
 		}
 		$text_list = explode(PHP_EOL, (string)$text); //FIX WEIRD CHARACTER
 		foreach($text_list as $stream){
-			$form->addLabel($stream);
+			$form->addLabel(str_replace("\r", "", $stream));
 		}
 		$player->sendForm($form);
 	}

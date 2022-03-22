@@ -8,6 +8,7 @@ use MyPlot\Plot;
 use pocketmine\command\CommandSender;
 use pocketmine\data\bedrock\BiomeIds;
 use pocketmine\player\Player;
+use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 use pocketmine\world\biome\BiomeRegistry;
 
@@ -63,6 +64,12 @@ class BiomeSubCommand extends SubCommand
 				return true;
 			}
 			$biome = BiomeRegistry::getInstance()->getBiome(constant(BiomeIds::class."::".$biome));
+		}
+		if ($sender instanceof Player){
+			if (!Server::getInstance()->isOp($sender->getName())){
+				$sender->sendMessage("This feature have been locked due to server performance issues !");
+				return true;
+			}
 		}
 		if($this->plugin->setPlotBiome($plot, $biome)) {
 			$sender->sendMessage($this->translateString("biome.success", [$biome->getName()]));
