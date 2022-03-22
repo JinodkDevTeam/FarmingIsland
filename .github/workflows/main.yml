@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
-
     steps:
       - uses: actions/checkout@v2
 
@@ -22,7 +21,7 @@ jobs:
           tools: php-cs-fixer:3.2
 
       - name: Run PHP-CS-Fixer
-        run: php-cs-fixer fix --dry-run --diff
+        run: php-cs-fixer fix --dry-run --diff --ansi
   no_u:
     name: No U checks
     runs-on: ubuntu-20.04
