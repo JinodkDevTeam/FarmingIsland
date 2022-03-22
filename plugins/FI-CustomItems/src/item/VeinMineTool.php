@@ -10,7 +10,9 @@ use pocketmine\player\Player;
 
 class VeinMineTool extends CustomTool{
 
+	/** @var bool[] */
 	public array $isBreaking = [];
+	/** @var int[] */
 	public array $breaked = [];
 
 	public function getBreakLimit() : int{
@@ -42,7 +44,7 @@ class VeinMineTool extends CustomTool{
 
 	public function isCompative(Block $block) : bool{
 		foreach($this->getBreakBlocks() as $data){
-			if ($block->getIdInfo() === $data->getIdInfo()){
+			if ($block->isSameType($data)){
 				return true;
 			}
 		}
@@ -66,10 +68,9 @@ class VeinMineTool extends CustomTool{
 	public function VeinMine(Block $blockbreak, Item $item, Player $player){
 		$pending = [];
 		$pos = $blockbreak;
-
-		while($this->breaked <= $this->getBreakLimit()){
+		while($this->breaked[$player->getName()] <= $this->getBreakLimit()){
 			$sides = $this->getAllSide($pos, $pending);
-
+			var_dump($sides);
 			if($sides !== []){
 				$pending = array_merge($pending, $sides);
 			}
