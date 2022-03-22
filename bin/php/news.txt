@@ -1,5 +1,169 @@
 PHP                                                                        NEWS
 |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+17 Mar 2022, PHP 8.0.17
+
+- Core:
+  . Fixed Haiku ZTS build. (David Carlier)
+
+- GD:
+  . Fixed libpng warning when loading interlaced images. (Brett)
+
+- FPM:
+  . Fixed bug #76109 (Unsafe access to fpm scoreboard).
+    (Till Backhaus, Jakub Zelenka)
+
+- Iconv:
+  . Fixed bug GH-7953 (ob_clean() only does not set Content-Encoding). (cmb)
+  . Fixed bug GH-7980 (Unexpected result for iconv_mime_decode). (cmb)
+
+- MySQLnd:
+  . Fixed bug GH-8058 (NULL pointer dereference in mysqlnd package). (Kamil Tekiela)
+
+- OPcache:
+  . Fixed bug GH-8074 (Wrong type inference of range() result). (cmb)
+
+- Reflection:
+  . Fixed bug GH-8080 (ReflectionClass::getConstants() depends on def. order).
+    (cmb)
+
+- Zlib:
+  . Fixed bug GH-7953 (ob_clean() only does not set Content-Encoding). (cmb)
+
+17 Feb 2022, PHP 8.0.16
+
+- Core:
+  . Fixed bug #81430 (Attribute instantiation leaves dangling pointer).
+    (beberlei)
+  . Fixed bug GH-7896 (Environment vars may be mangled on Windows). (cmb)
+
+- FFI:
+  . Fixed bug GH-7867 (FFI::cast() from pointer to array is broken). (cmb,
+    dmitry)
+
+- FPM:
+  . Fixed memory leak on invalid port. (David Carlier)
+
+- MBString:
+  . Fixed bug GH-7902 (mb_send_mail may delimit headers with LF only). (cmb)
+
+- MySQLnd:
+  . Fixed bug GH-7972 (MariaDB version prefix 5.5.5- is not stripped). (Kamil Tekiela)
+
+- Sockets:
+  . Fixed ext/sockets build on Haiku. (David Carlier)
+  . Fixed bug GH-7978 (sockets extension compilation errors). (David Carlier)
+
+- Standard:
+  . Fixed bug GH-7875 (mails are sent even if failure to log throws exception).
+    (cmb)
+
+20 Jan 2022, PHP 8.0.15
+
+- Core:
+  . Fixed bug #81656 (GCC-11 silently ignores -R). (Michael Wallner)
+  . Fixed bug #81585 (cached_chunks are not counted to real_size on shutdown).
+    (cmb)
+
+- Filter:
+  . Fixed FILTER_FLAG_NO_RES_RANGE flag. (Yifan Tong)
+
+- Hash:
+  . Fixed bug GH-7759 (Incorrect return types for hash() and hash_hmac()).
+    (cmb)
+  . Fixed bug GH-7826 (Inconsistent argument name in hash_hmac_file and
+    hash_file). (cmb)
+
+- MySQLnd:
+  . Fixed bug where large bigints may be truncated. (Nathan Freeman, cmb)
+
+- OCI8:
+  . Fixed bug GH-7765 (php_oci_cleanup_global_handles segfaults at second
+    call). (cmb)
+
+- OPcache:
+  . Fixed bug #81679 (Tracing JIT crashes on reattaching). (cmb)
+
+- PDO_PGSQL:
+  . Fixed error message allocation of PDO PgSQL. (SATO Kentaro)
+
+- Sockets:
+  . Avoid void* arithmetic in sockets/multicast.c on NetBSD. (David Carlier)
+
+- Spl:
+  . Fixed bug #75917 (SplFileObject::seek broken with CSV flags). (Aliaksandr
+    Bystry)
+
+16 Dec 2021, PHP 8.0.14
+
+- Core:
+  . Fixed bug #81582 (Stringable not implicitly declared if __toString() came
+    from a trait). (Nikita)
+  . Fixed bug #81591 (Fatal Error not properly logged in particular cases).
+    (Nikita)
+  . Fixed bug #81626 (Error on use static:: in __сallStatic() wrapped to
+    Closure::fromCallable()). (Nikita)
+  . Fixed bug #81631 (::class with dynamic class name may yield wrong line
+    number). (Nikita)
+
+- FPM:
+  . Fixed bug #81513 (Future possibility for heap overflow in FPM zlog).
+    (Jakub Zelenka)
+
+- GD:
+  . Fixed bug #71316 (libpng warning from imagecreatefromstring). (cmb)
+
+- IMAP:
+  . Fixed bug #81649 (imap_(un)delete accept sequences, not single numbers).
+    (cmb)
+
+- OpenSSL:
+  . Fixed bug #75725 (./configure: detecting RAND_egd). (Dilyan Palauzov)
+
+- PCRE:
+  . Fixed bug #74604 (Out of bounds in php_pcre_replace_impl). (cmb, Dmitry)
+
+- SPL:
+  . Fixed bug #81587 (MultipleIterator Segmentation fault w/ SimpleXMLElement
+    attached). (Nikita)
+
+- Standard:
+  . Fixed bug #81618 (dns_get_record fails on FreeBSD for missing type).
+    (fsbruva)
+  . Fixed bug #81659 (stream_get_contents() may unnecessarily overallocate).
+    (cmb)
+
+18 Nov 2021, PHP 8.0.13
+
+- Core:
+  . Fixed bug #81518 (Header injection via default_mimetype / default_charset).
+    (cmb)
+
+- Date:
+  . Fixed bug #81500 (Interval serialization regression since 7.3.14 / 7.4.2).
+    (cmb)
+
+- DBA:
+  . Fixed bug #81588 (TokyoCabinet driver leaks memory). (girgias)
+
+- MBString:
+  . Fixed bug #76167 (mbstring may use pointer from some previous request).
+    (cmb, cataphract)
+
+- Opcache:
+  . Fixed bug #81512 (Unexpected behavior with arrays and JIT). (Dmitry)
+  . Fixed bug #81652 (The value of error_reporting() gets overridden). (Nikita)
+
+- PCRE:
+  . Fixed bug #81424 (PCRE2 10.35 JIT performance regression). (cmb)
+
+- XML:
+  . Fixed bug #79971 (special character is breaking the path in xml function).
+    (CVE-2021-21707) (cmb)
+
+- XMLReader:
+  . Fixed bug #81521 (XMLReader::getParserProperty may throw with a valid
+    property). (Nikita)
+
 21 Oct 2021, PHP 8.0.12
 
 - CLI:
@@ -18,16 +182,16 @@ PHP                                                                        NEWS
   . Fixed bug #79576 ("TYPE *" shows unhelpful message when type is not
     defined). (Dmitry)
 
-- FPM:
-  . Fixed bug #81026 (PHP-FPM oob R/W in root process leading to privilege
-    escalation) (CVE-2021-21703). (Jakub Zelenka)
-
 - Fileinfo:
   . Fixed bug #78987 (High memory usage during encoding detection). (Anatol)
 
 - Filter:
   . Fixed bug #61700 (FILTER_FLAG_IPV6/FILTER_FLAG_NO_PRIV|RES_RANGE failing).
     (cmb, Nikita)
+
+- FPM:
+  . Fixed bug #81026 (PHP-FPM oob R/W in root process leading to privilege
+    escalation) (CVE-2021-21703). (Jakub Zelenka)
 
 - Opcache:
   . Fixed bug #81472 (Cannot support large linux major/minor device number when
