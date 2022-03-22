@@ -1,8 +1,0 @@
----
-thread:
-  workers: 2
-  worker-limit: 256
-  collection-period: 1
-
-language: en-US
-...
