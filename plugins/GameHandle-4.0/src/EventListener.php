@@ -53,7 +53,7 @@ class EventListener implements Listener{
 			return;
 		}
 		if($player->getWorld()->getDisplayName() !== $this->getCore()->getIslandWorldName()){
-			Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "dw tp " . $this->getCore()->getIslandWorldName() . " " . $player->getName());
+			Server::getInstance()->dispatchCommand(new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage()), "mw tp " . $this->getCore()->getIslandWorldName() . " " . $player->getName());
 		}
 		$this->menu->registerMenuItem($player);
 		$this->menu->sendUpdatesForm($player);
