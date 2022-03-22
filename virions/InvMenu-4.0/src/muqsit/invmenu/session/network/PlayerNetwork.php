@@ -15,17 +15,16 @@ use SplQueue;
 
 final class PlayerNetwork{
 
-	private NetworkSession $session;
-	private PlayerNetworkHandler $handler;
 	private ?NetworkStackLatencyEntry $current = null;
 	private int $graphic_wait_duration = 200;
 
 	/** @var SplQueue<NetworkStackLatencyEntry> */
 	private SplQueue $queue;
 
-	public function __construct(NetworkSession $session, PlayerNetworkHandler $handler){
-		$this->session = $session;
-		$this->handler = $handler;
+	public function __construct(
+		private NetworkSession $session,
+		private PlayerNetworkHandler $handler
+	){
 		$this->queue = new SplQueue();
 	}
 
@@ -60,9 +59,7 @@ final class PlayerNetwork{
 	}
 
 	/**
-	 * @param Closure $then
-	 *
-	 * @phpstan-param Closure(bool) : bool $then
+	 * @param Closure(bool) : bool $then
 	 */
 	public function wait(Closure $then) : void{
 		$entry = $this->handler->createNetworkStackLatencyEntry($then);
@@ -77,9 +74,7 @@ final class PlayerNetwork{
 	 * Waits at least $wait_ms before calling $then(true).
 	 *
 	 * @param int $wait_ms
-	 * @param Closure $then
-	 *
-	 * @phpstan-param Closure(bool) : bool $then
+	 * @param Closure(bool) : bool $then
 	 */
 	public function waitUntil(int $wait_ms, Closure $then) : void{
 		if($wait_ms <= 0 && $this->queue->isEmpty()){
@@ -89,13 +84,18 @@ final class PlayerNetwork{
 
 		$elapsed_ms = 0.0;
 		$this->wait(function(bool $success) use($wait_ms, $then, &$elapsed_ms) : bool{
-			$elapsed_ms += (microtime(true) * 1000) - $this->current->sent_at;
-			if($success && $elapsed_ms < $wait_ms){
-				return true;
+			if($this->current === null){
+				$then(false);
+				return false;
 			}
 
-			$then($success);
-			return false;
+			$elapsed_ms += (microtime(true) * 1000) - $this->current->sent_at;
+			if(!$success || $elapsed_ms >= $wait_ms){
+				$then($success);
+				return false;
+			}
+
+			return true;
 		});
 	}
 
@@ -137,7 +137,7 @@ final class PlayerNetwork{
 	}
 
 	public function translateContainerOpen(PlayerSession $session, ContainerOpenPacket $packet) : bool{
-		$inventory = $this->session->getInvManager()->getWindow($packet->windowId);
+		$inventory = $this->session->getInvManager()?->getWindow($packet->windowId);
 		if(
 			$inventory !== null &&
 			($current = $session->getCurrent()) !== null &&

@@ -10,14 +10,12 @@ use pocketmine\player\Player;
 
 final class PlayerSession{
 
-	protected Player $player;
-	protected PlayerNetwork $network;
-	protected ?InvMenuInfo $current = null;
+	private ?InvMenuInfo $current = null;
 
-	public function __construct(Player $player, PlayerNetwork $network){
-		$this->player = $player;
-		$this->network = $network;
-	}
+	public function __construct(
+		private Player $player,
+		private PlayerNetwork $network
+	){}
 
 	/**
 	 * @internal
@@ -38,9 +36,7 @@ final class PlayerSession{
 	 * @internal use InvMenu::send() instead.
 	 *
 	 * @param InvMenuInfo|null $current
-	 * @param Closure|null $callback
-	 *
-	 * @phpstan-param Closure(bool) : bool $callback
+	 * @param (Closure(bool) : bool)|null $callback
 	 */
 	public function setCurrentMenu(?InvMenuInfo $current, ?Closure $callback = null) : void{
 		$this->current = $current;

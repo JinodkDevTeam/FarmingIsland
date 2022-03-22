@@ -32,10 +32,8 @@ class InvMenu implements InvMenuTypeIds{
 	}
 
 	/**
-	 * @param Closure|null $listener
-	 * @return Closure
-	 *
-	 * @phpstan-param Closure(DeterministicInvMenuTransaction) : void $listener
+	 * @param (Closure(DeterministicInvMenuTransaction) : void)|null $listener
+	 * @return Closure(InvMenuTransaction) : InvMenuTransactionResult
 	 */
 	public static function readonly(?Closure $listener = null) : Closure{
 		return static function(InvMenuTransaction $transaction) use($listener) : InvMenuTransactionResult{
@@ -77,10 +75,8 @@ class InvMenu implements InvMenuTypeIds{
 	}
 
 	/**
-	 * @param Closure|null $listener
+	 * @param (Closure(InvMenuTransaction) : InvMenuTransactionResult)|null $listener
 	 * @return self
-	 *
-	 * @phpstan-param Closure(InvMenuTransaction) : InvMenuTransactionResult $listener
 	 */
 	public function setListener(?Closure $listener) : self{
 		$this->listener = $listener;
@@ -88,10 +84,8 @@ class InvMenu implements InvMenuTypeIds{
 	}
 
 	/**
-	 * @param Closure|null $listener
+	 * @param (Closure(Player, Inventory) : void)|null $listener
 	 * @return self
-	 *
-	 * @phpstan-param Closure(Player, Inventory) : void $listener
 	 */
 	public function setInventoryCloseListener(?Closure $listener) : self{
 		$this->inventory_close_listener = $listener;
@@ -101,9 +95,7 @@ class InvMenu implements InvMenuTypeIds{
 	/**
 	 * @param Player $player
 	 * @param string|null $name
-	 * @param Closure|null $callback
-	 *
-	 * @phpstan-param Closure(bool) : void $callback
+	 * @param (Closure(bool) : void)|null $callback
 	 */
 	final public function send(Player $player, ?string $name = null, ?Closure $callback = null) : void{
 		$player->removeCurrentWindow();
@@ -118,24 +110,27 @@ class InvMenu implements InvMenuTypeIds{
 			$network->dropPending();
 		}
 		$network->waitUntil(0, function(bool $success) use($player, $session, $name, $callback) : bool{
-			if($success){
-				$graphic = $this->type->createGraphic($this, $player);
-				if($graphic !== null){
-					$graphic->send($player, $name);
-					$session->setCurrentMenu(new InvMenuInfo($this, $graphic), static function(bool $success) use($callback) : bool{
-						if($callback !== null){
-							$callback($success);
-						}
-						return false;
-					});
-				}else{
-					$session->removeCurrentMenu();
-					if($callback !== null){
-						$callback(false);
-					}
+			if(!$success){
+				if($callback !== null){
+					$callback(false);
 				}
-			}elseif($callback !== null){
-				$callback(false);
+				return false;
+			}
+
+			$graphic = $this->type->createGraphic($this, $player);
+			if($graphic !== null){
+				$graphic->send($player, $name);
+				$session->setCurrentMenu(new InvMenuInfo($this, $graphic), static function(bool $success) use($callback) : bool{
+					if($callback !== null){
+						$callback($success);
+					}
+					return false;
+				});
+			}else{
+				$session->removeCurrentMenu();
+				if($callback !== null){
+					$callback(false);
+				}
 			}
 			return false;
 		});
