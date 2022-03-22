@@ -1,35 +1,36 @@
 ---
-#   _____                    _   _           _
-#  /  ___|                  | | | |         | |
-#  \ `--.  ___ ___  _ __ ___| |_| |_   _  __| |
-#   `--. \/ __/ _ \| '__/ _ \  _  | | | |/ _` |
-#  /\__/ / (_| (_) | | |  __/ | | | |_| | (_| |
-#  \____/ \___\___/|_|  \___\_| |_/\__,_|\__,_|
-#
-# ScoreHud, a Scoreboard plugin for PocketMine-MP
-# Copyright (c) 2020 Ifera  < https://github.com/Ifera >
-#
-# Discord: Ifera#3717
-# Twitter: ifera_tr
-#
-# This software is distributed under "GNU General Public License v3.0".
-# This license allows you to use it and/or modify it but you are not at
-# all allowed to sell this plugin at any cost. If found doing so the
-# necessary action required would be taken.
-#
-# ScoreHud is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License v3.0 for more details.
-#
-# You should have received a copy of the GNU General Public License v3.0
-# along with this program. If not, see
-# <https://opensource.org/licenses/GPL-3.0>.
-#  -----------------------------------------------------------------------
-
 # DO NOT EDIT THIS VALUE.
 # ONLY FOR INTERNAL USE.
-config-version: 10
+config-version: 11
+
+# Set how you want to update the lines shown on the scoreboard.
+# Available modes: single, complete
+#
+# - single: Only the tags on scoreboard which have an update are updated
+#   and not the entire board. (preferred)
+# - complete: On a single tag update the entire scoreboard is updated i.e.
+#   the tags which don't have an update are updated as well.
+#
+# Apart from that difference both modes work the same. You will not notice much difference.
+line-update-mode: single
+
+# In-built support for some basic tags provided by ScoreHud.
+# There used to be a separate plugin called BasicScore handling these tags however it
+# has since then been moved within ScoreHud (due to popular demand).
+tag-factory:
+  # Do you want to enable support for basic tags provided by ScoreHud.
+  # Default: true
+  enable: false
+
+  # Some tags require constant updating for them to work this is
+  # only achieved through a task.
+  # Mention the time in seconds for that value to update.
+  # Default: 5 (seconds)
+  update-period: 5
+
+  # If you want the to show memory tags on the scoreboard then set this to true.
+  # NOTE: This could lead to a drop in performance, use only if necessary.
+  enable-memory-tags: false
 
 # If you want to have different scoreboards for different worlds
 # then edit the nested values to suit your needs.
@@ -63,9 +64,8 @@ time:
 
   format:
     # Set the time format that you want to display.
-    # Use {scorehudx.time} tag for displaying time.
-    # You need ScoreHudX plugin for the tag to work.
-    # https://github.com/Ifera/ScoreHudX
+    # Use {scorehud.time} tag for displaying time.
+    # You need to set `tag-factory.enable` to true for these tags to work
     #
     # H - hours
     # i - minutes
@@ -76,9 +76,8 @@ time:
     time: "H:i:s"
 
     # Set the date format that you want to display. Will only work
-    # Use {scorehudx.date} tag for displaying date.
-    # You need ScoreHudX plugin for the tag to work.
-    # https://github.com/Ifera/ScoreHudX
+    # Use {scorehud.date} tag for displaying date.
+    # You need to set `tag-factory.enable` to true for these tags to work
     #
     # d - date (01-31)
     # m - month (01-12)

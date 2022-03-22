@@ -1,23 +1,7 @@
 ---
 # DO NOT EDIT THIS VALUE.
 # ONLY FOR INTERNAL USE.
-scorehud-version: 2
-
-# =============================
-# SCOREHUD VERSION 6.0+ NOTE:
-# =============================
-#
-# Plugin developers are responsible for adding support for ScoreHud
-# in their plugins. Starting from ScoreHud version 6.0 onwards addon
-# support has been removed.
-#
-# ScoreHud is now event driven and all previous addons will no longer
-# work unless the author of that plugin adds support for ScoreHud in
-# their own plugin.
-#
-# If you want support for a plugin please ask the plugin author of
-# that plugin to add support for ScoreHud in their plugin.
-# =============================
+scorehud-version: 3
 
 # Set the title for the scoreboard shown.
 titles:
@@ -50,7 +34,10 @@ titles:
 # ==================
 # You can only set a maximum of 15 lines and no more. #blameMOJANG
 #
-# Also note that you need 'ScoreHudX' plugin for some tags to work.
+# Note: You no longer need BasicScore plugin as those tags
+# are implemented within ScoreHud now.
+#
+# You can find some pre-made tags from the ScoreHudX repo:
 # https://github.com/Ifera/ScoreHudX
 # ==================
 
@@ -87,11 +74,11 @@ scoreboards:
 #-------------------
   "world":
     lines:
-    - "§dName: §5{basicscore.name}"
-    - "§bOnline: §a{basicscore.online} §c/ §d{basicscore.max_online}"
+    - "§dName: §5{scorehud.name}"
+    - "§bOnline: §a{scorehud.online} §c/ §d{scorehud.max_online}"
   "world 2":
     lines:
-    - "§dName: §5{basicscore.name}"
-    - "§dTPS: §5{basicscore.tps}"
-    - "§bLoad: §a{basicscore.load}"
+    - "§dName: §5{scorehud.name}"
+    - "§dTPS: §5{scorehud.tps}"
+    - "§bLoad: §a{scorehud.load}"
 ...

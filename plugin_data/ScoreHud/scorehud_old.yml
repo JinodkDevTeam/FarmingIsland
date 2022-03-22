@@ -36,7 +36,7 @@ titles:
   period: 5
 
   # A simple title that will be displayed for scoreboard.
-  title: "§l§aServer §dName"
+  title: "§　§l§bFarming§aIsland §6ALPHA"
 
   # Changing titles. Add as many as you desire.
   lines:
@@ -65,12 +65,13 @@ titles:
 # in 'scoreboards' key below then set 'multi-world.active' along
 # with 'multi-world.use-default' keys to true in config.yml.
 default-board:
+- "§　§l§eWelcome:§r §f{fi-scoreloader.name}"
+- "§　§l§eOnline: §r §f{fi-scoreloader.online}"
+- "§　§l§ePurse:  §r §f{fi-scoreloader.coin} coin"
+- "§　§l§dGem:    §r §f{fi-scoreloader.gem}"
+- "§　§l§ePing:   §r §f{fi-scoreloader.ping}"
 - ""
-- "§dName: §5{basicscore.name}"
-- ""
-- "§bOnline: §a{basicscore.online} §c/ §d{basicscore.max_online}"
-- ""
-- "§6Please Vote for us!"
+- "§　§l§4j§ci§6n§eo§ad§2k§f.§eddns§f.§bnet§f:§e19132"
 
 # If you want to display different scoreboards for every world
 # then set 'multi-world.active' to true in config.yml.
