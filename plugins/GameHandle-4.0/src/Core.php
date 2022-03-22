@@ -18,7 +18,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase{
-	public const VERSION = "0.1.10-alpha";
+	public const VERSION = "0.2-alpha";
 	public const CODE_NAME = "BlueWhale";
 	/** @var int[] */
 	public array $afktime = [];
