@@ -5,6 +5,7 @@ namespace NgLamVN\ClearLagg;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\entity\Entity;
 use pocketmine\entity\Human;
 use pocketmine\entity\Living;
 use pocketmine\entity\object\ExperienceOrb;
@@ -26,24 +27,24 @@ class ClearLagg extends PluginBase{
 	public const LANG_ENTITIES_CLEARED = "entities-cleared";
 
 	/** @var int */
-	private $interval;
+	private int $interval;
 	/** @var int */
-	private $seconds;
+	private int $seconds;
 
 	/** @var bool */
-	private $clearItems;
+	private bool $clearItems;
 	/** @var bool */
-	private $clearMobs;
+	private bool $clearMobs;
 	/** @var bool */
-	private $clearXpOrbs;
-
-	/** @var string[] */
-	private $exemptEntities;
+	private bool $clearXpOrbs;
 
 	/** @var string[] */
-	private $messages;
+	private array $exemptEntities;
+
+	/** @var string[] */
+	private array $messages;
 	/** @var int[] */
-	private $broadcastTimes;
+	private array $broadcastTimes;
 
 	public function onEnable() : void{
 		$config = $this->getConfig()->getAll();
@@ -115,7 +116,7 @@ class ClearLagg extends PluginBase{
 						$entity->flagForDespawn();
 						++$entitiesCleared;
 					}elseif($this->clearMobs && $entity instanceof Living && !$entity instanceof Human){
-						if(!in_array(strtolower($entity->getName()), $this->exemptEntities)){
+						if(!$this->isExemptedEntity($entity)){
 							$entity->flagForDespawn();
 							++$entitiesCleared;
 						}
@@ -161,5 +162,19 @@ class ClearLagg extends PluginBase{
 			}
 		}
 		return true;
+	}
+
+	public function exemptEntity(Entity $entity){
+		$this->exemptEntities[] = strtolower($entity->getNameTag());
+	}
+
+	public function isExemptedEntity(Entity $entity) : bool{
+		if ($entity instanceof Living){
+			if (in_array($entity->getNameTag(), $this->exemptEntities)){
+				return true;
+			}
+			return in_array(strtolower($entity->getName()), $this->exemptEntities);
+		}
+		return in_array($entity->getNameTag(), $this->exemptEntities);
 	}
 }
