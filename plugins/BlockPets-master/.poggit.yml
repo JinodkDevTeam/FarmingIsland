@@ -1,0 +1,15 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/BlockHorizons/BlockPets
+branches:
+- master
+projects:
+  BlockPets:
+    path: ""
+    icon: resources/BlockPetsLogo.png
+    compressBuilds: false
+    fullGzip: 9
+    libs:
+      - src: poggit/libasynql/libasynql
+        version: ^4.0.1
+      - src: muqsit/invmenu/invmenu
+        version: ^4.3.8
+...
