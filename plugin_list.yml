@@ -8,5 +8,4 @@ mode: blacklist
 plugins:
   - PickaxeLevel
   - WorldStyler
-  - WorldStyler
-  - FI-LMAO
+  - Bedwars

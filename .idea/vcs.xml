@@ -13,6 +13,7 @@
     <mapping directory="$PROJECT_DIR$/plugins/Altay/src/pocketmine/lang/locale" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/Altay/src/pocketmine/resources/vanilla" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/Altay/tests/plugins/DevTools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/Bedwars" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/BetterMinion" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/BuilderTools" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/CustomAlerts" vcs="Git" />
