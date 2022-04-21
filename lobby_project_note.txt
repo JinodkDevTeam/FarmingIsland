@@ -1,0 +1,15 @@
+LOBBY MAP
+====CORE====
+- Auction House -
++ 2 floor 
++ Normal Auction House
++ Dark Auction
+- Bazzar -
++ 1 NPC (Small)
+- Little Farm
++ Wheal
+- Coal Mine
++ stone, coal ore
+- Forest
++ oak tree
+- Bank -
