@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle;
 
+use CortexPE\Commando\exception\HookAlreadyRegistered;
+use CortexPE\Commando\PacketHooker;
 use CortexPE\Hierarchy\Hierarchy;
 use Exception;
 use muqsit\invmenu\InvMenuHandler;
@@ -39,6 +41,13 @@ class Core extends PluginBase{
 	}
 
 	public function onEnable() : void{
+		try{
+			if(!PacketHooker::isRegistered()){
+				PacketHooker::register($this);
+			}
+		}catch(HookAlreadyRegistered){
+			//Ignore Exception
+		}
 		try{
 			if(!InvMenuHandler::isRegistered()){
 				InvMenuHandler::register($this);

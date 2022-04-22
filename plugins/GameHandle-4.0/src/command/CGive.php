@@ -3,41 +3,47 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\exception\ArgumentOrderException;
 use CustomItems\item\CustomItemFactory;
 use CustomItems\item\utils\StringToCustomItemParser;
 use Exception;
-use NgLamVN\GameHandle\Core;
+use NgLamVN\GameHandle\command\args\CustomItemIDArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class CGive extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "cgive");
+class CGive extends BaseCommand{
+
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	public function prepare() : void{
 		$this->setDescription("Give a item from Custom Item Code");
 		$this->setPermission("gh.cgive");
+
+		$this->registerArgument(0, new CustomItemIDArgs());
+		$this->registerArgument(1, new IntegerArgument("Amount", true));
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if(!$sender instanceof Player){
 			$sender->sendMessage("Use in-game only");
 			return;
 		}
-		if(isset($args[0])){
-			if(!$sender->hasPermission("gh.cgive")){
-				$sender->sendMessage("You not have permission to use this command !");
-				return;
-			}
+		if(isset($args["ItemID"])){
 			try{
-				if(is_numeric($args[0])){
-					$item = CustomItemFactory::getInstance()->get((int) $args[0]);
+				if(is_numeric($args["ItemID"])){
+					$item = CustomItemFactory::getInstance()->get((int) $args["ItemID"]);
 				}else{
-					$item = StringToCustomItemParser::getInstance()->parse($args[0]);
+					$item = StringToCustomItemParser::getInstance()->parse($args["ItemID"]);
 				}
 				if($item == null){
 					$sender->sendMessage("Unknow item ID");
 					return;
 				}
+				$amount = $args["Amount"] ?? 1;
 				$item = $item->toItem();
+				$item->setCount($amount);
 				if(!$sender->getInventory()->canAddItem($item)){
 					$sender->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
 					return;
