@@ -1,0 +1,64 @@
+name: lmao
+main: lmao\Lmao
+api: 4.0.0
+version: 0.1.0
+authors:
+  - NgLamVN
+description: An Ultimate Troll plugin for PocketMine-MP
+
+virions:
+  - Commando
+
+permissions:
+  lmao:
+    default: op
+  lmao.burn:
+    default: op
+  lmao.fakeop:
+    default: op
+  lmao.launch:
+    default: op
+  lmao.alone:
+    default: op
+  lmao.bolt:
+    default: op
+  lmao.boom:
+    default: op
+  lmao.crash:
+    default: op
+  lmao.fakedeop:
+    default: op
+  lmao.shuffle:
+    default: op
+  lmao.push:
+    default: op
+  lmao.dropinv:
+    default: op
+  lmao.chat:
+    default: op
+  lmao.fakeban:
+    default: op
+  lmao.flip:
+    default: op
+  lmao.spin:
+    default: op
+  lmao.spam:
+    default: op
+  lmao.swap:
+    default: op
+  lmao.creeper:
+    default: op
+  lmao.nomine:
+    default: op
+  lmao.noplace:
+    default: op
+  lmao.nopick:
+    default: op
+  lmao.rickroll:
+    default: op
+  lmao.pumpkinhead:
+    default: op
+  lmao.starve:
+    default: op
+  lmao.infinitedeath:
+    default: op
