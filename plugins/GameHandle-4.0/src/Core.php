@@ -18,8 +18,8 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase{
-	public const VERSION = "1.4.2022";
-	public const CODE_NAME = "Hyper";
+	public const VERSION = "0.2.1";
+	public const CODE_NAME = "BlueWhale";
 	/** @var int[] */
 	public array $afktime = [];
 	/** @var SellHandler $sell */
