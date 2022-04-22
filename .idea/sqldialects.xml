@@ -4,7 +4,6 @@
     <file url="file://$PROJECT_DIR$/plugins/Backpack/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Bank/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Bazaar/resources/sqlite.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/plugins/Bedwars/resources/sql/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FI-SkillLevel/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FavoriteIsland/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Mail/resources/sqlite.sql" dialect="SQLite" />
