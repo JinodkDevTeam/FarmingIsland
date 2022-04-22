@@ -9,7 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\Server;
 
-class Sudo extends BaseCommand{
+class Sudo extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "sudo");
 		$this->setDescription("Run command as console");

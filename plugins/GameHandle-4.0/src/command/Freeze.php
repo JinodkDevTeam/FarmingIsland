@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class Freeze extends BaseCommand{
+class Freeze extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "freeze");
 		$this->setDescription("Freeze command");

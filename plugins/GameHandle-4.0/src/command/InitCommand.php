@@ -10,6 +10,7 @@ class InitCommand{
 	public function __construct(Core $plugin){
 		$cmd = $plugin->getServer()->getCommandMap();
 
+		//Legacy Command Format
 		$cmd->register("heal", new Heal($plugin));
 		$cmd->register("feed", new Feed($plugin));
 		$cmd->register("fly", new Fly($plugin));

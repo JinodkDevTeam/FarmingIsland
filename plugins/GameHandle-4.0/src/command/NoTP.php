@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class NoTP extends BaseCommand{
+class NoTP extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "notp");
 		$this->setDescription("NoTP Mode command");

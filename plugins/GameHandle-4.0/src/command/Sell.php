@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class Sell extends BaseCommand{
+class Sell extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "sell");
 		$this->setDescription("Sell items in your inventory");

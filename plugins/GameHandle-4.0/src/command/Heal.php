@@ -9,7 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Heal extends BaseCommand{
+class Heal extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "heal");
 		$this->setDescription("Heal command");

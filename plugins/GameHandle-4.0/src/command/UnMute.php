@@ -9,7 +9,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class UnMute extends BaseCommand{
+class UnMute extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "unmute");
 		$this->setDescription("UnMute command");

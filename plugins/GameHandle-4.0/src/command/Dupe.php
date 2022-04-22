@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class Dupe extends BaseCommand{
+class Dupe extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "dupe");
 		$this->setDescription("Duplicate item in hand");

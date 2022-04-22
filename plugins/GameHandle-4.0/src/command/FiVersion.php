@@ -7,7 +7,7 @@ namespace NgLamVN\GameHandle\command;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 
-class FiVersion extends BaseCommand{
+class FiVersion extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "fiversion");
 		$this->setDescription("FarmingIsland Version");

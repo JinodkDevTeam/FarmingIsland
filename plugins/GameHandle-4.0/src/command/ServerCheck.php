@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class ServerCheck extends BaseCommand{
+class ServerCheck extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "servercheck");
 		$this->setDescription("Check server");

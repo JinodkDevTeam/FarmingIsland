@@ -8,7 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Fly extends BaseCommand{
+class Fly extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "fly");
 		$this->setDescription("Fly command");

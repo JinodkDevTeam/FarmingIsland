@@ -8,7 +8,10 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\plugin\PluginOwned;
 
-abstract class BaseCommand extends Command implements PluginOwned{
+/**
+ * This is the legacy BaseCommand class use for old command design
+ */
+abstract class LegacyBaseCommand extends Command implements PluginOwned{
 	private Core $core;
 
 	public function __construct(Core $core, string $name, string $description = "", ?string $usageMessage = null, array $aliases = []){

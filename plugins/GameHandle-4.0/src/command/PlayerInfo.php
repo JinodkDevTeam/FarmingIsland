@@ -8,7 +8,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class PlayerInfo extends BaseCommand{
+class PlayerInfo extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "playerinfo");
 		$this->setDescription("Show player infomation");

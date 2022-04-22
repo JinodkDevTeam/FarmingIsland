@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class Mute extends BaseCommand{
+class Mute extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "mute");
 		$this->setDescription("Mute command");

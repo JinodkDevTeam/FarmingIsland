@@ -11,7 +11,7 @@ use pocketmine\console\ConsoleCommandSender;
 use pocketmine\player\Player;
 use RuntimeException;
 
-class Crash extends BaseCommand{
+class Crash extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "crash");
 		$this->setDescription("Instantly crash the server");

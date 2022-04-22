@@ -8,7 +8,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class SmartMine extends BaseCommand{
+class SmartMine extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "smartmine");
 		$this->setDescription("SmartMine Manager");

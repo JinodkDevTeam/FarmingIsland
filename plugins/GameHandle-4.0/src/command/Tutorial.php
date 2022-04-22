@@ -9,7 +9,7 @@ use NgLamVN\GameHandle\GameMenu\UpdateInfo;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class Tutorial extends BaseCommand{
+class Tutorial extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "tutorial");
 		$this->setDescription("View tutorial");

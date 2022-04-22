@@ -11,7 +11,7 @@ use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Haste extends BaseCommand{
+class Haste extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "haste");
 		$this->setDescription("Haste Effect");

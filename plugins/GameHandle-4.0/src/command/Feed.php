@@ -9,7 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Feed extends BaseCommand{
+class Feed extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "feed");
 		$this->setDescription("Fees command");

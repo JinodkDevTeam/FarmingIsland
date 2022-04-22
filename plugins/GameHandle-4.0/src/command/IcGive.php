@@ -11,7 +11,7 @@ use pocketmine\item\Item;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\player\Player;
 
-class IcGive extends BaseCommand{
+class IcGive extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "icgive");
 		$this->setDescription("Give a item from Item code (using InvCraft save format)");

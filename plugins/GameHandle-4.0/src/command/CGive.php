@@ -10,7 +10,7 @@ use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class CGive extends BaseCommand{
+class CGive extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "cgive");
 		$this->setDescription("Give a item from Custom Item Code");

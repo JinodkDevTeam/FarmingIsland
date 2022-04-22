@@ -9,7 +9,7 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class TpAll extends BaseCommand{
+class TpAll extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "tpall");
 		$this->setDescription("TpAll command");

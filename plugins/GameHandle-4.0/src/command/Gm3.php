@@ -10,7 +10,7 @@ use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Gm3 extends BaseCommand{
+class Gm3 extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "gm3");
 		$this->setDescription("Game mode command");
