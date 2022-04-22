@@ -19,21 +19,21 @@ class UiMenu{
 	public function MenuForm(Player $player){
 		$list = [];
 		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
-			array_push($list, "is-manager");
-			array_push($list, "is-info");
-			array_push($list, "favorite-island");
+			$list[] = "is-manager";
+			$list[] = "is-info";
+			$list[] = "favorite-island";
 		}
-		array_push($list, "teleport");
-		array_push($list, "shop");
-		array_push($list, "vip-shop");
-		array_push($list, "sell-all");
-		array_push($list, "vip");
-		array_push($list, "tutorial");
-		array_push($list, "invcraft");
-		array_push($list, "backpack");
-		array_push($list, "mail");
-		array_push($list, "bank");
-		array_push($list, "bazaar");
+		$list[] = "teleport";
+		$list[] = "shop";
+		$list[] = "vip-shop";
+		$list[] = "sell-all";
+		$list[] = "vip";
+		$list[] = "tutorial";
+		$list[] = "invcraft";
+		$list[] = "backpack";
+		$list[] = "mail";
+		$list[] = "bank";
+		$list[] = "bazaar";
 
 		$form = new SimpleForm(function(Player $player, $data) use ($list) : void{
 			if(!isset($data)){

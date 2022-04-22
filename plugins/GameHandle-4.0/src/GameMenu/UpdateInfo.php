@@ -24,9 +24,7 @@ class UpdateInfo{
 		});
 		$text = [
 			"§　Updates:",
-			"- Welcome to API 4.0.0 branch for FarmingIslandServer",
-			"- This server is for testing only",
-			"- View changelogs at fiv2-dev-news channel at discord.",
+			"- Update server to MCBE 1.18.30",
 			"Official wiki: bit.ly/fi-wiki",
 			"Vote for server: bit.ly/fi-vote",
 			"Official Facebook group: bit.ly/jinodkgroupfb",
