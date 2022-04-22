@@ -16,9 +16,9 @@ class UpdateInfo{
 
 	public function execute(Player $player){
 		$form = new SimpleForm(function(Player $player, ?int $data){
-			if($data == 1) {
+			if($data == 1){
 				$this->TutorialForm($player);
-			} else {
+			}else{
 				$this->WarningForm($player);
 			}
 		});

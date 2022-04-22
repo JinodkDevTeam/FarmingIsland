@@ -49,7 +49,7 @@ class EventListener implements Listener{
 	 */
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
-		if ($this->getCore()->getIslandWorldName() == null){
+		if($this->getCore()->getIslandWorldName() == null){
 			return;
 		}
 		if($player->getWorld()->getDisplayName() !== $this->getCore()->getIslandWorldName()){
@@ -58,9 +58,9 @@ class EventListener implements Listener{
 		$this->menu->registerMenuItem($player);
 		$this->menu->sendUpdatesForm($player);
 		$homes = MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), $this->getCore()->getIslandWorldName());
-		if (!empty($homes)){
+		if(!empty($homes)){
 			Server::getInstance()->dispatchCommand($player, "is home");
-		} else {
+		}else{
 			Server::getInstance()->dispatchCommand($player, "is auto");
 			Server::getInstance()->dispatchCommand($player, "is claim");
 			$player->sendMessage("LET'S START !");
@@ -79,7 +79,7 @@ class EventListener implements Listener{
 	 */
 	public function onRespawn(PlayerRespawnEvent $event){
 		$player = $event->getPlayer();
-		if ($this->getCore()->getIslandWorldName() == null){
+		if($this->getCore()->getIslandWorldName() == null){
 			return;
 		}
 		if(!isset(MyPlot::getInstance()->getPlotsOfPlayer($player->getName(), $this->getCore()->getIslandWorldName())[0])){
@@ -119,6 +119,7 @@ class EventListener implements Listener{
 
 	/**
 	 * @param EntityFishEvent $event
+	 *
 	 * @priority LOWEST
 	 * @handleCancelled FALSE
 	 */
@@ -242,6 +243,7 @@ class EventListener implements Listener{
 
 	/**
 	 * @param PlayerDeathEvent $event
+	 *
 	 * @priority LOWEST
 	 */
 	public function onDeath(PlayerDeathEvent $event){

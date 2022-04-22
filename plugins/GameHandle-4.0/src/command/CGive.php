@@ -28,9 +28,9 @@ class CGive extends BaseCommand{
 				return;
 			}
 			try{
-				if (is_numeric($args[0])){
+				if(is_numeric($args[0])){
 					$item = CustomItemFactory::getInstance()->get((int) $args[0]);
-				} else {
+				}else{
 					$item = StringToCustomItemParser::getInstance()->parse($args[0]);
 				}
 				if($item == null){

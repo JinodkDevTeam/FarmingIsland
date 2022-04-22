@@ -53,26 +53,26 @@ class Core extends PluginBase{
 			$this->sell = new SellHandler($this);
 			//LOAD ALL WORLDS AND FIND ISLAND WORLD
 			$worlds = [];
-			foreach (scandir($this->getServer()->getDataPath() . "worlds") as $world) {
-				if ($world === "." || $world === ".." || pathinfo($world, PATHINFO_EXTENSION) !== "") {
+			foreach(scandir($this->getServer()->getDataPath() . "worlds") as $world){
+				if($world === "." || $world === ".." || pathinfo($world, PATHINFO_EXTENSION) !== ""){
 					continue;
 				}
 				$worlds[] = $world;
 			}
 			$worldmanager = $this->getServer()->getWorldManager();
 			foreach($worlds as $world){
-				if (!$worldmanager->isWorldLoaded($world)){
+				if(!$worldmanager->isWorldLoaded($world)){
 					$worldmanager->loadWorld($world);
-					if (MyPlot::getInstance()->isLevelLoaded($world)){
+					if(MyPlot::getInstance()->isLevelLoaded($world)){
 						$this->island_world_name = $world;
-					} else {
+					}else{
 						$worldmanager->unloadWorld($worldmanager->getWorldByName($world));
 					}
-				} elseif (MyPlot::getInstance()->isLevelLoaded($world)){
+				}elseif(MyPlot::getInstance()->isLevelLoaded($world)){
 					$this->island_world_name = $world;
 				}
 			}
-			if ($this->island_world_name == null){
+			if($this->island_world_name == null){
 				$this->getLogger()->warning("Island world not found, creating a new one...");
 				$this->getServer()->dispatchCommand(new ConsoleCommandSender($this->getServer(), $this->getServer()->getLanguage()), "is generate island");
 				$this->island_world_name = "island";
@@ -104,7 +104,7 @@ class Core extends PluginBase{
 		return $this->sell;
 	}
 
-	public function getIslandWorldName(): ?string{
+	public function getIslandWorldName() : ?string{
 		return $this->island_world_name;
 	}
 }

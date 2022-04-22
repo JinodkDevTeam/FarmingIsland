@@ -20,12 +20,12 @@ class ServerCheck extends BaseCommand{
 			$sender->sendMessage("You dont have permission to use this command !");
 			return;
 		}
-		if (isset($args[0])){
+		if(isset($args[0])){
 			switch($args[0]){
 				case "php-extensions":
 					$sender->sendMessage("PHP Loaded Extensions:");
 					foreach(get_loaded_extensions() as $extension){
-						$sender->sendMessage($extension . " v" .phpversion($extension));
+						$sender->sendMessage($extension . " v" . phpversion($extension));
 					}
 					break;
 				case "scan-extensions":

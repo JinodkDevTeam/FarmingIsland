@@ -100,8 +100,8 @@ class SkillLevelHandle{
 
 	public function onFish(EntityFishEvent $event){
 		$player = $event->getEntity();
-		if ($player instanceof Player){
-			if ($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
+		if($player instanceof Player){
+			if($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
 				$this->addXp($player, SkillLevel::FISHING, mt_rand(10, 100));
 			}
 		}
@@ -145,7 +145,7 @@ class SkillLevelHandle{
 		if($block instanceof SweetBerryBush){ //Handle SweetBerries
 			switch($block->getMeta()){
 				case 2:
-					if (!$event->getItem() instanceof Fertilizer){ //BONEMEAT WILL GROW ITEM, NOT DROP THE RESULT
+					if(!$event->getItem() instanceof Fertilizer){ //BONEMEAT WILL GROW ITEM, NOT DROP THE RESULT
 						$amount = $this->farming2[$block->getId()];
 						$this->addXp($player, SkillLevel::FARMING, $amount);
 					}

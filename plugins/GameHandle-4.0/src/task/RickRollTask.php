@@ -30,7 +30,7 @@ class RickRollTask extends Task{
 	}
 
 	public function onRun() : void{
-		if ($this->line > 8){
+		if($this->line > 8){
 			$this->player->kick("Desert you !!!!!");
 			$this->getHandler()->cancel();
 			return;

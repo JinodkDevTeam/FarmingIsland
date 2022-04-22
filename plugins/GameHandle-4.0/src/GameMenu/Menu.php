@@ -61,7 +61,7 @@ class Menu{
 		$player = $event->getPlayer();
 
 		$slot = $player->getInventory()->getHeldItemIndex();
-		if ($event instanceof PlayerInteractEvent){
+		if($event instanceof PlayerInteractEvent){
 			if(in_array($event->getBlock()->getId(), self::BAN_BLOCK)){
 				return;
 			}

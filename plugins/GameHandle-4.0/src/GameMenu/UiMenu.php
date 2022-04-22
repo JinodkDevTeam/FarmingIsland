@@ -114,7 +114,7 @@ class UiMenu{
 
 	public function IslandInfoForm(Player $player){
 		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
-		if ($plot == null){
+		if($plot == null){
 			$player->sendMessage("Failed to get island info.");
 			return;
 		}

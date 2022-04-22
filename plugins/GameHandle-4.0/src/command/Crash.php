@@ -19,10 +19,10 @@ class Crash extends BaseCommand{
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if ($sender instanceof ConsoleCommandSender){
+		if($sender instanceof ConsoleCommandSender){
 			throw new RuntimeException("Crashed due to crash command.");
-		} else {
-			if ($sender instanceof Player){
+		}else{
+			if($sender instanceof Player){
 				//Rickroll them :>>>
 				$this->getCore()->getScheduler()->scheduleRepeatingTask(new RickRollTask($sender), 60);
 			}
