@@ -4,42 +4,33 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\exception\ArgumentOrderException;
+use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class Freeze extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "freeze");
+class Freeze extends BaseCommand{
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("Freeze command");
 		$this->setPermission("gh.freeze");
+
+		$this->registerArgument(0, new PlayerArgs());
+		$this->registerArgument(1, new IntegerArgument("seconds", true));
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(isset($args[0])){
-			if(!$sender->hasPermission("gh.freeze")){
-				$sender->sendMessage("You not have permission to use this command");
-				return;
-			}
-			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
-			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
-				return;
-			}
-			$time = PHP_INT_MAX;
-			if(isset($args[1])){
-				if(is_numeric($args[1])){
-					$time = (int) $args[1];
-				}else{
-					$sender->sendMessage("Time must me numeric !");
-					return;
-				}
-			}
-			$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
-			$sender->sendMessage("Frozen " . $player->getName() . " for " . $time . " seconds !");
-			$player->sendMessage("You have been frozen for " . $time . " seconds");
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
+		if(!isset($player)){
+			$sender->sendMessage("Player not exist !");
 			return;
 		}
-		$sender->sendMessage("/freeze <player> <time>");
+		$time = $args["seconds"] ?? PHP_INT_MAX;
+		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(true, $time);
+		$sender->sendMessage("Frozen " . $player->getName() . " for " . $time . " seconds !");
+		$player->sendMessage("You have been frozen for " . $time . " seconds");
 	}
 }

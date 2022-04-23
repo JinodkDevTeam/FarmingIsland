@@ -12,7 +12,7 @@ class Sell extends LegacyBaseCommand{
 	public function __construct(Core $core){
 		parent::__construct($core, "sell");
 		$this->setDescription("Sell items in your inventory");
-		$this->setPermission("gh.sell.use");
+		$this->setPermission("gh.sell");
 	}
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){

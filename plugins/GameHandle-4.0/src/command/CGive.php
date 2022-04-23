@@ -9,10 +9,9 @@ use CustomItems\item\CustomItemFactory;
 use CustomItems\item\utils\StringToCustomItemParser;
 use Exception;
 use NgLamVN\GameHandle\command\args\CustomItemIDArgs;
-use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
-class CGive extends BaseCommand{
+class CGive extends IngameCommand{
 
 	/**
 	 * @throws ArgumentOrderException
@@ -25,11 +24,7 @@ class CGive extends BaseCommand{
 		$this->registerArgument(1, new IntegerArgument("Amount", true));
 	}
 
-	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
-		if(!$sender instanceof Player){
-			$sender->sendMessage("Use in-game only");
-			return;
-		}
+	public function handle(Player $player, string $aliasUsed, array $args) : void{
 		if(isset($args["ItemID"])){
 			try{
 				if(is_numeric($args["ItemID"])){
@@ -38,25 +33,25 @@ class CGive extends BaseCommand{
 					$item = StringToCustomItemParser::getInstance()->parse($args["ItemID"]);
 				}
 				if($item == null){
-					$sender->sendMessage("Unknow item ID");
+					$player->sendMessage("Unknow item ID");
 					return;
 				}
 				$amount = $args["Amount"] ?? 1;
 				$item = $item->toItem();
 				$item->setCount($amount);
-				if(!$sender->getInventory()->canAddItem($item)){
-					$sender->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
+				if(!$player->getInventory()->canAddItem($item)){
+					$player->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
 					return;
 				}
-				$sender->getInventory()->addItem($item);
-				$sender->sendMessage("Item Added !");
+				$player->getInventory()->addItem($item);
+				$player->sendMessage("Item Added !");
 			}catch(Exception $exception){
-				$sender->sendMessage($exception->getMessage());
-				$sender->sendMessage("Line: " . $exception->getLine());
-				$sender->sendMessage("Error while decode give items");
+				$player->sendMessage($exception->getMessage());
+				$player->sendMessage("Line: " . $exception->getLine());
+				$player->sendMessage("Error while decode give items");
 			}
 		}else{
-			$sender->sendMessage("/cgive <item_code>");
+			$player->sendMessage("/cgive <item_code>");
 		}
 	}
 }

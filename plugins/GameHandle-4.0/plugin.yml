@@ -9,49 +9,33 @@ author: JinodkDevTeam|NgLamVN
 permissions:
   gh.feed:
     default: op
-  gh.feed.use:
-    default: op
   gh.feed.other:
     default: op
   gh.heal:
-    default: op
-  gh.heal.use:
     default: op
   gh.heal.other:
     default: op
   gh.fly:
     default: op
-  gh.fly.use:
-    default: op
   gh.fly.other:
     default: op
   gh.gm1:
-    default: op
-  gh.gm1.use:
     default: op
   gh.gm1.other:
     default: op
   gh.gm0:
     default: op
-  gh.gm0.use:
-    default: op
   gh.gm0.other:
     default: op
   gh.gm2:
-    default: op
-  gh.gm2.use:
     default: op
   gh.gm2.other:
     default: op
   gh.gm3:
     default: op
-  gh.gm3.use:
-    default: op
   gh.gm3.other:
     default: op
   gh.sell:
-    default: true
-  gh.sell.use:
     default: true
   gh.sell.all:
     default: true
@@ -60,8 +44,6 @@ permissions:
   gh.ac:
     default: true
   gh.haste:
-    default: op
-  gh.haste.use:
     default: op
   gh.haste.other:
     default: op

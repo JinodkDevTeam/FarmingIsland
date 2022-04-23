@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
 use NgLamVN\GameHandle\task\RickRollTask;
 use pocketmine\command\CommandSender;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\player\Player;
 use RuntimeException;
 
-class Crash extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "crash");
+class Crash extends BaseCommand{
+
+	protected function prepare() : void{
 		$this->setDescription("Instantly crash the server");
 		$this->setPermission("gh.crash");
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if($sender instanceof ConsoleCommandSender){
 			throw new RuntimeException("Crashed due to crash command.");
 		}else{

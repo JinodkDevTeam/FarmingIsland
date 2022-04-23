@@ -7,15 +7,15 @@ namespace NgLamVN\GameHandle\command;
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 
-class FiVersion extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "fiversion");
+class FiVersion extends BaseCommand{
+
+	protected function prepare() : void{
 		$this->setDescription("FarmingIsland Version");
 		$this->setPermission("gh.fiver");
 		$this->setAliases(["fiver", "fi-ver"]);
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		$sender->sendMessage("Server Version: " . Core::VERSION . " [" . Core::CODE_NAME . "]");
 	}
 }
