@@ -8,8 +8,6 @@ white-list.txt
 banned-players.txt
 banned-ips.txt
 plugins/ExplosiveSnowball/*
-plugins/RandomKnockback/src/RandomKnockback.php
-plugins/RandomKnockback/plugin.yml
 plugins/FartBattle-main/*
 plugins/PickaxeLevel/*
 plugins/Testentity/*
