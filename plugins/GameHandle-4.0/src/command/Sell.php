@@ -4,37 +4,31 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
-use pocketmine\command\CommandSender;
+use CortexPE\Commando\exception\ArgumentOrderException;
+use NgLamVN\GameHandle\command\args\SellOptionsArgs;
 use pocketmine\player\Player;
 
-class Sell extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "sell");
+class Sell extends IngameCommand{
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("Sell items in your inventory");
 		$this->setPermission("gh.sell");
+
+		$this->registerArgument(0, new SellOptionsArgs());
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(!$sender->hasPermission("gh.sell.use")){
-			return;
-		}
-		if(!$sender instanceof Player){
-			return;
-		}
-		if(!isset($args[0])){
-			$sender->sendMessage("/sell <hand|all|undo>");
-			return;
-		}
-		switch($args[0]){
+	public function handle(Player $player, string $aliasUsed, array $args) : void{
+		switch($args["SellOptions"]){
 			case "hand":
-				$this->getCore()->getSellHandler()->sellHand($sender);
+				$this->getCore()->getSellHandler()->sellHand($player);
 				break;
 			case "all":
-				$this->getCore()->getSellHandler()->sellAll($sender);
+				$this->getCore()->getSellHandler()->sellAll($player);
 				break;
 			case "undo":
-				$this->getCore()->getSellHandler()->undo($sender);
+				$this->getCore()->getSellHandler()->undo($player);
 		}
 	}
 }

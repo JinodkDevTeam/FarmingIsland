@@ -4,39 +4,36 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use CortexPE\Commando\exception\ArgumentOrderException;
 use Exception;
-use NgLamVN\GameHandle\Core;
+use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class UnMute extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "unmute");
+class UnMute extends BaseCommand{
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("UnMute command");
 		$this->setPermission("gh.unmute");
+
+		$this->registerArgument(0, new PlayerArgs());
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(isset($args[0])){
-			if(!$sender->hasPermission("gh.unmute")){
-				$sender->sendMessage("You not have permission to use this command");
-				return;
-			}
-			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
-			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
-				return;
-			}
-			try{
-				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setMute(false);
-			}catch(Exception){
-				$sender->sendMessage("PlayerStat Data Error !");
-				return;
-			}
-			$sender->sendMessage("Unmuted " . $player->getName() . " !");
-			$player->sendMessage("You have been unmuted !");
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
+		if(is_null($player)){
+			$sender->sendMessage("Player didn't exist !");
 			return;
 		}
-		$sender->sendMessage("/unmute <player>");
+		try{
+			$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setMute(false);
+		}catch(Exception){
+			$sender->sendMessage("PlayerStat Data Error !");
+			return;
+		}
+		$sender->sendMessage("Unmuted " . $player->getName() . " !");
+		$player->sendMessage("You have been unmuted !");
 	}
 }

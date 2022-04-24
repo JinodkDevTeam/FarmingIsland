@@ -4,30 +4,34 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
+use CortexPE\Commando\exception\ArgumentOrderException;
+use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class TpAll extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "tpall");
+class TpAll extends BaseCommand{
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("TpAll command");
 		$this->setPermission("gh.tpall");
+
+		$this->registerArgument(0, new PlayerArgs(true));
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(!$sender->hasPermission("gh.tpall")){
-			$sender->sendMessage("You not have permission to use this command");
-			return;
-		}
-		if(isset($args[0])){
-			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if(isset($args["player"])){
+			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
+				$sender->sendMessage("Player didn't exist !");
 				return;
 			}
 			foreach(Server::getInstance()->getOnlinePlayers() as $players){
+				if ($player === $players){
+					continue;
+				}
 				$players->teleport($player->getPosition());
 			}
 			$sender->sendMessage("All players have been teleported to " . $player->getName());
@@ -39,6 +43,9 @@ class TpAll extends LegacyBaseCommand{
 		}
 		$player = $sender;
 		foreach(Server::getInstance()->getOnlinePlayers() as $players){
+			if ($player === $players){
+				continue;
+			}
 			$players->teleport($player->getPosition());
 		}
 		$sender->sendMessage("All player have been teleported to you");

@@ -4,30 +4,32 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use CortexPE\Commando\exception\ArgumentOrderException;
 use Exception;
-use NgLamVN\GameHandle\Core;
+use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
 
-class UnFreeze extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "unfreeze");
+class UnFreeze extends BaseCommand{
+
+
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("UnFreeze command");
 		$this->setPermission("gh.unfreeze");
+
+		$this->registerArgument(0, new PlayerArgs());
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(isset($args[0])){
-			if(!$sender->hasPermission("gh.unfreeze")){
-				$sender->sendMessage("You not have permission to use this command");
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if(isset($args["player"])){
+			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
+			if(is_null($player)){
+				$sender->sendMessage("Player didn't exist !");
 				return;
 			}
-			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
-			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
-				return;
-			}
-
 			try{
 				$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setFreeze(false);
 			}catch(Exception){

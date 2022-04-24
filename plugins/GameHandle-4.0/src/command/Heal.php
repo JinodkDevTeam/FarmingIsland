@@ -4,39 +4,34 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Heal extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "heal");
+class Heal extends BaseCommand{
+
+	protected function prepare() : void{
 		$this->setDescription("Heal command");
 		$this->setPermission("gh.heal");
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command in-game");
-			return;
-		}
-		if(isset($args[0])){
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.heal.other")){
-				$sender->sendMessage("You not have permission to heal other player");
+				$sender->sendMessage("You don't have permission to heal other player");
 				return;
 			}
-			$player = Server::getInstance()->getPlayerByPrefix($args[0]);
-			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
+			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
+			if(is_null($player)){
+				$sender->sendMessage("Player didn't exist !");
 				return;
 			}
 			$player->setHealth(20);
 			$sender->sendMessage($player->getName() . "have been healed");
 			return;
 		}
-		if(!$sender->hasPermission("gh.heal.use")){
-			$sender->sendMessage("You not have permission to use this command");
+		if(!$sender instanceof Player){
+			$sender->sendMessage("Please use this command in-game");
 			return;
 		}
 		$sender->setHealth(20);

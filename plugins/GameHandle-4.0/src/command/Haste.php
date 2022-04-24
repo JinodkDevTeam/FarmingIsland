@@ -4,63 +4,61 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
-use NgLamVN\GameHandle\Core;
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\exception\ArgumentOrderException;
+use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\effect\EffectInstance;
 use pocketmine\entity\effect\VanillaEffects;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class Haste extends LegacyBaseCommand{
-	public function __construct(Core $core){
-		parent::__construct($core, "haste");
+class Haste extends BaseCommand{
+	/**
+	 * @throws ArgumentOrderException
+	 */
+	protected function prepare() : void{
 		$this->setDescription("Haste Effect");
-		$this->setPermission("gh.haste.use");
+		$this->setPermission("gh.haste");
+
+		$this->registerArgument(0, new IntegerArgument("level", true));
+		$this->registerArgument(1, new PlayerArgs(true));
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
-		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command in-game");
+	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
+		$level = $args["level"] ?? 1;
+		if ($level <= 0){
+			$sender->sendMessage("Level must higher than 0");
 			return;
 		}
-		if(!isset($args[0])){
-			$sender->sendMessage("/haste <level (1-5)> <player>");
-			return;
-		}
-		if(!is_integer($args[0])){
-			$sender->sendMessage("Level must be on integer type");
-			return;
-		}
-		$level = $args[0];
 		$effect = new EffectInstance(VanillaEffects::HASTE(), 99999999, $level, true);
-
-		if(isset($args[1])){
+		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.haste.other")){
-				$sender->sendMessage("You not have permission to enable haste on other player");
+				$sender->sendMessage("You don't have permission to enable haste on other player");
 				return;
 			}
-			$player = Server::getInstance()->getPlayerByPrefix($args[1]);
-			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
+			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
+			if(is_null($player)){
+				$sender->sendMessage("Player didn't exist !");
 				return;
 			}
 			if($player->getEffects()->has(VanillaEffects::HASTE())){
 				$player->getEffects()->remove(VanillaEffects::HASTE());
-				$sender->sendMessage("Disable haste on " . $player->getName());
+				$sender->sendMessage("Disabled haste on " . $player->getName());
 				return;
 			}
 			$player->getEffects()->add($effect);
-			$sender->sendMessage("Enable haste on " . $player->getName());
+			$sender->sendMessage("Enabled haste on " . $player->getName());
 			return;
 		}
-		if(!$sender->hasPermission("gh.haste.use")){
-			$sender->sendMessage("You are not have permission to use this command");
+		if(!$sender instanceof Player){
+			$sender->sendMessage("Please use this command in-game");
 			return;
 		}
-
 		if($sender->getEffects()->has(VanillaEffects::HASTE())){
 			$sender->getEffects()->remove(VanillaEffects::HASTE());
 			$sender->sendMessage("Haste Disabled !");
+			return;
 		}
 		$sender->getEffects()->add($effect);
 		$sender->sendMessage("Haste Enabled !");

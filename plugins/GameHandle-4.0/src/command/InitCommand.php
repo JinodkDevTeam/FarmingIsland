@@ -11,19 +11,9 @@ class InitCommand{
 		$cmd = $plugin->getServer()->getCommandMap();
 
 		//Legacy Command Format
-		$cmd->register("heal", new Heal($plugin));
-		$cmd->register("sell", new Sell($plugin));
-		$cmd->register("tpall", new TpAll($plugin));
-		$cmd->register("sudo", new Sudo($plugin));
 		$cmd->register("smartmine", new SmartMine($plugin));
-		$cmd->register("tutorial", new Tutorial($plugin));
 		$cmd->register("servercheck", new ServerCheck($plugin));
-		$cmd->register("mute", new Mute($plugin));
-		$cmd->register("unmute", new UnMute($plugin));
-		$cmd->register("unfreeze", new UnFreeze($plugin));
-		$cmd->register("notp", new NoTP($plugin));
-		$cmd->register("icgive", new IcGive($plugin)); //TODO: Slove NBT problem
-		$cmd->register("pos", new PlayerInfo($plugin));
+		$cmd->register("icgive", new IcGive($plugin)); //TODO: Solve NBT problem
 
 		//New Command Format
 		$cmd->register("cgive", new CGive($plugin, "cgive"));
@@ -37,5 +27,16 @@ class InitCommand{
 		$cmd->register("gm1", new Gm1($plugin, "gm1"));
 		$cmd->register("gm2", new Gm2($plugin, "gm2"));
 		$cmd->register("gm3", new Gm3($plugin, "gm3"));
+		$cmd->register("haste", new Haste($plugin, "haste"));
+		$cmd->register("heal", new Heal($plugin, "heal"));
+		$cmd->register("mute", new Mute($plugin, "mute"));
+		$cmd->register("notp", new NoTP($plugin, "notp"));
+		$cmd->register("playerinfo", new PlayerInfo($plugin, "playerinfo"));
+		$cmd->register("sell", new Sell($plugin, "sell"));
+		$cmd->register("sudo", new Sudo($plugin, "sudo"));
+		$cmd->register("tpall", new TpAll($plugin, "tpall"));
+		$cmd->register("tutorial", new Tutorial($plugin, "tutorial"));
+		$cmd->register("unfreeze", new UnFreeze($plugin, "unfreeze"));
+		$cmd->register("unmute", new UnMute($plugin, "unmute"));
 	}
 }
