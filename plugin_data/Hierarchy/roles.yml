@@ -29,7 +29,6 @@
   - shop.shop
   - ic.command
   - gh.sell
-  - gh.sell.use
   - gh.sell.all
   - gh.ac
   - gh.tutorial
@@ -196,29 +195,21 @@
   - multiworld.command.unload
   - multiworld.command.update
   - gh.feed
-  - gh.feed.use
   - gh.feed.other
   - gh.heal
-  - gh.heal.use
   - gh.heal.other
   - gh.fly
-  - gh.fly.use
   - gh.fly.other
   - gh.gm1
-  - gh.gm1.use
   - gh.gm1.other
   - gh.gm0
-  - gh.gm0.use
   - gh.gm0.other
   - gh.gm2
-  - gh.gm2.use
   - gh.gm2.other
   - gh.gm3
-  - gh.gm3.use
   - gh.gm3.other
   - gh.tpall
   - gh.haste
-  - gh.haste.use
   - gh.haste.other
   - gh.sudo
   - gh.dupe
@@ -294,7 +285,6 @@
   - shop.shop
   - ic.command
   - gh.sell
-  - gh.sell.use
   - gh.sell.all
   - gh.ac
   - gh.tutorial
@@ -376,15 +366,15 @@
   - multiworld.command.teleport
   - multiworld.command.list
   - multiworld.command.info
-  - gh.feed.use
-  - gh.heal.use
-  - gh.fly.use
-  - gh.gm1.use
-  - gh.gm0.use
-  - gh.gm2.use
-  - gh.gm3.use
+  - gh.feed
+  - gh.heal
+  - gh.fly
+  - gh.gm1
+  - gh.gm0
+  - gh.gm2
+  - gh.gm3
   - gh.tpall
-  - gh.haste.use
+  - gh.haste
   - gh.mute
   - gh.unmute
   - gh.freeze
@@ -423,7 +413,6 @@
   - shop.shop
   - ic.command
   - gh.sell
-  - gh.sell.use
   - gh.sell.all
   - gh.ac
   - gh.tutorial
@@ -454,9 +443,9 @@
   - favoriteisland.command
   - pocketmine.command.teleport
   - Farms.VIP
-  - gh.feed.use
-  - gh.heal.use
-  - gh.fly.use
+  - gh.feed
+  - gh.heal
+  - gh.fly
 - ID: 5
   Name: Vip
   isDefault: false
@@ -487,7 +476,6 @@
   - shop.shop
   - ic.command
   - gh.sell
-  - gh.sell.use
   - gh.sell.all
   - gh.ac
   - gh.tutorial
@@ -518,6 +506,6 @@
   - favoriteisland.command
   - pocketmine.command.teleport
   - Farms.VIP
-  - gh.feed.use
-  - gh.heal.use
+  - gh.feed
+  - gh.heal
 ...
