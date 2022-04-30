@@ -64,8 +64,8 @@ class ClaimSubCommand extends SubCommand
 			$inv = $sender->getInventory();
 			$inv->addItem(VanillaItems::WHEAT_SEEDS()->setCount(10));
 			$inv->addItem(VanillaItems::DIAMOND_HOE());
-			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::DIRT)->setCount(10));
-			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::SAPLING)->setCount(5));
+			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::DIRT, 0)->setCount(10));
+			$inv->addItem(ItemFactory::getInstance()->get(ItemIds::SAPLING, 0)->setCount(5));
 			$inv->addItem(VanillaItems::BONE_MEAL()->setCount(20));
 			$inv->addItem(CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD)->toItem());
 			$sender->sendMessage($this->translateString("claim.success"));

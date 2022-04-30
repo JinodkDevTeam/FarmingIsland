@@ -56,7 +56,7 @@ class IslandManager{
 	public function AddHelperForm(Player $player){
 		$players = ["<None>"];
 		foreach(Server::getInstance()->getOnlinePlayers() as $p){
-			array_push($players, $p->getName());
+			$players[] = $p->getName();
 		}
 
 		$form = new CustomForm(function(Player $player, $data) use ($players){
@@ -76,12 +76,12 @@ class IslandManager{
 		$pos = new Position($player->getPosition()->getX(), $player->getPosition()->getZ(), $player->getPosition()->getZ(), $player->getWorld());
 		$plot = MyPlot::getInstance()->getPlotByPosition($pos);
 		if($plot == null){
-			$player->sendMessage("§cBạn không đứng trong island");
+			$player->sendMessage("§cYou are not standing on any island !");
 			return;
 		}
 		$helpers = ["<None>"];
 		foreach($plot->helpers as $h){
-			array_push($helpers, $h);
+			$helpers[] = $h;
 		}
 		$form = new CustomForm(function(Player $player, $data) use ($helpers){
 			if(!isset($data[0])) return;

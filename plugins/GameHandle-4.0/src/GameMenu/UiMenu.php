@@ -25,9 +25,7 @@ class UiMenu{
 		}
 		$list[] = "teleport";
 		$list[] = "shop";
-		$list[] = "vip-shop";
 		$list[] = "sell-all";
-		$list[] = "vip";
 		$list[] = "tutorial";
 		$list[] = "invcraft";
 		$list[] = "backpack";
@@ -47,19 +45,13 @@ class UiMenu{
 					Server::getInstance()->dispatchCommand($player, "favislands");
 					break;
 				case "teleport":
-					/*new TeleportManager($player);*/
-					break;
-				case "vip":
-					/*new VipManager($player);*/
+					new TeleportManager($player);
 					break;
 				case "shop":
 					Server::getInstance()->dispatchCommand($player, "shop");
 					break;
 				case "sell-all":
 					Server::getInstance()->dispatchCommand($player, "sell all");
-					break;
-				case "vip-shop":
-					/*Server::getInstance()->dispatchCommand($player, "cuahang");*/
 					break;
 				case "is-info":
 					$this->IslandInfoForm($player);
@@ -89,11 +81,9 @@ class UiMenu{
 			$form->addButton("§　§lIsland Info\nThông tin đảo");
 			$form->addButton("§　§lFavorite Islands");
 		}
-		$form->addButton("§lTeleport(Comming soon)\nDịch chuyển");
+		$form->addButton("§lFast Travel\nDịch chuyển nhanh");
 		$form->addButton("§　§lShop");
-		$form->addButton("§　§lVipItem Shop\n(Comming soon)");
 		$form->addButton("§lSell All Inventory\nBán toàn bộ vật phẩm");
-		$form->addButton("§　§lVIP(Comming soon)");
 		$form->addButton("§lTutorial\nXem cách chơi");
 		$form->addButton("§lInvCraft\nBàn chế tạo siêu to khổng lồ");
 		$form->addButton("§　§lBackpack");
