@@ -326,7 +326,6 @@ class FishingHook extends Projectile{
 		$player = $this->getOwningEntity();
 		if($player instanceof Player){
 			Loader::getInstance()->setFishingHook($player, null);
-			$player->sendMessage("Fishing Hook Despawned");
 		}
 		parent::flagForDespawn();
 	}
