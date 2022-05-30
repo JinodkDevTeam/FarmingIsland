@@ -1,0 +1,8 @@
+name: libAwaitEconomy
+antigen: NgLam2911/libAwaitEconomy
+api: 4.0.0
+version: 0.1
+author: NgLam2911
+description: Economy library for plugin developer. Support EconomyAPI, Capital, BedrockEconomy
+
+
