@@ -24,7 +24,7 @@ class UpdateInfo{
 		});
 		$text = [
 			"§　Updates:",
-			"- Update server to MCBE 1.18.30",
+			"- Update server to MCBE 1.19.0",
 			"Official wiki: bit.ly/fi-wiki",
 			"Vote for server: bit.ly/fi-vote",
 			"Official Facebook group: bit.ly/jinodkgroupfb",
