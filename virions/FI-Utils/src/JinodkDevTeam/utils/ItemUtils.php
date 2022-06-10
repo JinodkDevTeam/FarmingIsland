@@ -42,10 +42,7 @@ class ItemUtils{
 			return ItemFactory::getInstance()->get($id);
 		}
 		$citem = CustomItemFactory::getInstance()->get($id);
-		if ($citem == null){
-			return null;
-		}
-		return $citem->toItem();
+		return $citem?->toItem();
 	}
 
 	/**
@@ -89,7 +86,7 @@ class ItemUtils{
 				continue;
 			}
 			foreach($itemSlots as $index => $slot){
-				if($slot->equals($item, !$slot->hasAnyDamageValue(), true)){
+				if($slot->equals($item, !$slot->hasAnyDamageValue())){
 					$amount = min($item->getCount(), $slot->getCount());
 					$slot->setCount($slot->getCount() - $amount);
 					$item->setCount($item->getCount() - $amount);
@@ -127,7 +124,7 @@ class ItemUtils{
 	public static function ItemArraytoStringArray(array $items): array{
 		$data = [];
 		foreach($items as $item){
-			array_push($data, self::toString($item));
+			$data[] = self::toString($item);
 		}
 		return $data;
 	}
@@ -140,7 +137,7 @@ class ItemUtils{
 	public static function StringArrayToItemArray(array $data): array{
 		$items = [];
 		foreach($data as $d){
-			array_push($items, self::fromString($d));
+			$items[] = self::fromString($d);
 		}
 		return $items;
 	}
@@ -153,7 +150,7 @@ class ItemUtils{
 	public static function ItemArray2string(array $items): string{
 		$data = [];
 		foreach($items as $item){
-			array_push($data, $item->nbtSerialize());
+			$data[] = $item->nbtSerialize();
 		}
 		return utf8_encode(serialize($data));
 	}
@@ -168,7 +165,7 @@ class ItemUtils{
 		$array = unserialize(utf8_decode($data));
 		$items = [];
 		foreach($array as $nbt){
-			array_push($items, Item::nbtDeserialize($nbt));
+			$items[] = Item::nbtDeserialize($nbt);
 		}
 		return $items;
 	}
