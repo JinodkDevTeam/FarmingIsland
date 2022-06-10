@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Mail;
 
+use JinodkDevTeam\utils\PlayerUtils;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use SOFe\AwaitGenerator\Await;
@@ -25,7 +26,7 @@ class EventListener implements Listener{
 			$unread = yield $this->getLoader()->getProvider()->selectUnread($player->getName());
 			$count = count($unread);
 			if ($count > 0){
-				$player->sendMessage("[Mail] You have " . $count . " unread messages !");
+				PlayerUtils::addToast($player, "MailSystem", "You have " . $count . " unread messages !");
 			}
 		});
 	}

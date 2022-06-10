@@ -59,11 +59,11 @@ class MailInfo extends BaseUI{
 				"Attachment:"
 			];
 			if($items == []){
-				array_push($content, "- None");
+				$content[] = "- None";
 			}else{
 				foreach($items as $item){
 					if($item->hasCustomName()) $name = $item->getCustomName();else $name = $item->getName();
-					array_push($content, "x" . $item->getCount() . " " . $name);
+					$content[] = "x" . $item->getCount() . " " . $name;
 				}
 			}
 			$form->setContent(implode("\n", $content));
@@ -107,7 +107,7 @@ class MailInfo extends BaseUI{
 		}
 		$form = new ModalForm(function(Player $player, ?bool $data) use ($mail){
 			if(!isset($data)) return;
-			if($data == false) return;
+			if(!$data) return;
 			if ($this->mode == self::FROM){
 				if ($mail->isDeletedByTo()){
 					$this->getLoader()->getProvider()->remove($mail->getId());

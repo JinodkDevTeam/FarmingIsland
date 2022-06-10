@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Mail\ui;
 
 use JinodkDevTeam\utils\ItemUtils;
+use JinodkDevTeam\utils\PlayerUtils;
 use jojoe77777\FormAPI\CustomForm;
 use Mail\Loader;
 use Mail\Mail;
@@ -55,13 +56,15 @@ class CreateMailUI extends BaseUI{
 		$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory) use ($to, $title, $message){
 			$items = [];
 			foreach($inventory->getContents() as $item){
-				array_push($items, $item);
+				$items[] = $item;
 			}
 			$data = ItemUtils::ItemArray2string($items);
 			$this->createMail($player->getName(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 			$notice = Server::getInstance()->getPlayerExact($to);
-			$notice?->sendMessage("[Mail] You have new message from " . $player->getName());
+			if (!is_null($notice)){
+				PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $player->getName());
+			}
 		});
 		$menu->send($player);
 	}
