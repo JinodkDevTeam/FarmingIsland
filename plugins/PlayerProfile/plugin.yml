@@ -1,5 +1,0 @@
-name: PlayerProfile
-src-namespace-prefix: NgLam2911\PlayerProfile
-main: NgLam2911\PlayerProfile\PlayerProfile
-version: 0.0.1
-api: 4.0.0
