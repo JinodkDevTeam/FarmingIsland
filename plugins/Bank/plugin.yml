@@ -3,7 +3,7 @@ src-namespace-prefix: Bank
 main: Bank\Bank
 api: 4.0.0
 author: JinodkDevTeam
-version: 0.1
+version: 0.2
 depend: EconomyAPI
 description: Bank system use in FarmingIslandv2
 

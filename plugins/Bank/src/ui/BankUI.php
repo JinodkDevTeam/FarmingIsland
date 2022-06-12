@@ -21,21 +21,32 @@ class BankUI extends BaseUI{
 				return;
 			}
 			$balance = $data[0]["Money"];
+			$upgrade = $data[0]["Upgrade"];
+			$limit = $this->getBank()->getProvider()->getBankLimit($upgrade);
+			$upgrade_name = $this->getBank()->getProvider()->getUpgradeName($upgrade);
 			$purse = EconomyAPI::getInstance()->myMoney($player);
-			$form = new SimpleForm(function(Player $player, ?int $data) use ($balance){
+			$form = new SimpleForm(function(Player $player, ?int $data) use ($upgrade, $balance){
 				if(($data == null) or ($data == 0)) return;
 
 				match ($data) {
-					1 => new DepositUI($player, $this->getBank(), $balance),
-					2 => new WithdrawUI($player, $this->getBank(), $balance)
+					1 => new DepositUI($player, $this->getBank(), $balance, $upgrade),
+					2 => new WithdrawUI($player, $this->getBank(), $balance),
+					3 => new UpgradeAccountUI($player, $this->getBank())
 				};
 			});
 
 			$form->setTitle("Personal Bank Account");
-			$form->setContent("Current balance: " . $balance . "\n" . "Your purse: " . $purse);
+			$content = [
+				"Current balance: " . $balance,
+				"Your purse: " . $purse,
+				"Account type: " . $upgrade_name,
+				"Balance Limit: " . $limit
+			];
+			$form->setContent(implode("\n", $content));
 			$form->addButton("EXIT");
 			$form->addButton("Deposit coins");
 			$form->addButton("Withdraw coins");
+			$form->addButton("Upgrade account");
 
 			$player->sendForm($form);
 		});

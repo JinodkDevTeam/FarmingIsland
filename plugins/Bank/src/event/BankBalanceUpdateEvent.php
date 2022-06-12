@@ -13,17 +13,20 @@ use pocketmine\Server;
 class BankBalanceUpdateEvent extends PluginEvent implements Cancellable{
 	use CancellableTrait;
 
-	public const TYPE_DEPOSIT = 0;
-	public const TYPE_WITHDRAW = 1;
+	public const TYPE_NONE = 0;
+	public const TYPE_DEPOSIT = 1;
+	public const TYPE_WITHDRAW = 2;
 
 	protected Player|string $player;
-	protected float $amount;
+	protected float $old_balance;
+	protected float $new_balance;
 	protected int $type;
 
-	public function __construct(Player|string $player, float $amount, int $type){
+	public function __construct(Player|string $player, float $old_balance, float $new_balance, int $type){
 		parent::__construct($this->getBank());
 		$this->player = $player;
-		$this->amount = $amount;
+		$this->old_balance = $old_balance;
+		$this->new_balance = $new_balance;
 		$this->type = $type;
 	}
 
@@ -41,12 +44,13 @@ class BankBalanceUpdateEvent extends PluginEvent implements Cancellable{
 		return $this->type;
 	}
 
-	public function getAmount() : float{
-		return $this->amount;
+	public function getOldBalance() : float{
+		return $this->old_balance;
+	}
+	
+	public function getNewBalance() : float{
+		return $this->new_balance;
 	}
 
-	public function setAmount(float $amount) : void{
-		$this->amount = $amount;
-	}
 
 }

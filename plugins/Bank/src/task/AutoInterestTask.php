@@ -21,7 +21,12 @@ class AutoInterestTask extends Task{
 			foreach($rows as $row){
 				$balance = (float) $row["Money"];
 				$balance = $balance + round($balance * ($interest / 100), 2, PHP_ROUND_HALF_DOWN);
-				$this->getBank()->getProvider()->update($row["Player"], $balance);
+				$upgrade = (int) $row["Upgrade"];
+				$max = $this->getBank()->getProvider()->getBankLimit($upgrade);
+				if($balance > $max){
+					$balance = $max;
+				}
+				$this->getBank()->getProvider()->updateBalance($row["Player"], $balance);
 			}
 		});
 	}

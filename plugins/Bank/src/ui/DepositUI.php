@@ -11,9 +11,11 @@ use pocketmine\player\Player;
 
 class DepositUI extends BaseUI{
 	private float $balance;
+	private int $upgrade;
 
-	public function __construct(Player $player, Bank $bank, float $balance){
+	public function __construct(Player $player, Bank $bank, float $balance, int $upgrade){
 		$this->balance = $balance;
+		$this->upgrade = $upgrade;
 		parent::__construct($player, $bank);
 	}
 
@@ -61,7 +63,11 @@ class DepositUI extends BaseUI{
 			$player->sendMessage("You can't deposit with amount that higher than your coins in purse !");
 			return;
 		}
-		$this->getBank()->getProvider()->update($player, $this->balance + $amount);
+		$limit = $this->getBank()->getProvider()->getBankLimit($this->upgrade);
+		if ($limit < $this->balance + $amount) {
+			$amount = $limit - $this->balance;
+		}
+		$this->getBank()->getProvider()->updateBalance($player, $this->balance + $amount);
 		EconomyAPI::getInstance()->reduceMoney($player, $amount);
 		$player->sendMessage("Deposit success full (- " . $amount . " coin)");
 	}

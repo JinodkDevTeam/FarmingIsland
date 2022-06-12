@@ -58,7 +58,7 @@ class WithdrawUI extends BaseUI{
 			$player->sendMessage("You can't withdraw with amount that higher than your balance !");
 			return;
 		}
-		$this->getBank()->getProvider()->update($player, $this->balance - $amount);
+		$this->getBank()->getProvider()->updateBalance($player, $this->balance - $amount);
 		EconomyAPI::getInstance()->addMoney($player, $amount);
 		$player->sendMessage("Withdraw success full (+ " . $amount . " coin)");
 	}
