@@ -8,8 +8,9 @@ use pocketmine\player\Player;
 
 abstract class BaseUI{
 	protected Loader $loader;
+	protected string $username = "";
 
-	public function __construct(Loader $loader, Player $player){
+	public function __construct(Loader $loader, Player $player, string $username = ""){
 		$this->loader = $loader;
 		$this->execute($player);
 	}
@@ -19,5 +20,9 @@ abstract class BaseUI{
 
 	protected function getLoader() : Loader{
 		return $this->loader;
+	}
+
+	protected function getUsername() : string{
+		return $this->username;
 	}
 }

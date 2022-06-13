@@ -7,7 +7,6 @@ use JinodkDevTeam\utils\ItemUtils;
 use JinodkDevTeam\utils\PlayerUtils;
 use jojoe77777\FormAPI\CustomForm;
 use Mail\Loader;
-use Mail\Mail;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
@@ -16,11 +15,11 @@ use pocketmine\Server;
 
 class CreateMailUI extends BaseUI{
 
-	protected string $reply = "";
+	protected string $to = "";
 
-	public function __construct(Loader $loader, Player $player, string $reply = ""){
-		$this->reply = $reply;
-		parent::__construct($loader, $player);
+	public function __construct(Loader $loader, Player $player, string $username = "", string $to = ""){
+		$this->to = $to;
+		parent::__construct($loader, $player, $username);
 	}
 
 	public function execute(Player $player) : void{
@@ -37,12 +36,12 @@ class CreateMailUI extends BaseUI{
 			if($attach){
 				$this->AttachItems($player, $to, $title, $message);
 			}else{
-				$this->createMail($player->getName(), $to, $title, $message);
+				$this->getLoader()->sendMail($this->getUsername(), $to, $title, $message);
 				$player->sendMessage("Mail Created !");
 			}
 		});
 		$form->setTitle("Create new mail");
-		$form->addInput("To:", "Steve123", $this->reply);
+		$form->addInput("To:", "Steve123", $this->to);
 		$form->addInput("Title:", "Hi ?");
 		$form->addInput("Message:", "Type some thing ...");
 		$form->addToggle("Attach items", false);
@@ -59,7 +58,7 @@ class CreateMailUI extends BaseUI{
 				$items[] = $item;
 			}
 			$data = ItemUtils::ItemArray2string($items);
-			$this->createMail($player->getName(), $to, $title, $message, $data);
+			$this->getLoader()->sendMail($this->getUsername(), $to, $title, $message, $data);
 			$player->sendMessage("Mail Created !");
 			$notice = Server::getInstance()->getPlayerExact($to);
 			if (!is_null($notice)){
@@ -69,8 +68,5 @@ class CreateMailUI extends BaseUI{
 		$menu->send($player);
 	}
 
-	public function createMail(string $from, string $to, string $title, string $message, string $items = "") : void{
-		$mail = new Mail(-1, $from, $to, $title, $message, $items);
-		$this->getLoader()->getProvider()->register($mail);
-	}
+
 }

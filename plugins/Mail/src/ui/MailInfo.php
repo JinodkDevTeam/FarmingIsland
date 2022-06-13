@@ -19,10 +19,10 @@ class MailInfo extends BaseUI{
 	protected int $mode = 1;
 	protected int $mail_id = 0;
 
-	public function __construct(Loader $loader, Player $player, int $mail_id = 0, int $mode = 1){
+	public function __construct(Loader $loader, Player $player, string $username = "", int $mail_id = 0, int $mode = 1){
 		$this->mode = $mode;
 		$this->mail_id = $mail_id;
-		parent::__construct($loader, $player);
+		parent::__construct($loader, $player, $username);
 	}
 
 	public function execute(Player $player) : void{
@@ -41,7 +41,7 @@ class MailInfo extends BaseUI{
 						$this->delete($player, $mail);
 						break;
 					case 1:
-						new CreateMailUI($this->getLoader(), $player, $mail->getFrom());
+						new CreateMailUI($this->getLoader(), $player, $this->getUsername(), $mail->getFrom());
 						break;
 					case 2:
 						$this->claimItems($player, $mail);

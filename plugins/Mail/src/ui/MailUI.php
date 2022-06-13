@@ -13,13 +13,13 @@ class MailUI extends BaseUI{
 			if(!isset($data)) return;
 			switch($data){
 				case 0:
-					new CreateMailUI($this->getLoader(), $player);
+					new CreateMailUI($this->getLoader(), $player, $this->getUsername());
 					break;
 				case 1:
-					new SendedMailsUI($this->getLoader(), $player);
+					new SendedMailsUI($this->getLoader(), $player, $this->getUsername());
 					break;
 				case 2:
-					new MyMailsUI($this->getLoader(), $player);
+					new MyMailsUI($this->getLoader(), $player, $this->getUsername());
 					break;
 			}
 		});

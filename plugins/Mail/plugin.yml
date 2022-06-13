@@ -15,3 +15,5 @@ depend:
 permissions:
   mail.command:
     default: true
+  mail.login:
+    default: op

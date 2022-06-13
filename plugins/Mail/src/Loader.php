@@ -31,4 +31,9 @@ class Loader extends PluginBase{
 		$this->getProvider()->close();
 	}
 
+	public function sendMail(string $from, string $to, string $title, string $message, string $items = "") : void{
+		$mail = new Mail(-1, $from, $to, $title, $message, $items);
+		$this->getProvider()->register($mail);
+	}
+
 }

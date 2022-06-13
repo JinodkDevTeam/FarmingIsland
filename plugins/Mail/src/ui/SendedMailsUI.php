@@ -12,7 +12,7 @@ class SendedMailsUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$mails_data = yield $this->getLoader()->getProvider()->selectFrom($player->getName());
+			$mails_data = yield $this->getLoader()->getProvider()->selectFrom($this->getUsername());
 			if(empty($mails_data)){
 				$player->sendMessage("You dont have any sended mails");
 				return;
@@ -20,7 +20,7 @@ class SendedMailsUI extends BaseUI{
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mails_data){
 				if(!isset($data)) return;
 				$mail = Mail::fromArray($mails_data[$data]);
-				new MailInfo($this->getLoader(), $player, $mail->getId(), MailInfo::FROM);
+				new MailInfo($this->getLoader(), $player, $this->getUsername(), $mail->getId(), MailInfo::FROM);
 			});
 			foreach($mails_data as $mail_data){
 				$mail = Mail::fromArray($mail_data);

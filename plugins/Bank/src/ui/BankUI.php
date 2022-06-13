@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Bank\ui;
 
+use jojoe77777\FormAPI\ModdedSimpleForm;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;

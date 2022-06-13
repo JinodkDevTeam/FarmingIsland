@@ -17,7 +17,7 @@ class Mail{
 	protected bool $isdeletedbyfrom = false;
 	protected bool $isdeletedbyto = false;
 
-	public function __construct(int $id = 0, string $from = "", string $to = "", string $title = "", string $msg = "", string $items = "", int $time = 0, bool $isread = false, bool $isclaimed = false, bool $isdeletedbyfrom = false, bool $isdeletedbyto = false){
+	public function __construct(int $id = -1, string $from = "", string $to = "", string $title = "", string $msg = "", string $items = "", int $time = 0, bool $isread = false, bool $isclaimed = false, bool $isdeletedbyfrom = false, bool $isdeletedbyto = false){
 		$this->id = $id;
 		$this->from = $from;
 		$this->to = $to;

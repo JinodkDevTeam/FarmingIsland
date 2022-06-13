@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Mail\command;
 
 use Mail\Loader;
+use Mail\ui\CreateMailUI;
 use Mail\ui\MailUI;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -23,8 +24,23 @@ class MailCommand extends Command implements PluginOwned{
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if($sender instanceof Player){
-			new MailUI($this->getLoader(), $sender);
-			return;
+			if (isset($args[0])) {
+				if($args[0] == "login"){
+					if(!isset($args[1])){
+						$sender->sendMessage("§cUsage: /mail login <username>");
+						return;
+					}
+					if(!$sender->hasPermission("mail.login")){
+						$sender->sendMessage("You don't have permission to use this feature");
+						return;
+					}
+					new MailUI($this->getLoader(), $sender, $args[1]);
+					return;
+				}
+				new CreateMailUI($this->getLoader(), $sender, $sender->getName(), $args[0]);
+				return;
+			}
+			new MailUI($this->getLoader(), $sender, $sender->getName());
 		}
 		$sender->sendMessage("Please use this command as a player !");
 	}
