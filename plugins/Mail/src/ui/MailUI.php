@@ -24,6 +24,7 @@ class MailUI extends BaseUI{
 			}
 		});
 		$form->setTitle("Mail");
+		$form->setContent("Username: " . $this->getUsername());
 		$form->addButton("Create new mail");
 		$form->addButton("Sended mails");
 		$form->addButton("My mails");

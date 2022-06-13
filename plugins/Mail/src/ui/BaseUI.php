@@ -12,6 +12,7 @@ abstract class BaseUI{
 
 	public function __construct(Loader $loader, Player $player, string $username = ""){
 		$this->loader = $loader;
+		$this->username = $username;
 		$this->execute($player);
 	}
 

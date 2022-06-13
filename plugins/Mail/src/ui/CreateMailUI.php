@@ -62,7 +62,7 @@ class CreateMailUI extends BaseUI{
 			$player->sendMessage("Mail Created !");
 			$notice = Server::getInstance()->getPlayerExact($to);
 			if (!is_null($notice)){
-				PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $player->getName());
+				PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
 			}
 		});
 		$menu->send($player);
