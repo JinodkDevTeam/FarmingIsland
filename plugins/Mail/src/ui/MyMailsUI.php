@@ -31,7 +31,6 @@ class MyMailsUI extends BaseUI{
 				}
 			}
 			$form->setTitle("My mails");
-
 			$player->sendForm($form);
 		});
 	}
