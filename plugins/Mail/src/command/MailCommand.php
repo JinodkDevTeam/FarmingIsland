@@ -41,6 +41,7 @@ class MailCommand extends Command implements PluginOwned{
 				return;
 			}
 			new MailUI($this->getLoader(), $sender, $sender->getName());
+			return;
 		}
 		$sender->sendMessage("Please use this command as a player !");
 	}
