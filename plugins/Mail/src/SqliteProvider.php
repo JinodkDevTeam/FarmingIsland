@@ -55,13 +55,13 @@ class SqliteProvider{
 
 	public function selectFrom(string $name) : Generator{
 		return yield $this->asyncSelect(self::SELECT_FROM, [
-			"name" => $name
+			"name" => base64_encode($name)
 		]);
 	}
 
 	public function selectTo(string $name) : Generator{
 		return yield $this->asyncSelect(self::SELECT_TO, [
-			"name" => $name
+			"name" => base64_encode($name)
 		]);
 	}
 
@@ -73,7 +73,7 @@ class SqliteProvider{
 
 	public function selectUnread(string $name) : Generator{
 		return yield $this->asyncSelect(self::SELECT_UNREAD, [
-			"name" => $name
+			"name" => base64_encode($name)
 		]);
 	}
 
@@ -113,10 +113,10 @@ class SqliteProvider{
 
 	public function register(Mail $mail) : void{
 		$this->db->executeChange(self::REGISTER, [
-			"from" => $mail->getFrom(),
-			"to" => $mail->getTo(),
-			"title" => $mail->getTitle(),
-			"msg" => $mail->getMsg(),
+			"from" => base64_encode($mail->getFrom()),
+			"to" => base64_encode($mail->getTo()),
+			"title" => base64_encode($mail->getTitle()),
+			"msg" => base64_encode($mail->getMsg()),
 			"items" => $mail->getItems(),
 			"time" => time()
 		]);

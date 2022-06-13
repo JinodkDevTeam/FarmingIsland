@@ -34,10 +34,10 @@ class Mail{
 	public static function fromArray(array $data) : Mail{
 		return new Mail(
 			(int) $data["Id"],
-			(string) $data["FromName"],
-			(string) $data["ToName"],
-			(string) $data["Title"],
-			(string) $data["Msg"],
+			(string) base64_decode($data["FromName"]),
+			(string) base64_decode($data["ToName"]),
+			(string) base64_decode($data["Title"]),
+			(string) base64_decode($data["Msg"]),
 			(string) $data["Items"],
 			(int) $data["Time"],
 			(bool) $data["IsRead"],
@@ -49,10 +49,10 @@ class Mail{
 
 	public function toArray() : array{
 		$data["Id"] = $this->getId();
-		$data["FromName"] = $this->getFrom();
-		$data["ToName"] = $this->getTo();
-		$data["Title"] = $this->getTitle();
-		$data["Msg"] = $this->getMsg();
+		$data["FromName"] = base64_encode($this->getFrom());
+		$data["ToName"] = base64_encode($this->getTo());
+		$data["Title"] = base64_encode($this->getTitle());
+		$data["Msg"] = base64_encode($this->getMsg());
 		$data["Items"] = $this->getItems();
 		$data["Time"] = $this->getTime();
 		$data["IsRead"] = $this->isRead();
