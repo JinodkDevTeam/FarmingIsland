@@ -1,0 +1,6 @@
+name: CropsQuality
+api: 4.0.0
+version: 0.0.1
+author: NgLam2911
+main: CropsQuality/CropQuality
+src-namespace-prefix: CropsQuality
