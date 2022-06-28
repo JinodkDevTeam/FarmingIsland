@@ -43,7 +43,7 @@ class Menu{
 		return null;
 	}
 
-	public function registerMenuItem(Player $player){
+	public function registerMenuItem(Player $player) : void{
 		if($player->getInventory()->getHotbarSlotItem(8)->getNamedTag()->getTag("menu-mode") !== null){
 			return;
 		}
@@ -57,7 +57,7 @@ class Menu{
 		$player->getInventory()->setItem(8, $i);
 	}
 
-	public function onTap(PlayerInteractEvent|PlayerItemUseEvent $event){
+	public function onTap(PlayerInteractEvent|PlayerItemUseEvent $event) : void{
 		$player = $event->getPlayer();
 
 		$slot = $player->getInventory()->getHeldItemIndex();
@@ -73,7 +73,7 @@ class Menu{
 		}
 	}
 
-	public function onDrop(PlayerDropItemEvent $event){
+	public function onDrop(PlayerDropItemEvent $event) : void{
 		$item = $event->getItem();
 		$nbt = $item->getNamedTag();
 		if($nbt->getTag("menu") !== null){
@@ -83,7 +83,7 @@ class Menu{
 		}
 	}
 
-	public function onTrans(InventoryTransactionEvent $event){
+	public function onTrans(InventoryTransactionEvent $event) : void{
 		$trans = $event->getTransaction();
 		$actions = $trans->getActions();
 		foreach($actions as $action){

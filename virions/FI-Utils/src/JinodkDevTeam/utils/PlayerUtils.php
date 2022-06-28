@@ -7,7 +7,7 @@ use pocketmine\network\mcpe\protocol\ToastRequestPacket;
 use pocketmine\player\Player;
 
 class PlayerUtils{
-	public static function addToast(Player $player, string $title, string $body){
+	public static function addToast(Player $player, string $title, string $body) : void{
 		$packet = ToastRequestPacket::create($title, $body);
 		$player->getNetworkSession()->sendDataPacket($packet);
 	}

@@ -16,7 +16,7 @@ class UiMenu{
 		$this->MenuForm($player);
 	}
 
-	public function MenuForm(Player $player){
+	public function MenuForm(Player $player) : void{
 		$list = [];
 		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
 			$list[] = "is-manager";
@@ -32,6 +32,7 @@ class UiMenu{
 		$list[] = "mail";
 		$list[] = "bank";
 		$list[] = "bazaar";
+		$list[] = "about";
 
 		$form = new SimpleForm(function(Player $player, $data) use ($list) : void{
 			if(!isset($data)){
@@ -74,6 +75,9 @@ class UiMenu{
 				case "bazaar":
 					Server::getInstance()->dispatchCommand($player, "bazaar");
 					break;
+				case "about":
+					$this->About($player);
+					break;
 			}
 		});
 		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
@@ -90,6 +94,7 @@ class UiMenu{
 		$form->addButton("§　§lMail");
 		$form->addButton("§　§lBank");
 		$form->addButton("§　§lBazaar");
+		$form->addButton("§　§lAbout FarmingIsland");
 		$form->setTitle("§　Island Menu");
 		$player->sendForm($form);
 	}
@@ -102,7 +107,7 @@ class UiMenu{
 		return null;
 	}
 
-	public function IslandInfoForm(Player $player){
+	public function IslandInfoForm(Player $player) : void{
 		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 		if($plot == null){
 			$player->sendMessage("Failed to get island info.");
@@ -122,6 +127,52 @@ class UiMenu{
 		$form->addLabel("§　Owner: " . $plot->owner);
 		$form->addLabel("§　Island Name: " . $plot->name);
 		$form->addLabel("§　Helpers: " . $h);
+
+		$player->sendForm($form);
+	}
+
+	public function About(Player $player) : void{
+		$form = new SimpleForm(function(Player $player, ?int $data){
+			if (is_null($data)){
+				return;
+			}
+			if ($data == 0){
+				$this->Credits($player);
+			}
+		});
+		$form->setTitle("§　§l§eAbout FarmingIsland");
+		$text = [
+			"Version: " . Core::VERSION,
+			"Developer: JinodkDevTeam",
+			"Github: github.com/JinodkDevTeam",
+			"",
+			"FarmingIsland là một chế độ mới được phát triển bởi JinodkDevTeam.",
+			"Hướng đến lối chơi nhẹ nhàng, chill khi bạn được quyết định cách bạn trải nghiệm chế độ này.",
+			"Tất nhiên là server sẽ không có bất cứ hình thức Pay to win nào cả nhằm đảm bảo cân bằng cho tất cả các người chơi.",
+			"",
+			"Nếu bạn thấy server hay, hãy ủng hộ team của bọn mình để chế độ này có thể phát triển nhiều hơn nữa :>",
+			"",
+			"Thanks for your support!",
+		];
+		$form->setContent(implode("\n", $text));
+		$form->addButton("§　§lCredits");
+		$player->sendForm($form);
+	}
+
+	public function Credits(Player $player) : void{
+		$form = new CustomForm(function(Player $player, ?array $data){
+			//NOOP
+		});
+		$form->setTitle("§　§lCredits");
+		$form->addLabel("§　--Staffs|JinodkDevTeam--");
+		$form->addLabel("§　JINODK - Host");
+		$form->addLabel("§　NgLam - Developer, Gameplay Designer");
+		$form->addLabel("§　");
+		$form->addLabel("§　--SPECIAL THANKS TO--");
+		$form->addLabel("§　Campiole - Tester");
+		$form->addLabel("§　PikarioVN - Tester");
+		$form->addLabel("§　EggyUnicycle766 - Tester");
+		$form->addLabel("§　HKYT19 - Youtuber");
 
 		$player->sendForm($form);
 	}
