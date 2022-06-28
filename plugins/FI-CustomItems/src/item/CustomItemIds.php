@@ -130,7 +130,15 @@ final class CustomItemIds{
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;
+	public const FIBERGLASS_ROD = 2202;
+	public const ROD_OF_CHALLENGING = 2203;
+	public const ROD_OF_CHAMPIONS = 2204;
+	public const ROD_OF_LEGENDS = 2205;
+	public const ANCIENT_ROD = 2206;
+	public const ROD_OF_THE_SEA = 2207;
+
 	public const OP_AUTOMATION_ROD = 2250;
+	public const MECHANICAL_ROD = 2251;
 
 	public const GAME_BREAKER = 3000;
 	public const GAME_ANNIHILATOR = 3001;

@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CustomItems\item;
+namespace CustomItems\item\fishingrod;
 
+use CustomItems\item\CustomItem;
 use FishingModule\event\EntityFishEvent;
 use FishingModule\event\FishingHookHookEvent;
 

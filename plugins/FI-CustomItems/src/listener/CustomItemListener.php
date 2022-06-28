@@ -5,7 +5,7 @@ namespace CustomItems\listener;
 
 use CustomItems\item\armor\CustomBoots;
 use CustomItems\item\CustomItemFactory;
-use CustomItems\item\CustomRod;
+use CustomItems\item\fishingrod\CustomRod;
 use CustomItems\item\CustomTool;
 use FishingModule\event\EntityFishEvent;
 use FishingModule\event\FishingHookHookEvent;

@@ -4,6 +4,16 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use CustomItems\item\armor\MagmaBoots;
+use CustomItems\item\fishingrod\AncientRod;
+use CustomItems\item\fishingrod\auto\MechanicalRod;
+use CustomItems\item\fishingrod\auto\OpAutomationRod;
+use CustomItems\item\fishingrod\FiberglassRod;
+use CustomItems\item\fishingrod\OpRod;
+use CustomItems\item\fishingrod\RodOfChallenging;
+use CustomItems\item\fishingrod\RodOfChampions;
+use CustomItems\item\fishingrod\RodOfLegends;
+use CustomItems\item\fishingrod\RodOfTheSea;
+use CustomItems\item\fishingrod\StarterRod;
 use CustomItems\item\utils\Rarity;
 use pocketmine\block\utils\TreeType;
 use pocketmine\item\ItemFactory;
@@ -99,6 +109,13 @@ class CustomItemFactory{
 		$this->register(new OpRod(new CustomItemIdentifier(CustomItemIds::OP_ROD), "OP Rod", Rarity::SPECIAL()));
 		$this->register(new StarterRod(new CustomItemIdentifier(CustomItemIds::STARTER_ROD), "Starter Rod", Rarity::COMMON()));
 		$this->register(new OpAutomationRod(new CustomItemIdentifier(CustomItemIds::OP_AUTOMATION_ROD), "OP Automation Rod", Rarity::SPECIAL()));
+		$this->register(new FiberglassRod(new CustomItemIdentifier(CustomItemIds::FIBERGLASS_ROD), "Fiberglass Rod", Rarity::UNCOMMON()));
+		$this->register(new RodOfChallenging(new CustomItemIdentifier(CustomItemIds::ROD_OF_CHALLENGING), "Rod Of Challenging", Rarity::UNCOMMON()));
+		$this->register(new RodOfChampions(new CustomItemIdentifier(CustomItemIds::ROD_OF_CHAMPIONS), "Rod Of Champions", Rarity::RARE()));
+		$this->register(new RodOfLegends(new CustomItemIdentifier(CustomItemIds::ROD_OF_LEGENDS), "Rod Of Legends", Rarity::EPIC()));
+		$this->register(new RodOfTheSea(new CustomItemIdentifier(CustomItemIds::ROD_OF_THE_SEA), "Rod Of The Sea", Rarity::LEGENDARY()));
+		$this->register(new MechanicalRod(new CustomItemIdentifier(CustomItemIds::MECHANICAL_ROD), "Mechanical Rod", Rarity::RARE()));
+		$this->register(new AncientRod(new CustomItemIdentifier(CustomItemIds::ANCIENT_ROD), "Ancient Rod", Rarity::EPIC()));
 
 		$this->register(new GameBreaker(new CustomItemIdentifier(CustomItemIds::GAME_BREAKER), "Game Breaker", Rarity::SPECIAL()));
 		$this->register(new GameAnnihilator(new CustomItemIdentifier(CustomItemIds::GAME_ANNIHILATOR), "Game Annihilator", Rarity::VERY_SPECIAL()));

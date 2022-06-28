@@ -1,29 +1,27 @@
 <?php
 declare(strict_types=1);
 
-namespace CustomItems\item;
+namespace CustomItems\item\fishingrod;
 
 use CustomItems\item\utils\RarityHelper;
 use pocketmine\item\Durable;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class StarterRod extends CustomRod{
-
+class RodOfLegends extends CustomRod{
 	public function toItem() : Item{
 		$item = VanillaItems::FISHING_ROD();
+		$item = $this->setEnchantGlint($item);
 		if ($item instanceof Durable){
-			$item->setUnbreakable(true);
+			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
-		$nbt->setInt("FishingSpeed", 5);
+		$nbt->setInt("FishingSpeed", 40);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
-			"§r§7A fishing rod for new player.",
-			"",
-			"§r§6+5% §bfishing speed.",
+			"§r§6+40% §bfishing speed.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

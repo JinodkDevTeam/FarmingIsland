@@ -111,6 +111,15 @@
                   <Item>
                     <option name="path" value="plugins/PlayerProfile/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/CropsQuality/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/VeinMiner/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/AttackCooldown/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
