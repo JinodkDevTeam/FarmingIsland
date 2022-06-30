@@ -18,6 +18,7 @@ class OpAutomationRod extends AutoRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 96);
+		$nbt->setInt("FishQualityIncrease", 100);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
@@ -27,6 +28,7 @@ class OpAutomationRod extends AutoRod{
 			"§r§7Auto catch items when fishing.",
 			"",
 			"§r§6+96% §bfishing speed.",
+			"§r§6+100% §achance to catch higher quality fish.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

@@ -18,10 +18,12 @@ class RodOfChampions extends CustomRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 25);
+		$nbt->setInt("FishQualityIncrease", 16);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
 			"§r§6+25% §bfishing speed.",
+			"§r§6+16% §achance to catch higher quality fish.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

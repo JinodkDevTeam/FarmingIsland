@@ -8,4 +8,3 @@ mode: blacklist
 plugins:
   - PickaxeLevel
   - WorldStyler
-  - CropsQuality

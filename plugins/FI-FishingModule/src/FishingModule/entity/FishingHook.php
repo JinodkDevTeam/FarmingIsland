@@ -222,24 +222,12 @@ class FishingHook extends Projectile{
 
 			if($this->ticksCaughtDelay <= 0){
 				$this->ticksCatchableDelay = mt_rand(20, 80);
+				$this->ticksCatchableDelay -= (int) ($this->ticksCatchableDelay * ($this->getFishingSpeed() / 100));
 				$this->fishApproachAngle = mt_rand(0, 360);
 			}
 		}else{
 			$this->ticksCaughtDelay = mt_rand(200, 900);
-
-			$fishing_speed = 0;
-			$item = $this->getOwningEntity()?->getInventory()->getItemInHand();
-			$enchant = $item->getEnchantment(EnchantmentIdMap::getInstance()->fromId(EnchantmentIds::LURE));
-			if($enchant !== null){
-				$fishing_speed += $enchant->getLevel() * 2;
-			}
-			if($item->getNamedTag()->getTag("FishingSpeed") !== null){
-				$fishing_speed += $item->getNamedTag()->getTag("FishingSpeed")->getValue();
-			}
-			if($fishing_speed > 100){
-				$fishing_speed = 100;
-			}
-			$this->ticksCaughtDelay -= (int) ($this->ticksCaughtDelay * ($fishing_speed / 100));
+			$this->ticksCaughtDelay -= (int) ($this->ticksCaughtDelay * ($this->getFishingSpeed() / 100));
 		}
 		if($this->ticksCatchable > 0){
 			$this->motion->y -= ($this->random->nextFloat() * $this->random->nextFloat() * $this->random->nextFloat()) * 0.2;
@@ -320,6 +308,22 @@ class FishingHook extends Projectile{
 		}
 
 		return false;
+	}
+
+	public function getFishingSpeed() : int{
+		$fishing_speed = 0;
+		$item = $this->getOwningEntity()?->getInventory()->getItemInHand();
+		$enchant = $item->getEnchantment(EnchantmentIdMap::getInstance()->fromId(EnchantmentIds::LURE));
+		if($enchant !== null){
+			$fishing_speed += $enchant->getLevel() * 2;
+		}
+		if($item->getNamedTag()->getTag("FishingSpeed") !== null){
+			$fishing_speed += $item->getNamedTag()->getTag("FishingSpeed")->getValue();
+		}
+		if($fishing_speed > 100){
+			$fishing_speed = 100;
+		}
+		return $fishing_speed;
 	}
 
 	public function flagForDespawn() : void{

@@ -18,12 +18,14 @@ class RodOfTheSea extends CustomRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 60);
+		$nbt->setInt("FishQualityIncrease", 60);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
 			"§r§7A fishing rod has the ultimate power of the sea.",
 			"",
 			"§r§6+60% §bfishing speed.",
+			"§r§6+60% §achance to catch higher quality fish.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

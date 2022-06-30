@@ -19,6 +19,7 @@ class MechanicalRod extends AutoRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 20);
+		$nbt->setInt("FishQualityIncrease", 3);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
@@ -28,6 +29,7 @@ class MechanicalRod extends AutoRod{
 			"§r§7Auto catch items when fishing.",
 			"",
 			"§r§6+20% §bfishing speed.",
+			"§r§6+3% §achance to catch higher quality fish.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

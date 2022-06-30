@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\fishing;
 
-use FishingModule\event\EntityFishEvent;
+use JinodkDevTeam\utils\Rand;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
 
 class LegacyFishingManager{
@@ -36,43 +37,35 @@ class LegacyFishingManager{
 	public array $rlevel = [];
 	/** @var int[] */
 	public array $multiply = [];
-	/** @var array[] */
-	public array $more_items = [];
-	/** @var int[] */
-	public array $customItem_rlevel = [];
 
 	public function __construct(){
 		$this->items = [
-			ItemFactory::getInstance()->get(ItemIds::COBBLESTONE),
-			ItemFactory::getInstance()->get(ItemIds::DIRT),
-			ItemFactory::getInstance()->get(ItemIds::COAL),
-			ItemFactory::getInstance()->get(ItemIds::IRON_INGOT),
-			ItemFactory::getInstance()->get(ItemIds::FISH),
-			ItemFactory::getInstance()->get(ItemIds::GOLD_INGOT),
-			ItemFactory::getInstance()->get(ItemIds::LOG),
-			ItemFactory::getInstance()->get(ItemIds::SAND),
-			ItemFactory::getInstance()->get(ItemIds::CARROT),
-			ItemFactory::getInstance()->get(ItemIds::BONE),
-			ItemFactory::getInstance()->get(ItemIds::SALMON),
-			ItemFactory::getInstance()->get(ItemIds::ROTTEN_FLESH),
-			ItemFactory::getInstance()->get(ItemIds::DIAMOND),
-			ItemFactory::getInstance()->get(ItemIds::POTATO),
-			ItemFactory::getInstance()->get(ItemIds::CACTUS),
-			ItemFactory::getInstance()->get(ItemIds::SUGARCANE),
-			ItemFactory::getInstance()->get(ItemIds::EMERALD)
+			VanillaBlocks::COBBLESTONE()->asItem(),
+			VanillaBlocks::DIRT()->asItem(),
+			VanillaItems::COAL(),
+			VanillaItems::IRON_INGOT(),
+			VanillaItems::GOLD_INGOT(),
+			VanillaBlocks::OAK_LOG()->asItem(),
+			VanillaBlocks::SAND()->asItem(),
+			VanillaItems::CARROT(),
+			VanillaItems::BONE(),
+			VanillaItems::ROTTEN_FLESH(),
+			VanillaItems::DIAMOND(),
+			VanillaItems::POTATO(),
+			VanillaBlocks::CACTUS()->asItem(),
+			VanillaBlocks::SUGARCANE()->asItem(),
+			VanillaItems::EMERALD()
 		];
 		$this->rlevel = [
 			ItemIds::COBBLESTONE => 1,
 			ItemIds::DIRT => 2,
 			ItemIds::COAL => 3,
 			ItemIds::IRON_INGOT => 3,
-			ItemIds::FISH => 2,
 			ItemIds::GOLD_INGOT => 4,
 			ItemIds::LOG => 2,
 			ItemIds::SAND => 2,
 			ItemIds::CARROT => 2,
 			ItemIds::BONE => 2,
-			ItemIds::SALMON => 2,
 			ItemIds::ROTTEN_FLESH => 2,
 			ItemIds::DIAMOND => 6,
 			ItemIds::POTATO => 2,
@@ -84,40 +77,11 @@ class LegacyFishingManager{
 		$this->build();
 	}
 
-	public function build(){
-		//TODO: Build Multiply items
+	public function build() : void{
+		//Build Multiply items
 		for($i = 0; $i <= (self::MAX_LEVEL - 1); $i++){
-			$test = [];
-			for($j = 0; $j <= 6; $j++){
-				$chance = self::RARE_LEVEL[$i][$j];
-				if($chance > 0){
-					for($k = 0; $k < $chance; $k++){
-						$test[] = self::COUNT[$j];
-					}
-				}
-			}
-			shuffle($test);
-			$this->multiply[$i] = $test;
-		}
-		//TODO: Build Chance For More Items
-
-		for($i = 0; $i < 6; $i++){
-			$test = [];
-			$chance = self::MORE_ITEMS[$i];
-			for($j = 0; $j < $chance; $j++){
-				$test[] = true;
-			}
-			for($j = 0; $j < (100 - $chance); $j++){
-				$test[] = false;
-			}
-			shuffle($test);
-			$this->more_items[$i] = $test;
-		}
-	}
-
-	public function onFish(EntityFishEvent $event){
-		if($event->getState() === EntityFishEvent::STATE_CAUGHT_FISH){
-			$event->setItemResult($this->getRandomItems());
+			$list = Rand::build_chance(self::COUNT, self::RARE_LEVEL[$i]);
+			$this->multiply[$i] = $list;
 		}
 	}
 
@@ -131,15 +95,15 @@ class LegacyFishingManager{
 		while($more == true){
 			$item = $this->items[array_rand($this->items)];
 			$level = $this->rlevel[$item->getId()];
-			$item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
+			$item = $item->setCount($this->multiply[$level - 1][array_rand((array) $this->multiply[$level - 1])]);
 			if(!$item->isNull()){
 				$items[] = $item;
 				$i++;
 			}
 			if($i <= 5){
-				$more = $this->more_items[$i][array_rand($this->more_items[$i])];
+				$more = Rand::fastChance(self::MORE_ITEMS[$i]);
 			}else{
-				$more = $this->more_items[5][array_rand($this->more_items[5])];
+				$more = Rand::fastChance(self::MORE_ITEMS[5]);
 			}
 		}
 		return $items;

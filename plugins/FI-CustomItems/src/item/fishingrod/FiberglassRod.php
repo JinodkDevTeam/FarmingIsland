@@ -17,12 +17,17 @@ class FiberglassRod extends CustomRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 10);
+		$nbt->setInt("FishQualityIncrease", 70);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
 			"§r§7A fishing rod use fiberglass instead of normal string.",
 			"",
 			"§r§6+10% §bfishing speed.",
+			"§r§6+70% §achance to catch higher quality fish.",
+			"§r§6+0.1% §ethe cable being attacked by a shark",
+			"§r§6+0.01% §cthe whole fishing rod being yanked from your hand by a shark",
+			"§r§o§7blame the shark for eating your fiber cable tho",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

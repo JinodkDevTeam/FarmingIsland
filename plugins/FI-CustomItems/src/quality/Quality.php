@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CropsQuality;
+namespace CustomItems\quality;
 
 use pocketmine\utils\EnumTrait;
 
@@ -61,5 +61,14 @@ class Quality{
 			}
 		}
 		return null;
+	}
+
+	public function increaseQuality() : Quality{
+		return match ($this->getId()) {
+			QualityIds::NORMAL => self::SILVER(),
+			QualityIds::SILVER => self::GOLD(),
+			QualityIds::GOLD, QualityIds::DIAMOND => self::DIAMOND(),
+			default => self::NORMAL(),
+		};
 	}
 }

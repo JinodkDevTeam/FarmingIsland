@@ -18,12 +18,14 @@ class AncientRod extends CustomRod{
 		$nbt = $item->getNamedTag();
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setInt("FishingSpeed", 50);
+		$nbt->setInt("FishQualityIncrease", 20);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",
 			"§r§7§kHIHOIIAOSJOIaidooijaldlasdkoasdfa§r",
 			"",
-			"§r§6+§k40§r§6% §bfishing speed.",
+			"§r§6+§k50§r§6% §bfishing speed.",
+			"§r§6+§k20§r§6% §achance to catch higher quality fish.",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

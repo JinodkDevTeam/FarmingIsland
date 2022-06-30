@@ -6,7 +6,7 @@ namespace NgLamVN\GameHandle;
 use Exception;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
-use NgLamVN\GameHandle\fishing\LegacyFishingManager;
+use NgLamVN\GameHandle\fishing\FishingManager;
 use NgLamVN\GameHandle\GameMenu\Menu;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\console\ConsoleCommandSender;
@@ -31,13 +31,13 @@ use pocketmine\Server;
 class EventListener implements Listener{
 	public Core $plugin;
 	public Menu $menu;
-	public LegacyFishingManager $fish;
+	public FishingManager $fish;
 	public SkillLevelHandle $slevel;
 
 	public function __construct(Core $plugin){
 		$this->plugin = $plugin;
 		$this->menu = new Menu();
-		$this->fish = new LegacyFishingManager();
+		$this->fish = new FishingManager();
 		$this->slevel = new SkillLevelHandle($plugin);
 	}
 
@@ -47,7 +47,7 @@ class EventListener implements Listener{
 	 * @priority HIGHEST
 	 * @throws Exception
 	 */
-	public function onJoin(PlayerJoinEvent $event){
+	public function onJoin(PlayerJoinEvent $event) : void{
 		$player = $event->getPlayer();
 		if($this->getCore()->getIslandWorldName() == null){
 			return;
@@ -77,7 +77,7 @@ class EventListener implements Listener{
 	 *
 	 * @priority HIGHEST
 	 */
-	public function onRespawn(PlayerRespawnEvent $event){
+	public function onRespawn(PlayerRespawnEvent $event) : void{
 		$player = $event->getPlayer();
 		if($this->getCore()->getIslandWorldName() == null){
 			return;
@@ -102,7 +102,7 @@ class EventListener implements Listener{
 	 * @priority MONITOR
 	 * @handleCancelled FALSE
 	 */
-	public function onInteract(PlayerInteractEvent $event){
+	public function onInteract(PlayerInteractEvent $event) : void{
 		$this->menu->onTap($event);
 		$this->slevel->onInteract($event);
 	}
@@ -113,7 +113,7 @@ class EventListener implements Listener{
 	 * @priority MONITOR
 	 * @handleCancelled FALSE
 	 */
-	public function onUse(PlayerItemUseEvent $event){
+	public function onUse(PlayerItemUseEvent $event) : void{
 		$this->menu->onTap($event);
 	}
 
@@ -123,7 +123,7 @@ class EventListener implements Listener{
 	 * @priority LOWEST
 	 * @handleCancelled FALSE
 	 */
-	public function onFish(EntityFishEvent $event){
+	public function onFish(EntityFishEvent $event) : void{
 		$this->fish->onFish($event);
 		$this->slevel->onFish($event);
 	}
@@ -134,11 +134,11 @@ class EventListener implements Listener{
 	 * @priority NORMAL
 	 * @handleCancelled FALSE
 	 */
-	public function onItemDrop(PlayerDropItemEvent $event){
+	public function onItemDrop(PlayerDropItemEvent $event) : void{
 		$this->menu->onDrop($event);
 	}
 
-	public function onTrans(InventoryTransactionEvent $event){
+	public function onTrans(InventoryTransactionEvent $event) : void{
 		$this->menu->onTrans($event);
 	}
 
@@ -171,7 +171,7 @@ class EventListener implements Listener{
 		}
 	}
 
-	public function onChangeLevel(EntityTeleportEvent $event){
+	public function onChangeLevel(EntityTeleportEvent $event) : void{
 		$entity = $event->getEntity();
 		if($entity instanceof Player){
 			if($event->getFrom()->getWorld()->getDisplayName() !== $event->getTo()->getWorld()->getDisplayName()){
@@ -180,7 +180,7 @@ class EventListener implements Listener{
 		}
 	}
 
-	public function onQuit(PlayerQuitEvent $event){
+	public function onQuit(PlayerQuitEvent $event) : void{
 		$player = $event->getPlayer();
 		$this->getCore()->afktime[$player->getName()] = 0;
 		$this->getCore()->getPlayerStatManager()->removePlayerStat($player);
@@ -192,7 +192,7 @@ class EventListener implements Listener{
 	 * @priority LOWEST
 	 * @ignoreCancelled TRUE
 	 */
-	public function onChat(PlayerChatEvent $event){
+	public function onChat(PlayerChatEvent $event) : void{
 		$player = $event->getPlayer();
 		if($this->getCore()->getPlayerStatManager()->getPlayerStat($player)->isMuted()){
 			$event->cancel();
@@ -224,7 +224,7 @@ class EventListener implements Listener{
 	 * @priority LOWEST
 	 * @ignoreCancelled TRUE
 	 */
-	public function onMove(PlayerMoveEvent $event){
+	public function onMove(PlayerMoveEvent $event) : void{
 		$player = $event->getPlayer();
 		if($this->getCore()->getPlayerStatManager()->getPlayerStat($player)->isFreeze()){
 			$event->cancel();
@@ -237,7 +237,7 @@ class EventListener implements Listener{
 	 * @priority HIGHEST
 	 * @handleCancelled FALSE
 	 */
-	public function onBlockBreak(BlockBreakEvent $event){
+	public function onBlockBreak(BlockBreakEvent $event) : void{
 		$this->slevel->onBreak($event);
 	}
 
@@ -246,7 +246,7 @@ class EventListener implements Listener{
 	 *
 	 * @priority LOWEST
 	 */
-	public function onDeath(PlayerDeathEvent $event){
+	public function onDeath(PlayerDeathEvent $event) : void{
 		$event->setKeepInventory(true);
 		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), round(EconomyAPI::getInstance()->myMoney($event->getPlayer()) / 2, 2, PHP_ROUND_HALF_DOWN));
 		$event->getPlayer()->sendMessage("You died and lost " . round(EconomyAPI::getInstance()->myMoney($event->getPlayer()), 2, PHP_ROUND_HALF_DOWN) . " coins");

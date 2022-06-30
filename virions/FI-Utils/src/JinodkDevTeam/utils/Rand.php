@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace JinodkDevTeam\utils;
+
+use InvalidArgumentException;
+
 class Rand{
 
 	/**
@@ -13,7 +17,7 @@ class Rand{
 		if (($percent > 100) or ($percent < 0)){
 			throw new InvalidArgumentException("Percent must be between 0 and 100");
 		}
-		return self::rawfastChance(0, 100, $percent);
+		return self::rawfastChance(1, 100, $percent);
 	}
 
 	/**
@@ -34,20 +38,43 @@ class Rand{
 	/**
 	 * @param array $elements
 	 * @param int[] $chances
+	 * @param bool  $isShuffle
 	 *
 	 * @return array
-	 * @throws InvalidArgumentException
+	 * @throw InvalidArgumentException
 	 */
-	public static function build_chance(array $elements, array $chances) : array{
+	public static function build_chance(array $elements, array $chances, bool $isShuffle = true) : array{
 		if(count($elements) != count($chances)){
-			throw new InvalidArgumentException("Elements and chances must have the same elements");
+			throw new InvalidArgumentException("Elements and chances must have the same elements count");
 		}
 		$result = [];
 		foreach($elements as $id => $element){
+			if ($chances[$id] == 0) continue;
+			if ($chances < 0){
+				throw new InvalidArgumentException("Chances must be positive, got " . $chances[$id]);
+			}
 			for($i = 0; $i < $chances[$id]; $i++){
 				$result[] = $element;
 			}
 		}
+		if ($isShuffle){
+			shuffle($result);
+		}
 		return $result;
 	}
+
+	/**
+	 * @param array $elements
+	 * @param int[] $chances
+	 * @param bool  $isShuffle
+	 *
+	 * @return mixed
+	 * @deprecated Due to bad performance, use build_chance() instead or fast_chance()
+	 */
+	public static function getRandomElement(array $elements, array $chances, bool $isShuffle = true) : mixed{
+		$result = self::build_chance($elements, $chances, $isShuffle);
+		return $result[array_rand($result)];
+	}
+
+
 }

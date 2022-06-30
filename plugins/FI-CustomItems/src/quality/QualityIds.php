@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CropsQuality;
+namespace CustomItems\quality;
 
 final class QualityIds{
 	public const NORMAL = 0;
@@ -10,7 +10,8 @@ final class QualityIds{
 	public const DIAMOND = 3;
 
 	public const NORMAL_COLOR = "§f";
-	public const SILVER_COLOR = "§9";
-	public const GOLD_COLOR = "§a";
+	public const SILVER_COLOR = "§7";
+	public const GOLD_COLOR = "§e";
 	public const DIAMOND_COLOR = "§b";
+
 }
