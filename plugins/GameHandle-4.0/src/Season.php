@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+namespace NgLamVN\GameHandle;
+
 class Season{
 
 	public const SEASONS = [

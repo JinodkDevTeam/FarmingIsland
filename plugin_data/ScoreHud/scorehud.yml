@@ -57,6 +57,7 @@ default-board:
 - "§　§l§ePurse:  §r §f{fi-scoreloader.coin} coin"
 - "§　§l§dGem:    §r §f{fi-scoreloader.gem}"
 - "§　§l§ePing:   §r §f{fi-scoreloader.ping}"
+- "§　§l§eSeason: §r §f{fi-scoreloader.season}"
 - ""
 - "§　§l§4j§ci§6n§eo§ad§2k§f.§eddns§f.§bnet§f:§e19132"
 

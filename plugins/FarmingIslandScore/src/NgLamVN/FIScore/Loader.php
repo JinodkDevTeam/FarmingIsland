@@ -5,6 +5,7 @@ namespace NgLamVN\FIScore;
 
 use Ifera\ScoreHud\event\PlayerTagUpdateEvent;
 use Ifera\ScoreHud\scoreboard\ScoreTag;
+use NgLamVN\GameHandle\Season;
 use pocketmine\plugin\PluginBase;
 use pocketmine\scheduler\ClosureTask;
 
@@ -19,6 +20,7 @@ class Loader extends PluginBase{
 				else $color = "§c";
 
 				(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.ping", $color . $player->getNetworkSession()->getPing())))->call();
+				(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.season", Season::getSeason())))->call();
 			}
 		});
 		$this->getScheduler()->scheduleRepeatingTask($task, 5 * 20);

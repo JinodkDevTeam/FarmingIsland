@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace NgLamVN\FIScore;
 
 use Ifera\ScoreHud\event\TagsResolveEvent;
+use NgLamVN\GameHandle\Season;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\event\Listener;
 use pocketmine\Server;
@@ -45,6 +46,9 @@ class TagResloveListener implements Listener{
 			case "fi-scoreloader.name":
 				$pname = $player->getName();
 				$tag->setValue($pname);
+				break;
+			case "fi-scoreloader.season":
+				$tag->setValue(Season::getSeason());
 				break;
 		}
 	}
