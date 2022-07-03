@@ -1,7 +1,0 @@
-name: FI-GrowableSneak
-main: GrowableSneak\Loader
-src-namespace-prefix: GrowableSneak
-api: 4.0.0
-version: 0.1
-author: JinodkDevTeam|NgLamVN
-description: Make tree or another plant grow faster use sneak.

@@ -5,7 +5,7 @@
 
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle\ChatThin;
+namespace NgLamVN\GameHandle\listener;
 
 use pocketmine\event\Listener;
 use pocketmine\event\server\DataPacketSendEvent;
@@ -13,7 +13,7 @@ use pocketmine\network\mcpe\protocol\AvailableCommandsPacket;
 use pocketmine\network\mcpe\protocol\TextPacket;
 use pocketmine\utils\TextFormat;
 
-class CT_PacketHandler implements Listener{
+class ChatThinListener implements Listener{
 	public const THIN_TAG = TextFormat::ESCAPE . "　";
 
 	/**
@@ -34,13 +34,13 @@ class CT_PacketHandler implements Listener{
 					$pk->message .= self::THIN_TAG;
 				}
 			}elseif($pk instanceof AvailableCommandsPacket){
-				foreach($pk->commandData as $name => $commandData){
+				foreach($pk->commandData as $commandData){
 					$commandData->description = $this->toThin($commandData->description);
 				}
 			}
 	}
 
 	public function toThin(string $str) : string{
-		return preg_replace("/%*(([a-z0-9_]+\.)+[a-z0-9_]+)/i", "%$1", $str) . self::THIN_TAG;
+		return preg_replace("/%*(([a-z\d_]+\.)+[a-z\d_]+)/i", "%$1", $str) . self::THIN_TAG;
 	}
 }

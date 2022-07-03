@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle;
+namespace NgLamVN\GameHandle\listener;
 
 use Exception;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
+use NgLamVN\GameHandle\Core;
 use NgLamVN\GameHandle\fishing\FishingManager;
 use NgLamVN\GameHandle\GameMenu\Menu;
+use NgLamVN\GameHandle\SkillLevelHandle;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\console\ConsoleCommandSender;
 use pocketmine\event\block\BlockBreakEvent;
@@ -28,7 +30,7 @@ use pocketmine\event\player\PlayerRespawnEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
-class EventListener implements Listener{
+class MainListener implements Listener{
 	public Core $plugin;
 	public Menu $menu;
 	public FishingManager $fish;

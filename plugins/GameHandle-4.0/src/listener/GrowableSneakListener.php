@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace GrowableSneak;
+namespace NgLamVN\GameHandle\listener;
 
 use pocketmine\block\Block;
 use pocketmine\block\Sapling;
@@ -10,19 +10,13 @@ use pocketmine\event\block\StructureGrowEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerToggleSneakEvent;
 use pocketmine\player\Player;
-use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Random;
 use pocketmine\world\generator\object\TreeFactory;
 use pocketmine\world\particle\HappyVillagerParticle;
 use pocketmine\world\Position;
 
-class Loader extends PluginBase implements Listener{
+class GrowableSneakListener implements Listener{
 	const RADIUS = 5;
-
-	public function onEnable() : void{
-		parent::onEnable();
-		$this->getServer()->getPluginManager()->registerEvents($this, $this);
-	}
 
 	/**
 	 * @param PlayerToggleSneakEvent $event
