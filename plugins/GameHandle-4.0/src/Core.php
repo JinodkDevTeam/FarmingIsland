@@ -12,6 +12,7 @@ use muqsit\invmenu\InvMenuHandler;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
+use NgLamVN\GameHandle\listener\ListenerManager;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
 use NgLamVN\GameHandle\Sell\SellHandler;
 use NgLamVN\GameHandle\task\InitTask;
@@ -52,10 +53,7 @@ class Core extends PluginBase{
 			if(!InvMenuHandler::isRegistered()){
 				InvMenuHandler::register($this);
 			}
-
-			$plmanager = $this->getServer()->getPluginManager();
-			$plmanager->registerEvents(new EventListener($this), $this);
-			$plmanager->registerEvents(new CT_PacketHandler(), $this);
+			ListenerManager::register($this);
 			new InitCommand($this);
 			new InitTask($this);
 			$this->pstatmanager = new PlayerStatManager();

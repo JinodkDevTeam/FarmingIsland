@@ -38,5 +38,6 @@ class InitCommand{
 		$cmd->register("tutorial", new Tutorial($plugin, "tutorial"));
 		$cmd->register("unfreeze", new UnFreeze($plugin, "unfreeze"));
 		$cmd->register("unmute", new UnMute($plugin, "unmute"));
+		$cmd->register("size", new Size($plugin, "size"));
 	}
 }
