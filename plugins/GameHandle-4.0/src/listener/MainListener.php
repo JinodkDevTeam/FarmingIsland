@@ -9,10 +9,8 @@ use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
 use NgLamVN\GameHandle\fishing\FishingManager;
 use NgLamVN\GameHandle\GameMenu\Menu;
-use NgLamVN\GameHandle\SkillLevelHandle;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\console\ConsoleCommandSender;
-use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\inventory\InventoryTransactionEvent;
@@ -34,13 +32,11 @@ class MainListener implements Listener{
 	public Core $plugin;
 	public Menu $menu;
 	public FishingManager $fish;
-	public SkillLevelHandle $slevel;
 
 	public function __construct(Core $plugin){
 		$this->plugin = $plugin;
 		$this->menu = new Menu();
 		$this->fish = new FishingManager();
-		$this->slevel = new SkillLevelHandle($plugin);
 	}
 
 	/**
@@ -106,7 +102,6 @@ class MainListener implements Listener{
 	 */
 	public function onInteract(PlayerInteractEvent $event) : void{
 		$this->menu->onTap($event);
-		$this->slevel->onInteract($event);
 	}
 
 	/**
@@ -127,7 +122,6 @@ class MainListener implements Listener{
 	 */
 	public function onFish(EntityFishEvent $event) : void{
 		$this->fish->onFish($event);
-		$this->slevel->onFish($event);
 	}
 
 	/**
@@ -231,16 +225,6 @@ class MainListener implements Listener{
 		if($this->getCore()->getPlayerStatManager()->getPlayerStat($player)->isFreeze()){
 			$event->cancel();
 		}
-	}
-
-	/**
-	 * @param BlockBreakEvent $event
-	 *
-	 * @priority HIGHEST
-	 * @handleCancelled FALSE
-	 */
-	public function onBlockBreak(BlockBreakEvent $event) : void{
-		$this->slevel->onBreak($event);
 	}
 
 	/**

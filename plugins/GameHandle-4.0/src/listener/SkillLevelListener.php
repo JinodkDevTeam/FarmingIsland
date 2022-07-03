@@ -1,19 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace NgLamVN\GameHandle;
+namespace NgLamVN\GameHandle\listener;
 
 use FishingModule\event\EntityFishEvent;
+use NgLamVN\GameHandle\Core;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\SweetBerryBush;
 use pocketmine\event\block\BlockBreakEvent;
+use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Fertilizer;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use SkillLevel\SkillLevel;
 
-class SkillLevelHandle{
+class SkillLevelListener implements Listener{
 	private array $mining;
 	private array $farming;
 	private array $farming2;
@@ -69,7 +71,14 @@ class SkillLevelHandle{
 		return $this->core;
 	}
 
-	public function onBreak(BlockBreakEvent $event){
+	/**
+	 * @param BlockBreakEvent $event
+	 * @priority MONITOR
+	 * @handleCancelled FALSE
+	 *
+	 * @return void
+	 */
+	public function onBreak(BlockBreakEvent $event) : void{
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 
@@ -98,7 +107,14 @@ class SkillLevelHandle{
 		}
 	}
 
-	public function onFish(EntityFishEvent $event){
+	/**
+	 * @param EntityFishEvent $event
+	 * @priority MONITOR
+	 * @handleCancelled FALSE
+	 *
+	 * @return void
+	 */
+	public function onFish(EntityFishEvent $event) : void{
 		$player = $event->getEntity();
 		if($player instanceof Player){
 			if($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
@@ -107,36 +123,14 @@ class SkillLevelHandle{
 		}
 	}
 
-	public function addXp(Player $player, int $skill_code, int $amount){
-		$data = $this->getSkillLevel()->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
-		$data->addSkillExp($skill_code, $amount);
-
-		$level = $data->getSkillLevel($skill_code);
-		$exp = $data->getSkillExp($skill_code);
-
-		$player->sendPopup($this->IdToSkillName($skill_code) . " " . $level . ": " . $exp . "/" . $data->getMaxExp($level) . " (+" . $amount . ")");
-	}
-
-	public function getSkillLevel() : ?SkillLevel{
-		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
-		if($sl instanceof SkillLevel){
-			return $sl;
-		}
-		return null;
-	}
-
-	//TODO: Fishing
-
-	public function IdToSkillName(int $id) : string{
-		return match ($id) {
-			SkillLevel::MINING => "Mining",
-			SkillLevel::FARMING => "Farming",
-			SkillLevel::FORAGING => "Foraging",
-			SkillLevel::FISHING => "Fishing"
-		};
-	}
-
-	public function onInteract(PlayerInteractEvent $event){
+	/**
+	 * @param PlayerInteractEvent $event
+	 * @priority MONITOR
+	 * @handleCancelled FALSE
+	 *
+	 * @return void
+	 */
+	public function onInteract(PlayerInteractEvent $event) : void{
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 		$action = $event->getAction();
@@ -155,5 +149,34 @@ class SkillLevelHandle{
 					$this->addXp($player, SkillLevel::FARMING, $amount);
 			}
 		}
+	}
+
+	public function addXp(Player $player, int $skill_code, int $amount) : void{
+		$data = $this->getSkillLevel()->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
+		$data->addSkillExp($skill_code, $amount);
+
+		$level = $data->getSkillLevel($skill_code);
+		$exp = $data->getSkillExp($skill_code);
+
+		$player->sendPopup($this->IdToSkillName($skill_code) . " " . $level . ": " . $exp . "/" . $data->getMaxExp($level) . " (+" . $amount . ")");
+	}
+
+	public function getSkillLevel() : ?SkillLevel{
+		$sl = Server::getInstance()->getPluginManager()->getPlugin("FI-SkillLevel");
+		if($sl instanceof SkillLevel){
+			return $sl;
+		}
+		return null;
+	}
+
+	//TODO: FishingXP
+
+	public function IdToSkillName(int $id) : string{
+		return match ($id) {
+			SkillLevel::MINING => "Mining",
+			SkillLevel::FARMING => "Farming",
+			SkillLevel::FORAGING => "Foraging",
+			SkillLevel::FISHING => "Fishing"
+		};
 	}
 }
