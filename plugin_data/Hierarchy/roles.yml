@@ -224,7 +224,8 @@
   - gh.cgive
   - gh.playerinfo
   - gh.playerinfo.other
-  - sizeplayer.command
+  - gh.size.use
+  - gh.size.other
   - myplot.command
   - myplot.command.generate
   - myplot.command.clear

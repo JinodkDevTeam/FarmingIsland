@@ -83,5 +83,5 @@ permissions:
     default: true
   gh.size.use:
     default: op
-  gh.size.use.other:
+  gh.size.other:
     default: op
