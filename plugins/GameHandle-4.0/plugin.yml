@@ -81,3 +81,7 @@ permissions:
     default: op
   gh.crash:
     default: true
+  gh.size.use:
+    default: op
+  gh.size.use.other:
+    default: op
