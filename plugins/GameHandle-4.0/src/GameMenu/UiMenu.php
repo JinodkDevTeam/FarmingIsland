@@ -146,7 +146,7 @@ class UiMenu{
 			"Developer: JinodkDevTeam",
 			"Github: github.com/JinodkDevTeam",
 			"",
-			"FarmingIsland là một chế độ mới được phát triển bởi JinodkDevTeam.",
+			"FarmingIsland là một chế độ mới được phát triển bởi JinodkDevTeam từ 5/2021 đến bây giờ.",
 			"Hướng đến lối chơi nhẹ nhàng, chill khi bạn được quyết định cách bạn trải nghiệm chế độ này.",
 			"Tất nhiên là server sẽ không có bất cứ hình thức Pay to win nào cả nhằm đảm bảo cân bằng cho tất cả các người chơi.",
 			"",

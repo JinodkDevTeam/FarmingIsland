@@ -1,0 +1,15 @@
+#ShopUI Config
+
+<name>:
+  type: <category|item>
+  #for category
+  image: <image_link>
+  list:
+    <name>:
+      type: <category|item>
+      #for item
+      image: <image_link>
+      item: <item_name> (get from VanillaItems class) ex-cobblestone
+      buy: <price>
+      sell: <price>
+

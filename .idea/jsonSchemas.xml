@@ -120,6 +120,9 @@
                   <Item>
                     <option name="path" value="plugins/AttackCooldown/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-ShopUI/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
