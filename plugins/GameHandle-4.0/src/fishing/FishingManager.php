@@ -45,6 +45,9 @@ class FishingManager{
 	}
 
 	public function onFish(EntityFishEvent $event) : void{
+		if ($event->getState() !== EntityFishEvent::STATE_CAUGHT_FISH){
+			return;
+		}
 		$isFish = Rand::fastChance(self::BASE_FISH_CAUGH_CHANCE);
 		if(!$isFish){
 			$event->setItemResult($this->legacy->getRandomItems());

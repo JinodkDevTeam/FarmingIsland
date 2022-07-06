@@ -29,8 +29,14 @@ class Rand{
 	 * @throws InvalidArgumentException
 	 */
 	public static function rawfastChance(int $min, int $max, int $chance) : bool{
-		if(!(($min <= $max) && ($chance <= $max) && ($min <= $chance))){
+		if(!($min <= $max)){
 			throw new InvalidArgumentException("Invalid arguments");
+		}
+		if ($chance < $min){
+			return false;
+		}
+		if ($chance >= $max){
+			return true;
 		}
 		return mt_rand($min, $max) <= $chance;
 	}
