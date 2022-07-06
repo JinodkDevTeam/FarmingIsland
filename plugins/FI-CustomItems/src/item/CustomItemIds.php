@@ -127,6 +127,8 @@ final class CustomItemIds{
 	public const JUJU_STAFF = 2162;
 	public const MAGMA_BOOTS = 2163;
 	public const TREECUTTER = 2164;
+	public const BOOSTER_BOOTS = 2165;
+	public const SLIME_BOOTS = 2166;
 
 	public const OP_ROD = 2200;
 	public const STARTER_ROD = 2201;
@@ -139,6 +141,8 @@ final class CustomItemIds{
 
 	public const OP_AUTOMATION_ROD = 2250;
 	public const MECHANICAL_ROD = 2251;
+
+	public const GRAPPLING_HOOK = 2300;
 
 	public const GAME_BREAKER = 3000;
 	public const GAME_ANNIHILATOR = 3001;

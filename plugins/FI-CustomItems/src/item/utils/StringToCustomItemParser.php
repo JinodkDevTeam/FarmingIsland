@@ -84,6 +84,8 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("juju_staff", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::JUJU_STAFF));
 		$result->register("magma_boots", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::MAGMA_BOOTS));
 		$result->register("treecutter", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::TREECUTTER));
+		$result->register("booster_boots", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::BOOSTER_BOOTS));
+		$result->register("slime_boots", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::SLIME_BOOTS));
 
 		$result->register("op_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::OP_ROD));
 		$result->register("starter_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::STARTER_ROD));
@@ -95,6 +97,7 @@ class StringToCustomItemParser extends StringToTParser{
 		$result->register("ancient_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ANCIENT_ROD));
 		$result->register("rod_of_the_sea", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::ROD_OF_THE_SEA));
 		$result->register("mechanical_rod", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::MECHANICAL_ROD));
+		$result->register("grappling_hook", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::GRAPPLING_HOOK));
 
 		$result->register("game_breaker", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::GAME_BREAKER));
 		$result->register("game_annihilator", fn() => CustomItemFactory::getInstance()->get(CustomItemIds::GAME_ANNIHILATOR));

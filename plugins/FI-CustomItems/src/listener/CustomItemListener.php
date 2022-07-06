@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CustomItems\listener;
 
 use CustomItems\item\armor\CustomBoots;
+use CustomItems\item\CustomItem;
 use CustomItems\item\CustomItemFactory;
 use CustomItems\item\fishingrod\CustomRod;
 use CustomItems\item\CustomTool;
@@ -18,6 +19,7 @@ use pocketmine\event\player\PlayerEntityInteractEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\event\player\PlayerToggleSneakEvent;
 
 class CustomItemListener implements Listener{
 	/**
@@ -156,6 +158,27 @@ class CustomItemListener implements Listener{
 			if($citem == null) return;
 			if ($citem instanceof CustomBoots){
 				$citem->onMove($event);
+			}
+		}
+	}
+
+	/**
+	 * @param PlayerToggleSneakEvent $event
+	 * @priority LOWEST
+	 * @description Handle onSneak event for CustomItems
+	 * @handleCancelled FALSE
+	 */
+	public function onSneak(PlayerToggleSneakEvent $event) : void{
+		$player = $event->getPlayer();
+		$items = $player->getArmorInventory()->getContents();
+		$items = array_merge($items, [$player->getInventory()->getItemInHand()]);
+		foreach($items as $item){
+			if($item->getNamedTag()->getTag("CustomItemID") !== null){
+				$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+				if($citem == null) return;
+				if ($citem instanceof CustomItem){
+					$citem->onSneak($event);
+				}
 			}
 		}
 	}

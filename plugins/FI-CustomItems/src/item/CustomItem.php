@@ -10,6 +10,7 @@ use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\player\PlayerEntityInteractEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
+use pocketmine\event\player\PlayerToggleSneakEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -63,8 +64,9 @@ class CustomItem{
 
 	public function onInteractEntity(PlayerEntityInteractEvent $event) : void{ }
 
+	public function onSneak(PlayerToggleSneakEvent $event): void{ }
+
 	public function onPlace(BlockPlaceEvent $event): void{
 		$event->cancel();
 	}
-
 }
