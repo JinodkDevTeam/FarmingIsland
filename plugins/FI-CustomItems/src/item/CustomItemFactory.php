@@ -18,7 +18,6 @@ use CustomItems\item\fishingrod\RodOfLegends;
 use CustomItems\item\fishingrod\RodOfTheSea;
 use CustomItems\item\fishingrod\StarterRod;
 use CustomItems\item\utils\Rarity;
-use pocketmine\block\utils\TreeType;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;

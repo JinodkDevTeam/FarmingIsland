@@ -10,7 +10,6 @@ use CortexPE\Hierarchy\Hierarchy;
 use Exception;
 use muqsit\invmenu\InvMenuHandler;
 use MyPlot\MyPlot;
-use NgLamVN\GameHandle\ChatThin\CT_PacketHandler;
 use NgLamVN\GameHandle\command\InitCommand;
 use NgLamVN\GameHandle\listener\ListenerManager;
 use NgLamVN\GameHandle\PlayerStat\PlayerStatManager;
@@ -23,6 +22,7 @@ use pocketmine\plugin\PluginBase;
 class Core extends PluginBase{
 	public const VERSION = "0.2.5-alpha";
 	public const CODE_NAME = "BlueWhale";
+	public const BASE_VERSION = 2; //FIv2
 	/** @var int[] */
 	public array $afktime = [];
 	/** @var SellHandler $sell */
