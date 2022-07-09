@@ -50,7 +50,7 @@ abstract class BaseBreakTime{
 	 * @param Player  $player
 	 * @param bool    $createParticles
 	 */
-	public function onBreak(Vector3 $pos, Item $item, Player $player, bool $createParticles = true){
+	public function onBreak(Vector3 $pos, Item $item, Player $player, bool $createParticles = true) : void{
 		$player->getWorld()->useBreakOn($pos, $item, $player, $createParticles);
 	}
 }

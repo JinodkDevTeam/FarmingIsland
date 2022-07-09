@@ -6,7 +6,8 @@ namespace NgLamVN\Example;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
+use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Loader extends PluginBase{
@@ -15,9 +16,12 @@ class Loader extends PluginBase{
 	}
 
 	public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+		if (!$sender instanceof Player){
+			return true;
+		}
 		$cmd = strtolower($command->getName());
 		if($cmd == "givetestitem"){
-			$item = Item::get(Item::BLAZE_ROD);
+			$item = VanillaItems::BLAZE_ROD();
 			$nbt = $item->getNamedTag();
 			$nbt->setString("basebreaktime", "CustomShears");
 			$item->setNamedTag($nbt);
