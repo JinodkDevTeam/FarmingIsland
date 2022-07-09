@@ -5,10 +5,6 @@ namespace NgLamVN\CustomBreakTimeAPI;
 
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\event\server\DataPacketReceiveEvent;
-use pocketmine\math\Vector3;
-use pocketmine\network\mcpe\protocol\PlayerActionPacket;
-use pocketmine\player\GameMode;
 
 class EventHandler implements Listener{
 	/** @var CustomBreakTimeAPI $api */
