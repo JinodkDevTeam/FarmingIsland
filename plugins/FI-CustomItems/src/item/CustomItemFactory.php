@@ -19,7 +19,6 @@ use CustomItems\item\fishingrod\RodOfTheSea;
 use CustomItems\item\fishingrod\StarterRod;
 use CustomItems\item\utils\Rarity;
 use pocketmine\block\VanillaBlocks;
-use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIds;
 use pocketmine\item\VanillaItems;
 use pocketmine\utils\SingletonTrait;
@@ -34,8 +33,6 @@ class CustomItemFactory{
 	private array $mlist = [];
 
 	public function __construct(){
-		$i = ItemFactory::getInstance();
-		//Register custom items
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COBBLESTONE), "Enchanted Cobblestone", Rarity::COMMON(), VanillaBlocks::COBBLESTONE()->asItem()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL), "Enchanted Coal", Rarity::COMMON(), VanillaItems::COAL()));
 		$this->register(new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COAL_BLOCK), "Enchanted Coal Block", Rarity::UNCOMMON(), VanillaBlocks::COAL()->asItem()));
@@ -173,7 +170,6 @@ class CustomItemFactory{
 			throw new RuntimeException("Trying to overwrite an already registered item !");
 		}
 		$this->list[$id . ":" . $meta] = clone $item;
-
 		$this->register($item);
 	}
 

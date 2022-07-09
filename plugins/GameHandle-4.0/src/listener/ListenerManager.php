@@ -13,6 +13,5 @@ class ListenerManager{
 		$plmanager->registerEvents(new ChatThinListener(), $core);
 		$plmanager->registerEvents(new GrowableSneakListener(), $core);
 		$plmanager->registerEvents(new SkillLevelListener($core), $core);
-
 	}
 }

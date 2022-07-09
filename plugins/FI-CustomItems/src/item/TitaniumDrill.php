@@ -17,6 +17,7 @@ class TitaniumDrill extends CustomTool{
 		$nbt->setInt("CustomItemID", $this->getId());
 		$nbt->setString("basebreaktime", "TitaniumDrill");
 		$nbt->setInt("Fuel", 1000);
+		$item->setNamedTag($nbt);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			RarityHelper::toString($this->getRarity()),
