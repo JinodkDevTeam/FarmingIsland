@@ -30,6 +30,7 @@
       <path value="$PROJECT_DIR$/vendor/pocketmine/locale-data" />
       <path value="$PROJECT_DIR$/vendor/czproject/git-php" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
