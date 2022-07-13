@@ -34,12 +34,27 @@ class CrashReaderCommand extends BaseCommand{
 			if(is_null($data)){
 				return;
 			}
+			if (!isset($list[$data])){
+				//Clear all
+				$list_files = scandir("crashdumps");
+				foreach($list_files as $file_name){
+					$file_dir = "crashdumps/" . $file_name;
+					if(str_contains($file_name, ".log")){
+						if (!unlink($file_dir)){
+							$player->sendMessage("Failed to delete file: " . $file_name);
+						}
+					}
+				}
+				$player->sendMessage("All crash dumps have been deleted.");
+				return;
+			}
 			$this->viewForm($player, $list[$data]);
 		});
 		$form->setTitle("Crashdumps");
 		foreach($list as $file){
 			$form->addButton($file);
 		}
+		$form->addButton("Clear All");
 		$player->sendForm($form);
 	}
 
