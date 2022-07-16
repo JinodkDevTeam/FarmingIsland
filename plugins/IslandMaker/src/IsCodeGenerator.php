@@ -34,7 +34,7 @@ class IsCodeGenerator{
 			throw new RuntimeException("Data is empty !");
 		}
 		$file = fopen($this->dir . "IslandBaseStructure.php", "w");
-		if ($file == false){
+		if (!$file){
 			throw new RuntimeException("Cant create or write into file !");
 		}
 		$cmt = [

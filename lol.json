@@ -1,0 +1,156 @@
+{
+    "resource_pack_name": "fi-fish",
+    "texture_name": "fi.fish",
+    "texture_data": {
+        "albacore": {
+            "textures": "textures\/items\/albacore"
+        },
+        "anchovy": {
+            "textures": "textures\/items\/anchovy"
+        },
+        "blobfish": {
+            "textures": "textures\/items\/blobfish"
+        },
+        "blue_discus": {
+            "textures": "textures\/items\/blue_discus"
+        },
+        "bream": {
+            "textures": "textures\/items\/bream"
+        },
+        "bullhead": {
+            "textures": "textures\/items\/bullhead"
+        },
+        "carp": {
+            "textures": "textures\/items\/carp"
+        },
+        "catfish": {
+            "textures": "textures\/items\/catfish"
+        },
+        "chub": {
+            "textures": "textures\/items\/chub"
+        },
+        "dorado": {
+            "textures": "textures\/items\/dorado"
+        },
+        "eel": {
+            "textures": "textures\/items\/eel"
+        },
+        "flounder": {
+            "textures": "textures\/items\/flounder"
+        },
+        "ghostfish": {
+            "textures": "textures\/items\/ghostfish"
+        },
+        "halibut": {
+            "textures": "textures\/items\/halibut"
+        },
+        "herring": {
+            "textures": "textures\/items\/herring"
+        },
+        "ice_pip": {
+            "textures": "textures\/items\/ice_pip"
+        },
+        "largemouth_bass": {
+            "textures": "textures\/items\/largemouth_bass"
+        },
+        "lava_eel": {
+            "textures": "textures\/items\/lava_eel"
+        },
+        "lingcod": {
+            "textures": "textures\/items\/lingcod"
+        },
+        "lionfish": {
+            "textures": "textures\/items\/lionfish"
+        },
+        "midnight_carp": {
+            "textures": "textures\/items\/midnight_carp"
+        },
+        "midnight_squid": {
+            "textures": "textures\/items\/midnight_squid"
+        },
+        "mutant_carp": {
+            "textures": "textures\/items\/mutant_carp"
+        },
+        "octopus": {
+            "textures": "textures\/items\/octopus"
+        },
+        "perch": {
+            "textures": "textures\/items\/perch"
+        },
+        "pike": {
+            "textures": "textures\/items\/pike"
+        },
+        "radioactive_carp": {
+            "textures": "textures\/items\/radioactive_carp"
+        },
+        "rainbow_trout": {
+            "textures": "textures\/items\/rainbow_trout"
+        },
+        "red_mullet": {
+            "textures": "textures\/items\/red_mullet"
+        },
+        "red_snapper": {
+            "textures": "textures\/items\/red_snapper"
+        },
+        "sandfish": {
+            "textures": "textures\/items\/sandfish"
+        },
+        "scorpion_carp": {
+            "textures": "textures\/items\/scorpion_carp"
+        },
+        "sea_cucumber": {
+            "textures": "textures\/items\/sea_cucumber"
+        },
+        "shad": {
+            "textures": "textures\/items\/shad"
+        },
+        "shardine": {
+            "textures": "textures\/items\/shardine"
+        },
+        "slimejack": {
+            "textures": "textures\/items\/slimejack"
+        },
+        "smallmouth_bass": {
+            "textures": "textures\/items\/smallmouth_bass"
+        },
+        "spook_fish": {
+            "textures": "textures\/items\/spook_fish"
+        },
+        "squid": {
+            "textures": "textures\/items\/squid"
+        },
+        "stingray": {
+            "textures": "textures\/items\/stingray"
+        },
+        "stonefish": {
+            "textures": "textures\/items\/stonefish"
+        },
+        "sturgeon": {
+            "textures": "textures\/items\/sturgeon"
+        },
+        "sunfish": {
+            "textures": "textures\/items\/sunfish"
+        },
+        "super_cucumber": {
+            "textures": "textures\/items\/super_cucumber"
+        },
+        "tiger_trout": {
+            "textures": "textures\/items\/tiger_trout"
+        },
+        "tilapia": {
+            "textures": "textures\/items\/tilapia"
+        },
+        "tuna": {
+            "textures": "textures\/items\/tuna"
+        },
+        "void_salmon": {
+            "textures": "textures\/items\/void_salmon"
+        },
+        "walleye": {
+            "textures": "textures\/items\/walleye"
+        },
+        "woodskip": {
+            "textures": "textures\/items\/woodskip"
+        }
+    }
+}

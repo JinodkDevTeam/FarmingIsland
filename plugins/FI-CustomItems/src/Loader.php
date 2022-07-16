@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CustomItems;
 
 use CustomItems\custombreaktime\TitaniumDrillBreakTime;
+use CustomItems\customies\CustomFishFactory;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
 use CustomItems\item\CustomItemFactory;
@@ -26,6 +27,7 @@ class Loader extends PluginBase{
 	}
 
 	public function onEnable() : void{
+		CustomFishFactory::register(); //Register Customies items
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
 		new CustomItemFactory();
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());
