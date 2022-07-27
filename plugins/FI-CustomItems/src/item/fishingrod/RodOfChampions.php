@@ -16,7 +16,7 @@ class RodOfChampions extends CustomRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 25);
 		$nbt->setInt("FishQualityIncrease", 16);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

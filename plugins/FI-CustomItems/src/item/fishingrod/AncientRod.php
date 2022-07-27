@@ -16,7 +16,7 @@ class AncientRod extends CustomRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 50);
 		$nbt->setInt("FishQualityIncrease", 20);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

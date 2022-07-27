@@ -12,10 +12,10 @@ use pocketmine\item\ItemIds;
 class GameAnnihilator extends CustomItem{
 
 	public function toItem() : Item{
-		$item = ItemFactory::getInstance()->get(ItemIds::END_CRYSTAL);
+		$item = ItemFactory::getInstance()->get(ItemIds::END_CRYSTAL); //Will changes in pm5, since pm4 doesnt have any end crystal constant
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

@@ -7,16 +7,15 @@ use CustomItems\item\utils\RarityHelper;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
+use pocketmine\item\VanillaItems;
 
 class NoicePaper extends CustomItem{
 
 	public function toItem() : Item{
-		$item = ItemFactory::getInstance()->get(ItemIds::PAPER);
+		$item = VanillaItems::PAPER();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"NOICE !",

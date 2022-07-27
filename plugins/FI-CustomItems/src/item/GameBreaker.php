@@ -4,17 +4,16 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 use CustomItems\item\utils\RarityHelper;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
 
 class GameBreaker extends CustomItem{
 
 	public function toItem() : Item{
-		$item = ItemFactory::getInstance()->get(ItemIds::TNT);
+		$item = VanillaBlocks::TNT()->asItem();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

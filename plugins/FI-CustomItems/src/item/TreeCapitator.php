@@ -16,11 +16,11 @@ class TreeCapitator extends VeinMineTool{
 	public function toItem() : Item{
 		$item = VanillaItems::GOLDEN_AXE();
 		if ($item instanceof Durable){
-			$item->setUnbreakable(true);
+			$item->setUnbreakable();
 		}
 		$item->addEnchantment(new EnchantmentInstance(VanillaEnchantments::EFFICIENCY(), 5));
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

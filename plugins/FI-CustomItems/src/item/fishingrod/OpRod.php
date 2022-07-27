@@ -17,7 +17,7 @@ class OpRod extends CustomRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 90);
 		$nbt->setInt("FishQualityIncrease", 90);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

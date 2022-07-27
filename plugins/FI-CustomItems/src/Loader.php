@@ -4,10 +4,10 @@ declare(strict_types=1);
 namespace CustomItems;
 
 use CustomItems\custombreaktime\TitaniumDrillBreakTime;
-use CustomItems\customies\CustomFishFactory;
+use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
-use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomItems;
 use CustomItems\listener\CustomItemListener;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
 use pocketmine\data\bedrock\EnchantmentIdMap;
@@ -27,12 +27,13 @@ class Loader extends PluginBase{
 	}
 
 	public function onEnable() : void{
-		CustomFishFactory::register(); //Register Customies items
+		CustomiesItemManager::register(); //Register Customies items
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
-		new CustomItemFactory();
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());
 		EnchantmentIdMap::getInstance()->register(EnchantmentIds::LURE, new LureEnchantment());
-
+		foreach(CustomItems::getAll() as $id => $item){
+			echo "public const " . strtoupper($id) . " = " . '"' . strtolower($id) . '"' . ";" . PHP_EOL;
+		}
 		CustomBreakTimeAPI::register(new TitaniumDrillBreakTime("TitaniumDrill"));
 	}
 }

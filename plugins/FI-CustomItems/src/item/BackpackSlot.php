@@ -5,21 +5,20 @@ namespace CustomItems\item;
 
 use Backpack\Loader;
 use CustomItems\item\utils\RarityHelper;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
 class BackpackSlot extends CustomItem{
 
 	public function toItem() : Item{
-		$item = ItemFactory::getInstance()->get(ItemIds::CHEST);
+		$item = VanillaBlocks::CHEST()->asItem();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

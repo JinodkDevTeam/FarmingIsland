@@ -3,25 +3,18 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\fishing;
 
+use CustomItems\customies\CustomiesItems;
 use CustomItems\quality\ItemQuality;
 use CustomItems\quality\Quality;
 use FishingModule\event\EntityFishEvent;
 use JinodkDevTeam\utils\Rand;
 use pocketmine\entity\Human;
-use pocketmine\item\ItemFactory;
-use pocketmine\item\ItemIds;
+use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 
 class FishingManager{
 	public const BASE_FISH_CAUGH_CHANCE = 40;
 	public const BASE_FISH_QUALITY_INCREASE_CHANCE = 0;
-
-	public const FISHS = [
-		ItemIds::FISH,
-		ItemIds::SALMON,
-		ItemIds::CLOWNFISH,
-		ItemIds::PUFFERFISH
-		//TODO: Implement more custom fishs.
-	];
 
 	public const FISH_QUALITY_CHANCE = [
 		70, //NORMAL
@@ -33,6 +26,8 @@ class FishingManager{
 	protected LegacyFishingManager $legacy;
 	/** @var Quality[] */
 	protected array $quality_list = [];
+	/** @var Item[] */
+	protected array $fishes = [];
 
 	public function __construct(){
 		$this->legacy = new LegacyFishingManager();
@@ -42,6 +37,62 @@ class FishingManager{
 			Quality::GOLD(),
 			Quality::DIAMOND()
 		], self::FISH_QUALITY_CHANCE);
+		$this->fishes = [
+			VanillaItems::RAW_FISH(),
+			VanillaItems::RAW_SALMON(),
+			VanillaItems::CLOWNFISH(),
+			VanillaItems::PUFFERFISH(),
+			CustomiesItems::ALBACORE(),
+			CustomiesItems::ANCHOVY(),
+			CustomiesItems::BLOBFISH(),
+			CustomiesItems::BLUE_DISCUS(),
+			CustomiesItems::BREAM(),
+			CustomiesItems::BULLHEAD(),
+			CustomiesItems::CARP(),
+			CustomiesItems::CATFISH(),
+			CustomiesItems::CHUB(),
+			CustomiesItems::DORADO(),
+			CustomiesItems::EEL(),
+			CustomiesItems::FLOUNDER(),
+			CustomiesItems::GHOSTFISH(),
+			CustomiesItems::HALIBUT(),
+			CustomiesItems::HERRING(),
+			CustomiesItems::ICE_PIP(),
+			CustomiesItems::LARGEMOUTH_BASS(),
+			CustomiesItems::LAVA_EEL(),
+			CustomiesItems::LINGCOD(),
+			CustomiesItems::LIONFISH(),
+			CustomiesItems::MIDNIGHT_CARP(),
+			CustomiesItems::MIDNIGHT_SQUID(),
+			CustomiesItems::MUTANT_CARP(),
+			CustomiesItems::OCTOPUS(),
+			CustomiesItems::PERCH(),
+			CustomiesItems::PIKE(),
+			CustomiesItems::RADIOACTIVE_CARP(),
+			CustomiesItems::RAINBOW_TROUT(),
+			CustomiesItems::RED_MULLET(),
+			CustomiesItems::RED_SNAPPER(),
+			CustomiesItems::SANDFISH(),
+			CustomiesItems::SCORPION_CARP(),
+			CustomiesItems::SEA_CUCUMBER(),
+			CustomiesItems::SHAD(),
+			CustomiesItems::SHARDINE(),
+			CustomiesItems::SLIMEJACK(),
+			CustomiesItems::SMALLMOUTH_BASS(),
+			CustomiesItems::SPOOK_FISH(),
+			CustomiesItems::SQUID(),
+			CustomiesItems::STINGRAY(),
+			CustomiesItems::STONEFISH(),
+			CustomiesItems::STURGEON(),
+			CustomiesItems::SUNFISH(),
+			CustomiesItems::SUPER_CUCUMBER(),
+			CustomiesItems::TIGER_TROUT(),
+			CustomiesItems::TILAPIA(),
+			CustomiesItems::TUNA(),
+			CustomiesItems::VOID_SALMON(),
+			CustomiesItems::WALLEYE(),
+			CustomiesItems::WOODSKIP(),
+		];
 	}
 
 	public function onFish(EntityFishEvent $event) : void{
@@ -53,7 +104,7 @@ class FishingManager{
 			$event->setItemResult($this->legacy->getRandomItems());
 			return;
 		}
-		$fish = ItemFactory::getInstance()->get(self::FISHS[array_rand(self::FISHS)], 0, 1);
+		$fish = $this->fishes[array_rand($this->fishes)];
 		$quality = $this->quality_list[array_rand($this->quality_list)];
 		if (Rand::fastChance($this->getFishQualityIncreaseChance($event->getEntity()))){
 			$quality = $quality->increaseQuality();

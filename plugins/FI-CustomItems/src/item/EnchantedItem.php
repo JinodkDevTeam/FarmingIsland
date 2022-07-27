@@ -20,7 +20,7 @@ class EnchantedItem extends CustomItem{
 		$item = $this->getBaseItem();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			RarityHelper::toString($this->getRarity())

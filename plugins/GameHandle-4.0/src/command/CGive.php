@@ -5,8 +5,7 @@ namespace NgLamVN\GameHandle\command;
 
 use CortexPE\Commando\args\IntegerArgument;
 use CortexPE\Commando\exception\ArgumentOrderException;
-use CustomItems\item\CustomItemFactory;
-use CustomItems\item\utils\StringToCustomItemParser;
+use CustomItems\item\CustomItems;
 use Exception;
 use NgLamVN\GameHandle\command\args\CustomItemIDArgs;
 use pocketmine\player\Player;
@@ -27,11 +26,7 @@ class CGive extends IngameCommand{
 	public function handle(Player $player, string $aliasUsed, array $args) : void{
 		if(isset($args["ItemID"])){
 			try{
-				if(is_numeric($args["ItemID"])){
-					$item = CustomItemFactory::getInstance()->get((int) $args["ItemID"]);
-				}else{
-					$item = StringToCustomItemParser::getInstance()->parse($args["ItemID"]);
-				}
+				$item = CustomItems::get($args["ItemID"]);
 				if($item == null){
 					$player->sendMessage("Unknow item ID");
 					return;

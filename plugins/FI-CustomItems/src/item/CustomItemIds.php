@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace CustomItems\item;
 
-use czechpmdevs\buildertools\utils\IncompatibleConfigException;
-
+/**
+ * @deprecated
+ */
 final class CustomItemIds{
 	//Mining Stuff
 	public const ENCHANTED_COBBLESTONE = 2000;

@@ -16,7 +16,7 @@ class OpAutomationRod extends AutoRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 96);
 		$nbt->setInt("FishQualityIncrease", 100);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

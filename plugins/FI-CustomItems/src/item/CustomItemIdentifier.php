@@ -4,16 +4,16 @@ declare(strict_types=1);
 namespace CustomItems\item;
 
 class CustomItemIdentifier{
-	protected int $id;
+	protected string $id;
 
-	public function __construct(int $id){
-		$this->id = $id;
+	public function __construct(string|int $id){
+		$this->id = (string)$id;
 	}
 
 	/**
-	 * @return int
+	 * @return string
 	 */
-	public function getId() : int{
+	public function getNamespaceId() : string{
 		return $this->id;
 	}
 }

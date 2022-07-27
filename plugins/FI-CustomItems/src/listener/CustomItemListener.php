@@ -5,7 +5,7 @@ namespace CustomItems\listener;
 
 use CustomItems\item\armor\CustomBoots;
 use CustomItems\item\CustomItem;
-use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomItems;
 use CustomItems\item\fishingrod\CustomRod;
 use CustomItems\item\CustomTool;
 use FishingModule\event\EntityFishEvent;
@@ -31,7 +31,7 @@ class CustomItemListener implements Listener{
 	public function onPlace(BlockPlaceEvent $event) : void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			$citem->onPlace($event);
 		}
@@ -46,7 +46,7 @@ class CustomItemListener implements Listener{
 	public function onInteract(PlayerInteractEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			$citem->onInteractBlock($event);
 		}
@@ -61,7 +61,7 @@ class CustomItemListener implements Listener{
 	public function onItemUse(PlayerItemUseEvent $event): void{
 		$item = $event->getItem();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			$citem->onClickAir($event);
 		}
@@ -76,7 +76,7 @@ class CustomItemListener implements Listener{
 	public function onBreak(BlockBreakEvent $event): void{
 		$item = $event->getPlayer()->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			if ($citem instanceof CustomTool){
 				$citem->onDestroyBlock($event);
@@ -95,7 +95,7 @@ class CustomItemListener implements Listener{
 		if ($damager instanceof Human){
 			$item = $damager->getInventory()->getItemInHand();
 			if($item->getNamedTag()->getTag("CustomItemID") !== null){
-				$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+				$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 				if($citem == null) return;
 				$citem->onAttackEntity($event);
 			}
@@ -111,7 +111,7 @@ class CustomItemListener implements Listener{
 		$player = $event->getPlayer();
 		$item = $player->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			$citem->onInteractEntity($event);
 		}
@@ -126,7 +126,7 @@ class CustomItemListener implements Listener{
 		$player = $event->getEntity();
 		$item = $player->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			if ($citem instanceof CustomRod){
 				$citem->onHook($event);
@@ -138,7 +138,7 @@ class CustomItemListener implements Listener{
 		$player = $event->getEntity();
 		$item = $player->getInventory()->getItemInHand();
 		if($item->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			if ($citem instanceof CustomRod){
 				$citem->onFish($event);
@@ -154,7 +154,7 @@ class CustomItemListener implements Listener{
 		//BOOTS ABILITY HANDLER
 		$boots = $player->getArmorInventory()->getBoots();
 		if($boots->getNamedTag()->getTag("CustomItemID") !== null){
-			$citem = CustomItemFactory::getInstance()->get((int) $boots->getNamedTag()->getTag("CustomItemID")->getValue());
+			$citem = CustomItems::get($boots->getNamedTag()->getTag("CustomItemID")->getValue());
 			if($citem == null) return;
 			if ($citem instanceof CustomBoots){
 				$citem->onMove($event);
@@ -174,7 +174,7 @@ class CustomItemListener implements Listener{
 		$items = array_merge($items, [$player->getInventory()->getItemInHand()]);
 		foreach($items as $item){
 			if($item->getNamedTag()->getTag("CustomItemID") !== null){
-				$citem = CustomItemFactory::getInstance()->get((int) $item->getNamedTag()->getTag("CustomItemID")->getValue());
+				$citem = CustomItems::get($item->getNamedTag()->getTag("CustomItemID")->getValue());
 				if($citem == null) return;
 				if ($citem instanceof CustomItem){
 					$citem->onSneak($event);

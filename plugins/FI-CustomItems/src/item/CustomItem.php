@@ -35,8 +35,8 @@ class CustomItem{
 		return ItemFactory::air();
 	}
 
-	public function getId() : int{
-		return $this->getItemIdentifier()->getId();
+	public function getNamespaceId() : string{
+		return $this->getItemIdentifier()->getNamespaceId();
 	}
 
 	public function getItemIdentifier() : CustomItemIdentifier{

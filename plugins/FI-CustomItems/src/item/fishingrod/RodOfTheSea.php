@@ -16,7 +16,7 @@ class RodOfTheSea extends CustomRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 60);
 		$nbt->setInt("FishQualityIncrease", 60);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

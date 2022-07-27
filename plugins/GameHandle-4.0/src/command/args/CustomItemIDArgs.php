@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command\args;
 
 use CortexPE\Commando\args\StringEnumArgument;
-use CustomItems\item\utils\StringToCustomItemParser;
+use CustomItems\item\CustomItems;
 use pocketmine\command\CommandSender;
 
 class CustomItemIDArgs extends StringEnumArgument{
@@ -18,7 +18,7 @@ class CustomItemIDArgs extends StringEnumArgument{
 	}
 
 	public function getEnumValues() : array{
-		return StringToCustomItemParser::getInstance()->getKnownAliases();
+		return array_map(fn($value) => strtolower($value), array_keys(CustomItems::getAll()));
 	}
 
 	public function getTypeName() : string{

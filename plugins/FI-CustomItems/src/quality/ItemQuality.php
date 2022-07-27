@@ -6,6 +6,13 @@ namespace CustomItems\quality;
 use pocketmine\item\Item;
 
 class ItemQuality{
+
+	/**
+	 * @param Item $item
+	 *
+	 * @return Quality|null
+	 * @description return the Quality of the item, null if not found
+	 */
 	public static function getQuality(Item $item) : ?Quality{
 		$nbt = $item->getNamedTag();
 		$tag = $nbt->getTag("quality");

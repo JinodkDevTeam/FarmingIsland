@@ -16,7 +16,7 @@ class RodOfChallenging extends CustomRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 15);
 		$nbt->setInt("FishQualityIncrease", 8);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

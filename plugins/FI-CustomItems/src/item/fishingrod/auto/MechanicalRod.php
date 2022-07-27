@@ -17,7 +17,7 @@ class MechanicalRod extends AutoRod{
 			$item->setUnbreakable();
 		}
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setInt("FishingSpeed", 20);
 		$nbt->setInt("FishQualityIncrease", 3);
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

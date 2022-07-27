@@ -5,14 +5,13 @@ namespace CustomItems\item;
 
 use CustomItems\item\utils\Rarity;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
 
 class MetaLessItem extends CustomItem{
-	protected MetaLessIdentifier $metaLessIdentifier;
+	protected Item $item;
 
-	public function __construct(CustomItemIdentifier $identifier, MetaLessIdentifier $metaLessIdentifier){
-		$this->metaLessIdentifier = $metaLessIdentifier;
-		parent::__construct($identifier, "", Rarity::COMMON());
+	public function __construct(CustomItemIdentifier $identifier, Item $item){
+		$this->item = $item;
+		parent::__construct($identifier, $item->getName(), Rarity::COMMON());
 	}
 
 	public function getName() : string{
@@ -20,10 +19,6 @@ class MetaLessItem extends CustomItem{
 	}
 
 	public function toItem() : Item{
-		return ItemFactory::getInstance()->get($this->getMetaLessIdentifier()->getId(), $this->getMetaLessIdentifier()->getMeta());
-	}
-
-	public function getMetaLessIdentifier() : MetaLessIdentifier{
-		return $this->metaLessIdentifier;
+		return $this->item;
 	}
 }

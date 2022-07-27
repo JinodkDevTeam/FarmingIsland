@@ -17,7 +17,7 @@ class BoosterBoots extends CustomBoots{
 		$item = VanillaItems::LEATHER_BOOTS()->setCustomColor(new Color(255, 0, 0));
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
 		$item->setLore([
 			"",

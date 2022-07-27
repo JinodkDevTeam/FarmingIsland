@@ -14,7 +14,7 @@ class TitaniumDrill extends CustomTool{
 		$item = VanillaItems::PRISMARINE_SHARD();
 		$item = $this->setEnchantGlint($item);
 		$nbt = $item->getNamedTag();
-		$nbt->setInt("CustomItemID", $this->getId());
+		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$nbt->setString("basebreaktime", "TitaniumDrill");
 		$nbt->setInt("Fuel", 1000);
 		$item->setNamedTag($nbt);
