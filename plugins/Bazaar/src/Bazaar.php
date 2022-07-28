@@ -16,6 +16,7 @@ namespace Bazaar;
 use Bazaar\command\BazaarCommand;
 use Bazaar\provider\ShopYAMLProvider;
 use Bazaar\provider\SqliteProvider;
+use JsonException;
 use pocketmine\plugin\PluginBase;
 
 class Bazaar extends PluginBase{
@@ -33,6 +34,9 @@ class Bazaar extends PluginBase{
 		$this->getServer()->getCommandMap()->register("bazaar", new BazaarCommand($this));
 	}
 
+	/**
+	 * @throws JsonException
+	 */
 	public function onDisable() : void{
 		$this->getProvider()->close();
 		$this->getShopYAMLProvider()->close();

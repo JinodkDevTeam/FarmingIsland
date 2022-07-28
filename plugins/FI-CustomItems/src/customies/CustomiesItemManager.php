@@ -3,10 +3,6 @@ declare(strict_types=1);
 
 namespace CustomItems\customies;
 
-use customiesdevs\customies\block\CustomiesBlockFactory;
-use customiesdevs\customies\block\Material;
-use customiesdevs\customies\block\Model;
-use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use CustomItems\customies\fish\Albacore;
 use CustomItems\customies\fish\Anchovy;
@@ -58,9 +54,6 @@ use CustomItems\customies\fish\Tuna;
 use CustomItems\customies\fish\VoidSalmon;
 use CustomItems\customies\fish\Walleye;
 use CustomItems\customies\fish\Woodskip;
-use pocketmine\block\Block;
-use pocketmine\block\BlockBreakInfo;
-use pocketmine\math\Vector3;
 
 class CustomiesItemManager{
 	public static function register() : void{
@@ -115,10 +108,5 @@ class CustomiesItemManager{
 		CustomiesItemFactory::getInstance()->registerItem(VoidSalmon::class, "fi-fish:void_salmon", "Void Salmon");
 		CustomiesItemFactory::getInstance()->registerItem(Walleye::class, "fi-fish:walleye", "Walleye");
 		CustomiesItemFactory::getInstance()->registerItem(Woodskip::class, "fi-fish:woodskip", "Woodskip");
-
-		$material = new Material(Material::TARGET_ALL, "ficb_custom_mushroom", Material::RENDER_METHOD_ALPHA_TEST);
-		$model = new Model([$material], "geometry.custom_mushroom", new Vector3(-8, 0, -8), new Vector3(16, 16, 16));
-		$creativeInfo = new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_NATURE);
-		CustomiesBlockFactory::getInstance()->registerBlock(Block::class, "ficb:custom_mushroom", "Custom Mushroom", new BlockBreakInfo(1), $model, $creativeInfo);
 	}
 }

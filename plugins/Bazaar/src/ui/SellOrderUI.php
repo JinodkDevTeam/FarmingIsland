@@ -14,9 +14,9 @@ use SOFe\AwaitGenerator\Await;
 
 class SellOrderUI extends BaseUI{
 
-	private int $itemid;
+	private string $itemid;
 
-	public function __construct(Player $player, int $itemid){
+	public function __construct(Player $player, string $itemid){
 		$this->itemid = $itemid;
 		parent::__construct($player);
 	}
@@ -79,7 +79,7 @@ class SellOrderUI extends BaseUI{
 	public function confirm(Player $player, int $amount, float $price) : void{
 		$form = new ModalForm(function(Player $player, $data) use ($amount, $price){
 			if(!isset($data)) return;
-			if($data == false) return;
+			if(!$data) return;
 			$this->createSellOrder($player, $amount, $price);
 		});
 		$form->setTitle("Confirm");

@@ -23,7 +23,7 @@ class OrderDataHelper{
 			return new BuyOrder(
 				(int) $data["Id"],
 				(string) $data["Player"],
-				(int) $data["ItemID"],
+				(string) $data["ItemID"],
 				(int) $data["Amount"],
 				(int) $data["Filled"],
 				(float) $data["Price"],
@@ -34,7 +34,7 @@ class OrderDataHelper{
 		return new SellOrder(
 			(int) $data["Id"],
 			(string) $data["Player"],
-			(int) $data["ItemID"],
+			(string) $data["ItemID"],
 			(int) $data["Amount"],
 			(int) $data["Filled"],
 			(float) $data["Price"],
@@ -55,7 +55,7 @@ class OrderDataHelper{
 			return new BuyOrder(
 				-1,
 				(string) $data["player"],
-				(int) $data["itemID"],
+				(string) $data["itemID"],
 				(int) $data["amount"],
 				(int) $data["filled"],
 				(float) $data["price"],
@@ -66,7 +66,7 @@ class OrderDataHelper{
 		return new SellOrder(
 			-1,
 			(string) $data["player"],
-			(int) $data["itemID"],
+			(string) $data["itemID"],
 			(int) $data["amount"],
 			(int) $data["filled"],
 			(float) $data["price"],

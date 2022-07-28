@@ -6,8 +6,8 @@ namespace CustomItems\item;
 class CustomItemIdentifier{
 	protected string $id;
 
-	public function __construct(string|int $id){
-		$this->id = (string)$id;
+	public function __construct(string $id){
+		$this->id = $id;
 	}
 
 	/**

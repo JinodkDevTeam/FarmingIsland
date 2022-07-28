@@ -5,6 +5,7 @@ namespace NgLamVN\InvCraft;
 
 use JackMD\UpdateNotifier\UpdateNotifier;
 use JinodkDevTeam\utils\ItemUtils;
+use JsonException;
 use muqsit\invmenu\InvMenuHandler;
 use NgLamVN\InvCraft\command\InvCraftCommand;
 use pocketmine\plugin\PluginBase;
@@ -53,6 +54,9 @@ class Loader extends PluginBase{
 		$this->recipes[$recipe->getRecipeName()] = $recipe;
 	}
 
+	/**
+	 * @throws JsonException
+	 */
 	public function onDisable() : void{
 		$this->saveRecipes();
 		$this->getProvider()->save();

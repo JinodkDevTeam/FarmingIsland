@@ -15,9 +15,9 @@ class ListOrderUI extends BaseUI{
 	public const SELL = 1;
 
 	protected int $mode;
-	protected int $item_id;
+	protected string $item_id;
 
-	public function __construct(Player $player, int $item_id, $mode){
+	public function __construct(Player $player, string $item_id, $mode){
 		$this->item_id = $item_id;
 		$this->mode = $mode;
 		parent::__construct($player);

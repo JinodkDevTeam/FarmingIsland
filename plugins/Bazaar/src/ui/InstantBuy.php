@@ -14,9 +14,9 @@ use SOFe\AwaitGenerator\Await;
 
 class InstantBuy extends BaseUI{
 
-	private int $itemid;
+	private string $itemid;
 
-	public function __construct(Player $player, int $itemid = 0){
+	public function __construct(Player $player, string $itemid = ""){
 		$this->itemid = $itemid;
 		parent::__construct($player);
 	}
@@ -76,7 +76,7 @@ class InstantBuy extends BaseUI{
 
 		$form = new ModalForm(function(Player $player, $value) use ($amount, $total, $data){
 			if(!isset($value)) return;
-			if($value == false) return;
+			if(!$value) return;
 			if(EconomyAPI::getInstance()->myMoney($player) < $total){
 				$player->sendMessage("You dont have enough money to do it !");
 				return;

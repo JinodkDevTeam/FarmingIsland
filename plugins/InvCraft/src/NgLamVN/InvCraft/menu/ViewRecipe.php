@@ -10,8 +10,9 @@ use muqsit\invmenu\transaction\InvMenuTransactionResult;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use NgLamVN\InvCraft\Loader;
 use NgLamVN\InvCraft\Recipe;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\StringToItemParser;
 use pocketmine\player\Player;
+use RuntimeException;
 
 class ViewRecipe extends BaseMenu{
 	const VIxVI_PROTECTED_SLOT = [6, 7, 8, 15, 16, 17, 24, 25, 26, 33, 35, 42, 43, 44, 51, 52, 53];
@@ -35,8 +36,14 @@ class ViewRecipe extends BaseMenu{
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$inv = $this->menu->getInventory();
 
-		$ids = explode(":", $this->getLoader()->getProvider()->getMessage("menu.item"));
-		$item = ItemFactory::getInstance()->get((int) $ids[0], (int) $ids[1]);
+		$item_name = $this->getLoader()->getProvider()->getMessage("menu.item");
+		if (!$item_name){
+			throw new RuntimeException("Unknown or missing menu item");
+		}
+		$item = StringToItemParser::getInstance()->parse((string) $item_name);
+		if (is_null($item)){
+			throw new RuntimeException("Unknown menu item given in config");
+		}
 		for($i = 0; $i <= 53; $i++){
 			if(in_array($i, $this->getProtectedSlot())){
 				$inv->setItem($i, $item);

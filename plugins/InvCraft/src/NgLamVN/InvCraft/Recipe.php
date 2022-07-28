@@ -80,7 +80,7 @@ class Recipe{
 	/**
 	 * @param Item[] $data
 	 */
-	public function setRecipeData(array $data){
+	public function setRecipeData(array $data) : void{
 		$this->recipe_data = $data;
 		$this->getLoader()->setRecipe($this);
 	}
@@ -95,7 +95,7 @@ class Recipe{
 	/**
 	 * @param string $name
 	 */
-	public function setRecipeName(string $name){
+	public function setRecipeName(string $name) : void{
 		$old = clone $this;
 		$this->getLoader()->removeRecipe($old);
 		$this->recipe_name = $name;
@@ -126,7 +126,7 @@ class Recipe{
 	 * @param int  $index
 	 * @param Item $item
 	 */
-	public function setRecipeItem(int $index, Item $item){
+	public function setRecipeItem(int $index, Item $item) : void{
 		$this->recipe_data[$index] = $item;
 		$this->getLoader()->setRecipe($this);
 	}
@@ -141,7 +141,7 @@ class Recipe{
 	/**
 	 * @param Item $item
 	 */
-	public function setResultItem(Item $item){
+	public function setResultItem(Item $item) : void{
 		$this->result = $item;
 		$this->getLoader()->setRecipe($this);
 	}
@@ -150,7 +150,7 @@ class Recipe{
 		return $this->mode;
 	}
 
-	public function setMode(int $mode){
+	public function setMode(int $mode) : void{
 		$this->mode = $mode;
 		$this->getLoader()->setRecipe($this);
 	}

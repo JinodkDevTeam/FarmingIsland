@@ -55,7 +55,7 @@ class SellOrderManagerUI{
 	public function cancel(Player $player, SellOrder $order) : void{
 		$form = new ModalForm(function(Player $player, $data) use ($order){
 			if(!isset($data)) return;
-			if($data == true){
+			if($data){
 				$item = ItemUtils::toItem($order->getItemID());
 				$item->setCount($order->getAmount() - $order->getFilled());
 				if(!$player->getInventory()->canAddItem($item)){

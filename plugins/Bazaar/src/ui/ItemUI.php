@@ -12,9 +12,9 @@ use SOFe\AwaitGenerator\Await;
 
 class ItemUI extends BaseUI{
 
-	private int $itemid;
+	private string $itemid;
 
-	public function __construct(Player $player, int $itemid){
+	public function __construct(Player $player, string $itemid){
 		$this->itemid = $itemid;
 		parent::__construct($player);
 	}

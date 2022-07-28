@@ -3,45 +3,53 @@ declare(strict_types=1);
 
 namespace JinodkDevTeam\utils;
 
-use CustomItems\item\CustomItemFactory;
+use CustomItems\item\CustomItems;
 use Exception;
+use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\StringToItemParser;
+use RuntimeException;
 
 class ItemUtils{
 
-	public static function toName(int $id): string{
-		if ($id < 2000){
-			return ItemFactory::getInstance()->get($id)->getName();
+	public static function toName(string $id): string{
+		$item = StringToItemParser::getInstance()->parse($id);
+		if (!is_null($item)){
+			return $item->getName();
 		}
-		$citem = CustomItemFactory::getInstance()->get($id);
+		$citem = CustomItems::get($id);
 		if ($citem == null){
 			return "";
 		}
 		return $citem->getName();
 	}
 
-	public static function toId(Item $item): int{
+	public static function toId(Item $item): string{
 		$nbt = $item->getNamedTag();
 		if ($nbt->getTag("CustomItemID") == null){
-			if ($item->getMeta() == 0){
-				return $item->getId();
+			$id = $item->getId();
+			$namespaceid = LegacyItemIdToStringIdMap::getInstance()->legacyToString($id);
+			if (is_null($namespaceid)){
+				throw new RuntimeException("Cant convert item id ". $id .  "to namespace id");
 			}
-			$citem = CustomItemFactory::getInstance()->getMetaLessItem($item->getId(), $item->getMeta());
-			if ($citem == null){
-				return $item->getId();
-			}
-			return $citem->getId();
+			return $namespaceid;
 		}
-		return (int)$nbt->getTag("CustomItemID")->getValue();
+		$namespaceid = (string)$nbt->getTag("CustomItemID")->getValue();
+		//Verify
+		$citem = CustomItems::get($namespaceid);
+		if (is_null($citem)){
+			throw new RuntimeException("Unknow Custom Item namespace ID ! " . $namespaceid);
+		}
+		return $namespaceid;
 	}
 
-	public static function toItem(int $id): ?Item{
-		if ($id < 2000){
-			return ItemFactory::getInstance()->get($id);
+	public static function toItem(string $id): ?Item{
+		$item = StringToItemParser::getInstance()->parse($id);
+		if (!is_null($item)){
+			return $item;
 		}
-		$citem = CustomItemFactory::getInstance()->get($id);
+		$citem = CustomItems::get($id);
 		return $citem?->toItem();
 	}
 

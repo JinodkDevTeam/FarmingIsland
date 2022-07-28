@@ -7,14 +7,14 @@ abstract class BaseOrder{
 
 	protected int $id;
 	protected string $player;
-	protected int $itemID;
+	protected string $itemID;
 	protected int $amount;
 	protected int $filled;
 	protected float $price;
 	protected int $time;
 	protected bool $isfilled;
 
-	public function __construct(int $id, string $player, int $itemID = 0, int $amount = 0, int $filled = 0, float $price = 0, int $time = 0, bool $isfilled = false){
+	public function __construct(int $id, string $player, string $itemID = "", int $amount = 0, int $filled = 0, float $price = 0, int $time = 0, bool $isfilled = false){
 		$this->id = $id;
 		$this->player = $player;
 		$this->itemID = $itemID;
@@ -56,11 +56,11 @@ abstract class BaseOrder{
 		$this->id = $id;
 	}
 
-	public function getItemID() : int{
+	public function getItemID() : string{
 		return $this->itemID;
 	}
 
-	public function setItemID(int $itemID) : void{
+	public function setItemID(string $itemID) : void{
 		$this->itemID = $itemID;
 	}
 

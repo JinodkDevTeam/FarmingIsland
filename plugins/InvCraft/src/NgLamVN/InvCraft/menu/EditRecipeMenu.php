@@ -10,8 +10,9 @@ use muqsit\invmenu\transaction\InvMenuTransactionResult;
 use muqsit\invmenu\type\InvMenuTypeIds;
 use NgLamVN\InvCraft\Loader;
 use NgLamVN\InvCraft\Recipe;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\StringToItemParser;
 use pocketmine\player\Player;
+use RuntimeException;
 
 class EditRecipeMenu extends BaseMenu{
 	const VIxVI_PROTECTED_SLOT = [6, 7, 8, 15, 16, 17, 24, 25, 26, 33, 35, 42, 43, 44, 51, 52];
@@ -34,15 +35,27 @@ class EditRecipeMenu extends BaseMenu{
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$inv = $this->menu->getInventory();
 
-		$ids = explode(":", $this->getLoader()->getProvider()->getMessage("menu.item"));
-		$item = ItemFactory::getInstance()->get((int) $ids[0], (int) $ids[1]);
+		$item_name = $this->getLoader()->getProvider()->getMessage("menu.item");
+		if (!$item_name){
+			throw new RuntimeException("Unknown or missing menu item");
+		}
+		$item = StringToItemParser::getInstance()->parse((string) $item_name);
+		if (is_null($item)){
+			throw new RuntimeException("Unknown menu item given in config");
+		}
 		for($i = 0; $i <= 52; $i++){
 			if(in_array($i, $this->getProtectedSlot())){
 				$inv->setItem($i, $item);
 			}
 		}
-		$idsave = explode(":", $this->getLoader()->getProvider()->getMessage("menu.save.item"));
-		$save = ItemFactory::getInstance()->get((int) $idsave[0], (int) $idsave[1])->setCustomName($this->getLoader()->getProvider()->getMessage("menu.save.name"));
+		$save_name = $this->getLoader()->getProvider()->getMessage("menu.save.name");
+		if (!$save_name){
+			throw new RuntimeException("Unknown or missing menu item");
+		}
+		$save = StringToItemParser::getInstance()->parse($save_name);
+		if (is_null($save)){
+			throw new RuntimeException("Unknown menu item given in config");
+		}
 		$inv->setItem(self::SAVE_SLOT, $save);
 		$this->pasteRecipe($this->recipe);
 

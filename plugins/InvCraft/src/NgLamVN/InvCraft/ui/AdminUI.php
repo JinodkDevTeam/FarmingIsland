@@ -69,7 +69,7 @@ class AdminUI{
 		return null;
 	}
 
-	public function addRecipe(Player $player){
+	public function addRecipe(Player $player) : void{
 		$form = new CustomForm(function(Player $player, $data){
 			if(!isset($data[0])){
 				return;
@@ -82,9 +82,6 @@ class AdminUI{
 				return;
 			}
 			$mode = Recipe::VIxVI_MODE;
-			if($data[1] == 0){
-				$mode = Recipe::VIxVI_MODE;
-			}
 			if($data[1] == 1){
 				$mode = Recipe::IIIxIII_MODE;
 			}
@@ -104,10 +101,10 @@ class AdminUI{
 		$player->sendForm($form);
 	}
 
-	public function editRecipe(Player $player){
+	public function editRecipe(Player $player) : void{
 		$recipes = [];
 		foreach($this->getLoader()->getRecipes() as $recipe){
-			array_push($recipes, $recipe);
+			$recipes[] = $recipe;
 		}
 
 		if($recipes == []){
@@ -130,10 +127,10 @@ class AdminUI{
 		$player->sendForm($form);
 	}
 
-	public function removeRecipe(Player $player){
+	public function removeRecipe(Player $player) : void{
 		$recipes = [];
 		foreach($this->getLoader()->getRecipes() as $recipe){
-			array_push($recipes, $recipe);
+			$recipes[] = $recipe;
 		}
 
 		if($recipes == []){
@@ -151,7 +148,7 @@ class AdminUI{
 				if(!isset($data2)){
 					return;
 				}
-				if($data2 == true){
+				if($data2){
 					$this->getLoader()->removeRecipe($re);
 				}
 			});
@@ -175,7 +172,7 @@ class AdminUI{
 	public function viewRecipe(Player $player) : void{
 		$recipes = [];
 		foreach($this->getLoader()->getRecipes() as $recipe){
-			array_push($recipes, $recipe);
+			$recipes[] = $recipe;
 		}
 
 		if($recipes == []){

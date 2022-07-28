@@ -16,7 +16,7 @@ class PlayerUI{
 		$this->form($player);
 	}
 
-	public function form(Player $player){
+	public function form(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, $data){
 			if(!isset($data)){
 				return;
@@ -53,10 +53,10 @@ class PlayerUI{
 		return null;
 	}
 
-	public function viewRecipe(Player $player){
+	public function viewRecipe(Player $player) : void{
 		$recipes = [];
 		foreach($this->getLoader()->getRecipes() as $recipe){
-			array_push($recipes, $recipe);
+			$recipes[] = $recipe;
 		}
 
 		if($recipes == []){

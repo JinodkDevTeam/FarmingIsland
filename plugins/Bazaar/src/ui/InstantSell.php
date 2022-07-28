@@ -14,9 +14,9 @@ use SOFe\AwaitGenerator\Await;
 
 class InstantSell extends BaseUI{
 
-	private int $itemid;
+	private string $itemid;
 
-	public function __construct(Player $player, int $itemid = 0){
+	public function __construct(Player $player, string $itemid = ""){
 		$this->itemid = $itemid;
 		parent::__construct($player);
 	}
@@ -77,7 +77,7 @@ class InstantSell extends BaseUI{
 
 		$form = new ModalForm(function(Player $player, $value) use ($amount, $total, $data){
 			if(!isset($value)) return;
-			if($value == false) return;
+			if(!$value) return;
 			$this->instantSell($player, $amount, $data);
 		});
 		$form->setTitle("Confirm");

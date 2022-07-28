@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Bazaar\provider;
 
 use Bazaar\Bazaar;
+use JsonException;
 use pocketmine\utils\Config;
 
 class ShopYAMLProvider implements Provider{
@@ -24,6 +25,9 @@ class ShopYAMLProvider implements Provider{
 		$this->data = new Config($this->getBazaar()->getDataFolder() . "shop.yml", Config::YAML);
 	}
 
+	/**
+	 * @throws JsonException
+	 */
 	public function close() : void{
 		$this->data->save();
 	}

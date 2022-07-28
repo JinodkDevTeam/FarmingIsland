@@ -13,7 +13,7 @@ use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerToggleSneakEvent;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\item\Item;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\VanillaItems;
 
 class CustomItem{
 
@@ -32,7 +32,7 @@ class CustomItem{
 	 * @description Convert to Item
 	 */
 	public function toItem() : Item{
-		return ItemFactory::air();
+		return VanillaItems::AIR();
 	}
 
 	public function getNamespaceId() : string{

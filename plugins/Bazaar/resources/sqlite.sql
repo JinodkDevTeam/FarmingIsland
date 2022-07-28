@@ -5,26 +5,26 @@
 CREATE TABLE IF NOT EXISTS BuyOrder
 (
     Id       INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-    Player   VARCHAR(40) NOT NULL,
-    Price    FLOAT       NOT NULL DEFAULT 0,
-    Amount   INTEGER     NOT NULL DEFAULT 0,
-    Filled   INTEGER     NOT NULL DEFAULT 0,
-    ItemID   INTEGER     NOT NULL DEFAULT 0,
-    Time     INTEGER     NOT NULL DEFAULT 0,
-    IsFilled BOOLEAN     NOT NULL DEFAULT false
+    Player   VARCHAR(40)  NOT NULL,
+    Price    FLOAT        NOT NULL DEFAULT 0,
+    Amount   INTEGER      NOT NULL DEFAULT 0,
+    Filled   INTEGER      NOT NULL DEFAULT 0,
+    ItemID   VARCHAR(100) NOT NULL DEFAULT '',
+    Time     INTEGER      NOT NULL DEFAULT 0,
+    IsFilled BOOLEAN      NOT NULL DEFAULT false
 );
 -- #        }
 -- #        { sell
 CREATE TABLE IF NOT EXISTS SellOrder
 (
     Id       INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-    Player   VARCHAR(40) NOT NULL,
-    Price    FLOAT       NOT NULL DEFAULT 0,
-    Amount   INTEGER     NOT NULL DEFAULT 0,
-    Filled   INTEGER     NOT NULL DEFAULT 0,
-    ItemID   INTEGER     NOT NULL DEFAULT 0,
-    Time     INTEGER     NOT NULL DEFAULT 0,
-    IsFilled BOOLEAN     NOT NULL DEFAULT false
+    Player   VARCHAR(40)  NOT NULL,
+    Price    FLOAT        NOT NULL DEFAULT 0,
+    Amount   INTEGER      NOT NULL DEFAULT 0,
+    Filled   INTEGER      NOT NULL DEFAULT 0,
+    ItemID   VARCHAR(100) NOT NULL DEFAULT '',
+    Time     INTEGER      NOT NULL DEFAULT 0,
+    IsFilled BOOLEAN      NOT NULL DEFAULT false
 );
 -- #        }
 -- #    }
@@ -34,17 +34,18 @@ CREATE TABLE IF NOT EXISTS SellOrder
 -- #            :price float
 -- #            :amount int
 -- #            :filled int
--- #            :itemID int
+-- #            :itemID string
 -- #            :time int
 -- #            :isfilled bool
 INSERT OR
-REPLACE INTO BuyOrder (Player,
-                       Price,
-                       Amount,
-                       Filled,
-                       ItemID,
-                       Time,
-                       IsFilled)
+REPLACE
+INTO BuyOrder (Player,
+               Price,
+               Amount,
+               Filled,
+               ItemID,
+               Time,
+               IsFilled)
 VALUES (:player,
         :price,
         :amount,
@@ -58,17 +59,18 @@ VALUES (:player,
 -- #            :price float
 -- #            :amount int
 -- #            :filled int
--- #            :itemID int
+-- #            :itemID string
 -- #            :time int
 -- #            :isfilled bool
 INSERT OR
-REPLACE INTO SellOrder (Player,
-                        Price,
-                        Amount,
-                        Filled,
-                        ItemID,
-                        Time,
-                        IsFilled)
+REPLACE
+INTO SellOrder (Player,
+                Price,
+                Amount,
+                Filled,
+                ItemID,
+                Time,
+                IsFilled)
 VALUES (:player,
         :price,
         :amount,
@@ -108,14 +110,14 @@ WHERE Player = :player;
 -- #            }
 -- #            { itemid
 -- #                { unsort
--- #                    :itemid int
+-- #                    :itemid string
 SELECT *
 FROM BuyOrder
 WHERE ItemID = :itemid;
 -- #                }
 -- #                { sort
 -- #                    { price
--- #                        :itemid int
+-- #                        :itemid string
 SELECT *
 FROM BuyOrder
 WHERE (ItemID = :itemid)
@@ -140,14 +142,14 @@ WHERE Player = :player;
 -- #            }
 -- #            { itemid
 -- #                { unsort
--- #                    :itemid int
+-- #                    :itemid string
 SELECT *
 FROM SellOrder
 WHERE ItemID = :itemid;
 -- #                }
 -- #                { sort
 -- #                    { price
--- #                        :itemid int
+-- #                        :itemid string
 SELECT *
 FROM SellOrder
 WHERE (ItemID = :itemid)

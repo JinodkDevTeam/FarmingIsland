@@ -52,8 +52,7 @@ class CategoryMenu extends BaseUI{
 						$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
 						$sell = $order->getPrice();
 					}
-
-					$form->addButton(ItemUtils::toName((int)$shop[$item]) . "\n" . "Buy: " . $sell . " Sell: " . $buy);
+					$form->addButton(ItemUtils::toName($shop[$item]) . "\n" . "Buy: " . $sell . " Sell: " . $buy);
 				}
 			}
 			$form->setTitle("Bazaar Shop");

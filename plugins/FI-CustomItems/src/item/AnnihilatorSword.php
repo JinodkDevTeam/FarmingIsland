@@ -22,7 +22,7 @@ class AnnihilatorSword extends CustomItem{
 			"§r§7The ultimate sword that made\nfrom §cGame Annihilator§7.\nHave The ultimate power of bug, \nerrors and crashes.",
 			"",
 			"§r§bAbility: §eThe §cGame Crasher",
-			"§r§7Instance crash the server when click air",
+			"§r§7Instant crash the server when click air",
 			"",
 			RarityHelper::toString($this->getRarity())
 		]);

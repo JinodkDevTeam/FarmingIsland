@@ -81,6 +81,4 @@ class Rand{
 		$result = self::build_chance($elements, $chances, $isShuffle);
 		return $result[array_rand($result)];
 	}
-
-
 }

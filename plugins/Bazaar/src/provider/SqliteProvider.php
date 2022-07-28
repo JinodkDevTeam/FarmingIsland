@@ -70,7 +70,6 @@ class SqliteProvider implements Provider{
 
 	public function asyncSelect(string $query, array $args) : Generator{
 		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
-
 		return yield Await::ONCE;
 	}
 
