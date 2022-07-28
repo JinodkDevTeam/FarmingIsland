@@ -1,57 +1,57 @@
 Mining:
   Cobblestone:
-    - 4 #Cobblestone
-    - 2000 #Enchanted Cobblestone
+    - cobblestone #Cobblestone
+    - enchanted_cobblestone #Enchanted Cobblestone
   Coal:
-    - 263 #Coal
-    - 2001 #Enchanted Coal
-    - 2002 #Enchanted Coal Block
+    - coal #Coal
+    - enchanted_coal #Enchanted Coal
+    - enchanted_coal_block #Enchanted Coal Block
   Iron:
-    - 265 #Iron Ingot
-    - 2003 #Enchanted Iron Ingot
-    - 2004 #Enchanted Iron Block
+    - iron_ingot #Iron Ingot
+    - enchanted_iron #Enchanted Iron Ingot
+    - enchanted_iron_block #Enchanted Iron Block
   Gold:
-    - 266 #Gold Ingot
-    - 2005 #Enchanted Gold Ingot
-    - 2006 #Enchanted Gold Block
+    - gold_ingot #Gold Ingot
+    - enchanted_gold #Enchanted Gold Ingot
+    - enchanted_gold_block #Enchanted Gold Block
   Lapis:
-    - 5000 #Lapis Lazuli
-    - 2007 #Enchanted Lapis
-    - 2008 #Enchanted Lapis Block
+    - lapis_lazuli #Lapis Lazuli
+    - enchanted_lapis #Enchanted Lapis
+    - enchanted_lapis_block #Enchanted Lapis Block
   RedStone:
-    - 331 #Redstone
-    - 2009 #Enchanted Redstone
-    - 2010 #Enchanted Redstone Block
+    - redstone #Redstone
+    - enchanted_redstone #Enchanted Redstone
+    - enchanted_redstone_block #Enchanted Redstone Block
   Emerald:
-    - 388 #Emerald
-    - 2011 #Enchanted Emerald
-    - 2012 #Enchanted Emerald Block
+    - emerald #Emerald
+    - enchanted_emerald #Enchanted Emerald
+    - enchanted_emerald_block #Enchanted Emerald Block
   Diamond:
-    - 264 #Diamond
-    - 2013 #Enchanted Diamond
-    - 2014 #Enchanted Diamond Block
+    - diamond #Diamond
+    - enchanted_diamond #Enchanted Diamond
+    - enchanted_diamond_block #Enchanted Diamond Block
   Other:
-    - 12 #Sand
-    - 2016 #Enchanted Sand
-    - 13 #Gravel
-    - 318 #Flint
-    - 2015 #Enchanted Flint
+    - sand #Sand
+    - enchanted_sand #Enchanted Sand
+    - gravel #Gravel
+    - flint #Flint
+    - enchanted_flint #Enchanted Flint
 Farming:
   Wheat:
-    - 295 #Seed
-    - 296 #Wheat
-    - 2031 #Enchanted Wheat
-    - 2032 #Enchanted Hay Bale
+    - wheat_seed #Seed
+    - wheat #Wheat
+    - enchanted_wheat #Enchanted Wheat
+    - enchanted_hay_bale #Enchanted Hay Bale
   Carrot:
-    - 391 #Carrot
-    - 2033 #Enchanted Carrot
-    - 2034 #Enchanted Golden Carrot
+    - carrot #Carrot
+    - enchanted_carrot #Enchanted Carrot
+    - enchanted_golden_carrot #Enchanted Golden Carrot
 Fishing:
   Clay:
-    - 337 #Clay ball
-    - 2017 #Enchanted Clay
-    - 2018 #Enchanted Clay Block
+    - clay #Clay ball
+    - enchanted_clay #Enchanted Clay
+    - enchanted_clay_block #Enchanted Clay Block
 Foraging:
   "Oak Log":
-    - 17 #Oak Log
-    - 2050 #Enchanted Oak Log
+    - oak_log #Oak Log
+    - enchanted_oak_log #Enchanted Oak Log

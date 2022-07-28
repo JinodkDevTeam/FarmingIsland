@@ -1,59 +1,59 @@
 ---
 Mining:
   Cobblestone:
-  - 4
-  - 2000
+  - cobblestone
+  - enchanted_cobblestone
   Coal:
-  - 263
-  - 2001
-  - 2002
+  - coal
+  - enchanted_coal
+  - enchanted_coal_block
   Iron:
-  - 265
-  - 2003
-  - 2004
+  - iron_ingot
+  - enchanted_iron
+  - enchanted_iron_block
   Gold:
-  - 266
-  - 2005
-  - 2006
+  - gold_ingot
+  - enchanted_gold
+  - enchanted_gold_block
   Lapis:
-  - 5000
-  - 2007
-  - 2008
+  - lapis_lazuli
+  - enchanted_lapis
+  - enchanted_lapis_block
   RedStone:
-  - 331
-  - 2009
-  - 2010
+  - redstone
+  - enchanted_redstone
+  - enchanted_redstone_block
   Emerald:
-  - 388
-  - 2011
-  - 2012
+  - emerald
+  - enchanted_emerald
+  - enchanted_emerald_block
   Diamond:
-  - 264
-  - 2013
-  - 2014
+  - diamond
+  - enchanted_diamond
+  - enchanted_diamond_block
   Other:
-  - 12
-  - 2016
-  - 13
-  - 318
-  - 2015
+  - sand
+  - enchanted_sand
+  - gravel
+  - flint
+  - enchanted_flint
 Farming:
   Wheat:
-  - 295
-  - 296
-  - 2031
-  - 2032
+  - wheat_seed
+  - wheat
+  - enchanted_wheat
+  - enchanted_hay_bale
   Carrot:
-  - 391
-  - 2033
-  - 2034
+  - carrot
+  - enchanted_carrot
+  - enchanted_golden_carrot
 Fishing:
   Clay:
-  - 337
-  - 2017
-  - 2018
+  - clay
+  - enchanted_clay
+  - enchanted_clay_block
 Foraging:
   Oak Log:
-  - 17
-  - 2050
+  - oak_log
+  - enchanted_oak_log
 ...

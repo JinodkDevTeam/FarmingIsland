@@ -5,7 +5,6 @@ namespace JinodkDevTeam\utils;
 
 use CustomItems\item\CustomItems;
 use Exception;
-use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
@@ -28,12 +27,15 @@ class ItemUtils{
 	public static function toId(Item $item): string{
 		$nbt = $item->getNamedTag();
 		if ($nbt->getTag("CustomItemID") == null){
-			$id = $item->getId();
-			$namespaceid = LegacyItemIdToStringIdMap::getInstance()->legacyToString($id);
-			if (is_null($namespaceid)){
-				throw new RuntimeException("Cant convert item id ". $id .  "to namespace id");
+			$item_name = $item->getVanillaName();
+			$item_name = strtolower($item_name);
+			$item_name = str_replace(" ", "_", $item_name);
+			$item = StringToItemParser::getInstance()->parse($item_name);
+			if (is_null($item)){
+				//I haz no idea about this...
+				throw new RuntimeException("Having Rare Problem when parsing this item to string, got unknow item... ! " . $item_name);
 			}
-			return $namespaceid;
+			return $item_name;
 		}
 		$namespaceid = (string)$nbt->getTag("CustomItemID")->getValue();
 		//Verify
