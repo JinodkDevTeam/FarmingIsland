@@ -38,14 +38,14 @@ class CategoryMenu extends BaseUI{
 				if (is_array($shop[$item])){
 					$form->addButton($item);
 				} else {
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => (int)$shop[$item]]);
+					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $shop[$item]]);
 					if(empty($data)){
 						$buy = "N/A";
 					}else{
 						$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 						$buy = $order->getPrice();
 					}
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => (int)$shop[$item]]);
+					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $shop[$item]]);
 					if(empty($data)){
 						$sell = "N/A";
 					}else{

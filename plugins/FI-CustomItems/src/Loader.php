@@ -31,9 +31,6 @@ class Loader extends PluginBase{
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());
 		EnchantmentIdMap::getInstance()->register(EnchantmentIds::LURE, new LureEnchantment());
-		foreach(CustomItems::getAll() as $id => $item){
-			echo "public const " . strtoupper($id) . " = " . '"' . strtolower($id) . '"' . ";" . PHP_EOL;
-		}
 		CustomBreakTimeAPI::register(new TitaniumDrillBreakTime("TitaniumDrill"));
 	}
 }
