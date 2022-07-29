@@ -7,6 +7,7 @@ use CustomItems\item\utils\RarityHelper;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Lava;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
@@ -39,7 +40,8 @@ class MagmaBoots extends CustomBoots{
 					$b = $world->getBlock($player->getPosition()->add($x, -1, $z));
 					if ($world->getBlock($b->getPosition()->add(0, 1, 0))->getId() === BlockLegacyIds::AIR) {
 						if ($b instanceof Lava && $b->getMeta() === 0) {
-							$world->setBlock($b->getPosition()->asVector3(), BlockFactory::getInstance()->get(BlockLegacyIds::OBSIDIAN, 15));
+							//TODO: Reset the obsidian blocks
+							$world->setBlock($b->getPosition()->asVector3(), VanillaBlocks::OBSIDIAN());
 						}
 					}
 				}
