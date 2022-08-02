@@ -5,9 +5,11 @@ namespace JinodkDevTeam\utils;
 
 use CustomItems\item\CustomItems;
 use Exception;
+use JinodkDevTeam\utils\convert\SimpleItemNameConvertor;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
+use pocketmine\utils\TextFormat;
 use RuntimeException;
 
 class ItemUtils{
@@ -27,23 +29,52 @@ class ItemUtils{
 	public static function toId(Item $item): string{
 		$nbt = $item->getNamedTag();
 		if ($nbt->getTag("CustomItemID") == null){
-			$item_name = $item->getVanillaName();
-			$item_name = strtolower($item_name);
-			$item_name = str_replace(" ", "_", $item_name);
-			$item = StringToItemParser::getInstance()->parse($item_name);
-			if (is_null($item)){
-				//I haz no idea about this...
-				throw new RuntimeException("Having Rare Problem when parsing this item to string, got unknow item... ! " . $item_name);
+			try{
+				return self::simpleItemMapping($item);
+			}catch(RuntimeException){
+				$name = SimpleItemNameConvertor::convert($item);
+				if (is_null($name)){
+					throw new RuntimeException("Cant parse item " . $item->getVanillaName() . "->" . $name);
+				}
+				//Verify
+				$nitem = StringToItemParser::getInstance()->parse($name);
+				if (is_null($nitem)){
+					throw new RuntimeException("Cant able to get item from parsed string ! "  . $item->getVanillaName() . "->" . $name);
+				}
+				if (!$item->canStackWith($nitem)){
+					throw new RuntimeException("Item parsed success but can't stack with original ..."   . $item->getVanillaName() . "->" . $name);
+				}
+				return $name;
 			}
-			return $item_name;
 		}
 		$namespaceid = (string)$nbt->getTag("CustomItemID")->getValue();
 		//Verify
 		$citem = CustomItems::get($namespaceid);
 		if (is_null($citem)){
-			throw new RuntimeException("Unknow Custom Item namespace ID ! " . $namespaceid);
+			throw new RuntimeException(TextFormat::RED . "Unknow Custom Item namespace ID ! " . $namespaceid);
 		}
 		return $namespaceid;
+	}
+
+	/**
+	 * @param Item $item
+	 *
+	 * @return string
+	 * @throws RuntimeException
+	 */
+	public static function simpleItemMapping(Item $item) : string{
+		$item_name = $item->getVanillaName();
+		$item_name = strtolower($item_name);
+		$item_name = str_replace(" ", "_", $item_name);
+		$nitem = StringToItemParser::getInstance()->parse($item_name);
+		if (is_null($nitem)){
+			//I haz no idea about this...
+			throw new RuntimeException("Item name not found ! " . $item->getVanillaName() . "->" . $item_name);
+		}
+		if (!$item->canStackWith($nitem)){
+			throw new RuntimeException("Parsed but cant stack with original " . $item->getVanillaName() . "->" . $item_name);
+		}
+		return $item_name;
 	}
 
 	public static function toItem(string $id): ?Item{

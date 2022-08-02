@@ -16,7 +16,7 @@ Mining:
     - enchanted_gold_block #Enchanted Gold Block
   Lapis:
     - lapis_lazuli #Lapis Lazuli
-    - enchanted_lapis #Enchanted Lapis
+    - enchanted_lapis_lazuli #Enchanted Lapis
     - enchanted_lapis_block #Enchanted Lapis Block
   RedStone:
     - redstone #Redstone
@@ -38,7 +38,7 @@ Mining:
     - enchanted_flint #Enchanted Flint
 Farming:
   Wheat:
-    - wheat_seed #Seed
+    - seeds #Seed
     - wheat #Wheat
     - enchanted_wheat #Enchanted Wheat
     - enchanted_hay_bale #Enchanted Hay Bale
@@ -54,4 +54,4 @@ Fishing:
 Foraging:
   "Oak Log":
     - oak_log #Oak Log
-    - enchanted_oak_log #Enchanted Oak Log
+    - enchanted_oak_wood #Enchanted Oak Log

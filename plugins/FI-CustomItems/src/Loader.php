@@ -7,12 +7,15 @@ use CustomItems\custombreaktime\TitaniumDrillBreakTime;
 use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
-use CustomItems\item\CustomItems;
 use CustomItems\listener\CustomItemListener;
+use JinodkDevTeam\utils\ItemUtils;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\data\bedrock\EnchantmentIds;
+use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
+use pocketmine\Server;
+use RuntimeException;
 
 class Loader extends PluginBase{
 
@@ -32,5 +35,15 @@ class Loader extends PluginBase{
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());
 		EnchantmentIdMap::getInstance()->register(EnchantmentIds::LURE, new LureEnchantment());
 		CustomBreakTimeAPI::register(new TitaniumDrillBreakTime("TitaniumDrill"));
+
+		//to id test
+		/*foreach(VanillaItems::getAll() as $item){
+			try{
+				$item_name = ItemUtils::toId($item);
+				Server::getInstance()->getLogger()->info($item->getVanillaName() . "->" . $item_name);
+			}catch(RuntimeException $e){
+				Server::getInstance()->getLogger()->error($e->getMessage());
+			}
+		}*/
 	}
 }
