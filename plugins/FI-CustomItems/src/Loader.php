@@ -10,6 +10,7 @@ use CustomItems\enchantment\LureEnchantment;
 use CustomItems\listener\CustomItemListener;
 use JinodkDevTeam\utils\ItemUtils;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\data\bedrock\EnchantmentIds;
 use pocketmine\item\VanillaItems;
@@ -36,7 +37,7 @@ class Loader extends PluginBase{
 		EnchantmentIdMap::getInstance()->register(EnchantmentIds::LURE, new LureEnchantment());
 		CustomBreakTimeAPI::register(new TitaniumDrillBreakTime("TitaniumDrill"));
 
-		//to id test
+		//to id test for vanilla items
 		/*foreach(VanillaItems::getAll() as $item){
 			try{
 				$item_name = ItemUtils::toId($item);
@@ -45,5 +46,15 @@ class Loader extends PluginBase{
 				Server::getInstance()->getLogger()->error($e->getMessage());
 			}
 		}*/
+		//to id test for vanilla blocks
+		foreach(VanillaBlocks::getAll() as $block){
+			try{
+				$item = $block->asItem();
+				$item_name = ItemUtils::toId($item);
+				Server::getInstance()->getLogger()->info($item->getVanillaName() . "->" . $item_name);
+			}catch(RuntimeException $e){
+				Server::getInstance()->getLogger()->error($e->getMessage());
+			}
+		}
 	}
 }

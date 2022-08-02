@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace JinodkDevTeam\utils\convert;
 
+use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
@@ -14,13 +16,28 @@ class SimpleItemNameConvertor{
 		//Will replace with Runtime ID in PM5
 	}
 
+	protected static function mapBlock(Block $block, string $name) : void{
+		$item = $block->asItem();
+		self::$members[$item->getId() . ":" . $item->getMeta()] = $name;
+		//Will replace with Runtime ID in PM5
+	}
+
 	protected static function init() : void{
+		//VanillaItems
 		self::map(VanillaItems::EXPERIENCE_BOTTLE(), "experience_bottle");
 		self::map(VanillaItems::TOTEM(), "totem");
 		self::map(VanillaItems::DRAGON_BREATH(), "dragon_breath");
 		self::map(VanillaItems::WRITABLE_BOOK(), "writable_book");
 		self::map(VanillaItems::RABBIT_FOOT(), "rabbit_foot");
-		//Education Edition stuffs
+		//VanillaBlocks
+		self::mapBlock(VanillaBlocks::CHISELED_QUARTZ(), "chiseled_quartz");
+		self::mapBlock(VanillaBlocks::FIRE(), "fire");
+		self::mapBlock(VanillaBlocks::INFO_UPDATE(), "info_update");
+		self::mapBlock(VanillaBlocks::INFO_UPDATE2(), "info_update2");
+		self::mapBlock(VanillaBlocks::SMOOTH_QUARTZ(), "smooth_quartz");
+		self::mapBlock(VanillaBlocks::MAGMA(), "magma");
+		self::mapBlock(VanillaBlocks::LIT_PUMPKIN(), "lit_pumpkin");
+		//Education Edition
 		self::map(VanillaItems::CHEMICAL_ALUMINIUM_OXIDE(), "chemical_aluminium_oxide");
 		self::map(VanillaItems::CHEMICAL_AMMONIA(), "chemical_ammonia");
 		self::map(VanillaItems::CHEMICAL_BARIUM_SULPHATE(), "chemical_barium_sulphate");
@@ -59,6 +76,10 @@ class SimpleItemNameConvertor{
 		self::map(VanillaItems::CHEMICAL_SULPHATE(), "chemical_sulphate");
 		self::map(VanillaItems::CHEMICAL_TUNGSTEN_CHLORIDE(), "chemical_tungsten_chloride");
 		self::map(VanillaItems::CHEMICAL_WATER(), "chemical_water");
+		//Education Edition blocks
+		self::mapBlock(VanillaBlocks::CHEMICAL_HEAT(), "chemical_heat");
+		self::mapBlock(VanillaBlocks::ELEMENT_ACTINIUM(), "element_actinium");
+		self::mapBlock(VanillaBlocks::ELEMENT_ALUMINUM(), "element_aluminum");
 	}
 
 	protected static function checkInit() : void{
