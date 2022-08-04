@@ -8,15 +8,10 @@ use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
 use CustomItems\listener\CustomItemListener;
-use JinodkDevTeam\utils\ItemUtils;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
-use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\data\bedrock\EnchantmentIds;
-use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
-use pocketmine\Server;
-use RuntimeException;
 
 class Loader extends PluginBase{
 
@@ -47,7 +42,7 @@ class Loader extends PluginBase{
 			}
 		}*/
 		//to id test for vanilla blocks
-		foreach(VanillaBlocks::getAll() as $block){
+		/*foreach(VanillaBlocks::getAll() as $block){
 			try{
 				$item = $block->asItem();
 				$item_name = ItemUtils::toId($item);
@@ -55,6 +50,6 @@ class Loader extends PluginBase{
 			}catch(RuntimeException $e){
 				Server::getInstance()->getLogger()->error($e->getMessage());
 			}
-		}
+		}*/
 	}
 }
