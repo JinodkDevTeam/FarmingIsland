@@ -120,8 +120,6 @@ class CustomItems{
 
 	/** @var CustomItem[] */
 	private array $list = [];
-	/** @var MetaLessItem[] */
-	private array $mlist = [];
 
 	protected static function setup() : void{
 		self::register("enchanted_cobblestone" , new EnchantedItem(new CustomItemIdentifier(CustomItemIds::ENCHANTED_COBBLESTONE), "Enchanted Cobblestone", Rarity::COMMON(), VanillaBlocks::COBBLESTONE()->asItem()));
@@ -209,8 +207,6 @@ class CustomItems{
 		self::register("game_breaker", new GameBreaker(new CustomItemIdentifier(CustomItemIds::GAME_BREAKER), "Game Breaker", Rarity::SPECIAL()));
 		self::register("game_annihilator", new GameAnnihilator(new CustomItemIdentifier(CustomItemIds::GAME_ANNIHILATOR), "Game Annihilator", Rarity::VERY_SPECIAL()));
 		self::register("annihilator_sword", new AnnihilatorSword(new CustomItemIdentifier(CustomItemIds::ANNIHILATOR_SWORD), "Annihilator Sword", Rarity::ULTIMATE()));
-
-		self::register("lapis_lazuli", new MetaLessItem(new CustomItemIdentifier(CustomItemIds::LAPIS_LAZULI), VanillaItems::LAPIS_LAZULI())); //deprecated since pm5
 	}
 
 	protected static function register(string $name, CustomItem $item) : void{
