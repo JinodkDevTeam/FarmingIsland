@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Tilapia extends CustomFish{
 	public function getTexture() : string{
-		return "tilapia";
+		return "fici_tilapia";
 	}
 }

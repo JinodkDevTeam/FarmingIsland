@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Flounder extends CustomFish{
 	public function getTexture() : string{
-		return "flounder";
+		return "fici_flounder";
 	}
 }

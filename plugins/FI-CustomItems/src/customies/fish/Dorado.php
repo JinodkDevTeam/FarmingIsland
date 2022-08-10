@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Dorado extends CustomFish{
 	public function getTexture() : string{
-		return "dorado";
+		return "fici_dorado";
 	}
 }

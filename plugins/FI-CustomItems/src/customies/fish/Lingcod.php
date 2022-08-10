@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Lingcod extends CustomFish{
 	public function getTexture() : string{
-		return "lingcod";
+		return "fici_lingcod";
 	}
 }

@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Woodskip extends CustomFish{
 	public function getTexture() : string{
-		return "woodskip";
+		return "fici_woodskip";
 	}
 }

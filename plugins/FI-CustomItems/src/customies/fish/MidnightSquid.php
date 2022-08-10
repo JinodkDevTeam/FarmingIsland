@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class MidnightSquid extends CustomFish{
 	public function getTexture() : string{
-		return "midnight_squid";
+		return "fici_midnight_squid";
 	}
 }

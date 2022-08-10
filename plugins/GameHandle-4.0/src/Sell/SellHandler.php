@@ -9,7 +9,7 @@ use onebone\economyapi\EconomyAPI;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 use pocketmine\utils\Config;
-
+//TODO: Modernize this class aka rewrite
 class SellHandler{
 	public const GLOBAL_BUFF = 0;
 	public const RANK_BUFF = 10;
@@ -27,11 +27,11 @@ class SellHandler{
 		$this->register();
 	}
 
-	public function register(){
+	public function register() : void{
 		$this->getDataConfig();
 	}
 
-	public function getDataConfig(){
+	public function getDataConfig() : void{
 		$this->cfg = new Config($this->getSellDataFolder() . "sell.yml", Config::YAML);
 		$this->data = $this->cfg->getAll();
 	}
@@ -64,7 +64,7 @@ class SellHandler{
 		}
 		$price += $price * ($buff / 100);
 
-		array_push($sellitems, $item);
+		$sellitems[] = $item;
 		$this->addSellUndoAction($player, $price, $sellitems);
 		$player->sendMessage("Sold " . $item->getCount() . " items for " . $price . " xu (+" . $buff . " percent)");
 		EconomyAPI::getInstance()->addMoney($player, $price);
@@ -99,7 +99,7 @@ class SellHandler{
 		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setSellUndoAction($action);
 	}
 
-	public function sellAll(Player $player){
+	public function sellAll(Player $player) : void{
 		/** @var Item[] $sellitems */
 		$sellitems = [];
 		$inv = $player->getInventory();
@@ -117,7 +117,7 @@ class SellHandler{
 			if($price < 0){
 				continue;
 			}
-			array_push($sellitems, $item);
+			$sellitems[] = $item;
 			$price += $price * ($buff / 100);
 			$total += $price;
 			$totalcount += $item->getCount();

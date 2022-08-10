@@ -61,6 +61,12 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static CustomFish VOID_SALMON()
  * @method static CustomFish WALLEYE()
  * @method static CustomFish WOODSKIP()
+ * @method static CustomFish GOLDEN_GIFT()
+ * @method static CustomFish GREEN_GIFT()
+ * @method static CustomFish NO()
+ * @method static CustomFish NULL()
+ * @method static CustomFish RED_GIFT()
+ * @method static CustomFish YES()
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
@@ -81,55 +87,61 @@ class CustomiesItems{
 	protected static function setup() : void{
 		$factory = CustomiesItemFactory::getInstance();
 
-		self::register("albacore", $factory->get("fi-fish:albacore"));
-		self::register("anchovy", $factory->get("fi-fish:anchovy"));
-		self::register("blobfish", $factory->get("fi-fish:blobfish"));
-		self::register("blue_discus", $factory->get("fi-fish:blue_discus"));
-		self::register("bream", $factory->get("fi-fish:bream"));
-		self::register("bullhead", $factory->get("fi-fish:bullhead"));
-		self::register("carp", $factory->get("fi-fish:carp"));
-		self::register("catfish", $factory->get("fi-fish:catfish"));
-		self::register("chub", $factory->get("fi-fish:chub"));
-		self::register("dorado", $factory->get("fi-fish:dorado"));
-		self::register("eel", $factory->get("fi-fish:eel"));
-		self::register("flounder", $factory->get("fi-fish:flounder"));
-		self::register("ghostfish", $factory->get("fi-fish:ghostfish"));
-		self::register("halibut", $factory->get("fi-fish:halibut"));
-		self::register("herring", $factory->get("fi-fish:herring"));
-		self::register("ice_pip", $factory->get("fi-fish:ice_pip"));
-		self::register("largemouth_bass", $factory->get("fi-fish:largemouth_bass"));
-		self::register("lava_eel", $factory->get("fi-fish:lava_eel"));
-		self::register("lingcod", $factory->get("fi-fish:lingcod"));
-		self::register("lionfish", $factory->get("fi-fish:lionfish"));
-		self::register("midnight_carp", $factory->get("fi-fish:midnight_carp"));
-		self::register("midnight_squid", $factory->get("fi-fish:midnight_squid"));
-		self::register("mutant_carp", $factory->get("fi-fish:mutant_carp"));
-		self::register("octopus", $factory->get("fi-fish:octopus"));
-		self::register("perch", $factory->get("fi-fish:perch"));
-		self::register("pike", $factory->get("fi-fish:pike"));
-		self::register("radioactive_carp", $factory->get("fi-fish:radioactive_carp"));
-		self::register("rainbow_trout", $factory->get("fi-fish:rainbow_trout"));
-		self::register("red_mullet", $factory->get("fi-fish:red_mullet"));
-		self::register("red_snapper", $factory->get("fi-fish:red_snapper"));
-		self::register("sandfish", $factory->get("fi-fish:sandfish"));
-		self::register("scorpion_carp", $factory->get("fi-fish:scorpion_carp"));
-		self::register("sea_cucumber", $factory->get("fi-fish:sea_cucumber"));
-		self::register("shad", $factory->get("fi-fish:shad"));
-		self::register("shardine", $factory->get("fi-fish:shardine"));
-		self::register("slimejack", $factory->get("fi-fish:slimejack"));
-		self::register("smallmouth_bass", $factory->get("fi-fish:smallmouth_bass"));
-		self::register("spook_fish", $factory->get("fi-fish:spook_fish"));
-		self::register("squid", $factory->get("fi-fish:squid"));
-		self::register("stingray", $factory->get("fi-fish:stingray"));
-		self::register("stonefish", $factory->get("fi-fish:stonefish"));
-		self::register("sturgeon", $factory->get("fi-fish:sturgeon"));
-		self::register("sunfish", $factory->get("fi-fish:sunfish"));
-		self::register("super_cucumber", $factory->get("fi-fish:super_cucumber"));
-		self::register("tiger_trout", $factory->get("fi-fish:tiger_trout"));
-		self::register("tilapia", $factory->get("fi-fish:tilapia"));
-		self::register("tuna", $factory->get("fi-fish:tuna"));
-		self::register("void_salmon", $factory->get("fi-fish:void_salmon"));
-		self::register("walleye", $factory->get("fi-fish:walleye"));
-		self::register("woodskip", $factory->get("fi-fish:woodskip"));
+		self::register("albacore", $factory->get("fici:albacore"));
+		self::register("anchovy", $factory->get("fici:anchovy"));
+		self::register("blobfish", $factory->get("fici:blobfish"));
+		self::register("blue_discus", $factory->get("fici:blue_discus"));
+		self::register("bream", $factory->get("fici:bream"));
+		self::register("bullhead", $factory->get("fici:bullhead"));
+		self::register("carp", $factory->get("fici:carp"));
+		self::register("catfish", $factory->get("fici:catfish"));
+		self::register("chub", $factory->get("fici:chub"));
+		self::register("dorado", $factory->get("fici:dorado"));
+		self::register("eel", $factory->get("fici:eel"));
+		self::register("flounder", $factory->get("fici:flounder"));
+		self::register("ghostfish", $factory->get("fici:ghostfish"));
+		self::register("halibut", $factory->get("fici:halibut"));
+		self::register("herring", $factory->get("fici:herring"));
+		self::register("ice_pip", $factory->get("fici:ice_pip"));
+		self::register("largemouth_bass", $factory->get("fici:largemouth_bass"));
+		self::register("lava_eel", $factory->get("fici:lava_eel"));
+		self::register("lingcod", $factory->get("fici:lingcod"));
+		self::register("lionfish", $factory->get("fici:lionfish"));
+		self::register("midnight_carp", $factory->get("fici:midnight_carp"));
+		self::register("midnight_squid", $factory->get("fici:midnight_squid"));
+		self::register("mutant_carp", $factory->get("fici:mutant_carp"));
+		self::register("octopus", $factory->get("fici:octopus"));
+		self::register("perch", $factory->get("fici:perch"));
+		self::register("pike", $factory->get("fici:pike"));
+		self::register("radioactive_carp", $factory->get("fici:radioactive_carp"));
+		self::register("rainbow_trout", $factory->get("fici:rainbow_trout"));
+		self::register("red_mullet", $factory->get("fici:red_mullet"));
+		self::register("red_snapper", $factory->get("fici:red_snapper"));
+		self::register("sandfish", $factory->get("fici:sandfish"));
+		self::register("scorpion_carp", $factory->get("fici:scorpion_carp"));
+		self::register("sea_cucumber", $factory->get("fici:sea_cucumber"));
+		self::register("shad", $factory->get("fici:shad"));
+		self::register("shardine", $factory->get("fici:shardine"));
+		self::register("slimejack", $factory->get("fici:slimejack"));
+		self::register("smallmouth_bass", $factory->get("fici:smallmouth_bass"));
+		self::register("spook_fish", $factory->get("fici:spook_fish"));
+		self::register("squid", $factory->get("fici:squid"));
+		self::register("stingray", $factory->get("fici:stingray"));
+		self::register("stonefish", $factory->get("fici:stonefish"));
+		self::register("sturgeon", $factory->get("fici:sturgeon"));
+		self::register("sunfish", $factory->get("fici:sunfish"));
+		self::register("super_cucumber", $factory->get("fici:super_cucumber"));
+		self::register("tiger_trout", $factory->get("fici:tiger_trout"));
+		self::register("tilapia", $factory->get("fici:tilapia"));
+		self::register("tuna", $factory->get("fici:tuna"));
+		self::register("void_salmon", $factory->get("fici:void_salmon"));
+		self::register("walleye", $factory->get("fici:walleye"));
+		self::register("woodskip", $factory->get("fici:woodskip"));
+		self::register("golden_gift", $factory->get("fici:golden_gift"));
+		self::register("green_gift", $factory->get("fici:green_gift"));
+		self::register("no", $factory->get("fici:no"));
+		self::register("none", $factory->get("fici:none"));
+		self::register("red_gift", $factory->get("fici:red_gift"));
+		self::register("yes", $factory->get("fici:yes"));
 	}
 }

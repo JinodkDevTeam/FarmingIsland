@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Walleye extends CustomFish{
 	public function getTexture() : string{
-		return "walleye";
+		return "fici_walleye";
 	}
 }

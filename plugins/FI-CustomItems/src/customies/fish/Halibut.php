@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Halibut extends CustomFish{
 	public function getTexture() : string{
-		return "halibut";
+		return "fici_halibut";
 	}
 }

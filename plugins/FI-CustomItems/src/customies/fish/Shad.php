@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Shad extends CustomFish{
 	public function getTexture() : string{
-		return "shad";
+		return "fici_shad";
 	}
 }

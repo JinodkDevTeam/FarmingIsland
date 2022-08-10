@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Eel extends CustomFish{
 	public function getTexture() : string{
-		return "eel";
+		return "fici_eel";
 	}
 }

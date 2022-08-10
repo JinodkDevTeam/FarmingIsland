@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Sturgeon extends CustomFish{
 	public function getTexture() : string{
-		return "sturgeon";
+		return "fici_sturgeon";
 	}
 }

@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Chub extends CustomFish{
 	public function getTexture() : string{
-		return "chub";
+		return "fici_chub";
 	}
 }

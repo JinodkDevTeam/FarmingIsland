@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class IcePip extends CustomFish{
 	public function getTexture() : string{
-		return "ice_pip";
+		return "fici_ice_pip";
 	}
 }

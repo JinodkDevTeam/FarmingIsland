@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class VoidSalmon extends CustomFish{
 	public function getTexture() : string{
-		return "void_salmon";
+		return "fici_void_salmon";
 	}
 }

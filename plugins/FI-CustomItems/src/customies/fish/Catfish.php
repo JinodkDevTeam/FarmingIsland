@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Catfish extends CustomFish{
 	public function getTexture() : string{
-		return "catfish";
+		return "fici_catfish";
 	}
 }

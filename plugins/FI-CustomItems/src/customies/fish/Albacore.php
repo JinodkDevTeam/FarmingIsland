@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Albacore extends CustomFish{
 	public function getTexture() : string{
-		return "albacore";
+		return "fici_albacore";
 	}
 }

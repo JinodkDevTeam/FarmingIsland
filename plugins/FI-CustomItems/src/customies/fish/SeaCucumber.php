@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class SeaCucumber extends CustomFish{
 	public function getTexture() : string{
-		return "sea_cucumber";
+		return "fici_sea_cucumber";
 	}
 }

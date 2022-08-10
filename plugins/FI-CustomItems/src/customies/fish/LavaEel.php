@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class LavaEel extends CustomFish{
 	public function getTexture() : string{
-		return "lava_eel";
+		return "fici_lava_eel";
 	}
 }

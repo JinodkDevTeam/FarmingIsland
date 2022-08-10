@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class MutantCarp extends CustomFish{
 	public function getTexture() : string{
-		return "mutant_carp";
+		return "fici_mutant_carp";
 	}
 }

@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Herring extends CustomFish{
 	public function getTexture() : string{
-		return "herring";
+		return "fici_herring";
 	}
 }

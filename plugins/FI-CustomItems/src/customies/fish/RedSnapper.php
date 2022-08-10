@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class RedSnapper extends CustomFish{
 	public function getTexture() : string{
-		return "red_snapper";
+		return "fici_red_snapper";
 	}
 }

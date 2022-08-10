@@ -22,7 +22,7 @@ final class Loader extends PluginBase{
 			if($this->getConfig()->getNested("resource-packs.{$uuid}", "") !== ""){
 				$encryptionKey = $this->getConfig()->getNested("resource-packs.{$uuid}");
 				$this->encryptionKeys[$uuid] = $encryptionKey;
-				$this->getLogger()->debug("Loaded encryption key for resource pack $uuid");
+				$this->getLogger()->info("Loaded encryption key for resource pack $uuid");
 			}
 		}
 		$this->getServer()->getPluginManager()->registerEvent(DataPacketSendEvent::class, function(DataPacketSendEvent $event) : void{

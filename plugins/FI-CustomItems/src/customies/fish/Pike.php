@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Pike extends CustomFish{
 	public function getTexture() : string{
-		return "pike";
+		return "fici_pike";
 	}
 }

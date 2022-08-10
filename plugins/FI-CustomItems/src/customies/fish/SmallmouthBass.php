@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class SmallmouthBass extends CustomFish{
 	public function getTexture() : string{
-		return "smallmouth_bass";
+		return "fici_smallmouth_bass";
 	}
 }

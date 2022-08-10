@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class Slimejack extends CustomFish{
 	public function getTexture() : string{
-		return "slimejack";
+		return "fici_slimejack";
 	}
 }

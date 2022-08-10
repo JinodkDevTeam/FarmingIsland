@@ -5,6 +5,6 @@ namespace CustomItems\customies\fish;
 
 class RedMullet extends CustomFish{
 	public function getTexture() : string{
-		return "red_mullet";
+		return "fici_red_mullet";
 	}
 }
