@@ -4,10 +4,12 @@ declare(strict_types=1);
 namespace NgLam2911\lmao;
 
 use NgLam2911\lmao\session\Session;
+use pocketmine\block\tile\Chest as ChestTile;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityItemPickupEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
@@ -99,5 +101,31 @@ class EventListener implements Listener{
 				$session->getPlayer()->kill();
 			}), 3);
 		}
+	}
+
+	/**
+	 * @param PlayerInteractEvent $event
+	 * @priority LOWEST
+	 *
+	 * @return void
+	 */
+	public function onInteract(PlayerInteractEvent $event){
+		$player = $event->getPlayer();
+		$block = $event->getBlock();
+		if (!$block->getPosition()->getWorld()->getTile($block->getPosition()) instanceof ChestTile){
+			return;
+		}
+		$session = Lmao::getInstance()->getSessionManager()->getSession($player);
+		if (is_null($session)){
+			return;
+		}
+		if (!$session->isSilentChest()){
+			return;
+		}
+		$event->cancel();
+		/** @var ChestTile $title */
+		$title = $block->getPosition()->getWorld()->getTile($block->getPosition());
+		$player->setCurrentWindow($title->getInventory());
+		Lmao::getInstance()->getLogger()->info("Chest Silent opened");
 	}
 }

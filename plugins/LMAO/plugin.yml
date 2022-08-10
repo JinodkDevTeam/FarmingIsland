@@ -1,7 +1,7 @@
 name: lmao
 main: NgLam2911\lmao\Lmao
 api: 4.0.0
-version: 0.1.0
+version: 0.1.1-ea
 authors:
   - NgLamVN
 description: An Ultimate Troll plugin for PocketMine-MP
@@ -61,4 +61,6 @@ permissions:
   lmao.starve:
     default: op
   lmao.infinitedeath:
+    default: op
+  lmao.silentchest:
     default: op

@@ -26,6 +26,7 @@ use NgLam2911\lmao\command\subcmd\PumpkinHead;
 use NgLam2911\lmao\command\subcmd\Push;
 use NgLam2911\lmao\command\subcmd\Rickroll;
 use NgLam2911\lmao\command\subcmd\Shuffle;
+use NgLam2911\lmao\command\subcmd\SilentChest;
 use NgLam2911\lmao\command\subcmd\Spam;
 use NgLam2911\lmao\command\subcmd\Spin;
 use NgLam2911\lmao\command\subcmd\Starve;
@@ -62,6 +63,7 @@ class LmaoCommand extends BaseCommand{
 		$this->registerSubCommand(new PumpkinHead("pumpkinhead", "Just a pumpkin in ur head..."));
 		$this->registerSubCommand(new Starve("starve", "s t a r v e"));
 		$this->registerSubCommand(new InfiniteDeath("infinitedeath", "They can't respawn now ..."));
+		$this->registerSubCommand(new SilentChest("silentchest", "Open a chest without an opening animation."));
 	}
 	
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
@@ -69,5 +71,6 @@ class LmaoCommand extends BaseCommand{
 		foreach($subCommands as $subCommand){
 			$sender->sendMessage("/lmao " . $subCommand->getName() . ": " . $subCommand->getDescription());
 		}
+		$sender->sendMessage("LMAO v0.1.1 [Early Access Version]");
 	}
 }
