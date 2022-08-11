@@ -10,6 +10,7 @@ use pocketmine\player\Player;
 use pocketmine\Server;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
+use SOFe\AwaitGenerator\Await;
 
 class SqliteProvider{
 	protected const INIT = "dailyreward.init";
@@ -22,18 +23,16 @@ class SqliteProvider{
 
 	public function init() : void{
 		try{
-			$this->database = libasynql::create(DailyReward::getInstance(), DailyReward::getInstance()->getConfig()->get("database"), [
-				"sqlite" => "sqlite.sql"
-			]);
-			$this->database->executeGeneric(self::INIT);
+			Await::f2c(function(){
+				$this->database = libasynql::create(DailyReward::getInstance(), DailyReward::getInstance()->getConfig()->get("database"), [
+					"sqlite" => "sqlite.sql"
+				]);
+				yield $this->database->asyncGeneric(self::INIT);
+			});
 		}catch(Exception){
 			DailyReward::getInstance()->getLogger()->error("Failed create database.");
 			Server::getInstance()->getPluginManager()->disablePlugin(DailyReward::getInstance());
 		}
-	}
-
-	protected function asyncSelect(string $query = "", array $args = []) : Generator{
-		return yield $this->database->asyncSelect($query, $args);
 	}
 
 	/**
@@ -43,40 +42,40 @@ class SqliteProvider{
 	 */
 	public function getUserData(Player $player) : Generator{
 		$name = $player->getName();
-		$data = yield $this->asyncSelect(self::SELECT, [
+		$data = yield from $this->database->asyncSelect(self::SELECT, [
 			"player" => $name
 		]);
 		if (empty($data)){
-			return yield null;
+			return null;
 		}
-		return yield new UserDataInfo($player, (int)$data["Streak"], (int)$data["Claimtime"]);
+		return new UserDataInfo($player, (int)$data[0]["Streak"], (int)$data[0]["ClaimTime"]);
 	}
 
-	public function register(Player $player) : void{
+	public function asyncRegister(Player $player) : Generator{
 		$name = $player->getName();
-		$this->database->executeChange(self::REGISTER, [
+		yield $this->database->asyncChange(self::REGISTER, [
 			"player" => $name,
 			"streak" => 0,
 			"claimtime" => 0
 		]);
 	}
 
-	public function rawUpdate(Player $player, int $streak, int $claimtime) : void{
+	public function asyncRawUpdate(Player $player, int $streak, int $claimtime) : Generator{
 		$name = $player->getName();
-		$this->database->executeChange(self::UPDATE, [
+		yield $this->database->asyncChange(self::UPDATE, [
 			"player" => $name,
 			"streak" => $streak,
 			"claimtime" => $claimtime
 		]);
 	}
 
-	public function update(UserDataInfo $userData) : void{
-		$this->rawUpdate($userData->getPlayer(), $userData->getStreak(), $userData->getLastClaimtime());
+	public function asyncUpdate(UserDataInfo $userData) : Generator{
+		yield $this->asyncRawUpdate($userData->getPlayer(), $userData->getStreak(), $userData->getLastClaimtime());
 	}
 
-	public function remove(Player $player) : void{
+	public function asyncRemove(Player $player) : Generator{
 		$name = $player->getName();
-		$this->database->executeChange(self::REMOVE, [
+		yield $this->database->asyncChange(self::REMOVE, [
 			"player" => $name
 		]);
 	}

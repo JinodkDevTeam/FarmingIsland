@@ -3,3 +3,7 @@ main: NgLam2911\DailyReward\DailyReward
 src-namespace-prefix: NgLam2911\DailyReward
 version: 0.0.1
 api: 4.0.0
+
+permissions:
+  dailyreward.command:
+    default: true

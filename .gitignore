@@ -29,3 +29,4 @@ plugin_data/_NewAlias/players.sqlite
 plugin_data/BlockPets/pets.sqlite3
 JpnNameConverter.php
 plugin_data/BlockSniper/sessions/*
+plugin_data/DailyReward/dailyreward.db

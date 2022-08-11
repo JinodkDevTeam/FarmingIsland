@@ -64,7 +64,7 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static CustomFish GOLDEN_GIFT()
  * @method static CustomFish GREEN_GIFT()
  * @method static CustomFish NO()
- * @method static CustomFish NULL()
+ * @method static CustomFish NONE()
  * @method static CustomFish RED_GIFT()
  * @method static CustomFish YES()
  */

@@ -28,4 +28,12 @@ class UserDataInfo{
 	public function getLastClaimtime() : int{
 		return $this->lastClaimtime;
 	}
+
+	public function setStreak(int $streak) : void{
+		$this->streak = $streak;
+	}
+
+	public function setLastClaimtime(int $lastClaimtime) : void{
+		$this->lastClaimtime = $lastClaimtime;
+	}
 }
