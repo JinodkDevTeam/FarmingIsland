@@ -8,7 +8,7 @@ use Generator;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
-use SOFe\AwaitGenerator\Await;
+use poggit\libasynql\SqlError;
 
 class SqliteProvider{
 
@@ -29,29 +29,30 @@ class SqliteProvider{
 		$this->loader = $loader;
 	}
 
-	protected function getLoader(): Loader{
+	protected function getLoader() : Loader{
 		return $this->loader;
 	}
 
-	protected function asyncSelect(string $query, array $args = []) : Generator{
-		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
-		return yield Await::ONCE;
-	}
-
 	public function init() : void{
-		$this->database = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
-			"sqlite" => "sqlite.sql"
-		]);
-
-		$this->database->executeGeneric(self::INIT);
+		try{
+			$this->database = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
+				"sqlite" => "sqlite.sql"
+			]);
+			$this->database->executeGeneric(self::INIT);
+		}catch(SqlError $exception){
+			$this->getLoader()->getLogger()->error($exception->getMessage());
+		}finally{
+			$this->database->waitAll();
+		}
 	}
 
 	public function close() : void{
-		if (isset($this->database)) $this->database->close();
+		$this->database->waitAll();
+		if(isset($this->database)) $this->database->close();
 	}
 
 	public function register(Player|string $player, int $slot = 0, string $data = "") : void{
-		if ($player instanceof Player) $player = $player->getName();
+		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::REGISTER, [
 			"player" => $player,
 			"slot" => $slot,
@@ -60,22 +61,22 @@ class SqliteProvider{
 	}
 
 	public function removeAll(Player|string $player) : void{
-		if ($player instanceof Player) $player = $player->getName();
+		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::REMOVE_ALL, [
 			"player" => $player
 		]);
 	}
 
 	public function removeSlot(Player|string $player, int $slot = 0) : void{
-		if ($player instanceof Player) $player = $player->getName();
+		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::REMOVE_SLOT, [
 			"player" => $player,
 			"slot" => $slot
 		]);
 	}
 
-	public function update(Player|string $player, int $slot = 0, string $data = ""){
-		if ($player instanceof Player) $player = $player->getName();
+	public function update(Player|string $player, int $slot = 0, string $data = "") : void{
+		if($player instanceof Player) $player = $player->getName();
 		$this->database->executeChange(self::UPDATE, [
 			"player" => $player,
 			"slot" => $slot,
@@ -84,19 +85,19 @@ class SqliteProvider{
 	}
 
 	public function selectAll() : Generator{
-		return $this->asyncSelect(self::SELECT_ALL);
+		return yield from $this->database->asyncSelect(self::SELECT_ALL);
 	}
 
 	public function selectPlayer(Player|string $player) : Generator{
-		if ($player instanceof Player) $player = $player->getName();
-		return $this->asyncSelect(self::SELECT_PLAYER, [
+		if($player instanceof Player) $player = $player->getName();
+		return yield from $this->database->asyncSelect(self::SELECT_PLAYER, [
 			"player" => $player
 		]);
 	}
 
 	public function selectSlot(Player|string $player, int $slot) : Generator{
-		if ($player instanceof Player) $player = $player->getName();
-		return $this->asyncSelect(self::SELECT_SLOT, [
+		if($player instanceof Player) $player = $player->getName();
+		return yield from $this->database->asyncSelect(self::SELECT_SLOT, [
 			"player" => $player,
 			"slot" => $slot
 		]);

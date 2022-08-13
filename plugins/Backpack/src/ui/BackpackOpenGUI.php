@@ -22,7 +22,7 @@ class BackpackOpenGUI extends BaseUI{
 
 	protected function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getLoader()->getProvider()->selectSlot($player, $this->slot);
+			$data = yield from $this->getLoader()->getProvider()->selectSlot($player, $this->slot);
 			if (empty($data)){
 				$player->sendMessage("Something went wrong when opening your backpack, please report this error to admin.");
 				return;

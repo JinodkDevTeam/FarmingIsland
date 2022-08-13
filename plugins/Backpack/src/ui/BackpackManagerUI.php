@@ -11,7 +11,7 @@ class BackpackManagerUI extends BaseUI{
 
 	protected function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getLoader()->getProvider()->selectPlayer($player);
+			$data = yield from $this->getLoader()->getProvider()->selectPlayer($player);
 			if (empty($data)){
 				$player->sendMessage("You dont have any backpack slot.");
 				return;
