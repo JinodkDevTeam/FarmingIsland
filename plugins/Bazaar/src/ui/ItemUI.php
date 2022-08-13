@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
@@ -21,7 +20,7 @@ class ItemUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$data = yield from $this->getBazaar()->getProvider()->selectBuyItem($this->itemid, true);
 			if(empty($data)){
 				$top_buy_price = "N/A";
 			}else{
@@ -29,7 +28,7 @@ class ItemUI extends BaseUI{
 				$top_buy_price = $order->getPrice();
 			}
 
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
 			if(empty($data)){
 				$top_sell_price = "N/A";
 			}else{

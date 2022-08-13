@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
@@ -21,6 +20,7 @@ class CategoryMenu extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
+			/** @var string[] $shop */
 			if ($this->category == null){
 				$shop = $this->getBazaar()->getShopYAMLProvider()->getAll();
 			} else {
@@ -38,14 +38,14 @@ class CategoryMenu extends BaseUI{
 				if (is_array($shop[$item])){
 					$form->addButton($item);
 				} else {
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $shop[$item]]);
+					$data = yield from $this->getBazaar()->getProvider()->selectBuyItem($shop[$item], true);
 					if(empty($data)){
 						$buy = "N/A";
 					}else{
 						$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 						$buy = $order->getPrice();
 					}
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $shop[$item]]);
+					$data = yield from $this->getBazaar()->getProvider()->selectSellItem($shop[$item], true);
 					if(empty($data)){
 						$sell = "N/A";
 					}else{

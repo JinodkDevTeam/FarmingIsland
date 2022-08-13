@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
@@ -14,9 +13,8 @@ class MyOrderUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-
-			$buy_data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_PLAYER, ["player" => $player->getName()]);
-			$sell_data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_PLAYER, ["player" => $player->getName()]);
+			$buy_data = yield from $this->getBazaar()->getProvider()->selectBuy($player);
+			$sell_data = yield from $this->getBazaar()->getProvider()->selectSell($player);
 
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($buy_data, $sell_data){
 				if(!isset($data)) return;

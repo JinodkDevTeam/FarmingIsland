@@ -12,7 +12,7 @@ class UpgradeAccountUI extends BankUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getBank()->getProvider()->get($player);
+			$data = yield from $this->getBank()->getProvider()->get($player);
 			if(empty($data)){
 				$player->sendMessage("Error: Can't get data from database, please report this error to admin !");
 				return;

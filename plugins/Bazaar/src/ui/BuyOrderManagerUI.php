@@ -5,7 +5,6 @@ namespace Bazaar\ui;
 
 use Bazaar\Bazaar;
 use Bazaar\order\BuyOrder;
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\ModalForm;
@@ -22,12 +21,21 @@ class BuyOrderManagerUI{
 
 	public function execute(Player $player, int $order_id) : void{
 		Await::f2c(function() use ($player, $order_id){
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ID, ["id" => $order_id]);
+			$data = yield from $this->getBazaar()->getProvider()->selectBuy($order_id);
 			if(empty($data)) return;
 			$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($order){
 				if(!isset($data)) return;
-				if($data == 0) $this->cancel($player, $order);
+				if($data == 0) {
+					$order_id = $order->getId();
+					Await::f2c(function() use ($player, $order_id){
+						//Recheck
+						$data = yield from $this->getBazaar()->getProvider()->selectBuy($order_id);
+						if(empty($data)) return;
+						$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
+						$this->cancel($player, $order);
+					});
+				}
 			});
 			$form->setTitle("Buy Order Manager");
 			$msg = [
@@ -53,20 +61,26 @@ class BuyOrderManagerUI{
 	}
 
 	public function cancel(Player $player, BuyOrder $order) : void{
-		$form = new ModalForm(function(Player $player, $data) use ($order){
-			if(!isset($data)) return;
-			if($data){
-				$item = ItemUtils::toItem($order->getItemID());
-				$item->setCount($order->getFilled());
-				if(!$player->getInventory()->canAddItem($item)){
-					$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
-					return;
-				}
-				$player->getInventory()->addItem($item);
-				EconomyAPI::getInstance()->addMoney($player, ($order->getPrice() * $order->getAmount()) - ($order->getPrice() * $order->getFilled()));
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REMOVE_BUY, ["id" => $order->getId()]);
-
-				$player->sendMessage("Order cancelled !");
+		$form = new ModalForm(function(Player $player, $value) use ($order){
+			if(!isset($value)) return;
+			if($value){
+				$order_id = $order->getId();
+				Await::f2c(function() use ($player, $order_id){
+					//RECHECK AGAIN
+					$data = yield from $this->getBazaar()->getProvider()->selectBuy($order_id);
+					if(empty($data)) return;
+					$order = OrderDataHelper::formData($data[0], OrderDataHelper::BUY);
+					$item = ItemUtils::toItem($order->getItemID());
+					$item->setCount($order->getFilled());
+					if(!$player->getInventory()->canAddItem($item)){
+						$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
+						return;
+					}
+					$player->getInventory()->addItem($item);
+					EconomyAPI::getInstance()->addMoney($player, ($order->getPrice() * $order->getAmount()) - ($order->getPrice() * $order->getFilled()));
+					yield $this->getBazaar()->getProvider()->removeBuy($order);
+					$player->sendMessage("Order cancelled !");
+				});
 			}
 		});
 

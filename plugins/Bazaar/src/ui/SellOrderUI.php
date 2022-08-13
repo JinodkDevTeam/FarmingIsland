@@ -24,7 +24,7 @@ class SellOrderUI extends BaseUI{
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
 			//GETTING TOP ORDER INFO
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
 			if(empty($data)){
 				$top_sell = "";
 			}else{
@@ -91,23 +91,25 @@ class SellOrderUI extends BaseUI{
 	}
 
 	public function createSellOrder(Player $player, int $amount, float $price){
-		$args = [
-			"player" => $player->getName(),
-			"price" => $price,
-			"amount" => $amount,
-			"filled" => 0,
-			"itemID" => $this->itemid,
-			"time" => time(),
-			"isfilled" => false
-		];
-		$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::SELL);
-		$ev = new PlayerCreateOrderEvent($player, $order);
-		$ev->call();
-		if($ev->isCancelled()) return;
-		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_SELL, $args);
-		$item = ItemUtils::toItem($this->itemid);
-		$item->setCount($amount);
-		ItemUtils::removeItem($player->getInventory(), $item);
-		$player->sendMessage("Sell order created !");
+		Await::f2c(function() use ($player, $amount, $price){
+			$args = [
+				"player" => $player->getName(),
+				"price" => $price,
+				"amount" => $amount,
+				"filled" => 0,
+				"itemID" => $this->itemid,
+				"time" => time(),
+				"isfilled" => false
+			];
+			$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::SELL);
+			$ev = new PlayerCreateOrderEvent($player, $order);
+			$ev->call();
+			if($ev->isCancelled()) return;
+			yield $this->getBazaar()->getProvider()->registerSell($order);
+			$item = ItemUtils::toItem($this->itemid);
+			$item->setCount($amount);
+			ItemUtils::removeItem($player->getInventory(), $item);
+			$player->sendMessage("Sell order created !");
+		});
 	}
 }

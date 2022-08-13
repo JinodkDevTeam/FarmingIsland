@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bank\ui;
 
-use jojoe77777\FormAPI\ModdedSimpleForm;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
@@ -12,11 +11,11 @@ use SOFe\AwaitGenerator\Await;
 class BankUI extends BaseUI{
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getBank()->getProvider()->get($player);
+			$data = yield from $this->getBank()->getProvider()->get($player);
 			if(empty($data)){
-				$this->getBank()->getProvider()->register($player);
+				yield $this->getBank()->getProvider()->asyncRegister($player);
 			}
-			$data = yield $this->getBank()->getProvider()->get($player);
+			$data = yield from $this->getBank()->getProvider()->get($player);
 			if(empty($data)){
 				$player->sendMessage("Error: Can't get data from database, please report this error to admin !");
 				return;

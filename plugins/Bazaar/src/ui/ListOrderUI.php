@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
@@ -27,11 +26,11 @@ class ListOrderUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			switch($this->mode){
 				case self::BUY:
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->item_id]);
+					$data = yield from $this->getBazaar()->getProvider()->selectBuyItem($this->item_id, true);
 					$title = "List Buy Order";
 					break;
 				case self::SELL:
-					$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->item_id]);
+					$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->item_id, true);
 					$title = "List Sell Order";
 					break;
 				default:

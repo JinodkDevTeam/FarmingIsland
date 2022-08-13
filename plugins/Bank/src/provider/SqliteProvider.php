@@ -4,23 +4,21 @@ declare(strict_types=1);
 namespace Bank\provider;
 
 use Bank\Bank;
-use Exception;
 use Generator;
 use pocketmine\player\Player;
-use pocketmine\Server;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
-use SOFe\AwaitGenerator\Await;
+use poggit\libasynql\SqlError;
 
 class SqliteProvider{
-	public const INIT = "bank.init";
-	public const REGISTER = "bank.register";
-	public const GET = "bank.get";
-	public const REMOVE = "bank.remove";
-	public const UPDATE_BALANCE = "bank.update.balance";
-	public const GET_ALL = "bank.getall";
-	public const TOP = "bank.top";
-	public const UPDATE_UPGRADE = "bank.update.upgrade";
+	protected const INIT = "bank.init";
+	protected const REGISTER = "bank.register";
+	protected const GET = "bank.get";
+	protected const REMOVE = "bank.remove";
+	protected const UPDATE_BALANCE = "bank.update.balance";
+	protected const GET_ALL = "bank.getall";
+	protected const TOP = "bank.top";
+	protected const UPDATE_UPGRADE = "bank.update.upgrade";
 
 	private DataConnector $database;
 	private Bank $bank;
@@ -35,10 +33,10 @@ class SqliteProvider{
 				"sqlite" => "sqlite.sql"
 			]);
 			$this->database->executeGeneric(self::INIT);
-		}catch(Exception){
-
-			$this->getBank()->getLogger()->error("Failed create database.");
-			Server::getInstance()->getPluginManager()->disablePlugin($this->bank);
+		}catch(SqlError $error){
+			$this->getBank()->getLogger()->error($error->getMessage());
+		}finally{
+			$this->database->waitAll();
 		}
 	}
 
@@ -47,7 +45,10 @@ class SqliteProvider{
 	}
 
 	public function close() : void{
-		if(isset($this->database)) $this->database->close();
+		if(isset($this->database)){
+			$this->database->waitAll();
+			$this->database->close();
+		}
 	}
 
 	public function remove(Player|string $player) : void{
@@ -76,10 +77,9 @@ class SqliteProvider{
 		]);
 	}
 
-	public function register(Player|string $player, float $value = 0) : void{
+	public function asyncRegister(Player|string $player, float $value = 0) : Generator{
 		if($player instanceof Player) $player = $player->getName();
-
-		$this->database->executeChange(self::REGISTER, [
+		yield $this->database->asyncChange(self::REGISTER, [
 			"player" => $player,
 			"value" => $value,
 			"upgrade" => 1
@@ -89,19 +89,13 @@ class SqliteProvider{
 	public function get(Player|string $player) : Generator{
 		if($player instanceof Player) $player = $player->getName();
 
-		return yield $this->asyncSelect(self::GET, [
+		return yield from $this->database->asyncSelect(self::GET, [
 			"player" => $player
 		]);
 	}
 
-	public function asyncSelect(string $query, array $args = []) : Generator{
-		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
-
-		return yield Await::ONCE;
-	}
-
 	public function getAll() : Generator{
-		return yield $this->asyncSelect(self::GET_ALL);
+		return yield from $this->database->asyncSelect(self::GET_ALL);
 	}
 
 	public function getBankLimit(int $upgrade) : float{

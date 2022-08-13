@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\event\PlayerCreateOrderEvent;
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
@@ -25,7 +24,7 @@ class BuyOrderUI extends BaseUI{
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
 			//GETTING TOP ORDER INFO
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_BUY_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$data = yield from $this->getBazaar()->getProvider()->selectBuyItem($this->itemid, true);
 			if(empty($data)){
 				$top_buy = "";
 			}else{
@@ -89,26 +88,27 @@ class BuyOrderUI extends BaseUI{
 	}
 
 	public function createBuyOrder(Player $player, int $amount, float $price) : void{
-		if(($amount * $price) > EconomyAPI::getInstance()->myMoney($player)){
-			$player->sendMessage("You dont have enough money to create buy order !");
-			return;
-		}
-		$args = [
-			"player" => $player->getName(),
-			"price" => $price,
-			"amount" => $amount,
-			"filled" => 0,
-			"itemID" => $this->itemid,
-			"time" => time(),
-			"isfilled" => false
-		];
-		$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::SELL);
-		$ev = new PlayerCreateOrderEvent($player, $order);
-		$ev->call();
-		if($ev->isCancelled()) return;
-		$this->getBazaar()->getProvider()->executeChange(SqliteProvider::REGISTER_BUY, $args);
-		EconomyAPI::getInstance()->reduceMoney($player, $amount * $price);
-
-		$player->sendMessage("Buy order created !");
+		Await::f2c(function() use ($player, $amount, $price){
+			if(($amount * $price) > EconomyAPI::getInstance()->myMoney($player)){
+				$player->sendMessage("You dont have enough money to create buy order !");
+				return;
+			}
+			$args = [
+				"player" => $player->getName(),
+				"price" => $price,
+				"amount" => $amount,
+				"filled" => 0,
+				"itemID" => $this->itemid,
+				"time" => time(),
+				"isfilled" => false
+			];
+			$order = OrderDataHelper::fromSqlQueryData($args, OrderDataHelper::BUY);
+			$ev = new PlayerCreateOrderEvent($player, $order);
+			$ev->call();
+			if($ev->isCancelled()) return;
+			yield $this->getBazaar()->getProvider()->registerBuy($order);
+			EconomyAPI::getInstance()->reduceMoney($player, $amount * $price);
+			$player->sendMessage("Buy order created !");
+		});
 	}
 }

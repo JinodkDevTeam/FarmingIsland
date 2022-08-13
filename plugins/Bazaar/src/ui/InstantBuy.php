@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
@@ -24,12 +23,12 @@ class InstantBuy extends BaseUI{
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
 			//GETTING TOP SELL ORDER...
-			$data = yield $this->getBazaar()->getProvider()->asyncSelect(SqliteProvider::SELECT_SELL_ITEMID_SORT_PRICE, ["itemid" => $this->itemid]);
+			$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
 			if (empty($data)){
 				$player->sendMessage("Sorry, noone sell this item !");
 				return;
 			}
-			$form = new CustomForm(function(Player $player, ?array $pos) use ($data){
+			$form = new CustomForm(function(Player $player, ?array $pos){
 				if(!isset($pos[1])) return;
 				$amount = $pos[1];
 				if(is_int($amount)){
@@ -44,7 +43,15 @@ class InstantBuy extends BaseUI{
 					$player->sendMessage("Amount must be <= 71680 items");
 					return;
 				}
-				$this->confirm($player, (int) $amount, $data);
+				//Recheck data
+				Await::f2c(function() use ($player, $amount) {
+					$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
+					if (empty($data)){
+						$player->sendMessage("Sorry, noone sell this item !");
+						return;
+					}
+					$this->confirm($player, (int) $amount, $data);
+				});
 			});
 
 			$form->setTitle("Instant buy");
@@ -92,45 +99,37 @@ class InstantBuy extends BaseUI{
 	}
 
 	public function instantBuy(Player $player, int $amount, array $data) : void{
-		$total = 0;
-		$count = $amount;
-		foreach($data as $arrayOrder){
-			$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::SELL);
-			$item_left = $order->getAmount() - $order->getFilled();
-			if($count <= $item_left){
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_FILLED, [
-					"id" => $order->getId(),
-					"filled" => $order->getFilled() + $count
-				]);
-				$total += $count * $order->getPrice();
-				if($count == $item_left){
-					$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
-						"id" => $order->getId(),
-						"isfilled" => true
-					]);
+		Await::f2c(function() use ($player, $amount, $data){
+			$total = 0;
+			$count = $amount;
+			foreach($data as $arrayOrder){
+				$order = OrderDataHelper::formData($arrayOrder, OrderDataHelper::SELL);
+				$item_left = $order->getAmount() - $order->getFilled();
+				if($count <= $item_left){
+					$order->setFilled($order->getFilled() + $count);
+					$total += $count * $order->getPrice();
+					if($count == $item_left){
+						$order->setFilledStatus(true);
+					}
+					yield $this->getBazaar()->getProvider()->updateSellFilled($order);
+					break;
+				}else{
+					$count -= $item_left;
+					$total += $item_left * $order->getPrice();
+					$order->setFilled($order->getFilled() + $item_left);
+					$order->setFilledStatus(true);
+					yield $this->getBazaar()->getProvider()->updateSellFilled($order);
 				}
-				break;
-			}else{
-				$count -= $item_left;
-				$total += $item_left * $order->getPrice();
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_FILLED, [
-					"id" => $order->getId(),
-					"filled" => $order->getFilled() + $item_left
-				]);
-				$this->getBazaar()->getProvider()->executeChange(SqliteProvider::UPDATE_SELL_ISFILLED, [
-					"id" => $order->getId(),
-					"isfilled" => true
-				]);
 			}
-		}
-		$item = ItemUtils::toItem($this->itemid);
-		$item->setCount($amount);
-		if(!$player->getInventory()->canAddItem($item)){
-			$player->sendMessage("Your inventory not enough to get this items, make sure you have enough space !");
-			return;
-		}
-		EconomyAPI::getInstance()->reduceMoney($player, $total);
-		$player->getInventory()->addItem($item);
-		$player->sendMessage("You have bought x" . $amount . " " . ItemUtils::toName($this->itemid) . " for " . $total . " coins.");
+			$item = ItemUtils::toItem($this->itemid);
+			$item->setCount($amount);
+			if(!$player->getInventory()->canAddItem($item)){
+				$player->sendMessage("Your inventory not enough to get this items, make sure you have enough space !");
+				return;
+			}
+			EconomyAPI::getInstance()->reduceMoney($player, $total);
+			$player->getInventory()->addItem($item);
+			$player->sendMessage("You have bought x" . $amount . " " . ItemUtils::toName($this->itemid) . " for " . $total . " coins.");
+		});
 	}
 }
