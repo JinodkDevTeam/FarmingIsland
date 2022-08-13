@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\event\PlayerCreateOrderEvent;
-use Bazaar\provider\SqliteProvider;
 use Bazaar\utils\OrderDataHelper;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
