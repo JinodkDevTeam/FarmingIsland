@@ -17,8 +17,6 @@ use CustomItems\customies\fish\Dorado;
 use CustomItems\customies\fish\Eel;
 use CustomItems\customies\fish\Flounder;
 use CustomItems\customies\fish\Ghostfish;
-use CustomItems\customies\fish\GoldenGift;
-use CustomItems\customies\fish\GreenGift;
 use CustomItems\customies\fish\Halibut;
 use CustomItems\customies\fish\Herring;
 use CustomItems\customies\fish\IcePip;
@@ -29,14 +27,11 @@ use CustomItems\customies\fish\Lionfish;
 use CustomItems\customies\fish\MidnightCarp;
 use CustomItems\customies\fish\MidnightSquid;
 use CustomItems\customies\fish\MutantCarp;
-use CustomItems\customies\fish\No;
-use CustomItems\customies\fish\None;
 use CustomItems\customies\fish\Octopus;
 use CustomItems\customies\fish\Perch;
 use CustomItems\customies\fish\Pike;
 use CustomItems\customies\fish\RadioactiveCarp;
 use CustomItems\customies\fish\RainbowTrout;
-use CustomItems\customies\fish\RedGift;
 use CustomItems\customies\fish\RedMullet;
 use CustomItems\customies\fish\RedSnapper;
 use CustomItems\customies\fish\Sandfish;
@@ -59,7 +54,12 @@ use CustomItems\customies\fish\Tuna;
 use CustomItems\customies\fish\VoidSalmon;
 use CustomItems\customies\fish\Walleye;
 use CustomItems\customies\fish\Woodskip;
-use CustomItems\customies\fish\Yes;
+use CustomItems\customies\icon\GoldenGift;
+use CustomItems\customies\icon\GreenGift;
+use CustomItems\customies\icon\No;
+use CustomItems\customies\icon\None;
+use CustomItems\customies\icon\RedGift;
+use CustomItems\customies\icon\Yes;
 
 class CustomiesItemManager{
 	public static function register() : void{

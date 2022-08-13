@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CustomItems\customies\fish;
+namespace CustomItems\customies\icon;
 
-class No extends CustomFish{
+class No extends CustomIcon{
 	public function getTexture() : string{
 		return "fici_no";
 	}

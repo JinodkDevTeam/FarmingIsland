@@ -5,6 +5,7 @@ namespace CustomItems\customies;
 
 use customiesdevs\customies\item\CustomiesItemFactory;
 use CustomItems\customies\fish\CustomFish;
+use CustomItems\customies\icon\CustomIcon;
 use pocketmine\item\Item;
 use pocketmine\utils\CloningRegistryTrait;
 
@@ -61,12 +62,12 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static CustomFish VOID_SALMON()
  * @method static CustomFish WALLEYE()
  * @method static CustomFish WOODSKIP()
- * @method static CustomFish GOLDEN_GIFT()
- * @method static CustomFish GREEN_GIFT()
- * @method static CustomFish NO()
- * @method static CustomFish NONE()
- * @method static CustomFish RED_GIFT()
- * @method static CustomFish YES()
+ * @method static CustomIcon GOLDEN_GIFT()
+ * @method static CustomIcon GREEN_GIFT()
+ * @method static CustomIcon NO()
+ * @method static CustomIcon NONE()
+ * @method static CustomIcon RED_GIFT()
+ * @method static CustomIcon YES()
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
