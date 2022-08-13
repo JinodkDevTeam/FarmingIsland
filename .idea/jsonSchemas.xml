@@ -126,6 +126,9 @@
                   <Item>
                     <option name="path" value="plugins/DailyReward/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/Bazaar/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
