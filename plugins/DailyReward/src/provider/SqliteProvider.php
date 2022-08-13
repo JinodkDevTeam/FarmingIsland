@@ -32,6 +32,8 @@ class SqliteProvider{
 		}catch(Exception){
 			DailyReward::getInstance()->getLogger()->error("Failed create database.");
 			Server::getInstance()->getPluginManager()->disablePlugin(DailyReward::getInstance());
+		}finally{
+			$this->database->waitAll();
 		}
 	}
 
@@ -81,6 +83,7 @@ class SqliteProvider{
 	}
 
 	public function close() : void{
+		$this->database->waitAll();
 		$this->database->close();
 	}
 
