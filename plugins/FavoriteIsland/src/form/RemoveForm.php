@@ -12,11 +12,11 @@ use pocketmine\player\Player;
 class RemoveForm extends AwaitListForm{
 
 	protected function g2c() : Generator{
-		$data = yield $this->getLoader()->getProvider()->selectPlayer($this->getPlayer());
+		$data = yield from $this->getLoader()->getProvider()->selectPlayer($this->getPlayer());
 
 		$form = new SimpleForm(function(Player $player, ?int $value) use ($data){
 			if(!isset($value)) return;
-			$this->getLoader()->getProvider()->remove($player, $data[$value]["X"], $data[$value]["Z"]);
+			yield $this->getLoader()->getProvider()->remove($player, $data[$value]["X"], $data[$value]["Z"]);
 		});
 		$form->setTitle("Remove Favorite Island");
 		foreach($data as $island){

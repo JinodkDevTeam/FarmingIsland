@@ -12,7 +12,7 @@ use pocketmine\player\Player;
 class TeleportForm extends AwaitListForm{
 
 	protected function g2c() : Generator{
-		$data = yield $this->getLoader()->getProvider()->selectPlayer($this->getPlayer());
+		$data = yield from $this->getLoader()->getProvider()->selectPlayer($this->getPlayer());
 
 		$form = new SimpleForm(function(Player $player, ?int $value) use ($data){
 			if(!isset($value)) return;

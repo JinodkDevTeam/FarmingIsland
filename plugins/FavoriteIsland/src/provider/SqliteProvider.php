@@ -8,7 +8,7 @@ use Generator;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
-use SOFe\AwaitGenerator\Await;
+use poggit\libasynql\SqlError;
 
 class SqliteProvider{
 
@@ -29,26 +29,31 @@ class SqliteProvider{
 		return $this->loader;
 	}
 
-	protected function asyncSelect(string $query, array $args) : Generator{
-		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
-		return yield Await::ONCE;
-	}
-
 	public function init() : void{
-		$this->database = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
-			"sqlite" => "sqlite.sql"
-		]);
+		try{
+			$this->database = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
+				"sqlite" => "sqlite.sql"
+			]);
 
-		$this->database->executeGeneric(self::INIT);
+			$this->database->executeGeneric(self::INIT);
+		}catch(SqlError $error){
+			$this->getLoader()->getLogger()->error($error->getMessage());
+		}finally{
+			$this->database->waitAll();
+		}
+
 	}
 
 	public function close() : void{
-		if (isset($this->database)) $this->database->close();
+		if(isset($this->database)) {
+			$this->database->waitAll();
+			$this->database->close();
+		}
 	}
 
-	public function register(Player|string $player, int $x, int $z) : void{
+	public function register(Player|string $player, int $x, int $z) : Generator{
 		if($player instanceof Player) $player = $player->getName();
-		$this->database->executeChange(self::REGISTER, [
+		yield $this->database->asyncInsert(self::REGISTER, [
 			"player" => $player,
 			"x" => $x,
 			"z" => $z
@@ -57,21 +62,21 @@ class SqliteProvider{
 
 	public function selectPlayer(Player|string $player) : Generator{
 		if($player instanceof Player) $player = $player->getName();
-		return $this->asyncSelect(self::SELECT_PLAYER, [
+		return yield from $this->database->asyncSelect(self::SELECT_PLAYER, [
 			"player" => $player
 		]);
 	}
 
 	public function selectID(int $x, int $z) : Generator{
-		return $this->asyncSelect(self::SELECT_PLAYER, [
+		return yield from $this->database->asyncSelect(self::SELECT_ID, [
 			"x" => $x,
 			"z" => $z
 		]);
 	}
 
-	public function remove(Player|string $player, int $x, int $z) : void{
+	public function remove(Player|string $player, int $x, int $z) : Generator{
 		if($player instanceof Player) $player = $player->getName();
-		$this->database->executeChange(self::REMOVE, [
+		yield $this->database->asyncChange(self::REMOVE, [
 			"player" => $player,
 			"x" => $x,
 			"z" => $z

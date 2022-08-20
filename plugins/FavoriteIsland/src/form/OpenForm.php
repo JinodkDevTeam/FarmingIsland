@@ -6,6 +6,7 @@ namespace FavoriteIslands\form;
 use jojoe77777\FormAPI\SimpleForm;
 use MyPlot\MyPlot;
 use pocketmine\player\Player;
+use SOFe\AwaitGenerator\Await;
 
 class OpenForm extends BaseForm{
 
@@ -19,8 +20,10 @@ class OpenForm extends BaseForm{
 						$player->sendMessage("You are not in a island !");
 						return;
 					}
-					$this->getLoader()->addFavorite($player, $plot->X, $plot->Z);
-					$player->sendMessage("Added island to favorite !");
+					Await::f2c(function() use ($player, $plot){
+						$this->getLoader()->getProvider()->register($player, $plot->X, $plot->Z);
+						$player->sendMessage("Added island to favorite !");
+					});
 					break;
 				case 1:
 					new AddByIdForm($this->getLoader(), $player);
