@@ -17,7 +17,7 @@ class Provider{
 	/** @var Config */
 	public Config $msg;
 
-	private const CONFIG_VERSION = 1;
+	private const CONFIG_VERSION = 2;
 
 	//YamlProvider "I am noob at MySQL or SQLite"
 
