@@ -5,6 +5,7 @@ namespace CustomItems\item;
 
 use CustomItems\item\utils\RarityHelper;
 use pocketmine\event\player\PlayerItemUseEvent;
+use pocketmine\item\Durable;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 use RuntimeException;
@@ -14,6 +15,9 @@ class AnnihilatorSword extends CustomItem{
 	public function toItem() : Item{
 		$item = VanillaItems::STONE_SWORD();
 		$item = $this->setEnchantGlint($item);
+		if ($item instanceof Durable){
+			$item->setUnbreakable();
+		}
 		$nbt = $item->getNamedTag();
 		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

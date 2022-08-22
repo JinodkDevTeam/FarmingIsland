@@ -6,6 +6,7 @@ namespace CustomItems\item\armor;
 use CustomItems\item\utils\RarityHelper;
 use pocketmine\color\Color;
 use pocketmine\event\player\PlayerToggleSneakEvent;
+use pocketmine\item\Durable;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 use pocketmine\math\Vector3;
@@ -19,6 +20,9 @@ class SlimeBoots extends CustomBoots{
 	public function toItem() : Item{
 		$item = VanillaItems::LEATHER_BOOTS()->setCustomColor(new Color(0, 255, 0));
 		$item = $this->setEnchantGlint($item);
+		if ($item instanceof Durable){
+			$item->setUnbreakable();
+		}
 		$nbt = $item->getNamedTag();
 		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());

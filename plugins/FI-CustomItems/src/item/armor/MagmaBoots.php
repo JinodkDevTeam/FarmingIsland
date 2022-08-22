@@ -9,6 +9,7 @@ use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Lava;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\event\player\PlayerMoveEvent;
+use pocketmine\item\Durable;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
@@ -17,6 +18,9 @@ class MagmaBoots extends CustomBoots{
 	public function toItem() : Item{
 		$item = VanillaItems::CHAINMAIL_BOOTS();
 		$item = $this->setEnchantGlint($item);
+		if ($item instanceof Durable){
+			$item->setUnbreakable();
+		}
 		$nbt = $item->getNamedTag();
 		$nbt->setString("CustomItemID", $this->getNamespaceId());
 		$item->setCustomName(RarityHelper::toColor($this->getRarity()) . $this->getName());
