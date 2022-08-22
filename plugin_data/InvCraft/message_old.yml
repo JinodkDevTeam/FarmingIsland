@@ -1,12 +1,16 @@
 # InvCraft Message Config
 
+# DO NOT EDIT THIS VALUE.
+# ONLY FOR INTERNAL USE.
+config-version: 2
+
 menu.craft6x6: "BigCraftingTable"
 menu.craft3x3: "NormalCraftingTable"
 menu.add: "Add Recipe"
 menu.edit: "Edit Recipe"
-menu.item: "160:2"
+menu.item: "magenta_stained_glass_pane"
 menu.save.name: "SAVE"
-menu.save.item: "341:0"
+menu.save.item: "slime_ball"
 menu.view: "View Recipe"
 
 ui.title: "InvCraft Manager"
@@ -30,3 +34,6 @@ msg.norecipe: "Please add some recipe first !"
 msg.missresult: "Please add result item"
 msg.runingame: "PLEASE RUN THIS COMMAND IN GAME !"
 msg.sametyperecipe: "Warning: This recipe have same recipe data with a added recipe, it will create a wrong result !"
+
+command.missrecipename: "/invcraft view <recipe name>"
+command.recipenotfound: "Recipe not found !"
