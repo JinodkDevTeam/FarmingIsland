@@ -21,7 +21,7 @@ class OpenForm extends BaseForm{
 						return;
 					}
 					Await::f2c(function() use ($player, $plot){
-						$this->getLoader()->getProvider()->register($player, $plot->X, $plot->Z);
+						yield $this->getLoader()->getProvider()->register($player, $plot->X, $plot->Z);
 						$player->sendMessage("Added island to favorite !");
 					});
 					break;
