@@ -21,8 +21,8 @@ use CustomItems\item\utils\Rarity;
 use InvalidArgumentException;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\VanillaItems;
-use pocketmine\utils\CloningRegistryTrait;
 use CustomItems\item\CustomItemNamespaceIds as CustomItemIds;
+use pocketmine\utils\RegistryTrait;
 
 /**
  * This doc-block is generated automatically, do not modify it manually.
@@ -116,7 +116,7 @@ use CustomItems\item\CustomItemNamespaceIds as CustomItemIds;
  * @method static AnnihilatorSword ANNIHILATOR_SWORD()
  */
 class CustomItems{
-	use CloningRegistryTrait;
+	use RegistryTrait;
 
 	/** @var CustomItem[] */
 	private array $list = [];
