@@ -8,19 +8,20 @@ use pocketmine\event\CancellableTrait;
 use pocketmine\event\plugin\PluginEvent;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use SkillLevel\Skill;
 use SkillLevel\SkillLevel;
 
 class PlayerUpdateExpEvent extends PluginEvent implements Cancellable{
 	use CancellableTrait;
 
 	protected Player $player;
-	protected int $skill_id;
+	protected Skill $skill;
 
-	public function __construct(Player $player, int $skill_id){
+	public function __construct(Player $player, Skill $skill){
 		parent::__construct($this->getSkillLevel());
 
 		$this->player = $player;
-		$this->skill_id = $skill_id;
+		$this->skill = $skill;
 	}
 
 	private function getSkillLevel() : ?SkillLevel{
@@ -35,7 +36,7 @@ class PlayerUpdateExpEvent extends PluginEvent implements Cancellable{
 		return $this->player;
 	}
 
-	public function getSkillID() : int{
-		return $this->skill_id;
+	public function getSkill() : Skill{
+		return $this->skill;
 	}
 }

@@ -8,8 +8,11 @@ use Generator;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
+use poggit\libasynql\SqlError;
+use SkillLevel\Skill;
 use SkillLevel\SkillLevel;
 use SOFe\AwaitGenerator\Await;
+use Throwable;
 
 class Sqlite3Provider{
 	public const INIT_TABLE = "skill.init";
@@ -26,26 +29,34 @@ class Sqlite3Provider{
 	}
 
 	public function register() : void{
-		$this->getSkillLevel()->getLogger()->info("Creating DataBase... (Sqlite3)");
-		$this->database = libasynql::create($this->getSkillLevel(), $this->getSkillLevel()->getConfig()->get("database"), [
-			"sqlite" => "sqlite.sql"
-		]);
-		$this->getSkillLevel()->getLogger()->info("DataBase Created ! (Sqlite3)");
+		try{
+			$this->getSkillLevel()->getLogger()->info("Creating DataBase... (Sqlite3)");
+			$this->database = libasynql::create($this->getSkillLevel(), $this->getSkillLevel()->getConfig()->get("database"), [
+				"sqlite" => "sqlite.sql"
+			]);
+			$this->getSkillLevel()->getLogger()->info("DataBase Created ! (Sqlite3)");
 
-		$this->database->executeGeneric(self::INIT_TABLE);
+			$this->database->executeGeneric(self::INIT_TABLE);
+		}catch(SqlError $error){
+			$this->getSkillLevel()->getLogger()->error($error->getMessage());
+		}finally{
+			$this->database->waitAll();
+		}
 	}
 
 	public function getSkillLevel() : SkillLevel{
 		return $this->skillLevel;
 	}
 
-	public function save(){
-		if(isset($this->database)) $this->database->close();
+	public function save() : void{
+		if(isset($this->database)) {
+			$this->database->waitAll();
+			$this->database->close();
+		}
 	}
 
-	public function addPlayerData(Player $player, array $data = []) : void{
+	public function addPlayerData(Player $player, array $data = []) : Generator{
 		$name = $player->getName();
-
 		if($data == []){
 			$data["MiningLevel"] = 1;
 			$data["MiningExp"] = 0;
@@ -57,7 +68,7 @@ class Sqlite3Provider{
 			$data["ForagingExp"] = 0;
 		}
 		try{
-			$this->database->executeChange(self::REGISTER, [
+			yield $this->database->asyncChange(self::REGISTER, [
 				"player" => $name,
 				"mininglevel" => $data["MiningLevel"],
 				"miningexp" => $data["MiningExp"],
@@ -74,43 +85,55 @@ class Sqlite3Provider{
 		}
 	}
 
-	public function unregisterPlayerData(Player $player){
+	public function unregisterPlayerData(Player $player) : void{
 		$this->database->executeChange(self::UNREGISTER, [
 			"player" => $player->getName()
 		]);
 	}
 
-	public function updateLevel(Player $player, int $skill_code, int $level) : void{
-		$query = "skill.update." . $this->IDParser($skill_code) . ".level";
+	public function updateLevel(Player $player, Skill $skill, int $level) : Generator{
+		$query = "skill.update." . $skill->getName() . ".level";
 
-		$this->database->executeChange($query, [
+		yield $this->database->asyncChange($query, [
 			"player" => $player->getName(),
 			"level" => $level
 		]);
 	}
 
-	public function IDParser(int $code) : string{
-		return match ($code) {
-			SkillLevel::MINING => "mining",
-			SkillLevel::FISHING => "fishing",
-			SkillLevel::FARMING => "farming",
-			SkillLevel::FORAGING => "foraging",
-			default => "",
-		};
-	}
+	public function updateExp(Player $player, Skill $skill, int $exp) : Generator{
+		$query = "skill.update." . $skill->getName(). ".exp";
 
-	public function updateExp(Player $player, int $skill_code, int $exp) : void{
-		$query = "skill.update." . $this->IDParser($skill_code) . ".exp";
-
-		$this->database->executeChange($query, [
+		yield $this->database->asyncChange($query, [
 			"player" => $player->getName(),
 			"exp" => $exp
 		]);
 	}
 
-	public function asyncSelect(string $query, array $args = []) : Generator{
-		$this->database->executeSelect($query, $args, yield, yield Await::REJECT);
+	public function loadPlayer(Player $player) : void{
+		Await::f2c(function() use ($player){
+			$data = yield from $this->database->asyncSelect(Sqlite3Provider::LOAD_PLAYER, ["player" => $player->getName()]);
+			if(empty($data)){
+				yield $this->addPlayerData($player);
+			}
+			$data = yield from $this->database->asyncSelect(Sqlite3Provider::LOAD_PLAYER, ["player" => $player->getName()]);
+			$this->getSkillLevel()->getPlayerSkillLevelManager()->registerPlayer($player, $data[0]);
+		}, function(){ }, function(Throwable $err){
+			$this->getSkillLevel()->getLogger()->logException($err);
+		});
+	}
 
-		return yield Await::ONCE;
+	public function unloadPlayer(Player $player) : void{
+		$data = $this->getSkillLevel()->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
+		if ($data === null){
+			$this->getSkillLevel()->getLogger()->error("Unable to save data of player " . $player->getName());
+			return;
+		}
+		Await::f2c(function() use ($player, $data){
+			foreach(Skill::getAll() as $skill){
+				yield $this->updateExp($player, $skill, $data->getSkillExp($skill));
+				yield $this->updateLevel($player, $skill, $data->getSkillLevel($skill));
+			}
+			$this->getSkillLevel()->getPlayerSkillLevelManager()->unregisterPlayer($player);
+		});
 	}
 }

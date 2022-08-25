@@ -13,6 +13,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\item\Fertilizer;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use SkillLevel\Skill;
 use SkillLevel\SkillLevel;
 
 class SkillLevelListener implements Listener{
@@ -85,25 +86,25 @@ class SkillLevelListener implements Listener{
 		//MINING
 		if(in_array($block->getId(), array_keys($this->mining))){
 			$amount = $this->mining[$block->getId()];
-			$this->addXp($player, SkillLevel::MINING, $amount);
+			$this->addXp($player, Skill::MINING(), $amount);
 		}
 		//FORAGING
 		if(in_array($block->getId(), array_keys($this->foraging))){
 			$amount = $this->foraging[$block->getId()];
-			$this->addXp($player, SkillLevel::FORAGING, $amount);
+			$this->addXp($player, Skill::FORAGING(), $amount);
 		}
 		//FARMING TYPE 1
 		if(in_array($block->getId(), array_keys($this->farming))){
 			if($block->getMeta() == 7) //FULL GROW
 			{
 				$amount = $this->farming[$block->getId()];
-				$this->addXp($player, SkillLevel::FARMING, $amount);
+				$this->addXp($player, Skill::FARMING(), $amount);
 			}
 		}
 		//FARMING TYPE 2
 		if(in_array($block->getId(), array_keys($this->farming3))){
 			$amount = $this->farming3[$block->getId()];
-			$this->addXp($player, SkillLevel::FARMING, $amount);
+			$this->addXp($player, Skill::FARMING(), $amount);
 		}
 	}
 
@@ -118,7 +119,7 @@ class SkillLevelListener implements Listener{
 		$player = $event->getEntity();
 		if($player instanceof Player){
 			if($event->getState() == EntityFishEvent::STATE_CAUGHT_FISH){
-				$this->addXp($player, SkillLevel::FISHING, mt_rand(10, 100));
+				$this->addXp($player, Skill::FISHING(), mt_rand(10, 100));
 			}
 		}
 	}
@@ -141,24 +142,24 @@ class SkillLevelListener implements Listener{
 				case 2:
 					if(!$event->getItem() instanceof Fertilizer){ //BONEMEAT WILL GROW ITEM, NOT DROP THE RESULT
 						$amount = $this->farming2[$block->getId()];
-						$this->addXp($player, SkillLevel::FARMING, $amount);
+						$this->addXp($player, Skill::FARMING(), $amount);
 					}
 					break;
 				case 3:
 					$amount = $this->farming2[$block->getId()] * 2;
-					$this->addXp($player, SkillLevel::FARMING, $amount);
+					$this->addXp($player, Skill::FARMING(), $amount);
 			}
 		}
 	}
 
-	public function addXp(Player $player, int $skill_code, int $amount) : void{
+	public function addXp(Player $player, Skill $skill, int $amount) : void{
 		$data = $this->getSkillLevel()->getPlayerSkillLevelManager()->getPlayerSkillLevel($player);
-		$data->addSkillExp($skill_code, $amount);
+		$data->addSkillExp($skill, $amount);
 
-		$level = $data->getSkillLevel($skill_code);
-		$exp = $data->getSkillExp($skill_code);
+		$level = $data->getSkillLevel($skill);
+		$exp = $data->getSkillExp($skill);
 
-		$player->sendPopup($this->IdToSkillName($skill_code) . " " . $level . ": " . $exp . "/" . $data->getMaxExp($level) . " (+" . $amount . ")");
+		$player->sendPopup($skill->getDisplayName() . " " . $level . ": " . $exp . "/" . $data->getMaxExp($level) . " (+" . $amount . ")");
 	}
 
 	public function getSkillLevel() : ?SkillLevel{
@@ -168,15 +169,5 @@ class SkillLevelListener implements Listener{
 		}
 		return null;
 	}
-
 	//TODO: FishingXP
-
-	public function IdToSkillName(int $id) : string{
-		return match ($id) {
-			SkillLevel::MINING => "Mining",
-			SkillLevel::FARMING => "Farming",
-			SkillLevel::FORAGING => "Foraging",
-			SkillLevel::FISHING => "Fishing"
-		};
-	}
 }

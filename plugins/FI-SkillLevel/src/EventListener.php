@@ -19,16 +19,16 @@ class EventListener implements Listener{
 	 *
 	 * @priority HIGHEST
 	 */
-	public function onJoin(PlayerJoinEvent $event){
+	public function onJoin(PlayerJoinEvent $event): void{
 		$player = $event->getPlayer();
-		$this->getSkillLevel()->loadPlayer($player);
+		$this->getSkillLevel()->getProvider()->loadPlayer($player);
 	}
 
 	public function getSkillLevel() : SkillLevel{
 		return $this->skillLevel;
 	}
 
-	public function onQuit(PlayerQuitEvent $event){
-		$this->getSkillLevel()->unloadPlayer($event->getPlayer());
+	public function onQuit(PlayerQuitEvent $event): void{
+		$this->getSkillLevel()->getProvider()->unloadPlayer($event->getPlayer());
 	}
 }
