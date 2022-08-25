@@ -31,6 +31,7 @@ class Skill{
 	protected string $name;
 
 	public function __construct(string $name){
+		$this->Enum___construct($name);
 		$this->name = $name;
 	}
 
