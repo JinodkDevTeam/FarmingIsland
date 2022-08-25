@@ -11,7 +11,7 @@ use pocketmine\Server;
 
 class TagResloveListener implements Listener{
 
-	public function onTagReslove(TagsResolveEvent $event){
+	public function onTagReslove(TagsResolveEvent $event) : void{
 		$player = $event->getPlayer();
 		$tag = $event->getTag();
 		$name = $tag->getName();
@@ -19,14 +19,19 @@ class TagResloveListener implements Listener{
 		switch($name){
 			case "fi-scoreloader.coin":
 				$value = EconomyAPI::getInstance()->myMoney($player);
+				if($value === null or $value === false){
+					$value = 0;
+				}else{
+					$value = round($value, 2, PHP_ROUND_HALF_DOWN);
+				}
 				$tag->setValue((string) $value);
 				break;
 			case "fi-scoreloader.gem":
 				$currency = EconomyAPI::getInstance()->getCurrency('gem');
 				$value = EconomyAPI::getInstance()->myMoney($player, $currency);
-				if ($value === false){
+				if($value === null or $value === false){
 					$value = 0;
-				} else {
+				}else{
 					$value = round($value, 2, PHP_ROUND_HALF_DOWN);
 				}
 				$tag->setValue((string) $value);
