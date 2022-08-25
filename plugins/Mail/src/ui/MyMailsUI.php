@@ -12,7 +12,7 @@ class MyMailsUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$mails_data = yield $this->getLoader()->getProvider()->selectTo($this->getUsername());
+			$mails_data = yield from $this->getLoader()->getProvider()->selectTo($this->getUsername());
 			if(empty($mails_data)){
 				$player->sendMessage("You dont have any mails");
 				return;

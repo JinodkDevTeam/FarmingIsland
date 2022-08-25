@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Mail;
 
+use Generator;
 use Mail\command\MailCommand;
 use muqsit\invmenu\InvMenuHandler;
 use pocketmine\plugin\PluginBase;
@@ -29,11 +30,6 @@ class Loader extends PluginBase{
 
 	public function onDisable() : void{
 		$this->getProvider()->close();
-	}
-
-	public function sendMail(string $from, string $to, string $title, string $message, string $items = "") : void{
-		$mail = new Mail(-1, $from, $to, $title, $message, $items);
-		$this->getProvider()->register($mail);
 	}
 
 }

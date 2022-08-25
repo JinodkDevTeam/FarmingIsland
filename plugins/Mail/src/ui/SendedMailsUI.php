@@ -12,7 +12,7 @@ class SendedMailsUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$mails_data = yield $this->getLoader()->getProvider()->selectFrom($this->getUsername());
+			$mails_data = yield from $this->getLoader()->getProvider()->selectFrom($this->getUsername());
 			if(empty($mails_data)){
 				$player->sendMessage("You dont have any sended mails");
 				return;

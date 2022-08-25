@@ -6,7 +6,7 @@ namespace Mail;
 use Generator;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
-use SOFe\AwaitGenerator\Await;
+use poggit\libasynql\SqlError;
 
 class SqliteProvider{
 
@@ -30,10 +30,16 @@ class SqliteProvider{
 	}
 
 	public function init() : void{
-		$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
-			"sqlite" => "sqlite.sql"
-		]);
-		$this->db->executeGeneric(self::INIT);
+		try{
+			$this->db = libasynql::create($this->getLoader(), $this->getLoader()->getConfig()->get("database"), [
+				"sqlite" => "sqlite.sql"
+			]);
+			$this->db->executeGeneric(self::INIT);
+		}catch(SqlError $error){
+			$this->getLoader()->getLogger()->error($error->getMessage());
+		}finally{
+			$this->db->waitAll();
+		}
 	}
 
 	private function getLoader() : Loader{
@@ -41,38 +47,36 @@ class SqliteProvider{
 	}
 
 	public function close() : void{
-		if(isset($this->db)) $this->db->close();
+		if(isset($this->db)) {
+			$this->db->waitAll();
+			$this->db->close();
+		}
 	}
 
 	public function selectAll() : Generator{
-		return yield $this->asyncSelect(self::SELECT_ALL, []);
-	}
-
-	public function asyncSelect(string $query, array $args) : Generator{
-		$this->db->executeSelect($query, $args, yield, yield Await::REJECT);
-		return yield Await::ONCE;
+		return yield from $this->db->asyncSelect(self::SELECT_ALL, []);
 	}
 
 	public function selectFrom(string $name) : Generator{
-		return yield $this->asyncSelect(self::SELECT_FROM, [
+		return yield from $this->db->asyncSelect(self::SELECT_FROM, [
 			"name" => base64_encode($name)
 		]);
 	}
 
 	public function selectTo(string $name) : Generator{
-		return yield $this->asyncSelect(self::SELECT_TO, [
+		return yield from $this->db->asyncSelect(self::SELECT_TO, [
 			"name" => base64_encode($name)
 		]);
 	}
 
-	public function selectId(int $id){
-		return yield $this->asyncSelect(self::SELECT_ID, [
+	public function selectId(int $id) : Generator{
+		return yield from $this->db->asyncSelect(self::SELECT_ID, [
 			"id" => $id
 		]);
 	}
 
 	public function selectUnread(string $name) : Generator{
-		return yield $this->asyncSelect(self::SELECT_UNREAD, [
+		return yield from $this->db->asyncSelect(self::SELECT_UNREAD, [
 			"name" => base64_encode($name)
 		]);
 	}
@@ -105,14 +109,14 @@ class SqliteProvider{
 		]);
 	}
 
-	public function remove(int $id) : void{
-		$this->db->executeChange(self::REMOVE, [
+	public function remove(int $id) : Generator{
+		yield $this->db->asyncChange(self::REMOVE, [
 			"id" => $id,
 		]);
 	}
 
-	public function register(Mail $mail) : void{
-		$this->db->executeChange(self::REGISTER, [
+	public function register(Mail $mail) : Generator{
+		yield $this->db->asyncChange(self::REGISTER, [
 			"from" => base64_encode($mail->getFrom()),
 			"to" => base64_encode($mail->getTo()),
 			"title" => base64_encode($mail->getTitle()),
@@ -120,5 +124,10 @@ class SqliteProvider{
 			"items" => $mail->getItems(),
 			"time" => time()
 		]);
+	}
+
+	public function sendMail(string $from, string $to, string $title, string $message, string $items = "") : Generator{
+		$mail = new Mail(-1, $from, $to, $title, $message, $items);
+		yield $this->register($mail);
 	}
 }

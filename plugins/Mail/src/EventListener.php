@@ -23,7 +23,7 @@ class EventListener implements Listener{
 	public function onJoin(PlayerJoinEvent $event){
 		$player = $event->getPlayer();
 		Await::f2c(function() use ($player){
-			$unread = yield $this->getLoader()->getProvider()->selectUnread($player->getName());
+			$unread = yield from $this->getLoader()->getProvider()->selectUnread($player->getName());
 			$count = count($unread);
 			if ($count > 0){
 				PlayerUtils::addToast($player, "MailSystem", "You have " . $count . " unread messages !");

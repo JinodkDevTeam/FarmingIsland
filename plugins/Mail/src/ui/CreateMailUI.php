@@ -12,6 +12,7 @@ use muqsit\invmenu\type\InvMenuTypeIds;
 use pocketmine\inventory\Inventory;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use SOFe\AwaitGenerator\Await;
 
 class CreateMailUI extends BaseUI{
 
@@ -36,8 +37,14 @@ class CreateMailUI extends BaseUI{
 			if($attach){
 				$this->AttachItems($player, $to, $title, $message);
 			}else{
-				$this->getLoader()->sendMail($this->getUsername(), $to, $title, $message);
-				$player->sendMessage("Mail Created !");
+				Await::f2c(function() use ($player, $to, $title, $message){
+					yield $this->getLoader()->getProvider()->sendMail($this->getUsername(), $to, $title, $message);
+					$player->sendMessage("Mail Created !");
+					$notice = Server::getInstance()->getPlayerExact($to);
+					if (!is_null($notice)){
+						PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
+					}
+				});
 			}
 		});
 		$form->setTitle("Create new mail");
@@ -58,12 +65,15 @@ class CreateMailUI extends BaseUI{
 				$items[] = $item;
 			}
 			$data = ItemUtils::ItemArray2string($items);
-			$this->getLoader()->sendMail($this->getUsername(), $to, $title, $message, $data);
-			$player->sendMessage("Mail Created !");
-			$notice = Server::getInstance()->getPlayerExact($to);
-			if (!is_null($notice)){
-				PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
-			}
+			Await::f2c(function() use ($player, $to, $title, $message, $data){
+				yield $this->getLoader()->getProvider()->sendMail($this->getUsername(), $to, $title, $message, $data);
+				$player->sendMessage("Mail Created !");
+				$notice = Server::getInstance()->getPlayerExact($to);
+				if (!is_null($notice)){
+					PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
+				}
+			});
+
 		});
 		$menu->send($player);
 	}

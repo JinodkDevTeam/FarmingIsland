@@ -27,7 +27,7 @@ class MailInfo extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$select = yield $this->getLoader()->getProvider()->selectId($this->mail_id);
+			$select = yield from $this->getLoader()->getProvider()->selectId($this->mail_id);
 			if(empty($select)) return;
 			$mail = Mail::fromArray($select[0]);
 			if($this->mode == self::TO){
@@ -110,14 +110,18 @@ class MailInfo extends BaseUI{
 			if(!$data) return;
 			if ($this->mode == self::FROM){
 				if ($mail->isDeletedByTo()){
-					$this->getLoader()->getProvider()->remove($mail->getId());
+					Await::f2c(function() use ($mail){
+						yield $this->getLoader()->getProvider()->remove($mail->getId());
+					});
 				} else {
 					$this->getLoader()->getProvider()->updateIsDeletedByFrom($mail->getId(), true);
 				}
 			}
 			if ($this->mode == self::TO){
 				if ($mail->isDeletedByFrom()){
-					$this->getLoader()->getProvider()->remove($mail->getId());
+					Await::f2c(function() use ($mail){
+						yield $this->getLoader()->getProvider()->remove($mail->getId());
+					});
 				} else {
 					$this->getLoader()->getProvider()->updateIsDeletedByTo($mail->getId(), true);
 				}
