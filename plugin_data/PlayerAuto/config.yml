@@ -1,8 +1,8 @@
 # PlayerAuto Config
 features:
-    autosell: true
+    autosell: false
     autofeed: true
-    autofix: "task" #Use "event" will not work because PocketMine Bug.
+    autofix: false
 setting:
     sell-cmd: "sell all" # Lệnh bán đồ
     damage: 100 # Nếu bạn bật auto fix và độ hư hỏng dụng cụ bạn đạt tới mức này, nó sẽ tự động sửa

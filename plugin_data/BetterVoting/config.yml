@@ -10,9 +10,9 @@ commands:
     #  {x}: The player's X coordinate
     #  {y}: The player's Y coordinate
     #  {z}: The player's Z coordinate
-    - "say {username} has just voted!"
-    - "title \"{username}\" title &aVote"
-    - "title \"{username}\" subtitle &7Thanks for voting!"
+    - "say {username} &l&ahas just voted!"
+    - "title \"{username}\" title &l&aVote"
+    - "title \"{username}\" subtitle &l&aThanks for voting!"
 # If droprewards is true, rewards will be dropped on the floor if a player's inventory is full
 # If droprewards if false, rewards will dissapear if a player's inventory is full
 droprewards: true
@@ -32,23 +32,23 @@ items:
     #- "bow:0:1:&dPiggy's Bow:power:5:unbreaking:3:porkified:3"
 messages:
     info:
-        title: "&aThis server's vote information:"
-        content: "&aUptime: {uptime}\n&aScore: {score}\n&aRank: {rank}\n&aVotes: {votes}\n&aFavorited: {favorited}\n&aComments: {comments}"
-    noperms: "&cYou do not have permission to use this command."
+        title: "&l&aThis server's vote information:"
+        content: "&l&aUptime: {uptime}\n&aScore: {score}\n&aRank: {rank}\n&aVotes: {votes}\n&aFavorited: {favorited}\n&aComments: {comments}"
+    noperms: "&l&cYou do not have permission to use this command."
     reload:
-        success: "&aYou have reloaded the server's vote configuration."
+        success: "&l&aYou have reloaded the server's vote configuration."
     top:
-        novoters: "&cThere are no top voters."
-        title: "&aTop voters this month:"
-        format: "&a{place}. {username}: {votes}"
+        novoters: "&l&cThere are no top voters."
+        title: "&l&aTop voters this month:"
+        format: "&l&a{place}. {username}: {votes}"
     vote:
-        alreadyclaimed: "&cYou have already claimed your vote."
-        alreadyprocessing: "&cYour vote is already being processed."
-        claimed: "&aThank you for voting! You have received your rewards."
-        error: "&cUnable to claim your vote, please try again later."
-        notvoted: "&cYou have not voted yet."
-        processing: "&aYour vote is being processed, please wait."
+        alreadyclaimed: "&l&cYou have already claimed your vote."
+        alreadyprocessing: "&l&cYour vote is already being processed."
+        claimed: "&l&aThank you for voting! You have received your rewards."
+        error: "&l&cUnable to claim your vote, please try again later."
+        notvoted: "&l&cYou have not voted yet."
+        processing: "&l&aYour vote is being processed, please wait."
         usage:
-            notplayer: "&cUse '/vote <info|reload|top>'."
-            other: "&cUse '/vote [info|top]."
-            reloadperm: "&cUse '/vote [info|reload|top]."
+            notplayer: "&l&cUse '/vote <info|reload|top>'."
+            other: "&l&cUse '/vote [info|top]."
+            reloadperm: "&l&cUse '/vote [info|reload|top]."

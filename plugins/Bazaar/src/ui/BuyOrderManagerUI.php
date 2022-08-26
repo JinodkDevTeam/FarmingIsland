@@ -97,6 +97,4 @@ class BuyOrderManagerUI{
 
 		$player->sendForm($form);
 	}
-
-
 }

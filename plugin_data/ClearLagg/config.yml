@@ -14,8 +14,8 @@ clear:
     - Pig
 
 messages:
-  time-left: "§c[Cleaner]§eEntities will clear in {SECONDS} seconds"
-  entities-cleared: "§c[Cleaner]§aCleared a total of {COUNT} entities"
+  time-left: "§l§c[Cleaner]§e Entities will clear in §f{SECONDS} §eseconds"
+  entities-cleared: "§l§c[Cleaner]§a Cleared a total of §f{COUNT} §aentities"
 
 # Countdown times
 times: [3, 2, 1]

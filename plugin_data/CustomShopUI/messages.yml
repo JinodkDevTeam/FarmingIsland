@@ -5,7 +5,7 @@ Titles:
 
 
 Messages:
-  Survival: "You must Be in Survival Mode to use the Shop!" # Message for when player is in creative and shop is set to survival only
+  Survival: "§l§cYou must Be in Survival Mode to use the Shop!" # Message for when player is in creative and shop is set to survival only
   ExitButton: "§c§lBACK" # Button for Item Category
   Category_ExitButton: "§c§lEXIT" # Button for Exiting Plugin!
   Input: "Amount" # The Words above the Input Amount!
@@ -16,20 +16,20 @@ Messages:
   BuySell: "Buy/Sell for {sell}$ Each" # The words next to the Toggle Switch
 
   # You can Also add {sell} to here if you prefer it in the message up top.
-  Information: "How Many of {item} for {cost}$ Each \nWould you Like to Buy?"
+  Information: "§l§aHow Many of §f{item} §afor §e{cost}$ Each \n§a§nWould you Like to Buy?"
   ## You can use {amount}, {item} and {cost} here.
-  Paid_for: "You Bought {amount}x {item} for {cost}."
+  Paid_for: "§l§aYou Bought §f{amount}§ax §f{item} §afor §e{cost} $."
   ## You can use {amount}, {item}, {cost}, and {missing} here.
-  Not_enough_money: "You Tried to By {amount} of {item} for {cost} but were missing {missing}."
-  Not_enough_money_command: "You don't have enough money to buy that Command!"
-  Paid: "You Sold {amount} of {item} for {pay}."
-  Not_enough_items: "You tried to sell {amount} of {item} for {pay} but didn't have enough Items!"
-  Thanks: "Thank you for Using the Shop!" # Message sent on Item Buy!
-  Thanks2: "Thank you for visiting the Shop!" #Message sent on Shop Close!
-  cmd_confirm: "Are you sure you want to Buy this Command?"
+  Not_enough_money: "§l§aYou Tried to By §f{amount} §aof §f{item} §afor §f{cost} §cbut §a§nwere missing §c{missing}."
+  Not_enough_money_command: "§l§cYou don't have enough money to buy that Command!"
+  Paid: "§l§aYou Sold §f{amount} §aof §f{item} §afor§n {pay}."
+  Not_enough_items: "§l§aYou tried to sell §f{amount} §aof §f{item} §afor §f§n{pay} §abut didn't have enough Items!"
+  Thanks: "§l§aThank you for Using the Shop!" # Message sent on Item Buy!
+  Thanks2: "§l§aThank you for visiting the Shop!" #Message sent on Shop Close!
+  cmd_confirm: "§aAre you sure you want to Buy this Command?"
   yes: "§a§lYes"
   no: "§4§lNo"
-  command_buy_cancel: "You canceled the Transaction!"
-  NoPermission: "§cError: §7You don't have Permission to Use that Shop!"
-  ShopError: "§cError: §7That Shop Does Not exist!"
-  BannedinWorld: "§cError: §7That Command Has Been banned in this World"
+  command_buy_cancel: "§l§aYou canceled the Transaction!"
+  NoPermission: "§l§cError: §aYou don't have Permission to Use that Shop!"
+  ShopError: "§l§cError: §aThat Shop Does Not exist!"
+  BannedinWorld: "§l§cError: §aThat Command Has Been banned in this World"
