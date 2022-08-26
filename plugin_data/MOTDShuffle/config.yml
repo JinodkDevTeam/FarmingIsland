@@ -14,8 +14,8 @@ MOTD Shuffle: "on"
 #You can add to as much as you like! 
 #Just make sure you copy it correctly. 
 MOTD Message:
-    - "§bFarming§aIsland§e"
-    - "§bFarming"
-    - "§eFishing"
-    - "§fBuild your Island"
+    - "§l§bFarming§aIsland§e"
+    - "§l§bFarming"
+    - "§l§eFishing"
+    - "§l§fBuild your Island"
 ...
