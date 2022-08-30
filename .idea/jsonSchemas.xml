@@ -132,6 +132,9 @@
                   <Item>
                     <option name="path" value="plugins/MessageConfig/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/InvCraft/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
