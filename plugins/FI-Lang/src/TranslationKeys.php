@@ -17,5 +17,5 @@ final class TranslationKeys{
 	public const BACKPACK_GUI_NAME = "backpack.gui.name";
 
 	#Bank
-
+	public const BANK_DATAERROR = "bank.dataerror";
 }

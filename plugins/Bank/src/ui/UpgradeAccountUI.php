@@ -22,7 +22,7 @@ class UpgradeAccountUI extends BankUI{
 			$next_upgrade_name = $this->getBank()->getProvider()->getUpgradeName($current_upgrade + 1);
 			$next_upgrade_cost = $this->getBank()->getProvider()->getUpgradeCost($current_upgrade + 1);
 			$max_upgrade = $this->getBank()->getProvider()->getMaxUpgrade();
-			if($current_upgrade == $max_upgrade){
+			if($current_upgrade >= $max_upgrade){
 				$player->sendMessage("Your account is already the highest upgrade!");
 				return;
 			}
@@ -49,7 +49,6 @@ class UpgradeAccountUI extends BankUI{
 			$form->setContent(implode("\n", $content));
 			$form->setButton1("Yes");
 			$form->setButton2("No");
-
 			$player->sendForm($form);
 		});
 	}
