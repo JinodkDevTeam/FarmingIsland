@@ -7,14 +7,38 @@ function getCurrentDir() : string{
 	return __DIR__ . DIRECTORY_SEPARATOR;
 }
 
-$data = parse_ini_file(LANG_DIRECTORY, false, INI_SCANNER_RAW);
-if(!$data){
-	echo "Cannot open file " . LANG_DIRECTORY;
-	return;
+function generate_translation_keys() : void{
+	$data = parse_ini_file(LANG_DIRECTORY, false, INI_SCANNER_RAW);
+	if(!$data){
+		echo "Cannot open file " . LANG_DIRECTORY;
+		return;
+	}
+	ob_start();
+	$keys = array_keys($data);
+	echo <<<'HEADER'
+<?php
+declare(strict_types=1);
+	
+namespace FILang;
+
+final class TranslationKeys{
+	/**
+	* This class is generated automatically, do NOT modify it by hand.
+	* See ngtools\TranslationKeysGenerator.php
+ 	*/
+
+HEADER;
+	foreach($keys as $key){
+		$string = str_replace(".", "_", $key);
+		$string = strtoupper($string);
+		echo "\tpublic const " . $string . " = \"" . $key . "\";" . PHP_EOL;
+	}
+	echo "}" . PHP_EOL;
+	$contents = ob_get_clean();
+	file_put_contents("plugins/FI-Lang/src/TranslationKeys.php", $contents);
+	echo "Done generating TranslationFactory.\n";
 }
-$keys = array_keys($data);
-foreach($keys as $key){
-	$string = str_replace(".", "_", $key);
-	$string = strtoupper($string);
-	echo "public const " . $string . " = \"" . $key . "\";" . PHP_EOL;
-}
+
+
+
+generate_translation_keys();
