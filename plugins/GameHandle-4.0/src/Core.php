@@ -20,7 +20,7 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 
 class Core extends PluginBase{
-	public const VERSION = "0.3.0.1-alpha";
+	public const VERSION = "0.3.0.2-alpha";
 	public const CODE_NAME = "Icarus";
 	public const BASE_VERSION = 2; //FIv2
 	/** @var int[] */
