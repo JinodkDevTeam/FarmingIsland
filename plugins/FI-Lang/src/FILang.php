@@ -12,7 +12,8 @@ use pocketmine\plugin\PluginBase;
 class FILang extends PluginBase{
 
 	public const SUPPORTED_LANGUAGES = [
-		"eng"
+		"eng",
+		"vie"
 	];
 	/** @var Language[] */
 	public static array $languages = [];
