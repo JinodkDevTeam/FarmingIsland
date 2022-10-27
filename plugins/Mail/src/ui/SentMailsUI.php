@@ -8,7 +8,7 @@ use Mail\Mail;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
 
-class SendedMailsUI extends BaseUI{
+class SentMailsUI extends BaseUI{
 
 	public function execute(Player $player) : void{
 		Await::f2c(function() use ($player){

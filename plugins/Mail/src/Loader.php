@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Mail;
 
-use Generator;
 use Mail\command\MailCommand;
 use muqsit\invmenu\InvMenuHandler;
 use pocketmine\plugin\PluginBase;

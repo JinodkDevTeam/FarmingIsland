@@ -16,7 +16,7 @@ class MailUI extends BaseUI{
 					new CreateMailUI($this->getLoader(), $player, $this->getUsername());
 					break;
 				case 1:
-					new SendedMailsUI($this->getLoader(), $player, $this->getUsername());
+					new SentMailsUI($this->getLoader(), $player, $this->getUsername());
 					break;
 				case 2:
 					new MyMailsUI($this->getLoader(), $player, $this->getUsername());
