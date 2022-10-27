@@ -22,6 +22,10 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::COMMAND_INGAME, []);
 	}
 
+	public static function command_noperm() : Translatable{
+		return new Translatable(TranslationKeys::COMMAND_NOPERM, []);
+	}
+
 	public static function backpack_nothave() : Translatable{
 		return new Translatable(TranslationKeys::BACKPACK_NOTHAVE, []);
 	}
@@ -346,14 +350,6 @@ final class TranslationFactory{
 		]);
 	}
 
-	public static function bazaar_ui_myorder_manager_buy_cancel_button_yes() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_MYORDER_MANAGER_BUY_CANCEL_BUTTON_YES, []);
-	}
-
-	public static function bazaar_ui_myorder_manager_buy_cancel_button_no() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_MYORDER_MANAGER_BUY_CANCEL_BUTTON_NO, []);
-	}
-
 	public static function bazaar_ui_myorder_manager_sell_title() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_UI_MYORDER_MANAGER_SELL_TITLE, []);
 	}
@@ -421,14 +417,6 @@ final class TranslationFactory{
 			"amount" => $amount,
 			"item" => $item,
 		]);
-	}
-
-	public static function bazaar_ui_myorder_manager_sell_cancel_button_yes() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_MYORDER_MANAGER_SELL_CANCEL_BUTTON_YES, []);
-	}
-
-	public static function bazaar_ui_myorder_manager_sell_cancel_button_no() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_MYORDER_MANAGER_SELL_CANCEL_BUTTON_NO, []);
 	}
 
 	public static function bazaar_ui_shop_title() : Translatable{
@@ -509,14 +497,6 @@ final class TranslationFactory{
 		]);
 	}
 
-	public static function bazaar_ui_instantbuy_confirm_button_yes() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTBUY_CONFIRM_BUTTON_YES, []);
-	}
-
-	public static function bazaar_ui_instantbuy_confirm_button_no() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTBUY_CONFIRM_BUTTON_NO, []);
-	}
-
 	public static function bazaar_ui_instantsell_title() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_TITLE, []);
 	}
@@ -543,12 +523,96 @@ final class TranslationFactory{
 		]);
 	}
 
-	public static function bazaar_ui_instantsell_confirm_button_yes() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_CONFIRM_BUTTON_YES, []);
+	public static function bazaar_ui_buyorder_title() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_TITLE, []);
 	}
 
-	public static function bazaar_ui_instantsell_confirm_button_no() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_CONFIRM_BUTTON_NO, []);
+	public static function bazaar_ui_buyorder_label(Translatable|string $itemName) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_LABEL, [
+			"itemName" => $itemName,
+		]);
+	}
+
+	public static function bazaar_ui_buyorder_label2(Translatable|string $topBuy) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_LABEL2, [
+			"topBuy" => $topBuy,
+		]);
+	}
+
+	public static function bazaar_ui_buyorder_input_text() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_INPUT_TEXT, []);
+	}
+
+	public static function bazaar_ui_buyorder_input_placeholder() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_INPUT_PLACEHOLDER, []);
+	}
+
+	public static function bazaar_ui_buyorder_input2_text() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_INPUT2_TEXT, []);
+	}
+
+	public static function bazaar_ui_buyorder_confirm_title() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_CONFIRM_TITLE, []);
+	}
+
+	public static function bazaar_ui_buyorder_confirm_content(Translatable|string $itemName, Translatable|string $amount, Translatable|string $priceEach, Translatable|string $price) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_BUYORDER_CONFIRM_CONTENT, [
+			"itemName" => $itemName,
+			"amount" => $amount,
+			"priceEach" => $priceEach,
+			"price" => $price,
+		]);
+	}
+
+	public static function bazaar_ui_sellorder_title() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_TITLE, []);
+	}
+
+	public static function bazaar_ui_sellorder_label(Translatable|string $itemName) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_LABEL, [
+			"itemName" => $itemName,
+		]);
+	}
+
+	public static function bazaar_ui_sellorder_label2(Translatable|string $topSell) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_LABEL2, [
+			"topSell" => $topSell,
+		]);
+	}
+
+	public static function bazaar_ui_sellorder_input_text() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_INPUT_TEXT, []);
+	}
+
+	public static function bazaar_ui_sellorder_input_placeholder(Translatable|string $maxItem) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_INPUT_PLACEHOLDER, [
+			"maxItem" => $maxItem,
+		]);
+	}
+
+	public static function bazaar_ui_sellorder_input2_text() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_INPUT2_TEXT, []);
+	}
+
+	public static function bazaar_ui_sellorder_confirm_title() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_CONFIRM_TITLE, []);
+	}
+
+	public static function bazaar_ui_sellorder_confirm_content(Translatable|string $itemName, Translatable|string $amount, Translatable|string $priceEach, Translatable|string $worth) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_SELLORDER_CONFIRM_CONTENT, [
+			"itemName" => $itemName,
+			"amount" => $amount,
+			"priceEach" => $priceEach,
+			"worth" => $worth,
+		]);
+	}
+
+	public static function bazaar_ui_confirm_button_yes() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_CONFIRM_BUTTON_YES, []);
+	}
+
+	public static function bazaar_ui_confirm_button_no() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_CONFIRM_BUTTON_NO, []);
 	}
 
 	public static function bazaar_invfull() : Translatable{
@@ -557,10 +621,6 @@ final class TranslationFactory{
 
 	public static function bazaar_order_cancel_success() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_ORDER_CANCEL_SUCCESS, []);
-	}
-
-	public static function bazaar_order_create_success() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_ORDER_CREATE_SUCCESS, []);
 	}
 
 	public static function bazaar_instantbuy_fail_none() : Translatable{
@@ -607,6 +667,22 @@ final class TranslationFactory{
 		]);
 	}
 
+	public static function bazaar_buyorder_create_success() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_BUYORDER_CREATE_SUCCESS, []);
+	}
+
+	public static function bazaar_buyorder_create_fail_notenoughmoney() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_BUYORDER_CREATE_FAIL_NOTENOUGHMONEY, []);
+	}
+
+	public static function bazaar_sellorder_create_success() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_SELLORDER_CREATE_SUCCESS, []);
+	}
+
+	public static function bazaar_sellorder_create_fail_notenoughitem() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_SELLORDER_CREATE_FAIL_NOTENOUGHITEM, []);
+	}
+
 	public static function bazaar_amount_limit1() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_AMOUNT_LIMIT1, []);
 	}
@@ -617,6 +693,14 @@ final class TranslationFactory{
 
 	public static function bazaar_amount_limit3() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_AMOUNT_LIMIT3, []);
+	}
+
+	public static function bazaar_price_limit1() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_PRICE_LIMIT1, []);
+	}
+
+	public static function bazaar_price_limit2() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_PRICE_LIMIT2, []);
 	}
 
 	public static function clearlagg_timeleft(Translatable|string $seconds) : Translatable{
@@ -665,6 +749,371 @@ final class TranslationFactory{
 
 	public static function favis_command_notislandworld() : Translatable{
 		return new Translatable(TranslationKeys::FAVIS_COMMAND_NOTISLANDWORLD, []);
+	}
+
+	public static function favis_notinisland() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_NOTINISLAND, []);
+	}
+
+	public static function favis_addisland_success() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_ADDISLAND_SUCCESS, []);
+	}
+
+	public static function favis_addid_fail_unclaimed() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_ADDID_FAIL_UNCLAIMED, []);
+	}
+
+	public static function favis_addid_fail_invalidid() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_ADDID_FAIL_INVALIDID, []);
+	}
+
+	public static function favis_addid_fail_invalidformat() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_ADDID_FAIL_INVALIDFORMAT, []);
+	}
+
+	public static function favis_addid_success(Translatable|string $island) : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_ADDID_SUCCESS, [
+			"island" => $island,
+		]);
+	}
+
+	public static function favis_ui_main_title() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_MAIN_TITLE, []);
+	}
+
+	public static function favis_ui_main_button_addcurrent() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_MAIN_BUTTON_ADDCURRENT, []);
+	}
+
+	public static function favis_ui_main_button_addid() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_MAIN_BUTTON_ADDID, []);
+	}
+
+	public static function favis_ui_main_button_teleport() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_MAIN_BUTTON_TELEPORT, []);
+	}
+
+	public static function favis_ui_main_button_remove() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_MAIN_BUTTON_REMOVE, []);
+	}
+
+	public static function favis_ui_addid_title() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_ADDID_TITLE, []);
+	}
+
+	public static function favis_ui_addid_input() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_ADDID_INPUT, []);
+	}
+
+	public static function favis_ui_teleport_title() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_TELEPORT_TITLE, []);
+	}
+
+	public static function favis_ui_remove_title() : Translatable{
+		return new Translatable(TranslationKeys::FAVIS_UI_REMOVE_TITLE, []);
+	}
+
+	public static function invc_menu_craft6x6() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_CRAFT6X6, []);
+	}
+
+	public static function invc_menu_craft3x3() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_CRAFT3X3, []);
+	}
+
+	public static function invc_menu_add() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_ADD, []);
+	}
+
+	public static function invc_menu_edit() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_EDIT, []);
+	}
+
+	public static function invc_menu_save_name() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_SAVE_NAME, []);
+	}
+
+	public static function invc_menu_view() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MENU_VIEW, []);
+	}
+
+	public static function invc_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_TITLE, []);
+	}
+
+	public static function invc_ui_craft() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_CRAFT, []);
+	}
+
+	public static function invc_ui_add() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_ADD, []);
+	}
+
+	public static function invc_ui_edit() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_EDIT, []);
+	}
+
+	public static function invc_ui_remove() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_REMOVE, []);
+	}
+
+	public static function invc_ui_add_input() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_ADD_INPUT, []);
+	}
+
+	public static function invc_ui_confirm_title() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_CONFIRM_TITLE, []);
+	}
+
+	public static function invc_ui_confirm_content() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_CONFIRM_CONTENT, []);
+	}
+
+	public static function invc_ui_confirm_yes() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_CONFIRM_YES, []);
+	}
+
+	public static function invc_ui_confirm_no() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_CONFIRM_NO, []);
+	}
+
+	public static function invc_ui_3x3recipe() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_3X3RECIPE, []);
+	}
+
+	public static function invc_ui_6x6recipe() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_6X6RECIPE, []);
+	}
+
+	public static function invc_ui_list() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_LIST, []);
+	}
+
+	public static function invc_ui_title_player() : Translatable{
+		return new Translatable(TranslationKeys::INVC_UI_TITLE_PLAYER, []);
+	}
+
+	public static function invc_msg_invalidname() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MSG_INVALIDNAME, []);
+	}
+
+	public static function invc_msg_existrecipe() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MSG_EXISTRECIPE, []);
+	}
+
+	public static function invc_msg_norecipe() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MSG_NORECIPE, []);
+	}
+
+	public static function invc_msg_missresult() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MSG_MISSRESULT, []);
+	}
+
+	public static function invc_msg_sametyperecipe() : Translatable{
+		return new Translatable(TranslationKeys::INVC_MSG_SAMETYPERECIPE, []);
+	}
+
+	public static function invc_command_missrecipename() : Translatable{
+		return new Translatable(TranslationKeys::INVC_COMMAND_MISSRECIPENAME, []);
+	}
+
+	public static function invc_command_recipenotfound() : Translatable{
+		return new Translatable(TranslationKeys::INVC_COMMAND_RECIPENOTFOUND, []);
+	}
+
+	public static function mail_nothaverecieved() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_NOTHAVERECIEVED, []);
+	}
+
+	public static function mail_nothavesent() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_NOTHAVESENT, []);
+	}
+
+	public static function mail_create_success() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_CREATE_SUCCESS, []);
+	}
+
+	public static function mail_claim_fail_notreceiver() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_CLAIM_FAIL_NOTRECEIVER, []);
+	}
+
+	public static function mail_claim_fail_notenoughspace() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_CLAIM_FAIL_NOTENOUGHSPACE, []);
+	}
+
+	public static function mail_claim_fail_already() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_CLAIM_FAIL_ALREADY, []);
+	}
+
+	public static function mail_toask_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOASK_TITLE, []);
+	}
+
+	public static function mail_toask_new(Translatable|string $sender) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOASK_NEW, [
+			"sender" => $sender,
+		]);
+	}
+
+	public static function mail_toask_unread(Translatable|string $unread) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOASK_UNREAD, [
+			"unread" => $unread,
+		]);
+	}
+
+	public static function mail_gui_attachitems_name() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_GUI_ATTACHITEMS_NAME, []);
+	}
+
+	public static function mail_ui_main_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MAIN_TITLE, []);
+	}
+
+	public static function mail_ui_main_content(Translatable|string $username) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MAIN_CONTENT, [
+			"username" => $username,
+		]);
+	}
+
+	public static function mail_ui_main_button_create() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MAIN_BUTTON_CREATE, []);
+	}
+
+	public static function mail_ui_main_button_sent() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MAIN_BUTTON_SENT, []);
+	}
+
+	public static function mail_ui_main_button_mymails() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MAIN_BUTTON_MYMAILS, []);
+	}
+
+	public static function mail_ui_create_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_TITLE, []);
+	}
+
+	public static function mail_ui_create_input_to() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_INPUT_TO, []);
+	}
+
+	public static function mail_ui_create_input_title_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_INPUT_TITLE_TITLE, []);
+	}
+
+	public static function mail_ui_create_input_title_placeholder() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_INPUT_TITLE_PLACEHOLDER, []);
+	}
+
+	public static function mail_ui_create_input_message_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_INPUT_MESSAGE_TITLE, []);
+	}
+
+	public static function mail_ui_create_input_message_placeholder() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_INPUT_MESSAGE_PLACEHOLDER, []);
+	}
+
+	public static function mail_ui_create_toggle_attachitems() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_CREATE_TOGGLE_ATTACHITEMS, []);
+	}
+
+	public static function mail_ui_sent_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_SENT_TITLE, []);
+	}
+
+	public static function mail_ui_sent_button(Translatable|string $title, Translatable|string $to) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_SENT_BUTTON, [
+			"title" => $title,
+			"to" => $to,
+		]);
+	}
+
+	public static function mail_ui_mymails_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MYMAILS_TITLE, []);
+	}
+
+	public static function mail_ui_mymails_button(Translatable|string $title, Translatable|string $from) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MYMAILS_BUTTON, [
+			"title" => $title,
+			"from" => $from,
+		]);
+	}
+
+	public static function mail_ui_mymails_button_new(Translatable|string $title, Translatable|string $from) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_MYMAILS_BUTTON_NEW, [
+			"title" => $title,
+			"from" => $from,
+		]);
+	}
+
+	public static function mail_ui_info_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_TITLE, []);
+	}
+
+	public static function mail_ui_info_content_id(Translatable|string $id) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_ID, [
+			"id" => $id,
+		]);
+	}
+
+	public static function mail_ui_info_content_from(Translatable|string $from) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_FROM, [
+			"from" => $from,
+		]);
+	}
+
+	public static function mail_ui_info_content_to(Translatable|string $to) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_TO, [
+			"to" => $to,
+		]);
+	}
+
+	public static function mail_ui_info_content_title(Translatable|string $title) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_TITLE, [
+			"title" => $title,
+		]);
+	}
+
+	public static function mail_ui_info_content_message() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_MESSAGE, []);
+	}
+
+	public static function mail_ui_info_content_attachments() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_ATTACHMENTS, []);
+	}
+
+	public static function mail_ui_info_content_noneattachment() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_CONTENT_NONEATTACHMENT, []);
+	}
+
+	public static function mail_ui_info_button_delete() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_BUTTON_DELETE, []);
+	}
+
+	public static function mail_ui_info_button_reply() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_BUTTON_REPLY, []);
+	}
+
+	public static function mail_ui_info_button_claim() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_INFO_BUTTON_CLAIM, []);
+	}
+
+	public static function mail_ui_delete_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_DELETE_TITLE, []);
+	}
+
+	public static function mail_ui_delete_content_claimed() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_DELETE_CONTENT_CLAIMED, []);
+	}
+
+	public static function mail_ui_delete_content_unclaimed() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_DELETE_CONTENT_UNCLAIMED, []);
+	}
+
+	public static function mail_ui_delete_button_yes() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_DELETE_BUTTON_YES, []);
+	}
+
+	public static function mail_ui_delete_button_no() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_UI_DELETE_BUTTON_NO, []);
 	}
 
 	public static function filang_ui_title() : Translatable{
