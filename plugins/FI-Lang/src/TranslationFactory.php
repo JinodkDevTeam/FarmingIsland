@@ -813,6 +813,376 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::FAVIS_UI_REMOVE_TITLE, []);
 	}
 
+	public static function gh_season_spring() : Translatable{
+		return new Translatable(TranslationKeys::GH_SEASON_SPRING, []);
+	}
+
+	public static function gh_season_summer() : Translatable{
+		return new Translatable(TranslationKeys::GH_SEASON_SUMMER, []);
+	}
+
+	public static function gh_season_autumn() : Translatable{
+		return new Translatable(TranslationKeys::GH_SEASON_AUTUMN, []);
+	}
+
+	public static function gh_season_winter() : Translatable{
+		return new Translatable(TranslationKeys::GH_SEASON_WINTER, []);
+	}
+
+	public static function gh_afkreward() : Translatable{
+		return new Translatable(TranslationKeys::GH_AFKREWARD, []);
+	}
+
+	public static function gh_sell_cantbesold() : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_CANTBESOLD, []);
+	}
+
+	public static function gh_sell_sold(Translatable|string $count, Translatable|string $price, Translatable|string $buff) : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_SOLD, [
+			"count" => $count,
+			"price" => $price,
+			"buff" => $buff,
+		]);
+	}
+
+	public static function gh_sell_undo_fail_none() : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_UNDO_FAIL_NONE, []);
+	}
+
+	public static function gh_sell_undo_fail_notenoughmoney() : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_UNDO_FAIL_NOTENOUGHMONEY, []);
+	}
+
+	public static function gh_sell_undo_fail_notenoughspace() : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_UNDO_FAIL_NOTENOUGHSPACE, []);
+	}
+
+	public static function gh_sell_undo_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_SELL_UNDO_SUCCESS, []);
+	}
+
+	public static function gh_startgame() : Translatable{
+		return new Translatable(TranslationKeys::GH_STARTGAME, []);
+	}
+
+	public static function gh_notp() : Translatable{
+		return new Translatable(TranslationKeys::GH_NOTP, []);
+	}
+
+	public static function gh_died(Translatable|string $coins) : Translatable{
+		return new Translatable(TranslationKeys::GH_DIED, [
+			"coins" => $coins,
+		]);
+	}
+
+	public static function gh_cmd_playernotfound() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PLAYERNOTFOUND, []);
+	}
+
+	public static function gh_cmd_cgive_fail_unknowid() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_CGIVE_FAIL_UNKNOWID, []);
+	}
+
+	public static function gh_cmd_cgive_fail_notenoughspace() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_CGIVE_FAIL_NOTENOUGHSPACE, []);
+	}
+
+	public static function gh_cmd_cgive_fail_decode() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_CGIVE_FAIL_DECODE, []);
+	}
+
+	public static function gh_cmd_cgive_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_CGIVE_SUCCESS, []);
+	}
+
+	public static function gh_cmd_dupe_fail_none() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_DUPE_FAIL_NONE, []);
+	}
+
+	public static function gh_cmd_dupe_fail_invfull() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_DUPE_FAIL_INVFULL, []);
+	}
+
+	public static function gh_cmd_dupe_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_DUPE_SUCCESS, []);
+	}
+
+	public static function gh_cmd_feed_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FEED_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_feed_other_success(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FEED_OTHER_SUCCESS, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_feed_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FEED_SUCCESS, []);
+	}
+
+	public static function gh_cmd_fiver_server(Translatable|string $version, Translatable|string $codeName) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FIVER_SERVER, [
+			"version" => $version,
+			"codeName" => $codeName,
+		]);
+	}
+
+	public static function gh_cmd_fiver_base(Translatable|string $version) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FIVER_BASE, [
+			"version" => $version,
+		]);
+	}
+
+	public static function gh_cmd_fly_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FLY_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_fly_other_enable(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FLY_OTHER_ENABLE, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_fly_other_disable(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FLY_OTHER_DISABLE, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_fly_enable() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FLY_ENABLE, []);
+	}
+
+	public static function gh_cmd_fly_disable() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FLY_DISABLE, []);
+	}
+
+	public static function gh_cmd_freeze_success(Translatable|string $target, Translatable|string $time) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FREEZE_SUCCESS, [
+			"target" => $target,
+			"time" => $time,
+		]);
+	}
+
+	public static function gh_cmd_freeze_targetnotice(Translatable|string $time) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_FREEZE_TARGETNOTICE, [
+			"time" => $time,
+		]);
+	}
+
+	public static function gh_cmd_unfreeze_success(Translatable|string $target) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_UNFREEZE_SUCCESS, [
+			"target" => $target,
+		]);
+	}
+
+	public static function gh_cmd_unfreeze_targetnotice() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_UNFREEZE_TARGETNOTICE, []);
+	}
+
+	public static function gh_cmd_gamemode_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_GAMEMODE_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_gamemode_other_success(Translatable|string $player, Translatable|string $gamemode) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_GAMEMODE_OTHER_SUCCESS, [
+			"player" => $player,
+			"gamemode" => $gamemode,
+		]);
+	}
+
+	public static function gh_cmd_gamemode_success(Translatable|string $gamemode) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_GAMEMODE_SUCCESS, [
+			"gamemode" => $gamemode,
+		]);
+	}
+
+	public static function gh_cmd_gamemode_addname() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_GAMEMODE_ADDNAME, []);
+	}
+
+	public static function gh_cmd_haste_invalidlevel() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_INVALIDLEVEL, []);
+	}
+
+	public static function gh_cmd_haste_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_haste_other_enable(Translatable|string $level, Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_OTHER_ENABLE, [
+			"level" => $level,
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_haste_other_disable(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_OTHER_DISABLE, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_haste_success(Translatable|string $level) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_SUCCESS, [
+			"level" => $level,
+		]);
+	}
+
+	public static function gh_cmd_haste_disable() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_DISABLE, []);
+	}
+
+	public static function gh_cmd_heal_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HEAL_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_heal_other_success(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HEAL_OTHER_SUCCESS, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_heal_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HEAL_SUCCESS, []);
+	}
+
+	public static function gh_cmd_mute_success(Translatable|string $target, Translatable|string $time) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_MUTE_SUCCESS, [
+			"target" => $target,
+			"time" => $time,
+		]);
+	}
+
+	public static function gh_cmd_mute_targetnotice(Translatable|string $time) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_MUTE_TARGETNOTICE, [
+			"time" => $time,
+		]);
+	}
+
+	public static function gh_cmd_unmute_success(Translatable|string $target) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_UNMUTE_SUCCESS, [
+			"target" => $target,
+		]);
+	}
+
+	public static function gh_cmd_unmute_targetnotice() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_UNMUTE_TARGETNOTICE, []);
+	}
+
+	public static function gh_cmd_notp_enable() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_NOTP_ENABLE, []);
+	}
+
+	public static function gh_cmd_notp_disable() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_NOTP_DISABLE, []);
+	}
+
+	public static function gh_cmd_pinfo_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_pinfo_info1(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO1, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info2(Translatable|string $x, Translatable|string $y, Translatable|string $z) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO2, [
+			"x" => $x,
+			"y" => $y,
+			"z" => $z,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info3(Translatable|string $world) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO3, [
+			"world" => $world,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info4(Translatable|string $realname) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO4, [
+			"realname" => $realname,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info5(Translatable|string $ip) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO5, [
+			"ip" => $ip,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info6(Translatable|string $port) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO6, [
+			"port" => $port,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info7(Translatable|string $ping) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO7, [
+			"ping" => $ping,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info8(Translatable|string $locate) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO8, [
+			"locate" => $locate,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info9(Translatable|string $uuid) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO9, [
+			"uuid" => $uuid,
+		]);
+	}
+
+	public static function gh_cmd_pinfo_info10(Translatable|string $xuid) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_PINFO_INFO10, [
+			"xuid" => $xuid,
+		]);
+	}
+
+	public static function gh_cmd_size_other_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_SIZE_OTHER_NOPERM, []);
+	}
+
+	public static function gh_cmd_size_other_success(Translatable|string $player, Translatable|string $size) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_SIZE_OTHER_SUCCESS, [
+			"player" => $player,
+			"size" => $size,
+		]);
+	}
+
+	public static function gh_cmd_size_success(Translatable|string $size) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_SIZE_SUCCESS, [
+			"size" => $size,
+		]);
+	}
+
+	public static function gh_cmd_size_toosmall(Translatable|string $minSize) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_SIZE_TOOSMALL, [
+			"minSize" => $minSize,
+		]);
+	}
+
+	public static function gh_cmd_size_toolarge(Translatable|string $maxSize) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_SIZE_TOOLARGE, [
+			"maxSize" => $maxSize,
+		]);
+	}
+
+	public static function gh_cmd_tpall_other(Translatable|string $player) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_TPALL_OTHER, [
+			"player" => $player,
+		]);
+	}
+
+	public static function gh_cmd_tpall_self() : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_TPALL_SELF, []);
+	}
+
 	public static function invc_menu_craft6x6() : Translatable{
 		return new Translatable(TranslationKeys::INVC_MENU_CRAFT6X6, []);
 	}
