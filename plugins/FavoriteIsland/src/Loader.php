@@ -5,9 +5,7 @@ namespace FavoriteIslands;
 
 use FavoriteIslands\command\FavIslandCommand;
 use FavoriteIslands\provider\SqliteProvider;
-use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
-use pocketmine\world\generator\Generator;
 
 class Loader extends PluginBase{
 
