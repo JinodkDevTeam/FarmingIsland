@@ -1,0 +1,6 @@
+name: FI-Lang
+version: 0.0.1
+main: FI-Lang\FI-Lang
+api: 4.0.0
+author: JinodkDevTeam
+src-namespace-prefix: FI-Lang
