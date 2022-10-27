@@ -124,7 +124,7 @@ class InstantBuy extends BaseUI{
 			$item = ItemUtils::toItem($this->itemid);
 			$item->setCount($amount);
 			if(!$player->getInventory()->canAddItem($item)){
-				$player->sendMessage("Your inventory not enough to get this items, make sure you have enough space !");
+				$player->sendMessage("Your inventory is not enough to get this items, make sure you have enough space !");
 				return;
 			}
 			EconomyAPI::getInstance()->reduceMoney($player, $total);

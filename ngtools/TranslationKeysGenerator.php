@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const LANG_DIRECTORY = "plugins/FI-Lang/resources/eng.ini";
+const LANG_DIRECTORY = "plugins/FI-Lang/resources/lang/eng.ini";
 
 function getCurrentDir() : string{
 	return __DIR__ . DIRECTORY_SEPARATOR;
