@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Backpack\ui;
 
 use Backpack\Loader;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\InvMenuTypeIds;
@@ -24,12 +26,12 @@ class BackpackOpenGUI extends BaseUI{
 		Await::f2c(function() use ($player){
 			$data = yield from $this->getLoader()->getProvider()->selectSlot($player, $this->slot);
 			if (empty($data)){
-				$player->sendMessage("Something went wrong when opening your backpack, please report this error to admin.");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::backback_openfail2()));
 				return;
 			}
 			$data = $data[0];
 			$menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
-			$menu->setName("Backpack slot " . $this->slot);
+			$menu->setName(FILang::translate($player, TranslationFactory::backpack_gui_name((string)$this->slot)));
 			$menu->getInventory()->setContents(ItemUtils::string2ItemArray($data["Data"]));
 			$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory){
 				$data = ItemUtils::ItemArray2string($inventory->getContents(true));
