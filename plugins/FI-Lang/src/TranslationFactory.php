@@ -875,6 +875,14 @@ final class TranslationFactory{
 		]);
 	}
 
+	public static function gh_notinisland() : Translatable{
+		return new Translatable(TranslationKeys::GH_NOTINISLAND, []);
+	}
+
+	public static function gh_invalidisland() : Translatable{
+		return new Translatable(TranslationKeys::GH_INVALIDISLAND, []);
+	}
+
 	public static function gh_cmd_playernotfound() : Translatable{
 		return new Translatable(TranslationKeys::GH_CMD_PLAYERNOTFOUND, []);
 	}
@@ -1181,6 +1189,225 @@ final class TranslationFactory{
 
 	public static function gh_cmd_tpall_self() : Translatable{
 		return new Translatable(TranslationKeys::GH_CMD_TPALL_SELF, []);
+	}
+
+	public static function gh_menu_item_name() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_ITEM_NAME, []);
+	}
+
+	public static function gh_menu_item_lore() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_ITEM_LORE, []);
+	}
+
+	public static function gh_menu_main_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_TITLE, []);
+	}
+
+	public static function gh_menu_main_button_islandinfo() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_ISLANDINFO, []);
+	}
+
+	public static function gh_menu_main_button_islandmanager() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_ISLANDMANAGER, []);
+	}
+
+	public static function gh_menu_main_button_favisland() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_FAVISLAND, []);
+	}
+
+	public static function gh_menu_main_button_fasttravel() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_FASTTRAVEL, []);
+	}
+
+	public static function gh_menu_main_button_shop() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_SHOP, []);
+	}
+
+	public static function gh_menu_main_button_tutorial() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_TUTORIAL, []);
+	}
+
+	public static function gh_menu_main_button_invcraft() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_INVCRAFT, []);
+	}
+
+	public static function gh_menu_main_button_backpack() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_BACKPACK, []);
+	}
+
+	public static function gh_menu_main_button_bazaar() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_BAZAAR, []);
+	}
+
+	public static function gh_menu_main_button_mail() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_MAIL, []);
+	}
+
+	public static function gh_menu_main_button_bank() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_BANK, []);
+	}
+
+	public static function gh_menu_main_button_about() : Translatable{
+		return new Translatable(TranslationKeys::GH_MENU_MAIN_BUTTON_ABOUT, []);
+	}
+
+	public static function gh_fasttravel_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_FASTTRAVEL_UI_TITLE, []);
+	}
+
+	public static function gh_updateinfo_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_TITLE, []);
+	}
+
+	public static function gh_updateinfo_ui_content_wiki() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_CONTENT_WIKI, []);
+	}
+
+	public static function gh_updateinfo_ui_content_vote() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_CONTENT_VOTE, []);
+	}
+
+	public static function gh_updateinfo_ui_content_fbgroup() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_CONTENT_FBGROUP, []);
+	}
+
+	public static function gh_updateinfo_ui_content_version(Translatable|string $version, Translatable|string $codeName) : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_CONTENT_VERSION, [
+			"version" => $version,
+			"codeName" => $codeName,
+		]);
+	}
+
+	public static function gh_updateinfo_ui_button_close() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_BUTTON_CLOSE, []);
+	}
+
+	public static function gh_updateinfo_ui_button_tutorial() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_UI_BUTTON_TUTORIAL, []);
+	}
+
+	public static function gh_updateinfo_tutorial_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_TUTORIAL_UI_TITLE, []);
+	}
+
+	public static function gh_updateinfo_tutorial_ui_content() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_TUTORIAL_UI_CONTENT, []);
+	}
+
+	public static function gh_updateinfo_tutorial_ui_button_close() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_TUTORIAL_UI_BUTTON_CLOSE, []);
+	}
+
+	public static function gh_updateinfo_warning_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_WARNING_TITLE, []);
+	}
+
+	public static function gh_updateinfo_warning_content() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_WARNING_CONTENT, []);
+	}
+
+	public static function gh_updateinfo_warning_button_close() : Translatable{
+		return new Translatable(TranslationKeys::GH_UPDATEINFO_WARNING_BUTTON_CLOSE, []);
+	}
+
+	public static function gh_islandinfo_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDINFO_UI_TITLE, []);
+	}
+
+	public static function gh_islandinfo_id(Translatable|string $x) : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDINFO_ID, [
+			"x" => $x,
+		]);
+	}
+
+	public static function gh_islandinfo_owner(Translatable|string $owner) : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDINFO_OWNER, [
+			"owner" => $owner,
+		]);
+	}
+
+	public static function gh_islandinfo_name(Translatable|string $name) : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDINFO_NAME, [
+			"name" => $name,
+		]);
+	}
+
+	public static function gh_islandinfo_member(Translatable|string $member) : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDINFO_MEMBER, [
+			"member" => $member,
+		]);
+	}
+
+	public static function gh_islandmanager_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_TITLE, []);
+	}
+
+	public static function gh_islandmanager_ui_button_addhelper() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_ADDHELPER, []);
+	}
+
+	public static function gh_islandmanager_ui_button_removehelper() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_REMOVEHELPER, []);
+	}
+
+	public static function gh_islandmanager_ui_button_rename() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_RENAME, []);
+	}
+
+	public static function gh_islandmanager_ui_button_changebiome() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_CHANGEBIOME, []);
+	}
+
+	public static function gh_islandmanager_ui_button_enablepvp() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_ENABLEPVP, []);
+	}
+
+	public static function gh_islandmanager_ui_button_disablepvp() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_DISABLEPVP, []);
+	}
+
+	public static function gh_islandmanager_addhelper_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_ADDHELPER_UI_TITLE, []);
+	}
+
+	public static function gh_islandmanager_addhelper_ui_input() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_ADDHELPER_UI_INPUT, []);
+	}
+
+	public static function gh_islandmanager_removehelper_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_REMOVEHELPER_UI_TITLE, []);
+	}
+
+	public static function gh_islandmanager_removehelper_ui_dropdown() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_REMOVEHELPER_UI_DROPDOWN, []);
+	}
+
+	public static function gh_islandmanager_rename_noperm() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_RENAME_NOPERM, []);
+	}
+
+	public static function gh_islandmanager_rename_success() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_RENAME_SUCCESS, []);
+	}
+
+	public static function gh_islandmanager_rename_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_RENAME_UI_TITLE, []);
+	}
+
+	public static function gh_islandmanager_rename_ui_input_text() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_RENAME_UI_INPUT_TEXT, []);
+	}
+
+	public static function gh_islandmanager_rename_ui_input_placeholder() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_RENAME_UI_INPUT_PLACEHOLDER, []);
+	}
+
+	public static function gh_islandmanager_changebiome_ui_title() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_CHANGEBIOME_UI_TITLE, []);
+	}
+
+	public static function gh_islandmanager_changebiome_ui_dropdown() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_CHANGEBIOME_UI_DROPDOWN, []);
 	}
 
 	public static function invc_menu_craft6x6() : Translatable{
