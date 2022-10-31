@@ -19,7 +19,7 @@ final class TranslationKeys{
 	public const BACKPACK_UI_BUTTON = "backpack.ui.button";
 	public const BACKPACK_GUI_NAME = "backpack.gui.name";
 	public const BANK_DATAERROR = "bank.dataerror";
-	public const BANK_DEPOSIT_NOTNUMERIC = "bank.deposit.notnumeric";
+	public const BANK_NOTNUMERIC = "bank.notnumeric";
 	public const BANK_DEPOSIT_FAIL = "bank.deposit.fail";
 	public const BANK_DEPOSIT_SUCCESS = "bank.deposit.success";
 	public const BANK_WITHDRAW_FAIL = "bank.withdraw.fail";

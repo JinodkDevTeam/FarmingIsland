@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Bank\ui;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\ModalForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
@@ -14,7 +16,7 @@ class UpgradeAccountUI extends BankUI{
 		Await::f2c(function() use ($player){
 			$data = yield from $this->getBank()->getProvider()->get($player);
 			if(empty($data)){
-				$player->sendMessage("Error: Can't get data from database, please report this error to admin !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_dataerror()));
 				return;
 			}
 			$current_upgrade = (int) $data[0]["Upgrade"];
@@ -23,7 +25,7 @@ class UpgradeAccountUI extends BankUI{
 			$next_upgrade_cost = $this->getBank()->getProvider()->getUpgradeCost($current_upgrade + 1);
 			$max_upgrade = $this->getBank()->getProvider()->getMaxUpgrade();
 			if($current_upgrade >= $max_upgrade){
-				$player->sendMessage("Your account is already the highest upgrade!");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_upgrade_max()));
 				return;
 			}
 			$form = new ModalForm(function(Player $player, ?bool $value) use ($next_upgrade_cost, $current_upgrade){
@@ -33,22 +35,22 @@ class UpgradeAccountUI extends BankUI{
 					return;
 				}
 				if ($purse < $next_upgrade_cost) {
-					$player->sendMessage("You don't have enough money to upgrade your account! Need " . $next_upgrade_cost . " but you only have " . $purse . " coins");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bank_upgrade_fail((string)$next_upgrade_cost, (string)$purse)));
 					return;
 				}
 				EconomyAPI::getInstance()->reduceMoney($player, $next_upgrade_cost);
 				$this->getBank()->getProvider()->updateUpgrade($player, $current_upgrade + 1);
 			});
-			$form->setTitle("Confirm Upgrade");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_upgrade_title()));
 			$content = [
-				"Are you sure you want to upgrade your account?",
-				"Current upgrade: " . $current_upgrade_name,
-				"Next upgrade: " . $next_upgrade_name,
-				"Cost: " . $next_upgrade_cost . " coins"
+				FILang::translate($player, TranslationFactory::bank_ui_upgrade_content_msg()),
+				FILang::translate($player, TranslationFactory::bank_ui_upgrade_content_current($current_upgrade_name)),
+				FILang::translate($player, TranslationFactory::bank_ui_upgrade_content_next($next_upgrade_name)),
+				FILang::translate($player, TranslationFactory::bank_ui_upgrade_content_cost((string)$next_upgrade_cost)),
 			];
 			$form->setContent(implode("\n", $content));
-			$form->setButton1("Yes");
-			$form->setButton2("No");
+			$form->setButton1(FILang::translate($player, TranslationFactory::bank_ui_upgrade_button_yes()));
+			$form->setButton2(FILang::translate($player, TranslationFactory::bank_ui_upgrade_button_no()));
 			$player->sendForm($form);
 		});
 	}

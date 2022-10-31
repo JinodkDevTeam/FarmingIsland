@@ -58,8 +58,8 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::BANK_DATAERROR, []);
 	}
 
-	public static function bank_deposit_notnumeric() : Translatable{
-		return new Translatable(TranslationKeys::BANK_DEPOSIT_NOTNUMERIC, []);
+	public static function bank_notnumeric() : Translatable{
+		return new Translatable(TranslationKeys::BANK_NOTNUMERIC, []);
 	}
 
 	public static function bank_deposit_fail() : Translatable{
