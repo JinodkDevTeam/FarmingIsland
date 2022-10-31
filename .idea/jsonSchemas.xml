@@ -138,6 +138,9 @@
                   <Item>
                     <option name="path" value="plugins/FI-Lang/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/SimpleCobblestoneGenerator/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

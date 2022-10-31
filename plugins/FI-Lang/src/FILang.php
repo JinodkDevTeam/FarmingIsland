@@ -21,8 +21,8 @@ class FILang extends PluginBase{
 
 	protected function onLoad() : void{
 		foreach(self::SUPPORTED_LANGUAGES as $lang){
-			$this->saveResource("$lang.ini");
-			self::$languages[$lang] = new Language($lang, $this->getDataFolder());
+			$this->saveResource("lang". DIRECTORY_SEPARATOR . "$lang.ini");
+			self::$languages[$lang] = new Language($lang, $this->getDataFolder() . DIRECTORY_SEPARATOR . "lang");
 		}
 	}
 
