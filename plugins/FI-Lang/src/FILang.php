@@ -13,7 +13,9 @@ class FILang extends PluginBase{
 
 	public const SUPPORTED_LANGUAGES = [
 		"eng",
-		"vie"
+		"vie",
+		"router",
+		"randomCaps"
 	];
 	/** @var Language[] */
 	public static array $languages = [];
