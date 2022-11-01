@@ -40,6 +40,7 @@ class UpgradeAccountUI extends BankUI{
 				}
 				EconomyAPI::getInstance()->reduceMoney($player, $next_upgrade_cost);
 				$this->getBank()->getProvider()->updateUpgrade($player, $current_upgrade + 1);
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_upgrade_success()));
 			});
 			$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_upgrade_title()));
 			$content = [

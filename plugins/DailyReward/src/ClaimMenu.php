@@ -5,6 +5,8 @@ namespace NgLam2911\DailyReward;
 
 use Closure;
 use CustomItems\customies\CustomiesItems;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use Generator;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
@@ -54,7 +56,7 @@ class ClaimMenu{
 		$this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
 		$this->menu->setListener(Closure::fromCallable([$this, "menuListener"]));
 		$this->menu->setInventoryCloseListener(Closure::fromCallable([$this, "menuCloseListener"]));
-		$this->menu->setName("DailyReward");
+		$this->menu->setName(FILang::translate($player, TranslationFactory::dailyreward_menu_name()));
 		$inv = $this->menu->getInventory();
 		for($i = 0; $i < 54; $i++){
 			$inv->setItem($i, CustomiesItems::NONE());
@@ -65,13 +67,13 @@ class ClaimMenu{
 				$index = 9 + $number + 3 * $i;
 				$this->map[$index] = $number;
 				if ($number <= $this->dataInfo->getStreak()){
-					$inv->setItem($index, CustomiesItems::YES()->setCustomName("Claimed !"));
+					$inv->setItem($index, CustomiesItems::YES()->setCustomName(FILang::translate($player, TranslationFactory::dailyreward_menu_claimed())));
 				} elseif ($number < 15){
-					$inv->setItem($index, CustomiesItems::GREEN_GIFT()->setCustomName("Day " . $number . " Reward"));
+					$inv->setItem($index, CustomiesItems::GREEN_GIFT()->setCustomName(FILang::translate($player, TranslationFactory::dailyreward_menu_prizename((string)$number))));
 				} elseif ($number < 26){
-					$inv->setItem($index, CustomiesItems::RED_GIFT()->setCustomName("Day " . $number . " Reward"));
+					$inv->setItem($index, CustomiesItems::RED_GIFT()->setCustomName(FILang::translate($player, TranslationFactory::dailyreward_menu_prizename((string)$number))));
 				} else {
-					$inv->setItem($index, CustomiesItems::GOLDEN_GIFT()->setCustomName("Day " . $number . " Reward"));
+					$inv->setItem($index, CustomiesItems::GOLDEN_GIFT()->setCustomName(FILang::translate($player, TranslationFactory::dailyreward_menu_prizename((string)$number))));
 				}
 			}
 		}
@@ -88,7 +90,7 @@ class ClaimMenu{
 					if ($this->dataInfo->getStreak() > 0){
 						if ((time() - $this->dataInfo->getLastClaimtime()) > DailyReward::MISSTIME){
 							$this->dataInfo->setStreak(0);
-							$player->sendMessage("Unable to claim reward (Error code: 1553)");
+							$player->sendMessage(FILang::translate($player, TranslationFactory::dailyreward_claim_fail_miss()));
 							return $transaction->discard()->then(function(Player $player){
 								$this->menu->onClose($player);
 							});
@@ -96,7 +98,7 @@ class ClaimMenu{
 					}
 					$this->claim($player, $day, $slot);
 				} else {
-					$player->sendMessage("Unable to claim reward (Error code: 1002)");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::dailyreward_claim_fail_cooldown()));
 					return $transaction->discard()->then(function(Player $player){
 						$this->menu->onClose($player);
 					});
@@ -105,7 +107,7 @@ class ClaimMenu{
 				if (($this->dataInfo->getStreak() + 1) > $this->map[$slot]){
 					return $transaction->discard();
 				}
-				$player->sendMessage("Unable to claim reward (Error code: 4712)");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::dailyreward_claim_fail_invalid()));
 				return $transaction->discard()->then(function(Player $player){
 					$this->menu->onClose($player);
 				});
@@ -117,7 +119,7 @@ class ClaimMenu{
 	public function claim(Player $player, int $day, int $slot) : void{
 		$reward = new MoneyReward($day * 100);
 		$reward->getReward($player);
-		$player->sendMessage("You get " . $day * 100 . " coins from DailyReward");
+		$player->sendMessage(FILang::translate($player, TranslationFactory::dailyreward_claim_success((string)($day * 100))));
 		$this->dataInfo->setStreak($day);
 		$this->dataInfo->setLastClaimtime(time());
 		$this->menu->getInventory()->setItem($slot, CustomiesItems::YES()->setCustomName("Claimed !"));
