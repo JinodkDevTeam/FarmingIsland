@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace NgLamVN\InvCraft\menu;
 
 use Closure;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\transaction\InvMenuTransactionResult;
@@ -32,7 +34,7 @@ class ViewRecipe extends BaseMenu{
 
 	public function menu(Player $player) : void{
 		$this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
-		$this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.view"));
+		$this->menu->setName(FILang::translate($player, TranslationFactory::invc_menu_view()));
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$inv = $this->menu->getInventory();
 

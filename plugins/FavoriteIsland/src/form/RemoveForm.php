@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace FavoriteIslands\form;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use Generator;
 use jojoe77777\FormAPI\SimpleForm;
 use MyPlot\MyPlot;
@@ -18,7 +20,7 @@ class RemoveForm extends AwaitListForm{
 			if(!isset($value)) return;
 			yield $this->getLoader()->getProvider()->remove($player, $data[$value]["X"], $data[$value]["Z"]);
 		});
-		$form->setTitle("Remove Favorite Island");
+		$form->setTitle(FILang::translate($this->getPlayer(), TranslationFactory::favis_ui_remove_title()));
 		foreach($data as $island){
 			$plot = MyPlot::getInstance()->getProvider()->getPlot(Core::getInstance()->getIslandWorldName(), $island["X"], $island["Z"]);
 			$form->addButton($plot->name . "(" . $plot->X . ";" . $plot->Z . ")" . "\n" . $plot->owner);

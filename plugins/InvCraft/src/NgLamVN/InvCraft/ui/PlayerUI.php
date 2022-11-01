@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace NgLamVN\InvCraft\ui;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\SimpleForm;
 use NgLamVN\InvCraft\Loader;
 use NgLamVN\InvCraft\menu\CraftMenu;
@@ -34,10 +36,10 @@ class PlayerUI{
 			}
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.title.player"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.6x6recipe"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.3x3recipe"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.list"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_title_player()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_6x6recipe()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_3x3recipe()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_list()));
 
 		$player->sendForm($form);
 	}
@@ -60,7 +62,7 @@ class PlayerUI{
 		}
 
 		if($recipes == []){
-			$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.norecipe"));
+			$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_norecipe()));
 			return;
 		}
 
@@ -71,7 +73,7 @@ class PlayerUI{
 			new ViewRecipe($player, $this->getLoader(), $recipes[$data]);
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.list"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_list()));
 		foreach($this->getLoader()->getRecipes() as $recipe){
 			$form->addButton($recipe->getRecipeName());
 		}

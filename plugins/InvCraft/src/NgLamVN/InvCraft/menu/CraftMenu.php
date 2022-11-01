@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace NgLamVN\InvCraft\menu;
 
 use Closure;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
@@ -29,9 +31,9 @@ class CraftMenu extends BaseMenu{
 	public function menu(Player $player) : void{
 		$this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
 		if($this->mode == self::VIxVI_MODE){
-			$this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.craft6x6"));
+			$this->menu->setName(FILang::translate($player, TranslationFactory::invc_menu_craft6x6()));
 		}else{
-			$this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.craft3x3"));
+			$this->menu->setName(FILang::translate($player, TranslationFactory::invc_menu_craft3x3()));
 		}
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$this->menu->setInventoryCloseListener(Closure::fromCallable([$this, "MenuCloseListener"]));

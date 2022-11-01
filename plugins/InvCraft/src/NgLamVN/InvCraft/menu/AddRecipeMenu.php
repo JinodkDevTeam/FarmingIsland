@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace NgLamVN\InvCraft\menu;
 
 use Closure;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\transaction\InvMenuTransactionResult;
@@ -31,7 +33,7 @@ class AddRecipeMenu extends BaseMenu{
 
 	public function menu(Player $player) : void{
 		$this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
-		$this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.add"));
+		$this->menu->setName(FILang::translate($player, TranslationFactory::invc_menu_add()));
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$inv = $this->menu->getInventory();
 
@@ -84,14 +86,14 @@ class AddRecipeMenu extends BaseMenu{
 		$result = $this->menu->getInventory()->getItem($this->getResultSlot());
 
 		if($result->getId() == ItemIds::AIR){
-			$this->getPlayer()->sendMessage($this->getLoader()->getProvider()->getMessage("msg.missresult"));
+			$this->getPlayer()->sendMessage(FILang::translate($this->getPlayer(), TranslationFactory::invc_msg_missresult()));
 			return;
 		}
 		$recipe = Recipe::makeRecipe($this->recipe_name, $recipe_data, $result, $this->getMode());
 		foreach($this->getLoader()->getRecipes() as $other){
 			if($other->isSame($recipe)){
 				if($other->getMode() == $recipe->getMode()){
-					$this->getPlayer()->sendMessage($this->getLoader()->getProvider()->getMessage("msg.sametyperecipe"));
+					$this->getPlayer()->sendMessage(FILang::translate($this->getPlayer(), TranslationFactory::invc_msg_sametyperecipe()));
 					break;
 				}
 			}

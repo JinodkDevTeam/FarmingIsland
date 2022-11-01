@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace NgLamVN\InvCraft\command;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use NgLamVN\InvCraft\Loader;
 use NgLamVN\InvCraft\menu\ViewRecipe;
 use NgLamVN\InvCraft\Recipe;
@@ -33,7 +35,7 @@ class InvCraftCommand extends Command implements PluginOwned{
 	 */
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if(!$sender instanceof Player){
-			$sender->sendMessage($this->getLoader()->getProvider()->getMessage("msg.runingame"));
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_ingame()));
 			return;
 		}
 		if (!isset($args[0])){
@@ -49,12 +51,12 @@ class InvCraftCommand extends Command implements PluginOwned{
 				$name = $args[1];
 				$recipe = $this->getLoader()->getRecipe($name);
 				if(!$recipe instanceof Recipe){
-					$sender->sendMessage($this->getLoader()->getProvider()->getMessage("command.recipenotfound"));
+					$sender->sendMessage(FILang::translate($sender, TranslationFactory::invc_command_recipenotfound()));
 					return;
 				}
 				new ViewRecipe($sender, $this->getLoader(), $recipe);
 			}else{
-				$sender->sendMessage($this->getLoader()->getProvider()->getMessage("command.missrecipename"));
+				$sender->sendMessage(FILang::translate($sender, TranslationFactory::invc_command_missrecipename()));
 			}
 		}
 	}

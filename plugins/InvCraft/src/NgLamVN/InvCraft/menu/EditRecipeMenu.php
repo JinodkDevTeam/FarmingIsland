@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace NgLamVN\InvCraft\menu;
 
 use Closure;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\transaction\InvMenuTransaction;
 use muqsit\invmenu\transaction\InvMenuTransactionResult;
@@ -31,7 +33,7 @@ class EditRecipeMenu extends BaseMenu{
 
 	public function menu(Player $player) : void{
 		$this->menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
-		$this->menu->setName($this->getLoader()->getProvider()->getMessage("menu.edit"));
+		$this->menu->setName(FILang::translate($player, TranslationFactory::invc_menu_edit()));
 		$this->menu->setListener(Closure::fromCallable([$this, "MenuListener"]));
 		$inv = $this->menu->getInventory();
 
@@ -113,7 +115,7 @@ class EditRecipeMenu extends BaseMenu{
 			if($other->getRecipeName() == $this->recipe->getRecipeName()) continue;
 			if($other->isSame($this->recipe)){
 				if($other->getMode() == $this->recipe->getMode()){
-					$this->getPlayer()->sendMessage($this->getLoader()->getProvider()->getMessage("msg.sametyperecipe"));
+					$this->getPlayer()->sendMessage(FILang::translate($this->getPlayer(), TranslationFactory::invc_msg_sametyperecipe()));
 					break;
 				}
 			}

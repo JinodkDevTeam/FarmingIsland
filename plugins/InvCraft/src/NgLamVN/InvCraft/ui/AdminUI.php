@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace NgLamVN\InvCraft\ui;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
@@ -47,13 +49,13 @@ class AdminUI{
 			}
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.title"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.6x6recipe"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.3x3recipe"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.add"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.edit"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.remove"));
-		$form->addButton($this->getLoader()->getProvider()->getMessage("ui.list"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_title()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_6x6recipe()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_3x3recipe()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_add()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_edit()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_remove()));
+		$form->addButton(FILang::translate($player, TranslationFactory::invc_ui_list()));
 
 		$player->sendForm($form);
 	}
@@ -78,7 +80,7 @@ class AdminUI{
 				return;
 			}
 			if(($data[0] == "") or ($data[0] == " ")){
-				$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.invalidname"));
+				$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_invalidname()));
 				return;
 			}
 			$mode = Recipe::VIxVI_MODE;
@@ -87,15 +89,15 @@ class AdminUI{
 			}
 			foreach($this->getLoader()->getRecipes() as $recipe){
 				if($recipe->getRecipeName() == $data[0]){
-					$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.existrecipe"));
+					$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_existrecipe()));
 					return;
 				}
 			}
 			new AddRecipeMenu($player, $this->getLoader(), $mode, $data[0]);
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.add"));
-		$form->addInput($this->getLoader()->getProvider()->getMessage("ui.add.input"), "ABCabc123");
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_add()));
+		$form->addInput(FILang::translate($player, TranslationFactory::invc_ui_add_input()), "ABCabc123");
 		$form->addDropdown("Mode", ["6x6", "3x3"]);
 
 		$player->sendForm($form);
@@ -108,7 +110,7 @@ class AdminUI{
 		}
 
 		if($recipes == []){
-			$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.norecipe"));
+			$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_norecipe()));
 			return;
 		}
 
@@ -119,7 +121,7 @@ class AdminUI{
 			new EditRecipeMenu($player, $this->getLoader(), $recipes[$data]);
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.edit"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_edit()));
 		foreach($this->getLoader()->getRecipes() as $recipe){
 			$form->addButton($recipe->getRecipeName());
 		}
@@ -134,7 +136,7 @@ class AdminUI{
 		}
 
 		if($recipes == []){
-			$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.norecipe"));
+			$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_norecipe()));
 			return;
 		}
 
@@ -153,15 +155,15 @@ class AdminUI{
 				}
 			});
 
-			$confirm->setTitle($this->getLoader()->getProvider()->getMessage("ui.confirm.title"));
-			$confirm->setButton1($this->getLoader()->getProvider()->getMessage("ui.confirm.yes"));
-			$confirm->setButton2($this->getLoader()->getProvider()->getMessage("ui.confirm.no"));
-			$confirm->setContent($this->getLoader()->getProvider()->getMessage("ui.confirm.content"));
+			$confirm->setTitle(FILang::translate($player, TranslationFactory::invc_ui_confirm_title()));
+			$confirm->setButton1(FILang::translate($player, TranslationFactory::invc_ui_confirm_yes()));
+			$confirm->setButton2(FILang::translate($player, TranslationFactory::invc_ui_confirm_no()));
+			$confirm->setContent(FILang::translate($player, TranslationFactory::invc_ui_confirm_content()));
 
 			$player->sendForm($confirm);
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.remove"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_remove()));
 		foreach($this->getLoader()->getRecipes() as $recipe){
 			$form->addButton($recipe->getRecipeName());
 		}
@@ -176,7 +178,7 @@ class AdminUI{
 		}
 
 		if($recipes == []){
-			$player->sendMessage($this->getLoader()->getProvider()->getMessage("msg.norecipe"));
+			$player->sendMessage(FILang::translate($player, TranslationFactory::invc_msg_norecipe()));
 			return;
 		}
 
@@ -187,7 +189,7 @@ class AdminUI{
 			new ViewRecipe($player, $this->getLoader(), $recipes[$data]);
 		});
 
-		$form->setTitle($this->getLoader()->getProvider()->getMessage("ui.list"));
+		$form->setTitle(FILang::translate($player, TranslationFactory::invc_ui_list()));
 		foreach($this->getLoader()->getRecipes() as $recipe){
 			$form->addButton($recipe->getRecipeName());
 		}
