@@ -471,6 +471,30 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::BAZAAR_UI_ITEM_LIST_SELL, []);
 	}
 
+	public static function bazaar_ui_list_title_buy() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_LIST_TITLE_BUY, []);
+	}
+
+	public static function bazaar_ui_list_title_sell() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_LIST_TITLE_SELL, []);
+	}
+
+	public static function bazaar_ui_list_button_ok() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_LIST_BUTTON_OK, []);
+	}
+
+	public static function bazaar_ui_list_button_item(Translatable|string $rank, Translatable|string $amount, Translatable|string $price) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_LIST_BUTTON_ITEM, [
+			"rank" => $rank,
+			"amount" => $amount,
+			"price" => $price,
+		]);
+	}
+
+	public static function bazaar_ui_list_info() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_LIST_INFO, []);
+	}
+
 	public static function bazaar_ui_instantbuy_title() : Translatable{
 		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTBUY_TITLE, []);
 	}
@@ -507,8 +531,14 @@ final class TranslationFactory{
 		]);
 	}
 
-	public static function bazaar_ui_instantsell_input() : Translatable{
-		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_INPUT, []);
+	public static function bazaar_ui_instantsell_input_text() : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_INPUT_TEXT, []);
+	}
+
+	public static function bazaar_ui_instantsell_input_placeholder(Translatable|string $max) : Translatable{
+		return new Translatable(TranslationKeys::BAZAAR_UI_INSTANTSELL_INPUT_PLACEHOLDER, [
+			"max" => $max,
+		]);
 	}
 
 	public static function bazaar_ui_instantsell_confirm_title() : Translatable{

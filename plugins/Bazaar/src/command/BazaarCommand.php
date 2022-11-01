@@ -5,6 +5,8 @@ namespace Bazaar\command;
 
 use Bazaar\Bazaar;
 use Bazaar\ui\ShopUI;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -21,7 +23,7 @@ class BazaarCommand extends Command implements PluginOwned{
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command as Player");
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_ingame()));
 			return;
 		}
 		new ShopUI($sender);

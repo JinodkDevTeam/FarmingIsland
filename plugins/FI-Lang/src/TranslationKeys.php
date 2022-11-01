@@ -101,6 +101,11 @@ final class TranslationKeys{
 	public const BAZAAR_UI_ITEM_CREATE_SELL = "bazaar.ui.item.create.sell";
 	public const BAZAAR_UI_ITEM_LIST_BUY = "bazaar.ui.item.list.buy";
 	public const BAZAAR_UI_ITEM_LIST_SELL = "bazaar.ui.item.list.sell";
+	public const BAZAAR_UI_LIST_TITLE_BUY = "bazaar.ui.list.title.buy";
+	public const BAZAAR_UI_LIST_TITLE_SELL = "bazaar.ui.list.title.sell";
+	public const BAZAAR_UI_LIST_BUTTON_OK = "bazaar.ui.list.button.ok";
+	public const BAZAAR_UI_LIST_BUTTON_ITEM = "bazaar.ui.list.button.item";
+	public const BAZAAR_UI_LIST_INFO = "bazaar.ui.list.info";
 	public const BAZAAR_UI_INSTANTBUY_TITLE = "bazaar.ui.instantbuy.title";
 	public const BAZAAR_UI_INSTANTBUY_LABEL = "bazaar.ui.instantbuy.label";
 	public const BAZAAR_UI_INSTANTBUY_INPUT = "bazaar.ui.instantbuy.input";
@@ -108,7 +113,8 @@ final class TranslationKeys{
 	public const BAZAAR_UI_INSTANTBUY_CONFIRM_CONTENT = "bazaar.ui.instantbuy.confirm.content";
 	public const BAZAAR_UI_INSTANTSELL_TITLE = "bazaar.ui.instantsell.title";
 	public const BAZAAR_UI_INSTANTSELL_LABEL = "bazaar.ui.instantsell.label";
-	public const BAZAAR_UI_INSTANTSELL_INPUT = "bazaar.ui.instantsell.input";
+	public const BAZAAR_UI_INSTANTSELL_INPUT_TEXT = "bazaar.ui.instantsell.input.text";
+	public const BAZAAR_UI_INSTANTSELL_INPUT_PLACEHOLDER = "bazaar.ui.instantsell.input.placeholder";
 	public const BAZAAR_UI_INSTANTSELL_CONFIRM_TITLE = "bazaar.ui.instantsell.confirm.title";
 	public const BAZAAR_UI_INSTANTSELL_CONFIRM_CONTENT = "bazaar.ui.instantsell.confirm.content";
 	public const BAZAAR_UI_BUYORDER_TITLE = "bazaar.ui.buyorder.title";

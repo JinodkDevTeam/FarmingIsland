@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
@@ -25,38 +27,38 @@ class InstantBuy extends BaseUI{
 			//GETTING TOP SELL ORDER...
 			$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
 			if (empty($data)){
-				$player->sendMessage("Sorry, noone sell this item !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_fail_none()));
 				return;
 			}
 			$form = new CustomForm(function(Player $player, ?array $pos){
 				if(!isset($pos[1])) return;
 				$amount = $pos[1];
 				if(is_int($amount)){
-					$player->sendMessage("Amount must be a integer number !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_amount_limit1()));
 					return;
 				}
 				if((int) $amount <= 0){
-					$player->sendMessage("Amount must be > 0 !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_amount_limit2()));
 					return;
 				}
 				if($amount > 71680){
-					$player->sendMessage("Amount must be <= 71680 items");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_amount_limit3()));
 					return;
 				}
 				//Recheck data
 				Await::f2c(function() use ($player, $amount) {
 					$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->itemid, true);
 					if (empty($data)){
-						$player->sendMessage("Sorry, noone sell this item !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_fail_none()));
 						return;
 					}
 					$this->confirm($player, (int) $amount, $data);
 				});
 			});
 
-			$form->setTitle("Instant buy");
-			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
-			$form->addInput("Amount:", "123456789");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_instantbuy_title()));
+			$form->addLabel(FILang::translate($player, TranslationFactory::bazaar_ui_instantbuy_label(ItemUtils::toName($this->itemid))));
+			$form->addInput(FILang::translate($player, TranslationFactory::bazaar_ui_instantbuy_input()), "123456789");
 			$player->sendForm($form);
 		});
 	}
@@ -77,7 +79,7 @@ class InstantBuy extends BaseUI{
 			}
 		}
 		if($count > 0){
-			$player->sendMessage("Sorry, the bazaar doesnt have enough item for you :< They need " . $count . " items !");
+			$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_fail_notenough((string)$count)));
 			return;
 		}
 
@@ -85,15 +87,15 @@ class InstantBuy extends BaseUI{
 			if(!isset($value)) return;
 			if(!$value) return;
 			if(EconomyAPI::getInstance()->myMoney($player) < $total){
-				$player->sendMessage("You dont have enough money to do it !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_fail_notenoughmoney()));
 				return;
 			}
 			$this->instantBuy($player, $amount, $data);
 		});
-		$form->setTitle("Confirm");
-		$form->setContent("Instant buy: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nYou pay: " . $total . " coins");
-		$form->setButton1("YES");
-		$form->setButton2("NO");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_instantbuy_confirm_title()));
+		$form->setContent(FILang::translate($player, TranslationFactory::bazaar_ui_instantbuy_confirm_content(ItemUtils::toName($this->itemid), (string)$amount, (string)$total)));
+		$form->setButton1(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_yes()));
+		$form->setButton2(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_no()));
 
 		$player->sendForm($form);
 	}
@@ -124,12 +126,12 @@ class InstantBuy extends BaseUI{
 			$item = ItemUtils::toItem($this->itemid);
 			$item->setCount($amount);
 			if(!$player->getInventory()->canAddItem($item)){
-				$player->sendMessage("Your inventory is not enough to get this items, make sure you have enough space !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_invfull()));
 				return;
 			}
 			EconomyAPI::getInstance()->reduceMoney($player, $total);
 			$player->getInventory()->addItem($item);
-			$player->sendMessage("You have bought x" . $amount . " " . ItemUtils::toName($this->itemid) . " for " . $total . " coins.");
+			$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_success((string)$amount, ItemUtils::toName($this->itemid), (string)$total)));
 		});
 	}
 }

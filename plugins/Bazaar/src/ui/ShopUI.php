@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Bazaar\ui;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 
@@ -19,9 +21,9 @@ class ShopUI extends BaseUI{
 				new CategoryMenu($player);
 			}
 		});
-		$form->addButton("My orders");
-		$form->addButton("Bazaar Shop");
-		$form->setTitle("Bazaar Manager");
+		$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_main_button_myorders()));
+		$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_main_button_shop()));
+		$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_main_title()));
 		$player->sendForm($form);
 	}
 }

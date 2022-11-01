@@ -55,5 +55,23 @@ function RandomCapsProtectParams(string $value) : string{
 	return implode("", array_map(fn($char) => (rand(0, 1) === 1) ? strtoupper($char) : $char, str_split(strtolower($value))));
 }
 
+function RemoveProtectParams(string $value, array &$matches, int &$count, string $replace_value = "_") : string{
+	$parameterRegex = '/{%(.+?)}/';
+	$match = preg_match_all($parameterRegex, $value, $matches);
+	if ($match > 0) {
+		return str_replace($matches[0], $replace_value, $value, $count);
+	}
+	return $value;
+}
+
+function RemoveProtectColorFormat(string $value, &$matches, &$count, string $replace_value = "^") : string{
+	$parameterRegex = '/§([0-9a-f])/';
+	$match = preg_match_all($parameterRegex, $value, $matches);
+	if ($match > 0) {
+		return str_replace($matches[0], $replace_value, $value, $count);
+	}
+	return $value;
+}
+
 generateLang(fn($value) => "Router", "plugins/FI-Lang/resources/lang/router.ini");
 generateLang(fn($value) => RandomCapsProtectParams($value), "plugins/FI-Lang/resources/lang/randomCaps.ini");

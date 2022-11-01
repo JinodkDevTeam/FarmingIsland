@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
@@ -59,14 +61,14 @@ class ItemUI extends BaseUI{
 						break;
 				}
 			});
-			$form->setTitle(ItemUtils::toName($this->itemid));
-			$form->setContent("Item: " . ItemUtils::toName($this->itemid));
-			$form->addButton("Instant buy" . "\n" . "Price: " . $top_sell_price);
-			$form->addButton("Instant sell" . "\n" . "Price: " . $top_buy_price);
-			$form->addButton("Create buy order");
-			$form->addButton("Create sell order");
-			$form->addButton("List buy order");
-			$form->addButton("List sell order");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_item_title(ItemUtils::toName($this->itemid))));
+			$form->setContent(FILang::translate($player, TranslationFactory::bazaar_ui_item_content(ItemUtils::toName($this->itemid))));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_instantbuy($top_sell_price)));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_instantsell($top_buy_price)));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_create_buy()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_create_sell()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_list_buy()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_item_list_sell()));
 
 			$player->sendForm($form);
 		});

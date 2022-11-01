@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
@@ -24,16 +26,16 @@ class MyOrderUI extends BaseUI{
 				}
 				new BuyOrderManagerUI($player, $buy_data[$data]["Id"]);
 			});
-			$form->setTitle("My Orders");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_title()));
 			foreach($buy_data as $data){
 				$order = OrderDataHelper::formData($data, OrderDataHelper::BUY);
 				$filled = round(($order->getFilled() / $order->getAmount()) * 100, 2);
-				$form->addButton("[BUY] " . ItemUtils::toName($order->getItemID()) . "\nFilled: " . $filled . " percent");
+				$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_button_order_buy(ItemUtils::toName($order->getItemID()), (string)$filled)));
 			}
 			foreach($sell_data as $data){
 				$order = OrderDataHelper::formData($data, OrderDataHelper::BUY);
 				$filled = round(($order->getFilled() / $order->getAmount()) * 100, 2);
-				$form->addButton("[SELL] " . ItemUtils::toName($order->getItemID()) . "\nFilled: " . $filled . " percent");
+				$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_button_order_sell(ItemUtils::toName($order->getItemID()), (string)$filled)));
 			}
 
 			$player->sendForm($form);
