@@ -38,7 +38,7 @@ Mining:
     - enchanted_flint #Enchanted Flint
 Farming:
   Wheat:
-    - seeds #Seed
+    - wheat_seeds #Seeds
     - wheat #Wheat
     - enchanted_wheat #Enchanted Wheat
     - enchanted_hay_bale #Enchanted Hay Bale
