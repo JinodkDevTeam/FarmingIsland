@@ -1061,8 +1061,8 @@ final class TranslationFactory{
 		]);
 	}
 
-	public static function gh_cmd_haste_success(Translatable|string $level) : Translatable{
-		return new Translatable(TranslationKeys::GH_CMD_HASTE_SUCCESS, [
+	public static function gh_cmd_haste_enable(Translatable|string $level) : Translatable{
+		return new Translatable(TranslationKeys::GH_CMD_HASTE_ENABLE, [
 			"level" => $level,
 		]);
 	}

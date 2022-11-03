@@ -10,6 +10,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\GameMode;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Gm1 extends BaseCommand{
 	/**
@@ -26,23 +28,23 @@ class Gm1 extends BaseCommand{
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.gm1.other")){
-				$sender->sendMessage("You don't have permission to set other player's game mode");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_gamemode_other_noperm()));
 				return;
 			}
 			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(!isset($player)){
-				$sender->sendMessage("Player didn't exist !");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 				return;
 			}
 			$player->setGamemode(GameMode::CREATIVE());
-			$sender->sendMessage("Changed " . $player->getName() . "'s game mode to creative !");
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_gamemode_other_success($player->getName(), "creative")));
 			return;
 		}
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please add player name !");
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_gamemode_addname()));
 			return;
 		}
 		$sender->setGamemode(GameMode::CREATIVE());
-		$sender->sendMessage("Your game mode have changed to creative !");
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_gamemode_success("creative")));
 	}
 }

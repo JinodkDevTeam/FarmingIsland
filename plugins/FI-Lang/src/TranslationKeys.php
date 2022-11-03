@@ -225,7 +225,7 @@ final class TranslationKeys{
 	public const GH_CMD_HASTE_OTHER_NOPERM = "gh.cmd.haste.other.noperm";
 	public const GH_CMD_HASTE_OTHER_ENABLE = "gh.cmd.haste.other.enable";
 	public const GH_CMD_HASTE_OTHER_DISABLE = "gh.cmd.haste.other.disable";
-	public const GH_CMD_HASTE_SUCCESS = "gh.cmd.haste.success";
+	public const GH_CMD_HASTE_ENABLE = "gh.cmd.haste.enable";
 	public const GH_CMD_HASTE_DISABLE = "gh.cmd.haste.disable";
 	public const GH_CMD_HEAL_OTHER_NOPERM = "gh.cmd.heal.other.noperm";
 	public const GH_CMD_HEAL_OTHER_SUCCESS = "gh.cmd.heal.other.success";

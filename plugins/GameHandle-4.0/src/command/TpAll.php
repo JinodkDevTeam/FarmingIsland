@@ -9,6 +9,8 @@ use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class TpAll extends BaseCommand{
 	/**
@@ -25,7 +27,7 @@ class TpAll extends BaseCommand{
 		if(isset($args["player"])){
 			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(!isset($player)){
-				$sender->sendMessage("Player didn't exist !");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 				return;
 			}
 			foreach(Server::getInstance()->getOnlinePlayers() as $players){
@@ -34,7 +36,7 @@ class TpAll extends BaseCommand{
 				}
 				$players->teleport($player->getPosition());
 			}
-			$sender->sendMessage("All players have been teleported to " . $player->getName());
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_tpall_other($player->getName())));
 			return;
 		}
 		if(!$sender instanceof Player){
@@ -48,6 +50,6 @@ class TpAll extends BaseCommand{
 			}
 			$players->teleport($player->getPosition());
 		}
-		$sender->sendMessage("All player have been teleported to you");
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_tpall_self()));
 	}
 }

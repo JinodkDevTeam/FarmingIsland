@@ -7,6 +7,8 @@ use CortexPE\Commando\args\IntegerArgument;
 use CortexPE\Commando\exception\ArgumentOrderException;
 use CustomItems\item\CustomItems;
 use Exception;
+use FILang\FILang;
+use FILang\TranslationFactory as TF;
 use NgLamVN\GameHandle\command\args\CustomItemIDArgs;
 use pocketmine\player\Player;
 
@@ -28,22 +30,22 @@ class CGive extends IngameCommand{
 			try{
 				$item = CustomItems::get($args["ItemID"]);
 				if($item == null){
-					$player->sendMessage("Unknow item ID");
+					$player->sendMessage(FILang::translate($player, TF::gh_cmd_cgive_fail_unknowid()));
 					return;
 				}
 				$amount = $args["Amount"] ?? 1;
 				$item = $item->toItem();
 				$item->setCount($amount);
 				if(!$player->getInventory()->canAddItem($item)){
-					$player->sendMessage("Failed to add item to your inventory, make sure you have enough space !");
+					$player->sendMessage(FILang::translate($player, TF::gh_cmd_cgive_fail_notenoughspace()));
 					return;
 				}
 				$player->getInventory()->addItem($item);
-				$player->sendMessage("Item Added !");
+				$player->sendMessage(FILang::translate($player, TF::gh_cmd_cgive_success()));
 			}catch(Exception $exception){
 				$player->sendMessage($exception->getMessage());
 				$player->sendMessage("Line: " . $exception->getLine());
-				$player->sendMessage("Error while decode give items");
+				$player->sendMessage(FILang::translate($player, TF::gh_cmd_cgive_fail_decode()));
 			}
 		}else{
 			$player->sendMessage("/cgive <item_code>");
