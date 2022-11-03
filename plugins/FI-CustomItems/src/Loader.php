@@ -7,7 +7,6 @@ use CustomItems\custombreaktime\TitaniumDrillBreakTime;
 use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
-use CustomItems\item\CustomItems;
 use CustomItems\listener\CustomItemListener;
 use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
 use pocketmine\data\bedrock\EnchantmentIdMap;
