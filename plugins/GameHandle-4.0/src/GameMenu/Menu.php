@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\GameMenu;
 
+use FILang\FILang;
 use NgLamVN\GameHandle\Core;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\inventory\InventoryTransactionEvent;
@@ -13,6 +14,8 @@ use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Menu{
 
@@ -52,8 +55,8 @@ class Menu{
 		$nbt->setByte("menu", 1);
 		$nbt->setString("menu-mode", "ui");
 		$i->setNamedTag($nbt);
-		$i->setCustomName("Island Menu");
-		$i->setLore(["Hold and tap to open menu !"]);
+		$i->setCustomName(Lang::translate($player, TF::gh_menu_item_name()));
+		$i->setLore([Lang::translate($player, TF::gh_menu_item_lore())]);
 		$player->getInventory()->setItem(8, $i);
 	}
 

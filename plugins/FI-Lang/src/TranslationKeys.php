@@ -289,6 +289,7 @@ final class TranslationKeys{
 	public const GH_ISLANDINFO_NAME = "gh.islandinfo.name";
 	public const GH_ISLANDINFO_MEMBER = "gh.islandinfo.member";
 	public const GH_ISLANDMANAGER_UI_TITLE = "gh.islandmanager.ui.title";
+	public const GH_ISLANDMANAGER_UI_BUTTON_EXIT = "gh.islandmanager.ui.button.exit";
 	public const GH_ISLANDMANAGER_UI_BUTTON_ADDHELPER = "gh.islandmanager.ui.button.addhelper";
 	public const GH_ISLANDMANAGER_UI_BUTTON_REMOVEHELPER = "gh.islandmanager.ui.button.removehelper";
 	public const GH_ISLANDMANAGER_UI_BUTTON_RENAME = "gh.islandmanager.ui.button.rename";

@@ -6,23 +6,25 @@ namespace NgLamVN\GameHandle\GameMenu;
 
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class TeleportManager{
 	public function __construct(Player $player){
 		$this->execute($player);
 	}
 
-	public function execute(Player $player){
+	public function execute(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, $data){
 			if(is_null($data)) return;
 			if($data == 0) $this->FILobbyArea($player);
 		});
-		$form->setTitle("Fast Travel Menu");
+		$form->setTitle(Lang::translate($player, TF::gh_fasttravel_ui_title()));
 		$form->addButton("§　§l§eFarmingIsland Lobby");
 		$player->sendForm($form);
 	}
 
-	public function FILobbyArea(Player $player){
+	public function FILobbyArea(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, $data){
 		});
 		$form->setTitle("FarmingIsland Lobby");

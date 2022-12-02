@@ -10,13 +10,15 @@ use MyPlot\MyPlot;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\world\Position;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class IslandManager{
 	public function __construct(Player $player){
 		$this->execute($player);
 	}
 
-	public function execute(Player $player){
+	public function execute(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, $data){
 			switch($data){
 				case 1:
@@ -36,24 +38,24 @@ class IslandManager{
 					break;
 			}
 		});
-		$form->setTitle("Island Manager");
+		$form->setTitle(Lang::translate($player, TF::gh_islandmanager_ui_title()));
 
-		$form->addButton("§　§l§cEXIT");
-		$form->addButton("§lAdd Helper\nThêm người giúp");
-		$form->addButton("§lRemove Helper\nXóa Người giúp");
-		$form->addButton("§lRename island\nĐổi tên đảo");
-		$form->addButton("§lChange island biome\n Thay đổi hệ sinh thái đảo");
+		$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_exit()));
+		$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_addhelper()));
+		$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_removehelper()));
+		$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_rename()));
+		$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_changebiome()));
 		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
-		if($plot->pvp == true){
-			$form->addButton("§lDisable PvP\nTắt PvP");
+		if($plot->pvp){
+			$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_disablepvp()));
 		}else{
-			$form->addButton("§lEnable PvP\nBật PvP");
+			$form->addButton(Lang::translate($player, TF::gh_islandmanager_ui_button_enablepvp()));
 		}
 
 		$player->sendForm($form);
 	}
 
-	public function AddHelperForm(Player $player){
+	public function AddHelperForm(Player $player) : void{
 		$players = ["<None>"];
 		foreach(Server::getInstance()->getOnlinePlayers() as $p){
 			$players[] = $p->getName();
@@ -67,16 +69,16 @@ class IslandManager{
 			}
 			Server::getInstance()->dispatchCommand($player, "is addhelper " . $pname);
 		});
-		$form->setTitle("§　§lAdd Helper");
-		$form->addDropdown("§　Player:", $players);
+		$form->setTitle(Lang::translate($player, TF::gh_islandmanager_addhelper_ui_title()));
+		$form->addDropdown(Lang::translate($player, TF::gh_islandmanager_addhelper_ui_input()), $players);
 		$player->sendForm($form);
 	}
 
-	public function RemoveHelperForm(Player $player){
+	public function RemoveHelperForm(Player $player) : void{
 		$pos = new Position($player->getPosition()->getX(), $player->getPosition()->getZ(), $player->getPosition()->getZ(), $player->getWorld());
 		$plot = MyPlot::getInstance()->getPlotByPosition($pos);
 		if($plot == null){
-			$player->sendMessage("§cYou are not standing on any island !");
+			$player->sendMessage(Lang::translate($player, TF::gh_invalidisland()));
 			return;
 		}
 		$helpers = ["<None>"];
@@ -91,38 +93,38 @@ class IslandManager{
 			}
 			Server::getInstance()->dispatchCommand($player, "is removehelper " . $pname);
 		});
-		$form->setTitle("§　§lRemove Helper");
-		$form->addDropdown("§　Helper:", $helpers);
+		$form->setTitle(Lang::translate($player, TF::gh_islandmanager_removehelper_ui_title()));
+		$form->addDropdown(Lang::translate($player, TF::gh_islandmanager_removehelper_ui_dropdown()), $helpers);
 		$player->sendForm($form);
 	}
 
-	public function ReNameForm(Player $player){
+	public function ReNameForm(Player $player) : void{
 		$form = new CustomForm(function(Player $player, $data){
 			if(!isset($data[0])) return;
 
 			$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 			if(($player->getName() == $plot->owner) or Server::getInstance()->isOp($player->getName())){
 				$plot->name = $data[0];
-				$player->sendMessage("§aIsland Renamed !");
+				$player->sendMessage(Lang::translate($player, TF::gh_islandmanager_rename_success()));
 			}else{
-				$player->sendMessage("§cYou don't have permission to rename this island");
+				$player->sendMessage(Lang::translate($player, TF::gh_islandmanager_rename_noperm()));
 			}
 		});
 
-		$form->setTitle("§　§lRename island");
-		$form->addInput("§　Name", "MyIsland123");
+		$form->setTitle(Lang::translate($player, TF::gh_islandmanager_rename_ui_title()));
+		$form->addInput(Lang::translate($player, TF::gh_islandmanager_rename_ui_input_text()), Lang::translate($player, TF::gh_islandmanager_rename_ui_input_placeholder()));
 		$player->sendForm($form);
 	}
 
-	public function ChangeBiomeForm(Player $player){
+	public function ChangeBiomeForm(Player $player) : void{
 		$arr = ["<none>", "PLAINS", "DESERT", "MOUNTAINS", "FOREST", "TAIGA", "SWAMP", "NETHER", "HELL", "ICE_PLAINS"];
 		$form = new CustomForm(function(Player $player, $data){
 			if(!isset($data[0])) return;
 			if($data[0] == "<none>") return;
 			Server::getInstance()->dispatchCommand($player, "is biome " . $data[0]);
 		});
-		$form->addDropdown("§　Biome:", $arr);
-		$form->setTitle("§　§lChange Biome");
+		$form->addDropdown(Lang::translate($player, TF::gh_islandmanager_changebiome_ui_dropdown()), $arr);
+		$form->setTitle(Lang::translate($player, TF::gh_islandmanager_changebiome_ui_title()));
 		$player->sendForm($form);
 	}
 }

@@ -14,7 +14,7 @@ class UpdateInfo{
 		else $this->TutorialForm($player);
 	}
 
-	public function execute(Player $player){
+	public function execute(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, ?int $data){
 			if($data == 1){
 				$this->TutorialForm($player);
@@ -53,7 +53,7 @@ class UpdateInfo{
 		$player->sendForm($form);
 	}
 
-	public function WarningForm(Player $player){
+	public function WarningForm(Player $player) : void{
 		$text = [
 			"* Currenly, this server is in development, every player data may be reseted by some reason. Just for testing.",
 			"",

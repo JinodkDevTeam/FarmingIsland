@@ -1372,6 +1372,10 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_TITLE, []);
 	}
 
+	public static function gh_islandmanager_ui_button_exit() : Translatable{
+		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_EXIT, []);
+	}
+
 	public static function gh_islandmanager_ui_button_addhelper() : Translatable{
 		return new Translatable(TranslationKeys::GH_ISLANDMANAGER_UI_BUTTON_ADDHELPER, []);
 	}

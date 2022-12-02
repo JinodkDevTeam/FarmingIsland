@@ -79,7 +79,7 @@ class VipManager{
 			return;
 		}
 		$form = new ModalForm(function(Player $player, $data){
-			if($data == true){
+			if($data){
 				$consoleCommandSender = new ConsoleCommandSender(Server::getInstance(), Server::getInstance()->getLanguage());
 				Server::getInstance()->dispatchCommand($consoleCommandSender, "setgroup " . $player->getName() . " Vip");
 			}

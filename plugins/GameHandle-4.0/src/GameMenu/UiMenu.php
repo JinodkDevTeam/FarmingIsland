@@ -10,6 +10,8 @@ use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class UiMenu{
 	public function __construct(Player $player){
@@ -81,9 +83,9 @@ class UiMenu{
 			}
 		});
 		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
-			$form->addButton("§　§lIsland Manager\nQuản lý đảo");
-			$form->addButton("§　§lIsland Info\nThông tin đảo");
-			$form->addButton("§　§lFavorite Islands");
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_islandmanager()));
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_islandinfo()));
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_favisland()));
 		}
 		$form->addButton("§lFast Travel\nDịch chuyển nhanh");
 		$form->addButton("§　§lShop");
