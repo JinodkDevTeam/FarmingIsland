@@ -135,6 +135,9 @@
                   <Item>
                     <option name="path" value="plugins/InvCraft/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/OreSpawner/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
