@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\GameMenu;
 
-use FILang\FILang;
 use NgLamVN\GameHandle\Core;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\event\inventory\InventoryTransactionEvent;
