@@ -7,6 +7,8 @@ namespace NgLamVN\GameHandle\GameMenu;
 use jojoe77777\FormAPI\SimpleForm;
 use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class UpdateInfo{
 	public function __construct(Player $player, string $mode = ""){
@@ -23,48 +25,37 @@ class UpdateInfo{
 			}
 		});
 		$text = [
-			"§　Updates:",
-			"- Update server to MCBE 1.19.0",
-			"Official wiki: bit.ly/fi-wiki",
-			"Vote for server: bit.ly/fi-vote",
-			"Official Facebook group: bit.ly/jinodkgroupfb",
-			"Server Version: " . Core::VERSION . " [" . Core::CODE_NAME . "]"
+			Lang::translate($player, TF::gh_updateinfo_ui_content_wiki()),
+			Lang::translate($player, TF::gh_updateinfo_ui_content_vote()),
+			Lang::translate($player, TF::gh_updateinfo_ui_content_fbgroup()),
+			Lang::translate($player, TF::gh_updateinfo_ui_content_version(Core::VERSION, Core::CODE_NAME))
 		];
-		$form->setTitle("§　BREAKING NEWS");
+		$form->setTitle(Lang::translate($player, TF::gh_updateinfo_ui_title()));
 		$form->setContent(implode(PHP_EOL, $text));
-		$form->addButton("§　§lOK");
-		$form->addButton("§　§lTutorial\nXem cách chơi.");
+		$form->addButton(Lang::translate($player, TF::gh_updateinfo_ui_button_close()));
+		$form->addButton(Lang::translate($player, TF::gh_updateinfo_ui_button_tutorial()));
 
 		$player->sendForm($form);
 	}
 
-	public function TutorialForm(Player $player){
-		$text = [
-			"Hướng dẫn sẽ được cập nhật khi máy chủ hoàn thiện.",
-			"Tutorial will be updated when the server is completed"
-		];
+	public function TutorialForm(Player $player) : void{
 		$form = new SimpleForm(function(Player $player, ?int $data){
 			$this->WarningForm($player);
 		});
-		$form->setTitle("§　§lTutorial");
-		$form->setContent(implode(PHP_EOL, $text));
-		$form->addButton("§　§lOK, LET'S PLAY !");
+		$form->setTitle(Lang::translate($player, TF::gh_updateinfo_tutorial_ui_title()));
+		$form->setContent(Lang::translate($player, TF::gh_updateinfo_tutorial_ui_content()));
+		$form->addButton(Lang::translate($player, TF::gh_updateinfo_tutorial_ui_button_close()));
 
 		$player->sendForm($form);
 	}
 
 	public function WarningForm(Player $player) : void{
-		$text = [
-			"* Currenly, this server is in development, every player data may be reseted by some reason. Just for testing.",
-			"",
-			"* Hiện tại server đang trong giai đoạn phát triển, do đó dữ liệu người chơi có thể bị reset bất cứ lúc nào với nhiều lý do, do đó cần cân nhắc khi chơi ở thời điểm này."
-		];
 		$form = new SimpleForm(function(Player $player, ?int $data){
 			//NOTHING
 		});
-		$form->setTitle("§　§lWARNING");
-		$form->setContent(implode(PHP_EOL, $text));
-		$form->addButton("§　§lI know what i am doing !");
+		$form->setTitle(Lang::translate($player, TF::gh_updateinfo_warning_title()));
+		$form->setContent(Lang::translate($player, TF::gh_updateinfo_warning_content()));
+		$form->addButton(Lang::translate($player, TF::gh_updateinfo_warning_button_close()));
 
 		$player->sendForm($form);
 	}

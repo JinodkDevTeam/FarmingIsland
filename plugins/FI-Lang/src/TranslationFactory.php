@@ -1344,9 +1344,10 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::GH_ISLANDINFO_UI_TITLE, []);
 	}
 
-	public static function gh_islandinfo_id(Translatable|string $x) : Translatable{
+	public static function gh_islandinfo_id(Translatable|string $x, Translatable|string $z) : Translatable{
 		return new Translatable(TranslationKeys::GH_ISLANDINFO_ID, [
 			"x" => $x,
+			"z" => $z,
 		]);
 	}
 
