@@ -109,7 +109,7 @@ class PlayerStat{
 	/**
 	 * @param int $time
 	 */
-	public function setMuteTime(int $time = 0){
+	public function setMuteTime(int $time = 0) : void{
 		$this->mute_time = $time;
 	}
 
@@ -123,7 +123,7 @@ class PlayerStat{
 	/**
 	 * @param int $time
 	 */
-	public function setMuteStartTime(int $time = 0){
+	public function setMuteStartTime(int $time = 0) : void{
 		$this->mute_start_time = $time;
 	}
 
@@ -131,7 +131,7 @@ class PlayerStat{
 	 * @param bool $status
 	 * @param int  $time
 	 */
-	public function setMute(bool $status = true, int $time = PHP_INT_MAX){
+	public function setMute(bool $status = true, int $time = PHP_INT_MAX) : void{
 		$this->isMuted = $status;
 		if($status){
 			$this->setMuteTime($time);
@@ -162,7 +162,7 @@ class PlayerStat{
 	/**
 	 * @param int $time
 	 */
-	public function setFreezeTime(int $time = 0){
+	public function setFreezeTime(int $time = 0) : void{
 		$this->freeze_time = $time;
 	}
 
@@ -176,7 +176,7 @@ class PlayerStat{
 	/**
 	 * @param int $time
 	 */
-	public function setFreezeStartTime(int $time = 0){
+	public function setFreezeStartTime(int $time = 0) : void{
 		$this->freeze_start_time = $time;
 	}
 
@@ -184,7 +184,7 @@ class PlayerStat{
 	 * @param bool $status
 	 * @param int  $time
 	 */
-	public function setFreeze(bool $status = true, int $time = PHP_INT_MAX){
+	public function setFreeze(bool $status = true, int $time = PHP_INT_MAX) : void{
 		$this->isFreeze = $status;
 		if($status){
 			$this->setFreezeTime($time);
@@ -235,11 +235,11 @@ class PlayerStat{
 	/**
 	 * @param bool $status
 	 */
-	public function setFly(bool $status = true){
+	public function setFly(bool $status = true) : void{
 		$this->isFly = $status;
 	}
 
-	public function setNoTP(bool $status = true){
+	public function setNoTP(bool $status = true) : void{
 		$this->is_notp = $status;
 	}
 }

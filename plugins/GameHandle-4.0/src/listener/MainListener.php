@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\listener;
 
 use Exception;
+use FILang\FILang;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use FishingModule\event\EntityFishEvent;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
@@ -61,7 +64,7 @@ class MainListener implements Listener{
 		}else{
 			Server::getInstance()->dispatchCommand($player, "is auto");
 			Server::getInstance()->dispatchCommand($player, "is claim");
-			$player->sendMessage("LET'S START !");
+			$player->sendMessage(Lang::translate($player, TF::gh_startgame()));
 		}
 		$this->getCore()->getPlayerStatManager()->registerPlayerStat($player);
 	}
@@ -152,7 +155,7 @@ class MainListener implements Listener{
 			$target = $this->getCore()->getServer()->getPlayerByPrefix($args[1]);
 			if($target == null) return;
 			if($this->getCore()->getPlayerStatManager()->getPlayerStat($target)->isNoTP()){
-				$player->sendMessage("§cThis Player Is Not Accepting TP");
+				$player->sendMessage(FILang::translate($player, TF::gh_notp()));
 				$this->getCore()->getServer()->getLogger()->info("[CMD][" . $player->getName() . "] Command Cancelled due to NoTP");
 				$event->cancel();
 			}
@@ -160,7 +163,7 @@ class MainListener implements Listener{
 			$target = $this->getCore()->getServer()->getPlayerByPrefix($args[2]);
 			if($target == null) return;
 			if($this->getCore()->getPlayerStatManager()->getPlayerStat($target)->isNoTP()){
-				$player->sendMessage("§cThis Player Is Not Accepting TP");
+				$player->sendMessage(FILang::translate($player, TF::gh_notp()));
 				$this->getCore()->getServer()->getLogger()->info("[CMD][" . $player->getName() . "] Command Cancelled due to NoTP");
 				$event->cancel();
 			}
@@ -234,7 +237,8 @@ class MainListener implements Listener{
 	 */
 	public function onDeath(PlayerDeathEvent $event) : void{
 		$event->setKeepInventory(true);
-		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), round(EconomyAPI::getInstance()->myMoney($event->getPlayer()) / 2, 2, PHP_ROUND_HALF_DOWN));
-		$event->getPlayer()->sendMessage("You died and lost " . round(EconomyAPI::getInstance()->myMoney($event->getPlayer()), 2, PHP_ROUND_HALF_DOWN) . " coins");
+		$lost = round(EconomyAPI::getInstance()->myMoney($event->getPlayer()), 2, PHP_ROUND_HALF_DOWN);
+		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), $lost);
+		$event->getPlayer()->sendMessage(Lang::translate($event->getPlayer(), TF::gh_died((string)$lost)));
 	}
 }

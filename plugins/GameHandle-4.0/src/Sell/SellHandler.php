@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\Sell;
 
+use FILang\FILang;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use NgLamVN\GameHandle\Core;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\item\Item;
@@ -54,7 +57,7 @@ class SellHandler{
 		$item = $player->getInventory()->getItemInHand();
 		$price = $this->toPrice($item);
 		if($price < 0){
-			$player->sendMessage("Can't sold this item !");
+			$player->sendMessage(Lang::translate($player, TF::gh_sell_cantbesold()));
 			return;
 		}
 		if($this->isBuff($player)){
@@ -66,7 +69,7 @@ class SellHandler{
 
 		$sellitems[] = $item;
 		$this->addSellUndoAction($player, $price, $sellitems);
-		$player->sendMessage("Sold " . $item->getCount() . " items for " . $price . " xu (+" . $buff . " percent)");
+		$player->sendMessage(FILang::translate($player, TF::gh_sell_sold((string)$item->getCount(), (string)$price, (string)$buff)));
 		EconomyAPI::getInstance()->addMoney($player, $price);
 		$player->getInventory()->remove($item);
 	}
@@ -124,30 +127,30 @@ class SellHandler{
 			$inv->remove($item);
 		}
 		$this->addSellUndoAction($player, $total, $sellitems);
-		$player->sendMessage("Sold " . $totalcount . " items for " . $total . " xu (+" . $buff . " percent)");
+		Lang::translate($player, TF::gh_sell_sold((string)$totalcount, (string)$total, (string)$buff));
 		EconomyAPI::getInstance()->addMoney($player, $total);
 	}
 
 	public function undo(Player $player) : void{
 		$action = $this->getCore()->getPlayerStatManager()->getPlayerStat($player)->getSellUndoAction();
 		if($action == null){
-			$player->sendMessage("You don't have any sell action to undo !");
+			$player->sendMessage(Lang::translate($player, TF::gh_sell_undo_fail_none()));
 			return;
 		}
 		$ecoapi = EconomyAPI::getInstance();
 		if($ecoapi->myMoney($player) < $action->getUndoPrice()){
-			$player->sendMessage("You don't have enough money to undo your sell action !");
+			$player->sendMessage(Lang::translate($player, TF::gh_sell_undo_fail_notenoughmoney()));
 			return;
 		}
 		$inv = $player->getInventory();
 		if($this->getEmptySlotsCount($player) < count($action->getItems())){
-			$player->sendMessage("Not enough space to add item back, please have enough space to add items back and /sell undo again !");
+			$player->sendMessage(Lang::translate($player, TF::gh_sell_undo_fail_notenoughspace()));
 			return;
 		}
 		foreach($action->getItems() as $item){
 			$inv->addItem($item);
 		}
-		$player->sendMessage("Undo sell action successful !");
+		$player->sendMessage(Lang::translate($player, TF::gh_sell_undo_success()));
 		$ecoapi->reduceMoney($player, $action->getUndoPrice());
 		$this->getCore()->getPlayerStatManager()->getPlayerStat($player)->setSellUndoAction(null);
 	}

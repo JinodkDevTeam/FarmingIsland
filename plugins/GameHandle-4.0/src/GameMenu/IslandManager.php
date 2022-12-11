@@ -78,7 +78,7 @@ class IslandManager{
 		$pos = new Position($player->getPosition()->getX(), $player->getPosition()->getZ(), $player->getPosition()->getZ(), $player->getWorld());
 		$plot = MyPlot::getInstance()->getPlotByPosition($pos);
 		if($plot == null){
-			$player->sendMessage(Lang::translate($player, TF::gh_invalidisland()));
+			$player->sendMessage(Lang::translate($player, TF::gh_notinisland()));
 			return;
 		}
 		$helpers = ["<None>"];
