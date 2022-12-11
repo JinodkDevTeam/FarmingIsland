@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Mail\ui;
 
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
@@ -48,18 +50,18 @@ class MailInfo extends BaseUI{
 						break;
 				}
 			});
-			$form->setTitle("Mail Info");
+			$form->setTitle(Lang::translate($player, TF::mail_ui_info_title()));
 			$content = [
-				"Mail ID: " . $mail->getId(),
-				"From: " . $mail->getFrom(),
-				"To: " . $mail->getTo(),
-				"Title: " . $mail->getTitle(),
-				"Message:",
+				Lang::translate($player, TF::mail_ui_info_content_id((string)$mail->getId())),
+				Lang::translate($player, TF::mail_ui_info_content_from($mail->getFrom())),
+				Lang::translate($player, TF::mail_ui_info_content_to($mail->getTo())),
+				Lang::translate($player, TF::mail_ui_info_content_title($mail->getTitle())),
+				Lang::translate($player, TF::mail_ui_info_content_message()),
 				$mail->getMsg(),
-				"Attachment:"
+				Lang::translate($player, TF::mail_ui_info_content_attachments()),
 			];
 			if($items == []){
-				$content[] = "- None";
+				$content[] = Lang::translate($player, TF::mail_ui_info_content_noneattachment());
 			}else{
 				foreach($items as $item){
 					if($item->hasCustomName()) $name = $item->getCustomName();else $name = $item->getName();
@@ -67,11 +69,11 @@ class MailInfo extends BaseUI{
 				}
 			}
 			$form->setContent(implode("\n", $content));
-			$form->addButton("Delete");
+			$form->addButton(Lang::translate($player, TF::mail_ui_info_button_delete()));
 			if ($this->mode == self::TO){
-				$form->addButton("Reply");
+				$form->addButton(Lang::translate($player, TF::mail_ui_info_button_reply()));
 				if (!$mail->isClaimed()){
-					$form->addButton("Claim items");
+					$form->addButton(Lang::translate($player, TF::mail_ui_info_button_claim()));
 				}
 			}
 
@@ -81,11 +83,11 @@ class MailInfo extends BaseUI{
 
 	public function claimItems(Player $player, Mail $mail) : void{
 		if($this->mode == self::FROM){
-			$player->sendMessage("You can't claim items from this mail because you have sended it to another player !");
+			$player->sendMessage(Lang::translate($player, TF::mail_claim_fail_notreceiver()));
 			return;
 		}
 		if($mail->isClaimed()){
-			$player->sendMessage("You already claim items from this mail !");
+			$player->sendMessage(Lang::translate($player, TF::mail_claim_fail_already()));
 			return;
 		}
 		$items = ItemUtils::string2ItemArray($mail->getItems());
@@ -96,14 +98,14 @@ class MailInfo extends BaseUI{
 			}
 			$this->getLoader()->getProvider()->updateIsClaimed($mail->getId(), true);
 		}else{
-			$player->sendMessage("Your inventory dont have enough space to claim items, make sure you have enough space and try again !");
+			$player->sendMessage(Lang::translate($player, TF::mail_claim_fail_notenoughspace()));
 		}
 	}
 
 	public function delete(Player $player, Mail $mail){
-		$message = "Are you sure about delete this mail, this action can't be undone !";
+		$message = Lang::translate($player, TF::mail_ui_delete_content_claimed());
 		if (($this->mode == self::TO) and (!$mail->isClaimed())){
-			$message = "Are you sure about delete this mail without claiming items, this action can't be undone !";
+			$message = Lang::translate($player, TF::mail_ui_delete_content_unclaimed());
 		}
 		$form = new ModalForm(function(Player $player, ?bool $data) use ($mail){
 			if(!isset($data)) return;
@@ -128,10 +130,10 @@ class MailInfo extends BaseUI{
 			}
 		});
 
-		$form->setTitle("Confirm");
+		$form->setTitle(Lang::translate($player, TF::mail_ui_delete_title()));
 		$form->setContent($message);
-		$form->setButton1("YES");
-		$form->setButton2("NO");
+		$form->setButton1(Lang::translate($player, TF::mail_ui_delete_button_yes()));
+		$form->setButton2(Lang::translate($player, TF::mail_ui_delete_button_no()));
 		$player->sendForm($form);
 	}
 }

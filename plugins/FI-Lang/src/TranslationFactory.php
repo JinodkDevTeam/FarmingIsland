@@ -1553,6 +1553,10 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::INVC_COMMAND_RECIPENOTFOUND, []);
 	}
 
+	public static function mail_login_noperm() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_LOGIN_NOPERM, []);
+	}
+
 	public static function mail_nothaverecieved() : Translatable{
 		return new Translatable(TranslationKeys::MAIL_NOTHAVERECIEVED, []);
 	}
@@ -1577,18 +1581,18 @@ final class TranslationFactory{
 		return new Translatable(TranslationKeys::MAIL_CLAIM_FAIL_ALREADY, []);
 	}
 
-	public static function mail_toask_title() : Translatable{
-		return new Translatable(TranslationKeys::MAIL_TOASK_TITLE, []);
+	public static function mail_toast_title() : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOAST_TITLE, []);
 	}
 
-	public static function mail_toask_new(Translatable|string $sender) : Translatable{
-		return new Translatable(TranslationKeys::MAIL_TOASK_NEW, [
+	public static function mail_toast_new(Translatable|string $sender) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOAST_NEW, [
 			"sender" => $sender,
 		]);
 	}
 
-	public static function mail_toask_unread(Translatable|string $unread) : Translatable{
-		return new Translatable(TranslationKeys::MAIL_TOASK_UNREAD, [
+	public static function mail_toast_unread(Translatable|string $unread) : Translatable{
+		return new Translatable(TranslationKeys::MAIL_TOAST_UNREAD, [
 			"unread" => $unread,
 		]);
 	}

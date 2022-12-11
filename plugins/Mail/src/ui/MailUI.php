@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Mail\ui;
 
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 
@@ -23,11 +25,11 @@ class MailUI extends BaseUI{
 					break;
 			}
 		});
-		$form->setTitle("Mail");
-		$form->setContent("Username: " . $this->getUsername());
-		$form->addButton("Create new mail");
-		$form->addButton("Sended mails");
-		$form->addButton("My mails");
+		$form->setTitle(Lang::translate($player, TF::mail_ui_main_title()));
+		$form->setContent(Lang::translate($player, TF::mail_ui_main_content($this->getUsername())));
+		$form->addButton(Lang::translate($player, TF::mail_ui_main_button_create()));
+		$form->addButton(Lang::translate($player, TF::mail_ui_main_button_sent()));
+		$form->addButton(Lang::translate($player, TF::mail_ui_main_button_mymails()));
 
 		$player->sendForm($form);
 	}
