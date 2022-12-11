@@ -9,6 +9,8 @@ use Exception;
 use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class UnMute extends BaseCommand{
 	/**
@@ -24,7 +26,7 @@ class UnMute extends BaseCommand{
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 		if(is_null($player)){
-			$sender->sendMessage("Player didn't exist !");
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 			return;
 		}
 		try{
@@ -33,7 +35,7 @@ class UnMute extends BaseCommand{
 			$sender->sendMessage("PlayerStat Data Error !");
 			return;
 		}
-		$sender->sendMessage("Unmuted " . $player->getName() . " !");
-		$player->sendMessage("You have been unmuted !");
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_unmute_success($player->getName())));
+		$player->sendMessage(Lang::translate($player, TF::gh_cmd_unmute_targetnotice()));
 	}
 }

@@ -9,13 +9,15 @@ use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Feed extends BaseCommand{
 	/**
 	 * @throws ArgumentOrderException
 	 */
 	protected function prepare() : void{
-		$this->setDescription("Fees command");
+		$this->setDescription("Feed command");
 		$this->setPermission("gh.feed");
 
 		$this->registerArgument(0, new PlayerArgs(true));
@@ -24,23 +26,23 @@ class Feed extends BaseCommand{
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.feed.other")){
-				$sender->sendMessage("You not have permission to feed other player");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_feed_other_noperm()));
 				return;
 			}
 			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(!isset($player)){
-				$sender->sendMessage("Player not exist !");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 				return;
 			}
 			$player->getHungerManager()->setFood(20);
-			$sender->sendMessage($player->getName() . "have been fed");
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_feed_other_success($player->getName())));
 			return;
 		}
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command in-game");
+			$sender->sendMessage(Lang::translate($sender, TF::command_ingame()));
 			return;
 		}
 		$sender->getHungerManager()->setFood(20);
-		$sender->sendMessage("You have been fed !");
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_feed_success()));
 	}
 }

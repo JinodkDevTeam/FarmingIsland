@@ -3,8 +3,9 @@ declare(strict_types=1);
 
 namespace Mail\ui;
 
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use JinodkDevTeam\utils\ItemUtils;
-use JinodkDevTeam\utils\PlayerUtils;
 use jojoe77777\FormAPI\CustomForm;
 use Mail\Loader;
 use muqsit\invmenu\InvMenu;
@@ -39,26 +40,26 @@ class CreateMailUI extends BaseUI{
 			}else{
 				Await::f2c(function() use ($player, $to, $title, $message){
 					yield $this->getLoader()->getProvider()->sendMail($this->getUsername(), $to, $title, $message);
-					$player->sendMessage("Mail Created !");
+					$player->sendMessage(Lang::translate($player, TF::mail_create_success()));
 					$notice = Server::getInstance()->getPlayerExact($to);
 					if (!is_null($notice)){
-						PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
+						$notice->sendToastNotification(Lang::translate($notice, TF::mail_toast_title()), Lang::translate($notice, TF::mail_toast_new($this->getUsername())));
 					}
 				});
 			}
 		});
-		$form->setTitle("Create new mail");
-		$form->addInput("To:", "Steve123", $this->to);
-		$form->addInput("Title:", "Hi ?");
-		$form->addInput("Message:", "Type some thing ...");
-		$form->addToggle("Attach items", false);
+		$form->setTitle(Lang::translate($player, TF::mail_ui_create_title()));
+		$form->addInput(Lang::translate($player, TF::mail_ui_create_input_to()), "Steve123", $this->to);
+		$form->addInput(Lang::translate($player, TF::mail_ui_create_input_title_title()), Lang::translate($player, TF::mail_ui_create_input_title_placeholder()));
+		$form->addInput(Lang::translate($player, TF::mail_ui_create_input_message_title()), Lang::translate($player, TF::mail_ui_create_input_message_placeholder()));
+		$form->addToggle(Lang::translate($player, TF::mail_ui_create_toggle_attachitems()), false);
 
 		$player->sendForm($form);
 	}
 
 	public function AttachItems(Player $player, string $to, string $title, string $message) : void{
 		$menu = InvMenu::create(InvMenuTypeIds::TYPE_CHEST);
-		$menu->setName("Attach Items");
+		$menu->setName(Lang::translate($player, TF::mail_gui_attachitems_name()));
 		$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory) use ($to, $title, $message){
 			$items = [];
 			foreach($inventory->getContents() as $item){
@@ -67,10 +68,10 @@ class CreateMailUI extends BaseUI{
 			$data = ItemUtils::ItemArray2string($items);
 			Await::f2c(function() use ($player, $to, $title, $message, $data){
 				yield $this->getLoader()->getProvider()->sendMail($this->getUsername(), $to, $title, $message, $data);
-				$player->sendMessage("Mail Created !");
+				$player->sendMessage(Lang::translate($player, TF::mail_create_success()));
 				$notice = Server::getInstance()->getPlayerExact($to);
 				if (!is_null($notice)){
-					PlayerUtils::addToast($notice, "MailSystem", "You have new message from " . $this->getUsername());
+					$notice->sendToastNotification(Lang::translate($notice, TF::mail_toast_title()), Lang::translate($notice, TF::mail_toast_new($this->getUsername())));
 				}
 			});
 

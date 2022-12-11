@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
 use SOFe\AwaitGenerator\Await;
@@ -27,20 +29,20 @@ class ListOrderUI extends BaseUI{
 			switch($this->mode){
 				case self::BUY:
 					$data = yield from $this->getBazaar()->getProvider()->selectBuyItem($this->item_id, true);
-					$title = "List Buy Order";
+					$title = FILang::translate($player, TranslationFactory::bazaar_ui_list_title_buy());
 					break;
 				case self::SELL:
 					$data = yield from $this->getBazaar()->getProvider()->selectSellItem($this->item_id, true);
-					$title = "List Sell Order";
+					$title = FILang::translate($player, TranslationFactory::bazaar_ui_list_title_sell());
 					break;
 				default:
 					return;
 			}
 			if (empty($data)){
 				if ($this->mode == self::BUY){
-					$player->sendMessage("Noone want to buy this item.");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantsell_fail_none()));
 				} else {
-					$player->sendMessage("Noone sell this item.");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_instantbuy_fail_none()));
 				}
 				return;
 			}
@@ -49,15 +51,15 @@ class ListOrderUI extends BaseUI{
 				//NOOOP
 			});
 			$form->setTitle($title);
-			$form->addButton("OK");
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_list_button_ok()));
 			$count = 0;
 			$msg = [
-				"Rank | Amount | Price"
+				FILang::translate($player, TranslationFactory::bazaar_ui_list_info())
 			];
 			foreach($data as $o){
 				$count++;
 				$order = OrderDataHelper::formData($o, $this->mode);
-				$msg[] = "#" . $count . " " . $order->getAmount() - $order->getFilled() . "x | " . $order->getPrice() . " coins each";
+				$msg[] = FILang::translate($player, TranslationFactory::bazaar_ui_list_button_item((string)$count, (string)($order->getAmount() - $order->getFilled()), (string)$order->getPrice()));
 				if ($count > 9){
 					break;
 				}

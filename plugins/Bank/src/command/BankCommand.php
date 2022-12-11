@@ -5,6 +5,8 @@ namespace Bank\command;
 
 use Bank\Bank;
 use Bank\ui\BankUI;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\lang\Translatable;
@@ -26,7 +28,7 @@ class BankCommand extends Command implements PluginOwned{
 
 	public function execute(CommandSender $sender, string $commandLabel, array $args){
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command ingame !");
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_ingame()));
 			return;
 		}
 		new BankUI($sender, $this->getBank());

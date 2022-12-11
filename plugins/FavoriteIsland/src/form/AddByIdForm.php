@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace FavoriteIslands\form;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\CustomForm;
 use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
@@ -19,23 +21,23 @@ class AddByIdForm extends BaseForm{
 				if (is_numeric($ids[0]) and is_numeric($ids[1])){
 					$plot = MyPlot::getInstance()->getProvider()->getPlot(Core::getInstance()->getIslandWorldName(), (int)$ids[0], (int)$ids[1]);
 					if ($plot->owner == ""){
-						$player->sendMessage("You cannot add un-claimed island !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::favis_addid_fail_unclaimed()));
 						return;
 					}
 					Await::f2c(function() use ($player, $ids, $data){
 						yield $this->getLoader()->getProvider()->register($player, (int)$ids[0], (int)$ids[1]);
-						$player->sendMessage("Added " . $data[0] . " to favorite list !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::favis_addid_success((string)$data[0])));
 					});
 				}else{
-					$player->sendMessage("Wrong id number !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::favis_addid_fail_invalidid()));
 				}
 			}else{
-				$player->sendMessage("Wrong id format.");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::favis_addid_fail_invalidformat()));
 			}
 		});
 
-		$form->setTitle("Add by id");
-		$form->addInput("ID: ", "x;z", "0;0");
+		$form->setTitle(FILang::translate($this->player, TranslationFactory::favis_ui_addid_title()));
+		$form->addInput(FILang::translate($this->player, TranslationFactory::favis_ui_addid_input()), "x;z", "0;0");
 
 		$this->getPlayer()->sendForm($form);
 	}

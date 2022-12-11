@@ -9,6 +9,8 @@ use NgLamVN\GameHandle\command\args\PlayerArgs;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Size extends BaseCommand{
 
@@ -28,32 +30,32 @@ class Size extends BaseCommand{
 
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if($args["size"] < self::MIN_SIZE){
-			$sender->sendMessage("This size cannot be smaller than " . self::MIN_SIZE);
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_size_toosmall((string)self::MIN_SIZE)));
 			return;
 		}
 		if($args["size"] > self::MAX_SIZE){
-			$sender->sendMessage("This size must not bigger than " . self::MAX_SIZE);
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_size_toolarge((string)self::MAX_SIZE)));
 			return;
 		}
 		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.size.other")){
-				$sender->sendMessage("You don't have permission to set other player's size");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_size_other_noperm()));
 				return;
 			}
 			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(is_null($player)){
-				$sender->sendMessage("Player didn't exist !");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 				return;
 			}
 			$player->setScale($args["size"]);
-			$sender->sendMessage("You have changed " . $player->getName() . "'s size to " . $args["size"]);
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_size_other_success($player->getName(), (string)$args["size"])));
 			return;
 		}
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command in-game");
+			$sender->sendMessage(Lang::translate($sender, TF::command_ingame()));
 			return;
 		}
 		$sender->setScale($args["size"]);
-		$sender->sendMessage("You have changed your size to " . $args["size"]);
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_size_success((string)$args["size"])));
 	}
 }

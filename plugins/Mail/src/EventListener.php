@@ -3,7 +3,8 @@ declare(strict_types=1);
 
 namespace Mail;
 
-use JinodkDevTeam\utils\PlayerUtils;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use SOFe\AwaitGenerator\Await;
@@ -20,13 +21,18 @@ class EventListener implements Listener{
 		return $this->loader;
 	}
 
-	public function onJoin(PlayerJoinEvent $event){
+	/**
+	 * @param PlayerJoinEvent $event
+	 * @priority MONITOR
+	 * @return void
+	 */
+	public function onJoin(PlayerJoinEvent $event) : void{
 		$player = $event->getPlayer();
 		Await::f2c(function() use ($player){
 			$unread = yield from $this->getLoader()->getProvider()->selectUnread($player->getName());
 			$count = count($unread);
 			if ($count > 0){
-				PlayerUtils::addToast($player, "MailSystem", "You have " . $count . " unread messages !");
+				$player->sendToastNotification(Lang::translate($player, TF::mail_toast_title()), Lang::translate($player, TF::mail_toast_unread((string)$count)));
 			}
 		});
 	}

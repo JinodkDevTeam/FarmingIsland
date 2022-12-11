@@ -90,6 +90,9 @@
       ],
       "update-translation-apis": [
          "@php build/generate-known-translation-apis.php"
+      ],
+      "ngtool-key-gen": [
+         "@php ngtools/TranslationKeysGenerator.php"
       ]
    }
 }

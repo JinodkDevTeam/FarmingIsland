@@ -13,10 +13,6 @@ clear:
     - Cow
     - Pig
 
-messages:
-  time-left: "§c[Cleaner]§eEntities will clear in {SECONDS} seconds"
-  entities-cleared: "§c[Cleaner]§aCleared a total of {COUNT} entities"
-
 # Countdown times
 times: [ 3, 2, 1 ]
 ...

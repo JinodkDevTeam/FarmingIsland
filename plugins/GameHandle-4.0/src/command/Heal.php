@@ -7,6 +7,8 @@ namespace NgLamVN\GameHandle\command;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Heal extends BaseCommand{
 
@@ -18,23 +20,23 @@ class Heal extends BaseCommand{
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
 		if(isset($args["player"])){
 			if(!$sender->hasPermission("gh.heal.other")){
-				$sender->sendMessage("You don't have permission to heal other player");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_heal_other_noperm()));
 				return;
 			}
 			$player = Server::getInstance()->getPlayerByPrefix($args["player"]);
 			if(is_null($player)){
-				$sender->sendMessage("Player didn't exist !");
+				$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_playernotfound()));
 				return;
 			}
 			$player->setHealth(20);
-			$sender->sendMessage($player->getName() . "have been healed");
+			$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_heal_other_success($player->getName())));
 			return;
 		}
 		if(!$sender instanceof Player){
-			$sender->sendMessage("Please use this command in-game");
+			$sender->sendMessage(Lang::translate($sender, TF::command_ingame()));
 			return;
 		}
 		$sender->setHealth(20);
-		$sender->sendMessage("You have been healed !");
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_heal_success()));
 	}
 }

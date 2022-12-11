@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bazaar\ui;
 
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\SimpleForm;
 use pocketmine\player\Player;
@@ -52,10 +54,10 @@ class CategoryMenu extends BaseUI{
 						$order = OrderDataHelper::formData($data[0], OrderDataHelper::SELL);
 						$sell = $order->getPrice();
 					}
-					$form->addButton(ItemUtils::toName($shop[$item]) . "\n" . "Buy: " . $sell . " Sell: " . $buy);
+					$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_shop_button(ItemUtils::toName($shop[$item]), (string)$sell, (string)$buy)));
 				}
 			}
-			$form->setTitle("Bazaar Shop");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_shop_title()));
 			$player->sendForm($form);
 		});
 	}

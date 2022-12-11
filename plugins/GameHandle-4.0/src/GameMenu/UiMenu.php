@@ -10,6 +10,8 @@ use MyPlot\MyPlot;
 use NgLamVN\GameHandle\Core;
 use pocketmine\player\Player;
 use pocketmine\Server;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class UiMenu{
 	public function __construct(Player $player){
@@ -25,7 +27,6 @@ class UiMenu{
 		}
 		$list[] = "teleport";
 		$list[] = "shop";
-		$list[] = "sell-all";
 		$list[] = "tutorial";
 		$list[] = "invcraft";
 		$list[] = "backpack";
@@ -50,9 +51,6 @@ class UiMenu{
 					break;
 				case "shop":
 					Server::getInstance()->dispatchCommand($player, "shop");
-					break;
-				case "sell-all":
-					Server::getInstance()->dispatchCommand($player, "sell all");
 					break;
 				case "is-info":
 					$this->IslandInfoForm($player);
@@ -81,21 +79,20 @@ class UiMenu{
 			}
 		});
 		if(MyPlot::getInstance()->isLevelLoaded($player->getWorld()->getDisplayName())){
-			$form->addButton("§　§lIsland Manager\nQuản lý đảo");
-			$form->addButton("§　§lIsland Info\nThông tin đảo");
-			$form->addButton("§　§lFavorite Islands");
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_islandmanager()));
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_islandinfo()));
+			$form->addButton(Lang::translate($player, TF::gh_menu_main_button_favisland()));
 		}
-		$form->addButton("§lFast Travel\nDịch chuyển nhanh");
-		$form->addButton("§　§lShop");
-		$form->addButton("§lSell All Inventory\nBán toàn bộ vật phẩm");
-		$form->addButton("§lTutorial\nXem cách chơi");
-		$form->addButton("§lInvCraft\nBàn chế tạo siêu to khổng lồ");
-		$form->addButton("§　§lBackpack");
-		$form->addButton("§　§lMail");
-		$form->addButton("§　§lBank");
-		$form->addButton("§　§lBazaar");
-		$form->addButton("§　§lAbout FarmingIsland");
-		$form->setTitle("§　Island Menu");
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_fasttravel()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_shop()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_tutorial()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_invcraft()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_backpack()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_mail()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_bank()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_bazaar()));
+		$form->addButton(Lang::translate($player, TF::gh_menu_main_button_about()));
+		$form->setTitle(Lang::translate($player, TF::gh_menu_main_title()));
 		$player->sendForm($form);
 	}
 
@@ -110,11 +107,11 @@ class UiMenu{
 	public function IslandInfoForm(Player $player) : void{
 		$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 		if($plot == null){
-			$player->sendMessage("Failed to get island info.");
+			$player->sendMessage(Lang::translate($player, TF::gh_invalidisland()));
 			return;
 		}
 		$form = new CustomForm(function(Player $player, $data){ });
-		$form->setTitle("§　§lIsland Info");
+		$form->setTitle(Lang::translate($player, TF::gh_islandinfo_ui_title()));
 		$h = "";
 		foreach($plot->helpers as $helper){
 			if($h == ""){
@@ -123,10 +120,10 @@ class UiMenu{
 				$h = $h . "," . $helper;
 			}
 		}
-		$form->addLabel("§　Island ID: " . $plot->X . ";" . $plot->Z);
-		$form->addLabel("§　Owner: " . $plot->owner);
-		$form->addLabel("§　Island Name: " . $plot->name);
-		$form->addLabel("§　Helpers: " . $h);
+		$form->addLabel(Lang::translate($player, TF::gh_islandinfo_id((string)$plot->X, (string)$plot->Z)));
+		$form->addLabel(Lang::translate($player, TF::gh_islandinfo_owner($plot->owner)));
+		$form->addLabel(Lang::translate($player, TF::gh_islandinfo_name($plot->name)));
+		$form->addLabel(Lang::translate($player, TF::gh_islandinfo_member($h)));
 
 		$player->sendForm($form);
 	}

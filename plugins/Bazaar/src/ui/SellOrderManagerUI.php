@@ -6,6 +6,8 @@ namespace Bazaar\ui;
 use Bazaar\Bazaar;
 use Bazaar\order\SellOrder;
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\ModalForm;
 use jojoe77777\FormAPI\SimpleForm;
@@ -36,17 +38,17 @@ class SellOrderManagerUI{
 					});
 				}
 			});
-			$form->setTitle("Sell Order Manager");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_title()));
 			$msg = [
-				"Order ID: " . $order->getId(),
-				"Item: " . ItemUtils::toName($order->getItemID()),
-				"Worth: " . $order->getPrice() * $order->getAmount() . " coin",
-				"Price per item: " . $order->getPrice(),
-				"Amount: " . $order->getAmount(),
-				"Filled: " . $order->getFilled(),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_id((string)$order->getId())),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_item(ItemUtils::toName($order->getItemID()))),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_total((string)($order->getPrice() * $order->getAmount()))),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_each((string)$order->getPrice())),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_amount((string)$order->getAmount())),
+				FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_content_filled((string)$order->getFilled())),
 			];
 			$form->setContent(implode("\n", $msg));
-			$form->addButton("Claim money and remove order !");
+			$form->addButton(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_button_cancel()));
 			$player->sendForm($form);
 		});
 	}
@@ -72,28 +74,28 @@ class SellOrderManagerUI{
 					$item = ItemUtils::toItem($order->getItemID());
 					$item->setCount($order->getAmount() - $order->getFilled());
 					if(!$player->getInventory()->canAddItem($item)){
-						$player->sendMessage("Your inventory doesnt have enough space to add items, make sure you have enough space and try again !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_invfull()));
 						return;
 					}
 					$player->getInventory()->addItem($item);
 					EconomyAPI::getInstance()->addMoney($player, $order->getFilled() * $order->getPrice());
 					yield $this->getBazaar()->getProvider()->removeSell($order);
 
-					$player->sendMessage("Order cancelled !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_order_cancel_success()));
 				});
 			}
 		});
 
-		$form->setTitle("Confirm !");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_cancel_title()));
 		$content = [
-			"Cancel this order ???",
-			"You will gain:",
-			" - " . $order->getFilled() * $order->getPrice() . " coins",
-			" - " . $order->getAmount() - $order->getFilled() . " " . ItemUtils::toName($order->getItemID())
+			FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_cancel_content_msg()),
+			FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_cancel_content_msg2()),
+			FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_cancel_content_msg3((string)($order->getFilled() * $order->getPrice()))),
+			FILang::translate($player, TranslationFactory::bazaar_ui_myorder_manager_sell_cancel_content_msg4((string)($order->getAmount() - $order->getFilled()), ItemUtils::toName($order->getItemID())))
 		];
 		$form->setContent(implode("\n", $content));
-		$form->setButton1("YES");
-		$form->setButton2("NO");
+		$form->setButton1(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_yes()));
+		$form->setButton2(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_no()));
 
 		$player->sendForm($form);
 	}

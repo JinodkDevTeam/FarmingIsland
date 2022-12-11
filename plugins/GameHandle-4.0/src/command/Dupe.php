@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command;
 
 use pocketmine\player\Player;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class Dupe extends IngameCommand{
 
@@ -16,14 +18,14 @@ class Dupe extends IngameCommand{
 	public function handle(Player $player, string $aliasUsed, array $args) : void{
 		$item = $player->getInventory()->getItemInHand();
 		if($item->getId() == 0){
-			$player->sendMessage("Why you want to duplicate nothing ?");
+			$player->sendMessage(Lang::translate($player, TF::gh_cmd_dupe_fail_none()));
 			return;
 		}
 		if($player->getInventory()->canAddItem($item)){
 			$player->getInventory()->addItem($item);
-			$player->sendMessage("Item duplicate successfully !");
+			$player->sendMessage(Lang::translate($player, TF::gh_cmd_dupe_success()));
 		}else{
-			$player->sendMessage("Failed to duplicate this item, maybe your inventory is full.");
+			$player->sendMessage(Lang::translate($player, TF::gh_cmd_dupe_fail_invfull()));
 		}
 	}
 }

@@ -6,6 +6,8 @@ namespace NgLamVN\GameHandle\command;
 
 use NgLamVN\GameHandle\Core;
 use pocketmine\command\CommandSender;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class FiVersion extends BaseCommand{
 
@@ -16,7 +18,7 @@ class FiVersion extends BaseCommand{
 	}
 
 	public function onRun(CommandSender $sender, string $aliasUsed, array $args) : void{
-		$sender->sendMessage("Server Version: " . Core::VERSION . " [" . Core::CODE_NAME . "]");
-		$sender->sendMessage("Base version: " . Core::BASE_VERSION);
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_fiver_server(Core::VERSION, Core::CODE_NAME)));
+		$sender->sendMessage(Lang::translate($sender, TF::gh_cmd_fiver_base((string)Core::BASE_VERSION)));
 	}
 }

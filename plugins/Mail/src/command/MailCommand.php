@@ -11,6 +11,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
+use FILang\FILang as Lang;
+use FILang\TranslationFactory as TF;
 
 class MailCommand extends Command implements PluginOwned{
 
@@ -31,7 +33,7 @@ class MailCommand extends Command implements PluginOwned{
 						return;
 					}
 					if(!$sender->hasPermission("mail.login")){
-						$sender->sendMessage("You don't have permission to use this feature");
+						$sender->sendMessage(Lang::translate($sender, TF::mail_login_noperm()));
 						return;
 					}
 					new MailUI($this->getLoader(), $sender, $args[1]);
@@ -43,7 +45,7 @@ class MailCommand extends Command implements PluginOwned{
 			new MailUI($this->getLoader(), $sender, $sender->getName());
 			return;
 		}
-		$sender->sendMessage("Please use this command as a player !");
+		$sender->sendMessage(Lang::translate($sender, TF::command_ingame()));
 	}
 
 	public function getLoader() : Loader{

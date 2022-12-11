@@ -5,6 +5,8 @@ namespace Bazaar\ui;
 
 use Bazaar\event\PlayerCreateOrderEvent;
 use Bazaar\utils\OrderDataHelper;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use JinodkDevTeam\utils\ItemUtils;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\ModalForm;
@@ -38,37 +40,37 @@ class SellOrderUI extends BaseUI{
 				$amount = $data[2];
 				$price = $data[3];
 				if(!(is_numeric($amount) and is_numeric($price))){
-					$player->sendMessage("Amount or Price must be numeric !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_price_limit1()));
 					return;
 				}
 				if(is_int($amount)){
-					$player->sendMessage("Amount must be a integer number !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_amount_limit1()));
 					return;
 				}
 				if((int) $amount <= 0){
-					$player->sendMessage("Amount must be > 0 !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_amount_limit2()));
 					return;
 				}
 				if((float) $price <= 0){
-					$player->sendMessage("Price must be > 0 !");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_price_limit2()));
 					return;
 				}
 				if($amount > $max){
-					$player->sendMessage("You dont have enough item to create sell order");
+					$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_sellorder_create_fail_notenoughitem()));
 					return;
 				}
 
 				$this->confirm($player, (int) $amount, (float) $price);
 			});
 
-			$form->setTitle("Create sell order");
-			$form->addLabel("Item: " . ItemUtils::toName($this->itemid));
-			$form->addLabel("Current top sell order: " . $top_sell);
-			$form->addInput("Amount:", "Max: " . $max);
+			$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_title()));
+			$form->addLabel(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_label(ItemUtils::toName($this->itemid))));
+			$form->addLabel(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_label2((string) $top_sell)));
+			$form->addInput(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_input_text()), FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_input_placeholder((string) $max)));
 			if($top_sell == ""){
-				$form->addInput("Price per item:", "123456789");
+				$form->addInput(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_input2_text()), "123456789");
 			}else{
-				$form->addInput("Price per item:", (string) ($top_sell - 0.1));
+				$form->addInput(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_input2_text()), (string) ($top_sell - 0.1));
 			}
 
 			$player->sendForm($form);
@@ -81,10 +83,10 @@ class SellOrderUI extends BaseUI{
 			if(!$data) return;
 			$this->createSellOrder($player, $amount, $price);
 		});
-		$form->setTitle("Confirm");
-		$form->setContent("Create sell order for: \nItem: " . ItemUtils::toName($this->itemid) . "\nAmount: " . $amount . "\nPrice per item: " . $price . "\nWorth: " . $price * $amount . " coin");
-		$form->setButton1("YES");
-		$form->setButton2("NO");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_confirm_title()));
+		$form->setContent(FILang::translate($player, TranslationFactory::bazaar_ui_sellorder_confirm_content(ItemUtils::toName($this->itemid), (string) $amount, (string) $price, (string) ($price * $amount))));
+		$form->setButton1(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_yes()));
+		$form->setButton2(FILang::translate($player, TranslationFactory::bazaar_ui_confirm_button_no()));
 
 		$player->sendForm($form);
 	}
@@ -108,7 +110,7 @@ class SellOrderUI extends BaseUI{
 			$item = ItemUtils::toItem($this->itemid);
 			$item->setCount($amount);
 			ItemUtils::removeItem($player->getInventory(), $item);
-			$player->sendMessage("Sell order created !");
+			$player->sendMessage(FILang::translate($player, TranslationFactory::bazaar_sellorder_create_success()));
 		});
 	}
 }

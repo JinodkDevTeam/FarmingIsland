@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace FavoriteIslands\form;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\SimpleForm;
 use MyPlot\MyPlot;
 use pocketmine\player\Player;
@@ -17,12 +19,12 @@ class OpenForm extends BaseForm{
 				case 0:
 					$plot = MyPlot::getInstance()->getPlotByPosition($player->getPosition());
 					if ($plot == null){
-						$player->sendMessage("You are not in a island !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::favis_notinisland()));
 						return;
 					}
 					Await::f2c(function() use ($player, $plot){
 						yield $this->getLoader()->getProvider()->register($player, $plot->X, $plot->Z);
-						$player->sendMessage("Added island to favorite !");
+						$player->sendMessage(FILang::translate($player, TranslationFactory::favis_addisland_success()));
 					});
 					break;
 				case 1:
@@ -35,11 +37,11 @@ class OpenForm extends BaseForm{
 					new RemoveForm($this->getLoader(), $player);
 			}
 		});
-		$form->setTitle("Favorite Islands Manager");
-		$form->addButton("Add current standing island");
-		$form->addButton("Add island by id");
-		$form->addButton("Teleport to favorite islands");
-		$form->addButton("Remove Favorite island");
+		$form->setTitle(FILang::translate($this->player, TranslationFactory::favis_ui_main_title()));
+		$form->addButton(FILang::translate($this->player, TranslationFactory::favis_ui_main_button_addcurrent()));
+		$form->addButton(FILang::translate($this->player, TranslationFactory::favis_ui_main_button_addid()));
+		$form->addButton(FILang::translate($this->player, TranslationFactory::favis_ui_main_button_teleport()));
+		$form->addButton(FILang::translate($this->player, TranslationFactory::favis_ui_main_button_remove()));
 
 		$this->getPlayer()->sendForm($form);
 	}

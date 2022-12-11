@@ -5,6 +5,8 @@ namespace FavoriteIslands\command;
 
 use FavoriteIslands\form\OpenForm;
 use FavoriteIslands\Loader;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use MyPlot\MyPlot;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
@@ -26,12 +28,12 @@ class FavIslandCommand extends Command implements PluginOwned{
 	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if ($sender instanceof Player){
 			if (!MyPlot::getInstance()->isLevelLoaded($sender->getWorld()->getDisplayName())){
-				$sender->sendMessage("Please use this feature in island world");
+				$sender->sendMessage(FILang::translate($sender, TranslationFactory::favis_command_notislandworld()));
 				return;
 			}
 			new OpenForm($this->getLoader(), $sender);
 		}else{
-			$sender->sendMessage("Please use this command as a player !");
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_ingame()));
 		}
 	}
 

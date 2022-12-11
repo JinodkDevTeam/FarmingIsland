@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bank\ui;
 
 use Bank\Bank;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
@@ -46,12 +48,12 @@ class DepositUI extends BaseUI{
 					break;
 			}
 		});
-		$form->setTitle("Bank deposit");
-		$form->addButton("Back");
-		$form->addButton("Your whole purse\n" . $all . " coin");
-		$form->addButton("Half your purse\n" . $half . " coin");
-		$form->addButton("Deposit 20%\n" . $min . " coin");
-		$form->addButton("Specific amount");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_deposit_title()));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_deposit_button_back()));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_deposit_button_all((string)$all)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_deposit_button_half((string)$half)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_deposit_button_20((string)$min)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_deposit_button_custom()));
 
 		$player->sendForm($form);
 	}
@@ -60,7 +62,7 @@ class DepositUI extends BaseUI{
 		$purse = EconomyAPI::getInstance()->myMoney($player);
 
 		if($amount > $purse){
-			$player->sendMessage("You can't deposit with amount that higher than your coins in purse !");
+			$player->sendMessage(FILang::translate($player, TranslationFactory::bank_deposit_fail()));
 			return;
 		}
 		$limit = $this->getBank()->getProvider()->getBankLimit($this->upgrade);
@@ -69,21 +71,21 @@ class DepositUI extends BaseUI{
 		}
 		$this->getBank()->getProvider()->updateBalance($player, $this->balance + $amount);
 		EconomyAPI::getInstance()->reduceMoney($player, $amount);
-		$player->sendMessage("Deposit success full (- " . $amount . " coin)");
+		$player->sendMessage(FILang::translate($player, TranslationFactory::bank_deposit_success((string)$amount)));
 	}
 
 	public function specificAmount(Player $player){
 		$form = new CustomForm(function(Player $player, ?array $data){
 			if($data == null) return;
 			if(!is_numeric($data[0])){
-				$player->sendMessage("Amount must be numeric !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_notnumeric()));
 				return;
 			}
 			$this->deposit($player, (float) $data[0]);
 		});
 
-		$form->setTitle("Deposit specific amount");
-		$form->addInput("Amount:", "123456789");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_deposit_custom_title()));
+		$form->addInput(FILang::translate($player, TranslationFactory::bank_ui_deposit_custom_input()), "123456789");
 
 		$player->sendForm($form);
 	}

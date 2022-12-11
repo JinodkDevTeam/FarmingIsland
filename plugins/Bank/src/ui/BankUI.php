@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Bank\ui;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
 use pocketmine\player\Player;
@@ -17,7 +19,7 @@ class BankUI extends BaseUI{
 			}
 			$data = yield from $this->getBank()->getProvider()->get($player);
 			if(empty($data)){
-				$player->sendMessage("Error: Can't get data from database, please report this error to admin !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_dataerror()));
 				return;
 			}
 			$balance = $data[0]["Money"];
@@ -35,18 +37,18 @@ class BankUI extends BaseUI{
 				};
 			});
 
-			$form->setTitle("Personal Bank Account");
+			$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_main_title()));
 			$content = [
-				"Current balance: " . $balance,
-				"Your purse: " . $purse,
-				"Account type: " . $upgrade_name,
-				"Balance Limit: " . $limit
+				FILang::translate($player, TranslationFactory::bank_ui_main_content_balance((string)$balance)),
+				FILang::translate($player, TranslationFactory::bank_ui_main_content_purse((string)$purse)),
+				FILang::translate($player, TranslationFactory::bank_ui_main_content_account($upgrade_name)),
+				FILang::translate($player, TranslationFactory::bank_ui_main_content_balancelimit((string)$limit))
 			];
 			$form->setContent(implode("\n", $content));
-			$form->addButton("EXIT");
-			$form->addButton("Deposit coins");
-			$form->addButton("Withdraw coins");
-			$form->addButton("Upgrade account");
+			$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_main_button_exit()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_main_button_deposit()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_main_button_withdraw()));
+			$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_main_button_upgrade()));
 
 			$player->sendForm($form);
 		});

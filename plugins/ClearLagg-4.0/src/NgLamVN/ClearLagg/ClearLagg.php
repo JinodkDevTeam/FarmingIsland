@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace NgLamVN\ClearLagg;
 
+use FILang\FILang;
+use FILang\TranslationFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\entity\Entity;
@@ -18,13 +20,9 @@ use function array_map;
 use function in_array;
 use function is_array;
 use function is_numeric;
-use function str_replace;
 use function strtolower;
 
 class ClearLagg extends PluginBase{
-
-	public const LANG_TIME_LEFT = "time-left";
-	public const LANG_ENTITIES_CLEARED = "entities-cleared";
 
 	/** @var int */
 	private int $interval;
@@ -41,8 +39,6 @@ class ClearLagg extends PluginBase{
 	/** @var string[] */
 	private array $exemptEntities;
 
-	/** @var string[] */
-	private array $messages;
 	/** @var int[] */
 	private array $broadcastTimes;
 
@@ -83,11 +79,6 @@ class ClearLagg extends PluginBase{
 
 			return;
 		}
-		$messages = $config["messages"] ?? [];
-		$this->messages = [
-			self::LANG_TIME_LEFT => $messages[self::LANG_TIME_LEFT] ?? "§cEntities will clear in {SECONDS} seconds",
-			self::LANG_ENTITIES_CLEARED => $messages[self::LANG_ENTITIES_CLEARED] ?? "§cCleared a total of {COUNT} entities"
-		];
 
 		if(!is_array($config["times"] ?? [])){
 			$this->getLogger()->error("Config error: times attribute must an array");
@@ -101,8 +92,10 @@ class ClearLagg extends PluginBase{
 			if(--$this->seconds === 0){
 				$this->clearLagg();
 				$this->seconds = $this->interval;
-			}elseif(in_array($this->seconds, $this->broadcastTimes) && $this->messages[self::LANG_TIME_LEFT] !== ""){
-				$this->broadcastMessage(str_replace("{SECONDS}", (string) $this->seconds, $this->messages[self::LANG_TIME_LEFT]));
+			}elseif(in_array($this->seconds, $this->broadcastTimes)){
+				foreach($this->getServer()->getOnlinePlayers() as $player){
+					$player->sendMessage(FILang::translate($player, TranslationFactory::clearlagg_timeleft((string)$this->seconds)));
+				}
 			}
 		}), 20);
 	}
@@ -135,14 +128,8 @@ class ClearLagg extends PluginBase{
 				}
 			}
 		}
-		if($this->messages[self::LANG_ENTITIES_CLEARED] !== ""){
-			$this->broadcastMessage(str_replace("{COUNT}", (string) $entitiesCleared, $this->messages[self::LANG_ENTITIES_CLEARED]));
-		}
-	}
-
-	public function broadcastMessage(string $msg) : void{
 		foreach($this->getServer()->getOnlinePlayers() as $player){
-			$player->sendMessage($msg);
+			$player->sendMessage(FILang::translate($player, TranslationFactory::clearlagg_cleared((string)$entitiesCleared)));
 		}
 	}
 
@@ -151,7 +138,7 @@ class ClearLagg extends PluginBase{
 			return true;
 		}
 		if(!$sender->hasPermission("clearlagg.cmd")){
-			$sender->sendMessage("You dont have permission to use this command");
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_noperm()));
 			return true;
 		}
 		if (!isset($args[0])){

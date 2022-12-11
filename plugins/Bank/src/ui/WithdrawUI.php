@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Bank\ui;
 
 use Bank\Bank;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use jojoe77777\FormAPI\CustomForm;
 use jojoe77777\FormAPI\SimpleForm;
 use onebone\economyapi\EconomyAPI;
@@ -43,38 +45,38 @@ class WithdrawUI extends BaseUI{
 					break;
 			}
 		});
-		$form->setTitle("Bank withdraw");
-		$form->addButton("Back");
-		$form->addButton("Everything in the account\n" . $all . " coin");
-		$form->addButton("Half the account\n" . $half . " coin");
-		$form->addButton("Withdraw 20%\n" . $min . " coin");
-		$form->addButton("Specific amount");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_withdraw_title()));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_withdraw_button_back()));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_withdraw_button_all((string)$all)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_withdraw_button_half((string)$half)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_withdraw_button_20((string)$min)));
+		$form->addButton(FILang::translate($player, TranslationFactory::bank_ui_withdraw_button_custom()));
 
 		$player->sendForm($form);
 	}
 
 	public function withdraw(Player $player, float $amount) : void{
 		if($amount > $this->balance){
-			$player->sendMessage("You can't withdraw with amount that higher than your balance !");
+			$player->sendMessage(FILang::translate($player, TranslationFactory::bank_withdraw_fail()));
 			return;
 		}
 		$this->getBank()->getProvider()->updateBalance($player, $this->balance - $amount);
 		EconomyAPI::getInstance()->addMoney($player, $amount);
-		$player->sendMessage("Withdraw success full (+ " . $amount . " coin)");
+		$player->sendMessage(FILang::translate($player, TranslationFactory::bank_withdraw_success((string)$amount)));
 	}
 
 	public function specificAmount(Player $player){
 		$form = new CustomForm(function(Player $player, ?array $data){
 			if($data == null) return;
 			if(!is_numeric($data[0])){
-				$player->sendMessage("Amount must be numeric !");
+				$player->sendMessage(FILang::translate($player, TranslationFactory::bank_notnumeric()));
 				return;
 			}
 			$this->withdraw($player, (float) $data[0]);
 		});
 
-		$form->setTitle("Withdraw specific amount");
-		$form->addInput("Amount:", "123456789");
+		$form->setTitle(FILang::translate($player, TranslationFactory::bank_ui_withdraw_custom_title()));
+		$form->addInput(FILang::translate($player, TranslationFactory::bank_ui_withdraw_custom_input()), "123456789");
 
 		$player->sendForm($form);
 	}

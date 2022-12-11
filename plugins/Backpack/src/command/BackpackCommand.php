@@ -5,6 +5,8 @@ namespace Backpack\command;
 
 use Backpack\Loader;
 use Backpack\ui\BackpackManagerUI;
+use FILang\FILang;
+use FILang\TranslationFactory;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\lang\Translatable;
@@ -30,7 +32,7 @@ class BackpackCommand extends Command implements PluginOwned{
 		if ($sender instanceof Player){
 			new BackpackManagerUI($this->getLoader(), $sender);
 		} else {
-			$sender->sendMessage("Please use this command as a player !");
+			$sender->sendMessage(FILang::translate($sender, TranslationFactory::command_ingame()));
 		}
 	}
 
