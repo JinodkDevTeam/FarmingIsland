@@ -45,7 +45,7 @@ class MainListener implements Listener{
 	/**
 	 * @param PlayerJoinEvent $event
 	 *
-	 * @priority HIGHEST
+	 * @priority HIGH
 	 * @throws Exception
 	 */
 	public function onJoin(PlayerJoinEvent $event) : void{
