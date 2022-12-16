@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomItems;
 
+use CustomItems\customies\CustomiesBlockManager;
 use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
@@ -24,6 +25,7 @@ class Loader extends PluginBase{
 	}
 
 	public function onEnable() : void{
+		CustomiesBlockManager::register(); //Register Customies blocks
 		CustomiesItemManager::register(); //Register Customies items
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());

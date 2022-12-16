@@ -10,6 +10,7 @@ use customiesdevs\customies\item\component\RenderOffsetsComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
+use CustomItems\customies\CustomiesBlocks;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
@@ -25,6 +26,12 @@ abstract class Drill extends Item implements ItemComponents{
 		$this->addComponent(new MaxStackSizeComponent(1));
 		$diggerCompoment = new DiggerComponent();
 		foreach(VanillaBlocks::getAll() as $block){
+			$toolType = $block->getBreakInfo()->getToolType();
+			if ($toolType == BlockToolType::PICKAXE){
+				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);
+			}
+		}
+		foreach(CustomiesBlocks::getAll() as $block){
 			$toolType = $block->getBreakInfo()->getToolType();
 			if ($toolType == BlockToolType::PICKAXE){
 				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);

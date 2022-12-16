@@ -7,7 +7,7 @@ use pocketmine\item\ToolTier;
 
 class MegaDrill extends Drill{
 	public function getBaseMiningSpeed() : int{
-		return 50;
+		return 200;
 	}
 
 	public function getTexture() : string{
@@ -15,6 +15,6 @@ class MegaDrill extends Drill{
 	}
 
 	public function getBlockToolHarvestLevel() : int{
-		return ToolTier::DIAMOND()->getHarvestLevel();
+		return ToolTier::DIAMOND()->getHarvestLevel() + 2;
 	}
 }
