@@ -3,12 +3,10 @@ declare(strict_types=1);
 
 namespace CustomItems;
 
-use CustomItems\custombreaktime\TitaniumDrillBreakTime;
 use CustomItems\customies\CustomiesItemManager;
 use CustomItems\enchantment\CustomEnchantGlint;
 use CustomItems\enchantment\LureEnchantment;
 use CustomItems\listener\CustomItemListener;
-use NgLamVN\CustomBreakTimeAPI\CustomBreakTimeAPI;
 use pocketmine\data\bedrock\EnchantmentIdMap;
 use pocketmine\data\bedrock\EnchantmentIds;
 use pocketmine\plugin\PluginBase;
@@ -30,7 +28,6 @@ class Loader extends PluginBase{
 		$this->getServer()->getPluginManager()->registerEvents(new CustomItemListener(), $this);
 		EnchantmentIdMap::getInstance()->register(100, new CustomEnchantGlint());
 		EnchantmentIdMap::getInstance()->register(EnchantmentIds::LURE, new LureEnchantment());
-		CustomBreakTimeAPI::register(new TitaniumDrillBreakTime("TitaniumDrill"));
 
 		//to id test for vanilla items
 		/*foreach(VanillaItems::getAll() as $item){

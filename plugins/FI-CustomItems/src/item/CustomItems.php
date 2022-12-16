@@ -88,7 +88,6 @@ use pocketmine\utils\RegistryTrait;
  * @method static RefinedItem REFINED_TITANIUM()
  * @method static NoicePaper NOICE_PAPER()
  * @method static Crook CROOK()
- * @method static TitaniumDrill TITANIUM_DRILL()
  * @method static EnchantedItem DRILL_FUEL()
  * @method static BackpackSlot BACKPACK_SLOT()
  * @method static EmeraldBlade EMERALD_BLADE()
@@ -181,7 +180,6 @@ class CustomItems{
 		self::register("refined_titanium", new RefinedItem(new CustomItemIdentifier(CustomItemIds::REFINED_TITANIUM), "Refined Titanium", Rarity::LEGENDARY(), VanillaBLocks::DIORITE()->asItem()));
 		self::register("noice_paper", new NoicePaper(new CustomItemIdentifier(CustomItemIds::NOICE_PAPER), "Noice Paper", Rarity::LEGENDARY()));
 		self::register("crook", new Crook(new CustomItemIdentifier(CustomItemIds::CROOK), "Crook", Rarity::RARE()));
-		self::register("titanium_drill", new TitaniumDrill(new CustomItemIdentifier(CustomItemIds::TITANIUM_DRILL), "Titanium Drill", Rarity::VERY_SPECIAL()));
 		self::register("drill_fuel", new EnchantedItem(new CustomItemIdentifier(CustomItemIds::DRILL_FUEL), "Drill Fuel", Rarity::LEGENDARY(), VanillaItems::NETHER_STAR()));
 		self::register("backpack_slot", new BackpackSlot(new CustomItemIdentifier(CustomItemIds::BACKPACK_SLOT), "Backpack Slot", Rarity::LEGENDARY()));
 		self::register("emerald_blade", new EmeraldBlade(new CustomItemIdentifier(CustomItemIds::EMERALD_BLADE), "Emerald Blade", Rarity::EPIC()));
