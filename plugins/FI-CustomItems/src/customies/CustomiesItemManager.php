@@ -4,6 +4,10 @@ declare(strict_types=1);
 namespace CustomItems\customies;
 
 use customiesdevs\customies\item\CustomiesItemFactory;
+use CustomItems\customies\drill\DiamondDrill;
+use CustomItems\customies\drill\GoldenDrill;
+use CustomItems\customies\drill\IronDrill;
+use CustomItems\customies\drill\MegaDrill;
 use CustomItems\customies\fish\Albacore;
 use CustomItems\customies\fish\Anchovy;
 use CustomItems\customies\fish\Blobfish;
@@ -120,5 +124,9 @@ class CustomiesItemManager{
 		CustomiesItemFactory::getInstance()->registerItem(None::class, "fici:none", "None");
 		CustomiesItemFactory::getInstance()->registerItem(RedGift::class, "fici:red_gift", "Red Gift");
 		CustomiesItemFactory::getInstance()->registerItem(Yes::class, "fici:yes", "Yes");
+		CustomiesItemFactory::getInstance()->registerItem(IronDrill::class, "fici:iron_drill", "Iron Drill");
+		CustomiesItemFactory::getInstance()->registerItem(GoldenDrill::class, "fici:golden_drill", "Golden Drill");
+		CustomiesItemFactory::getInstance()->registerItem(DiamondDrill::class, "fici:diamond_drill", "Diamond Drill");
+		CustomiesItemFactory::getInstance()->registerItem(MegaDrill::class, "fici:mega_drill", "Mega Drill");
 	}
 }

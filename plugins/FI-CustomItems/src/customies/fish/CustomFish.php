@@ -19,7 +19,7 @@ abstract class CustomFish extends Food implements ItemComponents{
 		$creativeInfo = new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_NATURE, CreativeInventoryInfo::GROUP_RAW_FOOD);
 		$this->initComponent($this->getTexture(), $creativeInfo);
 		$this->addComponent(new MaxStackSizeComponent(64));
-		$this->addComponent(new FoodComponent(true));
+		$this->addComponent(new FoodComponent(false));
 	}
 
 	public function getTexture() : string{

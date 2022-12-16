@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CustomItems\customies;
 
 use customiesdevs\customies\item\CustomiesItemFactory;
+use CustomItems\customies\drill\Drill;
 use CustomItems\customies\fish\CustomFish;
 use CustomItems\customies\icon\CustomIcon;
 use pocketmine\item\Item;
@@ -68,6 +69,10 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static CustomIcon NONE()
  * @method static CustomIcon RED_GIFT()
  * @method static CustomIcon YES()
+ * @method static Drill IRON_DRILL()
+ * @method static Drill GOLDEN_DRILL()
+ * @method static Drill DIAMOND_DRILL()
+ * @method static Drill MEGA_DRILL()
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
@@ -144,5 +149,9 @@ class CustomiesItems{
 		self::register("none", $factory->get("fici:none"));
 		self::register("red_gift", $factory->get("fici:red_gift"));
 		self::register("yes", $factory->get("fici:yes"));
+		self::register("iron_drill", $factory->get("fici:iron_drill"));
+		self::register("golden_drill", $factory->get("fici:golden_drill"));
+		self::register("diamond_drill", $factory->get("fici:diamond_drill"));
+		self::register("mega_drill", $factory->get("fici:mega_drill"));
 	}
 }
