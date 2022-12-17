@@ -27,13 +27,15 @@ abstract class Drill extends Item implements ItemComponents{
 		$diggerCompoment = new DiggerComponent();
 		foreach(VanillaBlocks::getAll() as $block){
 			$toolType = $block->getBreakInfo()->getToolType();
-			if ($toolType == BlockToolType::PICKAXE){
+			$harvestLv = $block->getBreakInfo()->getToolHarvestLevel();
+			if (($toolType == BlockToolType::PICKAXE) && ($harvestLv >= $this->getBlockToolHarvestLevel())){
 				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);
 			}
 		}
 		foreach(CustomiesBlocks::getAll() as $block){
 			$toolType = $block->getBreakInfo()->getToolType();
-			if ($toolType == BlockToolType::PICKAXE){
+			$harvestLv = $block->getBreakInfo()->getToolHarvestLevel();
+			if (($toolType == BlockToolType::PICKAXE) && ($harvestLv >= $this->getBlockToolHarvestLevel())){
 				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);
 			}
 		}

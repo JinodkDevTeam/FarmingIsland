@@ -4,4 +4,6 @@
 # resource-packs:
 #     uuid-of-resource-pack: content-key
 resource-packs:
-  0fc0a768-9b98-49f7-b534-7b3ce8f570d8: encryptmypack.com-FPQVLT3ZMM7Z3T #FI-Symbols
+  0fc0a768-9b98-49f7-b534-7b3ce8f570d8: FIMC-awkbAodv5OKTB9JKwSIUsqrOSnv #FI-Symbols
+  e0c1873a-9d3a-4d0f-7b12-7169cd1753ed: FIMC-UdyjNYr5O0LsjClMuk5J81HclK6 #FI-CustomItems
+  228e9e0c-810a-485d-add0-25f1a881d7c8: FIMC-MMjg9tNAUNitswqN6UxIJYMbWJ1 #FI-CustomBlocks
