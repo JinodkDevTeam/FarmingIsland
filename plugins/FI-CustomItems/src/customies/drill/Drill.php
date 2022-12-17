@@ -41,7 +41,7 @@ abstract class Drill extends Item implements ItemComponents{
 		}
 		$this->addComponent($diggerCompoment);
 		$this->addComponent(new HandEquippedComponent(true));
-		/*$this->addComponent(new DrillRenderOffsets());*/
+		$this->addComponent(new DrillRenderOffsets());
 
 	}
 

@@ -13,14 +13,11 @@ final class DrillRenderOffsets implements ItemComponent {
 	public function getValue(): array {
 		$perspectives = [
 			"first_person" => [
-				"position" => [3.5, 4.5, 2.4],
-				"rotation" => [5.0, 40.0, 0.0],
-				"scale" => [0.05, 0.05, 0.05],
 			],
 			"third_person" => [
-				"position" => [0.0, 3.25, -0.5],
-				"rotation" => [0.0, -90.0, 45.0],
-				"scale" => [0.08, 0.08, 0.08]
+				"position" => [0.65, 0.0, -0.9], //x=-z-0.25
+				"rotation" => [0.0, -90.0, 0.0],
+				"scale" => [0.075, 0.125, 0.075]
 			]
 		];
 		return [
