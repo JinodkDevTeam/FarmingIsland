@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace NgLam2911\DailyReward;
 
 use Closure;
-use CustomItems\customies\CustomiesItems;
+use CustomAddons\customies\CustomiesItems;
 use FILang\FILang;
 use FILang\TranslationFactory;
 use Generator;

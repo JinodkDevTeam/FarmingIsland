@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace NgLamVN\GameHandle\command\args;
 
 use CortexPE\Commando\args\StringEnumArgument;
-use CustomItems\item\CustomItems;
+use CustomAddons\item\CustomItems;
 use pocketmine\command\CommandSender;
 
 class CustomItemIDArgs extends StringEnumArgument{

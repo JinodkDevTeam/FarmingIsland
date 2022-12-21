@@ -2,7 +2,7 @@
 declare(strict_types=1);
 namespace MyPlot\subcommand;
 
-use CustomItems\item\CustomItems;
+use CustomAddons\item\CustomItems;
 use MyPlot\forms\MyPlotForm;
 use MyPlot\forms\subforms\ClaimForm;
 use pocketmine\block\VanillaBlocks;

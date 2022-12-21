@@ -1,8 +1,0 @@
-name: FI-CustomItems
-main: CustomItems\Loader
-src-namespace-prefix: CustomItems
-api: 4.0.0
-load: STARTUP
-author: JinodkDevTeam|NgLamVN
-version: 0.1
-description: CustomItem implement ?

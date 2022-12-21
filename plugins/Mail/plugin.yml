@@ -10,7 +10,7 @@ virion:
   - FI-Utils
   - InvMenu
 depend:
-  - FI-CustomItems
+  - FI-CustomAddons
 
 permissions:
   mail.command:

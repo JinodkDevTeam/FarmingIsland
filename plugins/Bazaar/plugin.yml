@@ -11,5 +11,5 @@ virion:
   - FormAPI
   - FI-Utils
 depend:
-  - FI-CustomItems
+  - FI-CustomAddons
   - EconomyAPI

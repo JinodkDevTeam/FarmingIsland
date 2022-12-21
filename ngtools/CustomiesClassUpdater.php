@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const TEXTURE_DIRECTORY = "D:/MinecraftTool/Texture/FI-CustomItems/textures/items/";
+const TEXTURE_DIRECTORY = "D:/MinecraftTool/Texture/FI-CustomAddons/textures/items/";
 const TEXTURE_NAME = "fici";
 
 function getCurrentDir() : string{
@@ -18,7 +18,7 @@ function createClass(string $file_name = "", string $property_name = "") : void{
 		"<?php",
 		"declare(strict_types=1);",
 		"",
-		"namespace CustomItems\customies\\fish;",
+		"namespace CustomAddons\customies\\fish;",
 		"",
 		"class " . $file_name . " extends CustomFish{",
 		"	public function getTexture() : string{",

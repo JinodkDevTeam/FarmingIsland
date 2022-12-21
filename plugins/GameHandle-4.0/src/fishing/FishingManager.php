@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\fishing;
 
-use CustomItems\customies\CustomiesItems;
-use CustomItems\quality\ItemQuality;
-use CustomItems\quality\Quality;
+use CustomAddons\customies\CustomiesItems;
+use CustomAddons\quality\ItemQuality;
+use CustomAddons\quality\Quality;
 use FishingModule\event\EntityFishEvent;
 use JinodkDevTeam\utils\Rand;
 use pocketmine\entity\Human;

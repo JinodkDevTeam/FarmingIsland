@@ -5,7 +5,7 @@ namespace NgLamVN\GameHandle\command;
 
 use CortexPE\Commando\args\IntegerArgument;
 use CortexPE\Commando\exception\ArgumentOrderException;
-use CustomItems\item\CustomItems;
+use CustomAddons\item\CustomItems;
 use Exception;
 use FILang\FILang;
 use FILang\TranslationFactory as TF;

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace JinodkDevTeam\utils;
 
-use CustomItems\item\CustomItems;
+use CustomAddons\item\CustomItems;
 use Exception;
 use JinodkDevTeam\utils\convert\SimpleItemNameConvertor;
 use pocketmine\inventory\Inventory;
