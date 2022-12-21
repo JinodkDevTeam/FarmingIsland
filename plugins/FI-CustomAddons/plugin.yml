@@ -1,0 +1,8 @@
+name: FI-CustomAddons
+main: CustomAddons\Loader
+src-namespace-prefix: CustomAddons
+api: 4.0.0
+load: STARTUP
+author: JinodkDevTeam|NgLamVN
+version: 0.0.1
+description: Imlement new custom items and blocks for FI
