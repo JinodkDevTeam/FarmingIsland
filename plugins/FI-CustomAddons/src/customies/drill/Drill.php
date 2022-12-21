@@ -6,7 +6,6 @@ namespace CustomAddons\customies\drill;
 use customiesdevs\customies\item\component\DiggerComponent;
 use customiesdevs\customies\item\component\HandEquippedComponent;
 use customiesdevs\customies\item\component\MaxStackSizeComponent;
-use customiesdevs\customies\item\component\RenderOffsetsComponent;
 use customiesdevs\customies\item\CreativeInventoryInfo;
 use customiesdevs\customies\item\ItemComponents;
 use customiesdevs\customies\item\ItemComponentsTrait;
@@ -24,22 +23,22 @@ abstract class Drill extends Item implements ItemComponents{
 		$creativeInfo = new CreativeInventoryInfo(CreativeInventoryInfo::CATEGORY_EQUIPMENT);
 		$this->initComponent($this->getTexture(), $creativeInfo);
 		$this->addComponent(new MaxStackSizeComponent(1));
-		$diggerCompoment = new DiggerComponent();
+		$diggerComponent = new DiggerComponent();
 		foreach(VanillaBlocks::getAll() as $block){
 			$toolType = $block->getBreakInfo()->getToolType();
 			$harvestLv = $block->getBreakInfo()->getToolHarvestLevel();
 			if (($toolType == BlockToolType::PICKAXE) && ($harvestLv <= $this->getBlockToolHarvestLevel())){
-				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);
+				$diggerComponent->withBlocks($this->getBaseMiningSpeed(), $block);
 			}
 		}
 		foreach(CustomiesBlocks::getAll() as $block){
 			$toolType = $block->getBreakInfo()->getToolType();
 			$harvestLv = $block->getBreakInfo()->getToolHarvestLevel();
 			if (($toolType == BlockToolType::PICKAXE) && ($harvestLv <= $this->getBlockToolHarvestLevel())){
-				$diggerCompoment->withBlocks($this->getBaseMiningSpeed(), $block);
+				$diggerComponent->withBlocks($this->getBaseMiningSpeed(), $block);
 			}
 		}
-		$this->addComponent($diggerCompoment);
+		$this->addComponent($diggerComponent);
 		$this->addComponent(new HandEquippedComponent(true));
 		$this->addComponent(new DrillRenderOffsets());
 

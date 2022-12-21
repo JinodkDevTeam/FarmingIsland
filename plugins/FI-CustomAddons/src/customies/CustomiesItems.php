@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomAddons\customies;
 
+use CustomAddons\customies\weapons\sword\Sword;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use CustomAddons\customies\drill\Drill;
 use CustomAddons\customies\fish\CustomFish;
@@ -73,6 +74,9 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static Drill GOLDEN_DRILL()
  * @method static Drill DIAMOND_DRILL()
  * @method static Drill MEGA_DRILL()
+ * @method static Sword ASPECT_OF_THE_END()
+ * @method static Sword GIANT_SWORD
+ * @method static Sword HYPERION()
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
@@ -153,5 +157,8 @@ class CustomiesItems{
 		self::register("golden_drill", $factory->get("fici:golden_drill"));
 		self::register("diamond_drill", $factory->get("fici:diamond_drill"));
 		self::register("mega_drill", $factory->get("fici:mega_drill"));
+		self::register("aspect_of_the_end", $factory->get("fici:aspect_of_the_end"));
+		self::register("giant_sword", $factory->get("fici:giant_sword"));
+		self::register("hyperion", $factory->get("fici:hyperion"));
 	}
 }
