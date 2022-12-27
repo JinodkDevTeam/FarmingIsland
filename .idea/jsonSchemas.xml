@@ -141,6 +141,9 @@
                   <Item>
                     <option name="path" value="plugins/Mail/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/AdvancedUpgradeBlock/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
