@@ -7,6 +7,8 @@ server.log
 white-list.txt
 banned-players.txt
 banned-ips.txt
+op.txt
+update.bat
 plugins/ExplosiveSnowball/*
 plugins/FartBattle-main/*
 plugins/PickaxeLevel/*

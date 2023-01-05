@@ -31,4 +31,5 @@ if exist bin\mintty.exe (
 )
 
 timeout 10
+START "Crash reporter" "crashdumps/crash_report.bat"
 goto :loop
