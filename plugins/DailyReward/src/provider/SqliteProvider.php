@@ -27,7 +27,7 @@ class SqliteProvider{
 				$this->database = libasynql::create(DailyReward::getInstance(), DailyReward::getInstance()->getConfig()->get("database"), [
 					"sqlite" => "sqlite.sql"
 				]);
-				yield $this->database->asyncGeneric(self::INIT);
+				yield from $this->database->asyncGeneric(self::INIT);
 			});
 		}catch(Exception){
 			DailyReward::getInstance()->getLogger()->error("Failed create database.");
@@ -55,7 +55,7 @@ class SqliteProvider{
 
 	public function asyncRegister(Player $player) : Generator{
 		$name = $player->getName();
-		yield $this->database->asyncChange(self::REGISTER, [
+		yield from $this->database->asyncChange(self::REGISTER, [
 			"player" => $name,
 			"streak" => 0,
 			"claimtime" => 0
@@ -64,7 +64,7 @@ class SqliteProvider{
 
 	public function asyncRawUpdate(Player $player, int $streak, int $claimtime) : Generator{
 		$name = $player->getName();
-		yield $this->database->asyncChange(self::UPDATE, [
+		yield from $this->database->asyncChange(self::UPDATE, [
 			"player" => $name,
 			"streak" => $streak,
 			"claimtime" => $claimtime
@@ -72,12 +72,12 @@ class SqliteProvider{
 	}
 
 	public function asyncUpdate(UserDataInfo $userData) : Generator{
-		yield $this->asyncRawUpdate($userData->getPlayer(), $userData->getStreak(), $userData->getLastClaimtime());
+		yield from $this->asyncRawUpdate($userData->getPlayer(), $userData->getStreak(), $userData->getLastClaimtime());
 	}
 
 	public function asyncRemove(Player $player) : Generator{
 		$name = $player->getName();
-		yield $this->database->asyncChange(self::REMOVE, [
+		yield from $this->database->asyncChange(self::REMOVE, [
 			"player" => $name
 		]);
 	}
