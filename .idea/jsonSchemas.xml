@@ -144,6 +144,9 @@
                   <Item>
                     <option name="path" value="plugins/AdvancedUpgradeBlock/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-Protect/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

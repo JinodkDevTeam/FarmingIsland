@@ -77,6 +77,7 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static Sword ASPECT_OF_THE_END()
  * @method static Sword GIANT_SWORD
  * @method static Sword HYPERION()
+ * @method static Sword LUNABY_LIGHTSTICK
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
@@ -160,5 +161,6 @@ class CustomiesItems{
 		self::register("aspect_of_the_end", $factory->get("fici:aspect_of_the_end"));
 		self::register("giant_sword", $factory->get("fici:giant_sword"));
 		self::register("hyperion", $factory->get("fici:hyperion"));
+		self::register("lunaby_lightstick", $factory->get("fici:lunaby_lightstick"));
 	}
 }

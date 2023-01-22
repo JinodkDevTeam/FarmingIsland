@@ -6,6 +6,7 @@ namespace CustomAddons\customies;
 use CustomAddons\customies\weapons\sword\AspectOfTheEnd;
 use CustomAddons\customies\weapons\sword\GiantSword;
 use CustomAddons\customies\weapons\sword\Hyperion;
+use CustomAddons\customies\weapons\sword\LunabyLightstick;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use CustomAddons\customies\drill\DiamondDrill;
 use CustomAddons\customies\drill\GoldenDrill;
@@ -134,5 +135,6 @@ class CustomiesItemManager{
 		CustomiesItemFactory::getInstance()->registerItem(AspectOfTheEnd::class, "fici:aspect_of_the_end", "Aspect of the End");
 		CustomiesItemFactory::getInstance()->registerItem(GiantSword::class, "fici:giant_sword", "Giant's Sword");
 		CustomiesItemFactory::getInstance()->registerItem(Hyperion::class, "fici:hyperion", "Hyperion");
+		CustomiesItemFactory::getInstance()->registerItem(LunabyLightstick::class, "fici:lunaby_lightstick", "Lunaby Light Stick");
 	}
 }
