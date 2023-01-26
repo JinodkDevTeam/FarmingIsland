@@ -81,4 +81,27 @@ class Rand{
 		$result = self::build_chance($elements, $chances, $isShuffle);
 		return $result[array_rand($result)];
 	}
+
+	/**
+	 * @param array $array
+	 *
+	 * @return array
+	 */
+	public function fromArray(array $array) : array{
+		$list = []; //For storing the object appear in the array
+		$count = []; //For storing the number of times the object appear in the array
+		foreach($array as $key => $value){
+			if (in_array($value, $list)){
+				$count[array_search($value, $list)]++;
+			}else{
+				$list[] = $value;
+				$count[] = 1;
+			}
+		}
+		$total = array_sum($count);
+		foreach($count as $key => $value){
+			$count[$key] = $value / $total * 100;
+		}
+		return [$list, $count];
+	}
 }
