@@ -147,6 +147,12 @@
                   <Item>
                     <option name="path" value="plugins/FI-Protect/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/PlayerDataManager/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugin_data/SimpleSell/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>
