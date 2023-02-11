@@ -98,7 +98,7 @@ network:
 
 debug:
   #If > 1, it will show debug messages in the console
-  level: 1
+  level: 2
 
 player:
   #Choose whether to enable player data saving.

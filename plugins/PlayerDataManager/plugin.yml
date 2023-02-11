@@ -1,0 +1,8 @@
+name: PlayerDataManager
+main: NgLam2911\PlayerDataManager\PDM
+src-namespace-prefix: NgLam2911\PlayerDataManager
+version: 0.0.1-alpha
+api: 4.0.0
+description: who tf wanna read this ?
+
+virions: libasynql
