@@ -27,14 +27,14 @@ class TagResloveListener implements Listener{
 				$tag->setValue("Feature is disableds");
 				break;
 			case "fi-scoreloader.gem":
-				$currency = EconomyAPI::getInstance()->getCurrency('gem');
+				/*$currency = EconomyAPI::getInstance()->getCurrency('gem');
 				$value = EconomyAPI::getInstance()->myMoney($player, $currency);
 				if($value === null or $value === false){
 					$value = 0;
 				}else{
 					$value = round($value, 2, PHP_ROUND_HALF_DOWN);
-				}
-				$tag->setValue((string) $value);
+				}*/
+				$tag->setValue("Feature is disabled");
 				break;
 			case "fi-scoreloader.online":
 				$online = count(Server::getInstance()->getOnlinePlayers());
