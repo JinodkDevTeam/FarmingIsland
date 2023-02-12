@@ -9,3 +9,13 @@ plugins:
   - PickaxeLevel
   - WorldStyler
   - FI-ShopUI
+  - Backpack
+  - Bank
+  - BazaarShop
+  - DailyReward
+  - EconomyAPI
+  - FI-Farms
+  - FI-SkillLevel
+  - Mail
+  - EconomyAPI
+  - CustomShopUI

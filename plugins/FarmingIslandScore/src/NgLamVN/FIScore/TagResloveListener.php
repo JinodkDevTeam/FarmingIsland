@@ -18,13 +18,13 @@ class TagResloveListener implements Listener{
 
 		switch($name){
 			case "fi-scoreloader.coin":
-				$value = EconomyAPI::getInstance()->myMoney($player);
+				/*$value = EconomyAPI::getInstance()->myMoney($player);
 				if($value === null or $value === false){
 					$value = 0;
 				}else{
 					$value = round($value, 2, PHP_ROUND_HALF_DOWN);
-				}
-				$tag->setValue((string) $value);
+				}*/
+				$tag->setValue("Feature is disableds");
 				break;
 			case "fi-scoreloader.gem":
 				$currency = EconomyAPI::getInstance()->getCurrency('gem');

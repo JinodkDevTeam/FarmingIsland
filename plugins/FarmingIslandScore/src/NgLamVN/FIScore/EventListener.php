@@ -30,7 +30,7 @@ class EventListener implements Listener{
 		}), 20);
 	}
 
-	public function onMoneyChange(MoneyChangedEvent $event){
+	/*public function onMoneyChange(MoneyChangedEvent $event){
 		$username = $event->getUsername();
 		if(is_null($username)){
 			return;
@@ -47,5 +47,5 @@ class EventListener implements Listener{
 					(new PlayerTagUpdateEvent($player, new ScoreTag("fi-scoreloader.gem", (string) round($event->getNewMoney(), 2, PHP_ROUND_HALF_DOWN))))->call();
 			}
 		}
-	}
+	}*/
 }
