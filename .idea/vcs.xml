@@ -2,10 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/build/php" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/crashdumps" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/CustomBreakTimeAPI" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/LMAO" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/tests/plugins/DevTools" vcs="Git" />
   </component>
 </project>
