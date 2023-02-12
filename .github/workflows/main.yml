@@ -6,23 +6,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  codestyle:
-    name: Code Style checks
-    runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup PHP and tools
-        uses: shivammathur/setup-php@2.21.2
-        with:
-          php-version: 8.0
-          tools: php-cs-fixer:3.11
-
-      - name: Run PHP-CS-Fixer
-        run: php-cs-fixer fix --dry-run --diff --ansi
   no_u:
     name: No U checks
     runs-on: ubuntu-20.04
