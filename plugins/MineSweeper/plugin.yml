@@ -1,0 +1,11 @@
+name: MineSweeper
+main: NgLam2911\MineSweeper\MineSweeper
+src-namespace-prefix: NgLam2911\MineSweeper
+api: 4.0.0
+version: 0.0.1
+author: NgLamVN
+description: A rewrite version of old MineSweeperPE i was made in 2020 with a few new feature
+
+virions:
+  - libFormAPI
+  - Commando

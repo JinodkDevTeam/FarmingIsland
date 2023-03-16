@@ -153,6 +153,18 @@
                   <Item>
                     <option name="path" value="plugin_data/SimpleSell/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/EnchantRate/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-Economy/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/AduAngSeng/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/MineSweeper/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

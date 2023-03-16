@@ -13,9 +13,10 @@ plugins:
   - Bank
   - BazaarShop
   - DailyReward
-  - EconomyAPI
   - FI-Farms
-  - FI-SkillLevel
   - Mail
-  - EconomyAPI
   - CustomShopUI
+  - INether
+  - Hierarchy
+  - HRKChat
+  - FI-RankPrefix

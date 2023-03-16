@@ -5,6 +5,8 @@
     <file url="file://$PROJECT_DIR$/plugins/Bank/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Bazaar/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/DailyReward/resources/sqlite.sql" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/plugins/FI-Economy/resources/mysql.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/plugins/FI-Economy/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FI-SkillLevel/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FavoriteIsland/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Mail/resources/sqlite.sql" dialect="SQLite" />

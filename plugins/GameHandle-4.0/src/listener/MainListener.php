@@ -25,9 +25,13 @@ use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerJoinEvent;
+use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerQuitEvent;
 use pocketmine\event\player\PlayerRespawnEvent;
+use pocketmine\event\server\DataPacketReceiveEvent;
+use pocketmine\network\mcpe\protocol\LoginPacket;
+use pocketmine\network\mcpe\protocol\ProtocolInfo;
 use pocketmine\player\Player;
 use pocketmine\Server;
 
@@ -240,5 +244,21 @@ class MainListener implements Listener{
 		$lost = round(EconomyAPI::getInstance()->myMoney($event->getPlayer()), 2, PHP_ROUND_HALF_DOWN);
 		EconomyAPI::getInstance()->reduceMoney($event->getPlayer(), $lost);
 		$event->getPlayer()->sendMessage(Lang::translate($event->getPlayer(), TF::gh_died((string)$lost)));
+	}
+
+	/**
+	 * @param DataPacketReceiveEvent $event
+	 * @description Will be remove soon, this is a workaround for PM 4.16.0 bug that
+	 * doesnt allow 1.19.63 client join since the protocol in 1.19.62 work for 1.19.63
+	 *
+	 * @return void
+	 */
+	public function onLogin(DataPacketReceiveEvent $event) : void{
+		$packet = $event->getPacket();
+		if ($packet instanceof LoginPacket){
+			if ($packet->protocol === 568){ //MC 1.19.63
+				$packet->protocol = ProtocolInfo::CURRENT_PROTOCOL;
+			}
+		}
 	}
 }

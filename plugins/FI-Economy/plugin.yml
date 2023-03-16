@@ -1,0 +1,14 @@
+name: FI-Economy
+main: NgLam2911\FiEconomy\FiEconomy
+src-namespace-prefix: NgLam2911\FiEconomy
+version: 0.1_alpha
+api: 4.0.0 # Planned for 5.0
+
+description: Its time to throw EconomyAPI to the trash can, this support multi currency and multi thread systems.
+
+depend:
+  - PlayerDataManager
+
+virions:
+  - libasynql
+  - Commando

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomAddons\customies;
 
+use CustomAddons\customies\minesweeper\FlagItem;
 use CustomAddons\customies\weapons\sword\AspectOfTheEnd;
 use CustomAddons\customies\weapons\sword\GiantSword;
 use CustomAddons\customies\weapons\sword\Hyperion;
@@ -136,5 +137,8 @@ class CustomiesItemManager{
 		CustomiesItemFactory::getInstance()->registerItem(GiantSword::class, "fici:giant_sword", "Giant's Sword");
 		CustomiesItemFactory::getInstance()->registerItem(Hyperion::class, "fici:hyperion", "Hyperion");
 		CustomiesItemFactory::getInstance()->registerItem(LunabyLightstick::class, "fici:lunaby_lightstick", "Lunaby Light Stick");
+
+		//For minesweeper pack
+		CustomiesItemFactory::getInstance()->registerItem(FlagItem::class, "ms:item_flag", "Flag");
 	}
 }

@@ -117,7 +117,6 @@ class SQLProvider{
 
 	/**
 	 * @param Player|PdmPlayer $player
-	 *
 	 * @return Generator<int|null>
 	 */
 	public function removePlayer(Player|PdmPlayer $player) : Generator{

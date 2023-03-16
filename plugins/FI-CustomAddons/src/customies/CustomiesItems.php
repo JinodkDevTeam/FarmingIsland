@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CustomAddons\customies;
 
+use CustomAddons\customies\minesweeper\FlagItem;
 use CustomAddons\customies\weapons\sword\Sword;
 use customiesdevs\customies\item\CustomiesItemFactory;
 use CustomAddons\customies\drill\Drill;
@@ -78,6 +79,8 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static Sword GIANT_SWORD
  * @method static Sword HYPERION()
  * @method static Sword LUNABY_LIGHTSTICK
+ *
+ * @method static FlagItem ITEM_FLAG()
  */
 class CustomiesItems{
 	use CloningRegistryTrait;
@@ -162,5 +165,7 @@ class CustomiesItems{
 		self::register("giant_sword", $factory->get("fici:giant_sword"));
 		self::register("hyperion", $factory->get("fici:hyperion"));
 		self::register("lunaby_lightstick", $factory->get("fici:lunaby_lightstick"));
+
+		self::register("item_flag", $factory->get("ms:item_flag"));
 	}
 }

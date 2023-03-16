@@ -4,21 +4,53 @@ declare(strict_types=1);
 namespace JinodkDevTeam\utils\convert;
 
 use pocketmine\block\Block;
+use pocketmine\block\Concrete;
+use pocketmine\block\ConcretePowder;
+use pocketmine\block\GlazedTerracotta;
+use pocketmine\block\HardenedClay;
+use pocketmine\block\StainedHardenedClay;
+use pocketmine\block\utils\CoralType;
+use pocketmine\block\utils\DyeColor;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\block\Wool;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
 class SimpleItemNameConvertor{
 	protected static array $members = [];
+	protected static array $items = [];
 
 	protected static function map(Item $item, string $name) : void{
 		self::$members[$item->getId() . ":" . $item->getMeta()] = $name;
+		self::$items[$name] = $item;
 		//Will replace with Runtime ID in PM5
 	}
 
 	protected static function mapBlock(Block $block, string $name) : void{
 		$item = $block->asItem();
 		self::$members[$item->getId() . ":" . $item->getMeta()] = $name;
+		self::$items[$name] = $item;
+		//Will replace with Runtime ID in PM5
+	}
+
+	/**
+	 * @param Wool|Concrete|ConcretePowder|StainedHardenedClay $block
+	 * @param string                                           $name
+	 *
+	 * @return void
+	 */
+	protected static function mapColorBlock(Wool|Concrete|ConcretePowder|StainedHardenedClay $block, string $name) : void{
+		foreach(DyeColor::getAll() as $color){
+			$block->setColor($color);
+			DyeColor::LIGHT_GRAY();
+			$color_name = strtolower($color->getDisplayName());
+			if($color_name == "light gray"){
+				$color_name = "silver"; //FUCK MOJANG
+			}elseif($color_name == "light blue"){
+				$color_name = "light_blue";
+			}
+			self::mapBlock($block, $name . "_" . $color_name);
+		}
 		//Will replace with Runtime ID in PM5
 	}
 
@@ -197,6 +229,56 @@ class SimpleItemNameConvertor{
 		self::mapBlock(VanillaBlocks::ELEMENT_ZERO(), "element_zero");
 		self::mapBlock(VanillaBlocks::ELEMENT_ZINC(), "element_zinc");
 		self::mapBlock(VanillaBlocks::ELEMENT_ZIRCONIUM(), "element_zirconium");
+
+		//Textures names
+		self::mapBlock(VanillaBlocks::MOSSY_COBBLESTONE(), "cobblestone_mossy");
+		self::mapBlock(VanillaBlocks::CORAL_BLOCK()->setCoralType(CoralType::TUBE()), "coral_blue");
+		self::mapBlock(VanillaBlocks::CORAL_BLOCK()->setCoralType(CoralType::BRAIN()), "coral_pink");
+		self::mapBlock(VanillaBlocks::CORAL_BLOCK()->setCoralType(CoralType::BUBBLE()), "coral_purple");
+		self::mapBlock(VanillaBlocks::CORAL_BLOCK()->setCoralType(CoralType::FIRE()), "coral_red");
+		self::mapBlock(VanillaBlocks::CORAL_BLOCK()->setCoralType(CoralType::HORN()), "coral_yellow");
+		self::mapBlock(VanillaBlocks::ACACIA_LOG(), "log_acacia");
+		self::mapBlock(VanillaBlocks::DARK_OAK_LOG(), "log_big_oak");
+		self::mapBlock(VanillaBlocks::BIRCH_LOG(), "log_birch");
+		self::mapBlock(VanillaBlocks::JUNGLE_LOG(), "log_jungle");
+		self::mapBlock(VanillaBlocks::OAK_LOG(), "log_oak");
+		self::mapBlock(VanillaBlocks::SPRUCE_LOG(), "log_spruce");
+		self::mapBlock(VanillaBlocks::NETHER_BRICKS(), "nether_brick");
+		self::mapBlock(VanillaBlocks::ACACIA_PLANKS(), "planks_acacia");
+		self::mapBlock(VanillaBlocks::DARK_OAK_PLANKS(), "planks_big_oak");
+		self::mapBlock(VanillaBlocks::BIRCH_PLANKS(), "planks_birch");
+		self::mapBlock(VanillaBlocks::JUNGLE_PLANKS(), "planks_jungle");
+		self::mapBlock(VanillaBlocks::OAK_PLANKS(), "planks_oak");
+		self::mapBlock(VanillaBlocks::SPRUCE_PLANKS(), "planks_spruce");
+		self::mapBlock(VanillaBlocks::DARK_PRISMARINE(), "prismarine_dark");
+		self::mapBlock(VanillaBlocks::ANDESITE(), "stone_andesite");
+		self::mapBlock(VanillaBlocks::POLISHED_ANDESITE(), "stone_andesite_smooth");
+		self::mapBlock(VanillaBlocks::DIORITE(), "stone_diorite");
+		self::mapBlock(VanillaBlocks::POLISHED_DIORITE(), "stone_diorite_smooth");
+		self::mapBlock(VanillaBlocks::GRANITE(), "stone_granite");
+		self::mapBlock(VanillaBlocks::POLISHED_GRANITE(), "stone_granite_smooth");
+
+		self::mapBlock(VanillaBlocks::BLACK_GLAZED_TERRACOTTA(), "glazed_terracotta_black");
+		self::mapBlock(VanillaBlocks::BLUE_GLAZED_TERRACOTTA(), "glazed_terracotta_blue");
+		self::mapBlock(VanillaBlocks::BROWN_GLAZED_TERRACOTTA(), "glazed_terracotta_brown");
+		self::mapBlock(VanillaBlocks::CYAN_GLAZED_TERRACOTTA(), "glazed_terracotta_cyan");
+		self::mapBlock(VanillaBlocks::GRAY_GLAZED_TERRACOTTA(), "glazed_terracotta_gray");
+		self::mapBlock(VanillaBlocks::GREEN_GLAZED_TERRACOTTA(), "glazed_terracotta_green");
+		self::mapBlock(VanillaBlocks::LIGHT_BLUE_GLAZED_TERRACOTTA(), "glazed_terracotta_light_blue");
+		self::mapBlock(VanillaBlocks::LIME_GLAZED_TERRACOTTA(), "glazed_terracotta_lime");
+		self::mapBlock(VanillaBlocks::MAGENTA_GLAZED_TERRACOTTA(), "glazed_terracotta_magenta");
+		self::mapBlock(VanillaBlocks::ORANGE_GLAZED_TERRACOTTA(), "glazed_terracotta_orange");
+		self::mapBlock(VanillaBlocks::PINK_GLAZED_TERRACOTTA(), "glazed_terracotta_pink");
+		self::mapBlock(VanillaBlocks::PURPLE_GLAZED_TERRACOTTA(), "glazed_terracotta_purple");
+		self::mapBlock(VanillaBlocks::RED_GLAZED_TERRACOTTA(), "glazed_terracotta_red");
+		self::mapBlock(VanillaBlocks::LIGHT_GRAY_GLAZED_TERRACOTTA(), "glazed_terracotta_silver");
+		self::mapBlock(VanillaBlocks::WHITE_GLAZED_TERRACOTTA(), "glazed_terracotta_white");
+		self::mapBlock(VanillaBlocks::YELLOW_GLAZED_TERRACOTTA(), "glazed_terracotta_yellow");
+
+		self::mapColorBlock(VanillaBlocks::CONCRETE(), "concrete");
+		self::mapColorBlock(VanillaBlocks::CONCRETE_POWDER(), "concrete_powder");
+		self::mapColorBlock(VanillaBlocks::WOOL(), "wool_colored");
+		self::mapColorBlock(VanillaBlocks::STAINED_CLAY(), "hardened_clay_stained");
 	}
 
 	protected static function checkInit() : void{
@@ -209,6 +291,14 @@ class SimpleItemNameConvertor{
 		self::checkInit();
 		if(isset(self::$members[$item->getId() . ":" . $item->getMeta()])){
 			return self::$members[$item->getId() . ":" . $item->getMeta()];
+		}
+		return null;
+	}
+
+	public static function fromString(string $name) : ?Item{
+		self::checkInit();
+		if(isset(self::$items[$name])){
+			return self::$items[$name];
 		}
 		return null;
 	}
