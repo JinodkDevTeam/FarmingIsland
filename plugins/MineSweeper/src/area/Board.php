@@ -81,6 +81,12 @@ class Board{
 		if ($this->startPos === null){
 			return;
 		}
+		//Refesh
+		for($i = 0; $i < $this->width; $i++){
+			for($j = 0; $j < $this->height; $j++){
+				$this->tiles[$i][$j] = TileInfo::UNOPENED();
+			}
+		}
 		if ($this->hasSafeArea()){
 			for ($i = $this->startPos->getX() - 1; $i <= $this->startPos->getX() + 1; $i++){
 				for ($j = $this->startPos->getY() - 1; $j <= $this->startPos->getY() + 1; $j++){

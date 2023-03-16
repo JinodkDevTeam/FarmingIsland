@@ -199,6 +199,9 @@ class Area{
 		}
 		switch($item->getId()){
 			case VanillaItems::IRON_SHOVEL()->getId():
+				if($this->getBoard()->getStartPos() === null){
+					$this->onGameStart();
+				}
 				$this->getBoard()->interact(new Vector2($pos->getFloorX(), $pos->getFloorZ()),
 					false, $session->isAutoFlag(), $session->isAutoExplode(), $session->isRecursiveExplode());
 				break;
@@ -206,9 +209,6 @@ class Area{
 				$this->getBoard()->interact(new Vector2($pos->getFloorX(), $pos->getFloorZ()),
 					true, $session->isAutoFlag(), $session->isAutoExplode(), $session->isRecursiveExplode());
 				break;
-		}
-		if($this->getBoard()->getStartPos() !== null){
-			$this->onGameStart();
 		}
 		if($this->getBoard()->isGameOver()){
 			$this->onGameover();
