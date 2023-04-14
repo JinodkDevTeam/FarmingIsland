@@ -3,20 +3,6 @@
 #List behaviour
 # - blacklist: Only plugins which ARE NOT listed will load.
 # - whitelist: Only plugins which ARE listed will load.
-mode: blacklist
+mode: whitelist
 #List names of plugins here.
-plugins:
-  - PickaxeLevel
-  - WorldStyler
-  - FI-ShopUI
-  - Backpack
-  - Bank
-  - BazaarShop
-  - DailyReward
-  - FI-Farms
-  - Mail
-  - CustomShopUI
-  - INether
-  - Hierarchy
-  - HRKChat
-  - FI-RankPrefix
+plugins: []

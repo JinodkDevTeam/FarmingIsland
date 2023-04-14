@@ -1,2 +1,3 @@
 # FarmingIsland
-FarmingIslandServer files run on PocketMine-MP 4.0+
+FarmingIslandServer files run on PocketMine-MP
+I dont know how to write more thing to this ...
