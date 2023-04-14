@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/tests/phpstan/rules" isTestSource="true" packagePrefix="pocketmine\phpstan\rules\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests/phpunit" isTestSource="true" packagePrefix="pocketmine\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="pocketmine\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/EnchantRate/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/FartBattle-main/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/PiggyCustomEnchants/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/PointAPI-Master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/Testentity/src" isTestSource="false" packagePrefix="TestPlugin" />
+      <sourceFolder url="file://$MODULE_DIR$/internal_plugin/WorldStyler-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Backpack/src" isTestSource="false" packagePrefix="Backpack" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Bank/src" isTestSource="false" packagePrefix="Bank" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Bazaar/src" isTestSource="false" packagePrefix="Bazaar" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/BetterVoting/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/BlockPets-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/ClearLagg-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/CrashReader/src" isTestSource="false" packagePrefix="CrashReader" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/CustomAlerts-4.0.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/CustomBreakTimeAPI/CustomBreakTimeExample/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/EconomyAPI-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-CustomAddons/src" isTestSource="false" packagePrefix="CustomAddons" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-FishingModule/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-Lang/src" isTestSource="false" packagePrefix="FILang" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-Protect/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-RankPrefix/src" isTestSource="false" packagePrefix="RankPrefix" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-ShopUI/src" isTestSource="false" packagePrefix="ShopUI" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FI-SkillLevel/src" isTestSource="false" packagePrefix="SkillLevel" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Farm/src" isTestSource="false" packagePrefix="Farms" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FarmingIslandScore/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/FavoriteIsland/src" isTestSource="false" packagePrefix="FavoriteIslands" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/HRKChat-PM4/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Hierarchy-PM4/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/InvCraft/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Island-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/IslandMaker/src" isTestSource="false" packagePrefix="IslandMaker" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/LMAO/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/MOTDShuffle/src" isTestSource="false" packagePrefix="MOTDShuffle" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/Mail/src" isTestSource="false" packagePrefix="Mail" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/NameSpaceRemover-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/PlayerAuto-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/ResourcePackEncryption-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/plugins/refAddonsManager/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/Commando/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/ConfigUpdater-PM4/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/FI-Utils/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/FormAPI-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/InvMenu-4.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/SimplePacketHandler-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/UpdateNotifier-API-4.0.0/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/libasyneco/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/libnbs-master/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/virions/pmforms-master/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/dataSources" />
+      <excludeFolder url="file://$MODULE_DIR$/memory_dumps/Sat_May_15-13.56.41-WIB_2021" />
+      <excludeFolder url="file://$MODULE_DIR$/plugins/ExplosiveSnowball/src" />
+      <excludeFolder url="file://$MODULE_DIR$/plugins/MyPlot-API4/.github/ISSUE_TEMPLATE" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/Game" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/islandtest" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/nether" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/NetherTest" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/php7" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/SurTest" />
+      <excludeFolder url="file://$MODULE_DIR$/worlds/world" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
