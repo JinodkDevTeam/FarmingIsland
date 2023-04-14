@@ -1,9 +1,9 @@
 This snapshot was automatically generated on
-Fri, 20 Jan 2023 01:42:37 +0000
+Sat, 25 Mar 2023 19:24:03 +0000
 
-Version: 8.0.27
+Version: 8.2.4
 Branch: HEAD
-Build: D:\a\php-build-scripts\php-build-scripts\pocketmine-php-sdk\php-src\x64\Release_TS
+Build: D:\a\PHP-Binaries\PHP-Binaries\pocketmine-php-sdk\php-src\x64\Release_TS
 
 Built-in Extensions
 ===========================
@@ -46,20 +46,20 @@ mysqli
 Dependency information:
 Module: php8ts.dll
 ===========================
-	libcrypto-1_1-x64.dll
-	libssl-1_1-x64.dll
+	libcrypto-3-x64.dll
+	libssl-3-x64.dll
 	libssh2.dll
 	nghttp2.dll
 	libsodium.dll
 	yaml.dll
 
-Module: libssl-1_1-x64.dll
+Module: libssl-3-x64.dll
 ===========================
-	libcrypto-1_1-x64.dll
+	libcrypto-3-x64.dll
 
 Module: libssh2.dll
 ===========================
-	libcrypto-1_1-x64.dll
+	libcrypto-3-x64.dll
 
 Module: php_chunkutils2.dll
 ===========================
@@ -71,12 +71,12 @@ Module: php_leveldb.dll
 
 Module: php_libdeflate.dll
 ===========================
-	libdeflate.dll
+	deflate.dll
 
 Module: php_openssl.dll
 ===========================
-	libcrypto-1_1-x64.dll
-	libssl-1_1-x64.dll
+	libcrypto-3-x64.dll
+	libssl-3-x64.dll
 
 Module: php_sqlite3.dll
 ===========================
@@ -84,7 +84,7 @@ Module: php_sqlite3.dll
 
 Module: php_crypto.dll
 ===========================
-	libcrypto-1_1-x64.dll
+	libcrypto-3-x64.dll
 
 Module: php_pthreads.dll
 ===========================
