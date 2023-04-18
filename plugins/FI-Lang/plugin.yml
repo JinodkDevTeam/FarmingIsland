@@ -1,6 +1,12 @@
 name: FI-Lang
 version: 0.0.1
 main: FILang\FILang
-api: 4.0.0
+api:
+  - 4.0.0
+  - 5.0.0
 author: JinodkDevTeam
 src-namespace-prefix: FILang
+
+permissions:
+  filang.command:
+    default: true

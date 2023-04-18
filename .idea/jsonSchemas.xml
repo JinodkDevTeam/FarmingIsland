@@ -165,6 +165,9 @@
                   <Item>
                     <option name="path" value="plugins/MineSweeper/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FI-Lang/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

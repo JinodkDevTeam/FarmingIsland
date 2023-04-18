@@ -42,7 +42,7 @@ class QueryRecvQueue extends ThreadedBase{
 	 */
 	public function publishResult(int $queryId, array $results) : void{
 		$this->synchronized(function() use ($queryId, $results) : void{
-			$this[] = serialize([$queryId, $results]);
+			$this->queue[] = serialize([$queryId, $results]);
 			$this->notify();
 		});
 	}

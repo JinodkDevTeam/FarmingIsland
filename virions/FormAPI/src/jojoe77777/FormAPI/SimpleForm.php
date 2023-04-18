@@ -12,9 +12,9 @@ class SimpleForm extends Form {
     const IMAGE_TYPE_URL = 1;
 
     /** @var string */
-    private $content = "";
+    private string $content = "";
 
-    private $labelMap = [];
+    private array $labelMap = [];
 
     /**
      * @param callable|null $callable
@@ -68,12 +68,12 @@ class SimpleForm extends Form {
         $this->data["content"] = $content;
     }
 
-    /**
-     * @param string $text
-     * @param int $imageType
-     * @param string $imagePath
-     * @param string $label
-     */
+	/**
+	 * @param string      $text
+	 * @param int         $imageType
+	 * @param string      $imagePath
+	 * @param string|null $label
+	 */
     public function addButton(string $text, int $imageType = -1, string $imagePath = "", ?string $label = null) : void {
         $content = ["text" => $text];
         if($imageType !== -1) {

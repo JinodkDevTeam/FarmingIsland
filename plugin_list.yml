@@ -8,3 +8,6 @@ mode: whitelist
 plugins:
   - DevTools
   - DEVirion
+  - FI-Lang
+  # - Mail Need FI-CustomAddons
+  - PlayerDataManager

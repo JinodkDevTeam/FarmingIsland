@@ -18,10 +18,11 @@ class FILangCommand extends Command implements PluginOwned{
 	public function __construct(Translatable|string $description = "", Translatable|string|null $usageMessage = null, array $aliases = []){
 		$this->setDescription("Change your language");
 		$this->setAliases(["lang"]);
+		$this->setPermission("filang.command");
 		parent::__construct("filang", $description, $usageMessage, $aliases);
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if ($sender instanceof Player){
 			$this->form($sender);
 		} else {
