@@ -5,4 +5,6 @@
 # - whitelist: Only plugins which ARE listed will load.
 mode: whitelist
 #List names of plugins here.
-plugins: []
+plugins:
+  - DevTools
+  - DEVirion
