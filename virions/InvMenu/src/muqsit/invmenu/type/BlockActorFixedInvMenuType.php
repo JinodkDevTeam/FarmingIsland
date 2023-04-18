@@ -7,16 +7,19 @@ namespace muqsit\invmenu\type;
 use muqsit\invmenu\inventory\InvMenuInventory;
 use muqsit\invmenu\InvMenu;
 use muqsit\invmenu\type\graphic\BlockActorInvMenuGraphic;
+use muqsit\invmenu\type\graphic\BlockInvMenuGraphic;
 use muqsit\invmenu\type\graphic\InvMenuGraphic;
 use muqsit\invmenu\type\graphic\MultiBlockInvMenuGraphic;
 use muqsit\invmenu\type\graphic\network\InvMenuGraphicNetworkTranslator;
 use muqsit\invmenu\type\util\InvMenuTypeHelper;
 use pocketmine\block\Block;
-use pocketmine\block\tile\Chest;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\inventory\Inventory;
+use pocketmine\math\Facing;
 use pocketmine\player\Player;
+use function count;
 
-final class DoublePairableBlockActorFixedInvMenuType implements FixedInvMenuType{
+final class BlockActorFixedInvMenuType implements FixedInvMenuType{
 
 	public function __construct(
 		private Block $block,
@@ -31,26 +34,15 @@ final class DoublePairableBlockActorFixedInvMenuType implements FixedInvMenuType
 	}
 
 	public function createGraphic(InvMenu $menu, Player $player) : ?InvMenuGraphic{
-		$origin = $player->getPosition()->addVector(InvMenuTypeHelper::getBehindPositionOffset($player))->floor();
+		$position = $player->getPosition();
+		$origin = $position->addVector(InvMenuTypeHelper::getBehindPositionOffset($player))->floor();
 		if(!InvMenuTypeHelper::isValidYCoordinate($origin->y)){
 			return null;
 		}
 
-		$graphics = [];
-		$menu_name = $menu->getName();
-		foreach([
-			[$origin, $origin->east()],
-			[$origin->east(), $origin]
-		] as [$origin_pos, $pair_pos]){
-			$graphics[] = new BlockActorInvMenuGraphic(
-				$this->block,
-				$origin_pos,
-				BlockActorInvMenuGraphic::createTile($this->tile_id, $menu_name)
-					->setInt(Chest::TAG_PAIRX, $pair_pos->x)
-					->setInt(Chest::TAG_PAIRZ, $pair_pos->z),
-				$this->network_translator,
-				$this->animation_duration
-			);
+		$graphics = [new BlockActorInvMenuGraphic($this->block, $origin, BlockActorInvMenuGraphic::createTile($this->tile_id, $menu->getName()), $this->network_translator, $this->animation_duration)];
+		foreach(InvMenuTypeHelper::findConnectedBlocks("Chest", $position->getWorld(), $origin, Facing::HORIZONTAL) as $side){
+			$graphics[] = new BlockInvMenuGraphic(VanillaBlocks::BARRIER(), $side);
 		}
 
 		return count($graphics) > 1 ? new MultiBlockInvMenuGraphic($graphics) : $graphics[0];
