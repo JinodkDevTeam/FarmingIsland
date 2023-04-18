@@ -24,12 +24,18 @@ namespace poggit\libasynql\base;
 
 use poggit\libasynql\SqlError;
 use poggit\libasynql\SqlResult;
-use Threaded;
+use ThreadedBase;
+use ThreadedArray;
 use function is_string;
 use function serialize;
 use function unserialize;
 
-class QueryRecvQueue extends Threaded{
+class QueryRecvQueue extends ThreadedBase{
+	private ThreadedArray $queue;
+
+	public function __construct(){
+		$this->queue = new ThreadedArray();
+	}
 
 	/**
 	 * @param SqlResult[] $results
@@ -43,13 +49,13 @@ class QueryRecvQueue extends Threaded{
 
 	public function publishError(int $queryId, SqlError $error) : void{
 		$this->synchronized(function() use ($error, $queryId) : void{
-			$this[] = serialize([$queryId, $error]);
+			$this->queue[] = serialize([$queryId, $error]);
 			$this->notify();
 		});
 	}
 
 	public function fetchResults(&$queryId, &$results) : bool{
-		if(is_string($row = $this->shift())){
+		if(is_string($row = $this->queue->shift())){
 			[$queryId, $results] = unserialize($row, ["allowed_classes" => true]);
 			return true;
 		}
@@ -57,7 +63,7 @@ class QueryRecvQueue extends Threaded{
 	}
 
 	/**
-	 * @return list<array{int, SqlError|SqlResults[]|null}>
+	 * @return list<array{int, SqlError|SqlResult[]|null}>
 	 */
 	public function fetchAllResults(): array{
 		return $this->synchronized(function(): array{
@@ -70,7 +76,7 @@ class QueryRecvQueue extends Threaded{
 	}
 
 	/**
-	 * @return list<array{int, SqlError|SqlResults[]|null}>
+	 * @return list<array{int, SqlError|SqlResult[]|null}>
 	 */
 	public function waitForResults(int $expectedResults): array{
 		return $this->synchronized(function() use ($expectedResults) : array{

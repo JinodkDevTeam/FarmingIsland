@@ -5,7 +5,6 @@ namespace JinodkDevTeam\utils;
 
 use CustomAddons\item\CustomItems;
 use Exception;
-use JinodkDevTeam\utils\convert\SimpleItemNameConvertor;
 use pocketmine\inventory\Inventory;
 use pocketmine\item\Item;
 use pocketmine\item\StringToItemParser;
@@ -29,23 +28,7 @@ class ItemUtils{
 	public static function toId(Item $item): string{
 		$nbt = $item->getNamedTag();
 		if ($nbt->getTag("CustomItemID") == null){
-			try{
-				return self::simpleItemMapping($item);
-			}catch(RuntimeException){
-				$name = SimpleItemNameConvertor::convert($item);
-				if (is_null($name)){
-					throw new RuntimeException("Cant parse item " . $item->getVanillaName() . "->" . $name);
-				}
-				//Verify
-				$nitem = StringToItemParser::getInstance()->parse($name);
-				if (is_null($nitem)){
-					throw new RuntimeException("Cant able to get item from parsed string ! "  . $item->getVanillaName() . "->" . $name);
-				}
-				if (!$item->canStackWith($nitem)){
-					throw new RuntimeException("Item parsed success but can't stack with original ..."   . $item->getVanillaName() . "->" . $name);
-				}
-				return $name;
-			}
+			return self::vanillaItemMapping($item);
 		}
 		$namespaceid = (string)$nbt->getTag("CustomItemID")->getValue();
 		//Verify
@@ -62,10 +45,12 @@ class ItemUtils{
 	 * @return string
 	 * @throws RuntimeException
 	 */
-	public static function simpleItemMapping(Item $item) : string{
-		$item_name = $item->getVanillaName();
-		$item_name = strtolower($item_name);
-		$item_name = str_replace(" ", "_", $item_name);
+	public static function vanillaItemMapping(Item $item) : string{
+		$item_aliases = StringToItemParser::getInstance()->lookupAliases($item);
+		if (empty($item_aliases)){
+			throw new RuntimeException("Item name not found ! " . $item->getVanillaName());
+		}
+		$item_name = $item_aliases[0]; //First one is the best one
 		$nitem = StringToItemParser::getInstance()->parse($item_name);
 		if (is_null($nitem)){
 			//I haz no idea about this...
@@ -146,12 +131,12 @@ class ItemUtils{
 
 	public static function toString(Item $item): string{
 		$nbt = $item->nbtSerialize();
-		return utf8_encode(serialize($nbt));
+		return mb_convert_encoding(serialize($nbt), 'UTF-8');
 	}
 
 	public static function fromString(string $string): ?Item{
 		try{
-			return Item::nbtDeserialize(unserialize(utf8_decode($string)));
+			return Item::nbtDeserialize(unserialize(mb_convert_encoding($string, 'ISO-8859-1')));
 		}catch(Exception){
 			return null;
 		}
@@ -193,7 +178,7 @@ class ItemUtils{
 		foreach($items as $item){
 			$data[] = $item->nbtSerialize();
 		}
-		return utf8_encode(serialize($data));
+		return mb_convert_encoding(serialize($data), 'UTF-8');
 	}
 
 	/**
@@ -203,7 +188,7 @@ class ItemUtils{
 	 */
 	public static function string2ItemArray(string $data): array{
 		if ($data == "") return [];
-		$array = unserialize(utf8_decode($data));
+		$array = unserialize(mb_convert_encoding($data, 'ISO-8859-1'));
 		$items = [];
 		foreach($array as $nbt){
 			$items[] = Item::nbtDeserialize($nbt);
