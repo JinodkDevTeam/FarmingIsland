@@ -11,8 +11,6 @@ virion:
   - await-generator
   - FI-Utils
   - InvMenu
-depend:
-  - FI-CustomAddons
 
 permissions:
   mail.command:
