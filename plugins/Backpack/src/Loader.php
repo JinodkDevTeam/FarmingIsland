@@ -34,7 +34,7 @@ class Loader extends PluginBase{
 
 	public function addBackpackSlot(Player $player) : void{
 		Await::f2c(function() use ($player){
-			$data = yield $this->getProvider()->selectPlayer($player);
+			$data = yield from $this->getProvider()->selectPlayer($player);
 			$this->getProvider()->register($player, count($data));
 		});
 	}

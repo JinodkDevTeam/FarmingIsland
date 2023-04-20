@@ -28,7 +28,7 @@ class BackpackCommand extends Command implements PluginOwned{
 		return $this->loader;
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if ($sender instanceof Player){
 			new BackpackManagerUI($this->getLoader(), $sender);
 		} else {
