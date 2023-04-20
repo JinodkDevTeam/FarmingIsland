@@ -13,6 +13,7 @@ plugins/ExplosiveSnowball/*
 plugins/FartBattle-main/*
 plugins/PickaxeLevel/*
 plugins/Testentity/*
+plugins/MineralUI/*
 plugin_data/Backpack/backpack.sqlite
 plugin_data/Bank/bank.db
 plugin_data/BazaarShop/bazaardata.sqlite
