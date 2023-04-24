@@ -10,7 +10,6 @@
     <file url="file://$PROJECT_DIR$/plugins/FI-SkillLevel/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/FavoriteIsland/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/Mail/resources/sqlite.sql" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/plugins/MineralUI/resources/sqlite.sql" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/plugins/PlayerDataManager/resources/mysql.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/plugins/PlayerDataManager/resources/sqlite.sql" dialect="SQLite" />
   </component>

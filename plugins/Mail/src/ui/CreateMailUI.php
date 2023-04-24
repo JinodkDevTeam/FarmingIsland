@@ -65,7 +65,7 @@ class CreateMailUI extends BaseUI{
 			foreach($inventory->getContents() as $item){
 				$items[] = $item;
 			}
-			$data = ItemUtils::ItemArray2string($items);
+			$data = bin2hex(ItemUtils::itemArray2binString($items));
 			Await::f2c(function() use ($player, $to, $title, $message, $data){
 				yield $this->getLoader()->getProvider()->sendMail($this->getUsername(), $to, $title, $message, $data);
 				$player->sendMessage(Lang::translate($player, TF::mail_create_success()));

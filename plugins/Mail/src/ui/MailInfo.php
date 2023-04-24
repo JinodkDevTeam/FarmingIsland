@@ -35,7 +35,7 @@ class MailInfo extends BaseUI{
 			if($this->mode == self::TO){
 				$this->getLoader()->getProvider()->updateIsRead($mail->getId(), true);
 			}
-			$items = ItemUtils::string2ItemArray($mail->getItems());
+			$items = ItemUtils::binString2itemArray(hex2bin($mail->getItems()));
 			$form = new SimpleForm(function(Player $player, ?int $data) use ($mail){
 				if(!isset($data)) return;
 				switch($data){
@@ -90,7 +90,7 @@ class MailInfo extends BaseUI{
 			$player->sendMessage(Lang::translate($player, TF::mail_claim_fail_already()));
 			return;
 		}
-		$items = ItemUtils::string2ItemArray($mail->getItems());
+		$items = ItemUtils::binString2itemArray(hex2bin($mail->getItems()));
 		$empty = $player->getInventory()->getSize() - count($player->getInventory()->getContents());
 		if($empty > count($items)){
 			foreach($items as $item){
@@ -102,7 +102,7 @@ class MailInfo extends BaseUI{
 		}
 	}
 
-	public function delete(Player $player, Mail $mail){
+	public function delete(Player $player, Mail $mail) : void{
 		$message = Lang::translate($player, TF::mail_ui_delete_content_claimed());
 		if (($this->mode == self::TO) and (!$mail->isClaimed())){
 			$message = Lang::translate($player, TF::mail_ui_delete_content_unclaimed());

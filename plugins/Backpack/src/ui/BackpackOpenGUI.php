@@ -32,9 +32,9 @@ class BackpackOpenGUI extends BaseUI{
 			$data = $data[0];
 			$menu = InvMenu::create(InvMenuTypeIds::TYPE_DOUBLE_CHEST);
 			$menu->setName(FILang::translate($player, TranslationFactory::backpack_gui_name((string)$this->slot)));
-			$menu->getInventory()->setContents(ItemUtils::string2ItemArray($data["Data"]));
+			$menu->getInventory()->setContents(ItemUtils::binString2itemArray(hex2bin($data["Data"])));
 			$menu->setInventoryCloseListener(function(Player $player, Inventory $inventory){
-				$data = ItemUtils::ItemArray2string($inventory->getContents(true));
+				$data = bin2hex(ItemUtils::itemArray2binString($inventory->getContents(true)));
 				$this->getLoader()->getProvider()->update($player, $this->slot, $data);
 			});
 			$menu->send($player);
