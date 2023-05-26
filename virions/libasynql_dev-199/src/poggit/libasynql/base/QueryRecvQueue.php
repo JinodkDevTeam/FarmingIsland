@@ -22,19 +22,19 @@ declare(strict_types=1);
 
 namespace poggit\libasynql\base;
 
+use pmmp\thread\ThreadSafe;
+use pmmp\thread\ThreadSafeArray;
 use poggit\libasynql\SqlError;
 use poggit\libasynql\SqlResult;
-use ThreadedBase;
-use ThreadedArray;
 use function is_string;
 use function serialize;
 use function unserialize;
 
-class QueryRecvQueue extends ThreadedBase{
-	private ThreadedArray $queue;
+class QueryRecvQueue extends ThreadSafe{
+	private ThreadSafeArray $queue;
 
 	public function __construct(){
-		$this->queue = new ThreadedArray();
+		$this->queue = new ThreadSafeArray();
 	}
 
 	/**

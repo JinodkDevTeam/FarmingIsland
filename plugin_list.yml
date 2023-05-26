@@ -9,6 +9,5 @@ plugins:
   - DevTools
   - DEVirion
   - FI-Lang
-  - Mail Need FI-CustomAddons
-  - PlayerDataManager
-  - Backpack
+  #- Mail Need FI-CustomAddons
+  #- PlayerDataManager

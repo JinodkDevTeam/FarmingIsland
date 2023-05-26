@@ -1,7 +1,7 @@
 This snapshot was automatically generated on
-Sat, 25 Mar 2023 19:24:03 +0000
+Thu, 25 May 2023 14:56:53 +0000
 
-Version: 8.2.4
+Version: 8.2.6
 Branch: HEAD
 Build: D:\a\PHP-Binaries\PHP-Binaries\pocketmine-php-sdk\php-src\x64\Release_TS
 
@@ -86,7 +86,7 @@ Module: php_crypto.dll
 ===========================
 	libcrypto-3-x64.dll
 
-Module: php_pthreads.dll
+Module: php_pmmpthread.dll
 ===========================
 	pthreadvc3.dll
 
