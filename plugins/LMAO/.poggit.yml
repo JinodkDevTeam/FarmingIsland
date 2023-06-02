@@ -1,15 +1,14 @@
 --- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/NgLam2911/LMAO
 build-by-default: true
 branches:
-- main
+  - main
 projects:
   LMAO:
     path: ""
     icon: "icon.png"
     libs:
-      - src: CortexPE/Commando/Commando
-        version: ^3.0.0
-        branch: PM4
+      - src: JinodkDevTeam/Commando/Commando
+        version: ^3.2.0
       - src: thebigsmilexd/libnbs/libnbs
         version: ^4.1.0
     lint:
