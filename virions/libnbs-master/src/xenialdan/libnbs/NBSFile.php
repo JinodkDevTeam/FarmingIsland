@@ -75,7 +75,7 @@ class NBSFile
             $file->rewind();
             //TODO test
             $fread = $file->fread($file->getSize());
-            if ($fread === false) throw new \StringOutOfBoundsException("Could not read file $path");
+            if ($fread === false) throw new \InvalidArgumentException("Could not read file $path");
             $binaryStream = new NBSBinaryStream($fread);
 
             $file = null;

@@ -9,5 +9,7 @@ plugins:
   - DevTools
   - DEVirion
   - FI-Lang
-  #- Mail Need FI-CustomAddons
-  #- PlayerDataManager
+  - Mail #Need FI-CustomAddons
+  - PlayerDataManager
+  - MOTDShuffle
+  - InvSee

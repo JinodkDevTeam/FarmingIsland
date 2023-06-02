@@ -2,19 +2,6 @@ name: UpdateNotifier
 version: 2.2.0
 api:
   - 4.0.0
-  - 4.0.0-BETA1
-  - 4.0.0-BETA2
-  - 4.0.0-BETA3
-  - 4.0.4-BETA4
-  - 4.0.0-BETA5
-  - 4.0.0-BETA6
-  - 4.0.0-BETA7
-  - 4.0.0-BETA8
-  - 4.0.0-BETA9
-  - 4.0.0-BETA10
-  - 4.0.0-BETA11
-  - 4.0.0-BETA12
-  - 4.0.0-BETA13
-  - 4.0.0-BETA14
+  - 5.0.0
 antigen: JackMD\UpdateNotifier
 authors: [JackMD, Sandertv]

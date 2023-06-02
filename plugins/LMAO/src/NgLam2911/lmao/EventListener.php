@@ -57,7 +57,7 @@ class EventListener implements Listener{
 	 * @priority LOW
 	 * @handleCancelled FALSE
 	 */
-	public function onPlace(BlockPlaceEvent $event){
+	public function onPlace(BlockPlaceEvent $event) : void{
 		$player = $event->getPlayer();
 		$session = Lmao::getInstance()->getSessionManager()->getSession($player);
 		if (is_null($session)){
@@ -73,7 +73,7 @@ class EventListener implements Listener{
 	 * @priority LOW
 	 * @handleCancelled FALSE
 	 */
-	public function onPickup(EntityItemPickupEvent $event){
+	public function onPickup(EntityItemPickupEvent $event) : void{
 		$entity = $event->getEntity();
 		if (!$entity instanceof Player){
 			return;
@@ -91,7 +91,7 @@ class EventListener implements Listener{
 	 * @param PlayerRespawnEvent $event
 	 * @priority LOW
 	 */
-	public function onRespawn(PlayerRespawnEvent $event){
+	public function onRespawn(PlayerRespawnEvent $event) : void{
 		$session = Lmao::getInstance()->getSessionManager()->getSession($event->getPlayer());
 		if (is_null($session)){
 			return;
@@ -109,7 +109,7 @@ class EventListener implements Listener{
 	 *
 	 * @return void
 	 */
-	public function onInteract(PlayerInteractEvent $event){
+	public function onInteract(PlayerInteractEvent $event) : void{
 		$player = $event->getPlayer();
 		$block = $event->getBlock();
 		if (!$block->getPosition()->getWorld()->getTile($block->getPosition()) instanceof ChestTile){

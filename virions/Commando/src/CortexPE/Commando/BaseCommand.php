@@ -227,7 +227,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 		return $this->constraints;
 	}
 
-	public function getUsageMessage(): string {
+	public function getUsageMessage(): string{
 		return $this->getUsage();
 	}
 }
