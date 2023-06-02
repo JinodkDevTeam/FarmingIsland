@@ -62,5 +62,3 @@ permissions:
     default: op
   lmao.infinitedeath:
     default: op
-  lmao.silentchest:
-    default: op

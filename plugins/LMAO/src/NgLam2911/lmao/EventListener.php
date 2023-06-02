@@ -102,30 +102,4 @@ class EventListener implements Listener{
 			}), 3);
 		}
 	}
-
-	/**
-	 * @param PlayerInteractEvent $event
-	 * @priority LOWEST
-	 *
-	 * @return void
-	 */
-	public function onInteract(PlayerInteractEvent $event) : void{
-		$player = $event->getPlayer();
-		$block = $event->getBlock();
-		if (!$block->getPosition()->getWorld()->getTile($block->getPosition()) instanceof ChestTile){
-			return;
-		}
-		$session = Lmao::getInstance()->getSessionManager()->getSession($player);
-		if (is_null($session)){
-			return;
-		}
-		if (!$session->isSilentChest()){
-			return;
-		}
-		$event->cancel();
-		/** @var ChestTile $title */
-		$title = $block->getPosition()->getWorld()->getTile($block->getPosition());
-		$player->setCurrentWindow($title->getInventory());
-		Lmao::getInstance()->getLogger()->info("Chest Silent opened");
-	}
 }

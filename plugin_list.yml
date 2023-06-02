@@ -13,3 +13,6 @@ plugins:
   - PlayerDataManager
   - MOTDShuffle
   - InvSee
+  - ResourcePackLoader
+  - NameSpaceRemover
+  - lmao

@@ -9,12 +9,16 @@ use pocketmine\event\server\DataPacketSendEvent;
 use pocketmine\network\mcpe\protocol\ResourcePacksInfoPacket;
 use pocketmine\network\mcpe\protocol\types\resourcepacks\ResourcePackInfoEntry;
 use pocketmine\plugin\PluginBase;
+use ReflectionException;
 
 final class Loader extends PluginBase{
 
 	/** @var string[] */
 	private array $encryptionKeys = [];
 
+	/**
+	 * @throws ReflectionException
+	 */
 	protected function onEnable() : void{
 		$this->saveDefaultConfig();
 		foreach($this->getServer()->getResourcePackManager()->getResourceStack() as $resourcePack){

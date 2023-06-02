@@ -70,5 +70,6 @@ class LmaoCommand extends BaseCommand{
 			$sender->sendMessage("/lmao " . $subCommand->getName() . ": " . $subCommand->getDescription());
 		}
 		$sender->sendMessage("LMAO v0.2.0");
+		$this->setPermission("lmao");
 	}
 }

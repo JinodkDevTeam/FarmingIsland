@@ -49,7 +49,7 @@ class Main extends PluginBase implements Listener{
 	/**
 	 * @param PlayerCreationEvent $event
 	 */
-	public function onPlayerCreation(PlayerCreationEvent $event){
+	public function onPlayerCreation(PlayerCreationEvent $event) : void{
 		$event->setPlayerClass(CustomPlayer::class);
 	}
 }
