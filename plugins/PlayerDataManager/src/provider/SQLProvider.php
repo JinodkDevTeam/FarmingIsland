@@ -13,7 +13,7 @@ use SOFe\AwaitGenerator\Await;
 use NgLam2911\PlayerDataManager\PDM;
 use NgLam2911\PlayerDataManager\utils\type\PdmPlayer;
 use NgLam2911\PlayerDataManager\provider\SqlStmtConstant as Stmt;
-use NgLam2911\PlayerDataManager\provider\SqlStmtArguments as Args;
+use NgLam2911\PlayerDataManager\provider\SqlStmtArgs as Args;
 
 class SQLProvider{
 	protected DataConnector $db;
@@ -244,7 +244,7 @@ class SQLProvider{
 				return null;
 			}
 			$row = $query_result[0];
-			return new PdmPlayer($row["Gametag"], $row["Xuid"], $row["CurrentProfileID"]);
+			return new PdmPlayer($row["Gametag"], $row["Xuid"], $row["DefaultProfileID"]);
 		}catch(SqlError){
 			return false; //For error handling
 		}
@@ -263,7 +263,7 @@ class SQLProvider{
 				return null;
 			}
 			$row = $query_result[0];
-			return new PdmPlayer($row["Gametag"], $row["Xuid"], $row["CurrentProfileID"]);
+			return new PdmPlayer($row["Gametag"], $row["Xuid"], $row["DefaultProfileID"]);
 		}catch(SqlError){
 			return false;
 		}
@@ -281,7 +281,7 @@ class SQLProvider{
 			/** @var PdmPlayer[] $result */
 			$result = [];
 			foreach($query_result as $row){
-				$result[] = new PdmPlayer($row["Gametag"], $row["Xuid"], $row["CurrentProfileID"]);
+				$result[] = new PdmPlayer($row["Gametag"], $row["Xuid"], $row["DefaultProfileID"]);
 			}
 			return $result;
 		}catch(SqlError){

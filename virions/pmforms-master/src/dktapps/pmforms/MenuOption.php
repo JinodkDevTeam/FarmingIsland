@@ -28,13 +28,9 @@ namespace dktapps\pmforms;
  */
 class MenuOption implements \JsonSerializable{
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $text;
-	/**
-	 * @var FormIcon|null
-	 */
+	/** @var FormIcon|null */
 	private $image;
 
 	public function __construct(string $text, ?FormIcon $image = null){
@@ -54,6 +50,7 @@ class MenuOption implements \JsonSerializable{
 		return $this->image;
 	}
 
+	#[\ReturnTypeWillChange]
 	public function jsonSerialize(){
 		$json = [
 			"text" => $this->text

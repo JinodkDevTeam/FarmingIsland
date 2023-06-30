@@ -16,3 +16,6 @@ plugins:
   - ResourcePackLoader
   - NameSpaceRemover
   - lmao
+  - BlockDataRecorder
+  - ShopUI
+  - BedrockEconomy

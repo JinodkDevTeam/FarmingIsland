@@ -24,6 +24,9 @@ declare(strict_types=1);
 namespace dktapps\pmforms\element;
 
 use pocketmine\form\FormValidationException;
+use function gettype;
+use function is_float;
+use function is_int;
 
 class Slider extends CustomFormElement{
 
@@ -64,11 +67,6 @@ class Slider extends CustomFormElement{
 		return "slider";
 	}
 
-	/**
-	 * @param float $value
-	 *
-	 * @throws FormValidationException
-	 */
 	public function validateValue($value) : void{
 		if(!is_float($value) and !is_int($value)){
 			throw new FormValidationException("Expected float, got " . gettype($value));
@@ -78,30 +76,18 @@ class Slider extends CustomFormElement{
 		}
 	}
 
-	/**
-	 * @return float
-	 */
 	public function getMin() : float{
 		return $this->min;
 	}
 
-	/**
-	 * @return float
-	 */
 	public function getMax() : float{
 		return $this->max;
 	}
 
-	/**
-	 * @return float
-	 */
 	public function getStep() : float{
 		return $this->step;
 	}
 
-	/**
-	 * @return float
-	 */
 	public function getDefault() : float{
 		return $this->default;
 	}

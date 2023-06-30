@@ -1,0 +1,28 @@
+---
+config-version: 2.1.1
+language: en-US
+utility:
+  top-balance-accounts-limit: 10
+currency:
+  name: USD
+  symbol: $
+  number-separator: ','
+  balance:
+    default-balance: 100
+    balance-cap: 100000
+    enable-balance-cap: false
+  payment:
+    minimum-payment: 100
+    maximum-payment: 1000
+database:
+  provider: sqlite
+  threads: 2
+  mysql:
+    host: 127.0.0.1
+    username: your_username
+    password: password
+    schema: db_name
+    port: 3306
+  sqlite:
+    path: players.db
+...

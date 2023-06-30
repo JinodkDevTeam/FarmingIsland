@@ -37,6 +37,7 @@ use CortexPE\Commando\traits\IArgumentable;
 use InvalidArgumentException;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
+use pocketmine\lang\Translatable;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginOwned;
 use pocketmine\utils\TextFormat;
@@ -79,7 +80,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 	public function __construct(
 		Plugin $plugin,
 		string $name,
-		string $description = "",
+		Translatable|string $description = "",
 		array $aliases = []
 	) {
 		$this->plugin = $plugin;
@@ -99,7 +100,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 		return $this->plugin;
 	}
 
-	final public function execute(CommandSender $sender, string $commandLabel, array $args){
+	final public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		$this->currentSender = $sender;
 		if(!$this->testPermission($sender)){
 			return;
@@ -121,7 +122,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 							)
 						);
 					} elseif(empty($msg)) {
-						$sender->sendMessage(str_replace("<permission>", $cmd->getPermission(), $msg));
+						$sender->sendMessage(str_replace("<permission>", $cmd->getPermissions()[0], $msg));
 					}
 
 					return;
@@ -227,7 +228,7 @@ abstract class BaseCommand extends Command implements IArgumentable, IRunnable, 
 		return $this->constraints;
 	}
 
-	public function getUsageMessage(): string{
+	public function getUsageMessage(): string {
 		return $this->getUsage();
 	}
 }

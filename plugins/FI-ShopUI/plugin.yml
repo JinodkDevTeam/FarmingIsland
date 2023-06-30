@@ -1,5 +1,0 @@
-name: FI-ShopUI
-version: 0.0.1
-main: ShopUI\Shop
-api: 4.0.0
-src-namespace-prefix: ShopUI

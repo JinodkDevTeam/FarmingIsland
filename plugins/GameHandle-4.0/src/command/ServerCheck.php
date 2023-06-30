@@ -15,7 +15,7 @@ class ServerCheck extends LegacyBaseCommand{
 		$this->setPermission("gh.servercheck");
 	}
 
-	public function execute(CommandSender $sender, string $commandLabel, array $args){
+	public function execute(CommandSender $sender, string $commandLabel, array $args) : void{
 		if(!$sender->hasPermission("gh.servercheck")){
 			$sender->sendMessage("You dont have permission to use this command !");
 			return;
@@ -52,7 +52,7 @@ class ServerCheck extends LegacyBaseCommand{
 					if(!extension_loaded("chunkutils2")){
 						$sender->sendMessage("Missed chunkutils2 extension !");
 					}
-					if(!extension_loaded("pthreads")){
+					if(!extension_loaded("pmmpthreads")){
 						$sender->sendMessage("Missed pthreads extension !");
 					}
 					if(!extension_loaded("recursionguard")){

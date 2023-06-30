@@ -1,0 +1,7 @@
+name: PStat
+author: NgLam2911
+main: NgLam2911\PStat\PStat
+src-namespace-prefix: NgLam2911\PStat
+version: 0.0.1
+api: 5.0.0
+description: "Player stats"

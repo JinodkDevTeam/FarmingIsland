@@ -27,23 +27,39 @@ use dktapps\pmforms\element\CustomFormElement;
 use pocketmine\form\FormValidationException;
 use pocketmine\player\Player;
 use pocketmine\utils\Utils;
+use function array_values;
+use function count;
+use function gettype;
+use function is_array;
 
+/**
+ * @phpstan-type OnSubmit \Closure(Player $player, CustomFormResponse $data) : void
+ * @phpstan-type OnClose \Closure(Player $player) : void
+ */
 class CustomForm extends BaseForm{
 
 	/** @var CustomFormElement[] */
 	private $elements;
 	/** @var CustomFormElement[] */
 	private $elementMap = [];
-	/** @var \Closure */
+	/**
+	 * @var \Closure
+	 * @phpstan-var OnSubmit
+	 */
 	private $onSubmit;
-	/** @var \Closure|null */
+	/**
+	 * @var \Closure|null
+	 * @phpstan-var OnClose|null
+	 */
 	private $onClose = null;
 
 	/**
-	 * @param string              $title
 	 * @param CustomFormElement[] $elements
 	 * @param \Closure            $onSubmit signature `function(Player $player, CustomFormResponse $data)`
 	 * @param \Closure|null       $onClose signature `function(Player $player)`
+	 *
+	 * @phpstan-param OnSubmit     $onSubmit
+	 * @phpstan-param OnClose|null $onClose
 	 *
 	 * @throws \InvalidArgumentException
 	 */
@@ -65,20 +81,10 @@ class CustomForm extends BaseForm{
 		}
 	}
 
-	/**
-	 * @param int $index
-	 *
-	 * @return CustomFormElement|null
-	 */
 	public function getElement(int $index) : ?CustomFormElement{
 		return $this->elements[$index] ?? null;
 	}
 
-	/**
-	 * @param string $name
-	 *
-	 * @return null|CustomFormElement
-	 */
 	public function getElementByName(string $name) : ?CustomFormElement{
 		return $this->elementMap[$name] ?? null;
 	}
@@ -102,7 +108,6 @@ class CustomForm extends BaseForm{
 
 			$values = [];
 
-			/** @var array $data */
 			foreach($data as $index => $value){
 				if(!isset($this->elements[$index])){
 					throw new FormValidationException("Element at offset $index does not exist");
@@ -122,9 +127,6 @@ class CustomForm extends BaseForm{
 		}
 	}
 
-	/**
-	 * @return string
-	 */
 	protected function getType() : string{
 		return "custom_form";
 	}

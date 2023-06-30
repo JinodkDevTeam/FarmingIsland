@@ -34,6 +34,7 @@ use CortexPE\Commando\constraint\BaseConstraint;
 use CortexPE\Commando\traits\ArgumentableTrait;
 use CortexPE\Commando\traits\IArgumentable;
 use pocketmine\command\CommandSender;
+use pocketmine\permission\PermissionManager;
 use pocketmine\plugin\Plugin;
 use function explode;
 
@@ -47,8 +48,8 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 	private string $description;
 	/** @var string */
 	protected string $usageMessage;
-	/** @var string|null */
-	private ?string $permission = null;
+	/** @var string[] */
+	private array $permissions = [];
 	/** @var CommandSender */
 	protected CommandSender $currentSender;
 	/** @var BaseCommand */
@@ -97,24 +98,35 @@ abstract class BaseSubCommand implements IArgumentable, IRunnable {
 	}
 
 	/**
-	 * @return string|null
+	 * @return string[]
 	 */
-	public function getPermission(): ?string {
-		return $this->permission;
+	public function getPermissions(): array {
+		return $this->permissions;
 	}
 
 	/**
-	 * @param string $permission
+	 * @param array $permissions
 	 */
+	public function setPermissions(array $permissions): void {
+		$permissionManager = PermissionManager::getInstance();
+		foreach($permissions as $perm){
+			if($permissionManager->getPermission($perm) === null){
+				throw new \InvalidArgumentException("Cannot use non-existing permission \"$perm\"");
+			}
+		}
+		$this->permissions = $permissions;
+	}
+
 	public function setPermission(string $permission): void {
-		$this->permission = $permission;
+		$permissionManager = PermissionManager::getInstance();
+		if($permissionManager->getPermission($permission) === null){
+			throw new \InvalidArgumentException("Cannot use non-existing permission \"$permission\"");
+		}
+		$this->permissions[] = $permission;
 	}
 
 	public function testPermissionSilent(CommandSender $sender): bool {
-		if(empty($this->permission)) {
-			return true;
-		}
-		foreach(explode(";", $this->permission) as $permission) {
+		foreach($this->permissions as $permission) {
 			if($sender->hasPermission($permission)) {
 				return true;
 			}

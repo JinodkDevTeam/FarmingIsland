@@ -9,7 +9,6 @@ class PdmPlayer{
 	protected string $gametag;
 	protected string $xuid;
 	protected int $currentProfile;
-
 	public function __construct(string $gametag, string $xuid, int $currentProfile){
 		$this->gametag = $gametag;
 		$this->xuid = $xuid;

@@ -171,6 +171,15 @@
                   <Item>
                     <option name="path" value="plugins/MineralUI/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/ShopUI/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/OneForAll/plugin.yml" />
+                  </Item>
+                  <Item>
+                    <option name="path" value="plugins/PStat/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

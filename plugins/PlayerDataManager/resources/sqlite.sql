@@ -4,20 +4,29 @@
 -- #        { players
 CREATE TABLE IF NOT EXISTS Players
 (
-    Xuid             VARCHAR NOT NULL PRIMARY KEY,
+    Xuid             VARCHAR NOT NULL PRIMARY KEY, -- UUID
     Gametag          VARCHAR NOT NULL UNIQUE,
-    CurrentProfileID INTEGER NOT NULL DEFAULT -1,
-    CONSTRAINT CurrentProfileID FOREIGN KEY (CurrentProfileID) REFERENCES Profiles (ProfileID)
+    DefaultProfileID VARCHAR NOT NULL DEFAULT -1,
+    CONSTRAINT CurrentProfileID FOREIGN KEY (DefaultProfileID) REFERENCES Profiles (ProfileID)
 );
 -- #        }
 -- #        { profiles
 CREATE TABLE IF NOT EXISTS Profiles
 (
-    ProfileID   INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    ProfileName VARCHAR                           NOT NULL DEFAULT '',
-    Xuid        VARCHAR                           NOT NULL UNIQUE,
-    SaveKey     VARCHAR                           NOT NULL UNIQUE,
-    CONSTRAINT Xuid FOREIGN KEY (Xuid) REFERENCES Players (Xuid)
+    ProfileID   VARCHAR PRIMARY KEY NOT NULL, -- UUID
+    ProfileName VARCHAR             NOT NULL DEFAULT '',
+    ProfileType INTEGER             NOT NULL DEFAULT 0
+);
+-- #        }
+-- #        { profile_player
+CREATE TABLE IF NOT EXISTS ProfilePlayer
+(
+    ProfilePlayerID VARCHAR PRIMARY KEY NOT NULL, -- UUID
+    Xuid            VARCHAR             NOT NULL,
+    ProfileID       VARCHAR             NOT NULL,
+    Inventory       BLOB                NOT NULL DEFAULT '',
+    CONSTRAINT ProfilePlayerXuid FOREIGN KEY (Xuid) REFERENCES Players (Xuid),
+    CONSTRAINT ProfilePlayerProfileID FOREIGN KEY (ProfileID) REFERENCES Profiles (ProfileID)
 );
 -- #        }
 -- #    }
@@ -31,13 +40,22 @@ INTO Players(Xuid, Gametag)
 VALUES (:xuid, :gametag);
 -- #        }
 -- #        { profile
+-- #            :profile_id string
 -- #            :profile_name string
--- #            :xuid string
--- #            :savekey string
+-- #            :profile_type string
 INSERT OR
 REPLACE
-INTO Profiles(ProfileName, Xuid, SaveKey)
-VALUES (:profile_name, :xuid, :savekey);
+INTO Profiles(ProfileID, ProfileName, ProfileType)
+VALUES (:profile_id, :profile_name, :profile_type);
+-- #        }
+-- #        { profile_player
+-- #            :profile_player_id string
+-- #            :xuid string
+-- #            :profile_id string
+INSERT OR
+REPLACE
+INTO ProfilePlayer(ProfilePlayerID, Xuid, ProfileID)
+VALUES (:profile_player_id, :xuid, :profile_id);
 -- #        }
 -- #    }
 -- #    { remove
@@ -57,27 +75,35 @@ WHERE Xuid = :xuid;
 -- #        }
 -- #        { profile
 -- #            { id
--- #                :profile_id int
+-- #                :profile_id string
 DELETE
 FROM Profiles
 WHERE ProfileID = :profile_id;
 -- #            }
+-- #        }
+-- #        { profile_player
+-- #            { id
+-- #                :profile_player_id string
+DELETE
+FROM ProfilePlayer
+WHERE ProfilePlayerID = :profile_player_id;
+-- #            }
 -- #            { xuid
 -- #                :xuid string
 DELETE
-FROM Profiles
+FROM ProfilePlayer
 WHERE Xuid = :xuid;
 -- #            }
--- #            { savekey
--- #                :savekey string
+-- #            { profile_id
+-- #                :profile_id string
 DELETE
-FROM Profiles
-WHERE SaveKey = :savekey;
+FROM ProfilePlayer
+WHERE ProfileID = :profile_id;
 -- #            }
 -- #            { gametag
 -- #                :gametag string
 DELETE
-FROM Profiles
+FROM ProfilePlayer
 WHERE Xuid IN (SELECT Xuid
                FROM Players
                WHERE Gametag = :gametag);
@@ -96,7 +122,7 @@ WHERE Xuid = :xuid;
 -- #            :profile_id int
 -- #            :xuid string
 UPDATE Players
-SET CurrentProfileID = :profile_id
+SET DefaultProfileID = :profile_id
 WHERE Xuid = :xuid;
 -- #        }
 -- #        { profile_name
@@ -106,12 +132,33 @@ UPDATE Profiles
 SET ProfileName = :profile_name
 WHERE ProfileID = :profile_id;
 -- #        }
--- #        { profile_xuid
+-- #        { profile_type
 -- #            :profile_id int
--- #            :xuid string
+-- #            :profile_type int
 UPDATE Profiles
-SET Xuid = :xuid
+SET ProfileType = :profile_type
 WHERE ProfileID = :profile_id;
+-- #        }
+-- #        { profile_player_xuid
+-- #            :profile_player_id int
+-- #            :xuid string
+UPDATE ProfilePlayer
+SET Xuid = :xuid
+WHERE ProfilePlayerID = :profile_player_id;
+-- #        }
+-- #        { profile_player_profile_id
+-- #            :profile_player_id int
+-- #            :profile_id int
+UPDATE ProfilePlayer
+SET ProfileID = :profile_id
+WHERE ProfilePlayerID = :profile_player_id;
+-- #        }
+-- #        { profile_player_inventory
+-- #            :profile_player_id int
+-- #            :inventory string
+UPDATE ProfilePlayer
+SET Inventory = :inventory
+WHERE ProfilePlayerID = :profile_player_id;
 -- #        }
 -- #    }
 -- #    { select
@@ -142,33 +189,51 @@ SELECT *
 FROM Profiles
 WHERE ProfileID = :profile_id;
 -- #            }
--- #            { xuid
--- #                :xuid string
+-- #        }
+-- #        { profile_name
+-- #            :profile_name string
 SELECT *
 FROM Profiles
-WHERE Xuid = :xuid;
--- #            }
--- #            { savekey
--- #                :savekey string
+WHERE ProfileName = :profile_name;
+-- #        }
+-- #        { profile_type
+-- #            :profile_type int
 SELECT *
 FROM Profiles
-WHERE SaveKey = :savekey;
--- #            }
--- #            { gametag
--- #                :gametag string
+WHERE ProfileType = :profile_type;
+-- #        }
+-- #        { profile_xuid
+-- #            :xuid string
 SELECT *
 FROM Profiles
-WHERE Xuid IN (SELECT Xuid
-               FROM Players
-               WHERE Gametag = :gametag);
--- #            }
+WHERE ProfileID IN (SELECT ProfileID
+                    FROM ProfilePlayer
+                    WHERE Xuid = :xuid);
+-- #        }
+-- #        { profile_gametag
+-- #            :gametag string
+SELECT *
+FROM Profiles
+WHERE ProfileID IN (SELECT ProfileID
+                    FROM ProfilePlayer
+                    WHERE Xuid IN (SELECT Xuid
+                                   FROM Players
+                                   WHERE Gametag = :gametag));
+-- #        }
+-- #        { profile_profileplayer
+-- #            :profile_player_id string
+SELECT *
+FROM Profiles
+WHERE ProfileID IN (SELECT ProfileID
+                    FROM ProfilePlayer
+                    WHERE ProfilePlayerID = :profile_player_id);
 -- #        }
 -- #        { current_profile
 -- #            { xuid
 -- #                :xuid string
 SELECT *
 FROM Profiles
-WHERE ProfileID IN (SELECT CurrentProfileID
+WHERE ProfileID IN (SELECT DefaultProfileID
                     FROM Players
                     WHERE Xuid = :xuid);
 -- #            }
@@ -176,7 +241,7 @@ WHERE ProfileID IN (SELECT CurrentProfileID
 -- #                :gametag string
 SELECT *
 FROM Profiles
-WHERE ProfileID IN (SELECT CurrentProfileID
+WHERE ProfileID IN (SELECT DefaultProfileID
                     FROM Players
                     WHERE Gametag = :gametag);
 -- #            }

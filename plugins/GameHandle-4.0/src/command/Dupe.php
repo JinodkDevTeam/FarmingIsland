@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NgLamVN\GameHandle\command;
 
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use FILang\FILang as Lang;
 use FILang\TranslationFactory as TF;
@@ -17,7 +18,7 @@ class Dupe extends IngameCommand{
 
 	public function handle(Player $player, string $aliasUsed, array $args) : void{
 		$item = $player->getInventory()->getItemInHand();
-		if($item->getId() == 0){
+		if($item->equals(VanillaItems::AIR())){
 			$player->sendMessage(Lang::translate($player, TF::gh_cmd_dupe_fail_none()));
 			return;
 		}
