@@ -13,22 +13,22 @@ class PDM extends PluginBase{
 
 	protected function onEnable() : void{
 		$this->saveResource("config.yml");
-		$this->provider = new SQLProvider($this);
-		$this->provider->load();
+		/*$this->provider = new SQLProvider($this);
+		$this->provider->load();*/
 		$this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
 
-		/*LibasynqlHelperAutoGen::generateHelperFiles(
+		LibasynqlHelperAutoGen::generateHelperFiles(
 			$this,
 			"plugins/PlayerDataManager/src/provider/",
 			"sqlite.sql",
 			"NgLam2911\\PlayerDataManager\\provider",
 			true
-		);*/
+		);
 	}
 
-	protected function onDisable() : void{
+	/*protected function onDisable() : void{
 		$this->provider->unload();
-	}
+	}*/
 
 	public function getProvider() : SQLProvider{
 		return $this->provider;

@@ -14,7 +14,7 @@ class SqlStmtArgs{
 			"xuid" => $xuid,
 		];
 	}
-	public static function register_profile(string $profile_name, string $profile_type, string $profile_id) : array{
+	public static function register_profile(string $profile_name, int $profile_type, string $profile_id) : array{
 		return [
 			"profile_name" => $profile_name,
 			"profile_type" => $profile_type,

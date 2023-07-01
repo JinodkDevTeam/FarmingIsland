@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS Players
 (
     Xuid             VARCHAR NOT NULL PRIMARY KEY, -- UUID
     Gametag          VARCHAR NOT NULL UNIQUE,
-    DefaultProfileID VARCHAR NOT NULL DEFAULT -1,
+    DefaultProfileID VARCHAR NOT NULL DEFAULT '',
     CONSTRAINT CurrentProfileID FOREIGN KEY (DefaultProfileID) REFERENCES Profiles (ProfileID)
 );
 -- #        }
@@ -42,7 +42,7 @@ VALUES (:xuid, :gametag);
 -- #        { profile
 -- #            :profile_id string
 -- #            :profile_name string
--- #            :profile_type string
+-- #            :profile_type int
 INSERT OR
 REPLACE
 INTO Profiles(ProfileID, ProfileName, ProfileType)

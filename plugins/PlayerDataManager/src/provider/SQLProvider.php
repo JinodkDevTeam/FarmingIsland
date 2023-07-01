@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace NgLam2911\PlayerDataManager\provider;
 
 use Generator;
+use NgLam2911\PlayerDataManager\utils\ProfileTypes;
 use NgLam2911\PlayerDataManager\utils\type\PdmProfile;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
@@ -70,19 +71,17 @@ class SQLProvider{
 	}
 
 	/**
-	 * @param Player|PdmPlayer|PdmProfile $profile
+	 * @param ProfileTypes|int $profile_type
 	 *
 	 * @return Generator<array{int, int}|null>
 	 */
-	public function registerProfile(Player|PdmPlayer|PdmProfile $profile) : Generator{
-		if($profile instanceof Player or $profile instanceof PdmPlayer){
-			$profile = PdmProfile::new($profile->getXuid());
-		}
+	public function registerProfile(ProfileTypes|int $profile_type) : Generator{
+		$profile = PdmProfile::new($profile_type);
 		try{
 			return yield from $this->db->asyncInsert(Stmt::REGISTER_PROFILE, Args::register_profile(
 				$profile->getProfileName(),
-				$profile->getXuid(),
-				$profile->getSavekey()
+				$profile->getType()->getId(),
+				$profile->getProfileUUID(),
 			));
 		}catch(SqlError){
 			return null;

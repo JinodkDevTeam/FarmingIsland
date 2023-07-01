@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace NgLam2911\PlayerDataManager\utils;
 
-class ExampleProfileNames{
+final readonly class ExampleProfileNames{
 	const NAMES = [
 		"Apple",
 		"Banana",

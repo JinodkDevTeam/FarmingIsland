@@ -5,15 +5,12 @@ namespace NgLam2911\PlayerDataManager\utils\type;
 
 use pocketmine\player\Player;
 
-class PdmPlayer{
-	protected string $gametag;
-	protected string $xuid;
-	protected int $currentProfile;
-	public function __construct(string $gametag, string $xuid, int $currentProfile){
-		$this->gametag = $gametag;
-		$this->xuid = $xuid;
-		$this->currentProfile = $currentProfile;
-	}
+readonly class PdmPlayer{
+	public function __construct(
+		protected string $gametag,
+		protected string $xuid,
+		protected string $currentProfile
+	){}
 
 	public function getGametag() : string{
 		return $this->gametag;
@@ -27,11 +24,11 @@ class PdmPlayer{
 		return $this->getGametag();
 	}
 
-	public function getCurrentProfileID() : int{
+	public function getCurrentProfileUUID() : string{
 		return $this->currentProfile;
 	}
 
-	public static function fromPmPlayer(Player $player) : PdmPlayer{
-		return new PdmPlayer($player->getName(), $player->getXuid(), -1);
+	public static function newfromPmPlayer(Player $player) : PdmPlayer{
+		return new PdmPlayer($player->getName(), $player->getXuid(), "");
 	}
 }
