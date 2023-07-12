@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace NgLam2911\PlayerDataManager\provider;
 
 use Generator;
+use NgLam2911\PlayerDataManager\PDM;
+use NgLam2911\PlayerDataManager\provider\SqlStmtArgs as Args;
+use NgLam2911\PlayerDataManager\provider\SqlStmtConstant as Stmt;
+use NgLam2911\PlayerDataManager\utils\ProfileTypes;
+use NgLam2911\PlayerDataManager\utils\type\PdmPlayer;
+use NgLam2911\PlayerDataManager\utils\type\PdmProfile;
+use NgLam2911\PlayerDataManager\utils\type\PdmProfilePlayer;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use poggit\libasynql\SqlError;
 use SOFe\AwaitGenerator\Await;
-use NgLam2911\PlayerDataManager\PDM;
-use NgLam2911\PlayerDataManager\utils\ProfileTypes;
-use NgLam2911\PlayerDataManager\utils\type\PdmPlayer;
-use NgLam2911\PlayerDataManager\utils\type\PdmProfile;
-use NgLam2911\PlayerDataManager\utils\type\PdmProfilePlayer;
-use NgLam2911\PlayerDataManager\provider\SqlStmtConstant as Stmt;
-use NgLam2911\PlayerDataManager\provider\SqlStmtArgs as Args;
 
 class SQLProvider{
 	protected DataConnector $db;
@@ -109,7 +109,7 @@ class SQLProvider{
 	 */
 	public function removePlayerGametag(string $gametag) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PLAYER_GAMETAG, Args::rm_p_gametag($gametag));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PLAYER_GAMETAG, Args::remove_player_gametag($gametag));
 		}catch(SqlError){
 			return null;
 		}
@@ -122,7 +122,7 @@ class SQLProvider{
 	 */
 	public function removePlayerXuid(string $xuid) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PLAYER_XUID, Args::rm_p_xuid($xuid));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PLAYER_XUID, Args::remove_player_xuid($xuid));
 		}catch(SqlError){
 			return null;
 		}
@@ -138,55 +138,57 @@ class SQLProvider{
 	}
 
 	/**
-	 * @param int $id
+	 * @param string $id
 	 *
 	 * @return Generator<int|null>
 	 */
-	public function removeProfileID(int $id) : Generator{
+	public function removeProfileID(string $id) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_ID, Args::rm_profile_id($id));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_ID, Args::remove_profile_id($id));
 		}catch(SqlError){
 			return null;
 		}
 	}
 
 	/**
-	 * @param string $xuid
+	 * @param string $id
 	 *
 	 * @return Generator<int|null>
 	 */
-	public function removeProfileXuid(string $xuid) : Generator{
+	public function removeProfilePlayerID(string $id) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_XUID, Args::rm_profile_xuid($xuid));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_PLAYER_ID, Args::remove_profile_player_id($id));
 		}catch(SqlError){
 			return null;
 		}
 	}
 
-	/**
-	 * @param string $savekey
-	 *
-	 * @return Generator<int|null>
-	 */
-	public function removeProfileSaveKey(string $savekey) : Generator{
+	public function removeProfilePlayerXUID(string $xuid) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_SAVEKEY, Args::rm_profile_savekey($savekey));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_PLAYER_XUID, Args::remove_profile_player_xuid($xuid));
 		}catch(SqlError){
 			return null;
 		}
 	}
 
-	/**
-	 * @param string $gametag
-	 *
-	 * @return Generator<int|null>
-	 */
-	public function removeProfileGametag(string $gametag) : Generator{
+	public function removeProfilePlayerProfileID(string $profile_id) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_GAMETAG, Args::rm_profile_gametag($gametag));
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_PLAYER_PROFILE_ID, Args::remove_profile_player_profile_id($profile_id));
 		}catch(SqlError){
 			return null;
 		}
+	}
+
+	public function removeProfilePlayerGametag(string $gametag) : Generator{
+		try{
+			return yield from $this->db->asyncChange(Stmt::REMOVE_PROFILE_PLAYER_GAMETAG, Args::remove_profile_player_gametag($gametag));
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	public function removeProfilePlayer(PdmProfilePlayer $profile_player) : Generator{
+		return yield from $this->removeProfilePlayerID($profile_player->getProfilePlayerUUID());
 	}
 
 	/**
@@ -197,19 +199,19 @@ class SQLProvider{
 	 */
 	public function updatePlayerGametag(string $gametag, string $xuid) : Generator{
 		try{
-			return yield from $this->db->asyncChange(Stmt::UPDATE_PLAYER_GAMETAG, Args::update_gametag($gametag, $xuid));
+			return yield from $this->db->asyncChange(Stmt::UPDATE_GAMETAG, Args::update_gametag($gametag, $xuid));
 		}catch(SqlError){
 			return null;
 		}
 	}
 
 	/**
-	 * @param int    $profile_id
+	 * @param string $profile_id
 	 * @param string $xuid
 	 *
 	 * @return Generator<int|null>
 	 */
-	public function updateCurrentProfile(int $profile_id, string $xuid) : Generator{
+	public function updateCurrentProfile(string $profile_id, string $xuid) : Generator{
 		try{
 			return yield from $this->db->asyncChange(Stmt::UPDATE_CURRENT_PROFILE, Args::update_current_profile($profile_id, $xuid));
 		}catch(SqlError){
@@ -219,11 +221,11 @@ class SQLProvider{
 
 	/**
 	 * @param string $profile_name
-	 * @param int    $profile_id
+	 * @param string $profile_id
 	 *
 	 * @return Generator<int|null>
 	 */
-	public function updateProfileName(string $profile_name, int $profile_id) : Generator{
+	public function updateProfileName(string $profile_name, string $profile_id) : Generator{
 		try{
 			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_NAME, Args::update_profile_name($profile_name, $profile_id));
 		}catch(SqlError){
@@ -231,15 +233,34 @@ class SQLProvider{
 		}
 	}
 
-	/**
-	 * @param string $xuid
-	 * @param int    $profile_id
-	 *
-	 * @return Generator<int|null>
-	 */
-	public function updateProfileXuid(string $xuid, int $profile_id) : Generator{
+	public function updateProfileType(ProfileTypes|int $profileType, string $profile_id) : Generator{
+		if($profileType instanceof ProfileTypes) $profileType = $profileType->getId();
 		try{
-			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_XUID, Args::update_profile_xuid($xuid, $profile_id));
+			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_TYPE, Args::update_profile_type($profileType, $profile_id));
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	public function updateProfilePlayerXuid(string $profile_player_id, string $xuid) : Generator{
+		try{
+			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_PLAYER_XUID, Args::update_profile_player_xuid($profile_player_id, $xuid));
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	public function updateProfilePlayerProfileID(string $profile_player_id, string $profile_id) : Generator{
+		try{
+			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_PLAYER_PROFILE_ID, Args::update_profile_player_profile_id($profile_player_id, $profile_id));
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	public function updateProfilePlayerInventory(string $profile_player_id, string $inventory) : Generator{
+		try{
+			return yield from $this->db->asyncChange(Stmt::UPDATE_PROFILE_PLAYER_INVENTORY, Args::update_profile_player_inventory($profile_player_id, $inventory));
 		}catch(SqlError){
 			return null;
 		}
@@ -253,7 +274,7 @@ class SQLProvider{
 	public function selectPlayerGametag(string $gametag) : Generator{
 		try{
 			/** @var array[] $query_result */
-			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_GAMETAG, Args::select_p_gametag($gametag));
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_GAMETAG, Args::select_player_gametag($gametag));
 			if(empty($query_result)){
 				return null;
 			}
@@ -272,7 +293,7 @@ class SQLProvider{
 	public function selectPlayerXuid(string $xuid) : Generator{
 		try{
 			/** @var array[] $query_result */
-			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_XUID, Args::select_p_xuid($xuid));
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_XUID, Args::select_player_xuid($xuid));
 			if(empty($query_result)){
 				return null;
 			}
@@ -291,7 +312,7 @@ class SQLProvider{
 	public function selectPlayerPrefix(string $prefix) : Generator{
 		try{
 			/** @var array[] $query_result */
-			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_PREFIX, Args::select_p_prefix($prefix));
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_PREFIX, Args::select_player_prefix($prefix));
 			/** @var PdmPlayer[] $result */
 			$result = [];
 			foreach($query_result as $row){
@@ -304,11 +325,11 @@ class SQLProvider{
 	}
 
 	/**
-	 * @param int $id
+	 * @param string $id
 	 *
 	 * @return Generator<PdmProfile|null|bool>
 	 */
-	public function selectProfileID(int $id) : Generator{
+	public function selectProfileID(string $id) : Generator{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_ID, Args::select_profile_id($id));
@@ -316,9 +337,55 @@ class SQLProvider{
 				return null;
 			}
 			$row = $query_result[0];
-			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 		}catch(SqlError){
 			return false;
+		}
+	}
+
+	/**
+	 * @param string $name
+	 *
+	 * @return Generator<PdmProfile[]|null>
+	 */
+	public function selectProfileName(string $name) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_NAME, Args::select_profile_name($name));
+			if(empty($query_result)){
+				return null;
+			}
+			/** @var PdmProfile[] $result */
+			$result = [];
+			foreach($query_result as $row){
+				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
+			}
+			return $result;
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	/**
+	 * @param ProfileTypes|int $profileType
+	 *
+	 * @return Generator<PdmProfile[]|null>
+	 */
+	public function selectProfileType(ProfileTypes|int $profileType) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_TYPE, Args::select_profile_type($profileType));
+			if(empty($query_result)){
+				return null;
+			}
+			/** @var PdmProfile[] $result */
+			$result = [];
+			foreach($query_result as $row){
+				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
+			}
+			return $result;
+		}catch(SqlError){
+			return null;
 		}
 	}
 
@@ -334,7 +401,7 @@ class SQLProvider{
 			/** @var PdmProfile[] $result */
 			$result = [];
 			foreach($query_result as $row){
-				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 			}
 			return $result;
 		}catch(SqlError){
@@ -343,19 +410,18 @@ class SQLProvider{
 	}
 
 	/**
-	 * @param string $savekey
+	 * @param string $profile_player_id
 	 *
 	 * @return Generator<PdmProfile|null|bool>
 	 */
-	public function selectProfileSaveKey(string $savekey) : Generator{
+	public function selectProfileProfilePlayer(string $profile_player_id) : Generator{
 		try{
 			/** @var array[] $query_result */
-			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_SAVEKEY, Args::select_profile_savekey($savekey));
-			if(empty($query_result)){
-				return yield null;
-			}
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_PROFILEPLAYER, Args::select_profile_profileplayer($profile_player_id));
+			/** @var PdmProfile[] $result */
+			$result = [];
 			$row = $query_result[0];
-			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 		}catch(SqlError){
 			return false;
 		}
@@ -364,7 +430,7 @@ class SQLProvider{
 	/**
 	 * @param string $gametag
 	 *
-	 * @return Generator<PdmProfile[]|bool>
+	 * @return Generator<PdmProfile[]|null>
 	 */
 	public function selectProfileGametag(string $gametag) : Generator{
 		try{
@@ -373,18 +439,18 @@ class SQLProvider{
 			/** @var PdmProfile[] $result */
 			$result = [];
 			foreach($query_result as $row){
-				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+				$result[] = new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 			}
 			return $result;
 		}catch(SqlError){
-			return false;
+			return null;
 		}
 	}
 
 	/**
 	 * @param string $xuid
 	 *
-	 * @return Generator<PdmProfile|bool>
+	 * @return Generator<PdmProfile|null|bool>
 	 */
 	public function selectCurrentProfileXuid(string $xuid) : Generator{
 		try{
@@ -394,7 +460,7 @@ class SQLProvider{
 				return null;
 			}
 			$row = $query_result[0];
-			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 		}catch(SqlError){
 			return false;
 		}
@@ -413,7 +479,7 @@ class SQLProvider{
 				return null;
 			}
 			$row = $query_result[0];
-			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["Xuid"], $row["SaveKey"]);
+			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 		}catch(SqlError){
 			return false;
 		}

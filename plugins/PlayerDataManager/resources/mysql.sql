@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Profiles
 (
     ProfileID   TEXT PRIMARY KEY NOT NULL, -- UUID
     ProfileName TEXT             NOT NULL DEFAULT '',
-    ProfileType INTEGER             NOT NULL DEFAULT 0
+    ProfileType INTEGER          NOT NULL DEFAULT 0
 );
 -- #        }
 -- #        { profile_player
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS ProfilePlayer
     ProfilePlayerID TEXT PRIMARY KEY NOT NULL, -- UUID
     Xuid            TEXT             NOT NULL,
     ProfileID       TEXT             NOT NULL,
-    Inventory       BLOB                NOT NULL DEFAULT '',
+    Inventory       BLOB             NOT NULL DEFAULT '',
     CONSTRAINT ProfilePlayerXuid FOREIGN KEY (Xuid) REFERENCES Players (Xuid),
     CONSTRAINT ProfilePlayerProfileID FOREIGN KEY (ProfileID) REFERENCES Profiles (ProfileID)
 );
@@ -46,7 +46,8 @@ ON DUPLICATE KEY UPDATE Gametag = :gametag;
 INSERT
 INTO Profiles(ProfileID, ProfileName, ProfileType)
 VALUES (:profile_id, :profile_name, :profile_type)
-ON DUPLICATE KEY UPDATE ProfileName = :profile_name, ProfileType = :profile_type;
+ON DUPLICATE KEY UPDATE ProfileName = :profile_name,
+                        ProfileType = :profile_type;
 -- #        }
 -- #        { profile_player
 -- #            :profile_player_id string
@@ -55,7 +56,8 @@ ON DUPLICATE KEY UPDATE ProfileName = :profile_name, ProfileType = :profile_type
 INSERT
 INTO ProfilePlayer(ProfilePlayerID, Xuid, ProfileID)
 VALUES (:profile_player_id, :xuid, :profile_id)
-ON DUPLICATE KEY UPDATE Xuid = :xuid, ProfileID = :profile_id;
+ON DUPLICATE KEY UPDATE Xuid      = :xuid,
+                        ProfileID = :profile_id;
 -- #        }
 -- #    }
 -- #    { remove
@@ -119,42 +121,42 @@ SET Gametag = :gametag
 WHERE Xuid = :xuid;
 -- #        }
 -- #        { current_profile
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :xuid string
 UPDATE Players
 SET DefaultProfileID = :profile_id
 WHERE Xuid = :xuid;
 -- #        }
 -- #        { profile_name
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :profile_name string
 UPDATE Profiles
 SET ProfileName = :profile_name
 WHERE ProfileID = :profile_id;
 -- #        }
 -- #        { profile_type
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :profile_type int
 UPDATE Profiles
 SET ProfileType = :profile_type
 WHERE ProfileID = :profile_id;
 -- #        }
 -- #        { profile_player_xuid
--- #            :profile_player_id int
+-- #            :profile_player_id string
 -- #            :xuid string
 UPDATE ProfilePlayer
 SET Xuid = :xuid
 WHERE ProfilePlayerID = :profile_player_id;
 -- #        }
 -- #        { profile_player_profile_id
--- #            :profile_player_id int
--- #            :profile_id int
+-- #            :profile_player_id string
+-- #            :profile_id string
 UPDATE ProfilePlayer
 SET ProfileID = :profile_id
 WHERE ProfilePlayerID = :profile_player_id;
 -- #        }
 -- #        { profile_player_inventory
--- #            :profile_player_id int
+-- #            :profile_player_id string
 -- #            :inventory string
 UPDATE ProfilePlayer
 SET Inventory = :inventory
@@ -184,7 +186,7 @@ WHERE Gametag LIKE :prefix || '%';
 -- #        }
 -- #        { profile
 -- #            { id
--- #                :profile_id int
+-- #                :profile_id string
 SELECT *
 FROM Profiles
 WHERE ProfileID = :profile_id;

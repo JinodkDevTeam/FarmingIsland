@@ -69,37 +69,37 @@ class SqlStmtArgs{
 			"xuid" => $xuid,
 		];
 	}
-	public static function update_current_profile(int $profile_id, string $xuid) : array{
+	public static function update_current_profile(string $profile_id, string $xuid) : array{
 		return [
 			"profile_id" => $profile_id,
 			"xuid" => $xuid,
 		];
 	}
-	public static function update_profile_name(string $profile_name, int $profile_id) : array{
+	public static function update_profile_name(string $profile_name, string $profile_id) : array{
 		return [
 			"profile_name" => $profile_name,
 			"profile_id" => $profile_id,
 		];
 	}
-	public static function update_profile_type(int $profile_type, int $profile_id) : array{
+	public static function update_profile_type(int $profile_type, string $profile_id) : array{
 		return [
 			"profile_type" => $profile_type,
 			"profile_id" => $profile_id,
 		];
 	}
-	public static function update_profile_player_xuid(int $profile_player_id, string $xuid) : array{
+	public static function update_profile_player_xuid(string $profile_player_id, string $xuid) : array{
 		return [
 			"profile_player_id" => $profile_player_id,
 			"xuid" => $xuid,
 		];
 	}
-	public static function update_profile_player_profile_id(int $profile_player_id, int $profile_id) : array{
+	public static function update_profile_player_profile_id(string $profile_player_id, string $profile_id) : array{
 		return [
 			"profile_player_id" => $profile_player_id,
 			"profile_id" => $profile_id,
 		];
 	}
-	public static function update_profile_player_inventory(int $profile_player_id, string $inventory) : array{
+	public static function update_profile_player_inventory(string $profile_player_id, string $inventory) : array{
 		return [
 			"profile_player_id" => $profile_player_id,
 			"inventory" => $inventory,
@@ -120,7 +120,7 @@ class SqlStmtArgs{
 			"prefix" => $prefix,
 		];
 	}
-	public static function select_profile_id(int $profile_id) : array{
+	public static function select_profile_id(string $profile_id) : array{
 		return [
 			"profile_id" => $profile_id,
 		];

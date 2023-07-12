@@ -119,42 +119,42 @@ SET Gametag = :gametag
 WHERE Xuid = :xuid;
 -- #        }
 -- #        { current_profile
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :xuid string
 UPDATE Players
 SET DefaultProfileID = :profile_id
 WHERE Xuid = :xuid;
 -- #        }
 -- #        { profile_name
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :profile_name string
 UPDATE Profiles
 SET ProfileName = :profile_name
 WHERE ProfileID = :profile_id;
 -- #        }
 -- #        { profile_type
--- #            :profile_id int
+-- #            :profile_id string
 -- #            :profile_type int
 UPDATE Profiles
 SET ProfileType = :profile_type
 WHERE ProfileID = :profile_id;
 -- #        }
 -- #        { profile_player_xuid
--- #            :profile_player_id int
+-- #            :profile_player_id string
 -- #            :xuid string
 UPDATE ProfilePlayer
 SET Xuid = :xuid
 WHERE ProfilePlayerID = :profile_player_id;
 -- #        }
 -- #        { profile_player_profile_id
--- #            :profile_player_id int
--- #            :profile_id int
+-- #            :profile_player_id string
+-- #            :profile_id string
 UPDATE ProfilePlayer
 SET ProfileID = :profile_id
 WHERE ProfilePlayerID = :profile_player_id;
 -- #        }
 -- #        { profile_player_inventory
--- #            :profile_player_id int
+-- #            :profile_player_id string
 -- #            :inventory string
 UPDATE ProfilePlayer
 SET Inventory = :inventory
@@ -184,7 +184,7 @@ WHERE Gametag LIKE :prefix || '%';
 -- #        }
 -- #        { profile
 -- #            { id
--- #                :profile_id int
+-- #                :profile_id string
 SELECT *
 FROM Profiles
 WHERE ProfileID = :profile_id;
