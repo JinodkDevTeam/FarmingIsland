@@ -4,15 +4,16 @@ declare(strict_types=1);
 namespace NgLam2911\PlayerDataManager\provider;
 
 use Generator;
-use NgLam2911\PlayerDataManager\utils\ProfileTypes;
-use NgLam2911\PlayerDataManager\utils\type\PdmProfile;
 use pocketmine\player\Player;
 use poggit\libasynql\DataConnector;
 use poggit\libasynql\libasynql;
 use poggit\libasynql\SqlError;
 use SOFe\AwaitGenerator\Await;
 use NgLam2911\PlayerDataManager\PDM;
+use NgLam2911\PlayerDataManager\utils\ProfileTypes;
 use NgLam2911\PlayerDataManager\utils\type\PdmPlayer;
+use NgLam2911\PlayerDataManager\utils\type\PdmProfile;
+use NgLam2911\PlayerDataManager\utils\type\PdmProfilePlayer;
 use NgLam2911\PlayerDataManager\provider\SqlStmtConstant as Stmt;
 use NgLam2911\PlayerDataManager\provider\SqlStmtArgs as Args;
 
@@ -48,6 +49,7 @@ class SQLProvider{
 		try{
 			yield from $this->db->asyncGeneric(Stmt::INIT_PLAYERS);
 			yield from $this->db->asyncGeneric(Stmt::INIT_PROFILES);
+			yield from $this->db->asyncGeneric(Stmt::INIT_PROFILE_PLAYER);
 		}catch(SqlError $error){
 			$this->getPDM()->getLogger()->error("Database initialization failed: " . $error->getMessage());
 		}
@@ -88,6 +90,18 @@ class SQLProvider{
 		}
 	}
 
+	public function registerProfilePlayer(PdmProfilePlayer $profile_player) : Generator{
+		try{
+			return yield from $this->db->asyncInsert(Stmt::REGISTER_PROFILE_PLAYER, Args::register_profile_player(
+				$profile_player->getProfilePlayerUUID(),
+				$profile_player->getProfileUUID(),
+				$profile_player->getXuid()
+			));
+		}catch(SqlError){
+			return null;
+		}
+	}
+
 	/**
 	 * @param string $gametag
 	 *
@@ -116,6 +130,7 @@ class SQLProvider{
 
 	/**
 	 * @param Player|PdmPlayer $player
+	 *
 	 * @return Generator<int|null>
 	 */
 	public function removePlayer(Player|PdmPlayer $player) : Generator{
@@ -239,7 +254,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_GAMETAG, Args::select_p_gametag($gametag));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return null;
 			}
 			$row = $query_result[0];
@@ -258,7 +273,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PLAYER_XUID, Args::select_p_xuid($xuid));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return null;
 			}
 			$row = $query_result[0];
@@ -297,7 +312,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_ID, Args::select_profile_id($id));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return null;
 			}
 			$row = $query_result[0];
@@ -336,7 +351,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_SAVEKEY, Args::select_profile_savekey($savekey));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return yield null;
 			}
 			$row = $query_result[0];
@@ -375,7 +390,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_CURRENT_PROFILE_XUID, Args::select_current_profile_xuid($xuid));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return null;
 			}
 			$row = $query_result[0];
@@ -394,7 +409,7 @@ class SQLProvider{
 		try{
 			/** @var array[] $query_result */
 			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_CURRENT_PROFILE_GAMETAG, Args::select_current_profile_gametag($gametag));
-			if (empty($query_result)){
+			if(empty($query_result)){
 				return null;
 			}
 			$row = $query_result[0];
