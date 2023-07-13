@@ -246,5 +246,8 @@ WHERE ProfileID IN (SELECT DefaultProfileID
                     WHERE Gametag = :gametag);
 -- #            }
 -- #        }
+-- #        { profile_player
+-- #            {}
+-- #        }
 -- #    }
 -- #}
