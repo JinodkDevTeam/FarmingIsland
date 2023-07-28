@@ -45,7 +45,6 @@ use pocketmine\network\mcpe\protocol\types\command\CommandOverload;
 use pocketmine\plugin\Plugin;
 use pocketmine\Server;
 use ReflectionClass;
-use function array_unshift;
 
 class PacketHooker implements Listener {
 	/** @var bool */

@@ -180,6 +180,9 @@
                   <Item>
                     <option name="path" value="plugins/PStat/plugin.yml" />
                   </Item>
+                  <Item>
+                    <option name="path" value="plugins/FartBattle/plugin.yml" />
+                  </Item>
                 </list>
               </option>
             </SchemaInfo>

@@ -73,12 +73,13 @@ class SQLProvider{
 	}
 
 	/**
-	 * @param ProfileTypes|int $profile_type
+	 * @param ProfileTypes|int|PdmProfile $profile_type
 	 *
 	 * @return Generator<array{int, int}|null>
 	 */
-	public function registerProfile(ProfileTypes|int $profile_type) : Generator{
-		$profile = PdmProfile::new($profile_type);
+	public function registerProfile(ProfileTypes|int|PdmProfile $profile_type) : Generator{
+		if ($profile_type instanceof PdmProfile) $profile = $profile_type;
+		else $profile = PdmProfile::new($profile_type);
 		try{
 			return yield from $this->db->asyncInsert(Stmt::REGISTER_PROFILE, Args::register_profile(
 				$profile->getProfileName(),
@@ -90,6 +91,11 @@ class SQLProvider{
 		}
 	}
 
+	/**
+	 * @param PdmProfilePlayer $profile_player
+	 *
+	 * @return Generator<array{int, int}|null>
+	 */
 	public function registerProfilePlayer(PdmProfilePlayer $profile_player) : Generator{
 		try{
 			return yield from $this->db->asyncInsert(Stmt::REGISTER_PROFILE_PLAYER, Args::register_profile_player(
@@ -482,6 +488,117 @@ class SQLProvider{
 			return new PdmProfile($row["ProfileID"], $row["ProfileName"], $row["ProfileType"]);
 		}catch(SqlError){
 			return false;
+		}
+	}
+
+	/**
+	 * @param string $profile_player_id
+	 *
+	 * @return Generator<PdmProfile|null|bool>
+	 */
+	public function selectProfilePlayerId(string $profile_player_id) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(Stmt::SELECT_PROFILE_PLAYER_ID, Args::select_profile_player_id($profile_player_id));
+			if(empty($query_result)){
+				return null;
+			}
+			$row = $query_result[0];
+			return new PdmProfilePlayer($row["ProfilePlayerID"], $row["ProfileID"], $row["Xuid"], $row["Inventory"]);
+		}catch(SqlError){
+			return false;
+		}
+	}
+
+	/**
+	 * @param string $profile_id
+	 * @param string $xuid
+	 *
+	 * @return Generator<PdmProfilePlayer|null|bool>
+	 */
+	public function selectProfilePlayerXuidProfileId(string $profile_id, string $xuid) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(
+				Stmt::SELECT_PROFILE_PLAYER_XUID_PROFILE_ID,
+				Args::select_profile_player_xuid_profile_id($profile_id, $xuid)
+			);
+			if(empty($query_result)){
+				return null;
+			}
+			$row = $query_result[0];
+			return new PdmProfilePlayer($row["ProfilePlayerID"], $row["ProfileID"], $row["Xuid"], $row["Inventory"]);
+		}catch(SqlError){
+			return false;
+		}
+	}
+
+	/**
+	 * @param string $xuid
+	 *
+	 * @return Generator<PdmProfilePlayer[]|null>
+	 */
+	public function selectProfilePlayerXuid(string $xuid) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(
+				Stmt::SELECT_PROFILE_PLAYER_XUID,
+				Args::select_profile_player_xuid($xuid)
+			);
+			/** @var PdmProfilePlayer[] $result */
+			$result = [];
+			foreach($query_result as $row){
+				$result[] = new PdmProfilePlayer($row["ProfilePlayerID"], $row["ProfileID"], $row["Xuid"], $row["Inventory"]);
+			}
+			return $result;
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	/**
+	 * @param string $profile_id
+	 *
+	 * @return Generator<PdmProfilePlayer[]|null>
+	 */
+	public function selectProfilePlayerProfileId(string $profile_id) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(
+				Stmt::SELECT_PROFILE_PLAYER_PROFILE_ID,
+				Args::select_profile_player_profile_id($profile_id)
+			);
+			/** @var PdmProfilePlayer[] $result */
+			$result = [];
+			foreach($query_result as $row){
+				$result[] = new PdmProfilePlayer($row["ProfilePlayerID"], $row["ProfileID"], $row["Xuid"], $row["Inventory"]);
+			}
+			return $result;
+		}catch(SqlError){
+			return null;
+		}
+	}
+
+	/**
+	 * @param string $gametag
+	 *
+	 * @return Generator<PdmProfilePlayer[]|null>
+	 */
+	public function selectProfilePlayerGametag(string $gametag) : Generator{
+		try{
+			/** @var array[] $query_result */
+			$query_result = yield from $this->db->asyncSelect(
+				Stmt::SELECT_PROFILE_PLAYER_GAMETAG,
+				Args::select_profile_player_gametag($gametag)
+			);
+			/** @var PdmProfilePlayer[] $result */
+			$result = [];
+			foreach($query_result as $row){
+				$result[] = new PdmProfilePlayer($row["ProfilePlayerID"], $row["ProfileID"], $row["Xuid"], $row["Inventory"]);
+			}
+			return $result;
+		}catch(SqlError){
+			return null;
 		}
 	}
 }

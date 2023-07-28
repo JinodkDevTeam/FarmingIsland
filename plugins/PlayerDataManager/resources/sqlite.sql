@@ -247,7 +247,40 @@ WHERE ProfileID IN (SELECT DefaultProfileID
 -- #            }
 -- #        }
 -- #        { profile_player
--- #            {}
+-- #            { id
+-- #                :profile_player_id string
+SELECT *
+FROM ProfilePlayer
+WHERE ProfilePlayerID = :profile_player_id;
+-- #            }
+-- #            { xuid_profile_id
+-- #                :xuid string
+-- #                :profile_id string
+SELECT *
+FROM ProfilePlayer
+WHERE Xuid = :xuid
+  AND ProfileID = :profile_id;
+-- #            }
+-- #            { xuid
+-- #                :xuid string
+SELECT *
+FROM ProfilePlayer
+WHERE Xuid = :xuid;
+-- #            }
+-- #            { profile_id
+-- #                :profile_id string
+SELECT *
+FROM ProfilePlayer
+WHERE ProfileID = :profile_id;
+-- #            }
+-- #            { gametag
+-- #                :gametag string
+SELECT *
+FROM ProfilePlayer
+WHERE Xuid IN (SELECT Xuid
+               FROM Players
+               WHERE Gametag = :gametag);
+-- #            }
 -- #        }
 -- #    }
 -- #}

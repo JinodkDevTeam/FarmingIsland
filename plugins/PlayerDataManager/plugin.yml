@@ -5,6 +5,11 @@ version: 0.0.1-alpha
 api:
   - 4.0.0
   - 5.0.0
-description: who tf wanna read this ?
+description: who tf wanna read this ? NOT TESTED YET !!!!!!!!
 
 virions: libasynql
+
+TODO:
+  - MANAGER SYSTEM
+  - SWITCHABLE PROFILE, SWITCHABLE DATA
+  - MORE THINGS ...

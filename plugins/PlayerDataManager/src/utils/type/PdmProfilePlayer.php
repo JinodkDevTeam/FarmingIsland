@@ -45,6 +45,9 @@ readonly class PdmProfilePlayer{
 		if ($xuid instanceof Player){
 			$xuid = $xuid->getXuid();
 		}
+		if ($xuid instanceof PdmPlayer){
+			$xuid = $xuid->getXuid();
+		}
 		if ($profileUUID instanceof PdmProfile){
 			$profileUUID = $profileUUID->getProfileUUID();
 		}

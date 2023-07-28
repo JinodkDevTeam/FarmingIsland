@@ -160,4 +160,30 @@ class SqlStmtArgs{
 			"gametag" => $gametag,
 		];
 	}
+	public static function select_profile_player_id(string $profile_player_id) : array{
+		return [
+			"profile_player_id" => $profile_player_id,
+		];
+	}
+	public static function select_profile_player_xuid_profile_id(string $profile_id, string $xuid) : array{
+		return [
+			"profile_id" => $profile_id,
+			"xuid" => $xuid,
+		];
+	}
+	public static function select_profile_player_xuid(string $xuid) : array{
+		return [
+			"xuid" => $xuid,
+		];
+	}
+	public static function select_profile_player_profile_id(string $profile_id) : array{
+		return [
+			"profile_id" => $profile_id,
+		];
+	}
+	public static function select_profile_player_gametag(string $gametag) : array{
+		return [
+			"gametag" => $gametag,
+		];
+	}
 }

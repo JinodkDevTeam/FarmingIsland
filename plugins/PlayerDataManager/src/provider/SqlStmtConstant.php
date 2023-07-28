@@ -39,4 +39,9 @@ class SqlStmtConstant{
 	public const SELECT_PROFILE_PROFILEPLAYER = "pdm.select.profile_profileplayer";
 	public const SELECT_CURRENT_PROFILE_XUID = "pdm.select.current_profile.xuid";
 	public const SELECT_CURRENT_PROFILE_GAMETAG = "pdm.select.current_profile.gametag";
+	public const SELECT_PROFILE_PLAYER_ID = "pdm.select.profile_player.id";
+	public const SELECT_PROFILE_PLAYER_XUID_PROFILE_ID = "pdm.select.profile_player.xuid_profile_id";
+	public const SELECT_PROFILE_PLAYER_XUID = "pdm.select.profile_player.xuid";
+	public const SELECT_PROFILE_PLAYER_PROFILE_ID = "pdm.select.profile_player.profile_id";
+	public const SELECT_PROFILE_PLAYER_GAMETAG = "pdm.select.profile_player.gametag";
 }

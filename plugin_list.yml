@@ -9,13 +9,11 @@ plugins:
   - DevTools
   - DEVirion
   - FI-Lang
-  - Mail #Need FI-CustomAddons
-  - PlayerDataManager
+  #- Mail #Need FI-CustomAddons
+  #- PlayerDataManager
   - MOTDShuffle
   - InvSee
-  - ResourcePackLoader
+  #- ResourcePackLoader
   - NameSpaceRemover
   - lmao
-  - BlockDataRecorder
-  - ShopUI
-  - BedrockEconomy
+  - FartBattle
