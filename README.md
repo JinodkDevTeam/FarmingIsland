@@ -1,3 +1,6 @@
 # FarmingIsland
 FarmingIslandServer files run on PocketMine-MP
 I dont know how to write more thing to this ...
+
+# Discontinued 
+This project is abandoned and for history purposes...
